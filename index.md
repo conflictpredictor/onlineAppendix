@@ -1,37 +1,16 @@
-## Welcome to GitHub Pages
+# Analyzing Conflict Predictors in Open-Source Java Projects from GitHub and Travis CI
 
-You can use the [editor on GitHub](https://github.com/conflictpredictor/onlineAppendix/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## This website is under construction.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Abstract
+In collaborative development environments integration conflicts occur frequently. To alleviate this problem, different awareness tools have been proposed to alert developers about potential conflicts before they become too complex. However, there is not much empirical evidence supporting the strategies used by these tools. Learning about what types of changes most likely lead to conflicts might help to derive more appropriate requirements for early conflict detection, and suggest improvements to existing conflict detection tools. To bring such evidence, in this paper we analyze the effectiveness of two types of code changes as conflict predictors. Namely, editions to the same method, and editions to directly dependent methods. We conduct an empirical study analyzing part of the development history of 45 Java projects from GitHub and Travis CI, including 5,647 merge scenarios, to compute the precision and recall for the conflict predictors aforementioned. Our results indicate that the predictors combined have a precision of 57.99% and a recall of 82.67%. Moreover, we conduct a manual analysis of the false positives and false negatives from our sample, providing insights about strategies that could further increase the precision and the recall.
 
-### Markdown
+## Preprint
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Projects Sample Descrition
 
-```markdown
-Syntax highlighted code block
+## Data
 
-# Header 1
-## Header 2
-### Header 3
+## Scripts and Tools
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/conflictpredictor/onlineAppendix/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

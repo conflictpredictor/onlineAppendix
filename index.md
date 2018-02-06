@@ -8,6 +8,7 @@ In collaborative development environments integration conflicts occur frequently
 ## Projects Sample Description
 
 ## Data
+[Link to raw data](https://github.com/conflictpredictor/onlineAppendix/tree/master/data)
 
 ## Scripts and Tools
 

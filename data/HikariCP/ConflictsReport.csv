@@ -1,0 +1,1195 @@
+=========================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_76441_1cb3c\rev_76441-1cb3c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 1, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056993642\fstmerge_var1_6691314047975411555
+public void releaseConnection(IHikariConnectionProxy connectionProxy)
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056993642\fstmerge_base_6169328150824111443
+void releaseConnection(IHikariConnectionProxy connection)
+=======
+public void releaseConnection(IHikariConnectionProxy connection)
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056993642\fstmerge_var2_1440302118695409247
+    {
+        if (!connectionProxy.isBrokenConnection())
+        {
+            connectionProxy.markLastAccess();
+            idleConnectionCount.incrementAndGet();
+            idleConnections.put(connectionProxy);
+        }
+        else
+        {
+            closeConnection(connectionProxy);
+        }
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_76441_1cb3c\rev_rev_left_76441-rev_right_1cb3c\src\main\java\com\zaxxer\hikari\HikariPool.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private void addConnection()
+    {
+        int retries = 0;
+        while (true)
+        {
+            try
+            {
+                Connection connection = dataSource.getConnection();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994030\fstmerge_var1_6550932589298291026
+                IHikariConnectionProxy proxyConnection;
+                if (delegationProxies)
+                {
+                    proxyConnection = (IHikariConnectionProxy) JavassistProxyFactoryFactory.getProxyFactory().getProxyConnection(connection);
+                }
+                else
+                {
+                    proxyConnection = (IHikariConnectionProxy) connection;
+                }
+
+                proxyConnection.setParentPool(this);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994030\fstmerge_base_5258431379634895355
+                IHikariConnectionProxy proxyConnection = (IHikariConnectionProxy) ProxyFactory.INSTANCE.getProxyConnection(this, connection);
+=======
+                IHikariConnectionProxy proxyConnection = (IHikariConnectionProxy) connection;
+                proxyConnection.setHikariPool(this);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994030\fstmerge_var2_1752058008549546265
+
+                boolean alive = isConnectionAlive(connection, configuration.getConnectionTimeout());
+                if (alive)
+                {
+                    connection.setAutoCommit(configuration.isAutoCommit());
+                    idleConnectionCount.incrementAndGet();
+                    totalConnections.incrementAndGet();
+                    idleConnections.add(proxyConnection);
+                    break;
+                }
+                else
+                {
+                    Thread.sleep(configuration.getAcquireRetryDelay());
+                }
+            }
+            catch (Exception e)
+            {
+                if (retries++ > configuration.getAcquireRetries())
+                {
+                    LOGGER.error("Maximum connection creation retries exceeded", e);
+                    break;
+                }
+
+                try
+                {
+                    Thread.sleep(configuration.getAcquireRetryDelay());
+                }
+                catch (InterruptedException e1)
+                {
+                    break;
+                }
+            }
+        }
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_76441_1cb3c\rev_rev_left_76441-rev_right_1cb3c\src\main\java\com\zaxxer\hikari\HikariPool.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private void closeConnection(IHikariConnectionProxy connectionProxy)
+    {
+        try
+        {
+            totalConnections.decrementAndGet();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994422\fstmerge_var1_2197501295044696629
+            connectionProxy.__close();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994422\fstmerge_base_8018113842477567921
+            connectionProxy.getDelegate().close();
+=======
+            connectionProxy.realClose();
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512056994422\fstmerge_var2_4030675415749839684
+        }
+        catch (SQLException e)
+        {
+            return;
+        }
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_76441_1cb3c\rev_rev_left_76441-rev_right_1cb3c\src\main\java\com\zaxxer\hikari\HikariPool.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_83fce_63d67\rev_83fce-63d67.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_560f6_7b4d2\rev_560f6-7b4d2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_718b6_84798\rev_718b6-84798.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_65844_fbb3e\rev_65844-fbb3e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_89653_9e74d\rev_89653-9e74d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_923f7_a326b\rev_923f7-a326b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_3a7a9_8589d\rev_3a7a9-8589d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_af64c_0ed00\rev_af64c-0ed00.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c2488_58485\rev_c2488-58485.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e938a_8842a\rev_e938a-8842a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ea579_506b1\rev_ea579-506b1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_f1e33_6d8e3\rev_f1e33-6d8e3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_f7a60_6b3c7\rev_f7a60-6b3c7.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9db51_d0a77\rev_9db51-d0a77.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_279f5_519c9\rev_279f5-519c9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_613c5_95d3f\rev_613c5-95d3f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_21106_b5660\rev_21106-b5660.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_55d7a_d7cba\rev_55d7a-d7cba.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e2433_1f0b0\rev_e2433-1f0b0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ca526_431b4\rev_ca526-431b4.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e3a3a_4bf14\rev_e3a3a-4bf14.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_5bed7_b81c2\rev_5bed7-b81c2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1ad78_d041c\rev_1ad78-d041c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c6e75_a4b97\rev_c6e75-a4b97.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9bb57_22f4e\rev_9bb57-22f4e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_da5c0-b4510.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_1bca9-d415b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9b599_b699c\rev_9b599-b699c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9c058_ec373\rev_9c058-ec373.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_01bca_41179\rev_01bca-41179.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_afeba_624c5\rev_afeba-624c5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1548c_6494e\rev_1548c-6494e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_7cd73_fde04\rev_7cd73-fde04.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_973b4_a9d62\rev_973b4-a9d62.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_dbe76_483cf\rev_dbe76-483cf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a9b19_03c12\rev_a9b19-03c12.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_5a1e2_275ae\rev_5a1e2-275ae.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9ab0b_14bf8\rev_9ab0b-14bf8.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Connection getConnection() throws SQLException
+    {
+        final long start = System.currentTimeMillis();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277331\fstmerge_var1_3987599132640326737
+        final Context context = (isRecordMetrics ? metricsTracker.recordConnectionRequest(start) : MetricsTracker.NO_CONTEXT); 
+        long timeout = connectionTimeout;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277331\fstmerge_base_4013371793499180781
+        final Context context = (isRecordMetrics ? metricsTracker.recordConnectionRequest(start) : MetricsTracker.NO_CONTEXT); 
+        long timeout = configuration.getConnectionTimeout();
+=======
+        final MetricsContext context = (isRecordMetrics ? metricsTracker.recordConnectionRequest(start) : MetricsTracker.NO_CONTEXT); 
+        long timeout = configuration.getConnectionTimeout();
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277331\fstmerge_var2_4977784363819915062
+        
+        try
+        {
+            do
+            {
+                IHikariConnectionProxy connection = connectionBag.borrow(timeout, TimeUnit.MILLISECONDS);
+                if (connection == null)
+                {
+                    break;  // We timed out... break and throw exception
+                }
+
+                final long now = System.currentTimeMillis();
+                connection.unclose(now);
+
+                if (now > connection.getExpirationTime() || (now - connection.getLastAccess() > 1000L && !isConnectionAlive(connection, timeout)))
+                {
+                    closeConnection(connection);     // Throw away the dead connection and try again
+                    timeout -= elapsedTimeMs(start);
+                    continue;
+                }
+                else if (leakDetectionThreshold != 0)
+                {
+                    connection.captureStack(leakDetectionThreshold, houseKeepingTimer);
+                }
+
+                return connection;
+            }
+            while (timeout > 0L);
+        }
+        catch (InterruptedException e)
+        {
+            throw new SQLException("Interrupted during connection acquisition", e);
+        }
+        finally
+        {
+            context.stop();
+        }
+
+        logPoolState("Timeout failure ");
+        throw new SQLException(String.format("Timeout of %dms encountered waiting for connection.", 
+                                             configuration.getConnectionTimeout()), lastConnectionFailure.getAndSet(null));
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9ab0b_14bf8\rev_rev_left_9ab0b-rev_right_14bf8\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private boolean isConnectionAlive(final IHikariConnectionProxy connection, long timeoutMs)
+    {
+        try
+        {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277716\fstmerge_var1_3696107689251578332
+            timeoutMs = Math.max(1000L, timeoutMs);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277716\fstmerge_base_4585549632123050097
+            timeoutMs = Math.max(1000, timeoutMs);
+=======
+            final boolean timeoutEnabled = (configuration.getConnectionTimeout() != Integer.MAX_VALUE);
+            timeoutMs = timeoutEnabled ? Math.max(1000, timeoutMs) : 0;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512058277716\fstmerge_var2_7611257605694481567
+
+            if (isJdbc4ConnectionTest)
+            {
+                return connection.isValid((int) TimeUnit.MILLISECONDS.toSeconds(timeoutMs));
+            }
+
+            Statement statement = connection.createStatement();
+            try
+            {
+                statement.setQueryTimeout((int) TimeUnit.MILLISECONDS.toSeconds(timeoutMs));
+                statement.executeQuery(configuration.getConnectionTestQuery());
+                return true;
+            }
+            finally
+            {
+                statement.close();
+                if (isIsolateInternalQueries && !isAutoCommit)
+                {
+                    connection.rollback();
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            LOGGER.warn("Exception during keep alive check, that means the connection must be dead.", e);
+            return false;
+        }
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9ab0b_14bf8\rev_rev_left_9ab0b-rev_right_14bf8\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_884a5_4c238\rev_884a5-4c238.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_8534a_3e1ad\rev_8534a-3e1ad.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_42eeb-1321d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_5cb10_636a4\rev_5cb10-636a4.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_2bca5_70c0e\rev_2bca5-70c0e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9dd2a_97511\rev_9dd2a-97511.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da07a_7c24f\rev_da07a-7c24f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_35a9e_c6770\rev_35a9e-c6770.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_201c2_4f0f9\rev_201c2-4f0f9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9119c_a6053\rev_9119c-a6053.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_07bb4_04e48\rev_07bb4-04e48.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_327b7_a7a84\rev_327b7-a7a84.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_df982_db023\rev_df982-db023.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_29629_aa7aa\rev_29629-aa7aa.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_3d806_e8d5f\rev_3d806-e8d5f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_28438_ec2b7\rev_28438-ec2b7.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d9a6f_2e24d\rev_d9a6f-2e24d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a8b4e_956e6\rev_a8b4e-956e6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_7da72_a310d\rev_7da72-a310d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9804b_a310d\rev_9804b-a310d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_53854_338d5\rev_53854-338d5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_877e4_c457c\rev_877e4-c457c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_f4427_4e7a1\rev_f4427-4e7a1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e3f13_c94a2\rev_e3f13-c94a2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_2ccf3_6d8bf\rev_2ccf3-6d8bf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e682b_1cb7d\rev_e682b-1cb7d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_cd457_bd0ca\rev_cd457-bd0ca.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c063e_92762\rev_c063e-92762.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_003b5_f56fb\rev_003b5-f56fb.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_24e6a_d10e9\rev_24e6a-d10e9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_154fd_400d9\rev_154fd-400d9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_03ad7_16e5b\rev_03ad7-16e5b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d538f_d781d\rev_d538f-d781d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a0e95_04a22\rev_a0e95-04a22.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_56016_43910\rev_56016-43910.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_120b2_ace24\rev_120b2-ace24.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+   public Future<Boolean> addBagItem()
+   {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059703346\fstmerge_var1_1139650335756505328
+      FutureTask<Boolean> future = new FutureTask<Boolean>(new Runnable() {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059703346\fstmerge_base_6270374216846692695
+      class AddConnection implements Runnable
+      {
+=======
+      class AddConnection implements Runnable
+      {
+         @Override
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059703346\fstmerge_var2_5751456330683731457
+         public void run()
+         {
+            long sleepBackoff = 200L;
+            final int minimumIdle = configuration.getMinimumIdle();
+            final int maxPoolSize = configuration.getMaximumPoolSize();
+            while (poolState == POOL_NORMAL && totalConnections.get() < maxPoolSize && getIdleConnections() <= minimumIdle && !addConnection()) {
+               // If we got into the loop, addConnection() failed, so we sleep and retry
+               quietlySleep(sleepBackoff);
+               sleepBackoff = Math.min(connectionTimeout / 2, (long) ((double) sleepBackoff * 1.5));
+            }
+         }
+      }, true);
+
+      addConnectionExecutor.execute(future);
+      return future;
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_120b2_ace24\rev_rev_left_120b2-rev_right_ace24\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d8954_2f5ea\rev_d8954-2f5ea.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+   public Future<Boolean> addBagItem()
+   {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059731105\fstmerge_var1_6037087427716638400
+      FutureTask<Boolean> future = new FutureTask<Boolean>(new Runnable() {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059731105\fstmerge_base_6085227125892398208
+      class AddConnection implements Runnable
+      {
+=======
+      FutureTask<Boolean> future = new FutureTask<>(new Runnable() {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059731105\fstmerge_var2_7317466768364758476
+         public void run()
+         {
+            long sleepBackoff = 200L;
+            final int minimumIdle = configuration.getMinimumIdle();
+            final int maxPoolSize = configuration.getMaximumPoolSize();
+            while (poolState == POOL_NORMAL && totalConnections.get() < maxPoolSize && getIdleConnections() <= minimumIdle && !addConnection()) {
+               // If we got into the loop, addConnection() failed, so we sleep and retry
+               quietlySleep(sleepBackoff);
+               sleepBackoff = Math.min(connectionTimeout / 2, (long) ((double) sleepBackoff * 1.5));
+            }
+         }
+      }, true);
+
+      addConnectionExecutor.execute(future);
+      return future;
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d8954_2f5ea\rev_rev_left_d8954-rev_right_2f5ea\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ef438_ea52a\rev_ef438-ea52a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_0aa8d-6988d.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public final Connection getConnection(final long hardTimeoutNanos) throws SQLException
+   {
+      suspendResumeLock.acquire();
+      long timeout = hardTimeoutNanos;
+      final long startNano = System.nanoTime();
+      final MetricsContext metricsContext = (isRecordMetrics ? metricsTracker.recordConnectionRequest(startNano) : MetricsTracker.NO_CONTEXT);
+
+      try {
+         do {
+            final PoolBagEntry bagEntry = connectionBag.borrow(timeout);
+            if (bagEntry == null) {
+               break; // We timed out... break and throw exception
+            }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059768114\fstmerge_var1_5099898771942011516
+            final long nowNano = System.nanoTime();
+            if (bagEntry.evicted || (nowNano - bagEntry.lastAccessNano > ALIVE_BYPASS_WINDOW && !isConnectionAlive(bagEntry.connection))) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059768114\fstmerge_base_7506907987752184560
+            final long now = System.currentTimeMillis();
+            if (bagEntry.evicted || (now - bagEntry.lastAccess > ALIVE_BYPASS_WINDOW && !isConnectionAlive(bagEntry.connection))) {
+=======
+            final long now = System.currentTimeMillis();
+            if (bagEntry.evicted || (now - bagEntry.lastAccess > ALIVE_BYPASS_WINDOW_MS && !isConnectionAlive(bagEntry.connection))) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059768114\fstmerge_var2_7240158975805797859
+               closeConnection(bagEntry, "connection evicted or dead"); // Throw away the dead connection and try again
+               timeout = hardTimeoutNanos - elapsedNanos(startNano);
+            }
+            else {
+               metricsContext.setConnectionLastOpen(bagEntry, nowNano);
+               metricsContext.stop();
+               return ProxyFactory.getProxyConnection(bagEntry, leakTask.start(bagEntry), now);
+            }
+         }
+         while (timeout > 0L);
+      }
+      catch (InterruptedException e) {
+         throw new SQLException("Interrupted during connection acquisition", e);
+      }
+      finally {
+         suspendResumeLock.release();
+      }
+
+      logPoolState("Timeout failure ");
+      throw new SQLTimeoutException(String.format("Timeout after %dms of waiting for a connection.", elapsedTimeMs(startNano)), lastConnectionFailure.getAndSet(null));
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Override
+      public void run()
+      {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_var1_2746319771981354209
+         logPoolState("Before cleanup ");
+
+         connectionTimeoutNanos = TimeUnit.MILLISECONDS.toNanos(configuration.getConnectionTimeout()); // refresh member in case it changed
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_base_8006576904180405958
+         logPoolState("Before cleanup ");
+
+         connectionTimeout = configuration.getConnectionTimeout(); // refresh member in case it changed
+=======
+         connectionTimeout = configuration.getConnectionTimeout(); // refresh member in case it changed
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_var2_2562917690559471246
+
+         final long nowNanos = System.nanoTime();
+         final long idleTimeout = TimeUnit.MILLISECONDS.toNanos(configuration.getIdleTimeout());
+
+         // Detect retrograde time as well as forward leaps of unacceptable duration
+         if (now < previous || now > previous + (2 * HOUSEKEEPING_PERIOD_MS)) {
+            LOGGER.warn("Unusual system clock change detected, soft-evicting connections from pool.");
+            softEvictConnections();
+            fillPool();
+            return;
+         }
+
+         previous = now;
+
+         logPoolState("Before cleanup ");
+         for (PoolBagEntry bagEntry : connectionBag.values(STATE_NOT_IN_USE)) {
+            if (connectionBag.reserve(bagEntry)) {
+               if (bagEntry.evicted) {
+                  closeConnection(bagEntry, "connection evicted");
+               }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_var1_2746319771981354209
+               else if (idleTimeout > 0L && nowNanos - bagEntry.lastAccessNano > idleTimeout) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_base_8006576904180405958
+               else if (idleTimeout > 0L && now > bagEntry.lastAccess + idleTimeout) {
+=======
+               else if (idleTimeout > 0L && now - bagEntry.lastAccess > idleTimeout) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769164\fstmerge_var2_2562917690559471246
+                  closeConnection(bagEntry, "connection passed idleTimeout");
+               }
+               else {
+                  connectionBag.unreserve(bagEntry);
+               }
+            }
+         }
+         
+         logPoolState("After cleanup ");
+
+         fillPool(); // Try to maintain minimum connections
+      }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769222\fstmerge_var1_7818579185921134925
+private static final long ALIVE_BYPASS_WINDOW = Long.getLong("com.zaxxer.hikari.aliveBypassWindowNs", TimeUnit.SECONDS.toNanos(1));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769222\fstmerge_base_3356146224032576341
+private static final long ALIVE_BYPASS_WINDOW = Long.getLong("com.zaxxer.hikari.aliveBypassWindow", 1000L);
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769222\fstmerge_var2_6173118301546608094
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public PoolBagEntry(final Connection connection, final HikariPool pool) {
+      this.connection = connection;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769562\fstmerge_var1_2303743200780841313
+      this.lastAccessNano = System.nanoTime();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769562\fstmerge_base_2428608176090268926
+      this.lastAccess = System.currentTimeMillis();
+=======
+      this.parentPool = pool;
+      this.lastAccess = System.currentTimeMillis();
+      this.openStatements = new FastList<Statement>(Statement.class, 16);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059769562\fstmerge_var2_6390412989140681404
+
+      final long variance = pool.configuration.getMaxLifetime() > 60_000 ? ThreadLocalRandom.current().nextLong(10_000) : 0;
+      final long maxLifetime = pool.configuration.getMaxLifetime() - variance;
+      if (maxLifetime > 0) {
+         endOfLife = pool.houseKeepingExecutorService.schedule(new Runnable() {
+            @Override
+            public void run()
+            {
+               // If we can reserve it, close it
+               if (pool.connectionBag.reserve(PoolBagEntry.this)) {
+                  pool.closeConnection(PoolBagEntry.this, "connection reached maxLifetime");
+               }
+               else {
+                  // else the connection is "in-use" and we mark it for eviction by pool.releaseConnection() or the housekeeper
+                  PoolBagEntry.this.evicted = true;
+               }
+            }
+         }, maxLifetime, TimeUnit.MILLISECONDS);
+      }
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\pool\PoolBagEntry.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+   public final void markCommitStateDirty()
+   {
+      isCommitStateDirty = true;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771294\fstmerge_var1_4179529938744366125
+      lastAccessNano = System.nanoTime();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771294\fstmerge_base_4159071153808864842
+      lastAccess = System.currentTimeMillis();
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771294\fstmerge_var2_2697326360074722919
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\proxy\ConnectionProxy.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+   public final void close() throws SQLException
+   {
+      if (delegate != ClosedConnection.CLOSED_CONNECTION) {
+         leakTask.cancel();
+
+         final int size = openStatements.size();
+         if (size > 0) {
+            for (int i = 0; i < size; i++) {
+               try {
+                  openStatements.get(i).close();
+               }
+               catch (SQLException e) {
+                  checkException(e);
+               }
+            }
+         }
+
+         try {
+            if (isCommitStateDirty) {
+               lastAccess = System.currentTimeMillis();
+
+               if (!delegate.getAutoCommit()) {
+                  delegate.rollback();
+               }
+            }
+
+            if (isConnectionStateDirty) {
+               resetConnectionState();
+            }
+
+            delegate.clearWarnings();
+         }
+         catch (SQLException e) {
+            // when connections are aborted, exceptions are often thrown that should not reach the application
+            if (!bagEntry.aborted) {
+               throw checkException(e);
+            }
+         }
+         finally {
+            if (lastAccessNano != 0) {
+               bagEntry.lastAccessNano = lastAccessNano;
+            }
+            delegate = ClosedConnection.CLOSED_CONNECTION;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771671\fstmerge_var1_7372756663848049629
+            parentPool.releaseConnection(bagEntry);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771671\fstmerge_base_6637142870456563898
+            bagEntry.lastAccess = lastAccess;
+            parentPool.releaseConnection(bagEntry);
+=======
+            bagEntry.lastAccess = this.lastAccess;
+            bagEntry.parentPool.releaseConnection(bagEntry);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059771671\fstmerge_var2_2473484276768904524
+         }
+      }
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\proxy\ConnectionProxy.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774041\fstmerge_var1_1315766974829073248
+protected ConnectionProxy(final HikariPool pool, final PoolBagEntry bagEntry, final LeakTask leakTask) {
+      this.parentPool = pool;
+      this.bagEntry = bagEntry;
+      this.delegate = bagEntry.connection;
+      this.leakTask = leakTask;
+
+      this.openStatements = new FastList<Statement>(Statement.class, 16);
+   }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774041\fstmerge_base_4797965648903245121
+protected ConnectionProxy(final HikariPool pool, final PoolBagEntry bagEntry, final LeakTask leakTask) {
+      this.parentPool = pool;
+      this.bagEntry = bagEntry;
+      this.delegate = bagEntry.connection;
+      this.leakTask = leakTask;
+      this.lastAccess = bagEntry.lastAccess;
+
+      this.openStatements = new FastList<Statement>(Statement.class, 16);
+   }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774041\fstmerge_var2_1619019107590656037
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\proxy\ConnectionProxy.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774589\fstmerge_var1_7666056949515264661
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774589\fstmerge_base_3085137327002183550
+@SuppressWarnings("unchecked")
+   public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
+   {
+      if (!synchronizer.hasQueuedThreads()) {
+         // Try the thread-local list first
+         final ArrayList<WeakReference<IConcurrentBagEntry>> list = threadList.get();
+         if (list == null) {
+            threadList.set(new ArrayList<WeakReference<IConcurrentBagEntry>>(16));
+         }
+         else {
+            for (int i = list.size() - 1; i >= 0; i--) {
+               final IConcurrentBagEntry bagEntry = list.remove(i).get();
+               if (bagEntry != null && bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                  return (T) bagEntry;
+               }
+            }
+         }
+      }
+
+      // Otherwise, scan the shared list ... for maximum of timeout
+      timeout = timeUnit.toNanos(timeout);
+      Future<Boolean> addItemFuture = null;
+      final long startScan = System.nanoTime();
+      final long originTimeout = timeout;
+      long startSeq = 0;
+      try {
+         do {
+            if (!synchronizer.tryAcquireSharedNanos(startSeq, timeout)) {
+               break;
+            }
+   
+            do {
+               startSeq = sequence.sum();
+               for (final T bagEntry : sharedList) {
+                  if (bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                     return bagEntry;
+                  }
+               }
+            } while (startSeq < sequence.sum());
+
+            if (addItemFuture == null || addItemFuture.isDone()) {
+               addItemFuture = listener.addBagItem();
+            }
+   
+            timeout = originTimeout - (System.nanoTime() - startScan);
+         }
+         while (timeout > 1000L);  // 1000ns is the minimum resolution on many systems
+      }
+      finally {
+         synchronizer.releaseShared(1);
+      }
+
+      return null;
+   }
+=======
+@SuppressWarnings("unchecked")
+   public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
+   {
+      // Try the thread-local list first, if there are no blocked threads waiting already
+      if (!synchronizer.hasQueuedThreads()) {
+         final ArrayList<WeakReference<IConcurrentBagEntry>> list = threadList.get();
+         if (list == null) {
+            threadList.set(new ArrayList<WeakReference<IConcurrentBagEntry>>(16));
+         }
+         else {
+            for (int i = list.size() - 1; i >= 0; i--) {
+               final IConcurrentBagEntry bagEntry = list.remove(i).get();
+               if (bagEntry != null && bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                  return (T) bagEntry;
+               }
+            }
+         }
+      }
+
+      // Otherwise, scan the shared list ... for maximum of timeout
+      timeout = timeUnit.toNanos(timeout);
+      Future<Boolean> addItemFuture = null;
+      final long startScan = System.nanoTime();
+      final long originTimeout = timeout;
+      long startSeq = 0;  // 0 intentionally causes tryAcquireSharedNanos() to fall-thru in the first iteration
+      try {
+         while (timeout > 1000L && synchronizer.tryAcquireSharedNanos(startSeq, timeout)) {
+            do {
+               startSeq = sequence.sum();
+               for (final T bagEntry : sharedList) {
+                  if (bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                     return bagEntry;
+                  }
+               }
+            } while (startSeq < sequence.sum());
+
+            if (addItemFuture == null || addItemFuture.isDone()) {
+               addItemFuture = listener.addBagItem();
+            }
+   
+            timeout = originTimeout - (System.nanoTime() - startScan);
+         }
+      }
+      finally {
+         synchronizer.releaseShared(1);
+      }
+
+      return null;
+   }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512059774589\fstmerge_var2_40235198209638237
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\util\ConcurrentBag.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_cb37a_641b9\rev_cb37a-641b9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_53fe3_eadf8\rev_53fe3-eadf8.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_230c0_e52cc\rev_230c0-e52cc.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ab5f9_ef667\rev_ab5f9-ef667.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_cda1d_bd828\rev_cda1d-bd828.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_086ee_fe65d\rev_086ee-fe65d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_2072e_2a256\rev_2072e-2a256.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_82536_cdfd9\rev_82536-cdfd9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a31c2_9136e\rev_a31c2-9136e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c1ee0_53e74\rev_c1ee0-53e74.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_697f7_05a41\rev_697f7-05a41.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_43260_7efb9\rev_43260-7efb9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_bc010_e789d\rev_bc010-e789d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9dcb6_6cee9\rev_9dcb6-6cee9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_5d183_2a90f\rev_5d183-2a90f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_01a9a_7ad2e\rev_01a9a-7ad2e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_78842_78034\rev_78842-78034.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_19afc_e369f\rev_19afc-e369f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a25d6_891b5\rev_a25d6-891b5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_4db2d_caa4b\rev_4db2d-caa4b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_7cfb6_8df62\rev_7cfb6-8df62.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e2763_dbeb5\rev_e2763-dbeb5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_3cf6a_cc3f8\rev_3cf6a-cc3f8.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ca046_e125d\rev_ca046-e125d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_31447_2362a\rev_31447-2362a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_03aad_c37a6\rev_03aad-c37a6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_5553f_1c2f1\rev_5553f-1c2f1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_716dd_49be2\rev_716dd-49be2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_4e1aa_678b2\rev_4e1aa-678b2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_dcd8f_e7463\rev_dcd8f-e7463.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e7463_dcd8f\rev_e7463-dcd8f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_87fa3_ba4b6\rev_87fa3-ba4b6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ce71a_32181\rev_ce71a-32181.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c399b_514d0\rev_c399b-514d0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d61b9_02917\rev_d61b9-02917.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_b3d16_76b2c\rev_b3d16-76b2c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d8db5_37b96\rev_d8db5-37b96.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_be790_b8017\rev_be790-b8017.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_a9965_e00e6\rev_a9965-e00e6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_e9661_1ab30\rev_e9661-1ab30.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_2efeb_7027f\rev_2efeb-7027f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_c5cd2_5c39c\rev_c5cd2-5c39c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_6f499-b78fd.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public HikariPool(final HikariConfig config)
+   {
+      super(config);
+
+      this.connectionBag = new ConcurrentBag<>(this);
+      this.totalConnections = new AtomicInteger();
+      this.suspendResumeLock = config.isAllowPoolSuspension() ? new SuspendResumeLock() : SuspendResumeLock.FAUX_LOCK;
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512061633998\fstmerge_var1_6671396438872661799
+      this.addConnectionExecutor = createThreadPoolExecutor(config.getMaximumPoolSize(), "Hikari connection adder (pool " + poolName + ")", config.getThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
+      this.closeConnectionExecutor = createThreadPoolExecutor(1 + (config.getMaximumPoolSize() / 2), "Hikari connection closer (pool " + poolName + ")", config.getThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+
+      if (config.getMetricsTrackerFactory() != null) {
+         setMetricsTrackerFactory(config.getMetricsTrackerFactory());
+      }
+      else {
+         setMetricRegistry(config.getMetricRegistry());
+      }
+
+      setHealthCheckRegistry(config.getHealthCheckRegistry());
+
+      registerMBeans(this);
+
+      checkFailFast();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512061633998\fstmerge_base_1209686523289750986
+      this.addConnectionExecutor = createThreadPoolExecutor(config.getMaximumPoolSize(), "Hikari connection adder (pool " + poolName + ")", config.getThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
+      this.closeConnectionExecutor = createThreadPoolExecutor(4, "Hikari connection closer (pool " + poolName + ")", config.getThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+=======
+      ThreadFactory threadFactory = config.getThreadFactory();
+      this.addConnectionExecutor = createThreadPoolExecutor(config.getMaximumPoolSize(), "Hikari connection adder (pool " + poolName + ")", threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+      this.closeConnectionExecutor = createThreadPoolExecutor(1 + config.getMaximumPoolSize() / 2, "Hikari connection closer (pool " + poolName + ")", threadFactory, new ThreadPoolExecutor.CallerRunsPolicy());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512061633998\fstmerge_var2_8083164648119096650
+
+      if (config.getScheduledExecutorService() == null) {
+         threadFactory = threadFactory != null ? threadFactory : new DefaultThreadFactory("Hikari housekeeper (pool " + poolName + ")", true);
+         this.houseKeepingExecutorService = new ScheduledThreadPoolExecutor(1, threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+         this.houseKeepingExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
+         this.houseKeepingExecutorService.setRemoveOnCancelPolicy(true);
+      }
+      else {
+         this.houseKeepingExecutorService = config.getScheduledExecutorService();
+      }
+
+      this.houseKeepingExecutorService.scheduleWithFixedDelay(new HouseKeeper(), 0L, HOUSEKEEPING_PERIOD_MS, TimeUnit.MILLISECONDS);
+
+      this.leakTask = new ProxyLeakTask(config.getLeakDetectionThreshold(), houseKeepingExecutorService);
+   }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_68a52_8adf3\rev_68a52-8adf3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_4a5ff_743dc\rev_4a5ff-743dc.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_501f2_e7da3\rev_501f2-e7da3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_62fdb_e4603\rev_62fdb-e4603.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_aaea7_bf83c\rev_aaea7-bf83c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_bbe69_e4b91\rev_bbe69-e4b91.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d75c6_6ed3b\rev_d75c6-6ed3b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_610ea_d5977\rev_610ea-d5977.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_66831_db989\rev_66831-db989.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ed2cc_953b0\rev_ed2cc-953b0.revisions
+
+=========================================================

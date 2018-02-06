@@ -1,0 +1,4945 @@
+#MS_XXX_MS#
+Merge scenario: rev_1d076-8514f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec928-475a9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54490-fdcb4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_882b7-e774d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc6d1-a37f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c778-1e4a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_496f3-6b077
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2768b-d0d57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27eb3-7577b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7df7c-483e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33a43-85ad2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b1d4-1c9e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44f42-3f455
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2207-0d9cd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15138-d9995
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47927-2888f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a860-c2843
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08446-414e8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a67dd-3dced
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e887c-9bdda
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53621-18ebf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_efc42-aa65e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a629-e01cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46221-eca5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dbaf1-22709
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f753c-29a36
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29a36-fca10
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac6d8-61018
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [962]
+Right editions: [966]
+Merged body: 
+// START writeNumber(BigInteger-BigInteger)//@Override
+    public void writeNumber(BigInteger value)
+        throws IOException, JsonGenerationException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(value.toString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigInteger-BigInteger)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1013]
+Right editions: [1017, 1018]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value)
+        throws IOException, JsonGenerationException
+    {
+        // Don't really know max length for big decimal, no point checking
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            String raw = isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN) ? value.toPlainString() : value.toString();
+// RIGHT //            _writeQuotedRaw(raw);
+        } else if (isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+            writeRaw(value.toPlainString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1073]
+Right editions: []
+Merged body: 
+// START writeNull({FormalParametersInternal})//@Override
+    public void writeNull()
+        throws IOException, JsonGenerationException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NULL);
+        _writeNull();
+// END writeNull({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1013]
+Right editions: [1017, 1018]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value)
+        throws IOException, JsonGenerationException
+    {
+        // Don't really know max length for big decimal, no point checking
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            String raw = isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN) ? value.toPlainString() : value.toString();
+// RIGHT //            _writeQuotedRaw(raw);
+        } else if (isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+            writeRaw(value.toPlainString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [962]
+Right editions: [966]
+Merged body: 
+// START writeNumber(BigInteger-BigInteger)//@Override
+    public void writeNumber(BigInteger value)
+        throws IOException, JsonGenerationException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(value.toString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigInteger-BigInteger)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1085]
+Right editions: []
+Merged body: 
+// START _verifyValueWrite(String-String)//@Override
+// LEFT //    protected final void _verifyValueWrite(String typeMsg) throws IOException
+    {
+        int status = _writeContext.writeValue();
+        if (status == JsonWriteContext.STATUS_EXPECT_NAME) {
+            _reportError("Can not "+typeMsg+", expecting field name");
+        }
+        if (_cfgPrettyPrinter == null) {
+            byte b;
+            switch (status) {
+            case JsonWriteContext.STATUS_OK_AFTER_COMMA:
+                b = BYTE_COMMA;
+                break;
+            case JsonWriteContext.STATUS_OK_AFTER_COLON:
+                b = BYTE_COLON;
+                break;
+            case JsonWriteContext.STATUS_OK_AFTER_SPACE: // root-value separator
+                if (_rootValueSeparator != null) {
+                    byte[] raw = _rootValueSeparator.asUnquotedUTF8();
+                    if (raw.length > 0) {
+                        _writeBytes(raw);
+                    }
+                }
+                return;
+            case JsonWriteContext.STATUS_OK_AS_IS:
+            default:
+                return;
+            }
+            if (_outputTail >= _outputEnd) {
+                _flushBuffer();
+            }
+            _outputBuffer[_outputTail] = b;
+            ++_outputTail;
+            return;
+        }
+        // Otherwise, pretty printer knows what to do...
+        _verifyPrettyValueWrite(typeMsg, status);
+// END _verifyValueWrite(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1013]
+Right editions: [1017, 1018]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value)
+        throws IOException, JsonGenerationException
+    {
+        // Don't really know max length for big decimal, no point checking
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            String raw = isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN) ? value.toPlainString() : value.toString();
+// RIGHT //            _writeQuotedRaw(raw);
+        } else if (isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+            writeRaw(value.toPlainString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [962]
+Right editions: [966]
+Merged body: 
+// START writeNumber(BigInteger-BigInteger)//@Override
+    public void writeNumber(BigInteger value)
+        throws IOException, JsonGenerationException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(value.toString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigInteger-BigInteger)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [721]
+Right editions: [725]
+Merged body: 
+// START writeNumber(BigInteger-BigInteger)//@Override
+    public void writeNumber(BigInteger value) throws IOException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(value.toString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigInteger-BigInteger)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [767]
+Right editions: [771, 772]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            String raw = isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN) ? value.toPlainString() : value.toString();
+// RIGHT //            _writeQuotedRaw(raw);
+        } else if (isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+            writeRaw(value.toPlainString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [834]
+Right editions: []
+Merged body: 
+// START writeNull({FormalParametersInternal})//@Override
+    public void writeNull() throws IOException {
+// LEFT //        _verifyValueWrite(WRITE_NULL);
+        _writeNull();
+// END writeNull({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [721]
+Right editions: [725]
+Merged body: 
+// START writeNumber(BigInteger-BigInteger)//@Override
+    public void writeNumber(BigInteger value) throws IOException
+    {
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(value.toString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigInteger-BigInteger)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_rev_left_ac6d8-rev_right_61018\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [767]
+Right editions: [771, 772]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+// LEFT //        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+        } else if (_cfgNumbersAsStrings) {
+// RIGHT //            String raw = isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN) ? value.toPlainString() : value.toString();
+// RIGHT //            _writeQuotedRaw(raw);
+        } else if (isEnabled(Feature.WRITE_BIGDECIMAL_AS_PLAIN)) {
+            writeRaw(value.toPlainString());
+        } else {
+            writeRaw(value.toString());
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f41b-11f0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2437-1a0eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a1e6-e0a02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5572-8db55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_698f3-a81cb
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_698f3_a81cb\rev_rev_left_698f3-rev_right_a81cb\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [541]
+Merged body: 
+// START _writeLongString(char[]-char[]-int-int-int-int)//private void _writeLongString(char[] text, int offset, int len) throws IOException
+    {
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+        _outputBuffer[_outputTail++] = BYTE_QUOTE;
+// RIGHT //        _writeStringSegments(text, 0, len);
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+        _outputBuffer[_outputTail++] = BYTE_QUOTE;
+// END _writeLongString(char[]-char[]-int-int-int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_698f3_a81cb\rev_rev_left_698f3-rev_right_a81cb\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [502]
+Right editions: []
+Merged body: 
+// START writeString(String-String)//@Override
+    public void writeString(String text) throws IOException
+    {
+// LEFT //        _verifyValueWrite(WRITE_STRING);
+        if (text == null) {
+            _writeNull();
+            return;
+        }
+        // First: can we make a local copy of chars that make up text?
+        final int len = text.length();
+        if (len > _charBufferLength) { // nope: off-line handling
+            _writeStringSegments(text, true);
+            return;
+        }
+        // yes: good.
+        text.getChars(0, len, _charBuffer, 0);
+        // Output: if we can't guarantee it fits in output buffer, off-line as well:
+        if (len > _outputMaxContiguous) {
+            _writeLongString(_charBuffer, 0, len);
+            return;
+        }
+        if ((_outputTail + len) >= _outputEnd) {
+            _flushBuffer();
+        }
+        _outputBuffer[_outputTail++] = BYTE_QUOTE;
+        _writeStringSegment(_charBuffer, 0, len); // we checked space already above
+        /* [JACKSON-462] But that method may have had to expand multi-byte Unicode
+         *   chars, so we must check again
+         */
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+        _outputBuffer[_outputTail++] = BYTE_QUOTE;
+// END writeString(String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00900-f7614
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cfe32-8fbde
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8394d-6a637
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b808f-8891c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25aeb-37fc3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7f7d1-cbdf6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d170-8fa79
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_1d170_8fa79\rev_rev_left_1d170-rev_right_8fa79\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [768, 769, 770]
+Right editions: [822]
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+// LEFT //        // But if we didn't already have a name, and (partially?) decode number,
+// LEFT //        // need to ensure no numeric information is leaked
+// LEFT //        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            // Close/release things like input source, symbol table and recyclable buffers
+            close();
+            return (_currToken = null);
+        }
+
+        // First, need to ensure we know the starting location of token
+        // after skipping leading white space
+        _tokenInputTotal = _currInputProcessed + _inputPtr - 1;
+        _tokenInputRow = _currInputRow;
+        _tokenInputCol = _inputPtr - _currInputRowStart - 1;
+
+        // finally: clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.getParent();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.getParent();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.getTypeDesc()+" entries");
+            }
+            i = _skipWS();
+        }
+
+        /* And should we now have a name? Always true for
+         * Object contexts, since the intermediate 'expect-value'
+         * state is never retained.
+         */
+        if (!_parsingContext.inObject()) {
+            return _nextTokenNotInObject(i);
+        }
+        // So first parse the field name itself:
+// RIGHT //        String n = _parseName(i);
+        _parsingContext.setCurrentName(n);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+
+        // Ok: we must have a value... what is it? Strings are very common, check first:
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return _currToken;
+        }        
+        JsonToken t;
+
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+
+            /* Should we have separate handling for plus? Although
+             * it is not allowed per se, it may be erroneously used,
+             * and could be indicate by a more specific error message.
+             */
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchToken("false", 1);
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchToken("null", 1);
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchToken("true", 1);
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return _currToken;
+// END nextToken({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adb9e-6f496
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e711a-cfeae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0a3d1-be438
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d9ca-44dc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_87388-60317
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3f03-186a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_186a6-5f04c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6cbca-f5548
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_294f7-2cd12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_232be-9cf0d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54340-a5e4f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12b3c-73662
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d302a-b3382
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a981a-1fb1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ba50d-18ad3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b82ae-d58d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c33fc-85856
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91965-7b5f4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1fb1e-25e7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b5f4-110c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c2c9-0524e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f55df-c3263
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38e03-fd327
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df96e-21ee4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4709c-531b4
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_4709c_531b4\rev_rev_left_4709c-rev_right_531b4\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [677, 678]
+Right editions: [743, 744, 745, 746, 747, 748, 749, 750, 751, 753, 754, 755, 756, 758]
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public final JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+// LEFT //            // Should actually close/release things
+// LEFT //            // like input source, symbol table and recyclable buffers now.
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _updateLocation();
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _updateLocation();
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            i = _skipComma(i);
+        }
+
+        /* And should we now have a name? Always true for Object contexts, since
+         * the intermediate 'expect-value' state is never retained.
+         */
+        boolean inObject = _parsingContext.inObject();
+        if (inObject) {
+            // First, field name itself:
+            _updateNameLocation();
+            String name = (i == INT_QUOTE) ? _parseName() : _handleOddName(i);
+            _parsingContext.setCurrentName(name);
+            _currToken = JsonToken.FIELD_NAME;
+            i = _skipColon();
+        }
+        _updateLocation();
+
+        // Ok: we must have a value... what is it?
+
+        JsonToken t;
+
+        switch (i) {
+        case '"':
+            _tokenIncomplete = true;
+            t = JsonToken.VALUE_STRING;
+            break;
+        case '[':
+            if (!inObject) {
+                _parsingContext = _parsingContext.createChildArrayContext(_tokenInputRow, _tokenInputCol);
+            }
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            if (!inObject) {
+                _parsingContext = _parsingContext.createChildObjectContext(_tokenInputRow, _tokenInputCol);
+            }
+            t = JsonToken.START_OBJECT;
+            break;
+// RIGHT //        /*
+// RIGHT //         * This check proceeds only if the Feature.ALLOW_MISSING_VALUES is enabled
+// RIGHT //         * The Check is for missing values. Incase of missing values in an array, the next token will be either ',' or ']'.
+// RIGHT //         * This case, decrements the already incremented _inputPtr in the buffer in case of comma(,) 
+// RIGHT //         * so that the existing flow goes back to checking the next token which will be comma again and
+// RIGHT //         * it continues the parsing.
+// RIGHT //         * Also the case returns NULL as current token in case of ',' or ']'.    
+// RIGHT //         */
+// RIGHT //        case ',':
+        case ']':
+// RIGHT //        	if(isEnabled(Feature.ALLOW_MISSING_VALUES)) {
+// RIGHT //        		_inputPtr--;
+// RIGHT //        		return (_currToken = JsonToken.VALUE_NULL);  
+// RIGHT //        	}    
+        case '}':
+// RIGHT //            // Error: } is not valid at this point; valid closers have
+            // been handled earlier
+            _reportUnexpectedChar(i, "expected a value");
+        case 't':
+            _matchTrue();
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case 'f':
+            _matchFalse();
+            t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchNull();
+            t = JsonToken.VALUE_NULL;
+            break;
+
+        case '-':
+            /* Should we have separate handling for plus? Although
+             * it is not allowed per se, it may be erroneously used,
+             * and could be indicate by a more specific error message.
+             */
+            t = _parseNegNumber();
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        default:
+            t = _handleOddValue(i);
+            break;
+        }
+
+        if (inObject) {
+            _nextToken = t;
+            return _currToken;
+        }
+        _currToken = t;
+        return t;
+// END nextToken({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56be1-27acd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c53f3-1e262
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3f5f-a562a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1e262-a34b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6849-1d1aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2fec7-13fc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6e399-d652a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80e83-e3292
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0472c-38b3f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00a29-0f432
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8a9b-88db6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5ded-cfb08
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ed7e-e9fcb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92245-b3d89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2268c-e962f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2120, 2121, 2122]
+Right editions: [2131, 2132, 2134]
+Merged body: 
+// START _skipString({FormalParametersInternal})//protected final void _skipString() throws IOException
+    {
+        _tokenIncomplete = false;
+
+        int inPtr = _inputPtr;
+        int inLen = _inputEnd;
+        char[] inBuf = _inputBuffer;
+
+        while (true) {
+            if (inPtr >= inLen) {
+                _inputPtr = inPtr;
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOF(": was expecting closing quote for a string value",
+// LEFT //                            JsonToken.VALUE_STRING);
+                }
+                inPtr = _inputPtr;
+                inLen = _inputEnd;
+            }
+            char c = inBuf[inPtr++];
+            int i = (int) c;
+            if (i <= INT_BACKSLASH) {
+                if (i == INT_BACKSLASH) {
+// RIGHT //                    // Although chars outside of BMP are to be escaped as an UTF-16 surrogate pair,
+// RIGHT //                    // does that affect decoding? For now let's assume it does not.
+                    _inputPtr = inPtr;
+// RIGHT //                    /*c = */ _decodeEscaped();
+                    inPtr = _inputPtr;
+                    inLen = _inputEnd;
+                } else if (i <= INT_QUOTE) {
+                    if (i == INT_QUOTE) {
+                        _inputPtr = inPtr;
+                        break;
+                    }
+                    if (i < INT_SPACE) {
+                        _inputPtr = inPtr;
+                        _throwUnquotedSpace(i, "string value");
+                    }
+                }
+            }
+        }
+// END _skipString({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [643, 644, 710]
+Right editions: []
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public final JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+// LEFT //            // Should actually close/release things
+// LEFT //            // like input source, symbol table and recyclable buffers now.
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _updateLocation();
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _updateLocation();
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            i = _skipComma(i);
+        }
+
+        /* And should we now have a name? Always true for Object contexts, since
+         * the intermediate 'expect-value' state is never retained.
+         */
+        boolean inObject = _parsingContext.inObject();
+        if (inObject) {
+            // First, field name itself:
+            _updateNameLocation();
+            String name = (i == INT_QUOTE) ? _parseName() : _handleOddName(i);
+            _parsingContext.setCurrentName(name);
+            _currToken = JsonToken.FIELD_NAME;
+            i = _skipColon();
+        }
+        _updateLocation();
+
+        // Ok: we must have a value... what is it?
+
+        JsonToken t;
+
+        switch (i) {
+        case '"':
+            _tokenIncomplete = true;
+            t = JsonToken.VALUE_STRING;
+            break;
+        case '[':
+            if (!inObject) {
+                _parsingContext = _parsingContext.createChildArrayContext(_tokenInputRow, _tokenInputCol);
+            }
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            if (!inObject) {
+                _parsingContext = _parsingContext.createChildObjectContext(_tokenInputRow, _tokenInputCol);
+            }
+            t = JsonToken.START_OBJECT;
+            break;
+        case '}':
+// LEFT //            // Error: } is not valid at this point; valid closers have
+            // been handled earlier
+            _reportUnexpectedChar(i, "expected a value");
+        case 't':
+            _matchTrue();
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case 'f':
+            _matchFalse();
+            t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchNull();
+            t = JsonToken.VALUE_NULL;
+            break;
+
+        case '-':
+            /* Should we have separate handling for plus? Although
+             * it is not allowed per se, it may be erroneously used,
+             * and could be indicate by a more specific error message.
+             */
+            t = _parseNegNumber();
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        default:
+            t = _handleOddValue(i);
+            break;
+        }
+
+        if (inObject) {
+            _nextToken = t;
+            return _currToken;
+        }
+        _currToken = t;
+        return t;
+// END nextToken({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2163]
+Right editions: []
+Merged body: 
+// START _skipCR({FormalParametersInternal})//protected final void _skipCR() throws IOException {
+// LEFT //        if (_inputPtr < _inputEnd || _loadMore()) {
+            if (_inputBuffer[_inputPtr] == '\n') {
+                ++_inputPtr;
+            }
+        }
+        ++_currInputRow;
+        _currInputRowStart = _inputPtr;
+// END _skipCR({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2231, 2263, 2264, 2265]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++];
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+                continue;
+            }
+            if (i < INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2231, 2263, 2264, 2265]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++];
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+                continue;
+            }
+            if (i < INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2472, 2473]
+Right editions: []
+Merged body: 
+// START _skipComment({FormalParametersInternal})//private void _skipComment() throws IOException
+    {
+        if (!isEnabled(Feature.ALLOW_COMMENTS)) {
+            _reportUnexpectedChar('/', "maybe a (non-standard) comment? (not recognized as one since Feature 'ALLOW_COMMENTS' not enabled for parser)");
+        }
+        // First: check which comment (if either) it is:
+// LEFT //        if (_inputPtr >= _inputEnd && !_loadMore()) {
+// LEFT //            _reportInvalidEOF(" in a comment", null);
+        }
+        char c = _inputBuffer[_inputPtr++];
+        if (c == '/') {
+            _skipLine();
+        } else if (c == '*') {
+            _skipCComment();
+        } else {
+            _reportUnexpectedChar(c, "was expecting either '*' or '/' for a comment");
+        }
+// END _skipComment({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2231, 2263, 2264, 2265]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++];
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+                continue;
+            }
+            if (i < INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2554, 2555, 2590, 2591]
+Right editions: []
+Merged body: 
+// START _decodeEscaped({FormalParametersInternal})//@Override
+    protected char _decodeEscaped() throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            if (!_loadMore()) {
+// LEFT //                _reportInvalidEOF(" in character escape sequence", JsonToken.VALUE_STRING);
+            }
+        }
+        char c = _inputBuffer[_inputPtr++];
+
+        switch ((int) c) {
+            // First, ones that are mapped
+        case 'b':
+            return '\b';
+        case 't':
+            return '\t';
+        case 'n':
+            return '\n';
+        case 'f':
+            return '\f';
+        case 'r':
+            return '\r';
+
+            // And these are to be returned as they are
+        case '"':
+        case '/':
+        case '\\':
+            return c;
+
+        case 'u': // and finally hex-escaped
+            break;
+
+        default:
+            return _handleUnrecognizedCharacterEscape(c);
+        }
+
+        // Ok, a hex escape. Need 4 characters
+        int value = 0;
+        for (int i = 0; i < 4; ++i) {
+            if (_inputPtr >= _inputEnd) {
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOF(" in character escape sequence", JsonToken.VALUE_STRING);
+                }
+            }
+            int ch = (int) _inputBuffer[_inputPtr++];
+            int digit = CharTypes.charToHex(ch);
+            if (digit < 0) {
+                _reportUnexpectedChar(ch, "expected a hex-digit for character escape sequence");
+            }
+            value = (value << 4) | digit;
+        }
+        return (char) value;
+// END _decodeEscaped({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2120, 2121, 2122]
+Right editions: [2131, 2132, 2134]
+Merged body: 
+// START _skipString({FormalParametersInternal})//protected final void _skipString() throws IOException
+    {
+        _tokenIncomplete = false;
+
+        int inPtr = _inputPtr;
+        int inLen = _inputEnd;
+        char[] inBuf = _inputBuffer;
+
+        while (true) {
+            if (inPtr >= inLen) {
+                _inputPtr = inPtr;
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOF(": was expecting closing quote for a string value",
+// LEFT //                            JsonToken.VALUE_STRING);
+                }
+                inPtr = _inputPtr;
+                inLen = _inputEnd;
+            }
+            char c = inBuf[inPtr++];
+            int i = (int) c;
+            if (i <= INT_BACKSLASH) {
+                if (i == INT_BACKSLASH) {
+// RIGHT //                    // Although chars outside of BMP are to be escaped as an UTF-16 surrogate pair,
+// RIGHT //                    // does that affect decoding? For now let's assume it does not.
+                    _inputPtr = inPtr;
+// RIGHT //                    /*c = */ _decodeEscaped();
+                    inPtr = _inputPtr;
+                    inLen = _inputEnd;
+                } else if (i <= INT_QUOTE) {
+                    if (i == INT_QUOTE) {
+                        _inputPtr = inPtr;
+                        break;
+                    }
+                    if (i < INT_SPACE) {
+                        _inputPtr = inPtr;
+                        _throwUnquotedSpace(i, "string value");
+                    }
+                }
+            }
+        }
+// END _skipString({FormalParametersInternal})//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2637]
+Right editions: [2660, 2663]
+Merged body: 
+// START _skipString({FormalParametersInternal})//protected void _skipString() throws IOException
+    {
+        _tokenIncomplete = false;
+
+        // Need to be fully UTF-8 aware here:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            int c;
+
+            ascii_loop:
+            while (true) {
+                int ptr = _inputPtr;
+                int max = _inputEnd;
+                if (ptr >= max) {
+// LEFT //                    _loadMoreGuaranteed();
+                    ptr = _inputPtr;
+                    max = _inputEnd;
+                }
+                while (ptr < max) {
+                    c = (int) inputBuffer[ptr++] & 0xFF;
+                    if (codes[c] != 0) {
+                        _inputPtr = ptr;
+                        break ascii_loop;
+                    }
+                }
+                _inputPtr = ptr;
+            }
+            // Ok: end marker, escape or multi-byte?
+            if (c == INT_QUOTE) {
+                break main_loop;
+            }
+            
+            switch (codes[c]) {
+            case 1: // backslash
+                _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+// RIGHT //                _skipUtf8_2();
+                break;
+            case 3: // 3-byte UTF
+// RIGHT //                _skipUtf8_3();
+                break;
+            case 4: // 4-byte UTF
+                _skipUtf8_4(c);
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                } else {
+                    // Is this good enough error message?
+                    _reportInvalidChar(c);
+                }
+            }
+        }
+// END _skipString({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [973]
+Right editions: []
+Merged body: 
+// START nextFieldName(SerializableString-SerializableString)//@Override
+    public boolean nextFieldName(SerializableString str) throws IOException
+    {
+        // // // Note: most of code below is copied from nextToken()
+        _numTypesValid = NR_UNKNOWN;
+        if (_currToken == JsonToken.FIELD_NAME) { // can't have name right after name
+            _nextAfterName();
+            return false;
+        }
+        if (_tokenIncomplete) {
+            _skipString();
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            close();
+            _currToken = null;
+            return false;
+        }
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _updateLocation();
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            _currToken = JsonToken.END_ARRAY;
+            return false;
+        }
+        if (i == INT_RCURLY) {
+            _updateLocation();
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            _currToken = JsonToken.END_OBJECT;
+            return false;
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+// LEFT //                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+        }
+
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            _nextTokenNotInObject(i);
+            return false;
+        }
+        
+        // // // This part differs, name parsing
+        _updateNameLocation();
+        if (i == INT_QUOTE) {
+            // when doing literal match, must consider escaping:
+            byte[] nameBytes = str.asQuotedUTF8();
+            final int len = nameBytes.length;
+            // 22-May-2014, tatu: Actually, let's require 4 more bytes for faster skipping
+            //    of colon that follows name
+            if ((_inputPtr + len + 4) < _inputEnd) { // maybe...
+                // first check length match by
+                final int end = _inputPtr+len;
+                if (_inputBuffer[end] == INT_QUOTE) {
+                    int offset = 0;
+                    int ptr = _inputPtr;
+                    while (true) {
+                        if (ptr == end) { // yes, match!
+                            _parsingContext.setCurrentName(str.getValue());
+                            i = _skipColonFast(ptr+1);
+                            _isNextTokenNameYes(i);
+                            return true;
+                        }
+                        if (nameBytes[offset] != _inputBuffer[ptr]) {
+                            break;
+                        }
+                        ++offset;
+                        ++ptr;
+                    }
+                }
+            }
+        }
+        return _isNextTokenNameMaybe(i, str);
+// END nextFieldName(SerializableString-SerializableString)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [1061]
+Right editions: []
+Merged body: 
+// START nextFieldName({FormalParametersInternal})//@Override
+    public String nextFieldName() throws IOException
+    {
+        // // // Note: this is almost a verbatim copy of nextToken()
+
+        _numTypesValid = NR_UNKNOWN;
+        if (_currToken == JsonToken.FIELD_NAME) {
+            _nextAfterName();
+            return null;
+        }
+        if (_tokenIncomplete) {
+            _skipString();
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) {
+            close();
+            _currToken = null;
+            return null;
+        }
+        _binaryValue = null;
+
+        if (i == INT_RBRACKET) {
+            _updateLocation();
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            _currToken = JsonToken.END_ARRAY;
+            return null;
+        }
+        if (i == INT_RCURLY) {
+            _updateLocation();
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            _currToken = JsonToken.END_OBJECT;
+            return null;
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+// LEFT //                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+        }
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            _nextTokenNotInObject(i);
+            return null;
+        }
+
+        _updateNameLocation();
+        final String nameStr = _parseName(i);
+        _parsingContext.setCurrentName(nameStr);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+        _updateLocation();
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return nameStr;
+        }
+        JsonToken t;
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchToken("false", 1);
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchToken("null", 1);
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchToken("true", 1);
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return nameStr;
+// END nextFieldName({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [782]
+Right editions: []
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            // Close/release things like input source, symbol table and recyclable buffers
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _updateLocation();
+            if (!_parsingContext.inArray()) {
+                _reportMismatchedEndMarker(i, '}');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _updateLocation();
+            if (!_parsingContext.inObject()) {
+                _reportMismatchedEndMarker(i, ']');
+            }
+            _parsingContext = _parsingContext.clearAndGetParent();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+// LEFT //                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+        }
+
+        /* And should we now have a name? Always true for
+         * Object contexts, since the intermediate 'expect-value'
+         * state is never retained.
+         */
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            return _nextTokenNotInObject(i);
+        }
+        // So first parse the field name itself:
+        _updateNameLocation();
+        String n = _parseName(i);
+        _parsingContext.setCurrentName(n);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+        _updateLocation();
+
+        // Ok: we must have a value... what is it? Strings are very common, check first:
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return _currToken;
+        }        
+        JsonToken t;
+
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+
+            /* Should we have separate handling for plus? Although
+             * it is not allowed per se, it may be erroneously used,
+             * and could be indicate by a more specific error message.
+             */
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchToken("false", 1);
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchToken("null", 1);
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchToken("true", 1);
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return _currToken;
+// END nextToken({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2771]
+Right editions: []
+Merged body: 
+// START _handleApos({FormalParametersInternal})//protected JsonToken _handleApos()
+        throws IOException
+    {
+        int c = 0;
+        // Otherwise almost verbatim copy of _finishString()
+        int outPtr = 0;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+
+        // Here we do want to do full decoding, hence:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            // Then the tight ascii non-funny-char loop:
+            ascii_loop:
+            while (true) {
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                int max = _inputEnd;
+                {
+                    int max2 = _inputPtr + (outBuf.length - outPtr);
+                    if (max2 < max) {
+                        max = max2;
+                    }
+                }
+                while (_inputPtr < max) {
+                    c = (int) inputBuffer[_inputPtr++] & 0xFF;
+                    if (c == '\'' || codes[c] != 0) {
+                        break ascii_loop;
+                    }
+                    outBuf[outPtr++] = (char) c;
+                }
+            }
+
+            // Ok: end marker, escape or multi-byte?
+            if (c == '\'') {
+                break main_loop;
+            }
+
+            switch (codes[c]) {
+            case 1: // backslash
+                    c = _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+                c = _decodeUtf8_2(c);
+                break;
+            case 3: // 3-byte UTF
+                if ((_inputEnd - _inputPtr) >= 2) {
+                    c = _decodeUtf8_3fast(c);
+                } else {
+                    c = _decodeUtf8_3(c);
+                }
+                break;
+            case 4: // 4-byte UTF
+                c = _decodeUtf8_4(c);
+                // Let's add first part right away:
+                outBuf[outPtr++] = (char) (0xD800 | (c >> 10));
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                c = 0xDC00 | (c & 0x3FF);
+                // And let the other char output down below
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                }
+                // Is this good enough error message?
+                _reportInvalidChar(c);
+            }
+            // Need more room?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            // Ok, let's add char to output:
+            outBuf[outPtr++] = (char) c;
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        return JsonToken.VALUE_STRING;
+// END _handleApos({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2689, 2690, 2691, 2692, 2693, 2694, 2695, 2696, 2698, 2699, 2700, 2701, 2702, 2703, 2704, 2705, 2706, 2707, 2708, 2709, 2710, 2711, 2737, 2738, 2743]
+Right editions: []
+Merged body: 
+// START _handleUnexpectedValue(int-int)//protected JsonToken _handleUnexpectedValue(int c)
+        throws IOException
+    {
+        // Most likely an error, unless we are to allow single-quote-strings
+        switch (c) {
+// LEFT //        /*
+// LEFT //         * This check proceeds only if the Feature.ALLOW_MISSING_VALUES is enabled
+// LEFT //         * The Check is for missing values. Incase of missing values in an array, the next token will be either ',' or ']'.
+// LEFT //         * This case, decrements the already incremented _inputPtr in the buffer in case of comma(,) 
+// LEFT //         * so that the existing flow goes back to checking the next token which will be comma again and
+// LEFT //         * it continues the parsing.
+// LEFT //         * Also the case returns NULL as current token in case of ',' or ']'.    
+// LEFT //         */
+        case ']':
+// LEFT //            if (!_parsingContext.inArray()) {
+// LEFT //                break;
+// LEFT //            }
+// LEFT //            // fall through
+// LEFT //        case ',':
+// LEFT //            /* 28-Mar-2016: [core#116]: If Feature.ALLOW_MISSING_VALUES is enabled
+// LEFT //             *   we may allow "missing values", that is, encountering a trailing
+// LEFT //             *   comma or closing marker where value would be expected
+// LEFT //             */
+// LEFT //            if (isEnabled(Feature.ALLOW_MISSING_VALUES)) {
+// LEFT //               _inputPtr--;
+// LEFT //               return JsonToken.VALUE_NULL;
+// LEFT //            }
+// LEFT //            // fall through
+        case '}':
+            // Error: neither is valid at this point; valid closers have
+            // been handled earlier
+            _reportUnexpectedChar(c, "expected a value");
+        case '\'':
+            if (isEnabled(Feature.ALLOW_SINGLE_QUOTES)) {
+                return _handleApos();
+            }
+            break;
+        case 'N':
+            _matchToken("NaN", 1);
+            if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                return resetAsNaN("NaN", Double.NaN);
+            }
+            _reportError("Non-standard token 'NaN': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            break;
+        case 'I':
+            _matchToken("Infinity", 1);
+            if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                return resetAsNaN("Infinity", Double.POSITIVE_INFINITY);
+            }
+            _reportError("Non-standard token 'Infinity': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            break;
+        case '+': // note: '-' is taken as number
+            if (_inputPtr >= _inputEnd) {
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOFInValue(JsonToken.VALUE_NUMBER_INT);
+                }
+            }
+            return _handleInvalidNumberStart(_inputBuffer[_inputPtr++] & 0xFF, false);
+        }
+// LEFT //        // [core#77] Try to decode most likely token
+        if (Character.isJavaIdentifierStart(c)) {
+            _reportInvalidToken(""+((char) c), "('true', 'false' or 'null')");
+        }
+        // but if it doesn't look like a token:
+        _reportUnexpectedChar(c, "expected a valid value (number, String, array, object, 'true', 'false' or 'null')");
+        return null;
+// END _handleUnexpectedValue(int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3137, 3168, 3169, 3170]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = _inputBuffer[_inputPtr++] & 0xFF;
+
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+            } else if (i != INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3180, 3181]
+Right editions: []
+Merged body: 
+// START _skipComment({FormalParametersInternal})//private final void _skipComment() throws IOException
+    {
+        if (!isEnabled(Feature.ALLOW_COMMENTS)) {
+            _reportUnexpectedChar('/', "maybe a (non-standard) comment? (not recognized as one since Feature 'ALLOW_COMMENTS' not enabled for parser)");
+        }
+        // First: check which comment (if either) it is:
+// LEFT //        if (_inputPtr >= _inputEnd && !_loadMore()) {
+// LEFT //            _reportInvalidEOF(" in a comment", null);
+        }
+        int c = _inputBuffer[_inputPtr++] & 0xFF;
+        if (c == '/') {
+            _skipLine();
+        } else if (c == '*') {
+            _skipCComment();
+        } else {
+            _reportUnexpectedChar(c, "was expecting either '*' or '/' for a comment");
+        }
+// END _skipComment({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3137, 3168, 3169, 3170]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = _inputBuffer[_inputPtr++] & 0xFF;
+
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+            } else if (i != INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3201, 3207, 3237]
+Right editions: [3223, 3226]
+Merged body: 
+// START _skipCComment({FormalParametersInternal})//private final void _skipCComment() throws IOException
+    {
+        // Need to be UTF-8 aware here to decode content (for skipping)
+        final int[] codes = CharTypes.getInputCodeComment();
+
+        // Ok: need the matching '*/'
+        main_loop:
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case '*':
+// LEFT //                    if (_inputPtr >= _inputEnd && !_loadMore()) {
+                        break main_loop;
+                    }
+                    if (_inputBuffer[_inputPtr] == INT_SLASH) {
+                        ++_inputPtr;
+                        return;
+                    }
+                    break;
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    break;
+                case INT_CR:
+                    _skipCR();
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    // Is this good enough error message?
+                    _reportInvalidChar(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" in a comment", null);
+// END _skipCComment({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3180, 3181]
+Right editions: []
+Merged body: 
+// START _skipComment({FormalParametersInternal})//private final void _skipComment() throws IOException
+    {
+        if (!isEnabled(Feature.ALLOW_COMMENTS)) {
+            _reportUnexpectedChar('/', "maybe a (non-standard) comment? (not recognized as one since Feature 'ALLOW_COMMENTS' not enabled for parser)");
+        }
+        // First: check which comment (if either) it is:
+// LEFT //        if (_inputPtr >= _inputEnd && !_loadMore()) {
+// LEFT //            _reportInvalidEOF(" in a comment", null);
+        }
+        int c = _inputBuffer[_inputPtr++] & 0xFF;
+        if (c == '/') {
+            _skipLine();
+        } else if (c == '*') {
+            _skipCComment();
+        } else {
+            _reportUnexpectedChar(c, "was expecting either '*' or '/' for a comment");
+        }
+// END _skipComment({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3260]
+Right editions: [3275, 3278]
+Merged body: 
+// START _skipLine({FormalParametersInternal})//private final void _skipLine() throws IOException
+    {
+        // Ok: need to find EOF or linefeed
+        final int[] codes = CharTypes.getInputCodeComment();
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    return;
+                case INT_CR:
+                    _skipCR();
+                    return;
+                case '*': // nop for these comments
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    if (code < 0) {
+                        // Is this good enough error message?
+                        _reportInvalidChar(i);
+                    }
+                }
+            }
+        }
+// END _skipLine({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3180, 3181]
+Right editions: []
+Merged body: 
+// START _skipComment({FormalParametersInternal})//private final void _skipComment() throws IOException
+    {
+        if (!isEnabled(Feature.ALLOW_COMMENTS)) {
+            _reportUnexpectedChar('/', "maybe a (non-standard) comment? (not recognized as one since Feature 'ALLOW_COMMENTS' not enabled for parser)");
+        }
+        // First: check which comment (if either) it is:
+// LEFT //        if (_inputPtr >= _inputEnd && !_loadMore()) {
+// LEFT //            _reportInvalidEOF(" in a comment", null);
+        }
+        int c = _inputBuffer[_inputPtr++] & 0xFF;
+        if (c == '/') {
+            _skipLine();
+        } else if (c == '*') {
+            _skipCComment();
+        } else {
+            _reportUnexpectedChar(c, "was expecting either '*' or '/' for a comment");
+        }
+// END _skipComment({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3298, 3299, 3334, 3335]
+Right editions: []
+Merged body: 
+// START _decodeEscaped({FormalParametersInternal})//@Override
+    protected char _decodeEscaped() throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            if (!_loadMore()) {
+// LEFT //                _reportInvalidEOF(" in character escape sequence", JsonToken.VALUE_STRING);
+            }
+        }
+        int c = (int) _inputBuffer[_inputPtr++];
+
+        switch (c) {
+            // First, ones that are mapped
+        case 'b':
+            return '\b';
+        case 't':
+            return '\t';
+        case 'n':
+            return '\n';
+        case 'f':
+            return '\f';
+        case 'r':
+            return '\r';
+
+            // And these are to be returned as they are
+        case '"':
+        case '/':
+        case '\\':
+            return (char) c;
+
+        case 'u': // and finally hex-escaped
+            break;
+
+        default:
+            return _handleUnrecognizedCharacterEscape((char) _decodeCharForError(c));
+        }
+
+        // Ok, a hex escape. Need 4 characters
+        int value = 0;
+        for (int i = 0; i < 4; ++i) {
+            if (_inputPtr >= _inputEnd) {
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOF(" in character escape sequence", JsonToken.VALUE_STRING);
+                }
+            }
+            int ch = (int) _inputBuffer[_inputPtr++];
+            int digit = CharTypes.charToHex(ch);
+            if (digit < 0) {
+                _reportUnexpectedChar(ch, "expected a hex-digit for character escape sequence");
+            }
+            value = (value << 4) | digit;
+        }
+        return (char) value;
+// END _decodeEscaped({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2637]
+Right editions: [2660, 2663]
+Merged body: 
+// START _skipString({FormalParametersInternal})//protected void _skipString() throws IOException
+    {
+        _tokenIncomplete = false;
+
+        // Need to be fully UTF-8 aware here:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            int c;
+
+            ascii_loop:
+            while (true) {
+                int ptr = _inputPtr;
+                int max = _inputEnd;
+                if (ptr >= max) {
+// LEFT //                    _loadMoreGuaranteed();
+                    ptr = _inputPtr;
+                    max = _inputEnd;
+                }
+                while (ptr < max) {
+                    c = (int) inputBuffer[ptr++] & 0xFF;
+                    if (codes[c] != 0) {
+                        _inputPtr = ptr;
+                        break ascii_loop;
+                    }
+                }
+                _inputPtr = ptr;
+            }
+            // Ok: end marker, escape or multi-byte?
+            if (c == INT_QUOTE) {
+                break main_loop;
+            }
+            
+            switch (codes[c]) {
+            case 1: // backslash
+                _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+// RIGHT //                _skipUtf8_2();
+                break;
+            case 3: // 3-byte UTF
+// RIGHT //                _skipUtf8_3();
+                break;
+            case 4: // 4-byte UTF
+                _skipUtf8_4(c);
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                } else {
+                    // Is this good enough error message?
+                    _reportInvalidChar(c);
+                }
+            }
+        }
+// END _skipString({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2771]
+Right editions: []
+Merged body: 
+// START _handleApos({FormalParametersInternal})//protected JsonToken _handleApos()
+        throws IOException
+    {
+        int c = 0;
+        // Otherwise almost verbatim copy of _finishString()
+        int outPtr = 0;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+
+        // Here we do want to do full decoding, hence:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            // Then the tight ascii non-funny-char loop:
+            ascii_loop:
+            while (true) {
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                int max = _inputEnd;
+                {
+                    int max2 = _inputPtr + (outBuf.length - outPtr);
+                    if (max2 < max) {
+                        max = max2;
+                    }
+                }
+                while (_inputPtr < max) {
+                    c = (int) inputBuffer[_inputPtr++] & 0xFF;
+                    if (c == '\'' || codes[c] != 0) {
+                        break ascii_loop;
+                    }
+                    outBuf[outPtr++] = (char) c;
+                }
+            }
+
+            // Ok: end marker, escape or multi-byte?
+            if (c == '\'') {
+                break main_loop;
+            }
+
+            switch (codes[c]) {
+            case 1: // backslash
+                    c = _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+                c = _decodeUtf8_2(c);
+                break;
+            case 3: // 3-byte UTF
+                if ((_inputEnd - _inputPtr) >= 2) {
+                    c = _decodeUtf8_3fast(c);
+                } else {
+                    c = _decodeUtf8_3(c);
+                }
+                break;
+            case 4: // 4-byte UTF
+                c = _decodeUtf8_4(c);
+                // Let's add first part right away:
+                outBuf[outPtr++] = (char) (0xD800 | (c >> 10));
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                c = 0xDC00 | (c & 0x3FF);
+                // And let the other char output down below
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                }
+                // Is this good enough error message?
+                _reportInvalidChar(c);
+            }
+            // Need more room?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            // Ok, let's add char to output:
+            outBuf[outPtr++] = (char) c;
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        return JsonToken.VALUE_STRING;
+// END _handleApos({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3406]
+Right editions: []
+Merged body: 
+// START _decodeUtf8_2(int-int)//private final int _decodeUtf8_2(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        int d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        return ((c & 0x1F) << 6) | (d & 0x3F);
+// END _decodeUtf8_2(int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2771]
+Right editions: []
+Merged body: 
+// START _handleApos({FormalParametersInternal})//protected JsonToken _handleApos()
+        throws IOException
+    {
+        int c = 0;
+        // Otherwise almost verbatim copy of _finishString()
+        int outPtr = 0;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+
+        // Here we do want to do full decoding, hence:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            // Then the tight ascii non-funny-char loop:
+            ascii_loop:
+            while (true) {
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                int max = _inputEnd;
+                {
+                    int max2 = _inputPtr + (outBuf.length - outPtr);
+                    if (max2 < max) {
+                        max = max2;
+                    }
+                }
+                while (_inputPtr < max) {
+                    c = (int) inputBuffer[_inputPtr++] & 0xFF;
+                    if (c == '\'' || codes[c] != 0) {
+                        break ascii_loop;
+                    }
+                    outBuf[outPtr++] = (char) c;
+                }
+            }
+
+            // Ok: end marker, escape or multi-byte?
+            if (c == '\'') {
+                break main_loop;
+            }
+
+            switch (codes[c]) {
+            case 1: // backslash
+                    c = _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+                c = _decodeUtf8_2(c);
+                break;
+            case 3: // 3-byte UTF
+                if ((_inputEnd - _inputPtr) >= 2) {
+                    c = _decodeUtf8_3fast(c);
+                } else {
+                    c = _decodeUtf8_3(c);
+                }
+                break;
+            case 4: // 4-byte UTF
+                c = _decodeUtf8_4(c);
+                // Let's add first part right away:
+                outBuf[outPtr++] = (char) (0xD800 | (c >> 10));
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                c = 0xDC00 | (c & 0x3FF);
+                // And let the other char output down below
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                }
+                // Is this good enough error message?
+                _reportInvalidChar(c);
+            }
+            // Need more room?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            // Ok, let's add char to output:
+            outBuf[outPtr++] = (char) c;
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        return JsonToken.VALUE_STRING;
+// END _handleApos({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3419, 3428]
+Right editions: []
+Merged body: 
+// START _decodeUtf8_3(int-int)//private final int _decodeUtf8_3(int c1) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        c1 &= 0x0F;
+        int d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        int c = (c1 << 6) | (d & 0x3F);
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        c = (c << 6) | (d & 0x3F);
+        return c;
+// END _decodeUtf8_3(int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2771]
+Right editions: []
+Merged body: 
+// START _handleApos({FormalParametersInternal})//protected JsonToken _handleApos()
+        throws IOException
+    {
+        int c = 0;
+        // Otherwise almost verbatim copy of _finishString()
+        int outPtr = 0;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+
+        // Here we do want to do full decoding, hence:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            // Then the tight ascii non-funny-char loop:
+            ascii_loop:
+            while (true) {
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                int max = _inputEnd;
+                {
+                    int max2 = _inputPtr + (outBuf.length - outPtr);
+                    if (max2 < max) {
+                        max = max2;
+                    }
+                }
+                while (_inputPtr < max) {
+                    c = (int) inputBuffer[_inputPtr++] & 0xFF;
+                    if (c == '\'' || codes[c] != 0) {
+                        break ascii_loop;
+                    }
+                    outBuf[outPtr++] = (char) c;
+                }
+            }
+
+            // Ok: end marker, escape or multi-byte?
+            if (c == '\'') {
+                break main_loop;
+            }
+
+            switch (codes[c]) {
+            case 1: // backslash
+                    c = _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+                c = _decodeUtf8_2(c);
+                break;
+            case 3: // 3-byte UTF
+                if ((_inputEnd - _inputPtr) >= 2) {
+                    c = _decodeUtf8_3fast(c);
+                } else {
+                    c = _decodeUtf8_3(c);
+                }
+                break;
+            case 4: // 4-byte UTF
+                c = _decodeUtf8_4(c);
+                // Let's add first part right away:
+                outBuf[outPtr++] = (char) (0xD800 | (c >> 10));
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                c = 0xDC00 | (c & 0x3FF);
+                // And let the other char output down below
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                }
+                // Is this good enough error message?
+                _reportInvalidChar(c);
+            }
+            // Need more room?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            // Ok, let's add char to output:
+            outBuf[outPtr++] = (char) c;
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        return JsonToken.VALUE_STRING;
+// END _handleApos({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3464, 3473, 3481]
+Right editions: []
+Merged body: 
+// START _decodeUtf8_4(int-int)//private final int _decodeUtf8_4(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        int d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        c = ((c & 0x07) << 6) | (d & 0x3F);
+
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        c = (c << 6) | (d & 0x3F);
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+
+        /* note: won't change it to negative here, since caller
+         * already knows it'll need a surrogate
+         */
+        return ((c << 6) | (d & 0x3F)) - 0x10000;
+// END _decodeUtf8_4(int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2771]
+Right editions: []
+Merged body: 
+// START _handleApos({FormalParametersInternal})//protected JsonToken _handleApos()
+        throws IOException
+    {
+        int c = 0;
+        // Otherwise almost verbatim copy of _finishString()
+        int outPtr = 0;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+
+        // Here we do want to do full decoding, hence:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            // Then the tight ascii non-funny-char loop:
+            ascii_loop:
+            while (true) {
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                int max = _inputEnd;
+                {
+                    int max2 = _inputPtr + (outBuf.length - outPtr);
+                    if (max2 < max) {
+                        max = max2;
+                    }
+                }
+                while (_inputPtr < max) {
+                    c = (int) inputBuffer[_inputPtr++] & 0xFF;
+                    if (c == '\'' || codes[c] != 0) {
+                        break ascii_loop;
+                    }
+                    outBuf[outPtr++] = (char) c;
+                }
+            }
+
+            // Ok: end marker, escape or multi-byte?
+            if (c == '\'') {
+                break main_loop;
+            }
+
+            switch (codes[c]) {
+            case 1: // backslash
+                    c = _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+                c = _decodeUtf8_2(c);
+                break;
+            case 3: // 3-byte UTF
+                if ((_inputEnd - _inputPtr) >= 2) {
+                    c = _decodeUtf8_3fast(c);
+                } else {
+                    c = _decodeUtf8_3(c);
+                }
+                break;
+            case 4: // 4-byte UTF
+                c = _decodeUtf8_4(c);
+                // Let's add first part right away:
+                outBuf[outPtr++] = (char) (0xD800 | (c >> 10));
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                c = 0xDC00 | (c & 0x3FF);
+                // And let the other char output down below
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                }
+                // Is this good enough error message?
+                _reportInvalidChar(c);
+            }
+            // Need more room?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            // Ok, let's add char to output:
+            outBuf[outPtr++] = (char) c;
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        return JsonToken.VALUE_STRING;
+// END _handleApos({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3533, 3540, 3547]
+Right editions: []
+Merged body: 
+// START _skipUtf8_4(int-int)//private final void _skipUtf8_4(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        int d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        d = (int) _inputBuffer[_inputPtr++];
+        if ((d & 0xC0) != 0x080) {
+            _reportInvalidOther(d & 0xFF, _inputPtr);
+        }
+// END _skipUtf8_4(int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2637]
+Right editions: [2660, 2663]
+Merged body: 
+// START _skipString({FormalParametersInternal})//protected void _skipString() throws IOException
+    {
+        _tokenIncomplete = false;
+
+        // Need to be fully UTF-8 aware here:
+        final int[] codes = _icUTF8;
+        final byte[] inputBuffer = _inputBuffer;
+
+        main_loop:
+        while (true) {
+            int c;
+
+            ascii_loop:
+            while (true) {
+                int ptr = _inputPtr;
+                int max = _inputEnd;
+                if (ptr >= max) {
+// LEFT //                    _loadMoreGuaranteed();
+                    ptr = _inputPtr;
+                    max = _inputEnd;
+                }
+                while (ptr < max) {
+                    c = (int) inputBuffer[ptr++] & 0xFF;
+                    if (codes[c] != 0) {
+                        _inputPtr = ptr;
+                        break ascii_loop;
+                    }
+                }
+                _inputPtr = ptr;
+            }
+            // Ok: end marker, escape or multi-byte?
+            if (c == INT_QUOTE) {
+                break main_loop;
+            }
+            
+            switch (codes[c]) {
+            case 1: // backslash
+                _decodeEscaped();
+                break;
+            case 2: // 2-byte UTF
+// RIGHT //                _skipUtf8_2();
+                break;
+            case 3: // 3-byte UTF
+// RIGHT //                _skipUtf8_3();
+                break;
+            case 4: // 4-byte UTF
+                _skipUtf8_4(c);
+                break;
+            default:
+                if (c < INT_SPACE) {
+                    _throwUnquotedSpace(c, "string value");
+                } else {
+                    // Is this good enough error message?
+                    _reportInvalidChar(c);
+                }
+            }
+        }
+// END _skipString({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3201, 3207, 3237]
+Right editions: [3223, 3226]
+Merged body: 
+// START _skipCComment({FormalParametersInternal})//private final void _skipCComment() throws IOException
+    {
+        // Need to be UTF-8 aware here to decode content (for skipping)
+        final int[] codes = CharTypes.getInputCodeComment();
+
+        // Ok: need the matching '*/'
+        main_loop:
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case '*':
+// LEFT //                    if (_inputPtr >= _inputEnd && !_loadMore()) {
+                        break main_loop;
+                    }
+                    if (_inputBuffer[_inputPtr] == INT_SLASH) {
+                        ++_inputPtr;
+                        return;
+                    }
+                    break;
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    break;
+                case INT_CR:
+                    _skipCR();
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    // Is this good enough error message?
+                    _reportInvalidChar(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" in a comment", null);
+// END _skipCComment({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3260]
+Right editions: [3275, 3278]
+Merged body: 
+// START _skipLine({FormalParametersInternal})//private final void _skipLine() throws IOException
+    {
+        // Ok: need to find EOF or linefeed
+        final int[] codes = CharTypes.getInputCodeComment();
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    return;
+                case INT_CR:
+                    _skipCR();
+                    return;
+                case '*': // nop for these comments
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    if (code < 0) {
+                        // Is this good enough error message?
+                        _reportInvalidChar(i);
+                    }
+                }
+            }
+        }
+// END _skipLine({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3568]
+Right editions: []
+Merged body: 
+// START _skipCR({FormalParametersInternal})//protected final void _skipCR() throws IOException
+    {
+// LEFT //        if (_inputPtr < _inputEnd || _loadMore()) {
+            if (_inputBuffer[_inputPtr] == BYTE_LF) {
+                ++_inputPtr;
+            }
+        }
+        ++_currInputRow;
+        _currInputRowStart = _inputPtr;
+// END _skipCR({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3201, 3207, 3237]
+Right editions: [3223, 3226]
+Merged body: 
+// START _skipCComment({FormalParametersInternal})//private final void _skipCComment() throws IOException
+    {
+        // Need to be UTF-8 aware here to decode content (for skipping)
+        final int[] codes = CharTypes.getInputCodeComment();
+
+        // Ok: need the matching '*/'
+        main_loop:
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case '*':
+// LEFT //                    if (_inputPtr >= _inputEnd && !_loadMore()) {
+                        break main_loop;
+                    }
+                    if (_inputBuffer[_inputPtr] == INT_SLASH) {
+                        ++_inputPtr;
+                        return;
+                    }
+                    break;
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    break;
+                case INT_CR:
+                    _skipCR();
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    // Is this good enough error message?
+                    _reportInvalidChar(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" in a comment", null);
+// END _skipCComment({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3260]
+Right editions: [3275, 3278]
+Merged body: 
+// START _skipLine({FormalParametersInternal})//private final void _skipLine() throws IOException
+    {
+        // Ok: need to find EOF or linefeed
+        final int[] codes = CharTypes.getInputCodeComment();
+// LEFT //        while ((_inputPtr < _inputEnd) || _loadMore()) {
+            int i = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            int code = codes[i];
+            if (code != 0) {
+                switch (code) {
+                case INT_LF:
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                    return;
+                case INT_CR:
+                    _skipCR();
+                    return;
+                case '*': // nop for these comments
+                    break;
+                case 2: // 2-byte UTF
+// RIGHT //                    _skipUtf8_2();
+                    break;
+                case 3: // 3-byte UTF
+// RIGHT //                    _skipUtf8_3();
+                    break;
+                case 4: // 4-byte UTF
+                    _skipUtf8_4(i);
+                    break;
+                default: // e.g. -1
+                    if (code < 0) {
+                        // Is this good enough error message?
+                        _reportInvalidChar(i);
+                    }
+                }
+            }
+        }
+// END _skipLine({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3137, 3168, 3169, 3170]
+Right editions: []
+Merged body: 
+// START _skipColon2(boolean-boolean)//private final int _skipColon2(boolean gotColon) throws IOException
+    {
+// LEFT //        while (_inputPtr < _inputEnd || _loadMore()) {
+            int i = _inputBuffer[_inputPtr++] & 0xFF;
+
+            if (i > INT_SPACE) {
+                if (i == INT_SLASH) {
+                    _skipComment();
+                    continue;
+                }
+                if (i == INT_HASH) {
+                    if (_skipYAMLComment()) {
+                        continue;
+                    }
+                }
+                if (gotColon) {
+                    return i;
+                }
+                if (i != INT_COLON) {
+                    _reportUnexpectedChar(i, "was expecting a colon to separate field name and value");
+                }
+                gotColon = true;
+            } else if (i != INT_SPACE) {
+                if (i == INT_LF) {
+                    ++_currInputRow;
+                    _currInputRowStart = _inputPtr;
+                } else if (i == INT_CR) {
+                    _skipCR();
+                } else if (i != INT_TAB) {
+                    _throwInvalidSpace(i);
+                }
+            }
+        }
+// LEFT //        _reportInvalidEOF(" within/between "+_parsingContext.typeDesc()+" entries",
+// LEFT //                null);
+// LEFT //        return -1;
+// END _skipColon2(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c98ff-554f8
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_c98ff_554f8\rev_rev_left_c98ff-rev_right_554f8\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [604, 605]
+Merged body: 
+// START writeRaw(String-String)//@Override
+// RIGHT //    public void writeRaw(String text) throws IOException {
+// RIGHT //        writeRaw(text, 0, text.length());
+// END writeRaw(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_c98ff_554f8\rev_rev_left_c98ff-rev_right_554f8\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1045, 1050]
+Right editions: []
+Merged body: 
+// START _writeQuotedRaw(String-String)//private final void _writeQuotedRaw(String value) throws IOException
+    {
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+        writeRaw(value);
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+// END _writeQuotedRaw(String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95019-956e0
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_95019_956e0\rev_rev_left_95019-rev_right_956e0\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [605, 606, 607, 608, 609, 610, 611, 612]
+Merged body: 
+// START writeRaw(String-String)//@Override
+    public void writeRaw(String text) throws IOException {
+// RIGHT //        final int len = text.length();
+// RIGHT //        final char[] buf = _charBuffer;
+// RIGHT //        if (len <= buf.length) {
+// RIGHT //            text.getChars(0, len, buf, 0);
+// RIGHT //            writeRaw(buf, 0, len);
+// RIGHT //        } else {
+// RIGHT //            writeRaw(text, 0, len);
+// RIGHT //        }
+// END writeRaw(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_95019_956e0\rev_rev_left_95019-rev_right_956e0\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1057, 1062]
+Right editions: []
+Merged body: 
+// START _writeQuotedRaw(String-String)//private final void _writeQuotedRaw(String value) throws IOException
+    {
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+        writeRaw(value);
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+// END _writeQuotedRaw(String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_612f2-96642
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [796, 801]
+Right editions: []
+Merged body: 
+// START _writeQuotedRaw(String-String)//private void _writeQuotedRaw(String value) throws IOException
+    {
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+        writeRaw(value);
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+// END _writeQuotedRaw(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [771, 772, 774]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+// RIGHT //        } else  if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(_asString(value));
+        } else {
+// RIGHT //            writeRaw(_asString(value));
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: [848, 851, 856, 857, 858, 870, 871, 877]
+Right editions: []
+Merged body: 
+// START _verifyValueWrite(String-String)//@Override
+    protected void _verifyValueWrite(String typeMsg) throws IOException
+    {
+// LEFT //        final int status = _writeContext.writeValue();
+        if (_cfgPrettyPrinter != null) {
+            // Otherwise, pretty printer knows what to do...
+// LEFT //            _verifyPrettyValueWrite(typeMsg, status);
+            return;
+        }
+        char c;
+        switch (status) {
+// LEFT //        case JsonWriteContext.STATUS_OK_AS_IS:
+// LEFT //        default:
+// LEFT //            return;
+        case JsonWriteContext.STATUS_OK_AFTER_COMMA:
+            c = ',';
+            break;
+        case JsonWriteContext.STATUS_OK_AFTER_COLON:
+            c = ':';
+            break;
+        case JsonWriteContext.STATUS_OK_AFTER_SPACE: // root-value separator
+            if (_rootValueSeparator != null) {
+                writeRaw(_rootValueSeparator.getValue());
+            }
+            return;
+// LEFT //        case JsonWriteContext.STATUS_EXPECT_NAME:
+// LEFT //            _reportCantWriteValueExpectName(typeMsg);
+            return;
+        }
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = c;
+// END _verifyValueWrite(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\WriterBasedJsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [771, 772, 774]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+// RIGHT //        } else  if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(_asString(value));
+        } else {
+// RIGHT //            writeRaw(_asString(value));
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1054, 1059]
+Right editions: []
+Merged body: 
+// START _writeQuotedRaw(String-String)//private final void _writeQuotedRaw(String value) throws IOException
+    {
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+        writeRaw(value);
+        if (_outputTail >= _outputEnd) {
+            _flushBuffer();
+        }
+// LEFT //        _outputBuffer[_outputTail++] = _quoteChar;
+// END _writeQuotedRaw(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1028, 1029, 1031]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+// RIGHT //        } else  if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(_asString(value));
+        } else {
+// RIGHT //            writeRaw(_asString(value));
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: [1096, 1097, 1098, 1099, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 1117, 1118, 1119, 1120, 1121, 1122, 1123, 1124, 1125, 1126, 1127, 1128]
+Right editions: []
+Merged body: 
+// START _verifyValueWrite(String-String)//@Override
+    protected final void _verifyValueWrite(String typeMsg) throws IOException
+    {
+// LEFT //        final int status = _writeContext.writeValue();
+// LEFT //        if (_cfgPrettyPrinter != null) {
+// LEFT //            // Otherwise, pretty printer knows what to do...
+// LEFT //            _verifyPrettyValueWrite(typeMsg, status);
+            return;
+        }
+// LEFT //        byte b;
+// LEFT //        switch (status) {
+// LEFT //        case JsonWriteContext.STATUS_OK_AS_IS:
+// LEFT //        default:
+// LEFT //            return;
+// LEFT //        case JsonWriteContext.STATUS_OK_AFTER_COMMA:
+// LEFT //            b = BYTE_COMMA;
+// LEFT //            break;
+// LEFT //        case JsonWriteContext.STATUS_OK_AFTER_COLON:
+// LEFT //            b = BYTE_COLON;
+// LEFT //            break;
+// LEFT //        case JsonWriteContext.STATUS_OK_AFTER_SPACE: // root-value separator
+// LEFT //            if (_rootValueSeparator != null) {
+// LEFT //                byte[] raw = _rootValueSeparator.asUnquotedUTF8();
+// LEFT //                if (raw.length > 0) {
+// LEFT //                    _writeBytes(raw);
+// LEFT //                }
+// LEFT //            }
+// LEFT //            return;
+// LEFT //        case JsonWriteContext.STATUS_EXPECT_NAME:
+// LEFT //            _reportCantWriteValueExpectName(typeMsg);
+// LEFT //            return;
+// LEFT //        }
+// LEFT //        if (_outputTail >= _outputEnd) {
+// LEFT //            _flushBuffer();
+// LEFT //        }
+// LEFT //        _outputBuffer[_outputTail++] = b;
+// END _verifyValueWrite(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_rev_left_612f2-rev_right_96642\src\main\java\com\fasterxml\jackson\core\json\UTF8JsonGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1028, 1029, 1031]
+Merged body: 
+// START writeNumber(BigDecimal-BigDecimal)//@Override
+    public void writeNumber(BigDecimal value) throws IOException
+    {
+        // Don't really know max length for big decimal, no point checking
+        _verifyValueWrite(WRITE_NUMBER);
+        if (value == null) {
+            _writeNull();
+// RIGHT //        } else  if (_cfgNumbersAsStrings) {
+// RIGHT //            _writeQuotedRaw(_asString(value));
+        } else {
+// RIGHT //            writeRaw(_asString(value));
+        }
+// END writeNumber(BigDecimal-BigDecimal)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3307b-345ca
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [1623, 1653, 1665, 1678]
+Right editions: [1615, 1616, 1617, 1618, 1693]
+Merged body: 
+// START _parseFloat(char[]-char[]-int-int-int-int-boolean-boolean-int-int)//private final JsonToken _parseFloat(char[] outBuf, int outPtr, int c,
+            boolean negative, int integerPartLength) throws IOException
+    {
+        int fractLen = 0;
+        boolean eof = false;
+
+        // And then see if we get other parts
+        if (c == INT_PERIOD) { // yes, fraction
+// RIGHT //            if (outPtr >= outBuf.length) {
+// RIGHT //                outBuf = _textBuffer.finishCurrentSegment();
+// RIGHT //                outPtr = 0;
+// RIGHT //            }
+            outBuf[outPtr++] = (char) c;
+
+            fract_loop:
+            while (true) {
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break fract_loop;
+                }
+                c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+                if (c < INT_0 || c > INT_9) {
+                    break fract_loop;
+                }
+                ++fractLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = (char) c;
+            }
+            // must be followed by sequence of ints, one minimum
+            if (fractLen == 0) {
+                reportUnexpectedNumberChar(c, "Decimal point not followed by a digit");
+            }
+        }
+
+        int expLen = 0;
+        if (c == INT_e || c == INT_E) { // exponent?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = (char) c;
+            // Not optional, can require that we get one more char
+            if (_inputPtr >= _inputEnd) {
+// LEFT //                _loadMoreGuaranteed();
+            }
+            c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            // Sign indicator?
+            if (c == '-' || c == '+') {
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = (char) c;
+                // Likewise, non optional:
+                if (_inputPtr >= _inputEnd) {
+// LEFT //                    _loadMoreGuaranteed();
+                }
+                c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            }
+
+            exp_loop:
+            while (c <= INT_9 && c >= INT_0) {
+                ++expLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = (char) c;
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break exp_loop;
+                }
+                c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            }
+            // must be followed by sequence of ints, one minimum
+            if (expLen == 0) {
+                reportUnexpectedNumberChar(c, "Exponent indicator not followed by a digit");
+            }
+        }
+
+        // Ok; unless we hit end-of-input, need to push last char read back
+        if (!eof) {
+            --_inputPtr;
+// RIGHT //            // As per [core#105], need separating space between root values; check here
+            if (_parsingContext.inRoot()) {
+                _verifyRootSpace(c);
+            }
+        }
+        _textBuffer.setCurrentLength(outPtr);
+
+        // And there we have it!
+        return resetFloat(negative, integerPartLength, fractLen, expLen);
+// END _parseFloat(char[]-char[]-int-int-int-int-boolean-boolean-int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [1477]
+Right editions: []
+Merged body: 
+// START _parseNegNumber({FormalParametersInternal})//protected JsonToken _parseNegNumber() throws IOException
+    {
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+        int outPtr = 0;
+
+        // Need to prepend sign?
+        outBuf[outPtr++] = '-';
+        // Must have something after sign too
+        if (_inputPtr >= _inputEnd) {
+// LEFT //            _loadMoreGuaranteed();
+        }
+        int c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+        // Note: must be followed by a digit
+        if (c < INT_0 || c > INT_9) {
+            return _handleInvalidNumberStart(c, true);
+        }
+
+        // One special case: if first char is 0, must not be followed by a digit
+        if (c == INT_0) {
+            c = _verifyNoLeadingZeroes();
+        }
+        
+        // Ok: we can first just add digit we saw first:
+        outBuf[outPtr++] = (char) c;
+        int intLen = 1;
+
+        // And then figure out how far we can read without further checks
+        // for either input or output
+        int end = _inputPtr + outBuf.length - outPtr;
+        if (end > _inputEnd) {
+            end = _inputEnd;
+        }
+
+        // With this, we have a nice and tight loop:
+        while (true) {
+            if (_inputPtr >= end) {
+                // Long enough to be split across boundary, so:
+                return _parseNumber2(outBuf, outPtr, true, intLen);
+            }
+            c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            if (c < INT_0 || c > INT_9) {
+                break;
+            }
+            ++intLen;
+            outBuf[outPtr++] = (char) c;
+        }
+        if (c == '.' || c == 'e' || c == 'E') {
+            return _parseFloat(outBuf, outPtr, c, true, intLen);
+        }
+        
+        --_inputPtr; // to push back trailing char (comma etc)
+        _textBuffer.setCurrentLength(outPtr);
+        // As per #105, need separating space between root values; check here
+        if (_parsingContext.inRoot()) {
+            _verifyRootSpace(c);
+        }
+
+        // And there we have it!
+        return resetInt(true, intLen);
+// END _parseNegNumber({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [1539]
+Right editions: []
+Merged body: 
+// START _parseNumber2(char[]-char[]-int-int-boolean-boolean-int-int)//private final JsonToken _parseNumber2(char[] outBuf, int outPtr, boolean negative,
+            int intPartLength) throws IOException
+    {
+        // Ok, parse the rest
+        while (true) {
+// LEFT //            if (_inputPtr >= _inputEnd && !_loadMore()) {
+                _textBuffer.setCurrentLength(outPtr);
+                return resetInt(negative, intPartLength);
+            }
+            int c = (int) _inputBuffer[_inputPtr++] & 0xFF;
+            if (c > INT_9 || c < INT_0) {
+                if (c == INT_PERIOD || c == INT_e || c == INT_E) {
+                    return _parseFloat(outBuf, outPtr, c, negative, intPartLength);
+                }
+                break;
+            }
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = (char) c;
+            ++intPartLength;
+        }
+        --_inputPtr; // to push back trailing char (comma etc)
+        _textBuffer.setCurrentLength(outPtr);
+        // As per #105, need separating space between root values; check here
+        if (_parsingContext.inRoot()) {
+            _verifyRootSpace(_inputBuffer[_inputPtr++] & 0xFF);
+        }
+
+        // And there we have it!
+        return resetInt(negative, intPartLength);
+        
+// END _parseNumber2(char[]-char[]-int-int-boolean-boolean-int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [214, 215, 216]
+Right editions: []
+Merged body: 
+// START getNextChar(String-String)//// LEFT //@Deprecated // since 2.8
+// LEFT //    protected char getNextChar(String eofMsg) throws IOException {
+// LEFT //        return getNextChar(eofMsg, null);
+// END getNextChar(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [1465, 1466, 1481, 1505, 1556]
+Right editions: [1497, 1498, 1499, 1500]
+Merged body: 
+// START _parseNumber2(boolean-boolean-int-int)//private final JsonToken _parseNumber2(boolean neg, int startPtr) throws IOException
+    {
+        _inputPtr = neg ? (startPtr+1) : startPtr;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+        int outPtr = 0;
+
+        // Need to prepend sign?
+        if (neg) {
+            outBuf[outPtr++] = '-';
+        }
+
+        // This is the place to do leading-zero check(s) too:
+        int intLen = 0;
+// LEFT //        char c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+// LEFT //                : getNextChar("No digit following minus sign", JsonToken.VALUE_NUMBER_INT);
+        if (c == '0') {
+            c = _verifyNoLeadingZeroes();
+        }
+        boolean eof = false;
+
+        // Ok, first the obligatory integer part:
+        int_loop:
+        while (c >= '0' && c <= '9') {
+            ++intLen;
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+// LEFT //            if (_inputPtr >= _inputEnd && !_loadMore()) {
+                // EOF is legal for main level int values
+                c = CHAR_NULL;
+                eof = true;
+                break int_loop;
+            }
+            c = _inputBuffer[_inputPtr++];
+        }
+        // Also, integer part is not optional
+        if (intLen == 0) {
+            return _handleInvalidNumberStart(c, neg);
+        }
+
+        int fractLen = 0;
+        // And then see if we get other parts
+        if (c == '.') { // yes, fraction
+// RIGHT //            if (outPtr >= outBuf.length) {
+// RIGHT //                outBuf = _textBuffer.finishCurrentSegment();
+// RIGHT //                outPtr = 0;
+// RIGHT //            }
+            outBuf[outPtr++] = c;
+
+            fract_loop:
+            while (true) {
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break fract_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+                if (c < INT_0 || c > INT_9) {
+                    break fract_loop;
+                }
+                ++fractLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+            }
+            // must be followed by sequence of ints, one minimum
+            if (fractLen == 0) {
+                reportUnexpectedNumberChar(c, "Decimal point not followed by a digit");
+            }
+        }
+
+        int expLen = 0;
+        if (c == 'e' || c == 'E') { // exponent?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+            // Not optional, can require that we get one more char
+            c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                : getNextChar("expected a digit for number exponent");
+            // Sign indicator?
+            if (c == '-' || c == '+') {
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+                // Likewise, non optional:
+                c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                    : getNextChar("expected a digit for number exponent");
+            }
+
+            exp_loop:
+            while (c <= INT_9 && c >= INT_0) {
+                ++expLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break exp_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+            }
+            // must be followed by sequence of ints, one minimum
+            if (expLen == 0) {
+                reportUnexpectedNumberChar(c, "Exponent indicator not followed by a digit");
+            }
+        }
+
+        // Ok; unless we hit end-of-input, need to push last char read back
+        if (!eof) {
+            --_inputPtr;
+            if (_parsingContext.inRoot()) {
+                _verifyRootSpace(c);
+            }
+        }
+        _textBuffer.setCurrentLength(outPtr);
+        // And there we have it!
+        return reset(neg, intLen, fractLen, expLen);
+// END _parseNumber2(boolean-boolean-int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [1465, 1466, 1481, 1505, 1556]
+Right editions: [1497, 1498, 1499, 1500]
+Merged body: 
+// START _parseNumber2(boolean-boolean-int-int)//private final JsonToken _parseNumber2(boolean neg, int startPtr) throws IOException
+    {
+        _inputPtr = neg ? (startPtr+1) : startPtr;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+        int outPtr = 0;
+
+        // Need to prepend sign?
+        if (neg) {
+            outBuf[outPtr++] = '-';
+        }
+
+        // This is the place to do leading-zero check(s) too:
+        int intLen = 0;
+// LEFT //        char c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+// LEFT //                : getNextChar("No digit following minus sign", JsonToken.VALUE_NUMBER_INT);
+        if (c == '0') {
+            c = _verifyNoLeadingZeroes();
+        }
+        boolean eof = false;
+
+        // Ok, first the obligatory integer part:
+        int_loop:
+        while (c >= '0' && c <= '9') {
+            ++intLen;
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+// LEFT //            if (_inputPtr >= _inputEnd && !_loadMore()) {
+                // EOF is legal for main level int values
+                c = CHAR_NULL;
+                eof = true;
+                break int_loop;
+            }
+            c = _inputBuffer[_inputPtr++];
+        }
+        // Also, integer part is not optional
+        if (intLen == 0) {
+            return _handleInvalidNumberStart(c, neg);
+        }
+
+        int fractLen = 0;
+        // And then see if we get other parts
+        if (c == '.') { // yes, fraction
+// RIGHT //            if (outPtr >= outBuf.length) {
+// RIGHT //                outBuf = _textBuffer.finishCurrentSegment();
+// RIGHT //                outPtr = 0;
+// RIGHT //            }
+            outBuf[outPtr++] = c;
+
+            fract_loop:
+            while (true) {
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break fract_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+                if (c < INT_0 || c > INT_9) {
+                    break fract_loop;
+                }
+                ++fractLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+            }
+            // must be followed by sequence of ints, one minimum
+            if (fractLen == 0) {
+                reportUnexpectedNumberChar(c, "Decimal point not followed by a digit");
+            }
+        }
+
+        int expLen = 0;
+        if (c == 'e' || c == 'E') { // exponent?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+            // Not optional, can require that we get one more char
+            c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                : getNextChar("expected a digit for number exponent");
+            // Sign indicator?
+            if (c == '-' || c == '+') {
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+                // Likewise, non optional:
+                c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                    : getNextChar("expected a digit for number exponent");
+            }
+
+            exp_loop:
+            while (c <= INT_9 && c >= INT_0) {
+                ++expLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break exp_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+            }
+            // must be followed by sequence of ints, one minimum
+            if (expLen == 0) {
+                reportUnexpectedNumberChar(c, "Exponent indicator not followed by a digit");
+            }
+        }
+
+        // Ok; unless we hit end-of-input, need to push last char read back
+        if (!eof) {
+            --_inputPtr;
+            if (_parsingContext.inRoot()) {
+                _verifyRootSpace(c);
+            }
+        }
+        _textBuffer.setCurrentLength(outPtr);
+        // And there we have it!
+        return reset(neg, intLen, fractLen, expLen);
+// END _parseNumber2(boolean-boolean-int-int)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [1639, 1640, 1641]
+Right editions: []
+Merged body: 
+// START _handleInvalidNumberStart(int-int-boolean-boolean)//protected JsonToken _handleInvalidNumberStart(int ch, boolean negative) throws IOException
+    {
+        if (ch == 'I') {
+            if (_inputPtr >= _inputEnd) {
+// LEFT //                if (!_loadMore()) {
+// LEFT //                    _reportInvalidEOFInValue(JsonToken.VALUE_NUMBER_INT);
+// LEFT //                }
+            }
+            ch = _inputBuffer[_inputPtr++];
+            if (ch == 'N') {
+                String match = negative ? "-INF" :"+INF";
+                _matchToken(match, 3);
+                if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                    return resetAsNaN(match, negative ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY);
+                }
+                _reportError("Non-standard token '"+match+"': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            } else if (ch == 'n') {
+                String match = negative ? "-Infinity" :"+Infinity";
+                _matchToken(match, 3);
+                if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                    return resetAsNaN(match, negative ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY);
+                }
+                _reportError("Non-standard token '"+match+"': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            }
+        }
+        reportUnexpectedNumberChar(ch, "expected digit (0-9) to follow minus sign, for valid numeric value");
+        return null;
+// END _handleInvalidNumberStart(int-int-boolean-boolean)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_rev_left_3307b-rev_right_345ca\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [1465, 1466, 1481, 1505, 1556]
+Right editions: [1497, 1498, 1499, 1500]
+Merged body: 
+// START _parseNumber2(boolean-boolean-int-int)//private final JsonToken _parseNumber2(boolean neg, int startPtr) throws IOException
+    {
+        _inputPtr = neg ? (startPtr+1) : startPtr;
+        char[] outBuf = _textBuffer.emptyAndGetCurrentSegment();
+        int outPtr = 0;
+
+        // Need to prepend sign?
+        if (neg) {
+            outBuf[outPtr++] = '-';
+        }
+
+        // This is the place to do leading-zero check(s) too:
+        int intLen = 0;
+// LEFT //        char c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+// LEFT //                : getNextChar("No digit following minus sign", JsonToken.VALUE_NUMBER_INT);
+        if (c == '0') {
+            c = _verifyNoLeadingZeroes();
+        }
+        boolean eof = false;
+
+        // Ok, first the obligatory integer part:
+        int_loop:
+        while (c >= '0' && c <= '9') {
+            ++intLen;
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+// LEFT //            if (_inputPtr >= _inputEnd && !_loadMore()) {
+                // EOF is legal for main level int values
+                c = CHAR_NULL;
+                eof = true;
+                break int_loop;
+            }
+            c = _inputBuffer[_inputPtr++];
+        }
+        // Also, integer part is not optional
+        if (intLen == 0) {
+            return _handleInvalidNumberStart(c, neg);
+        }
+
+        int fractLen = 0;
+        // And then see if we get other parts
+        if (c == '.') { // yes, fraction
+// RIGHT //            if (outPtr >= outBuf.length) {
+// RIGHT //                outBuf = _textBuffer.finishCurrentSegment();
+// RIGHT //                outPtr = 0;
+// RIGHT //            }
+            outBuf[outPtr++] = c;
+
+            fract_loop:
+            while (true) {
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break fract_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+                if (c < INT_0 || c > INT_9) {
+                    break fract_loop;
+                }
+                ++fractLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+            }
+            // must be followed by sequence of ints, one minimum
+            if (fractLen == 0) {
+                reportUnexpectedNumberChar(c, "Decimal point not followed by a digit");
+            }
+        }
+
+        int expLen = 0;
+        if (c == 'e' || c == 'E') { // exponent?
+            if (outPtr >= outBuf.length) {
+                outBuf = _textBuffer.finishCurrentSegment();
+                outPtr = 0;
+            }
+            outBuf[outPtr++] = c;
+            // Not optional, can require that we get one more char
+            c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                : getNextChar("expected a digit for number exponent");
+            // Sign indicator?
+            if (c == '-' || c == '+') {
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+                // Likewise, non optional:
+                c = (_inputPtr < _inputEnd) ? _inputBuffer[_inputPtr++]
+                    : getNextChar("expected a digit for number exponent");
+            }
+
+            exp_loop:
+            while (c <= INT_9 && c >= INT_0) {
+                ++expLen;
+                if (outPtr >= outBuf.length) {
+                    outBuf = _textBuffer.finishCurrentSegment();
+                    outPtr = 0;
+                }
+                outBuf[outPtr++] = c;
+// LEFT //                if (_inputPtr >= _inputEnd && !_loadMore()) {
+                    eof = true;
+                    break exp_loop;
+                }
+                c = _inputBuffer[_inputPtr++];
+            }
+            // must be followed by sequence of ints, one minimum
+            if (expLen == 0) {
+                reportUnexpectedNumberChar(c, "Exponent indicator not followed by a digit");
+            }
+        }
+
+        // Ok; unless we hit end-of-input, need to push last char read back
+        if (!eof) {
+            --_inputPtr;
+            if (_parsingContext.inRoot()) {
+                _verifyRootSpace(c);
+            }
+        }
+        _textBuffer.setCurrentLength(outPtr);
+        // And there we have it!
+        return reset(neg, intLen, fractLen, expLen);
+// END _parseNumber2(boolean-boolean-int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c44c4-597f4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad6d3-71d2a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad6d3-1d39c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ac57-f98ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_489be-dc9ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1fa0a-d2362
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc9ee-7d9be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7a7b5-958fc
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_7a7b5_958fc\rev_rev_left_7a7b5-rev_right_958fc\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [2996, 2997, 3010, 3011, 3012]
+Merged body: 
+// START _reportInvalidToken(String-String-String-String)//protected void _reportInvalidToken(String matchedPart, String msg) throws IOException
+    {
+        StringBuilder sb = new StringBuilder(matchedPart);
+        /* Let's just try to find what appears to be the token, using
+         * regular Java identifier character rules. It's just a heuristic,
+         * nothing fancy here.
+         */
+// RIGHT //        final int maxTokenLength = 256;
+// RIGHT //        while (sb.length() < maxTokenLength) {
+            if (_inputPtr >= _inputEnd) {
+                if (!_loadMore()) {
+                    break;
+                }
+            }
+            char c = _inputBuffer[_inputPtr];
+            if (!Character.isJavaIdentifierPart(c)) {
+                break;
+            }
+            ++_inputPtr;
+            sb.append(c);
+        }
+// RIGHT //        if (sb.length() == maxTokenLength) {
+// RIGHT //            sb.append("...");
+// RIGHT //        }
+        _reportError("Unrecognized token '"+sb.toString()+"': was expecting "+msg);
+// END _reportInvalidToken(String-String-String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_7a7b5_958fc\rev_rev_left_7a7b5-rev_right_958fc\src\main\java\com\fasterxml\jackson\core\json\ReaderBasedJsonParser.java
+Different Spacing: false
+Left editions: [2018]
+Right editions: []
+Merged body: 
+// START _handleOddValue(int-int)//protected JsonToken _handleOddValue(int i) throws IOException
+    {
+        // Most likely an error, unless we are to allow single-quote-strings
+        switch (i) {
+        case '\'':
+            /* Allow single quotes? Unlike with regular Strings, we'll eagerly parse
+             * contents; this so that there'sno need to store information on quote char used.
+             * Also, no separation to fast/slow parsing; we'll just do
+             * one regular (~= slowish) parsing, to keep code simple
+             */
+            if (isEnabled(Feature.ALLOW_SINGLE_QUOTES)) {
+                return _handleApos();
+            }
+            break;
+        case ']':
+            /* 28-Mar-2016: [core#116]: If Feature.ALLOW_MISSING_VALUES is enabled
+             *   we may allow "missing values", that is, encountering a trailing
+             *   comma or closing marker where value would be expected
+             */
+            if (!_parsingContext.inArray()) {
+                break;
+            }
+            // fall through
+        case ',':
+            if (isEnabled(Feature.ALLOW_MISSING_VALUES)) {
+                --_inputPtr;
+                return JsonToken.VALUE_NULL;
+            }
+            break;
+        case 'N':
+            _matchToken("NaN", 1);
+            if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                return resetAsNaN("NaN", Double.NaN);
+            }
+            _reportError("Non-standard token 'NaN': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            break;
+        case 'I':
+            _matchToken("Infinity", 1);
+            if (isEnabled(Feature.ALLOW_NON_NUMERIC_NUMBERS)) {
+                return resetAsNaN("Infinity", Double.POSITIVE_INFINITY);
+            }
+            _reportError("Non-standard token 'Infinity': enable JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS to allow");
+            break;
+        case '+': // note: '-' is taken as number
+            if (_inputPtr >= _inputEnd) {
+                if (!_loadMore()) {
+                    _reportInvalidEOFInValue(JsonToken.VALUE_NUMBER_INT);
+                }
+            }
+            return _handleInvalidNumberStart(_inputBuffer[_inputPtr++], false);
+        }
+// LEFT //        // [core#77] Try to decode most likely token
+        if (Character.isJavaIdentifierStart(i)) {
+            _reportInvalidToken(""+((char) i), "('true', 'false' or 'null')");
+        }
+        // but if it doesn't look like a token:
+        _reportUnexpectedChar(i, "expected a valid value (number, String, array, object, 'true', 'false' or 'null')");
+        return null;
+// END _handleOddValue(int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_7a7b5_958fc\rev_rev_left_7a7b5-rev_right_958fc\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START _reportInvalidToken(String-String-String-String)//protected void _reportInvalidToken(String matchedPart, String msg) throws IOException
+     {
+         StringBuilder sb = new StringBuilder(matchedPart);
+
+         /* Let's just try to find what appears to be the token, using
+          * regular Java identifier character rules. It's just a heuristic,
+          * nothing fancy here (nor fast).
+          */
+         final int maxTokenLength = 256;
+         while (sb.length() < maxTokenLength) {
+             if (_inputPtr >= _inputEnd && !_loadMore()) {
+                 break;
+             }
+             int i = (int) _inputBuffer[_inputPtr++];
+             char c = (char) _decodeCharForError(i);
+             if (!Character.isJavaIdentifierPart(c)) {
+                 break;
+             }
+             sb.append(c);
+         }
+         if (sb.length() == maxTokenLength) {
+                sb.append("...");
+         }
+         _reportError("Unrecognized token '"+sb.toString()+"': was expecting "+msg);
+// END _reportInvalidToken(String-String-String-String)//     }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e1f1-e1cad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a80d4-4ddee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ddee-e90e4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04e12-18e2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8cfd5-d3d83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ad81-67add
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50a14-4ba30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10309-ecc37
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0081-2da8d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b7a6-5bc50
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_97db1-8e367
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_955e5-96faf
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [2990, 2991, 2992]
+Right editions: []
+Merged body: 
+// START _matchTrue({FormalParametersInternal})//protected final void _matchTrue() throws IOException
+    {
+        int ptr = _inputPtr;
+        if ((ptr + 3) < _inputEnd) {
+            byte[] buf = _inputBuffer;
+            if ((buf[ptr++] == 'r') 
+                   && (buf[ptr++] == 'u')
+                   && (buf[ptr++] == 'e')) {
+                int ch = buf[ptr] & 0xFF;
+// LEFT //                if (ch < INT_0 || (ch == INT_RBRACKET) || (ch == INT_RCURLY)) { // expected/allowed chars
+// LEFT //                    _inputPtr = ptr;
+// LEFT //                    return;
+                }
+            }
+        }
+        _matchToken2("true", 1);
+// END _matchTrue({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [877, 878]
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            // Close/release things like input source, symbol table and recyclable buffers
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _closeArrayScope();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _closeObjectScope();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+            // Was that a trailing comma?
+            if ((_features & FEAT_MASK_TRAILING_COMMA) != 0) {
+                if ((i == INT_RBRACKET) || (i == INT_RCURLY)) {
+                    return _closeScope(i);
+                }
+            }
+        }
+
+        /* And should we now have a name? Always true for Object contexts
+         * since the intermediate 'expect-value' state is never retained.
+         */
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            return _nextTokenNotInObject(i);
+        }
+        // So first parse the field name itself:
+        _updateNameLocation();
+        String n = _parseName(i);
+        _parsingContext.setCurrentName(n);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+        _updateLocation();
+
+        // Ok: we must have a value... what is it? Strings are very common, check first:
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return _currToken;
+        }        
+        JsonToken t;
+
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+
+// RIGHT //            // Should we have separate handling for plus? Although it is not allowed per se,
+// RIGHT //            // it may be erroneously used, and could be indicate by a more specific error message.
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchFalse();
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchNull();
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchTrue();
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return _currToken;
+// END nextToken({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3010, 3011, 3012]
+Right editions: []
+Merged body: 
+// START _matchFalse({FormalParametersInternal})//protected final void _matchFalse() throws IOException
+    {
+        int ptr = _inputPtr;
+        if ((ptr + 4) < _inputEnd) {
+            byte[] buf = _inputBuffer;
+            if ((buf[ptr++] == 'a') 
+                   && (buf[ptr++] == 'l')
+                   && (buf[ptr++] == 's')
+                   && (buf[ptr++] == 'e')) {
+                int ch = buf[ptr] & 0xFF;
+// LEFT //                if (ch < INT_0 || (ch == INT_RBRACKET) || (ch == INT_RCURLY)) { // expected/allowed chars
+// LEFT //                    _inputPtr = ptr;
+// LEFT //                    return;
+                }
+            }
+        }
+        _matchToken2("false", 1);
+// END _matchFalse({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [877, 878]
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            // Close/release things like input source, symbol table and recyclable buffers
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _closeArrayScope();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _closeObjectScope();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+            // Was that a trailing comma?
+            if ((_features & FEAT_MASK_TRAILING_COMMA) != 0) {
+                if ((i == INT_RBRACKET) || (i == INT_RCURLY)) {
+                    return _closeScope(i);
+                }
+            }
+        }
+
+        /* And should we now have a name? Always true for Object contexts
+         * since the intermediate 'expect-value' state is never retained.
+         */
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            return _nextTokenNotInObject(i);
+        }
+        // So first parse the field name itself:
+        _updateNameLocation();
+        String n = _parseName(i);
+        _parsingContext.setCurrentName(n);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+        _updateLocation();
+
+        // Ok: we must have a value... what is it? Strings are very common, check first:
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return _currToken;
+        }        
+        JsonToken t;
+
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+
+// RIGHT //            // Should we have separate handling for plus? Although it is not allowed per se,
+// RIGHT //            // it may be erroneously used, and could be indicate by a more specific error message.
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchFalse();
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchNull();
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchTrue();
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return _currToken;
+// END nextToken({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: [3029, 3030, 3031]
+Right editions: []
+Merged body: 
+// START _matchNull({FormalParametersInternal})//protected final void _matchNull() throws IOException
+    {
+        int ptr = _inputPtr;
+        if ((ptr + 3) < _inputEnd) {
+            byte[] buf = _inputBuffer;
+            if ((buf[ptr++] == 'u') 
+                   && (buf[ptr++] == 'l')
+                   && (buf[ptr++] == 'l')) {
+                int ch = buf[ptr] & 0xFF;
+// LEFT //                if (ch < INT_0 || (ch == INT_RBRACKET) || (ch == INT_RCURLY)) { // expected/allowed chars
+// LEFT //                    _inputPtr = ptr;
+// LEFT //                    return;
+                }
+            }
+        }
+        _matchToken2("null", 1);
+// END _matchNull({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_rev_left_955e5-rev_right_96faf\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [877, 878]
+Merged body: 
+// START nextToken({FormalParametersInternal})//@Override
+    public JsonToken nextToken() throws IOException
+    {
+        /* First: field names are special -- we will always tokenize
+         * (part of) value along with field name to simplify
+         * state handling. If so, can and need to use secondary token:
+         */
+        if (_currToken == JsonToken.FIELD_NAME) {
+            return _nextAfterName();
+        }
+        // But if we didn't already have a name, and (partially?) decode number,
+        // need to ensure no numeric information is leaked
+        _numTypesValid = NR_UNKNOWN;
+        if (_tokenIncomplete) {
+            _skipString(); // only strings can be partial
+        }
+        int i = _skipWSOrEnd();
+        if (i < 0) { // end-of-input
+            // Close/release things like input source, symbol table and recyclable buffers
+            close();
+            return (_currToken = null);
+        }
+        // clear any data retained so far
+        _binaryValue = null;
+
+        // Closing scope?
+        if (i == INT_RBRACKET) {
+            _closeArrayScope();
+            return (_currToken = JsonToken.END_ARRAY);
+        }
+        if (i == INT_RCURLY) {
+            _closeObjectScope();
+            return (_currToken = JsonToken.END_OBJECT);
+        }
+
+        // Nope: do we then expect a comma?
+        if (_parsingContext.expectComma()) {
+            if (i != INT_COMMA) {
+                _reportUnexpectedChar(i, "was expecting comma to separate "+_parsingContext.typeDesc()+" entries");
+            }
+            i = _skipWS();
+            // Was that a trailing comma?
+            if ((_features & FEAT_MASK_TRAILING_COMMA) != 0) {
+                if ((i == INT_RBRACKET) || (i == INT_RCURLY)) {
+                    return _closeScope(i);
+                }
+            }
+        }
+
+        /* And should we now have a name? Always true for Object contexts
+         * since the intermediate 'expect-value' state is never retained.
+         */
+        if (!_parsingContext.inObject()) {
+            _updateLocation();
+            return _nextTokenNotInObject(i);
+        }
+        // So first parse the field name itself:
+        _updateNameLocation();
+        String n = _parseName(i);
+        _parsingContext.setCurrentName(n);
+        _currToken = JsonToken.FIELD_NAME;
+
+        i = _skipColon();
+        _updateLocation();
+
+        // Ok: we must have a value... what is it? Strings are very common, check first:
+        if (i == INT_QUOTE) {
+            _tokenIncomplete = true;
+            _nextToken = JsonToken.VALUE_STRING;
+            return _currToken;
+        }        
+        JsonToken t;
+
+        switch (i) {
+        case '-':
+            t = _parseNegNumber();
+            break;
+
+// RIGHT //            // Should we have separate handling for plus? Although it is not allowed per se,
+// RIGHT //            // it may be erroneously used, and could be indicate by a more specific error message.
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            t = _parsePosNumber(i);
+            break;
+        case 'f':
+            _matchFalse();
+             t = JsonToken.VALUE_FALSE;
+            break;
+        case 'n':
+            _matchNull();
+            t = JsonToken.VALUE_NULL;
+            break;
+        case 't':
+            _matchTrue();
+            t = JsonToken.VALUE_TRUE;
+            break;
+        case '[':
+            t = JsonToken.START_ARRAY;
+            break;
+        case '{':
+            t = JsonToken.START_OBJECT;
+            break;
+
+        default:
+            t = _handleUnexpectedValue(i);
+        }
+        _nextToken = t;
+        return _currToken;
+// END nextToken({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2659-cc1a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ceaa7-1415e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2bd38-6feec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98f3f-5bf90
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70c58-ce227
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dae22-a2b02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43a6a-eb77f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6933-638f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_faf68-32455
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_638f6-144ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b172d-c4e96
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cdd3c-a530a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b823c-923f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da06c-a54bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c277-96633
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_28736-b764a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8385c-d0a34
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad908-0ba22
+#MS_XXX_MS#

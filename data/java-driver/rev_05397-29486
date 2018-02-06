@@ -1,0 +1,1 @@
+[driver-core/src/main/java/com/datastax/driver/core/policies/DowngradingConsistencyRetryPolicy.java:[[0, 135, 135]], driver-core/src/main/java/com/datastax/driver/core/querybuilder/Delete.java:[[0, 373, 374]], driver-core/src/test/java/com/datastax/driver/core/querybuilder/QueryBuilderTest.java:[[0, 31, 0], [0, 178, 0], [0, 204, 0], [0, 216, 205]]]

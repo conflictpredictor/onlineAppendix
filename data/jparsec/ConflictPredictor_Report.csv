@@ -1,0 +1,132 @@
+#MS_XXX_MS#
+Merge scenario: rev_5ae84-3aff0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1aa28-42602
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12925-13e0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56350-5fca7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78eee-84d34
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2ee0-d43d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77fea-76498
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf081-571d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2faa2-ac360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f7b3-d8ca1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42f2f-ecf86
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_672e5-e9231
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63ffd-c485c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13c26-14c92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce983-d5ef9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fca9b-e0f74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab735-7877b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccc6d-48483
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b40c0-8644e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6e0af-7f215
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef097-ac268
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63fd6-d18cd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c750e-352ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83f4a-d448e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ec7a-d79b4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1cc17-210de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_725a8-a8f5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98bb1-f29bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8fe7f-a8063
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_339c6-96599
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jparsec\revisions\rev_339c6_96599\rev_rev_left_339c6-rev_right_96599\jparsec\src\main\java\org\codehaus\jparsec\Lexicon.java
+Different Spacing: false
+Left editions: [111]
+Right editions: []
+Merged body: 
+// START word(String-String)//@Private Object word(String name) {
+// LEFT //    Object p = words.apply(name);
+    checkArgument(p != null, "token %s unavailable", name);
+    return p;
+// END word(String-String)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jparsec\revisions\rev_339c6_96599\rev_rev_left_339c6-rev_right_96599\jparsec\src\main\java\org\codehaus\jparsec\Lexicon.java
+Different Spacing: false
+Left editions: []
+Right editions: [98, 99]
+Merged body: 
+// START token(String-String)//// RIGHT //public Parser<Token> token(String tokenName) {
+// RIGHT //    return Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenName)));
+// END token(String-String)//  }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41222-c4023
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b0bf-d84f3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34e2e-2533b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88ce9-9f878
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fef69-12569
+#MS_XXX_MS#

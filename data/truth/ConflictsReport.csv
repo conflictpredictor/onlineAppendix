@@ -1,0 +1,125 @@
+=========================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_4e28c_6d571\rev_4e28c-6d571.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_b696b_d6448\rev_b696b-d6448.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_022e3_f1a5c\rev_022e3-f1a5c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_cd89d_55701\rev_cd89d-55701.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_4337a_c070f\rev_4337a-c070f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_a9381_5dda4\rev_a9381-5dda4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_bdd6e_bc2c7\rev_bdd6e-bc2c7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_d87f0_1a99a\rev_d87f0-1a99a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_ff195_df659\rev_ff195-df659.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_6e293_54f5c\rev_6e293-54f5c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_426c4_66926\rev_426c4-66926.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_85426_5e2b9\rev_85426-5e2b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_bd62b_5a36b\rev_bd62b-5a36b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_39fa8_02823\rev_39fa8-02823.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_377ee_bace8\rev_377ee-bace8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_82282_a72a3\rev_82282-a72a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_d6e0b_d11c0\rev_d6e0b-d11c0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_4064e_63012\rev_4064e-63012.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_28cac_ada28\rev_28cac-ada28.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513169961113\fstmerge_var1_8443291571722513000
+protected void fail(String verb, Object other) {
+    failComparingToStrings(verb, getSubject(), other, other, false);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513169961113\fstmerge_base_8732137363537139755
+protected void fail(String verb, Object part) {
+    StringBuilder message =
+        new StringBuilder("Not true that ").append(getDisplaySubject()).append(" ");
+    // If the subject and parts aren't null, and they have equal toString()'s but different
+    // classes, we need to disambiguate them.
+    boolean needsDisambiguation = (part != null) && (getSubject() != null)
+        && getSubject().toString().equals(part.toString())
+        && !getSubject().getClass().equals(part.getClass());
+    if (needsDisambiguation) {
+      message
+          .append("(")
+          .append(getSubject().getClass().getName())
+          .append(") ");
+    }
+    message
+        .append(verb)
+        .append(" <")
+        .append(part)
+        .append(">");
+    if (needsDisambiguation) {
+      message
+          .append(" (")
+          .append(part.getClass().getName())
+          .append(")");
+    }
+    failureStrategy.fail(message.toString());
+=======
+protected void fail(String verb, Object... messageParts) {
+    // For backwards binary compatibility
+    if (messageParts.length == 0) {
+      fail(verb);
+    } else if (messageParts.length == 1) {
+      fail(verb, messageParts[0]);
+    } else {
+      StringBuilder message = new StringBuilder("Not true that ");
+      message
+          .append(getDisplaySubject())
+          .append(" ")
+          .append(verb);
+      for (Object part : messageParts) {
+        message
+            .append(" <")
+            .append(part)
+            .append(">");
+      }
+      failureStrategy.fail(message.toString());
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513169961113\fstmerge_var2_6249084228940785671
+  }
+
+File path: C:\download\ssmerge\truth\revisions\rev_28cac_ada28\rev_rev_left_28cac-rev_right_ada28\core\src\main\java\com\google\common\truth\Subject.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\truth\revisions\rev_84916_9f894\rev_84916-9f894.revisions
+
+=========================================================

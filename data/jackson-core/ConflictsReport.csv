@@ -1,0 +1,920 @@
+=========================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1d076_8514f\rev_1d076-8514f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ec928_475a9\rev_ec928-475a9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_54490_fdcb4\rev_54490-fdcb4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_882b7_e774d\rev_882b7-e774d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_dc6d1_a37f0\rev_dc6d1-a37f0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_9c778_1e4a2\rev_9c778-1e4a2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_496f3_6b077\rev_496f3-6b077.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2768b_d0d57\rev_2768b-d0d57.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_27eb3_7577b\rev_27eb3-7577b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_7df7c_483e6\rev_7df7c-483e6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_33a43_85ad2\rev_33a43-85ad2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_7b1d4_1c9e1\rev_7b1d4-1c9e1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_44f42_3f455\rev_44f42-3f455.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_e2207_0d9cd\rev_e2207-0d9cd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_15138_d9995\rev_15138-d9995.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_47927_2888f\rev_47927-2888f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_6a860_c2843\rev_6a860-c2843.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_08446_414e8\rev_08446-414e8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_a67dd_3dced\rev_a67dd-3dced.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_e887c_9bdda\rev_e887c-9bdda.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_53621_18ebf\rev_53621-18ebf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_efc42_aa65e\rev_efc42-aa65e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2a629_e01cb\rev_2a629-e01cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_46221_eca5e\rev_46221-eca5e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_dbaf1_22709\rev_dbaf1-22709.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_f753c_29a36\rev_f753c-29a36.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_29a36_fca10\rev_29a36-fca10.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ac6d8_61018\rev_ac6d8-61018.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2f41b_11f0b\rev_2f41b-11f0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_c2437_1a0eb\rev_c2437-1a0eb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_6a1e6_e0a02\rev_6a1e6-e0a02.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public int calcHash(int q1, int q2)
+    {
+        // For two quads, let's change algorithm a bit, to spice
+        // things up (can do bit more processing anyway)
+        int hash = q1;
+        hash ^= (hash >>> 15); // try mixing first and second byte pairs first
+        hash += (q2 * MULT); // then add second quad
+        hash ^= _seed;
+        hash += (hash >>> 7); // and shuffle some more
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692033350\fstmerge_var1_7740023131545987346
+        hash ^= (hash >>> 19);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692033350\fstmerge_base_3759525893373143503
+=======
+        // 26-Mar-2015, tatu: As per [core#187] need bit more shuffling. This may
+        //   seem like a magical number (and in a way, it is), but it was the sweet
+        //   spot for some reason (5 and 3 work ok but converges for 4, for tested case)
+        hash ^= (hash >>> 4);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692033350\fstmerge_var2_6224207412806805337
+        return hash;
+    }
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_6a1e6_e0a02\rev_rev_left_6a1e6-rev_right_e0a02\src\main\java\com\fasterxml\jackson\core\sym\BytesToNameCanonicalizer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692057750\fstmerge_var1_8285616349721522534
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692057750\fstmerge_base_372892611471487141
+public void testSyntheticWithBytes() throws IOException
+    {
+        // pass seed, to keep results consistent:
+        final int SEED = 33333;
+        BytesToNameCanonicalizer symbols =
+                BytesToNameCanonicalizer.createRoot(SEED).makeChild(JsonFactory.Feature.collectDefaults());
+        final int COUNT = 6000;
+        for (int i = 0; i < COUNT; ++i) {
+            String id = fieldNameFor(i);
+            int[] quads = BytesToNameCanonicalizer.calcQuads(id.getBytes("UTF-8"));
+            symbols.addName(id, quads, quads.length);
+        }
+        assertEquals(COUNT, symbols.size());
+        assertEquals(8192, symbols.bucketCount());
+
+//System.out.printf("Byte stuff: collisions %d, max-coll %d\n", symbols.collisionCount(), symbols.maxCollisionLength());
+    
+        // Fewer collisions than with chars, but still quite a few
+        assertEquals(1686, symbols.collisionCount());
+        // but not super long collision chains:
+        assertEquals(9, symbols.maxCollisionLength());
+    }
+=======
+public void testSyntheticWithBytes() throws IOException
+    {
+        // pass seed, to keep results consistent:
+        final int SEED = 33333;
+        BytesToNameCanonicalizer symbols =
+                BytesToNameCanonicalizer.createRoot(SEED).makeChild(JsonFactory.Feature.collectDefaults());
+        final int COUNT = 6000;
+        for (int i = 0; i < COUNT; ++i) {
+            String id = fieldNameFor(i);
+            int[] quads = BytesToNameCanonicalizer.calcQuads(id.getBytes("UTF-8"));
+            symbols.addName(id, quads, quads.length);
+        }
+        assertEquals(COUNT, symbols.size());
+        assertEquals(8192, symbols.bucketCount());
+
+//System.out.printf("Byte stuff: collisions %d, max-coll %d\n", symbols.collisionCount(), symbols.maxCollisionLength());
+    
+        assertEquals(1733, symbols.collisionCount());
+        // but not super long collision chains:
+        assertEquals(9, symbols.maxCollisionLength());
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513692057750\fstmerge_var2_221784513950652162
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_6a1e6_e0a02\rev_rev_left_6a1e6-rev_right_e0a02\src\test\java\com\fasterxml\jackson\core\sym\TestSymbolTables.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b5572_8db55\rev_b5572-8db55.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_698f3_a81cb\rev_698f3-a81cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_00900_f7614\rev_00900-f7614.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_cfe32_8fbde\rev_cfe32-8fbde.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_8394d_6a637\rev_8394d-6a637.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b808f_8891c\rev_b808f-8891c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_25aeb_37fc3\rev_25aeb-37fc3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_7f7d1_cbdf6\rev_7f7d1-cbdf6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1d170_8fa79\rev_1d170-8fa79.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_adb9e_6f496\rev_adb9e-6f496.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_e711a_cfeae\rev_e711a-cfeae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_0a3d1_be438\rev_0a3d1-be438.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_0d9ca_44dc4\rev_0d9ca-44dc4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_87388_60317\rev_87388-60317.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_d3f03_186a6\rev_d3f03-186a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_186a6_5f04c\rev_186a6-5f04c.revisions
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: copiedMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513693012405\fstmerge_var1_6883913380194220305
+private void _testNextFieldNameIndent(boolean useStream) throws Exception
+    {
+        final String DOC = "{\n  \"name\" : \n  [\n  ]\n   }";
+        JsonParser p = useStream ?
+                JSON_F.createParser(new ByteArrayInputStream(DOC.getBytes("UTF-8")))
+            : JSON_F.createParser(new StringReader(DOC));
+        assertToken(JsonToken.START_OBJECT, p.nextToken());
+        assertTrue(p.nextFieldName(new SerializedString("name")));
+
+        assertToken(JsonToken.START_ARRAY, p.nextToken());
+        assertToken(JsonToken.END_ARRAY, p.nextToken());
+        assertToken(JsonToken.END_OBJECT, p.nextToken());
+
+        assertNull(p.nextToken());
+
+        p.close();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513693012405\fstmerge_base_2225226866307692105
+=======
+private void _testNextFieldNameIndent(boolean useStream) throws Exception
+    {
+        final String DOC = "{\n  \"name\" : \n  [\n  ]\n   }";
+        JsonFactory f = new JsonFactory();
+        JsonParser p = useStream ?
+                f.createParser(new ByteArrayInputStream(DOC.getBytes("UTF-8")))
+            : f.createParser(new StringReader(DOC));
+        assertToken(JsonToken.START_OBJECT, p.nextToken());
+        assertTrue(p.nextFieldName(new SerializedString("name")));
+
+        assertToken(JsonToken.START_ARRAY, p.nextToken());
+        assertToken(JsonToken.END_ARRAY, p.nextToken());
+        assertToken(JsonToken.END_OBJECT, p.nextToken());
+
+        assertNull(p.nextToken());
+
+        p.close();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513693012405\fstmerge_var2_769781392656981945
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_186a6_5f04c\rev_rev_left_186a6-rev_right_5f04c\src\test\java\com\fasterxml\jackson\core\json\TestNextXxx.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_6cbca_f5548\rev_6cbca-f5548.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_294f7_2cd12\rev_294f7-2cd12.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_232be_9cf0d\rev_232be-9cf0d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_54340_a5e4f\rev_54340-a5e4f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_12b3c_73662\rev_12b3c-73662.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_d302a_b3382\rev_d302a-b3382.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_a981a_1fb1e\rev_a981a-1fb1e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ba50d_18ad3\rev_ba50d-18ad3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b82ae_d58d4\rev_b82ae-d58d4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_c33fc_85856\rev_c33fc-85856.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_91965_7b5f4\rev_91965-7b5f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1fb1e_25e7d\rev_1fb1e-25e7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_7b5f4_110c1\rev_7b5f4-110c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_3c2c9_0524e\rev_3c2c9-0524e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_f55df_c3263\rev_f55df-c3263.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_38e03_fd327\rev_38e03-fd327.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_df96e_21ee4\rev_df96e-21ee4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_4709c_531b4\rev_4709c-531b4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_56be1_27acd\rev_56be1-27acd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_c53f3_1e262\rev_c53f3-1e262.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_a3f5f_a562a\rev_a3f5f-a562a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1e262_a34b8\rev_1e262-a34b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b6849_1d1aa\rev_b6849-1d1aa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2fec7_13fc4\rev_2fec7-13fc4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_6e399_d652a\rev_6e399-d652a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_80e83_e3292\rev_80e83-e3292.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_0472c_38b3f\rev_0472c-38b3f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_00a29_0f432\rev_00a29-0f432.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_a8a9b_88db6\rev_a8a9b-88db6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_e5ded_cfb08\rev_e5ded-cfb08.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_0ed7e_e9fcb\rev_0ed7e-e9fcb.revisions
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: noPattern
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465546\fstmerge_var1_5339550930558914912
+public void writeArray(int[] array, int offset, int length) throws IOException
+    {
+        if (array == null) {
+            throw new IllegalArgumentException("null array");
+        }
+        _verifyOffsets(array.length, offset, length);
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465546\fstmerge_base_2517788758431264406
+=======
+public void writeArray(int[] array, int offset, int length) throws IOException
+    {
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465546\fstmerge_var2_6181097302710876733
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_0ed7e_e9fcb\rev_rev_left_0ed7e-rev_right_e9fcb\src\main\java\com\fasterxml\jackson\core\JsonGenerator.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: noPattern
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465648\fstmerge_var1_6023651774474132709
+public void writeArray(long[] array, int offset, int length) throws IOException
+    {
+        if (array == null) {
+            throw new IllegalArgumentException("null array");
+        }
+        _verifyOffsets(array.length, offset, length);
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465648\fstmerge_base_339789837443906945
+=======
+public void writeArray(long[] array, int offset, int length) throws IOException
+    {
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465648\fstmerge_var2_6263735157554925074
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_0ed7e_e9fcb\rev_rev_left_0ed7e-rev_right_e9fcb\src\main\java\com\fasterxml\jackson\core\JsonGenerator.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: noPattern
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465753\fstmerge_var1_8999224094569652155
+public void writeArray(double[] array, int offset, int length) throws IOException
+    {
+        if (array == null) {
+            throw new IllegalArgumentException("null array");
+        }
+        _verifyOffsets(array.length, offset, length);
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465753\fstmerge_base_1689984138386993932
+=======
+public void writeArray(double[] array, int offset, int length) throws IOException
+    {
+        writeStartArray();
+        for (int i = offset, end = offset+length; i < end; ++i) {
+            writeNumber(array[i]);
+        }
+        writeEndArray();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694465753\fstmerge_var2_7699623123067756859
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_0ed7e_e9fcb\rev_rev_left_0ed7e-rev_right_e9fcb\src\main\java\com\fasterxml\jackson\core\JsonGenerator.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_92245_b3d89\rev_92245-b3d89.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_2268c-e962f.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868865\fstmerge_var1_3923146292245374504
+private final void _skipUtf8_2(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+            _loadMoreGuaranteed();
+        }
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868865\fstmerge_base_352551408126544026
+private final void _skipUtf8_2(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+            loadMoreGuaranteed();
+        }
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868865\fstmerge_var2_720801527106670533
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868958\fstmerge_var1_1484573242784579528
+private final void _skipUtf8_3(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+            _loadMoreGuaranteed();
+        }
+        //c &= 0x0F;
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+        if (_inputPtr >= _inputEnd) {
+            _loadMoreGuaranteed();
+        }
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868958\fstmerge_base_6438622965242305655
+private final void _skipUtf8_3(int c) throws IOException
+    {
+        if (_inputPtr >= _inputEnd) {
+            loadMoreGuaranteed();
+        }
+        //c &= 0x0F;
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+        if (_inputPtr >= _inputEnd) {
+            loadMoreGuaranteed();
+        }
+        c = (int) _inputBuffer[_inputPtr++];
+        if ((c & 0xC0) != 0x080) {
+            _reportInvalidOther(c & 0xFF, _inputPtr);
+        }
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513694868958\fstmerge_var2_8275962036637269401
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_2268c_e962f\rev_rev_left_2268c-rev_right_e962f\src\main\java\com\fasterxml\jackson\core\json\UTF8StreamJsonParser.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_c98ff_554f8\rev_c98ff-554f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_95019_956e0\rev_95019-956e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_612f2_96642\rev_612f2-96642.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_3307b_345ca\rev_3307b-345ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_c44c4_597f4\rev_c44c4-597f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ad6d3_71d2a\rev_ad6d3-71d2a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ad6d3_1d39c\rev_ad6d3-1d39c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1ac57_f98ea\rev_1ac57-f98ea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_489be_dc9ee\rev_489be-dc9ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_1fa0a_d2362\rev_1fa0a-d2362.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_dc9ee_7d9be\rev_dc9ee-7d9be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_7a7b5_958fc\rev_7a7b5-958fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2e1f1_e1cad\rev_2e1f1-e1cad.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_a80d4_4ddee\rev_a80d4-4ddee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_4ddee_e90e4\rev_4ddee-e90e4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_04e12_18e2b\rev_04e12-18e2b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_8cfd5_d3d83\rev_8cfd5-d3d83.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_9ad81_67add\rev_9ad81-67add.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static ByteQuadsCanonicalizer createRoot() {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513696581190\fstmerge_var1_9146031818078757900
+        /* [jackson-core#21]: Need to use a variable seed, to thwart hash-collision
+         * based attacks.
+         */
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513696581190\fstmerge_base_3202684650692900698
+        /* [Issue-21]: Need to use a variable seed, to thwart hash-collision
+         * based attacks.
+         */
+=======
+        // Need to use a variable seed, to thwart hash-collision based attacks.
+        // 14-Feb-2017, tatu: Does this actually help?
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513696581190\fstmerge_var2_3538957539933474019
+        long now = System.currentTimeMillis();
+        // ensure it's not 0; and might as well require to be odd so:
+        int seed = (((int) now) + ((int) (now >>> 32))) | 1;
+        return createRoot(seed);
+    }
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_9ad81_67add\rev_rev_left_9ad81-rev_right_67add\src\main\java\com\fasterxml\jackson\core\sym\ByteQuadsCanonicalizer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_50a14_4ba30\rev_50a14-4ba30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_10309_ecc37\rev_10309-ecc37.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_f0081_2da8d\rev_f0081-2da8d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_0b7a6_5bc50\rev_0b7a6-5bc50.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_97db1_8e367\rev_97db1-8e367.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_955e5_96faf\rev_955e5-96faf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_d2659_cc1a8\rev_d2659-cc1a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ceaa7_1415e\rev_ceaa7-1415e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_2bd38_6feec\rev_2bd38-6feec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_98f3f_5bf90\rev_98f3f-5bf90.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_70c58_ce227\rev_70c58-ce227.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_dae22_a2b02\rev_dae22-a2b02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_43a6a_eb77f\rev_43a6a-eb77f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_e6933_638f6\rev_e6933-638f6.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513697507959\fstmerge_var1_7453400286700460317
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513697507959\fstmerge_base_35984710586535520
+public BufferRecycler _getBufferRecycler()
+    {
+        /* 23-Apr-2015, tatu: Let's allow disabling of buffer recycling
+         *   scheme, for cases where it is considered harmful (possibly
+         *   on Android, for example)
+         */
+        if (Feature.USE_THREAD_LOCAL_FOR_BUFFER_RECYCLING.enabledIn(_factoryFeatures)) {
+            SoftReference<BufferRecycler> ref = _recyclerRef.get();
+            BufferRecycler br = (ref == null) ? null : ref.get();
+    
+            if (br == null) {
+                br = new BufferRecycler();
+                _recyclerRef.set(new SoftReference<BufferRecycler>(br));
+            }
+            return br;
+        }
+        return new BufferRecycler();
+    }
+=======
+public BufferRecycler _getBufferRecycler()
+    {
+        /* 23-Apr-2015, tatu: Let's allow disabling of buffer recycling
+         *   scheme, for cases where it is considered harmful (possibly
+         *   on Android, for example)
+         */
+        if (Feature.USE_THREAD_LOCAL_FOR_BUFFER_RECYCLING.enabledIn(_factoryFeatures)) {
+            return BufferRecyclers.getBufferRecycler();
+        }
+        return new BufferRecycler();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513697507959\fstmerge_var2_412653151799617603
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_e6933_638f6\rev_rev_left_e6933-rev_right_638f6\src\main\java\com\fasterxml\jackson\core\JsonFactory.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_faf68_32455\rev_faf68-32455.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_638f6_144ba\rev_638f6-144ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b172d_c4e96\rev_b172d-c4e96.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public int read(char[] cbuf, int start, int len) throws IOException {
+        // Already EOF?
+        if (_buffer == null) { return -1; }
+        if (len < 1) { return len; }
+        // Let's then ensure there's enough room...
+        if (start < 0 || (start+len) > cbuf.length) {
+            reportBounds(cbuf, start, len);
+        }
+
+        int outPtr = start;
+        final int outEnd = len+start;
+
+        // Ok, first; do we have a surrogate from last round?
+        if (_surrogate != NC) {
+            cbuf[outPtr++] = _surrogate;
+            _surrogate = NC;
+            // No need to load more, already got one char
+        } else {
+            // Note: we'll try to avoid blocking as much as possible. As a
+            // result, we only need to get 4 bytes for a full char.
+            int left = (_length - _ptr);
+            if (left < 4) {
+                if (!loadMore(left)) { // (legal) EOF?
+                    // Ok if (but only if!) was at boundary
+                    if (left == 0) {
+                        return -1;
+                    }
+                    reportUnexpectedEOF(_length - _ptr, 4);
+                }
+            }
+        }
+
+        // 02-Jun-2017, tatu: Must ensure we don't try to read past buffer end:
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698216562\fstmerge_var1_7999032164556381990
+        final int _lastValidInputStart = (_length - 4);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698216562\fstmerge_base_8969115054986602735
+        final int _lastValidInputStart = (_length - 3);
+=======
+        final int lastValidInputStart = (_length - 4);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698216562\fstmerge_var2_7255951641167795556
+        
+        main_loop:
+        while (outPtr < outEnd) {
+            int ptr = _ptr;
+            int hi, lo;
+
+            if (_bigEndian) {
+                hi = (_buffer[ptr] << 8) | (_buffer[ptr+1] & 0xFF);
+                lo = ((_buffer[ptr+2] & 0xFF) << 8) | (_buffer[ptr+3] & 0xFF);
+            } else {
+                lo = (_buffer[ptr] & 0xFF) | ((_buffer[ptr+1] & 0xFF) << 8);
+                hi = (_buffer[ptr+2] & 0xFF)| (_buffer[ptr+3] << 8);
+            }
+            _ptr += 4;
+
+            // Does it need to be split to surrogates?
+            // (also, we can and need to verify illegal chars)
+            if (hi != 0) { // need to split into surrogates?
+                hi &= 0xFFFF; // since it may be sign extended
+                int ch = ((hi - 1) << 16) | lo; // ch -= 0x10000; to normalize starting with 0x0
+                if (hi > 0x10) { // last valid is 0x10FFFF
+                    reportInvalid(ch, outPtr-start,
+                            String.format(" (above 0x%08x)", LAST_VALID_UNICODE_CHAR));
+                }
+                cbuf[outPtr++] = (char) (0xD800 + (ch >> 10));
+                // hmmh. can this ever be 0? (not legal, at least?)
+                lo = (0xDC00 | (ch & 0x03FF));
+                // Room for second part?
+                if (outPtr >= outEnd) { // nope
+                    _surrogate = (char) ch;
+                    break main_loop;
+                }
+            }
+            cbuf[outPtr++] = (char) lo;
+            if (_ptr > lastValidInputStart) {
+                break main_loop;
+            }
+        }
+        int actualLen = (outPtr - start);
+        _charCount += actualLen;
+        return actualLen;
+    }
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_b172d_c4e96\rev_rev_left_b172d-rev_right_c4e96\src\main\java\com\fasterxml\jackson\core\io\UTF32Reader.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: copiedMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698478013\fstmerge_var1_2187598734067700786
+public void testSimpleSevenNullBytes() throws Exception {
+        byte[] data = new byte[7];
+        JsonParser parser = FACTORY.createParser(ObjectReadContext.empty(), data);
+        try {
+            parser.nextToken();
+            fail("Should not pass");
+        } catch (JsonParseException e) {
+            verifyException(e, "Illegal character ((CTRL-CHAR, code 0))");
+        }
+        parser.close();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698478013\fstmerge_base_4088779467481253559
+=======
+public void testSimpleSevenNullBytes() throws Exception {
+        byte[] data = new byte[7];
+        JsonParser parser = FACTORY.createParser(/*ObjectReadContext.empty(), */data);
+        try {
+            parser.nextToken();
+            fail("Should not pass");
+        } catch (JsonParseException e) {
+            verifyException(e, "Illegal character ((CTRL-CHAR, code 0))");
+        }
+        parser.close();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513698478013\fstmerge_var2_4737228165961386131
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_b172d_c4e96\rev_rev_left_b172d-rev_right_c4e96\src\test\java\com\fasterxml\jackson\core\read\UTF32ParseTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_cdd3c_a530a\rev_cdd3c-a530a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_b823c_923f8\rev_b823c-923f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_da06c_a54bb\rev_da06c-a54bb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_3c277_96633\rev_3c277-96633.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_28736_b764a\rev_28736-b764a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_8385c_d0a34\rev_8385c-d0a34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-core\revisions\rev_ad908_0ba22\rev_ad908-0ba22.revisions
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: smallMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700063332\fstmerge_var1_7287619376578062919
+public abstract String currentName() throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700063332\fstmerge_base_7577489894152047909
+=======
+public String currentName() throws IOException {
+        return getCurrentName();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700063332\fstmerge_var2_6016198927303278903
+
+File path: C:\download\ssmerge\jackson-core\revisions\rev_ad908_0ba22\rev_rev_left_ad908-rev_right_0ba22\src\main\java\com\fasterxml\jackson\core\JsonParser.java
+
+=========================================================

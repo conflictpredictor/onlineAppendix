@@ -1,0 +1,1093 @@
+=========================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_4b39b_eea6c\rev_4b39b-eea6c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ab8e0_f5ec6\rev_ab8e0-f5ec6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ccd4c_56ca3\rev_ccd4c-56ca3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_7b4e9_baa9d\rev_7b4e9-baa9d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2efc1_06074\rev_2efc1-06074.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ac250_fadf9\rev_ac250-fadf9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_cd432_3f1c5\rev_cd432-3f1c5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_60caa_2cb07\rev_60caa-2cb07.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f2c7f_52cdf\rev_f2c7f-52cdf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_15697_6d8de\rev_15697-6d8de.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_be4c1_ae8e3\rev_be4c1-ae8e3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_fba17_bfeae\rev_fba17-bfeae.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_778c1_2242c\rev_778c1-2242c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6800b_4b178\rev_6800b-4b178.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_3418a_4d508\rev_3418a-4d508.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f78b8_7ea39\rev_f78b8-7ea39.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_610a9-07762.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f3cc0_2bce3\rev_f3cc0-2bce3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_cf96d_e6c5d\rev_cf96d-e6c5d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_bda9b_1690a\rev_bda9b-1690a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e2220_fd9d9\rev_e2220-fd9d9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2e7b5_737b8\rev_2e7b5-737b8.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_68245_bdaf7\rev_68245-bdaf7.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_bd205_4d574\rev_bd205-4d574.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6ce88_c0ac3\rev_6ce88-c0ac3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_2ef7c-941ae.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279630\fstmerge_var1_6498315632874294128
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279630\fstmerge_base_8066250022880204541
+private List<Parameter> createParamList() {
+    List<Parameter> params = new ArrayList<Parameter>();
+
+    // Add arguments as parameters.
+    String[] pathNamedParams = methodInfo.namedParams;
+    int singleEntityArgumentIndex = methodInfo.singleEntityArgumentIndex;
+    for (int i = 0; i < pathNamedParams.length; i++) {
+      Object arg = args[i];
+      if (arg == null) continue;
+      if (i != singleEntityArgumentIndex) {
+        params.add(new Parameter(pathNamedParams[i], arg, arg.getClass()));
+      }
+    }
+
+    return params;
+  }
+=======
+private List<Parameter> createParamList() {
+    List<Parameter> params = new ArrayList<Parameter>();
+
+    // Add arguments as parameters.
+    String[] pathNamedParams = methodInfo.namedParams;
+    int singleEntityArgumentIndex = methodInfo.singleEntityArgumentIndex;
+    for (int i = 0; i < pathNamedParams.length; i++) {
+      Object arg = args[i];
+      if (arg == null || pathNamedParams[i] == null) continue;
+      if (i != singleEntityArgumentIndex) {
+        params.add(new Parameter(pathNamedParams[i], arg, arg.getClass()));
+      }
+    }
+
+    return params;
+  }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279630\fstmerge_var2_4712196050804122255
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RequestBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+Request build() throws UnsupportedEncodingException {
+    String apiUrl = this.apiUrl;
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We enforce relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+
+    // Append the method relative URL.
+    url.append(buildRelativeUrl());
+
+    // Append query parameters, if needed.
+    if (methodInfo.hasQueryParams) {
+      boolean first = true;
+      String requestQuery = methodInfo.requestQuery;
+      if (requestQuery != null) {
+        url.append(requestQuery);
+        first = false;
+      }
+      String[] requestQueryName = methodInfo.requestQueryName;
+      for (int i = 0; i < requestQueryName.length; i++) {
+        String query = requestQueryName[i];
+        if (query != null) {
+          String value = URLEncoder.encode(String.valueOf(args[i]), "UTF-8");
+          url.append(first ? '?' : '&').append(query).append('=').append(value);
+          first = false;
+        }
+      }
+    }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279680\fstmerge_var1_4934229531225202748
+    return new Request(methodInfo.requestMethod, url.toString(), headers, buildBody());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279680\fstmerge_base_7978226367195415259
+    return new Request(methodInfo.restMethod.value(), url.toString(), headers, body);
+=======
+    List<HeaderPair> headers = new ArrayList<HeaderPair>();
+    if (this.headers != null) {
+      headers.addAll(this.headers);
+    }
+    if (methodInfo.headers != null) {
+      headers.addAll(methodInfo.headers);
+    }
+    // RFC 2616: Field names are case-insensitive
+    List<String> lcHeadersToRemove = new ArrayList<String>();
+    if (methodInfo.headerParams != null) {
+      for (int i = 0; i < methodInfo.headerParams.length; i++) {
+        String name = methodInfo.headerParams[i];
+        if (name == null) continue;
+        Object arg = args[i];
+        if (arg != null) {
+          headers.add(new HeaderPair(name, arg.toString()));
+        } else {
+          lcHeadersToRemove.add(name.toLowerCase());
+        }
+      }
+    }
+    for (Iterator<HeaderPair> header = headers.iterator(); header.hasNext();) {
+      // RFC 2616: Field names are case-insensitive
+      if (lcHeadersToRemove.contains(header.next().getName().toLowerCase()))
+        header.remove();
+    }
+    return new Request(methodInfo.restMethod.value(), url.toString(), headers, body);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162279680\fstmerge_var2_8887742414047131969
+  }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RequestBuilder.java
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162280850\fstmerge_var1_483175802184845932
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162280850\fstmerge_base_1135488047548485830
+private final Headers headers;
+=======
+private final HeaderPairs headers;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162280850\fstmerge_var2_6098453870637364711
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282453\fstmerge_var1_3355805645332916447
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282453\fstmerge_base_5791537854340838972
+private Headers headers;
+=======
+private HeaderPairs headers;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282453\fstmerge_var2_7935791305249889098
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private void ensureSaneDefaults() {
+      if (converter == null) {
+        converter = Platform.get().defaultConverter();
+      }
+      if (clientProvider == null) {
+        clientProvider = Platform.get().defaultClient();
+      }
+      if (httpExecutor == null) {
+        httpExecutor = Platform.get().defaultHttpExecutor();
+      }
+      if (callbackExecutor == null) {
+        callbackExecutor = Platform.get().defaultCallbackExecutor();
+      }
+      if (log == null) {
+        log = Platform.get().defaultLog();
+      }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282856\fstmerge_var1_7411064475876551677
+      if (requestHeaders == null) {
+        requestHeaders = RequestHeaders.NONE;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282856\fstmerge_base_845014501944872914
+      if (headers == null) {
+        headers = Headers.NONE;
+=======
+      if (headers == null) {
+        headers = HeaderPairs.NONE;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162282856\fstmerge_var2_1688666838670657995
+      }
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private void parseMethodAnnotations() {
+    for (Annotation methodAnnotation : method.getAnnotations()) {
+      Class<? extends Annotation> annotationType = methodAnnotation.annotationType();
+      RestMethod methodInfo = null;
+
+      // Look for a @RestMethod annotation on the parameter annotation indicating request method.
+      for (Annotation innerAnnotation : annotationType.getAnnotations()) {
+        if (RestMethod.class == innerAnnotation.annotationType()) {
+          methodInfo = (RestMethod) innerAnnotation;
+          break;
+        }
+      }
+
+      if (methodInfo != null) {
+        if (requestMethod != null) {
+          throw new IllegalArgumentException("Method "
+              + method.getName()
+              + " contains multiple HTTP methods. Found: "
+              + requestMethod
+              + " and "
+              + methodInfo.value());
+        }
+        String path;
+        try {
+          path = (String) annotationType.getMethod("value").invoke(methodAnnotation);
+        } catch (Exception e) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162285750\fstmerge_var1_5828266502147210889
+          throw new RuntimeException("Failed to extract path from "
+              + annotationType.getSimpleName()
+              + " annotation on "
+              + method.getName()
+              + ".", e);
+        }
+        parsePath(path);
+        requestMethod = methodInfo.value();
+        requestHasBody = methodInfo.hasBody();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162285750\fstmerge_base_3387995669583581315
+          throw new RuntimeException("Failed to extract URI path.", e);
+        }
+        if (!path.startsWith("/")) {
+          throw new IllegalArgumentException("URL path must be prefixed with '/'.");
+        }
+        pathParams = parsePathParameters(path);
+        restMethod = methodInfo;
+      } else if (annotationType == QueryParams.class) {
+        if (pathQueryParams != null) {
+          throw new IllegalStateException(
+              "QueryParam and QueryParams annotations are mutually exclusive.");
+        }
+        pathQueryParams = ((QueryParams) methodAnnotation).value();
+        if (pathQueryParams.length == 0) {
+          throw new IllegalStateException("QueryParams annotation was empty.");
+        }
+      } else if (annotationType == QueryParam.class) {
+        if (pathQueryParams != null) {
+          throw new IllegalStateException(
+              "QueryParam and QueryParams annotations are mutually exclusive.");
+        }
+        pathQueryParams = new QueryParam[] { (QueryParam) methodAnnotation };
+=======
+          throw new RuntimeException("Failed to extract URI path.", e);
+        }
+        if (!path.startsWith("/")) {
+          throw new IllegalArgumentException("URL path must be prefixed with '/'.");
+        }
+        pathParams = parsePathParameters(path);
+        restMethod = methodInfo;
+      } else if (annotationType == Headers.class) {
+        String[] headersToParse = ((Headers) methodAnnotation).value();
+        if (headersToParse.length == 0) {
+          throw new IllegalStateException("Headers annotation was empty.");
+        }
+        headers = parseHeaders(headersToParse);
+      } else if (annotationType == QueryParams.class) {
+        if (pathQueryParams != null) {
+          throw new IllegalStateException(
+              "QueryParam and QueryParams annotations are mutually exclusive.");
+        }
+        pathQueryParams = ((QueryParams) methodAnnotation).value();
+        if (pathQueryParams.length == 0) {
+          throw new IllegalStateException("QueryParams annotation was empty.");
+        }
+      } else if (annotationType == QueryParam.class) {
+        if (pathQueryParams != null) {
+          throw new IllegalStateException(
+              "QueryParam and QueryParams annotations are mutually exclusive.");
+        }
+        pathQueryParams = new QueryParam[] { (QueryParam) methodAnnotation };
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162285750\fstmerge_var2_5572327452190604130
+      } else if (annotationType == Multipart.class) {
+        requestType = RequestType.MULTIPART;
+      } else if (annotationType == FormEncoded.class) {
+        requestType = RequestType.FORM_ENCODED;
+      }
+    }
+
+    if (requestMethod == null) {
+      throw new IllegalStateException(
+          "Method " + method.getName() + " not annotated with request type (e.g., GET, POST).");
+    }
+    if (!requestHasBody) {
+      if (requestType == RequestType.MULTIPART) {
+        throw new IllegalStateException(
+            "Multipart can only be specific on HTTP methods with request body (e.g., POST). ("
+                + method.getName()
+                + ")");
+      }
+      if (requestType == RequestType.FORM_ENCODED) {
+        throw new IllegalStateException(
+            "Multipart can only be specific on HTTP methods with request body (e.g., POST). ("
+                + method.getName()
+                + ")");
+      }
+    }
+  }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestMethodInfo.java
+Conflict type: EditSameMC
+Number of Conflicts: 3
+Different Spacing: 0
+Consecutive Lines: 3
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 3, 0, 0
+Conflict body: 
+private void parseParameters() {
+    Class<?>[] parameterTypes = method.getParameterTypes();
+
+    Annotation[][] parameterAnnotationArrays = method.getParameterAnnotations();
+    int count = parameterAnnotationArrays.length;
+    if (!isSynchronous) {
+      count -= 1; // Callback is last argument when not a synchronous method.
+    }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var1_5573106041426068671
+    String[] urlParam = new String[count];
+    String[] queryName = new String[count];
+    String[] formValue = new String[count];
+    String[] multipartPart = new String[count];
+    boolean gotPair = false;
+    boolean gotPart = false;
+
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_base_2856760720275471
+    String[] namedParams = new String[count];
+=======
+    String[] namedParams = new String[count];
+    String[] headerParams = new String[count];
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var2_2574770189122815792
+    for (int i = 0; i < count; i++) {
+      boolean hasRetrofitAnnotation = false;
+
+      Class<?> paramaterType = parameterTypes[i];
+      Annotation[] parameterAnnotations = parameterAnnotationArrays[i];
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var1_5573106041426068671
+      if (parameterAnnotations != null) {
+        for (Annotation parameterAnnotation : parameterAnnotations) {
+          Class<? extends Annotation> annotationType = parameterAnnotation.annotationType();
+
+          if (annotationType == Path.class) {
+            hasRetrofitAnnotation = true;
+            String name = ((Path) parameterAnnotation).value();
+
+            // Verify URL replacement name is actually present in the URL path.
+            if (!requestUrlParamNames.contains(name)) {
+              throw new IllegalStateException(
+                  "Method path \"" + requestUrl + "\" does not contain {" + name + "}.");
+            }
+
+            urlParam[i] = name;
+          } else if (annotationType == Query.class) {
+            hasRetrofitAnnotation = true;
+            hasQueryParams = true;
+            String name = ((Query) parameterAnnotation).value();
+
+            // TODO verify query name not already used in URL?
+
+            queryName[i] = name;
+          } else if (annotationType == Pair.class) {
+            if (requestType != RequestType.FORM_ENCODED) {
+              throw new IllegalStateException(
+                  "@Pair parameters can only be used with form encoding.");
+            }
+
+            gotPair = true;
+            hasRetrofitAnnotation = true;
+            String name = ((Pair) parameterAnnotation).value();
+
+            // TODO verify name not already used?
+
+            formValue[i] = name;
+          } else if (annotationType == Part.class) {
+            if (requestType != RequestType.MULTIPART) {
+              throw new IllegalStateException(
+                  "@Part parameters can only be used with multipart encoding.");
+            }
+
+            gotPart = true;
+            hasRetrofitAnnotation = true;
+            String name = ((Part) parameterAnnotation).value();
+
+            // TODO verify name not already used?
+
+            multipartPart[i] = name;
+          } else if (annotationType == Body.class) {
+            if (requestType != RequestType.SIMPLE) {
+              throw new IllegalStateException(
+                  "@Body parameters cannot be used with form or multi-part encoding.");
+            }
+            if (bodyIndex != NO_BODY) {
+              throw new IllegalStateException(
+                  "Method annotated with multiple Body method annotations: " + method);
+            }
+
+            hasRetrofitAnnotation = true;
+            bodyIndex = i;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_base_2856760720275471
+      if (parameterAnnotations == null || parameterAnnotations.length == 0) {
+        throw new IllegalStateException("Argument " + i + " lacks annotation.");
+      }
+      for (Annotation parameterAnnotation : parameterAnnotations) {
+        Class<? extends Annotation> annotationType = parameterAnnotation.annotationType();
+        if (annotationType == Name.class) {
+          String name = ((Name) parameterAnnotation).value();
+          namedParams[i] = name;
+          boolean isPathParam = pathParams.contains(name);
+          if (parameterType == TypedOutput.class && (isPathParam || !restMethod.hasBody())) {
+            throw new IllegalStateException("TypedOutput cannot be used as URL parameter.");
+          }
+          if (!isPathParam && !isMultipart && restMethod.hasBody()) {
+            throw new IllegalStateException(
+                "Non-path params can only be used in multipart request.");
+          }
+        } else if (annotationType == SingleEntity.class) {
+          if (isMultipart) {
+            throw new IllegalStateException("SingleEntity cannot be used with multipart request.");
+          }
+          if (singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+            throw new IllegalStateException(
+                "Method annotated with multiple SingleEntity method annotations: " + method);
+=======
+      if (parameterAnnotations == null || parameterAnnotations.length == 0) {
+        throw new IllegalStateException("Argument " + i + " lacks annotation.");
+      }
+      for (Annotation parameterAnnotation : parameterAnnotations) {
+        Class<? extends Annotation> annotationType = parameterAnnotation.annotationType();
+        if (annotationType == Name.class) {
+          String name = ((Name) parameterAnnotation).value();
+          namedParams[i] = name;
+          boolean isPathParam = pathParams.contains(name);
+          if (parameterType == TypedOutput.class && (isPathParam || !restMethod.hasBody())) {
+            throw new IllegalStateException("TypedOutput cannot be used as URL parameter.");
+          }
+          if (!isPathParam && !isMultipart && restMethod.hasBody()) {
+            throw new IllegalStateException(
+                "Non-path params can only be used in multipart request.");
+          }
+        } else if (annotationType == Header.class) {
+          String header = ((Header) parameterAnnotation).value();
+          headerParams[i] = header;
+          if (parameterType != String.class) {
+            throw new IllegalStateException(
+                "Expected @Header parameter type to be String: " + header);
+          }
+        } else if (annotationType == SingleEntity.class) {
+          if (isMultipart) {
+            throw new IllegalStateException("SingleEntity cannot be used with multipart request.");
+          }
+          if (singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+            throw new IllegalStateException(
+                "Method annotated with multiple SingleEntity method annotations: " + method);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var2_2574770189122815792
+          }
+        }
+      }
+
+      if (!hasRetrofitAnnotation) {
+        throw new IllegalStateException(
+            "No annotations found on parameter " + (i + 1) + " of " + method.getName());
+      }
+    }
+
+    if (requestType == RequestType.SIMPLE && !requestHasBody && bodyIndex != NO_BODY) {
+      throw new IllegalStateException("Non-body HTTP method cannot contain @Body or @TypedOutput.");
+    }
+    if (requestType == RequestType.FORM_ENCODED && !gotPair) {
+      throw new IllegalStateException("Form-encoded method must contain at least one @Pair.");
+    }
+    if (requestType == RequestType.MULTIPART && !gotPart) {
+      throw new IllegalStateException("Multipart method must contain at least one @Part.");
+    }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var1_5573106041426068671
+
+    requestUrlParam = urlParam;
+    requestQueryName = queryName;
+    requestFormPair = formValue;
+    requestMultipartPart = multipartPart;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_base_2856760720275471
+    this.namedParams = namedParams;
+=======
+    this.namedParams = namedParams;
+    this.headerParams = headerParams;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162286132\fstmerge_var2_2574770189122815792
+  }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestMethodInfo.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+Request build() throws Exception {
+      if (method == null) {
+        throw new IllegalStateException("Method must be set.");
+      }
+      if (path == null) {
+        throw new IllegalStateException("Path must be set.");
+      }
+
+      Method method = getClass().getDeclaredMethod("dummySync");
+
+      RestMethodInfo methodInfo = new RestMethodInfo(method);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162305556\fstmerge_var1_6759832531235398664
+      methodInfo.requestMethod = this.method;
+      methodInfo.requestHasBody = hasBody;
+      methodInfo.requestType = requestType;
+      methodInfo.requestUrl = path;
+      methodInfo.requestUrlParamNames = RestMethodInfo.parsePathParameters(path);
+      methodInfo.requestQuery = query;
+      methodInfo.hasQueryParams = hasQueryParams;
+      methodInfo.requestUrlParam = pathParams.toArray(new String[pathParams.size()]);
+      methodInfo.requestQueryName = queryParams.toArray(new String[queryParams.size()]);
+      methodInfo.requestFormPair = pairParams.toArray(new String[pairParams.size()]);
+      methodInfo.requestMultipartPart = partParams.toArray(new String[partParams.size()]);
+      methodInfo.bodyIndex = bodyIndex;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162305556\fstmerge_base_112569271400617781
+      methodInfo.restMethod = restMethod;
+      methodInfo.path = path;
+      methodInfo.pathParams = pathParams;
+      methodInfo.pathQueryParams = queryParams.toArray(new QueryParam[queryParams.size()]);
+      methodInfo.namedParams = namedParams.toArray(new String[namedParams.size()]);
+      methodInfo.singleEntityArgumentIndex = singleEntityArgumentIndex;
+      methodInfo.isMultipart = isMultipart;
+=======
+      methodInfo.restMethod = restMethod;
+      methodInfo.path = path;
+      methodInfo.pathParams = pathParams;
+      methodInfo.pathQueryParams = queryParams.toArray(new QueryParam[queryParams.size()]);
+      methodInfo.headers = methodHeaders;
+      methodInfo.headerParams = headerParams.toArray(new String[headerParams.size()]);
+      methodInfo.namedParams = namedParams.toArray(new String[namedParams.size()]);
+      methodInfo.singleEntityArgumentIndex = singleEntityArgumentIndex;
+      methodInfo.isMultipart = isMultipart;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512162305556\fstmerge_var2_848977705080571052
+      methodInfo.loaded = true;
+
+      return new RequestBuilder(GSON) //
+          .apiUrl(url)
+          .headers(headers)
+          .args(args.toArray(new Object[args.size()]))
+          .methodInfo(methodInfo)
+          .build();
+    }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d665e_bf94f\rev_d665e-bf94f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_e5a67-931e2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_71f62_0297f\rev_71f62-0297f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_dffda_5da95\rev_dffda-5da95.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5d4e4_8d5e0\rev_5d4e4-8d5e0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_cb996_01e6a\rev_cb996-01e6a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ffdba_ebf8c\rev_ffdba-ebf8c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6f24a_f1485\rev_6f24a-f1485.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_50e26_46c85\rev_50e26-46c85.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_613e8_11af5\rev_613e8-11af5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_989d6_c2a85\rev_989d6-c2a85.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c5124_e704b\rev_c5124-e704b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5fc1e_b50e0\rev_5fc1e-b50e0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_784a3_e60fd\rev_784a3-e60fd.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5cbe9_46401\rev_5cbe9-46401.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_9a7bb_c83f0\rev_9a7bb-c83f0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_61ae4_5590c\rev_61ae4-5590c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_03358_be390\rev_03358-be390.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_7e55f_94816\rev_7e55f-94816.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_11f44_1ef13\rev_11f44-1ef13.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_335f0_46a88\rev_335f0-46a88.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_04cd7_2162e\rev_04cd7-2162e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_33377_a4532\rev_33377-a4532.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c9c81_042c1\rev_c9c81-042c1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_91445_c94ac\rev_91445-c94ac.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d7da1_9c056\rev_d7da1-9c056.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_414f2_47327\rev_414f2-47327.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_b4121_72258\rev_b4121-72258.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d9a50_0ec74\rev_d9a50-0ec74.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_9074b_449cf\rev_9074b-449cf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_4275c_af51d\rev_4275c-af51d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c7b77_17bc6\rev_c7b77-17bc6.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_a9c1f_54c8e\rev_a9c1f-54c8e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_43b7e_c7656\rev_43b7e-c7656.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_dbd03_7e324\rev_dbd03-7e324.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c2894_63cd5\rev_c2894-63cd5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c0504_28e06\rev_c0504-28e06.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_8c14c_ff6fc\rev_8c14c-ff6fc.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_94c3e_fb746\rev_94c3e-fb746.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_adb88_9097b\rev_adb88-9097b.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test public void logRequestResponseBasic() throws Exception {
+    final List<String> logMessages = new ArrayList<String>();
+    RestAdapter.Log log = new RestAdapter.Log() {
+      public void log(String message) {
+        logMessages.add(message);
+      }
+    };
+
+    Example example = new RestAdapter.Builder() //
+        .setClient(mockClient)
+        .setExecutors(mockRequestExecutor, mockCallbackExecutor)
+        .setEndpoint("http://example.com")
+        .setProfiler(mockProfiler)
+        .setLog(log)
+        .setLogLevel(BASIC)
+        .build()
+        .create(Example.class);
+
+    when(mockClient.execute(any(Request.class))) //
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512163271986\fstmerge_var1_2105683323581652936
+        .thenReturn(
+            new Response("http://example.com/", 200, "OK", TWO_HEADERS, new TypedString("{}")));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512163271986\fstmerge_base_4529941997984737954
+        .thenReturn(new Response("http://example.com/", 200, "OK", TWO_HEADERS, new TypedString("{}")));
+=======
+        .thenReturn(new Response("http://example.com/", 200, "OK", TWO_HEADERS, new TypedString("Hi")));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512163271986\fstmerge_var2_1115194206658065304
+
+    example.something();
+    assertThat(logMessages).hasSize(2);
+    assertThat(logMessages.get(0)).isEqualTo("---> HTTP GET http://example.com/");
+    assertThat(logMessages.get(1)).matches("<--- HTTP 200 http://example.com/ \\([0-9]+ms\\)");
+  }
+
+File path: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_adb88_9097b\rev_rev_left_adb88-rev_right_9097b\retrofit\src\test\java\retrofit\RestAdapterTest.java
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_3ce55_a160a\rev_3ce55-a160a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_51cda_269cc\rev_51cda-269cc.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_70392_57959\rev_70392-57959.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_39ccb_c9abf\rev_39ccb-c9abf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5176d_46598\rev_5176d-46598.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_606ce_4fe65\rev_606ce-4fe65.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6a65f_47316\rev_6a65f-47316.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_80654_0bf0c\rev_80654-0bf0c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_47f42_468e0\rev_47f42-468e0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_add20_68f11\rev_add20-68f11.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_3c3dd_fe022\rev_3c3dd-fe022.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_8b56a_40bfa\rev_8b56a-40bfa.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_cf58c_b01bc\rev_cf58c-b01bc.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_0316b_4b55a\rev_0316b-4b55a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_79a2a_0bf0c\rev_79a2a-0bf0c.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_8236f_fc179\rev_8236f-fc179.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d2fa0_d5cef\rev_d2fa0-d5cef.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6c769_c0ac0\rev_6c769-c0ac0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d661a_674d0\rev_d661a-674d0.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ac543_74d6a\rev_ac543-74d6a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_8c91b_251e4\rev_8c91b-251e4.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_00eaa_fec3b\rev_00eaa-fec3b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_0c675_75077\rev_0c675-75077.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_06893_18899\rev_06893-18899.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ad57_1f21b\rev_2ad57-1f21b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e99f4_c5a46\rev_e99f4-c5a46.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_326a6_e5bc2\rev_326a6-e5bc2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_fafb6_74d28\rev_fafb6-74d28.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_93bd5_c0cc4\rev_93bd5-c0cc4.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_993cb_c43f1\rev_993cb-c43f1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_848f3_7bcdf\rev_848f3-7bcdf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_1ec41_e8431\rev_1ec41-e8431.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_4b969_a9c05\rev_4b969-a9c05.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f7b65_8a70a\rev_f7b65-8a70a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_677e1_fc152\rev_677e1-fc152.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_588ad_8192a\rev_588ad-8192a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_a957c_22663\rev_a957c-22663.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_78f76_deb51\rev_78f76-deb51.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_87af9_19bd4\rev_87af9-19bd4.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_6d520_a1109\rev_6d520-a1109.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_7e4be_1413e\rev_7e4be-1413e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_3341d_f117d\rev_3341d-f117d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_30b5a_cada3\rev_30b5a-cada3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_68aef_695c9\rev_68aef-695c9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_0129a_73b88\rev_0129a-73b88.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_555a0_4cd67\rev_555a0-4cd67.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2b68b_0dca9\rev_2b68b-0dca9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f1c04_a39f7\rev_f1c04-a39f7.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_068c3_fb4c5\rev_068c3-fb4c5.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_994f6_bd556\rev_994f6-bd556.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_64875_75705\rev_64875-75705.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_66084_ac506\rev_66084-ac506.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ccd17_f9144\rev_ccd17-f9144.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_0a879_6fc11\rev_0a879-6fc11.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2934b_6a84e\rev_2934b-6a84e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d2442_cfcd9\rev_d2442-cfcd9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_640ba_330e9\rev_640ba-330e9.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_567c1_28ed8\rev_567c1-28ed8.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_55f90_8c97b\rev_55f90-8c97b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_683b8_b001f\rev_683b8-b001f.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d80d6_473fd\rev_d80d6-473fd.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_026a3_d6cd2\rev_026a3-d6cd2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_24f18_9d0d1\rev_24f18-9d0d1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_ac92b_f5ec3\rev_ac92b-f5ec3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c7f7d_903e1\rev_c7f7d-903e1.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5149d_dc869\rev_5149d-dc869.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_eb8dd_ce002\rev_eb8dd-ce002.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_db2fc_2d8ed\rev_db2fc-2d8ed.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2b59c_5aad2\rev_2b59c-5aad2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_5febe_6a128\rev_5febe-6a128.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_c0bef_f7a8b\rev_c0bef-f7a8b.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_83459_db061\rev_83459-db061.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_54cca_eccfe\rev_54cca-eccfe.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_a556e_504dd\rev_a556e-504dd.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_31c82_c03b3\rev_31c82-c03b3.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_7c666_20747\rev_7c666-20747.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_44110_bca92\rev_44110-bca92.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_dec2f_8ceb2\rev_dec2f-8ceb2.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_fe728_5c17e\rev_fe728-5c17e.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_29a44_98d62\rev_29a44-98d62.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_9a610_11925\rev_9a610-11925.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_51939_e4acf\rev_51939-e4acf.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2aac8_aa7db\rev_2aac8-aa7db.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_a5357_bd625\rev_a5357-bd625.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_a63fa_38d97\rev_a63fa-38d97.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_cc0df_e985d\rev_cc0df-e985d.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_85593_c5ba7\rev_85593-c5ba7.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f3591_308fe\rev_f3591-308fe.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2a888_c7467\rev_2a888-c7467.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_8306a_5f451\rev_8306a-5f451.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e2709_6eb7a\rev_e2709-6eb7a.revisions
+
+==================================================================================================================
+Revision: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_df307_2cd4a\rev_df307-2cd4a.revisions
+
+=========================================================

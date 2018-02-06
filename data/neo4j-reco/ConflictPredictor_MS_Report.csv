@@ -1,0 +1,15 @@
+Merge_Scenario,has_merge_Conflict,has_build_conflict,has_integration_conflict,has_test_conflict,has_predictor,Methods_With_Conflicts,Conflicting_EditSameMC,Conflicting_EditSameMC_DS,Conflicting_EditSameFD,Conflicting_EditSameFD_DS,NonConflicting_EditSameMC,NonConflicting_EditSameMC_DS,NonConflicting_EditSameFD,NonConflicting_EditSameFD_DS,EditDiffMC,EditDifffMC_EditSameMC,EditDiffMC_EditionAddsMethodInvocation,EditDiffMC_EditionAddsMethodInvocation_EditSameMC
+rev_10fd7-5d7ff,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+rev_73432-f38dd,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_cec67-3afdb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_7f2cd-bff45,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_7f2cd-11037,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_52a50-862b9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_64bb2-c8320,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_be4cf-affd3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_479aa-f2491,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_68cf1-f5763,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_d057a-c7846,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_aa19d-2dc2b,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_d96fb-5df39,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_cafec-9fdd8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

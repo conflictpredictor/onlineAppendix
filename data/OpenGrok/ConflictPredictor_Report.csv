@@ -1,0 +1,1768 @@
+#MS_XXX_MS#
+Merge scenario: rev_f60e7-ea54f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a481-78afc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a433d-a18ff
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_a433d_a18ff\rev_rev_left_a433d-rev_right_a18ff\src\org\opensolaris\opengrok\history\MercurialRepository.java
+Different Spacing: false
+Left editions: [195, 196, 197, 198, 199, 200, 201]
+Right editions: [217, 219]
+Merged body: 
+// START getHistoryLogExecutor(File-File-String-String)//Executor getHistoryLogExecutor(File file, String changeset)
+             throws HistoryException, IOException
+    {
+        String abs = file.getCanonicalPath();
+        String filename = "";
+        RuntimeEnvironment env = RuntimeEnvironment.getInstance();
+
+        if (abs.length() > directoryName.length()) {
+            filename = abs.substring(directoryName.length() + 1);
+        }
+
+        List<String> cmd = new ArrayList<String>();
+        ensureCommand(CMD_PROPERTY_KEY, CMD_FALLBACK);
+        cmd.add(this.cmd);
+        cmd.add("log");
+// LEFT //
+// LEFT //        // For plain files we would like to follow the complete history
+// LEFT //        // (this is necessary for getting the original name in given revision
+// LEFT //        // when handling renamed files)
+// LEFT //        if (!file.isDirectory()) {
+// LEFT //            cmd.add("-f");
+// LEFT //        }
+
+        if (changeset != null) {
+            cmd.add("-r");
+            String[] parts = changeset.split(":");
+            if (parts.length == 2) {
+                cmd.add("tip:" + parts[0]);
+            } else {
+                throw new HistoryException(
+                        "Don't know how to parse changeset identifier: " +
+                        changeset);
+            }
+        }
+
+        cmd.add("--template");
+        if (file.isDirectory()) {
+// RIGHT //            cmd.add(RuntimeEnvironment.isRenamedFilesEnabled() ? DIR_TEMPLATE_RENAMED : DIR_TEMPLATE);
+        } else {
+// RIGHT //            /* JDBC requires complete list of files. */
+            cmd.add(env.storeHistoryCacheInDB() ? FILE_TEMPLATE_LIST : FILE_TEMPLATE);
+        }
+        if (!filename.isEmpty()) {
+            cmd.add(filename);
+        }
+
+        return new Executor(cmd, new File(directoryName));
+// END getHistoryLogExecutor(File-File-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27419-2b65c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2d7a-f9e7e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_043dd-8bdb6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b541-b8f55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c98c2-039fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3dc37-34360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_feb6e-0d1a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be30c-5baba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ee455-9132a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71c15-6d14c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be555-f2e1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca6ba-553e4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a6e4-dddb1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1cc3a-8d993
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e385-7f9f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8946-5d4e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd12e-9b697
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30d30-45296
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb5bd-88827
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb177-d8fc9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4a94-75e72
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fb04c-d137c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e21eb-dc46f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3fb6-bc963
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57edc-eee0a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff08a-e22bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9044-bd469
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79332-c6d9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b946e-cb47e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3329e-b448c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_794b5-3cf0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_edca1-201b3
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_edca1_201b3\rev_rev_left_edca1-rev_right_201b3\src\org\opensolaris\opengrok\history\PerforceRepository.java
+Different Spacing: false
+Left editions: [98, 99, 100, 106, 108, 110, 111, 127, 128, 129, 133]
+Right editions: []
+Merged body: 
+// START annotate(File-File-String-String)//@Override
+    public Annotation annotate(File file, String rev) throws IOException {
+        Annotation a = new Annotation(file.getName());
+
+// LEFT //        List<HistoryEntry> revisions
+// LEFT //                = PerforceHistoryParser.getRevisions(file, rev).getHistoryEntries();
+// LEFT //        HashMap<String, String> revAuthor = new HashMap<>();
+        for (HistoryEntry entry : revisions) {
+            // a.addDesc(entry.getRevision(), entry.getMessage());
+            revAuthor.put(entry.getRevision(), entry.getAuthor());
+        }
+
+// LEFT //        ArrayList<String> cmd = new ArrayList<>();
+        ensureCommand(CMD_PROPERTY_KEY, CMD_FALLBACK);
+// LEFT //        cmd.add(RepoCommand);
+        cmd.add("annotate");
+// LEFT //        cmd.add("-qci");
+// LEFT //        cmd.add(file.getPath() + getRevisionCmd(rev));
+
+        Executor executor = new Executor(cmd, file.getParentFile());
+        executor.exec();
+
+        String line;
+        int lineno = 0;
+        try (BufferedReader reader = new BufferedReader(executor.getOutputReader())) {
+            while ((line = reader.readLine()) != null) {
+                ++lineno;
+                Matcher matcher = annotation_pattern.matcher(line);
+                if (matcher.find()) {
+                    String revision = matcher.group(1);
+                    String author = revAuthor.get(revision);
+                    a.addLine(revision, author, true);
+                } else {
+// LEFT //                    LOGGER.log(Level.SEVERE,
+// LEFT //                            "Error: did not find annotation in line {0}: [{1}]",
+// LEFT //                            new Object[]{lineno, line});
+                }
+            }
+        } catch (IOException e) {
+// LEFT //            LOGGER.log(Level.SEVERE,
+                    "Error: Could not read annotations for " + file, e);
+        }
+        return a;
+// END annotate(File-File-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_edca1_201b3\rev_rev_left_edca1-rev_right_201b3\src\org\opensolaris\opengrok\history\PerforceRepository.java
+Different Spacing: false
+Left editions: [142, 144, 147]
+Right editions: []
+Merged body: 
+// START getHistoryGet(String-String-String-String-String-String)//@Override
+    InputStream getHistoryGet(String parent, String basename, String rev) {
+// LEFT //        ArrayList<String> cmd = new ArrayList<>();
+        ensureCommand(CMD_PROPERTY_KEY, CMD_FALLBACK);
+// LEFT //        cmd.add(RepoCommand);
+        cmd.add("print");
+        cmd.add("-q");
+// LEFT //        cmd.add(basename + getRevisionCmd(rev));
+        Executor executor = new Executor(cmd, new File(parent));
+        executor.exec();
+        return new ByteArrayInputStream(executor.getOutputString().getBytes());
+// END getHistoryGet(String-String-String-String-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7aefe-4560f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01363-d7616
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98323-7757d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b34d-5c4d3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_261ee-b528c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_261ee_b528c\rev_rev_left_261ee-rev_right_b528c\src\org\opensolaris\opengrok\analysis\JFlexScopeParser.java
+Different Spacing: false
+Left editions: [109]
+Right editions: [84, 85, 87, 88, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+Merged body: 
+// START parse(Tag-Tag-Reader-Reader)//public void parse(Tag tag, Reader reader) throws IOException {
+        try {
+            int lineNo = 0;
+// RIGHT //            int c;
+// RIGHT //            int oldc='\n';
+            while (lineNo < tag.line) {
+// RIGHT //                c=reader.read();
+// RIGHT //                if ( c == '\r') {                    
+                    lineNo++;
+                }
+// RIGHT //                if ( c == '\n') {
+// RIGHT //                    if (oldc!='\r') {                                            
+// RIGHT //                        lineNo++;
+// RIGHT //                    }
+// RIGHT //                }
+// RIGHT //                if ( c == -1 ) {
+// RIGHT //                  break;                    
+// RIGHT //                }
+// RIGHT //                oldc=c;
+            }
+        } catch(IOException e) {
+            System.out.print(e.getMessage());
+        }
+
+        reInit(reader);
+        setLineNumber(tag.line+1);
+        start(tag.text);
+
+// LEFT //        scope = new Scope(tag.line, tag.line, tag.symbol, tag.scope, tag.signature);
+        while (yylex() != yyeof) { // NOPMD while statement intentionally empty
+            // nothing to do here, yylex() will do the work
+        }
+        scopes.addScope(scope);
+// END parse(Tag-Tag-Reader-Reader)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_261ee_b528c\rev_rev_left_261ee-rev_right_b528c\src\org\opensolaris\opengrok\index\IndexDatabase.java
+Different Spacing: false
+Left editions: []
+Right editions: [664, 671]
+Merged body: 
+// START setDirty({FormalParametersInternal})//private void setDirty() {
+        synchronized (lock) {
+            try {
+                if (!dirty && !dirtyFile.createNewFile()) {
+                    if (!dirtyFile.exists()) {
+// RIGHT //                        LOGGER.log(Level.FINE,
+                                "Failed to create \"dirty-file\": {0}",
+                                dirtyFile.getAbsolutePath());
+                    }
+                    dirty = true;
+                }
+            } catch (IOException e) {
+// RIGHT //                LOGGER.log(Level.FINE, "When creating dirty file: ", e);
+            }
+        }
+// END setDirty({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_261ee_b528c\rev_rev_left_261ee-rev_right_b528c\src\org\opensolaris\opengrok\index\IndexDatabase.java
+Different Spacing: false
+Left editions: [735]
+Right editions: [741, 745]
+Merged body: 
+// START addFile(File-File-String-String)//private void addFile(File file, String path) throws IOException {
+        FileAnalyzer fa;
+        try (InputStream in = new BufferedInputStream(new FileInputStream(file))) {
+            fa = AnalyzerGuru.getAnalyzer(in, path);
+        }
+
+        for (IndexChangedListener listener : listeners) {
+            listener.fileAdd(path, fa.getClass().getSimpleName());
+        }
+        fa.setCtags(ctags);
+        fa.setProject(Project.getProject(path));
+        fa.setScopesEnabled(RuntimeEnvironment.getInstance().isScopesEnabled());
+// LEFT //        fa.setFoldingEnabled(RuntimeEnvironment.getInstance().isFoldingEnabled());
+
+        Document doc = new Document();
+        try (Writer xrefOut = getXrefWriter(fa, path)) {
+            analyzerGuru.populateDocument(doc, file, path, fa, xrefOut);
+        } catch (Exception e) {
+// RIGHT //            LOGGER.log(Level.INFO,
+                    "Skipped file ''{0}'' because the analyzer didn''t "
+                    + "understand it.",
+                    path);
+// RIGHT //            LOGGER.log(Level.FINE,
+                    "Exception from analyzer " + fa.getClass().getName(), e);
+            cleanupResources(doc);
+            return;
+        }
+
+        try {
+            writer.addDocument(doc);
+        } catch (Throwable t) {
+            cleanupResources(doc);
+            throw t;
+        }
+
+        setDirty();
+        for (IndexChangedListener listener : listeners) {
+            listener.fileAdded(path, fa.getClass().getSimpleName());
+        }
+// END addFile(File-File-String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_261ee_b528c\rev_rev_left_261ee-rev_right_b528c\src\org\opensolaris\opengrok\index\IndexDatabase.java
+Different Spacing: false
+Left editions: [735]
+Right editions: [741, 745]
+Merged body: 
+// START addFile(File-File-String-String)//private void addFile(File file, String path) throws IOException {
+        FileAnalyzer fa;
+        try (InputStream in = new BufferedInputStream(new FileInputStream(file))) {
+            fa = AnalyzerGuru.getAnalyzer(in, path);
+        }
+
+        for (IndexChangedListener listener : listeners) {
+            listener.fileAdd(path, fa.getClass().getSimpleName());
+        }
+        fa.setCtags(ctags);
+        fa.setProject(Project.getProject(path));
+        fa.setScopesEnabled(RuntimeEnvironment.getInstance().isScopesEnabled());
+// LEFT //        fa.setFoldingEnabled(RuntimeEnvironment.getInstance().isFoldingEnabled());
+
+        Document doc = new Document();
+        try (Writer xrefOut = getXrefWriter(fa, path)) {
+            analyzerGuru.populateDocument(doc, file, path, fa, xrefOut);
+        } catch (Exception e) {
+// RIGHT //            LOGGER.log(Level.INFO,
+                    "Skipped file ''{0}'' because the analyzer didn''t "
+                    + "understand it.",
+                    path);
+// RIGHT //            LOGGER.log(Level.FINE,
+                    "Exception from analyzer " + fa.getClass().getName(), e);
+            cleanupResources(doc);
+            return;
+        }
+
+        try {
+            writer.addDocument(doc);
+        } catch (Throwable t) {
+            cleanupResources(doc);
+            throw t;
+        }
+
+        setDirty();
+        for (IndexChangedListener listener : listeners) {
+            listener.fileAdded(path, fa.getClass().getSimpleName());
+        }
+// END addFile(File-File-String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_261ee_b528c\rev_rev_left_261ee-rev_right_b528c\src\org\opensolaris\opengrok\index\IndexDatabase.java
+Different Spacing: false
+Left editions: []
+Right editions: [961, 965, 980, 981, 1009]
+Merged body: 
+// START indexDown(File-File-String-String-boolean-boolean-int-int-int-int)//private int indexDown(File dir, String parent, boolean count_only,
+        int cur_count, int est_total) throws IOException {
+
+        int lcur_count = cur_count;
+        if (isInterrupted()) {
+            return lcur_count;
+        }
+
+        if (!accept(dir)) {
+            return lcur_count;
+        }
+
+        File[] files = dir.listFiles();
+        if (files == null) {
+// RIGHT //            LOGGER.log(Level.SEVERE, "Failed to get file listing for: {0}",
+                dir.getAbsolutePath());
+            return lcur_count;
+        }
+// RIGHT //        Arrays.sort(files, fileComparator);
+
+        for (File file : files) {
+            if (accept(dir, file)) {
+                String path = parent + '/' + file.getName();
+
+                if (file.isDirectory()) {
+                    lcur_count = indexDown(file, path, count_only, lcur_count, est_total);
+                } else {
+                    lcur_count++;
+                    if (count_only) {
+                        continue;
+                    }
+
+                    if (RuntimeEnvironment.getInstance().isPrintProgress()
+// RIGHT //                        && est_total > 0 && LOGGER.isLoggable(Level.INFO)) {
+// RIGHT //                            LOGGER.log(Level.INFO, "Progress: {0} ({1}%)",
+                                new Object[]{lcur_count,
+                                (lcur_count * 100.0f / est_total)});
+                    }
+
+                    if (uidIter != null) {
+                        String uid = Util.path2uid(path,
+                            DateTools.timeToString(file.lastModified(),
+                            DateTools.Resolution.MILLISECOND)); // construct uid for doc
+                        BytesRef buid = new BytesRef(uid);                        
+                        while (uidIter != null && uidIter.term() != null 
+                                && uidIter.term().compareTo(emptyBR) !=0
+                                && uidIter.term().compareTo(buid) < 0) {
+                            removeFile();
+                            BytesRef next = uidIter.next();
+                            if (next==null) {uidIter=null;}
+                        }
+
+                        if (uidIter != null && uidIter.term() != null
+                                && uidIter.term().bytesEquals(buid)) {
+                            BytesRef next = uidIter.next(); // keep matching docs
+                            if (next==null) {uidIter=null;}
+                            continue;
+                        }
+                    }
+                    try {
+                        addFile(file, path);
+                    } catch (Exception e) {
+// RIGHT //                        LOGGER.log(Level.WARNING,
+                                "Failed to add file " + file.getAbsolutePath(),
+                                e);
+                    }
+                }
+            }
+        }
+
+        return lcur_count;
+// END indexDown(File-File-String-String-boolean-boolean-int-int-int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63250-b528c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_63250_b528c\rev_rev_left_63250-rev_right_b528c\test\org\opensolaris\opengrok\analysis\java\JavaAnalyzerFactoryTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testScopeAnalyzer({FormalParametersInternal})//@Test
+    public void testScopeAnalyzer() throws Exception {        
+        String path = repository.getSourceRoot() + "/java/Sample.java";
+        File f = new File(path);
+        if (!(f.canRead() && f.isFile())) {
+            fail("java testfile " + f + " not found");
+        }
+
+        Document doc = new Document();
+        doc.add(new Field(QueryBuilder.FULLPATH, path,
+            string_ft_nstored_nanalyzed_norms));
+        StringWriter xrefOut = new StringWriter();
+        analyzer.setCtags(ctags);
+        analyzer.setScopesEnabled(true);
+        analyzer.analyze(doc, getStreamSource(path), xrefOut);
+        
+        IndexableField scopesField = doc.getField(QueryBuilder.SCOPES);
+        assertNotNull(scopesField);
+        Scopes scopes = Scopes.deserialize(scopesField.binaryValue().bytes);
+        Scope globalScope = scopes.getScope(-1);
+        assertEquals(4, scopes.size()); // foo, bar, main
+        
+        for (int i=0; i<50; ++i) {
+            if (i >= 29 && i <= 31) {
+                assertEquals("Sample", scopes.getScope(i).name);
+                assertEquals("class:Sample", scopes.getScope(i).scope);
+            } else if (i >= 33 && i <= 41) {
+                assertEquals("Method", scopes.getScope(i).name);
+                assertEquals("class:Sample", scopes.getScope(i).scope);
+            } else if (i == 43) {                
+                assertEquals("AbstractMethod", scopes.getScope(i).name);
+                assertEquals("class:Sample", scopes.getScope(i).scope);
+            } else if (i >= 47 && i <= 56) {
+                assertEquals("InnerMethod", scopes.getScope(i).name);
+                assertEquals("class:Sample.InnerClass", scopes.getScope(i).scope);
+            } else {
+                assertEquals(scopes.getScope(i), globalScope);
+                assertNull(scopes.getScope(i).scope);
+            }
+        }
+// END testScopeAnalyzer({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_63250_b528c\rev_rev_left_63250-rev_right_b528c\test\org\opensolaris\opengrok\analysis\ScopesTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testGetScope({FormalParametersInternal})//@Test
+    public void testGetScope() {
+        Scopes instance = new Scopes();
+        Scope globalScope = instance.getScope(0);
+
+        instance.addScope(new Scope(10, 20, "scope1", "ns"));
+        instance.addScope(new Scope(25, 30, "scope2", "ns"));
+        instance.addScope(new Scope(40, 40, "scope3", "ns"));
+        instance.addScope(new Scope(60, 70, "scope4", "ns"));
+        instance.addScope(new Scope(80, 90, "scope5", "ns"));
+        instance.addScope(new Scope(91, 100, "scope6", "ns"));
+        
+        assertEquals(instance.size(), 6);
+        assertEquals(instance.getScope(1), globalScope);
+        assertEquals(instance.getScope(10).name, "scope1");
+        assertEquals(instance.getScope(15).name, "scope1");
+        assertEquals(instance.getScope(20).name, "scope1");
+        assertEquals(instance.getScope(21), globalScope);
+        assertEquals(instance.getScope(24), globalScope);
+        assertEquals(instance.getScope(39), globalScope);
+        assertEquals(instance.getScope(40).name, "scope3");
+        assertEquals(instance.getScope(41), globalScope);
+        assertEquals(instance.getScope(90).name, "scope5");
+        assertEquals(instance.getScope(100).name, "scope6");
+        assertEquals(instance.getScope(101), globalScope);
+        assertEquals(instance.getScope(500), globalScope);
+// END testGetScope({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46a45-0129c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_46a45_0129c\rev_rev_left_46a45-rev_right_0129c\src\org\opensolaris\opengrok\analysis\JFlexScopeParser.java
+Different Spacing: false
+Left editions: [83, 92, 106]
+Right editions: [109]
+Merged body: 
+// START parse(Tag-Tag-Reader-Reader)//public void parse(Tag tag, Reader reader) throws IOException {
+        try {
+// LEFT //            int lineNo = 1; /* ctags count lines starting from 1 */
+            int c;
+            int oldc='\n';
+            while (lineNo < tag.line) {
+                c=reader.read();
+                if ( c == '\r') {                    
+                    lineNo++;
+                }
+                if ( c == '\n') {
+// LEFT //                    if (oldc!='\r') {
+                        lineNo++;
+                    }
+                }
+                if ( c == -1 ) {
+                  break;                    
+                }
+                oldc=c;
+            }
+        } catch(IOException e) {
+            System.out.print(e.getMessage());
+        }
+
+        reInit(reader);
+// LEFT //        setLineNumber(tag.line);
+        start(tag.text);
+
+// RIGHT //        scope = new Scope(tag.line, tag.line, tag.symbol, tag.scope, tag.signature);
+        while (yylex() != yyeof) { // NOPMD while statement intentionally empty
+            // nothing to do here, yylex() will do the work
+        }
+        scopes.addScope(scope);
+// END parse(Tag-Tag-Reader-Reader)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9655e-14357
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd4c5-73b26
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e8ac-d32ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53232-4c97c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81b51-e7fb5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de056-27b74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34685-89d28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_26e88-195c2
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_26e88_195c2\rev_rev_left_26e88-rev_right_195c2\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: [577]
+Right editions: [547, 549, 553, 554, 555, 559, 563, 573, 575]
+Merged body: 
+// START startNewLine({FormalParametersInternal})//protected void startNewLine() throws IOException {
+        String iconId = null;
+        int line = getLineNumber() + 1;
+        boolean skipNl = false;
+        setLineNumber(line);
+        
+// RIGHT //        startScope();
+
+// RIGHT //        if (scopeOpen && scope == null) {
+                    scopeOpen = false;
+                    out.write("</span>");
+                    skipNl = true;
+// RIGHT //        } else if (scope != null) {
+// RIGHT //            String scopeId = generateId(scope);
+// RIGHT //            if (scope.lineFrom == line) {
+                    out.write("<span id='");
+                    out.write(scopeId);
+                    out.write("' class='scope-head'><span class='scope-signature'>");
+// RIGHT //                out.write(htmlize(scope.getName() + scope.signature));
+                    out.write("</span>");
+                    iconId = scopeId + "_fold_icon";
+                    skipNl = true;
+// RIGHT //            } else if (scope.lineFrom == line - 1) {
+                if (scopeOpen) {
+                    out.write("</span>");
+                }
+                
+                out.write("<span id='");
+                out.write(scopeId);
+                out.write("_fold' class='scope-body'>");
+                skipNl = true;
+            }
+// RIGHT //            scopeOpen = true;
+        }
+// RIGHT //
+        Util.readableLine(line, out, annotation, userPageLink, userPageSuffix,
+// LEFT //            getProjectPostfix(true), skipNl);
+        
+        if (foldingEnabled) {
+            if (iconId != null) {
+                out.write("<a href=\"#\" onclick='fold(this.parentNode.id)' id='");
+                out.write(iconId);
+                /* space inside span for IE support */
+                out.write("'><span class='fold-icon'>&nbsp;</span></a>");
+            } else {
+                out.write("<span class='fold-space'>&nbsp;</span>");    
+            }
+        }
+// END startNewLine({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_26e88_195c2\rev_rev_left_26e88-rev_right_195c2\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: [399, 400, 401, 402]
+Right editions: []
+Merged body: 
+// START write(Writer-Writer)//public void write(Writer out) throws IOException {
+        this.out = out;
+        writeSymbolTable();
+        setLineNumber(0);
+        startNewLine();
+        while (yylex() != yyeof) { // NOPMD while statement intentionally empty
+            // nothing to do here, yylex() will do the work
+        }
+
+        // terminate scopes
+        if (scopeOpen) {
+            out.write("</div>");
+            scopeOpen = false;
+        }
+// LEFT //
+// LEFT //        while (!stack.empty()) {
+// LEFT //            yypop();
+// LEFT //        }
+// END write(Writer-Writer)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac693-a733c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50ebc-a04de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56a2e-044f7
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_56a2e_044f7\rev_rev_left_56a2e-rev_right_044f7\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: [539, 540]
+Right editions: []
+Merged body: 
+// START generateId(Scope-Scope)//private String generateId(Scope scope) {
+// LEFT //        String name = Integer.toString(scope.getLineFrom()) + scope.getName() +
+// LEFT //                scope.getSignature();
+        int hash = name.hashCode();
+        return "scope_id_" + Integer.toHexString(hash);
+// END generateId(Scope-Scope)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_56a2e_044f7\rev_rev_left_56a2e-rev_right_044f7\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: [572, 573, 574, 575, 576, 579, 580, 581, 582, 583, 584, 585, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 599, 606]
+Right editions: [604]
+Merged body: 
+// START startNewLine({FormalParametersInternal})//protected void startNewLine() throws IOException {
+        String iconId = null;
+        int line = getLineNumber() + 1;
+        boolean skipNl = false;
+        setLineNumber(line);
+
+// LEFT //        if (scopesEnabled) {
+// LEFT //            startScope();
+// LEFT //
+// LEFT //            if (scopeOpen && scope == null) {
+// LEFT //                scopeOpen = false;
+                out.write("</span>");
+                skipNl = true;
+// LEFT //            } else if (scope != null) {
+// LEFT //                String scopeId = generateId(scope);
+// LEFT //                if (scope.getLineFrom() == line) {
+// LEFT //                    out.write("<span id='");
+// LEFT //                    out.write(scopeId);
+// LEFT //                    out.write("' class='scope-head'><span class='scope-signature'>");
+// LEFT //                    out.write(htmlize(scope.getName() + scope.getSignature()));
+                    out.write("</span>");
+// LEFT //                    iconId = scopeId + "_fold_icon";
+// LEFT //                    skipNl = true;
+// LEFT //                } else if (scope.getLineFrom() == line - 1) {
+// LEFT //                    if (scopeOpen) {
+// LEFT //                        out.write("</span>");
+// LEFT //                    }
+// LEFT //
+// LEFT //                    out.write("<span id='");
+// LEFT //                    out.write(scopeId);
+// LEFT //                    out.write("_fold' class='scope-body'>");
+// LEFT //                    skipNl = true;
+                }
+// LEFT //                scopeOpen = true;
+            }
+        }
+
+        Util.readableLine(line, out, annotation, userPageLink, userPageSuffix,
+// RIGHT //            getProjectPostfix(true), skipNl);
+        
+// LEFT //        if (foldingEnabled && scopesEnabled) {
+            if (iconId != null) {
+                out.write("<a href=\"#\" onclick='fold(this.parentNode.id)' id='");
+                out.write(iconId);
+                /* space inside span for IE support */
+                out.write("'><span class='fold-icon'>&nbsp;</span></a>");
+            } else {
+                out.write("<span class='fold-space'>&nbsp;</span>");    
+            }
+        }
+// END startNewLine({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_56a2e_044f7\rev_rev_left_56a2e-rev_right_044f7\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: [572, 573, 574, 575, 576, 579, 580, 581, 582, 583, 584, 585, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 599, 606]
+Right editions: [604]
+Merged body: 
+// START startNewLine({FormalParametersInternal})//protected void startNewLine() throws IOException {
+        String iconId = null;
+        int line = getLineNumber() + 1;
+        boolean skipNl = false;
+        setLineNumber(line);
+
+// LEFT //        if (scopesEnabled) {
+// LEFT //            startScope();
+// LEFT //
+// LEFT //            if (scopeOpen && scope == null) {
+// LEFT //                scopeOpen = false;
+                out.write("</span>");
+                skipNl = true;
+// LEFT //            } else if (scope != null) {
+// LEFT //                String scopeId = generateId(scope);
+// LEFT //                if (scope.getLineFrom() == line) {
+// LEFT //                    out.write("<span id='");
+// LEFT //                    out.write(scopeId);
+// LEFT //                    out.write("' class='scope-head'><span class='scope-signature'>");
+// LEFT //                    out.write(htmlize(scope.getName() + scope.getSignature()));
+                    out.write("</span>");
+// LEFT //                    iconId = scopeId + "_fold_icon";
+// LEFT //                    skipNl = true;
+// LEFT //                } else if (scope.getLineFrom() == line - 1) {
+// LEFT //                    if (scopeOpen) {
+// LEFT //                        out.write("</span>");
+// LEFT //                    }
+// LEFT //
+// LEFT //                    out.write("<span id='");
+// LEFT //                    out.write(scopeId);
+// LEFT //                    out.write("_fold' class='scope-body'>");
+// LEFT //                    skipNl = true;
+                }
+// LEFT //                scopeOpen = true;
+            }
+        }
+
+        Util.readableLine(line, out, annotation, userPageLink, userPageSuffix,
+// RIGHT //            getProjectPostfix(true), skipNl);
+        
+// LEFT //        if (foldingEnabled && scopesEnabled) {
+            if (iconId != null) {
+                out.write("<a href=\"#\" onclick='fold(this.parentNode.id)' id='");
+                out.write(iconId);
+                /* space inside span for IE support */
+                out.write("'><span class='fold-icon'>&nbsp;</span></a>");
+            } else {
+                out.write("<span class='fold-space'>&nbsp;</span>");    
+            }
+        }
+// END startNewLine({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_071e1-b0cb6
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_071e1_b0cb6\rev_rev_left_071e1-rev_right_b0cb6\src\org\opensolaris\opengrok\search\context\Context.java
+Different Spacing: false
+Left editions: [243]
+Right editions: [203]
+Merged body: 
+// START getContext(Reader-Reader-Writer-Writer-String-String-String-String-String-String-Definitions-Definitions-boolean-boolean-boolean-boolean-List<Hit>-List<Hit>-Scopes-Scopes)//public boolean getContext(Reader in, Writer out, String urlPrefix,
+            String morePrefix, String path, Definitions tags,
+            boolean limit, boolean isDefSearch, List<Hit> hits, Scopes scopes) {
+        alt = !alt;
+        if (m == null) {
+            IOUtils.close(in);
+            return false;
+        }
+        boolean anything = false;
+        TreeMap<Integer, String[]> matchingTags = null;
+        String urlPrefixE =
+                (urlPrefix == null) ? "" : Util.URIEncodePath(urlPrefix);
+        String pathE = Util.URIEncodePath(path);
+        if (tags != null) {
+            matchingTags = new TreeMap<Integer, String[]>();
+            try {
+                for (Definitions.Tag tag : tags.getTags()) {
+                    for (int i = 0; i < m.length; i++) {
+                        if (m[i].match(tag.symbol) == LineMatcher.MATCHED) {
+                            String scope = null;
+                            String scopeUrl = null;
+                            if (scopes != null) {
+                                Scope scp = scopes.getScope(tag.line);
+                                scope = scp.getName() + "()";
+// RIGHT //                                scopeUrl = "<a href=\"" + urlPrefixE + pathE + "#" + Integer.toString(scp.getLineFrom()) + "\">" + scope + "</a>";
+                            }
+
+                            /* desc[0] is matched symbol
+                             * desc[1] is line number
+                             * desc[2] is type
+                             * desc[3] is matching line;
+                             * desc[4] is scope
+                             */
+                            String[] desc = {
+                                tag.symbol,
+                                Integer.toString(tag.line),
+                                tag.type,
+                                tag.text,
+                                scope,
+                                };
+                            if (in == null) {
+                                if (out == null) {
+                                    Hit hit = new Hit(path,
+                                            Util.htmlize(desc[3]).replace(
+                                            desc[0], "<b>" + desc[0] + "</b>"),
+                                            desc[1], false, alt);
+                                    hits.add(hit);
+                                    anything = true;
+                                } else {
+                                    out.write("<a class=\"s\" href=\"");
+                                    out.write(urlPrefixE);
+                                    out.write(pathE);
+                                    out.write("#");
+                                    out.write(desc[1]);
+                                    out.write("\"><span class=\"l\">");
+                                    out.write(desc[1]);
+                                    out.write("</span> ");
+                                    out.write(Util.htmlize(desc[3]).replace(
+                                            desc[0], "<b>" + desc[0] + "</b>"));
+                                    out.write("</a> ");
+
+                                    if (desc[4] != null) {
+                                        out.write("<span class=\"scope\"><a href\"");
+                                        out.write(scopeUrl);
+// LEFT //                                        out.write("\">in ");
+                                        out.write(desc[4]);
+                                        out.write("</a></span> ");
+                                    }
+                                    out.write("<i>");
+                                    out.write(desc[2]);
+                                    out.write("</i><br/>");
+                                    anything = true;
+                                }
+                            } else {
+                                matchingTags.put(tag.line, desc);
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                if (hits != null) {
+                    // @todo verify why we ignore all exceptions?
+                    LOGGER.log(Level.WARNING, "Could not get context for " + path, e);
+                }
+            }
+        }
+        /**
+         * Just to get the matching tag send a null in
+         */
+        if (in == null) {
+            return anything;
+        }
+        int charsRead = 0;
+        boolean truncated = false;
+
+        boolean lim = limit;
+        if (!RuntimeEnvironment.getInstance().isQuickContextScan()) {
+            lim = false;
+        }
+
+        if (lim) {
+            try {
+                charsRead = in.read(buffer);
+                if (charsRead == MAXFILEREAD) {
+                    // we probably only read parts of the file, so set the
+                    // truncated flag to enable the [all...] link that
+                    // requests all matches
+                    truncated = true;
+                    // truncate to last line read (don't look more than 100
+                    // characters back)
+                    for (int i = charsRead - 1; i > charsRead - 100; i--) {
+                        if (buffer[i] == '\n') {
+                            charsRead = i;
+                            break;
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                LOGGER.log(Level.WARNING, "An error occured while reading data", e);
+                return anything;
+            }
+            if (charsRead == 0) {
+                return anything;
+            }
+
+            tokens.reInit(buffer, charsRead, out, urlPrefixE + pathE + "#", matchingTags, scopes);
+        } else {
+            tokens.reInit(in, out, urlPrefixE + pathE + "#", matchingTags, scopes);
+        }
+
+        if (hits != null) {
+            tokens.setAlt(alt);
+            tokens.setHitList(hits);
+            tokens.setFilename(path);
+        }
+
+        try {
+            String token;
+            int matchState = LineMatcher.NOT_MATCHED;
+            int matchedLines = 0;
+            while ((token = tokens.yylex()) != null && (!lim || matchedLines < 10)) {
+                for (int i = 0; i < m.length; i++) {
+                    matchState = m[i].match(token);
+                    if (matchState == LineMatcher.MATCHED) {
+                        if (!isDefSearch) {
+                            tokens.printContext();
+                        } else if (tokens.tags.containsKey(tokens.markedLine)) {
+                            tokens.printContext();
+                        }
+                        matchedLines++;
+                        //out.write("<br> <i>Matched " + token + " maxlines = " + matchedLines + "</i><br>");
+                        break;
+                    } else if (matchState == LineMatcher.WAIT) {
+                        tokens.holdOn();
+                    } else {
+                        tokens.neverMind();
+                    }
+                }
+            }
+            anything = matchedLines > 0;
+            tokens.dumpRest();
+            if (lim && (truncated || matchedLines == 10) && out != null) {
+                out.write("<a href=\"" + Util.URIEncodePath(morePrefix) + pathE + "?" + queryAsURI + "\">[all...]</a>");
+            }
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "Could not get context for " + path, e);
+        } finally {
+            IOUtils.close(in);
+            
+            if (out != null) {
+                try {
+                    out.flush();
+                } catch (IOException e) {
+                    LOGGER.log(Level.WARNING, "Failed to flush stream: ", e);
+                }
+            }
+        }
+        return anything;
+// END getContext(Reader-Reader-Writer-Writer-String-String-String-String-String-String-Definitions-Definitions-boolean-boolean-boolean-boolean-List<Hit>-List<Hit>-Scopes-Scopes)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9435-73691
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_554f6-d622a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f57e-5482b
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_6f57e_5482b\rev_rev_left_6f57e-rev_right_5482b\src\org\opensolaris\opengrok\analysis\Ctags.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START initialize({FormalParametersInternal})//private void initialize() throws IOException {
+        RuntimeEnvironment env = RuntimeEnvironment.getInstance();
+        if (processBuilder == null) {
+            List<String> command = new ArrayList<>();
+
+            command.add(binary);
+            command.add("--c-kinds=+l");
+                        
+            if (env.isUniversalCtags()) {                                
+                command.add("--langmap=clojure:+.cljs");
+                command.add("--langmap=clojure:+.cljx");
+                
+            // Workaround for bug #14924: Don't get local variables in Java
+            // code since that creates many false positives.
+            // CtagsTest : bug14924 "too many methods" guards for this
+            // universal ctags are however safe, so enabling for them
+                command.add("--java-kinds=+l");
+            }
+            command.add("--sql-kinds=+l");
+            command.add("--Fortran-kinds=+L");
+            command.add("--C++-kinds=+l");
+            command.add("--file-scope=yes");
+            command.add("-u");
+            command.add("--filter=yes");
+            command.add("--filter-terminator=" + CTAGS_FILTER_TERMINATOR + "\n");
+            command.add("--fields=-anf+iKnS");
+            command.add("--excmd=pattern");
+            command.add("--langmap=sh:+.kshlib"); // RFE #17849
+            command.add("--langmap=sql:+.plb"); // RFE #19208
+            command.add("--langmap=sql:+.pls"); // RFE #19208
+            command.add("--langmap=sql:+.pld"); // RFE #19208
+            command.add("--langmap=sql:+.pks"); // RFE #19208 ?
+
+            //Ideally all below should be in ctags, or in outside config file,
+            //we might run out of command line SOON
+            //Also note, that below ctags definitions HAVE to be in POSIX
+            //otherwise the regexp will not work on some platforms
+            //on Solaris regexp.h used is different than on linux (gnu regexp)
+            //http://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended
+            command.add("--langdef=scala"); // below is bug 61 to get full scala support
+            command.add("--langmap=scala:.scala");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*trait[[:space:]]+([a-zA-Z0-9_]+)/\\4/t,traits/");
+            command.add("--regex-scala=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/T,types/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*def[[:space:]]+([a-zA-Z0-9_]+)/\\3/m,methods/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*val[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,constants/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*var[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,variables/");
+            command.add("--regex-scala=/^[[:space:]]*package[[:space:]]+([a-zA-Z0-9_.]+)/\\1/p,packages/");
+
+            command.add("--langdef=haskell"); // below was added with #912
+            command.add("--langmap=haskell:.hs.hsc");
+            command.add("--regex-haskell=/^[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\1/c,classes/");
+            command.add("--regex-haskell=/^[[:space:]]*data[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*newtype[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/^(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+
+            if (!env.isUniversalCtags()) {
+                command.add("--langdef=golang");
+                command.add("--langmap=golang:.go");
+                command.add("--regex-golang=/func([[:space:]]+([^)]+))?[[:space:]]+([a-zA-Z0-9_]+)/\\2/f,func/");
+                command.add("--regex-golang=/var[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/v,var/");
+                command.add("--regex-golang=/type[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/t,type/");
+
+                command.add("--langdef=clojure"); // clojure support (patterns are from https://gist.github.com/kul/8704283)
+                command.add("--langmap=clojure:.clj");
+                command.add("--regex-clojure=/\\([ \\t]*create-ns[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+                command.add("--regex-clojure=/\\([ \\t]*def[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/d,definition/");
+                command.add("--regex-clojure=/\\([ \\t]*defn[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/f,function/");
+                command.add("--regex-clojure=/\\([ \\t]*defn-[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/p,private function/");
+                command.add("--regex-clojure=/\\([ \\t]*defmacro[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/m,macro/");
+                command.add("--regex-clojure=/\\([ \\t]*definline[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/i,inline/");
+                command.add("--regex-clojure=/\\([ \\t]*defmulti[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/a,multimethod definition/");
+                command.add("--regex-clojure=/\\([ \\t]*defmethod[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/b,multimethod instance/");
+                command.add("--regex-clojure=/\\([ \\t]*defonce[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/c,definition (once)/");
+                command.add("--regex-clojure=/\\([ \\t]*defstruct[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/s,struct/");
+                command.add("--regex-clojure=/\\([ \\t]*intern[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/v,intern/");
+                command.add("--regex-clojure=/\\([ \\t]*ns[ \\t]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+            }
+
+            /* Add extra command line options for ctags. */
+            if (CTagsExtraOptionsFile != null) {
+                LOGGER.log(Level.INFO, "Adding extra options to ctags");
+                command.add("--options=" + CTagsExtraOptionsFile);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (String s : command) {
+                sb.append(s).append(" ");
+            }
+            String commandStr = sb.toString();
+            LOGGER.log(Level.FINE, "Executing ctags command [{0}]", commandStr);
+
+            processBuilder = new ProcessBuilder(command);
+        }
+
+        ctags = processBuilder.start();
+        ctagsIn = new OutputStreamWriter(ctags.getOutputStream());
+        ctagsOut = new BufferedReader(new InputStreamReader(ctags.getInputStream()));
+
+        Thread errThread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                StringBuilder sb = new StringBuilder();
+                try (BufferedReader error = new BufferedReader(
+                        new InputStreamReader(ctags.getErrorStream()))) {
+                    String s;
+                    while ((s = error.readLine()) != null) {
+                        sb.append(s);
+                        sb.append('\n');
+                    }
+                } catch (IOException exp) {
+                    LOGGER.log(Level.WARNING, "Got an exception reading ctags error stream: ", exp);
+                }
+                if (sb.length() > 0) {
+                    LOGGER.log(Level.WARNING, "Error from ctags: {0}", sb.toString());
+                }
+            }
+        });
+        errThread.setDaemon(true);
+        errThread.start();
+// END initialize({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f5adb-9ed79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18ff3-54340
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c24d-cd9fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74246-5ce09
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99d13-8e44f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_042fe-dab33
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1448-79184
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37ea6-e108d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35e61-1e01e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2949d-1e4f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e807f-c6d2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4e87-fa26d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4d309-db70f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_4d309_db70f\rev_rev_left_4d309-rev_right_db70f\src\org\opensolaris\opengrok\analysis\Ctags.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START initialize({FormalParametersInternal})//private void initialize() throws IOException {
+        RuntimeEnvironment env = RuntimeEnvironment.getInstance();
+        if (processBuilder == null) {
+            List<String> command = new ArrayList<>();
+
+            command.add(binary);
+            command.add("--c-kinds=+l");
+
+            if (env.isUniversalCtags()) {
+                command.add("--langmap=clojure:+.cljs");
+                command.add("--langmap=clojure:+.cljx");
+
+                // Workaround for bug #14924: Don't get local variables in Java
+                // code since that creates many false positives.
+                // CtagsTest : bug14924 "too many methods" guards for this
+                // universal ctags are however safe, so enabling for them
+                command.add("--java-kinds=+l");
+            }
+            command.add("--sql-kinds=+l");
+            command.add("--Fortran-kinds=+L");
+            command.add("--C++-kinds=+l");
+            command.add("--file-scope=yes");
+            command.add("-u");
+            command.add("--filter=yes");
+            command.add("--filter-terminator=" + CTAGS_FILTER_TERMINATOR + "\n");
+            command.add("--fields=-anf+iKnS");
+            command.add("--excmd=pattern");
+            command.add("--langmap=sh:+.kshlib"); // RFE #17849
+            command.add("--langmap=sql:+.plb"); // RFE #19208
+            command.add("--langmap=sql:+.pls"); // RFE #19208
+            command.add("--langmap=sql:+.pld"); // RFE #19208
+            command.add("--langmap=sql:+.pks"); // RFE #19208 ?
+
+            //Ideally all below should be in ctags, or in outside config file,
+            //we might run out of command line SOON
+            //Also note, that below ctags definitions HAVE to be in POSIX
+            //otherwise the regexp will not work on some platforms
+            //on Solaris regexp.h used is different than on linux (gnu regexp)
+            //http://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended
+            command.add("--langdef=scala"); // below is bug 61 to get full scala support
+            command.add("--langmap=scala:.scala");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*trait[[:space:]]+([a-zA-Z0-9_]+)/\\4/t,traits/");
+            command.add("--regex-scala=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/T,types/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*def[[:space:]]+([a-zA-Z0-9_]+)/\\3/m,methods/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*val[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,constants/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*var[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,variables/");
+            command.add("--regex-scala=/^[[:space:]]*package[[:space:]]+([a-zA-Z0-9_.]+)/\\1/p,packages/");
+
+            command.add("--langdef=haskell"); // below was added with #912
+            command.add("--langmap=haskell:.hs.hsc");
+            command.add("--regex-haskell=/^[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\1/c,classes/");
+            command.add("--regex-haskell=/^[[:space:]]*data[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*newtype[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/^(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+
+            if (!env.isUniversalCtags()) {
+                command.add("--langdef=golang");
+                command.add("--langmap=golang:.go");
+                command.add("--regex-golang=/func([[:space:]]+([^)]+))?[[:space:]]+([a-zA-Z0-9_]+)/\\2/f,func/");
+                command.add("--regex-golang=/var[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/v,var/");
+                command.add("--regex-golang=/type[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/t,type/");
+            }
+            //temporarily use our defs until ctags will fix https://github.com/universal-ctags/ctags/issues/988
+                command.add("--langdef=clojure"); // clojure support (patterns are from https://gist.github.com/kul/8704283)
+                command.add("--langmap=clojure:.clj");
+                command.add("--regex-clojure=/\\([[:space:]]*create-ns[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+                command.add("--regex-clojure=/\\([[:space:]]*def[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/d,definition/");
+                command.add("--regex-clojure=/\\([[:space:]]*defn[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/f,function/");
+                command.add("--regex-clojure=/\\([[:space:]]*defn-[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/p,private function/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmacro[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/m,macro/");
+                command.add("--regex-clojure=/\\([[:space:]]*definline[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/i,inline/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmulti[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/a,multimethod definition/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmethod[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/b,multimethod instance/");
+                command.add("--regex-clojure=/\\([[:space:]]*defonce[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/c,definition (once)/");
+                command.add("--regex-clojure=/\\([[:space:]]*defstruct[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/s,struct/");
+                command.add("--regex-clojure=/\\([[:space:]]*intern[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/v,intern/");
+                command.add("--regex-clojure=/\\([[:space:]]*ns[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+
+            command.add("--langdef=pascal");
+            command.add("--langmap=pascal:.pas");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*\\(\\s*\\w\\s*\\)/\\1/t,Type/");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*class\\s*[^;]*$/\\1/c,Class/");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*interface\\s*[^;]*$/\\1/c,interface/");
+            command.add("--regex-pascal=/^constructor\\s+(T[a-zA-Z0-9_]+(<[a-zA-Z0-9_, ]+>)?\\.)([a-zA-Z0-9_<>, ]+)(.*)+/\\1\\3/n,Constructor/");
+            command.add("--regex-pascal=/^destructor\\s+(T[a-zA-Z0-9_]+(<[a-zA-Z0-9_, ]+>)?\\.)([a-zA-Z0-9_<>, ]+)(.*)+/\\1\\3/d,Destructor/");
+            command.add("--regex-pascal=/^(procedure|function)\\s+T[a-zA-Z0-9_<>, ]+\\.([a-zA-Z0-9_<>, ]+)(.*)/\\2/m,Method/");
+            command.add("--regex-pascal=/^procedure\\s+([a-zA-Z0-9_<>, ]+)[;(]/\\1/p,Procedure/");
+            command.add("--regex-pascal=/^function\\s+([a-zA-Z0-9_<>, ]+)[;(]/\\1/f,Function/");
+            command.add("--regex-pascal=/^(uses|interface|implementation)$/\\1/s,Section/");
+            command.add("--regex-pascal=/^unit\\s+([a-zA-Z0-9_<>, ]+)[;(]/\\1/s,unit/");
+            /* Add extra command line options for ctags. */
+            if (CTagsExtraOptionsFile != null) {
+                LOGGER.log(Level.INFO, "Adding extra options to ctags");
+                command.add("--options=" + CTagsExtraOptionsFile);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (String s : command) {
+                sb.append(s).append(" ");
+            }
+            String commandStr = sb.toString();
+            LOGGER.log(Level.FINE, "Executing ctags command [{0}]", commandStr);
+
+            processBuilder = new ProcessBuilder(command);
+        }
+
+        ctags = processBuilder.start();
+        ctagsIn = new OutputStreamWriter(ctags.getOutputStream());
+        ctagsOut = new BufferedReader(new InputStreamReader(ctags.getInputStream()));
+
+        Thread errThread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                StringBuilder sb = new StringBuilder();
+                try (BufferedReader error = new BufferedReader(
+                        new InputStreamReader(ctags.getErrorStream()))) {
+                    String s;
+                    while ((s = error.readLine()) != null) {
+                        sb.append(s);
+                        sb.append('\n');
+                    }
+                } catch (IOException exp) {
+                    LOGGER.log(Level.WARNING, "Got an exception reading ctags error stream: ", exp);
+                }
+                if (sb.length() > 0) {
+                    LOGGER.log(Level.WARNING, "Error from ctags: {0}", sb.toString());
+                }
+            }
+        });
+        errThread.setDaemon(true);
+        errThread.start();
+// END initialize({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d059-4eeac
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_3d059_4eeac\rev_rev_left_3d059-rev_right_4eeac\src\org\opensolaris\opengrok\analysis\Ctags.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START initialize({FormalParametersInternal})//private void initialize() throws IOException {
+        RuntimeEnvironment env = RuntimeEnvironment.getInstance();
+        if (processBuilder == null) {
+            List<String> command = new ArrayList<>();
+
+            command.add(binary);
+            command.add("--c-kinds=+l");
+
+            if (env.isUniversalCtags()) {
+                command.add("--langmap=clojure:+.cljs");
+                command.add("--langmap=clojure:+.cljx");
+
+                // Workaround for bug #14924: Don't get local variables in Java
+                // code since that creates many false positives.
+                // CtagsTest : bug14924 "too many methods" guards for this
+                // universal ctags are however safe, so enabling for them
+                command.add("--java-kinds=+l");
+            }
+            command.add("--sql-kinds=+l");
+            command.add("--Fortran-kinds=+L");
+            command.add("--C++-kinds=+l");
+            command.add("--file-scope=yes");
+            command.add("-u");
+            command.add("--filter=yes");
+            command.add("--filter-terminator=" + CTAGS_FILTER_TERMINATOR + "\n");
+            command.add("--fields=-anf+iKnS");
+            command.add("--excmd=pattern");
+            command.add("--langmap=sh:+.kshlib"); // RFE #17849
+            command.add("--langmap=sql:+.plb"); // RFE #19208
+            command.add("--langmap=sql:+.pls"); // RFE #19208
+            command.add("--langmap=sql:+.pld"); // RFE #19208
+            command.add("--langmap=sql:+.pks"); // RFE #19208 ?
+
+            //Ideally all below should be in ctags, or in outside config file,
+            //we might run out of command line SOON
+            //Also note, that below ctags definitions HAVE to be in POSIX
+            //otherwise the regexp will not work on some platforms
+            //on Solaris regexp.h used is different than on linux (gnu regexp)
+            //http://en.wikipedia.org/wiki/Regular_expression#POSIX_basic_and_extended
+            command.add("--langdef=scala"); // below is bug 61 to get full scala support
+            command.add("--langmap=scala:.scala");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case class[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case classes/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*case object[[:space:]]+([a-zA-Z0-9_]+)/\\4/c,case objects/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*(private|protected)?[[:space:]]*trait[[:space:]]+([a-zA-Z0-9_]+)/\\4/t,traits/");
+            command.add("--regex-scala=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/T,types/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*def[[:space:]]+([a-zA-Z0-9_]+)/\\3/m,methods/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*val[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,constants/");
+            command.add("--regex-scala=/^[[:space:]]*((abstract|final|sealed|implicit|lazy)[[:space:]]*)*var[[:space:]]+([a-zA-Z0-9_]+)/\\3/l,variables/");
+            command.add("--regex-scala=/^[[:space:]]*package[[:space:]]+([a-zA-Z0-9_.]+)/\\1/p,packages/");
+
+            command.add("--langdef=haskell"); // below was added with #912
+            command.add("--langmap=haskell:.hs.hsc");
+            command.add("--regex-haskell=/^[[:space:]]*class[[:space:]]+([a-zA-Z0-9_]+)/\\1/c,classes/");
+            command.add("--regex-haskell=/^[[:space:]]*data[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*newtype[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^[[:space:]]*type[[:space:]]+([a-zA-Z0-9_]+)/\\1/t,types/");
+            command.add("--regex-haskell=/^([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\1/f,functions/");
+            command.add("--regex-haskell=/^(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+            command.add("--regex-haskell=/[[:space:]]+(let|where)[[:space:]]+([a-zA-Z0-9_]+).*[[:space:]]+={1}[[:space:]]+/\\2/f,functions/");
+
+            if (!env.isUniversalCtags()) {
+                command.add("--langdef=golang");
+                command.add("--langmap=golang:.go");
+                command.add("--regex-golang=/func([[:space:]]+([^)]+))?[[:space:]]+([a-zA-Z0-9_]+)/\\2/f,func/");
+                command.add("--regex-golang=/var[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/v,var/");
+                command.add("--regex-golang=/type[[:space:]]+([a-zA-Z_][a-zA-Z0-9_]+)/\\1/t,type/");
+            }
+            //temporarily use our defs until ctags will fix https://github.com/universal-ctags/ctags/issues/988
+                command.add("--langdef=clojure"); // clojure support (patterns are from https://gist.github.com/kul/8704283)
+                command.add("--langmap=clojure:.clj");
+                command.add("--regex-clojure=/\\([[:space:]]*create-ns[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+                command.add("--regex-clojure=/\\([[:space:]]*def[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/d,definition/");
+                command.add("--regex-clojure=/\\([[:space:]]*defn[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/f,function/");
+                command.add("--regex-clojure=/\\([[:space:]]*defn-[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/p,private function/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmacro[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/m,macro/");
+                command.add("--regex-clojure=/\\([[:space:]]*definline[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/i,inline/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmulti[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/a,multimethod definition/");
+                command.add("--regex-clojure=/\\([[:space:]]*defmethod[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/b,multimethod instance/");
+                command.add("--regex-clojure=/\\([[:space:]]*defonce[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/c,definition (once)/");
+                command.add("--regex-clojure=/\\([[:space:]]*defstruct[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/s,struct/");
+                command.add("--regex-clojure=/\\([[:space:]]*intern[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/v,intern/");
+                command.add("--regex-clojure=/\\([[:space:]]*ns[[:space:]]+([-[:alnum:]*+!_:\\/.?]+)/\\1/n,namespace/");
+
+            command.add("--langdef=pascal");
+            command.add("--langmap=pascal:.pas");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*\\(\\s*\\w\\s*\\)/\\1/t,Type/");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*class\\s*[^;]*$/\\1/c,Class/");
+            command.add("--regex-pascal=/(\\w+)\\s*=\\s*interface\\s*[^;]*$/\\1/c,interface/");
+            command.add("--regex-pascal=/^constructor\\s+(T[a-zA-Z0-9_]+(<[a-zA-Z0-9_, ]+>)?\\.)([a-zA-Z0-9_<>, ]+)(.*)+/\\1\\3/n,Constructor/");
+            command.add("--regex-pascal=/^destructor\\s+(T[a-zA-Z0-9_]+(<[a-zA-Z0-9_, ]+>)?\\.)([a-zA-Z0-9_<>, ]+)(.*)+/\\1\\3/d,Destructor/");
+            command.add("--regex-pascal=/^(procedure)\\s+T[a-zA-Z0-9_<>, ]+\\.([a-zA-Z0-9_<>, ]+)(.*)/\\2/m,procedure/");
+            command.add("--regex-pascal=/^(function)\\s+T[a-zA-Z0-9_<>, ]+\\.([a-zA-Z0-9_<>, ]+)(.*)/\\2/m,function/");
+            command.add("--regex-pascal=/^\\s*property\\s+([a-zA-Z0-9_<>, ]+)\\s*\\:(.*)/\\1/m,property/");
+            command.add("--regex-pascal=/^(uses|interface|implementation)$/\\1/s,Section/");
+            command.add("--regex-pascal=/^unit\\s+([a-zA-Z0-9_<>, ]+)[;(]/\\1/s,unit/");
+            /* Add extra command line options for ctags. */
+            if (CTagsExtraOptionsFile != null) {
+                LOGGER.log(Level.INFO, "Adding extra options to ctags");
+                command.add("--options=" + CTagsExtraOptionsFile);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (String s : command) {
+                sb.append(s).append(" ");
+            }
+            String commandStr = sb.toString();
+            LOGGER.log(Level.FINE, "Executing ctags command [{0}]", commandStr);
+
+            processBuilder = new ProcessBuilder(command);
+        }
+
+        ctags = processBuilder.start();
+        ctagsIn = new OutputStreamWriter(ctags.getOutputStream());
+        ctagsOut = new BufferedReader(new InputStreamReader(ctags.getInputStream()));
+
+        Thread errThread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                StringBuilder sb = new StringBuilder();
+                try (BufferedReader error = new BufferedReader(
+                        new InputStreamReader(ctags.getErrorStream()))) {
+                    String s;
+                    while ((s = error.readLine()) != null) {
+                        sb.append(s);
+                        sb.append('\n');
+                    }
+                } catch (IOException exp) {
+                    LOGGER.log(Level.WARNING, "Got an exception reading ctags error stream: ", exp);
+                }
+                if (sb.length() > 0) {
+                    LOGGER.log(Level.WARNING, "Error from ctags: {0}", sb.toString());
+                }
+            }
+        });
+        errThread.setDaemon(true);
+        errThread.start();
+// END initialize({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5073-59c0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c87d6-74021
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c372-03c01
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1b7d-1c601
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5dfd2-ded39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51548-a11a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_addc7-b2a39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e10f8-11759
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ecbdd-37f9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb1c3-9d455
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_183a2-04fa3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_96aa5-4d818
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d658c-7e161
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f61d-e8003
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8ee3-d8d74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7556e-25d3d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f17b-3d4f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_45846-c17bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60b97-b9fe3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06163-96b9d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d05b4-08332
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46b5e-e7ba7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c79c-79794
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7a11d-8d805
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79dcc-1b6db
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_79dcc_1b6db\rev_rev_left_79dcc-rev_right_1b6db\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: []
+Right editions: [637]
+Merged body: 
+// START startNewLine({FormalParametersInternal})//protected void startNewLine() throws IOException {
+        String iconId = null;
+        int line = getLineNumber() + 1;
+        setLineNumber(line);
+
+        if (scopesEnabled) {
+            startScope();
+
+            if (scopeOpen && scope == null) {
+                scopeOpen = false;
+                out.write("</span>");
+            } else if (scope != null) {
+                String scopeId = generateId(scope);
+                if (scope.getLineFrom() == line) {
+                    out.write("<span id='");
+                    out.write(scopeId);
+                    out.write("' class='scope-head'><span class='scope-signature'>");
+                    out.write(htmlize(scope.getName() + scope.getSignature()));
+                    out.write("</span>");
+                    iconId = scopeId + "_fold_icon";
+                } else if (scope.getLineFrom() == line - 1) {
+                    if (scopeOpen) {
+                        out.write("</span>");
+                    }
+
+                    out.write("<span id='");
+                    out.write(scopeId);
+                    out.write("_fold' class='scope-body'>");
+                }
+                scopeOpen = true;
+            }
+        }
+
+        Util.readableLine(line, out, annotation, userPageLink, userPageSuffix,
+// RIGHT //                getProjectPostfix(true));
+
+        if (foldingEnabled && scopesEnabled) {
+            if (iconId != null) {
+                out.write("<a href=\"#\" onclick='fold(this.parentNode.id)' id='");
+                out.write(iconId);
+                /* space inside span for IE support */
+                out.write("'><span class='fold-icon'>&nbsp;</span></a>");
+            } else {
+                out.write("<span class='fold-space'>&nbsp;</span>");
+            }
+        }
+// END startNewLine({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\OpenGrok\revisions\rev_79dcc_1b6db\rev_rev_left_79dcc-rev_right_1b6db\src\org\opensolaris\opengrok\analysis\JFlexXref.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START write(Writer-Writer)//public void write(Writer out) throws IOException {
+        this.out = out;
+        writeSymbolTable();
+        setLineNumber(0);
+        startNewLine();
+        while (yylex() != yyeof) { // NOPMD while statement intentionally empty
+            // nothing to do here, yylex() will do the work
+        }
+
+        // terminate scopes
+        if (scopeOpen) {
+            out.write("</div>");
+            scopeOpen = false;
+        }
+
+        while (!stack.empty()) {
+            yypop();
+        }
+// END write(Writer-Writer)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e98d-b64ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4935e-382e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b35d7-aabc6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eecc9-ae49d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db4a3-29963
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb4e7-73589
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57fa3-823ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23f63-c5dc7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bfd64-58b5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dfea9-a849a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b598-dbf95
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a460f-0cb5b
+#MS_XXX_MS#

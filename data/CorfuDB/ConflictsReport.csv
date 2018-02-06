@@ -1,0 +1,2458 @@
+=========================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_38ced_63877\rev_38ced-63877.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_be8b0_b4ff9\rev_be8b0-b4ff9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_aa4e9_b2d76\rev_aa4e9-b2d76.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_38cd5_74aa5\rev_38cd5-74aa5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7b6b5_3628a\rev_7b6b5-3628a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_de340_774c1\rev_de340-774c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_0e060_e599a\rev_0e060-e599a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ce8c1_98d65\rev_ce8c1-98d65.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2c815_955e1\rev_2c815-955e1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+public static void main(String[] args) throws Exception
+    {
+        final int TXTEST=0;
+        final int LINTEST=1;
+        final int STREAMTEST=2;
+        final int MULTICLIENTTXTEST=3;
+        final int LINCTRTEST=4;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_var1_8271058451037518380
+        final int TXLISTCOARSE=5;
+        final int TXLISTFINE=6;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_base_308631928639131649
+=======
+        final int REMOBJTEST=5;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_var2_8466203316470692081
+
+        int numclients = 2;
+        int expernum = 1; //used by the barrier code
+
+        int c;
+        String strArg;
+        int numthreads = 1;
+        int numops = 1000;
+        int numkeys = 100;
+        int numlists = 2;
+        int testnum = 0;
+        int rpcport = 9090;
+        String masternode = null;
+        if(args.length==0)
+        {
+            print_usage();
+            return;
+        }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_var1_8271058451037518380
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:k:l:");
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_base_308631928639131649
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:");
+=======
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:p:e:");
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214399939\fstmerge_var2_8466203316470692081
+        while ((c = g.getopt()) != -1)
+        {
+            switch(c)
+            {
+                case 'a':
+                    strArg = g.getOptarg();
+                    System.out.println("testtype = "+ strArg);
+                    testnum = Integer.parseInt(strArg);
+                    break;
+                case 'm':
+                    masternode = g.getOptarg();
+                    masternode = masternode.trim();
+                    System.out.println("master = " + masternode);
+                    break;
+                case 't':
+                    strArg = g.getOptarg();
+                    System.out.println("numthreads = "+ strArg);
+                    numthreads = Integer.parseInt(strArg);
+                    break;
+                case 'n':
+                    strArg = g.getOptarg();
+                    System.out.println("numops = "+ strArg);
+                    numops = Integer.parseInt(strArg);
+                    break;
+                case 'k':
+                    strArg = g.getOptarg();
+                    System.out.println("numkeys = "+ strArg);
+                    numkeys = Integer.parseInt(strArg);
+                    break;
+                case 'l':
+                    strArg = g.getOptarg();
+                    System.out.println("numlists = "+ strArg);
+                    numlists = Integer.parseInt(strArg);
+                    break;
+                case 'p':
+                    strArg = g.getOptarg();
+                    System.out.println("rpcport = "+ strArg);
+                    rpcport = Integer.parseInt(strArg);
+                    break;
+                case 'c':
+                    strArg = g.getOptarg();
+                    System.out.println("numbarrier = " + strArg);
+                    numclients = Integer.parseInt(strArg);
+                    break;
+                case 'e':
+                    strArg = g.getOptarg();
+                    System.out.println("expernum = " + strArg);
+                    expernum = Integer.parseInt(strArg);
+                default:
+                    System.out.print("getopt() returned " + c + "\n");
+            }
+        }
+
+        if(masternode == null)
+            throw new Exception("must provide master http address using -m flag");
+        if(numthreads < 1)
+            throw new Exception("need at least one thread!");
+        if(numops < 1)
+            throw new Exception("need at least one op!");
+
+
+        String rpchostname;
+
+        try
+        {
+            rpchostname = InetAddress.getLocalHost().getHostName();
+        }
+        catch (UnknownHostException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+
+        ClientLib crf;
+
+        try
+        {
+            crf = new ClientLib(masternode);
+        }
+        catch (CorfuException e)
+        {
+            throw e;
+        }
+
+
+        Thread[] threads = new Thread[numthreads];
+
+        StreamFactory sf = new StreamFactoryImpl(new CorfuLogAddressSpace(crf), new CorfuStreamingSequencer(crf));
+
+        long starttime = System.currentTimeMillis();
+
+        AbstractRuntime TR = null;
+        DirectoryService DS = null;
+        CorfuDBCounter barrier=null;
+        if(testnum==MULTICLIENTTXTEST)
+        {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            DS = new DirectoryService(TR);
+            barrier = new CorfuDBCounter(TR, DS.nameToStreamID("barrier" + expernum));
+            if(barrier.read()>numclients)
+            {
+                System.out.println("This experiment number has been used before! Use a new number for the -e flag, or check" +
+                        " that the -c flag correctly specifies the number of clients.");
+                System.exit(0);
+            }
+            barrier.increment();
+            while(barrier.read() < numclients) ;
+            dbglog.debug("Barrier reached; starting test...");
+        }
+
+        if(testnum==LINTEST)
+        {
+            TR = new SimpleRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap<Integer, Integer>(TR, DirectoryService.getUniqueID(sf));
+            for (int i = 0; i < numthreads; i++)
+            {
+                //linearizable tester
+                threads[i] = new Thread(new TesterThread(cob1));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test succeeded!");
+        }
+        if(testnum==LINCTRTEST)
+        {
+            TR = new SimpleRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBCounter ctr1 = new CorfuDBCounter(TR, DirectoryService.getUniqueID(sf));
+            for (int i = 0; i < numthreads; i++)
+            {
+                //linearizable tester
+                threads[i] = new Thread(new TesterThread(ctr1));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test succeeded!");
+        }
+        else if(testnum==TXTEST)
+        {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+
+            DS = new DirectoryService(TR);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap1"));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap2"));
+
+
+            for (int i = 0; i < numthreads; i++)
+            {
+                //transactional tester
+                threads[i] = new Thread(new TXTesterThread(cob1, cob2, TR));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test done! Checking consistency...");
+            TXTesterThread tx = new TXTesterThread(cob1, cob2, TR);
+            if(tx.check_consistency())
+                System.out.println("Consistency check passed --- test successful!");
+            else
+                System.out.println("Consistency check failed!");
+            System.out.println(TR);
+        }
+        else if(testnum==STREAMTEST)
+        {
+            Stream sb = sf.newStream(1234);
+
+            //trim the stream to get rid of entries from previous tests
+            //sb.prefixTrim(sb.checkTail()); //todo: turning off, trim not yet implemented at log level
+            for(int i=0;i<numthreads;i++)
+            {
+                threads[i] = new Thread(new StreamTester(sb, numops));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+        }
+        else if(testnum==TXLISTCOARSE)
+        {
+            CyclicBarrier startbarrier = new CyclicBarrier(numthreads);
+            CyclicBarrier stopbarrier = new CyclicBarrier(numthreads);
+            TXRuntime TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            ArrayList<CorfuDBList<Integer>> lists = new ArrayList<CorfuDBList<Integer>>();
+            NonRandomIntProvider generator = new NonRandomIntProvider();
+
+            for(int i=0; i<numlists; i++) {
+                lists.add(new CorfuDBCoarseList<Integer>(TR, DirectoryService.getUniqueID(sf)));
+            }
+
+            for (int i = 0; i < numthreads; i++)
+            {
+                TXListTester<Integer> txl = new TXListTester<Integer>(
+                        i, startbarrier, stopbarrier, TR, lists, numops, numkeys, generator);
+                threads[i] = new Thread(txl);
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+
+            System.out.println("Test done! Checking consistency...");
+            TXListChecker txc = new TXListChecker(TR, lists, numops, numkeys);
+            if(txc.isConsistent())
+                System.out.println("List consistency check passed --- test successful!");
+            else
+                System.out.println("List consistency check failed!");
+            System.out.println(TR);
+        }
+        else if(testnum==REMOBJTEST)
+        {
+            //create two maps, one local, one remote
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+
+            DS = new DirectoryService(TR);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + (rpcport%2)));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + ((rpcport+1)%2)), true);
+            System.out.println("local map = " + (rpcport%2) + " " + cob1.getID());
+            System.out.println("remote map = " + ((rpcport+1)%2) + " " + cob2.getID());
+
+
+            System.out.println("sleeping");
+            Thread.sleep(10000);
+            System.out.println("woke up");
+
+            cob1.put(100, 55);
+            System.out.println(cob1.size());
+            System.out.println(cob2.size());
+            Thread.sleep(5000);
+            System.out.println("Test succeeded!");
+        }
+        else if(testnum==MULTICLIENTTXTEST)
+        {
+
+            //TR has already been created by the barrier code
+            //DS has already been created by the barrier code
+
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + (rpcport%2)));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + ((rpcport+1)%2)), true);
+            System.out.println("local map = " + (rpcport%2) + " " + cob1.getID());
+            System.out.println("remote map = " + ((rpcport+1)%2)+ " " + cob2.getID());
+
+            for (int i = 0; i < numthreads; i++)
+            {
+                //transactional tester
+                threads[i] = new Thread(new TXTesterThread(cob1, cob2, TR));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            barrier.increment();
+            while(barrier.read() < 2*numclients)
+                cob1.size(); //this ensures that we're still processing txints and issuing partial decisions to help other nodes
+                             //need a cleaner way to ensure this
+            dbglog.debug("second barrier reached; checking consistency...");
+            System.out.println("Checking consistency...");
+            TXTesterThread tx = new TXTesterThread(cob1, cob2, TR);
+            if(tx.check_consistency())
+                System.out.println("Consistency check passed --- test successful!");
+            else
+                System.out.println("Consistency check failed!");
+            System.out.println(TR);
+            barrier.increment();
+            while(barrier.read() < 3*numclients);
+            dbglog.debug("third barrier reached; test done");
+            System.out.println("Test done!");
+        }
+
+
+        System.out.println("Test done in " + (System.currentTimeMillis()-starttime));
+
+        System.exit(0);
+
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_2c815_955e1\rev_rev_left_2c815-rev_right_955e1\src\main\java\org\corfudb\runtime\CorfuDBTester.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1877d_51a4e\rev_1877d-51a4e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8c72f_181d3\rev_8c72f-181d3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_65b4e_bb2a8\rev_65b4e-bb2a8.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static void main(String[] args) throws Exception
+    {
+        final int TXTEST=0;
+        final int LINTEST=1;
+        final int STREAMTEST=2;
+        final int MULTICLIENTTXTEST=3;
+        final int LINCTRTEST=4;
+        final int REMOBJTEST=5;
+        final int TXLISTCOARSE=6;
+        final int TXLISTFINE=7;
+
+        int numclients = 2;
+        int expernum = 1; //used by the barrier code
+
+        int c;
+        String strArg;
+        int numthreads = 1;
+        int numops = 1000;
+        int numkeys = 100;
+        int numlists = 2;
+        int testnum = 0;
+        int rpcport = 9090;
+        int numkeys = 100;
+        String masternode = null;
+        if(args.length==0)
+        {
+            print_usage();
+            return;
+        }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214450851\fstmerge_var1_651333392790719478
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:p:e:k:l:");
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214450851\fstmerge_base_8101546776217071388
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:p:e:");
+=======
+        Getopt g = new Getopt("CorfuDBTester", args, "a:m:t:n:p:e:k:c:");
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214450851\fstmerge_var2_4512623771862245984
+        while ((c = g.getopt()) != -1)
+        {
+            switch(c)
+            {
+                case 'a':
+                    strArg = g.getOptarg();
+                    System.out.println("testtype = "+ strArg);
+                    testnum = Integer.parseInt(strArg);
+                    break;
+                case 'm':
+                    masternode = g.getOptarg();
+                    masternode = masternode.trim();
+                    System.out.println("master = " + masternode);
+                    break;
+                case 't':
+                    strArg = g.getOptarg();
+                    System.out.println("numthreads = "+ strArg);
+                    numthreads = Integer.parseInt(strArg);
+                    break;
+                case 'n':
+                    strArg = g.getOptarg();
+                    System.out.println("numops = "+ strArg);
+                    numops = Integer.parseInt(strArg);
+                    break;
+                case 'k':
+                    strArg = g.getOptarg();
+                    System.out.println("numkeys = "+ strArg);
+                    numkeys = Integer.parseInt(strArg);
+                    break;
+                case 'l':
+                    strArg = g.getOptarg();
+                    System.out.println("numlists = "+ strArg);
+                    numlists = Integer.parseInt(strArg);
+                    break;
+                case 'p':
+                    strArg = g.getOptarg();
+                    System.out.println("rpcport = "+ strArg);
+                    rpcport = Integer.parseInt(strArg);
+                    break;
+                case 'c':
+                    strArg = g.getOptarg();
+                    System.out.println("numbarrier = " + strArg);
+                    numclients = Integer.parseInt(strArg);
+                    break;
+                case 'e':
+                    strArg = g.getOptarg();
+                    System.out.println("expernum = " + strArg);
+                    expernum = Integer.parseInt(strArg);
+                case 'k':
+                    strArg = g.getOptarg();
+                    System.out.println("numkeys = " + strArg);
+                    numkeys = Integer.parseInt(strArg);
+                default:
+                    System.out.print("getopt() returned " + c + "\n");
+            }
+        }
+
+        if(masternode == null)
+            throw new Exception("must provide master http address using -m flag");
+        if(numthreads < 1)
+            throw new Exception("need at least one thread!");
+        if(numops < 1)
+            throw new Exception("need at least one op!");
+
+
+        String rpchostname;
+
+        try
+        {
+            rpchostname = InetAddress.getLocalHost().getHostName();
+        }
+        catch (UnknownHostException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+
+        CorfuDBClient crf;
+
+        crf = new CorfuDBClient(masternode);
+        crf.startViewManager();
+        crf.waitForViewReady();
+
+        Thread[] threads = new Thread[numthreads];
+
+        StreamFactory sf = new StreamFactoryImpl(new CorfuLogAddressSpace(crf), new CorfuStreamingSequencer(crf));
+
+        long starttime = System.currentTimeMillis();
+
+        AbstractRuntime TR = null;
+        DirectoryService DS = null;
+        CorfuDBCounter barrier=null;
+        if(testnum==MULTICLIENTTXTEST)
+        {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            DS = new DirectoryService(TR);
+            barrier = new CorfuDBCounter(TR, DS.nameToStreamID("barrier" + expernum));
+            if(barrier.read()>numclients)
+            {
+                System.out.println("This experiment number has been used before! Use a new number for the -e flag, or check" +
+                        " that the -c flag correctly specifies the number of clients.");
+                System.exit(0);
+            }
+            barrier.increment();
+            while(barrier.read() < numclients) ;
+            dbglog.debug("Barrier reached; starting test...");
+        }
+
+        if(testnum==LINTEST)
+        {
+            TR = new SimpleRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap<Integer, Integer>(TR, DirectoryService.getUniqueID(sf));
+            for (int i = 0; i < numthreads; i++)
+            {
+                //linearizable tester
+                threads[i] = new Thread(new TesterThread(cob1));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test succeeded!");
+        }
+        if(testnum==LINCTRTEST)
+        {
+            TR = new SimpleRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBCounter ctr1 = new CorfuDBCounter(TR, DirectoryService.getUniqueID(sf));
+            for (int i = 0; i < numthreads; i++)
+            {
+                //linearizable tester
+                threads[i] = new Thread(new TesterThread(ctr1));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test succeeded!");
+        }
+        else if(testnum==TXTEST)
+        {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+
+            DS = new DirectoryService(TR);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap1"));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap2"));
+
+
+            for (int i = 0; i < numthreads; i++)
+            {
+                //transactional tester
+                threads[i] = new Thread(new TXTesterThread(cob1, cob2, TR, numkeys, numops));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            System.out.println("Test done! Checking consistency...");
+            TXTesterThread tx = new TXTesterThread(cob1, cob2, TR, numkeys, numops);
+            if(tx.check_consistency())
+                System.out.println("Consistency check passed --- test successful!");
+            else
+                System.out.println("Consistency check failed!");
+            System.out.println(TR);
+        }
+        else if(testnum==STREAMTEST)
+        {
+            Stream sb = sf.newStream(1234);
+
+            //trim the stream to get rid of entries from previous tests
+            //sb.prefixTrim(sb.checkTail()); //todo: turning off, trim not yet implemented at log level
+            for(int i=0;i<numthreads;i++)
+            {
+                threads[i] = new Thread(new StreamTester(sb, numops));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+        }
+        else if(testnum==TXLISTCOARSE) {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBTester.<Integer, CorfuDBCoarseList<Integer>>runListTest(
+                    TR, rpchostname, rpcport, sf, numthreads,
+                    numlists, numops, numkeys, new SeqIntGenerator(), "CorfuDBCoarseList");
+        }
+        else if(testnum==TXLISTFINE) {
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+            CorfuDBTester.<Integer, CDBList<Integer>>runListTest(
+                    TR, rpchostname, rpcport, sf, numthreads,
+                    numlists, numops, numkeys, new SeqIntGenerator(), "CDBList");
+        }
+        else if(testnum==REMOBJTEST)
+        {
+            //create two maps, one local, one remote
+            TR = new TXRuntime(sf, DirectoryService.getUniqueID(sf), rpchostname, rpcport);
+
+            DS = new DirectoryService(TR);
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + (rpcport%2)));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + ((rpcport+1)%2)), true);
+            System.out.println("local map = " + (rpcport%2) + " " + cob1.getID());
+            System.out.println("remote map = " + ((rpcport+1)%2) + " " + cob2.getID());
+
+
+            System.out.println("sleeping");
+            Thread.sleep(10000);
+            System.out.println("woke up");
+
+            cob1.put(100, 55);
+            System.out.println(cob1.size());
+            System.out.println(cob2.size());
+            Thread.sleep(5000);
+            System.out.println("Test succeeded!");
+        }
+        else if(testnum==MULTICLIENTTXTEST)
+        {
+
+            //TR has already been created by the barrier code
+            //DS has already been created by the barrier code
+
+            CorfuDBMap<Integer, Integer> cob1 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + (rpcport%2)));
+            CorfuDBMap<Integer, Integer> cob2 = new CorfuDBMap(TR, DS.nameToStreamID("testmap" + ((rpcport+1)%2)), true);
+            System.out.println("local map = " + (rpcport%2) + " " + cob1.getID());
+            System.out.println("remote map = " + ((rpcport+1)%2)+ " " + cob2.getID());
+
+            for (int i = 0; i < numthreads; i++)
+            {
+                //transactional tester
+                threads[i] = new Thread(new TXTesterThread(cob1, cob2, TR, numkeys, numops));
+                threads[i].start();
+            }
+            for(int i=0;i<numthreads;i++)
+                threads[i].join();
+            barrier.increment();
+            while(barrier.read() < 2*numclients)
+                cob1.size(); //this ensures that we're still processing txints and issuing partial decisions to help other nodes
+                             //need a cleaner way to ensure this
+            dbglog.debug("second barrier reached; checking consistency...");
+            System.out.println("Checking consistency...");
+            TXTesterThread tx = new TXTesterThread(cob1, cob2, TR, numkeys, numops);
+            if(tx.check_consistency())
+                System.out.println("Consistency check passed --- test successful!");
+            else
+                System.out.println("Consistency check failed!");
+            System.out.println(TR);
+            barrier.increment();
+            while(barrier.read() < 3*numclients);
+            dbglog.debug("third barrier reached; test done");
+            System.out.println("Test done!");
+        }
+
+
+        System.out.println("Test done in " + (System.currentTimeMillis()-starttime));
+
+        System.exit(0);
+
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_65b4e_bb2a8\rev_rev_left_65b4e-rev_right_bb2a8\src\main\java\org\corfudb\runtime\CorfuDBTester.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void query_helper(CorfuDBObject cob, Serializable key, CorfuDBObjectCommand command)
+    {
+        if(curtx.get()==null) //non-transactional
+        {
+            SMREngine smre = getEngine(cob.getID());
+            if(smre==null) //not playing stream
+            {
+                rpcRemoteRuntime(cob, command);
+            }
+            else
+                smre.sync(SMREngine.TIMESTAMP_INVALID, command);
+        }
+        else
+        {
+            SMREngine smre = getEngine(cob.getID());
+            if(smre!=null) //we're playing the object
+            {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455044\fstmerge_var1_3971983029087083286
+                if(!curtx.get().has_read(cob.getID(), cob.getTimestamp(), key)) {
+                    curtx.get().mark_read(cob.getID(), cob.getTimestamp(), key);
+                    //do what here??? apply the command through the apply thread
+                    //todo: right now this causes an unnecessary sync
+                    smre.sync(SMREngine.TIMESTAMP_INVALID, command);
+                }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455044\fstmerge_base_8425732159007435764
+                curtx.get().mark_read(cob.getID(), cob.getTimestamp(), key);
+                //do what here??? apply the command through the apply thread
+                //todo: right now this causes an unnecessary sync
+                smre.sync(SMREngine.TIMESTAMP_INVALID, command);
+=======
+//                System.out.println("read " + cob.getID() + " at " + cob.getTimestamp());
+                curtx.get().mark_read(cob.getID(), cob.getTimestamp(), key);
+                //do what here??? apply the command through the apply thread
+                //todo: right now this causes an unnecessary sync
+                smre.sync(SMREngine.TIMESTAMP_INVALID, command);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455044\fstmerge_var2_3395535837945785187
+            }
+            else //it's a remote object
+            {
+                rpcRemoteRuntime(cob, command);
+                //todo: we need to get the timestamp back from the remote node!!!
+                //todo: for now just using the local object timestamp as a dummy value...
+                curtx.get().mark_read(cob.getID(), cob.getTimestamp(), key);
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_65b4e_bb2a8\rev_rev_left_65b4e-rev_right_bb2a8\src\main\java\org\corfudb\runtime\TXRuntime.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void process_tx_decision(Object command, long curstream, long timestamp)
+    {
+        if (txr.trackstats)
+        {
+            txr.ctr_numtxdec.incrementAndGet();
+        }
+
+//        if(trackstats)
+//        {
+//            if(decision==VAL_COMMIT) ctr_numcommits.incrementAndGet();
+//            else if(decision==VAL_ABORT) ctr_numaborts.incrementAndGet();
+//            else if(decision==VAL_UNDECIDED) ctr_numundecided.incrementAndGet();
+//        }
+
+
+
+        TxDec decrec = (TxDec)command;
+
+        dbglog.debug("process_tx_dec " + curstream + "." + timestamp + " for txint at " + curstream + "." + decrec.txint_timestamp);
+
+
+        TxInt T = getPending(decrec.txint_timestamp);
+        if(T==null) //already been decided and applied by this TXEngine
+        {
+            return;
+        }
+
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455528\fstmerge_var1_3380568126840832610
+        // Pair<Boolean, Boolean> P = txr.updateDecision(decrec.txint_timestamp, T.get_readstreams().get(decrec.stream), T.get_readstreams().size(), decrec.decision);
+        Map<Long, Integer> readstreams = T.get_readstreams();
+        Long streamkey = decrec.stream;
+        Integer streamval = readstreams.get(streamkey);
+        int size = readstreams.size();
+        boolean decision = decrec.decision;
+        long ts = decrec.txint_timestamp;
+        assert(txr != null);
+        Pair<Boolean, Boolean> P = txr.updateDecision(ts, streamval, size, decision);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455528\fstmerge_base_1999348875275503004
+
+        Pair<Boolean, Boolean> P = txr.updateDecision(decrec.txint_timestamp, T.get_readstreams().get(decrec.stream), T.get_readstreams().size(), decrec.decision);
+=======
+
+        //we index over all streams here; if stream appends are reliable, we can switch this to only readstreams
+        Pair<Boolean, Boolean> P = txr.updateDecisionState(decrec.txint_timestamp, T.get_allstreams().get(decrec.stream), T.get_allstreams().size(), decrec.decision);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214455528\fstmerge_var2_4610048769981956539
+
+        if(txr.trackstats)
+        {
+            if(P.first)
+            {
+                if(P.second) txr.ctr_numcommits.incrementAndGet();
+                else txr.ctr_numaborts.incrementAndGet();
+            }
+        }
+
+
+        if(P.first) //final decision has been made
+        {
+            if(P.second) //... and is a commit
+            {
+                Iterator<TxIntWriteSetEntry> it = getPending(decrec.txint_timestamp).get_bufferedupdates().iterator();
+                while (it.hasNext())
+                {
+                    TxIntWriteSetEntry P2 = it.next();
+                    //no need to lock since each object can only be modified by its underlying TXEngine, which
+                    //in turn is only entered by the underlying SMREngine thread.
+                    //todo: do we have to do 2-phase locking?
+                    //the only bad thing that can happen is that reads see an inconsistent state
+                    //but this can happen anyway, and in this case the transaction will abort
+                    //todo: think about providing tx opacity across the board
+                    if (P2.objectid != curstream) continue;
+                    CorfuDBObject cob = txr.getObject(P2.objectid);
+                    if (cob == null) throw new RuntimeException("not a registered object!");
+                    //cob.lock(true);
+                    cob.applyToObject(P2.command);
+                    cob.setTimestamp(decrec.txint_timestamp); //use the intention's timestamp
+                    //cob.unlock(true);
+//                    System.out.println("object " + cob.getID() + " timestamp set to " + cob.getTimestamp());
+                }
+            }
+            removePending(decrec.txint_timestamp);
+            //todo: if it's an abort, we can notify the app earlier
+//            if(txr.updateApplyStatus(decrec.txint_timestamp, T.get_updatestreams().get(decrec.stream), T.get_updatestreams().size()))
+                txr.updateFinalDecision(decrec.txint_timestamp, P.second); //notify the application
+
+        }
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_65b4e_bb2a8\rev_rev_left_65b4e-rev_right_bb2a8\src\main\java\org\corfudb\runtime\TXRuntime.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_82784_012d6\rev_82784-012d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_58c73_68224\rev_58c73-68224.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_0ebd0_6e1ef\rev_0ebd0-6e1ef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_de8fb_358c8\rev_de8fb-358c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_08783_7bac5\rev_08783-7bac5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_01b9c_2956e\rev_01b9c-2956e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_78d7e_3fe07\rev_78d7e-3fe07.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_54f3a_0423b\rev_54f3a-0423b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c2d33_9f357\rev_c2d33-9f357.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2f8b3_3cbd3\rev_2f8b3-3cbd3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7e96e_b0bee\rev_7e96e-b0bee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2ed34_3dd80\rev_2ed34-3dd80.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_24e9d_2936d\rev_24e9d-2936d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_73fa4_b997c\rev_73fa4-b997c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_53627_9ad4f\rev_53627-9ad4f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_69e46_b7144\rev_69e46-b7144.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_737c1_36965\rev_737c1-36965.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214869617\fstmerge_var1_1244019626461670265
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214869617\fstmerge_base_2964124564539800402
+public void
+    applyToObject(Object bs, long timestamp) {
+
+        BTreeOp cc = (BTreeOp) bs;
+        switch (cc.cmd()) {
+            case BTreeOp.CMD_READ_HEIGHT: cc.setReturnValue(applyReadHeight()); break;
+            case BTreeOp.CMD_WRITE_HEIGHT: applyWriteHeight(cc.iparam()); break;
+            case BTreeOp.CMD_READ_ROOT: cc.setReturnValue(applyReadRoot()); break;
+            case BTreeOp.CMD_WRITE_ROOT:  applyWriteRoot(cc.oidparam()); break;
+            case BTreeOp.CMD_READ_SIZE: cc.setReturnValue(applyReadSize()); break;
+            case BTreeOp.CMD_WRITE_SIZE: applyWriteSize(cc.iparam()); break;
+        }
+    }
+=======
+public void
+    applyToObject(Object bs, long timestamp) {
+
+        BTreeOp cc = (BTreeOp) bs;
+        switch (cc.cmd()) {
+            case BTreeOp.CMD_READ_HEIGHT: cc.setReturnValue(applyReadHeight());
+                break;
+            case BTreeOp.CMD_WRITE_HEIGHT: applyWriteHeight(cc.iparam()); break;
+            case BTreeOp.CMD_READ_ROOT: cc.setReturnValue(applyReadRoot());
+                break;
+            case BTreeOp.CMD_WRITE_ROOT:  applyWriteRoot(cc.oidparam());
+                break;
+            case BTreeOp.CMD_READ_SIZE: cc.setReturnValue(applyReadSize());
+                break;
+            case BTreeOp.CMD_WRITE_SIZE: applyWriteSize(cc.iparam()); break;
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513214869617\fstmerge_var2_6507290385057817615
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_737c1_36965\rev_rev_left_737c1-rev_right_36965\src\main\java\org\corfudb\runtime\collections\CDBPhysicalBTree.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_6ac39_7e3de\rev_6ac39-7e3de.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_58b30_a6f87\rev_58b30-a6f87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_006aa_f20ab\rev_006aa-f20ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f096a_d87b4\rev_f096a-d87b4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_68656_ffdea\rev_68656-ffdea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_0b2be_435f7\rev_0b2be-435f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_170fa_55399\rev_170fa-55399.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4ad71_3458d\rev_4ad71-3458d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1df12_911ab\rev_1df12-911ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d55a8_aa25e\rev_d55a8-aa25e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_12719_d5e7e\rev_12719-d5e7e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public StreamEntry readNext(ITimestamp istoppos)
+    {
+        //this is a hacky implementation that doesn't take multi-log hopping (epochs, logids) into account
+        Timestamp stoppos = (Timestamp)istoppos;
+        if(stoppos!=null && stoppos.logid!=addrspace.getID()) throw new RuntimeException("readnext using timestamp of different log!");
+        StreamEntry ret = null;
+        while(true)
+        {
+            long readpos;
+            biglock.lock();
+            try {
+                if (!(curpos < curtail && (stoppos == null || curpos < stoppos.pos)))
+                    return null;
+                readpos = curpos++;
+                ret = m_cache.getOrDefault(readpos, null);
+            } finally {
+                biglock.unlock();
+            }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513215268066\fstmerge_var1_3741682602256461432
+            if(ret == null) {
+                BufferStack bs = addrspace.read(readpos);
+                ret = (StreamEntry) bs.deserialize();
+                biglock.lock();
+                try {
+                    m_cache.put(readpos, ret);
+                } finally {
+                    biglock.unlock();
+                }
+            }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513215268066\fstmerge_base_8546438832382547667
+            long readpos = curpos++;
+            biglock.unlock();
+            BufferStack bs = addrspace.read(readpos);
+            ret = (StreamEntry) bs.deserialize();
+=======
+            long readpos = curpos++;
+            biglock.unlock();
+            ret = (StreamEntry) addrspace.readObject(readpos);
+            /*
+            BufferStack bs = addrspace.read(readpos);
+            ret = (StreamEntry) bs.deserialize();
+            */
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513215268066\fstmerge_var2_8167234127240812
+            if(ret.isInStream(this.getStreamID()))
+                break;
+            dbglog.debug("skipping...");
+        }
+        return ret;
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_12719_d5e7e\rev_rev_left_12719-rev_right_d5e7e\src\main\java\org\corfudb\runtime\StreamImpl.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_24fa7_2243c\rev_24fa7-2243c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_16dcd_dc737\rev_16dcd-dc737.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_6ccd9_ec250\rev_6ccd9-ec250.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3a550_51426\rev_3a550-51426.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cbe02_42ea6\rev_cbe02-42ea6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_06e88_b1092\rev_06e88-b1092.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d173f_fa3df\rev_d173f-fa3df.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_54c59_df08f\rev_54c59-df08f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_66a2c_bb227\rev_66a2c-bb227.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_65383_1d981\rev_65383-1d981.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_12e2f_78664\rev_12e2f-78664.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5a579_e5f0c\rev_5a579-e5f0c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7942e_b3ddb\rev_7942e-b3ddb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_18ecf_0ffbe\rev_18ecf-0ffbe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_24c97_d5316\rev_24c97-d5316.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e3a82_62771\rev_e3a82-62771.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1345e_20865\rev_1345e-20865.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_69806_d5ad1\rev_69806-d5ad1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_09fa4_311be\rev_09fa4-311be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_247aa_2be2f\rev_247aa-2be2f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e5d5c_b5a19\rev_e5d5c-b5a19.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b4929_d004f\rev_b4929-d004f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e0796_1a170\rev_e0796-1a170.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_131cf_50e97\rev_131cf-50e97.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ba6a8_61e0a\rev_ba6a8-61e0a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f4ab1_4299f\rev_f4ab1-4299f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_78923_1a586\rev_78923-1a586.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_20e13_ef050\rev_20e13-ef050.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b3d60_f5028\rev_b3d60-f5028.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c43c8_c5cc2\rev_c43c8-c5cc2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4ac17_b65c6\rev_4ac17-b65c6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b98b2_58030\rev_b98b2-58030.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_58030_0c2f3\rev_58030-0c2f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_58030_e96a9\rev_58030-e96a9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e96a9_8825e\rev_e96a9-8825e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5a65f_8eb01\rev_5a65f-8eb01.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_14c3e_67cb8\rev_14c3e-67cb8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_67cb8_201f8\rev_67cb8-201f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_39ff0_b665a\rev_39ff0-b665a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b665a_ea978\rev_b665a-ea978.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_99bb7_aff17\rev_99bb7-aff17.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_99e9b_4732b\rev_99e9b-4732b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_676c2_1e0e0\rev_676c2-1e0e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_bae0b_0e30e\rev_bae0b-0e30e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_32d5b_c70e0\rev_32d5b-c70e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_20829_c4389\rev_20829-c4389.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_99a99_6ffc2\rev_99a99-6ffc2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_94653_aaf2f\rev_94653-aaf2f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_95604_bd96b\rev_95604-bd96b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fe769_75db3\rev_fe769-75db3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_0c01d_7dfe8\rev_0c01d-7dfe8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5997c_68709\rev_5997c-68709.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2b80c_e544e\rev_2b80c-e544e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_0d07b_a36ed\rev_0d07b-a36ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ac058_94516\rev_ac058-94516.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e463c_a07d2\rev_e463c-a07d2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_57920_e364a\rev_57920-e364a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5739e_d1077\rev_5739e-d1077.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_bb636_5d78c\rev_bb636-5d78c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ea99e_4e50b\rev_ea99e-4e50b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b1e75_94ffc\rev_b1e75-94ffc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4ff3d_52830\rev_4ff3d-52830.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7f294_36780\rev_7f294-36780.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e2bf9_71b10\rev_e2bf9-71b10.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d7483_474bc\rev_d7483-474bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d141c_129a4\rev_d141c-129a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4abe8_24c9e\rev_4abe8-24c9e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1fbac_51200\rev_1fbac-51200.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1959c_daef4\rev_1959c-daef4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fdf97_7ade8\rev_fdf97-7ade8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_35572_44925\rev_35572-44925.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3d6d1_48399\rev_3d6d1-48399.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5a44c_8e6da\rev_5a44c-8e6da.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ce641_b7463\rev_ce641-b7463.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7c6c5_f6f70\rev_7c6c5-f6f70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_91919_ed286\rev_91919-ed286.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e2070_376c1\rev_e2070-376c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_49d87_09188\rev_49d87-09188.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_35830_9a1be\rev_35830-9a1be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4f326_263fd\rev_4f326-263fd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_85016_880d5\rev_85016-880d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a8416_81ba7\rev_a8416-81ba7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c2d3d_63fec\rev_c2d3d-63fec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5304f_e70ec\rev_5304f-e70ec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b5611_f3d12\rev_b5611-f3d12.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_03b15_f5fb8\rev_03b15-f5fb8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c867c_6632f\rev_c867c-6632f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_06904_8a7db\rev_06904-8a7db.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8e5dd_05cd9\rev_8e5dd-05cd9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ee2b9_b4a5a\rev_ee2b9-b4a5a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_6a2a4_13779\rev_6a2a4-13779.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_dee85_abb62\rev_dee85-abb62.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7c79b_6cffc\rev_7c79b-6cffc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_89818_3766c\rev_89818-3766c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2463c_bb31a\rev_2463c-bb31a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_77117_a27bf\rev_77117-a27bf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_817fb_2f24c\rev_817fb-2f24c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a3bb7_3e070\rev_a3bb7-3e070.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_88674_521c2\rev_88674-521c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f968c_1ccdc\rev_f968c-1ccdc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5cadd_4d48e\rev_5cadd-4d48e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_97942_e43b7\rev_97942-e43b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a5672_7bd4d\rev_a5672-7bd4d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c2d2a_d1567\rev_c2d2a-d1567.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e9164_67ec4\rev_e9164-67ec4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_73b86_0c447\rev_73b86-0c447.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ee47f_bd0a3\rev_ee47f-bd0a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3e603_a0e69\rev_3e603-a0e69.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_16441_05341\rev_16441-05341.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_40b4a_195a2\rev_40b4a-195a2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cb69c_d99c5\rev_cb69c-d99c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1bbc3_b5755\rev_1bbc3-b5755.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7f0be_f2b0a\rev_7f0be-f2b0a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fe993_f0cda\rev_fe993-f0cda.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_232d8_b451e\rev_232d8-b451e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8d9a5_173fc\rev_8d9a5-173fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4df41_073c1\rev_4df41-073c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_9e15e_7bc38\rev_9e15e-7bc38.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7bc38_d9e56\rev_7bc38-d9e56.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_790db_56490\rev_790db-56490.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d824e_e3811\rev_d824e-e3811.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d9e56_9f24b\rev_d9e56-9f24b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e3811_77bc6\rev_e3811-77bc6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_21555_75a92\rev_21555-75a92.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_75a92_7fcaf\rev_75a92-7fcaf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_feb0c_b071b\rev_feb0c-b071b.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void start() {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513220961107\fstmerge_var1_9052275580114157156
+        start(-1);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513220961107\fstmerge_base_2837726111512610791
+        shutdown = false;
+        workerGroup = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2, new ThreadFactory() {
+            final AtomicInteger threadNum = new AtomicInteger(0);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setName("worker-" + threadNum.getAndIncrement());
+                t.setDaemon(true);
+                return t;
+            }
+        });
+
+        ee = new DefaultEventExecutorGroup(Runtime.getRuntime().availableProcessors() * 2, new ThreadFactory() {
+
+            final AtomicInteger threadNum = new AtomicInteger(0);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setName(this.getClass().getName() + "event-" + threadNum.getAndIncrement());
+                t.setDaemon(true);
+                return t;
+            }
+        });
+
+
+        Bootstrap b = new Bootstrap();
+        b.group(workerGroup);
+        b.channel(NioSocketChannel.class);
+        b.option(ChannelOption.SO_KEEPALIVE, true);
+        b.option(ChannelOption.TCP_NODELAY, true);
+        NettyClientRouter router = this;
+        b.handler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            public void initChannel(SocketChannel ch) throws Exception {
+                ch.pipeline().addLast(new LengthFieldPrepender(4));
+                ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
+                ch.pipeline().addLast(ee, new NettyCorfuMessageDecoder());
+                ch.pipeline().addLast(ee, new NettyCorfuMessageEncoder());
+                ch.pipeline().addLast(ee, router);
+            }
+        });
+
+        try {
+            connectChannel(b);
+        } catch (Exception e) {
+            throw new NetworkException(e.getClass().getSimpleName() +
+                    " connecting to endpoint", host + ":" + port, e);
+        }
+=======
+        shutdown = false;
+        workerGroup = new NioEventLoopGroup(Runtime.getRuntime().availableProcessors() * 2, new ThreadFactory() {
+            final AtomicInteger threadNum = new AtomicInteger(0);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setName("worker-" + threadNum.getAndIncrement());
+                t.setDaemon(true);
+                return t;
+            }
+        });
+
+        ee = new DefaultEventExecutorGroup(Runtime.getRuntime().availableProcessors() * 2, new ThreadFactory() {
+
+            final AtomicInteger threadNum = new AtomicInteger(0);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread t = new Thread(r);
+                t.setName(this.getClass().getName() + "event-" + threadNum.getAndIncrement());
+                t.setDaemon(true);
+                return t;
+            }
+        });
+
+
+        Bootstrap b = new Bootstrap();
+        b.group(workerGroup);
+        b.channel(NioSocketChannel.class);
+        b.option(ChannelOption.SO_KEEPALIVE, true);
+        b.option(ChannelOption.SO_REUSEADDR, true);
+        b.option(ChannelOption.TCP_NODELAY, true);
+        NettyClientRouter router = this;
+        b.handler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            public void initChannel(SocketChannel ch) throws Exception {
+                ch.pipeline().addLast(new LengthFieldPrepender(4));
+                ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
+                ch.pipeline().addLast(ee, new NettyCorfuMessageDecoder());
+                ch.pipeline().addLast(ee, new NettyCorfuMessageEncoder());
+                ch.pipeline().addLast(ee, router);
+            }
+        });
+
+        try {
+            connectChannel(b);
+        } catch (Exception e) {
+            throw new NetworkException(e.getClass().getSimpleName() +
+                    " connecting to endpoint", host + ":" + port, e);
+        }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513220961107\fstmerge_var2_6416461448949463629
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_feb0c_b071b\rev_rev_left_feb0c-rev_right_b071b\src\main\java\org\corfudb\runtime\clients\NettyClientRouter.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_57262_0a43c\rev_57262-0a43c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4870a_ad923\rev_4870a-ad923.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_50fed_43c05\rev_50fed-43c05.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_dd03c_24719\rev_dd03c-24719.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a9cf6_aa9c4\rev_a9cf6-aa9c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_bec83_c1285\rev_bec83-c1285.revisions
+Conflict type: ModifierList
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+@Slf4j
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221152071\fstmerge_var1_5238409230512531587
+@ToString(exclude = "runtime")
+@EqualsAndHashCode
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221152071\fstmerge_base_8269922580398223917
+@ToString(exclude = "runtime")
+=======
+@ToString(exclude = {"runtime", "valid"})
+@EqualsAndHashCode(exclude = {"runtime","valid"})
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221152071\fstmerge_var2_4665758115589743666
+public
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_bec83_c1285\rev_rev_left_bec83-rev_right_c1285\src\main\java\org\corfudb\runtime\view\Layout.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void sendResponse(ChannelHandlerContext ctx, CorfuMsg inMsg, CorfuMsg outMsg) {
+        outMsg.copyBaseFields(inMsg);
+        outMsg.setEpoch(serverEpoch);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221174619\fstmerge_var1_402777431918386866
+        if (rules.stream()
+                .map(x -> x.evaluate(outMsg, this))
+                .allMatch(x -> x)) {
+            if (ctx != null && ctx instanceof TestChannelContext) {
+                ctx.writeAndFlush(outMsg);
+            } else {
+                this.responseMessages.add(outMsg);
+            }
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221174619\fstmerge_base_7725973179675616105
+        this.responseMessages.add(outMsg);
+=======
+        CorfuMsg response = simulateSerialization(outMsg);
+        this.responseMessages.add(response);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221174619\fstmerge_var2_5287990888365881979
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_bec83_c1285\rev_rev_left_bec83-rev_right_c1285\src\test\java\org\corfudb\infrastructure\TestServerRouter.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public CorfuRuntime getDefaultRuntime() {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221187388\fstmerge_var1_9204817068363547487
+        if (!testServerMap.containsKey(getEndpoint(9000))) {
+            addSingleServer(9000);
+        }
+        return getRuntime().connect();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221187388\fstmerge_base_8865299203319271796
+        // default layout is chain replication.
+        routerMap.put(getDefaultEndpoint(), new TestClientRouter());
+        addServerForTest(getDefaultEndpoint(), new LayoutServer(defaultOptionsMap(),
+                routerMap.get(getDefaultEndpoint())));
+        addServerForTest(getDefaultEndpoint(), new LogUnitServer(defaultOptionsMap()));
+        addServerForTest(getDefaultEndpoint(), new SequencerServer(defaultOptionsMap()));
+        wireRouters();
+
+        return getRuntime().connect();
+=======
+        return getDefaultRuntime(false);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221187388\fstmerge_var2_2715444671455126737
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_bec83_c1285\rev_rev_left_bec83-rev_right_c1285\src\test\java\org\corfudb\runtime\view\AbstractViewTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c1285_7a37d\rev_c1285-7a37d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fd872_4d113\rev_fd872-4d113.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cb487_e5b1e\rev_cb487-e5b1e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c7e6e_e3084\rev_c7e6e-e3084.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_178a2_b0ce5\rev_178a2-b0ce5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8383e_0fe7d\rev_8383e-0fe7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8a0d8_cac74\rev_8a0d8-cac74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2e687_c45e9\rev_2e687-c45e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_19488_0ee6b\rev_19488-0ee6b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_65741_d7412\rev_65741-d7412.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_6de73_84422\rev_6de73-84422.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2f513_6561f\rev_2f513-6561f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_08404_958b3\rev_08404-958b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_472a9_4e5f4\rev_472a9-4e5f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_72d5f_cf60c\rev_72d5f-cf60c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Override
+    public Map<Long, LogData> read(UUID stream, long offset, long size) {
+        // Fetch the entries from the client. If the commit bit isn't set, then don't return the entry.
+        // This is problematic for bulk reads -- what do you do if there is a hole in the middle of your bulk read?
+        log.trace("Replex Stream Read stream: {}, [{}, {})", stream, offset, offset + size);
+        Map<Long, LogData> potentialResult = CFUtils.getUninterruptibly(getLayout()
+                .getReplexLogUnitClient(0, getLayout().getReplexUnitIndex(0, stream))
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_var1_154037351160993223
+                .read(stream, Range.closed(offset, offset + size - 1))).getReadSet();
+        ImmutableMap.Builder<Long, LogData> builder = ImmutableMap.builder();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_base_8133241308042761579
+                .read(stream, Range.closedOpen(offset, offset + size))).getReadSet();
+=======
+                .read(stream, Range.closedOpen(offset, offset + size))).getReadSet();
+        potentialResult = new HashMap<>(potentialResult); //TODO : readresult returns an immutablemap, so this is a problem.
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_var2_4002967280021910211
+        for (Long address : potentialResult.keySet()) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_var1_154037351160993223
+            if (potentialResult.get(address).getType() == DataType.DATA) {
+                if (potentialResult.get(address).getMetadataMap().containsKey(IMetadata.LogUnitMetadataType.COMMIT)) {
+                    if (!(Boolean)(potentialResult.get(address).getMetadataMap().get(IMetadata.LogUnitMetadataType.COMMIT))) {
+                        // If the commit is FALSE, then it is an aborted write and doesn't need to be hole-filled.
+                        //potentialResult.put(address, LogData.HOLE);
+                        builder.put(address, LogData.EMPTY);
+                    } else {
+                        builder.put(address, potentialResult.get(address));
+                    }
+                } else {
+                    builder.put(address, LogData.EMPTY);
+                }
+            } else {
+                builder.put(address, potentialResult.get(address));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_base_8133241308042761579
+            if (potentialResult.get(address).getType() == DataType.DATA &&
+                    potentialResult.get(address).getMetadataMap().containsKey(IMetadata.LogUnitMetadataType.COMMIT) &&
+                    !(Boolean)(potentialResult.get(address).getMetadataMap().get(IMetadata.LogUnitMetadataType.COMMIT))) {
+                potentialResult.put(address, LogData.EMPTY);
+=======
+            if (potentialResult.get(address).getType() == DataType.DATA &&
+                    potentialResult.get(address).getMetadataMap().containsKey(IMetadata.LogUnitMetadataType.COMMIT) &&
+                    !(Boolean)(potentialResult.get(address).getMetadataMap().get(IMetadata.LogUnitMetadataType.COMMIT))) {
+                //potentialResult.put(address, LogData.EMPTY);
+                //FIXME:: hole filling protocol needs to be initiated here.
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221861003\fstmerge_var2_4002967280021910211
+            }
+        }
+        return builder.build();
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_72d5f_cf60c\rev_rev_left_72d5f-rev_right_cf60c\src\main\java\org\corfudb\runtime\view\ReplexReplicationView.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cf60c_37b9e\rev_cf60c-37b9e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_87a03_cd6fa\rev_87a03-cd6fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c69ae_f4b48\rev_c69ae-f4b48.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public long acquireAndWrite(Set<UUID> streamIDs, Object object,
+                                Function<TokenResponse, Boolean> acquisitionCallback,
+                                Function<TokenResponse, Boolean> deacquisitionCallback) {
+        boolean replexOverwrite = false;
+        boolean overwrite = false;
+        TokenResponse tokenResponse = null;
+        while (true) {
+            if (object instanceof TXEntry) {
+                long token;
+                if (overwrite) {
+                    TokenResponse temp =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, true, false, true, ((TXEntry) object).getReadTimestamp());
+                    token = temp.getToken();
+                    tokenResponse = new TokenResponse(token, temp.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                } else {
+                    log.trace("object is instance of TXEntry! readTimestamp: {}", ((TXEntry) object).getReadTimestamp());
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, false, false, true, ((TXEntry) object).getReadTimestamp());
+                    token = tokenResponse.getToken();
+                }
+                log.trace("Write[{}]: acquired token = {}, global addr: {}", streamIDs, tokenResponse, token);
+                if (acquisitionCallback != null) {
+                    if (!acquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected token, hole filling acquired address.");
+                        try {
+                            runtime.getAddressSpaceView().fillHole(token);
+                        } catch (OverwriteException oe) {
+                            log.trace("Hole fill completed by remote client.");
+                        }
+                        return -1L;
+                    }
+                }
+                if (token == -1L) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                    }
+                    return -1L;
+                }
+                try {
+                    runtime.getAddressSpaceView().write(token, streamIDs,
+                            object, tokenResponse.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                    return token;
+                } catch (ReplexOverwriteException re) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221959738\fstmerge_var1_8556083985807124676
+                    //((TXEntry) object).setAborted(true);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221959738\fstmerge_base_2469616589764721643
+                    ((TXEntry) object).setAborted(true);
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513221959738\fstmerge_var2_6261273490026898700
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    //
+                    return tokenResponse.getToken(); // uh, probably should figure out what is going on here.
+                } catch (OverwriteException oe) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = false;
+                    overwrite = true;
+                    log.debug("Overwrite occurred at {}, retrying.", token);
+                }
+            } else {
+                long token;
+                if (replexOverwrite) {
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, false, true);
+                    token = tokenResponse.getToken();
+                } else if (overwrite) {
+                    TokenResponse temp =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, true, false);
+                    token = temp.getToken();
+                    tokenResponse = new TokenResponse(token, temp.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                } else {
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1);
+                    token = tokenResponse.getToken();
+                }
+                log.trace("Write[{}]: acquired token = {}, global addr: {}", streamIDs, tokenResponse, token);
+                if (acquisitionCallback != null) {
+                    if (!acquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected token, hole filling acquired address.");
+                        try {
+                            runtime.getAddressSpaceView().fillHole(token);
+                        } catch (OverwriteException oe) {
+                            log.trace("Hole fill completed by remote client.");
+                        }
+                        return -1L;
+                    }
+                }
+                try {
+                    Function<UUID, Object> partialEntryFunction =
+                            object instanceof IDivisibleEntry ? ((IDivisibleEntry)object)::divideEntry : null;
+                    runtime.getAddressSpaceView().write(token, streamIDs,
+                            object, tokenResponse.getBackpointerMap(), tokenResponse.getStreamAddresses(), partialEntryFunction);
+                    return token;
+                } catch (ReplexOverwriteException re) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = true;
+                    overwrite = false;
+                } catch (OverwriteException oe) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = false;
+                    overwrite = true;
+                    log.debug("Overwrite occurred at {}, retrying.", token);
+                }
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_c69ae_f4b48\rev_rev_left_c69ae-rev_right_f4b48\src\main\java\org\corfudb\runtime\view\StreamsView.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a9e1a_c18f2\rev_a9e1a-c18f2.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public long acquireAndWrite(Set<UUID> streamIDs, Object object,
+                                Function<TokenResponse, Boolean> acquisitionCallback,
+                                Function<TokenResponse, Boolean> deacquisitionCallback) {
+        boolean replexOverwrite = false;
+        boolean overwrite = false;
+        TokenResponse tokenResponse = null;
+        while (true) {
+            if (object instanceof TXEntry) {
+                long token;
+                if (overwrite) {
+                    TokenResponse temp =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, true, false, true, ((TXEntry) object).getReadTimestamp());
+                    token = temp.getToken();
+                    tokenResponse = new TokenResponse(token, temp.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                } else {
+                    log.trace("object is instance of TXEntry! readTimestamp: {}", ((TXEntry) object).getReadTimestamp());
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, false, false, true, ((TXEntry) object).getReadTimestamp());
+                    token = tokenResponse.getToken();
+                }
+                log.trace("Write[{}]: acquired token = {}, global addr: {}", streamIDs, tokenResponse, token);
+                if (acquisitionCallback != null) {
+                    if (!acquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected token, hole filling acquired address.");
+                        try {
+                            runtime.getAddressSpaceView().fillHole(token);
+                        } catch (OverwriteException oe) {
+                            log.trace("Hole fill completed by remote client.");
+                        }
+                        return -1L;
+                    }
+                }
+                if (token == -1L) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                    }
+                    return -1L;
+                }
+                try {
+                    runtime.getAddressSpaceView().write(token, streamIDs,
+                            object, tokenResponse.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                    return token;
+                } catch (ReplexOverwriteException re) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222002148\fstmerge_var1_8690564549034500181
+                    replexOverwrite = true;
+                    overwrite = false;
+                    //return -1L;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222002148\fstmerge_base_408106284743777069
+                    return -1L;
+=======
+                    //
+                    return tokenResponse.getToken(); // uh, probably should figure out what is going on here.
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222002148\fstmerge_var2_3355298249750183259
+                } catch (OverwriteException oe) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = false;
+                    overwrite = true;
+                    log.debug("Overwrite occurred at {}, retrying.", token);
+                }
+            } else {
+                long token;
+                if (replexOverwrite) {
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, false, true);
+                    token = tokenResponse.getToken();
+                } else if (overwrite) {
+                    TokenResponse temp =
+                            runtime.getSequencerView().nextToken(streamIDs, 1, true, false);
+                    token = temp.getToken();
+                    tokenResponse = new TokenResponse(token, temp.getBackpointerMap(), tokenResponse.getStreamAddresses());
+                } else {
+                    tokenResponse =
+                            runtime.getSequencerView().nextToken(streamIDs, 1);
+                    token = tokenResponse.getToken();
+                }
+                log.trace("Write[{}]: acquired token = {}, global addr: {}", streamIDs, tokenResponse, token);
+                if (acquisitionCallback != null) {
+                    if (!acquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected token, hole filling acquired address.");
+                        try {
+                            runtime.getAddressSpaceView().fillHole(token);
+                        } catch (OverwriteException oe) {
+                            log.trace("Hole fill completed by remote client.");
+                        }
+                        return -1L;
+                    }
+                }
+                try {
+                    Function<UUID, Object> partialEntryFunction =
+                            object instanceof IDivisibleEntry ? ((IDivisibleEntry)object)::divideEntry : null;
+                    runtime.getAddressSpaceView().write(token, streamIDs,
+                            object, tokenResponse.getBackpointerMap(), tokenResponse.getStreamAddresses(), partialEntryFunction);
+                    return token;
+                } catch (ReplexOverwriteException re) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = true;
+                    overwrite = false;
+                } catch (OverwriteException oe) {
+                    if (deacquisitionCallback != null && !deacquisitionCallback.apply(tokenResponse)) {
+                        log.trace("Acquisition rejected overwrite at {}, not retrying.", token);
+                        return -1L;
+                    }
+                    replexOverwrite = false;
+                    overwrite = true;
+                    log.debug("Overwrite occurred at {}, retrying.", token);
+                }
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_a9e1a_c18f2\rev_rev_left_a9e1a-rev_right_c18f2\src\main\java\org\corfudb\runtime\view\StreamsView.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c18f2_aef87\rev_c18f2-aef87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f1cd5_b1885\rev_f1cd5-b1885.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_1fbc6_3a617\rev_1fbc6-3a617.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3b32a_b3142\rev_3b32a-b3142.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222251258\fstmerge_var1_7588259249709912803
+public static <T, R extends ISMRInterface>
+    T getProxy(@NonNull Class<T> type, Class<R> overlay, @NonNull StreamView sv, @NonNull CorfuRuntime runtime,
+               Serializers.SerializerType serializer, Set<ObjectOpenOptions> options, Object... constructorArgs) {
+        try {
+            CorfuObjectProxy<T> proxy;
+
+            if (type.isAnnotationPresent(CorfuObject.class)) {
+                CorfuObject annotation = type.getAnnotation(CorfuObject.class);
+                if (annotation.objectType() == ObjectType.SMR) {
+                    proxy = new CorfuSMRObjectProxy<>(runtime, sv, type, serializer);
+                    if (annotation.stateSource().equals(StateSource.SELF)) {
+                        ((CorfuSMRObjectProxy) proxy).setSelfState(true);
+                    } else {
+                        ((CorfuSMRObjectProxy) proxy).setStateClass(annotation.stateType());
+                    }
+                } else {
+                    proxy = new CorfuObjectProxy<>(runtime, sv, type, serializer);
+                }
+
+                if (annotation.constructorType() == ConstructorType.PERSISTED) {
+                    // we need to either persist the constructor, or load from the saved args...
+                    long token = sv.check();
+                    boolean readConstructor = true;
+                    if (token == -1L) {
+                        log.debug("There appears to be no constructor for {}, writing one.", sv.getStreamID());
+                        // "default" is the SMRMethod name we use because it is also a Java reserved keyword.
+                        long streamStart = sv.acquireAndWrite(new SMREntry("default", constructorArgs, serializer),
+                                t -> t.getBackpointerMap().get(sv.getStreamID()) == -1L,
+                                t -> false);
+                        readConstructor = streamStart == -1L;
+                        if (annotation.objectType() == ObjectType.SMR) {
+                            ((CorfuSMRObjectProxy) proxy).setCreationArguments(constructorArgs);
+                        }
+                    }
+                    if (readConstructor) {
+                        if (options.contains(ObjectOpenOptions.CREATE_ONLY)) {
+                            throw new ObjectExistsException(token);
+                        }
+                        log.debug("There appears to be an existing constructor for {}, reading it...", sv.getStreamID());
+                        // The "default" entry should be the first entry in the stream.
+                        // TODO: handle garbage collected streams.
+                        LogData entry = sv.read();
+                        while (entry != null) {
+                            if (entry.getPayload(runtime) instanceof SMREntry &&
+                                    ((SMREntry) entry.getPayload(runtime)).getSMRMethod().equals("default")) {
+                                log.trace("Setting contructor arguments to {}", ((SMREntry) entry.getPayload(runtime))
+                                        .getSMRArguments());
+                                constructorArgs = ((SMREntry) entry.getPayload(runtime)).getSMRArguments();
+                                if (annotation.objectType() == ObjectType.SMR) {
+                                    ((CorfuSMRObjectProxy) proxy).setCreationArguments(constructorArgs);
+                                }
+                                break;
+                            }
+                            entry = sv.read();
+                        }
+                    }
+                }
+            } else {
+                proxy = new CorfuSMRObjectProxy<>(runtime, sv, type, serializer);
+            }
+            T ret;
+            if (constructorArgs == null || constructorArgs.length == 0) {
+                ret = getProxyClass(proxy, type, overlay).newInstance();
+            } else {
+                ret = ReflectionUtils.newInstanceFromUnknownArgumentTypes(getProxyClass(proxy, type, overlay),
+                        constructorArgs);
+            }
+            if (proxy instanceof CorfuSMRObjectProxy) {
+                ((CorfuSMRObjectProxy) proxy).calculateMethodHashTable(ret.getClass());
+            }
+            if (type.isAnnotationPresent(CorfuObject.class)) {
+                CorfuObject annotation = type.getAnnotation(CorfuObject.class);
+                if (annotation.objectType().equals(ObjectType.SMR) &&
+                        annotation.stateSource().equals(StateSource.SELF)) {
+                    ((CorfuSMRObjectProxy) proxy).setUnderlyingObject(ret);
+                }
+            }
+            return ret;
+        } catch (InstantiationException | IllegalAccessException ie) {
+            throw new RuntimeException("Unexpected exception opening object", ie);
+        }
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222251258\fstmerge_base_520913160969697354
+public static <T, R extends ISMRInterface>
+    T getProxy(@NonNull Class<T> type, Class<R> overlay, @NonNull StreamView sv, @NonNull CorfuRuntime runtime,
+               Serializers.SerializerType serializer, Set<ObjectOpenOptions> options, Object... constructorArgs) {
+        try {
+            CorfuObjectProxy<T> proxy;
+
+            if (type.isAnnotationPresent(CorfuObject.class)) {
+                CorfuObject annotation = type.getAnnotation(CorfuObject.class);
+                if (annotation.objectType() == ObjectType.SMR) {
+                    proxy = new CorfuSMRObjectProxy<>(runtime, sv, type, serializer);
+                    if (annotation.stateSource().equals(StateSource.SELF)) {
+                        ((CorfuSMRObjectProxy) proxy).setSelfState(true);
+                    } else {
+                        ((CorfuSMRObjectProxy) proxy).setStateClass(annotation.stateType());
+                    }
+                } else {
+                    proxy = new CorfuObjectProxy<>(runtime, sv, type, serializer);
+                }
+
+                if (annotation.constructorType() == ConstructorType.PERSISTED) {
+                    // we need to either persist the constructor, or load from the saved args...
+                    long token = sv.check();
+                    boolean readConstructor = true;
+                    if (token == -1L) {
+                        log.debug("There appears to be no constructor for {}, writing one.", sv.getStreamID());
+                        // "default" is the SMRMethod name we use because it is also a Java reserved keyword.
+                        long streamStart = sv.acquireAndWrite(new SMREntry("default", constructorArgs, serializer),
+                                t -> t.getBackpointerMap().get(sv.getStreamID()) == -1L,
+                                t -> false);
+                        readConstructor = streamStart == -1L;
+                        if (annotation.objectType() == ObjectType.SMR) {
+                            ((CorfuSMRObjectProxy) proxy).setCreationArguments(constructorArgs);
+                        }
+                    }
+                    if (readConstructor) {
+                        if (options.contains(ObjectOpenOptions.CREATE_ONLY)) {
+                            throw new ObjectExistsException(token);
+                        }
+                        log.debug("There appears to be an existing constructor for {}, reading it...", sv.getStreamID());
+                        // The "default" entry should be the first entry in the stream.
+                        // TODO: handle garbage collected streams.
+                        ILogUnitEntry entry = sv.read();
+                        while (entry != null) {
+                            if (entry.getPayload() instanceof SMREntry &&
+                                    ((SMREntry) entry.getPayload()).getSMRMethod().equals("default")) {
+                                log.trace("Setting contructor arguments to {}", ((SMREntry) entry.getPayload())
+                                        .getSMRArguments());
+                                constructorArgs = ((SMREntry) entry.getPayload()).getSMRArguments();
+                                if (annotation.objectType() == ObjectType.SMR) {
+                                    ((CorfuSMRObjectProxy) proxy).setCreationArguments(constructorArgs);
+                                }
+                                break;
+                            }
+                            entry = sv.read();
+                        }
+                    }
+                }
+            } else {
+                proxy = new CorfuSMRObjectProxy<>(runtime, sv, type, serializer);
+            }
+            T ret;
+            if (constructorArgs == null || constructorArgs.length == 0) {
+                ret = getProxyClass(proxy, type, overlay).newInstance();
+            } else {
+                ret = ReflectionUtils.newInstanceFromUnknownArgumentTypes(getProxyClass(proxy, type, overlay),
+                        constructorArgs);
+            }
+            if (proxy instanceof CorfuSMRObjectProxy) {
+                ((CorfuSMRObjectProxy) proxy).calculateMethodHashTable(ret.getClass());
+            }
+            if (type.isAnnotationPresent(CorfuObject.class)) {
+                CorfuObject annotation = type.getAnnotation(CorfuObject.class);
+                if (annotation.objectType().equals(ObjectType.SMR) &&
+                        annotation.stateSource().equals(StateSource.SELF)) {
+                    ((CorfuSMRObjectProxy) proxy).setUnderlyingObject(ret);
+                }
+            }
+            return ret;
+        } catch (InstantiationException | IllegalAccessException ie) {
+            throw new RuntimeException("Unexpected exception opening object", ie);
+        }
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222251258\fstmerge_var2_6757126254297379934
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_3b32a_b3142\rev_rev_left_3b32a-rev_right_b3142\src\main\java\org\corfudb\runtime\object\CorfuProxyBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222274549\fstmerge_var1_372064657854581856
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222274549\fstmerge_base_1138483303508010781
+@Override
+    public int write(long address, Set<UUID> stream, Object data, Map<UUID, Long> backpointerMap)
+            throws OverwriteException {
+        int numUnits = getLayout().getSegmentLength(address);
+        int payloadBytes = 0;
+        // To reduce the overhead of serialization, we serialize only the first time we write, saving
+        // when we go down the chain.
+        try (AutoCloseableByteBuf b =
+                     new AutoCloseableByteBuf(ByteBufAllocator.DEFAULT.directBuffer())) {
+            Serializers.getSerializer(Serializers.SerializerType.CORFU)
+                    .serialize(data, b);
+            payloadBytes = b.readableBytes();
+            for (int i = 0; i < numUnits; i++) {
+                log.trace("Write[{}]: chain {}/{}", address, i + 1, numUnits);
+                // In chain replication, we write synchronously to every unit in the chain.
+                CFUtils.getUninterruptibly(
+                        getLayout().getLogUnitClient(address, i)
+                                .write(getLayout().getLocalAddress(address), stream, 0L, data, backpointerMap), OverwriteException.class);
+            }
+        }
+        return payloadBytes;
+    }
+=======
+@Override
+    public int write(long address, Set<UUID> stream, Object data, Map<UUID, Long> backpointerMap)
+            throws OverwriteException {
+        int numUnits = getLayout().getSegmentLength(address);
+        int payloadBytes = 0;
+        // To reduce the overhead of serialization, we serialize only the first time we write, saving
+        // when we go down the chain.
+        try (AutoCloseableByteBuf b =
+                     new AutoCloseableByteBuf(ByteBufAllocator.DEFAULT.directBuffer())) {
+            Serializers.getSerializer(SerializerType.CORFU)
+                    .serialize(data, b);
+            payloadBytes = b.readableBytes();
+            for (int i = 0; i < numUnits; i++) {
+                log.trace("Write[{}]: chain {}/{}", address, i + 1, numUnits);
+                // In chain replication, we write synchronously to every unit in the chain.
+                CFUtils.getUninterruptibly(
+                        getLayout().getLogUnitClient(address, i)
+                                .write(getLayout().getLocalAddress(address), stream, 0L, data, backpointerMap), OverwriteException.class);
+            }
+        }
+        return payloadBytes;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513222274549\fstmerge_var2_6942168431093326097
+
+File path: C:\download\ssmerge\CorfuDB\revisions\rev_3b32a_b3142\rev_rev_left_3b32a-rev_right_b3142\src\main\java\org\corfudb\runtime\view\ChainReplicationView.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b3142_169bd\rev_b3142-169bd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_599d9_a9a90\rev_599d9-a9a90.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d4d44_bc2a9\rev_d4d44-bc2a9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c0107_74eb7\rev_c0107-74eb7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_54847_d9150\rev_54847-d9150.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_212f4_7b62f\rev_212f4-7b62f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_de212_3d11f\rev_de212-3d11f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_27ab4_0ed61\rev_27ab4-0ed61.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7de2b_dbeea\rev_7de2b-dbeea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5ad04_c9a17\rev_5ad04-c9a17.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_82363_f7a43\rev_82363-f7a43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_38ad9_4bd00\rev_38ad9-4bd00.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4bd00_62f0b\rev_4bd00-62f0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_09367_25b98\rev_09367-25b98.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_32ec4_7a50a\rev_32ec4-7a50a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7a50a_3575b\rev_7a50a-3575b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_72041_3575b\rev_72041-3575b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_91a99_653cd\rev_91a99-653cd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_9792c_ef2a1\rev_9792c-ef2a1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ef2a1_ed303\rev_ef2a1-ed303.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a7ab8_9e185\rev_a7ab8-9e185.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_9e185_e37ca\rev_9e185-e37ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4c85a_034de\rev_4c85a-034de.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_bea55_41fc6\rev_bea55-41fc6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a9586_73bfe\rev_a9586-73bfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cf804_a1624\rev_cf804-a1624.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_617ab_62c90\rev_617ab-62c90.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_4e85e_fb8a8\rev_4e85e-fb8a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8bdfe_170b7\rev_8bdfe-170b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_170b7_c90c4\rev_170b7-c90c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_aee25_ac491\rev_aee25-ac491.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ac491_1b582\rev_ac491-1b582.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fd2b8_46b3f\rev_fd2b8-46b3f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_58190_fabf7\rev_58190-fabf7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b3bbb_2f594\rev_b3bbb-2f594.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_99107_2f594\rev_99107-2f594.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_2f594_ff394\rev_2f594-ff394.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cd1cc_697ee\rev_cd1cc-697ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_697ee_43edd\rev_697ee-43edd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_64a84_f719f\rev_64a84-f719f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_bf102_f719f\rev_bf102-f719f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f719f_3d44e\rev_f719f-3d44e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e4afd_fefca\rev_e4afd-fefca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fefca_42624\rev_fefca-42624.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_de4e8_c1111\rev_de4e8-c1111.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8926c_6b1b3\rev_8926c-6b1b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_83c39_ea2fb\rev_83c39-ea2fb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ea2fb_7a94d\rev_ea2fb-7a94d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c449c_3b6a7\rev_c449c-3b6a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7c74d_16fc1\rev_7c74d-16fc1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3e4c0_94eb8\rev_3e4c0-94eb8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_94eb8_12714\rev_94eb8-12714.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ca44c_fa749\rev_ca44c-fa749.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_468ae_f7430\rev_468ae-f7430.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_7558d_507b9\rev_7558d-507b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_22749_9d2fc\rev_22749-9d2fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ce74b_f087f\rev_ce74b-f087f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_06910_cddc9\rev_06910-cddc9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cddc9_056b4\rev_cddc9-056b4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_53d81_5c2f5\rev_53d81-5c2f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_5c2f5_536a7\rev_5c2f5-536a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_35a8a_05b59\rev_35a8a-05b59.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_f9f86_c158a\rev_f9f86-c158a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_c158a_75f4c\rev_c158a-75f4c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_fdb1b_3ca86\rev_fdb1b-3ca86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_b0732_3ca86\rev_b0732-3ca86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_3ca86_08284\rev_3ca86-08284.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_d3759_702f3\rev_d3759-702f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_967ef_80d38\rev_967ef-80d38.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_80d38_d66cc\rev_80d38-d66cc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_e9213_d6a6e\rev_e9213-d6a6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_8cb94_9b119\rev_8cb94-9b119.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_cd5f7_65c4c\rev_cd5f7-65c4c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_ebefd_4dbf0\rev_ebefd-4dbf0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_a35b8_8fef9\rev_a35b8-8fef9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\CorfuDB\revisions\rev_828e3_2846d\rev_828e3-2846d.revisions
+
+=========================================================

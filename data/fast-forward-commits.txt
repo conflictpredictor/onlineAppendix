@@ -1,0 +1,26 @@
+fast forward conflitos de build
+square-moshi;125318051,123822415,123822753,"[""methodParameterListSize""]",1,[false],true,true,[false],,NO-FIX,NO-FIX,1,NO-FIX,NO-FIX,false,,FastFoward
+square-retrofit;99744295,98613443,99214841,"[""methodParameterListSize""]",1,[false],true,true,[false],,NO-FIX,NO-FIX,1,NO-FIX,NO-FIX,false,,FastFoward
+
+	
+moshi rev_40e32-49257 --ok
+
+retrofit rev_90729-04f65 --ok
+
+fast-forward conflitos de teste
+jwtk/jjwt;159452366;159377153;239691547
+square/wire;81126012;81124823;81125761
+
+jjwt rev_af01c-ff932 --ok
+wire rev_66648-7e6e4 --ok
+
+novos conflitos de teste
+
+xetorthio/jedis 229830967 rev_2510e-d33bd
+
+xetorthio/jedis 229827269 rev_85584-ca59f
+
+xetorthio/jedis 229826096 rev_129ed-f5444 
+
+has_build_conflict,has_integration_conflict,has_test_conflict
+E

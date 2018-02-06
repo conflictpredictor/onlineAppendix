@@ -1,0 +1,2060 @@
+#MS_XXX_MS#
+Merge scenario: rev_37165-473ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd6f2-7de85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_630b0-72a24
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0f820-1ec67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce574-4a3b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2276-63b7b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5151-9a788
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\NavigationTest.java
+Different Spacing: false
+Left editions: [63]
+Right editions: [66, 67]
+Merged body: 
+// START testComplexNavigationEvenNumber({FormalParametersInternal})//@Test
+    public void testComplexNavigationEvenNumber() throws Exception {
+
+        URI resource = getClass().getResource("/yaml/flow_complex_navigation.yaml").toURI();
+        URI operationsPython = getClass().getResource("/yaml/simple_operations.yaml").toURI();
+
+        SlangSource operationsSource = SlangSource.fromFile(operationsPython);
+        Set<SlangSource> path = Sets.newHashSet(operationsSource);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("userNumber", 12);
+        userInputs.put("emailHost", "emailHost");
+        userInputs.put("emailPort", "25");
+        userInputs.put("emailSender", "user@host.com");
+        userInputs.put("emailRecipient", "user@host.com");
+
+// LEFT //        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+
+        Assert.assertEquals(5, tasks.size());
+// RIGHT //        Assert.assertEquals("check_number", tasks.get(FIRST_STEP_PATH).getName());
+// RIGHT //        Assert.assertEquals("process_even_number", tasks.get(SECOND_STEP_KEY).getName());
+// END testComplexNavigationEvenNumber({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\NavigationTest.java
+Different Spacing: false
+Left editions: [88]
+Right editions: [90, 91]
+Merged body: 
+// START testComplexNavigationOddNumber({FormalParametersInternal})//@Test
+    public void testComplexNavigationOddNumber() throws Exception {
+
+        URI resource = getClass().getResource("/yaml/flow_complex_navigation.yaml").toURI();
+        URI operationsPython = getClass().getResource("/yaml/simple_operations.yaml").toURI();
+
+        SlangSource operationsSource = SlangSource.fromFile(operationsPython);
+        Set<SlangSource> path = Sets.newHashSet(operationsSource);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("userNumber", 13);
+        userInputs.put("emailHost", "emailHost");
+        userInputs.put("emailPort", "25");
+        userInputs.put("emailSender", "user@host.com");
+        userInputs.put("emailRecipient", "user@host.com");
+
+// LEFT //        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+
+// RIGHT //        Assert.assertEquals("check_number", tasks.get(FIRST_STEP_PATH).getName());
+// RIGHT //        Assert.assertEquals("process_odd_number", tasks.get(SECOND_STEP_KEY).getName());
+// END testComplexNavigationOddNumber({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\NavigationTest.java
+Different Spacing: false
+Left editions: [112]
+Right editions: [114, 115]
+Merged body: 
+// START testComplexNavigationFailure({FormalParametersInternal})//@Test
+    public void testComplexNavigationFailure() throws Exception {
+
+        URI resource = getClass().getResource("/yaml/flow_complex_navigation.yaml").toURI();
+        URI operationsPython = getClass().getResource("/yaml/simple_operations.yaml").toURI();
+
+        SlangSource operationsSource = SlangSource.fromFile(operationsPython);
+        Set<SlangSource> path = Sets.newHashSet(operationsSource);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("userNumber", 1024);
+        userInputs.put("emailHost", "emailHost");
+        userInputs.put("emailPort", "25");
+        userInputs.put("emailSender", "user@host.com");
+        userInputs.put("emailRecipient", "user@host.com");
+
+// LEFT //        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+
+// RIGHT //        Assert.assertEquals("check_number", tasks.get(FIRST_STEP_PATH).getName());
+// RIGHT //        Assert.assertEquals("send_error_mail", tasks.get(SECOND_STEP_KEY).getName());
+// END testComplexNavigationFailure({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\NavigationTest.java
+Different Spacing: false
+Left editions: [136]
+Right editions: [138, 139]
+Merged body: 
+// START testDefaultSuccessNavigation({FormalParametersInternal})//@Test
+    public void testDefaultSuccessNavigation() throws Exception {
+
+        URI resource = getClass().getResource("/yaml/flow_default_navigation.yaml").toURI();
+        URI operationsPython = getClass().getResource("/yaml/simple_operations.yaml").toURI();
+
+        SlangSource operationsSource = SlangSource.fromFile(operationsPython);
+        Set<SlangSource> path = Sets.newHashSet(operationsSource);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("navigationType", "success");
+        userInputs.put("emailHost", "emailHost");
+        userInputs.put("emailPort", "25");
+        userInputs.put("emailSender", "user@host.com");
+        userInputs.put("emailRecipient", "user@host.com");
+
+// LEFT //        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+
+// RIGHT //        Assert.assertEquals("produce_default_navigation", tasks.get(FIRST_STEP_PATH).getName());
+// RIGHT //        Assert.assertEquals("check_Weather", tasks.get(SECOND_STEP_KEY).getName());
+// END testDefaultSuccessNavigation({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\NavigationTest.java
+Different Spacing: false
+Left editions: [160]
+Right editions: [162, 163]
+Merged body: 
+// START testDefaultOnFailureNavigation({FormalParametersInternal})//@Test
+    public void testDefaultOnFailureNavigation() throws Exception {
+
+        URI resource = getClass().getResource("/yaml/flow_default_navigation.yaml").toURI();
+        URI operationsPython = getClass().getResource("/yaml/simple_operations.yaml").toURI();
+
+        SlangSource operationsSource = SlangSource.fromFile(operationsPython);
+        Set<SlangSource> path = Sets.newHashSet(operationsSource);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("navigationType", "failure");
+        userInputs.put("emailHost", "emailHost");
+        userInputs.put("emailPort", "25");
+        userInputs.put("emailSender", "user@host.com");
+        userInputs.put("emailRecipient", "user@host.com");
+
+// LEFT //        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+
+// RIGHT //        Assert.assertEquals("produce_default_navigation", tasks.get(FIRST_STEP_PATH).getName());
+// RIGHT //        Assert.assertEquals("send_error_mail", tasks.get(SECOND_STEP_KEY).getName());
+// END testDefaultOnFailureNavigation({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d83ef-1dfa4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8208-8c01a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1aa49-ef09d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef09d-14108
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3fa0-3a88d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9568-792a5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b177-4c045
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3f4d4-3bac8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_abbb1-21cb9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8d5d7-28886
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68694-92151
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3924-37f70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2a46-b4c6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86bf2-f0597
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df032-f0597
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0597-cb515
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53439-4c625
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e9c5-13adf
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_rev_left_8e9c5-rev_right_13adf\score-lang-compiler\src\main\java\org\openscore\lang\compiler\utils\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [126, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 163, 164, 165, 166, 167, 168, 179, 180, 181, 182, 183, 184, 185, 187, 194]
+Right editions: [144, 174, 190]
+Merged body: 
+// START transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+// LEFT //        Validate.notEmpty(executableRawData, "Error compiling " + parsedSlang.getName() + ". Executable data for: " + execName + " is empty");
+        Validate.notNull(parsedSlang, "Slang source for " + execName + " is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(SlangTextualKeys.INPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(SlangTextualKeys.OUTPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(SlangTextualKeys.RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+// RIGHT //        resolveSystemProperties(inputs, imports);
+        Map<String, SlangFileType> dependencies;
+        switch (parsedSlang.getType()) {
+            case FLOW:
+// LEFT //
+// LEFT //                if(!executableRawData.containsKey(SlangTextualKeys.WORKFLOW_KEY)){
+// LEFT //                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow property");
+// LEFT //                }
+// LEFT //                LinkedHashMap<String, Map<String, Object>> workFlowRawData;
+// LEFT //                try{
+// LEFT //                    workFlowRawData = (LinkedHashMap) executableRawData.get(SlangTextualKeys.WORKFLOW_KEY);
+// LEFT //                } catch (ClassCastException ex){
+// LEFT //                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'workflow' property there should be a map of tasks and not a list");
+// LEFT //                }
+                if (MapUtils.isEmpty(workFlowRawData)) {
+// LEFT //                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+// LEFT //                LinkedHashMap<String, Map<String, Object>> onFailureData;
+// LEFT //                try{
+// LEFT //                    onFailureData = (LinkedHashMap) workFlowRawData.remove(SlangTextualKeys.ON_FAILURE_KEY);
+// LEFT //                } catch (ClassCastException ex){
+// LEFT //                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+// LEFT //                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+// RIGHT //                //todo: add system properties dependencies?
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATIONS:
+// LEFT //                Map<String, Object> actionRawData;
+// LEFT //                try{
+// LEFT //                   actionRawData = (Map<String, Object>) executableRawData.get(SlangTextualKeys.ACTION_KEY);
+// LEFT //                } catch (ClassCastException ex){
+// LEFT //                    throw new RuntimeException("Operation: '" + execName + "' syntax is illegal.\nBelow 'action' property there should be a map of values such as: 'python_script:' or 'java_action:'");
+// LEFT //                }
+// LEFT //
+                if (MapUtils.isEmpty(actionRawData)) {
+// LEFT //                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+// RIGHT //                //todo: add system properties dependencies?
+                dependencies = new HashMap<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+// LEFT //                throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". It is not of flow or operations type");
+        }
+// END transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_rev_left_8e9c5-rev_right_13adf\score-lang-compiler\src\main\java\org\openscore\lang\compiler\utils\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [269, 270, 271, 272, 273, 274]
+Right editions: [276]
+Merged body: 
+// START compileTask(String-String-Map<String,Object>-Map<String,Object>-String-String-Map<String,String>-Map<String,String>-String-String)//private Task compileTask(String taskName, Map<String, Object> taskRawData, String defaultSuccess,
+                                     Map<String, String> imports, String defaultFailure) {
+
+        if (MapUtils.isEmpty(taskRawData)) {
+            throw new RuntimeException("Task: " + taskName + " has no data");
+        }
+
+        Map<String, Serializable> preTaskData = new HashMap<>();
+        Map<String, Serializable> postTaskData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(taskName, taskRawData, ListUtils.union(preTaskTransformers, postTaskTransformers), TaskAdditionalKeyWords);
+
+// LEFT //        try {
+// LEFT //            preTaskData.putAll(transformersHandler.runTransformers(taskRawData, preTaskTransformers));
+// LEFT //            postTaskData.putAll(transformersHandler.runTransformers(taskRawData, postTaskTransformers));
+// LEFT //        } catch (Exception ex){
+// LEFT //            throw new RuntimeException("For task: " + taskName + " syntax is illegal.\n" + ex.getMessage(), ex);
+// LEFT //        }
+        List<Input> inputs = (List<Input>)preTaskData.get(SlangTextualKeys.DO_KEY);
+// RIGHT //        resolveSystemProperties(inputs, imports);
+        @SuppressWarnings("unchecked") Map<String, Object> doRawData = (Map<String, Object>) taskRawData.get(SlangTextualKeys.DO_KEY);
+        if (MapUtils.isEmpty(doRawData)) {
+            throw new RuntimeException("Task: " + taskName + " has no reference information");
+        }
+        String refString = doRawData.keySet().iterator().next();
+        String refId = resolveRefId(refString, imports);
+
+        @SuppressWarnings("unchecked") Map<String, String> navigationStrings = (Map<String, String>) postTaskData.get(SlangTextualKeys.NAVIGATION_KEY);
+
+        //default navigation
+        if (MapUtils.isEmpty(navigationStrings)) {
+            navigationStrings = new HashMap<>();
+            navigationStrings.put(SUCCESS_RESULT, defaultSuccess);
+            navigationStrings.put(FAILURE_RESULT, defaultFailure);
+        }
+
+        return new Task(taskName, preTaskData, postTaskData, navigationStrings, refId);
+// END compileTask(String-String-Map<String,Object>-Map<String,Object>-String-String-Map<String,String>-Map<String,String>-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_rev_left_8e9c5-rev_right_13adf\score-lang-compiler\src\main\java\org\openscore\lang\compiler\SlangCompilerImpl.java
+Different Spacing: false
+Left editions: [174, 175, 176, 177, 178, 179, 180, 181, 183, 184, 185, 186, 187, 188]
+Right editions: [182]
+Merged body: 
+// START transformDependencies(Set<SlangSource>-Set<SlangSource>)//private Map<String, Executable> transformDependencies(Set<SlangSource> path) {
+
+        //we transform and add all of the dependencies to a list of executable
+        List<Executable> executables = new ArrayList<>();
+        for (SlangSource source : path) {
+            ParsedSlang parsedSlang = yamlParser.parse(source);
+// LEFT //            try {
+// LEFT //                switch (parsedSlang.getType()) {
+// LEFT //                    case FLOW:
+// LEFT //                        executables.add(transformFlow(parsedSlang));
+// LEFT //                        break;
+// LEFT //                    case OPERATIONS:
+// LEFT //                        executables.addAll(transformOperations(parsedSlang));
+// LEFT //                        break;
+// RIGHT //                case SYSTEM_PROPERTIES:
+// LEFT //                        break;
+// LEFT //                    default:
+// LEFT //                        throw new RuntimeException("Source: " + source.getName() + " is not of flow type or operations");
+// LEFT //                }
+// LEFT //            } catch (Throwable ex){
+// LEFT //                throw new RuntimeException("Error compiling file: " + source.getName() + ". " + ex.getMessage(), ex);
+            }
+        }
+
+        //we put the dependencies in a map with their id as key
+        Map<String, Executable> compiledExecutableMap = new HashMap<>();
+        for (Executable executable : executables) {
+            compiledExecutableMap.put(executable.getId(), executable);
+        }
+        return compiledExecutableMap;
+// END transformDependencies(Set<SlangSource>-Set<SlangSource>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4b06-3d79c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db6af-3d79c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d79c-db6af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90d93-bd916
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b6fe-7bbb8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f4dd-1b0ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67166-1b0ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9876-ff13b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b70c-f2663
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7be4d-9340e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9340e-434fd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8cbf1-c9f44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8bb8-b886e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b886e-58913
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05ac1-ea2f3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ea2f3-9cfeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7aab8-f82a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3bf62-228c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8be67-4bca3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11e1a-0dd3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08c95-0dd3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a22e0-17f3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0dd3e-6133b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55f22-8f0b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88bd7-8f0b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6ae3-8f0b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38199-8f0b1
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_38199_8f0b1\rev_rev_left_38199-rev_right_8f0b1\score-lang-runtime\src\main\java\org\openscore\lang\runtime\bindings\InputsBinding.java
+Different Spacing: false
+Left editions: [84]
+Right editions: [79]
+Merged body: 
+// START resolveValue(Input-Input-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>)//private Serializable resolveValue(Input input, Map<String, ? extends Serializable> context, Map<String, ? extends Serializable> targetContext, Map<String, ? extends Serializable> systemProperties) {
+        Serializable value = null;
+        String inputName = input.getName();
+// RIGHT //        if(context.containsKey(inputName) && input.isOverridable()) value = context.get(inputName);
+        String fqspn = input.getSystemPropertyName();
+        if(value == null && fqspn != null && systemProperties != null) value = systemProperties.get(fqspn);
+        if(value == null && StringUtils.isNotEmpty(input.getExpression())){
+            Map<String,Serializable> scriptContext = new HashMap<>(context); //we do not want to change original context map
+// LEFT //            scriptContext.putAll(targetContext);//so you can resolve previous inputs already bound
+
+            String expr = input.getExpression();
+            value = scriptEvaluator.evalExpr(expr, scriptContext);
+        }
+        return value;
+// END resolveValue(Input-Input-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9c0c-f57e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5951-f57e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c708a-f57e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d0ab1-f57e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f57e9-56bb2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9df5-5b45a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6ef6d-5b45a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [145, 146, 157, 158, 159, 168, 173, 184, 200]
+Right editions: [152]
+Merged body: 
+// START transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+// LEFT //        Validate.notEmpty(executableRawData, "Error compiling " + parsedSlang.getName() + ". Executable data for: \'" + execName + "\' is empty");
+// LEFT //        Validate.notNull(parsedSlang, "Slang source for: \'" + execName + "\' is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+// RIGHT //                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords, null);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+// LEFT //        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(INPUTS_KEY);
+// LEFT //        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(OUTPUTS_KEY);
+// LEFT //        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+        resolveSystemProperties(inputs, imports);
+        Map<String, SlangFileType> dependencies;
+        switch (parsedSlang.getType()) {
+            case FLOW:
+
+// LEFT //                if(!executableRawData.containsKey(WORKFLOW_KEY)){
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow property");
+                }
+                LinkedHashMap<String, Map<String, Object>> workFlowRawData;
+                try{
+// LEFT //                    workFlowRawData = (LinkedHashMap) executableRawData.get(WORKFLOW_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'workflow' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isEmpty(workFlowRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+                LinkedHashMap<String, Map<String, Object>> onFailureData;
+                try{
+// LEFT //                    onFailureData = (LinkedHashMap) workFlowRawData.remove(ON_FAILURE_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+                //todo: add system properties dependencies?
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATION:
+                Map<String, Object> actionRawData;
+                try{
+// LEFT //                   actionRawData = (Map<String, Object>) executableRawData.get(ACTION_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Operation: '" + execName + "' syntax is illegal.\nBelow 'action' property there should be a map of values such as: 'python_script:' or 'java_action:'");
+                }
+
+                if (MapUtils.isEmpty(actionRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+                //todo: add system properties dependencies?
+                dependencies = new HashMap<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+                throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". It is not of flow or operations type");
+        }
+// END transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [251, 254, 255, 256, 257, 259, 262]
+Right editions: [244, 266]
+Merged body: 
+// START compileWorkFlow(LinkedHashMap<String,Map<String,Object>>-LinkedHashMap<String,Map<String,Object>>-Map<String,String>-Map<String,String>-Workflow-Workflow-boolean-boolean)//private Workflow compileWorkFlow(LinkedHashMap<String, Map<String, Object>> workFlowRawData,
+                                             Map<String, String> imports,
+                                             Workflow onFailureWorkFlow,
+                                             boolean onFailureSection) {
+
+        Deque<Task> tasks = new LinkedList<>();
+
+        Validate.notEmpty(workFlowRawData, "Flow must have tasks in its workflow");
+
+        PeekingIterator<Map.Entry<String, Map<String, Object>>> iterator =
+                new PeekingIterator<>(workFlowRawData.entrySet().iterator());
+
+        boolean isOnFailureDefined = onFailureWorkFlow != null;
+
+        String defaultFailure = isOnFailureDefined ?
+// RIGHT //                onFailureWorkFlow.getTasks().getFirst().getName() : ScoreLangConstants.FAILURE_RESULT;
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Map<String, Object>> taskRawData = iterator.next();
+            Map.Entry<String, Map<String, Object>> nextTaskData = iterator.peek();
+            String taskName = taskRawData.getKey();
+            Map<String, Object> taskRawDataValue;
+// LEFT //            String message = "Task: " + taskName + " syntax is illegal.\nBelow task name, there should be a map of values in the format:\ndo:\n\top_name:";
+            try {
+                taskRawDataValue = taskRawData.getValue();
+// LEFT //                if (MapUtils.isNotEmpty(taskRawDataValue) && taskRawDataValue.containsKey(LOOP_KEY)) {
+// LEFT //                    message = "Task: " + taskName + " syntax is illegal.\nBelow the 'loop' keyword, there should be a map of values in the format:\nfor:\ndo:\n\top_name:";
+// LEFT //                    taskRawDataValue = (Map<String, Object>) taskRawDataValue.get(LOOP_KEY);
+// LEFT //                }
+            } catch (ClassCastException ex){
+// LEFT //                throw new RuntimeException(message);
+            }
+
+// LEFT //            String defaultSuccess;
+            if (nextTaskData != null) {
+                defaultSuccess = nextTaskData.getKey();
+            } else {
+// RIGHT //                defaultSuccess = onFailureSection ? ScoreLangConstants.FAILURE_RESULT : ScoreLangConstants.SUCCESS_RESULT;
+            }
+            Task task = compileTask(taskName, taskRawDataValue, defaultSuccess, imports, defaultFailure);
+            tasks.add(task);
+        }
+
+        if (isOnFailureDefined) {
+            tasks.addAll(onFailureWorkFlow.getTasks());
+        }
+
+        return new Workflow(tasks);
+// END compileWorkFlow(LinkedHashMap<String,Map<String,Object>>-LinkedHashMap<String,Map<String,Object>>-Map<String,String>-Map<String,String>-Workflow-Workflow-boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [298, 300, 302, 307]
+Right editions: [290, 312, 313]
+Merged body: 
+// START compileTask(String-String-Map<String,Object>-Map<String,Object>-String-String-Map<String,String>-Map<String,String>-String-String)//private Task compileTask(String taskName, Map<String, Object> taskRawData, String defaultSuccess,
+                                     Map<String, String> imports, String defaultFailure) {
+
+        if (MapUtils.isEmpty(taskRawData)) {
+            throw new RuntimeException("Task: " + taskName + " has no data");
+        }
+
+        Map<String, Serializable> preTaskData = new HashMap<>();
+        Map<String, Serializable> postTaskData = new HashMap<>();
+
+// RIGHT //        transformersHandler.validateKeyWords(taskName, taskRawData, ListUtils.union(preTaskTransformers, postTaskTransformers), TaskAdditionalKeyWords, null);
+
+        try {
+            preTaskData.putAll(transformersHandler.runTransformers(taskRawData, preTaskTransformers));
+            postTaskData.putAll(transformersHandler.runTransformers(taskRawData, postTaskTransformers));
+        } catch (Exception ex){
+            throw new RuntimeException("For task: " + taskName + " syntax is illegal.\n" + ex.getMessage(), ex);
+        }
+// LEFT //        List<Input> inputs = (List<Input>)preTaskData.get(DO_KEY);
+        resolveSystemProperties(inputs, imports);
+// LEFT //        @SuppressWarnings("unchecked") Map<String, Object> doRawData = (Map<String, Object>) taskRawData.get(DO_KEY);
+        if (MapUtils.isEmpty(doRawData)) {
+// LEFT //            throw new RuntimeException("Task: \'" + taskName + "\' has no reference information");
+        }
+        String refString = doRawData.keySet().iterator().next();
+        String refId = resolveRefId(refString, imports);
+
+// LEFT //        @SuppressWarnings("unchecked") Map<String, String> navigationStrings = (Map<String, String>) postTaskData.get(NAVIGATION_KEY);
+
+        //default navigation
+        if (MapUtils.isEmpty(navigationStrings)) {
+            navigationStrings = new HashMap<>();
+// RIGHT //            navigationStrings.put(ScoreLangConstants.SUCCESS_RESULT, defaultSuccess);
+// RIGHT //            navigationStrings.put(ScoreLangConstants.FAILURE_RESULT, defaultFailure);
+        }
+
+        return new Task(taskName, preTaskData, postTaskData, navigationStrings, refId);
+// END compileTask(String-String-Map<String,Object>-Map<String,Object>-String-String-Map<String,String>-Map<String,String>-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3da93-5b45a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bfa15-1e472
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_bfa15_1e472\rev_rev_left_bfa15-rev_right_1e472\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Different Spacing: false
+Left editions: []
+Right editions: [149]
+Merged body: 
+// START transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+        Validate.notEmpty(executableRawData, "Error compiling " + parsedSlang.getName() + ". Executable data for: " + execName + " is empty");
+        Validate.notNull(parsedSlang, "Slang source for " + execName + " is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+// RIGHT //                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords, null);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(SlangTextualKeys.INPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(SlangTextualKeys.OUTPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(SlangTextualKeys.RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+        resolveSystemProperties(inputs, imports);
+        Map<String, SlangFileType> dependencies;
+        switch (parsedSlang.getType()) {
+            case FLOW:
+
+                if(!executableRawData.containsKey(SlangTextualKeys.WORKFLOW_KEY)){
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow property");
+                }
+                LinkedHashMap<String, Map<String, Object>> workFlowRawData;
+                try{
+                    workFlowRawData = (LinkedHashMap) executableRawData.get(SlangTextualKeys.WORKFLOW_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'workflow' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isEmpty(workFlowRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+                LinkedHashMap<String, Map<String, Object>> onFailureData;
+                try{
+                    onFailureData = (LinkedHashMap) workFlowRawData.remove(SlangTextualKeys.ON_FAILURE_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATION:
+                Map<String, Object> actionRawData;
+                try{
+                   actionRawData = (Map<String, Object>) executableRawData.get(SlangTextualKeys.ACTION_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Operation: '" + execName + "' syntax is illegal.\nBelow 'action' property there should be a map of values such as: 'python_script:' or 'java_action:'");
+                }
+
+                if (MapUtils.isEmpty(actionRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+                dependencies = new HashMap<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+                throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". It is not of flow or operations type");
+        }
+// END transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe4a0-1e472
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56b60-1e472
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0a4bf-2b3e7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b5a2-2b3e7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8666-1c865
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_c8666_1c865\rev_rev_left_c8666-rev_right_1c865\score-lang-runtime\src\test\java\org\openscore\lang\runtime\steps\TaskStepsTest.java
+Different Spacing: false
+Left editions: [233, 235, 236, 246, 247, 249, 250, 251]
+Right editions: [241, 242, 243]
+Merged body: 
+// START testEndTaskWithPublish({FormalParametersInternal})//@Test
+    public void testEndTaskWithPublish() throws Exception {
+        List<Output> possiblePublishValues = Arrays.asList(new Output("name", "name"));
+// LEFT //        RunEnvironment runEnv = createRunEnvironment();
+        runEnv.putReturnValues(new ReturnValues(new HashMap<String, String>(), SUCCESS_RESULT));
+// LEFT //        Context context = new Context(new HashMap<String, Serializable>());
+// LEFT //        runEnv.getStack().pushContext(context);
+
+        Map<String, String> boundPublish = new HashMap<>();
+        boundPublish.put("name", "John");
+
+// RIGHT //        when(outputsBinding.bindOutputs(
+// RIGHT //                anyMapOf(String.class, Serializable.class), anyMapOf(String.class, String.class), eq(possiblePublishValues)))
+// RIGHT //                .thenReturn(boundPublish);
+        HashMap<String, ResultNavigation> taskNavigationValues = new HashMap<>();
+        taskNavigationValues.put(SUCCESS_RESULT, new ResultNavigation(0, SUCCESS_RESULT));
+// LEFT //        taskSteps.endTask(runEnv, possiblePublishValues, taskNavigationValues,
+// LEFT //                createRuntimeServices(), 1L, new ArrayList<String>(), "task1");
+
+// LEFT //        Map<String,Serializable> flowVars = runEnv.getStack().popContext().getImmutableViewOfVariables();
+// LEFT //        Assert.assertTrue(flowVars.containsKey("name"));
+// LEFT //        Assert.assertEquals("John" ,flowVars.get("name"));
+// END testEndTaskWithPublish({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1515d-8b7f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5e2d-86945
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8caa3-eaa9d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_289a0-37834
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75bc5-70f37
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70f37-f2424
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25f02-b272b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0874-7679c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Different Spacing: false
+Left editions: [154, 155, 166, 167, 168, 176, 181, 192, 207]
+Right editions: [172, 216]
+Merged body: 
+// START transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+// LEFT //        Validate.notEmpty(executableRawData, "Error compiling " + parsedSlang.getName() + ". Executable data for: \'" + execName + "\' is empty");
+// LEFT //        Validate.notNull(parsedSlang, "Slang source for: \'" + execName + "\' is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords, null);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+// LEFT //        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(INPUTS_KEY);
+// LEFT //        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(OUTPUTS_KEY);
+// LEFT //        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+// RIGHT //        Set<String> dependencies;
+        switch (parsedSlang.getType()) {
+            case FLOW:
+
+// LEFT //                if(!executableRawData.containsKey(WORKFLOW_KEY)){
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow property");
+                }
+                LinkedHashMap<String, Map<String, Object>> workFlowRawData;
+                try{
+// LEFT //                    workFlowRawData = (LinkedHashMap) executableRawData.get(WORKFLOW_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'workflow' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isEmpty(workFlowRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+                LinkedHashMap<String, Map<String, Object>> onFailureData;
+                try{
+// LEFT //                    onFailureData = (LinkedHashMap) workFlowRawData.remove(ON_FAILURE_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATION:
+                Map<String, Object> actionRawData;
+                try{
+// LEFT //                   actionRawData = (Map<String, Object>) executableRawData.get(ACTION_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Operation: '" + execName + "' syntax is illegal.\nBelow 'action' property there should be a map of values such as: 'python_script:' or 'java_action:'");
+                }
+
+                if (MapUtils.isEmpty(actionRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+// RIGHT //                dependencies = new HashSet<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+                throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". It is not of flow or operations type");
+        }
+// END transformToExecutable(ParsedSlang-ParsedSlang-String-String-Map<String,Object>-Map<String,Object>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\ExecutableSteps.java
+Different Spacing: false
+Left editions: []
+Right editions: [96, 97, 98, 125, 126, 127]
+Merged body: 
+// START startExecutable(List<Input>-List<Input>-RunEnvironment-RunEnvironment-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String-Long-Long)//public void startExecutable(@Param(EXECUTABLE_INPUTS_KEY) List<Input> executableInputs,
+                                @Param(RUN_ENV) RunEnvironment runEnv,
+                                @Param(USER_INPUTS_KEY) Map<String, ? extends Serializable> userInputs,
+                                @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                                @Param(NODE_NAME_KEY) String nodeName,
+                                @Param(NEXT_STEP_ID_KEY) Long nextStepId) {
+// RIGHT //        try {
+// RIGHT //            runEnv.getExecutionPath()
+// RIGHT //                  .down();
+        Map<String, Serializable> callArguments = runEnv.removeCallArguments();
+
+        if(userInputs != null) {
+            callArguments.putAll(userInputs);
+        }
+        Map<String, Serializable> executableContext = inputsBinding.bindInputs(executableInputs, callArguments, runEnv.getSystemProperties());
+
+        Map<String, Serializable> actionArguments = new HashMap<>();
+
+        //todo: clone action context before updating
+        actionArguments.putAll(executableContext);
+
+        //done with the user inputs, don't want it to be available in next startExecutable steps..
+        if(userInputs != null) {
+            userInputs.clear();
+        }
+
+        //todo: hook
+
+        updateCallArgumentsAndPushContextToStack(runEnv, new Context(executableContext), actionArguments);
+
+        sendBindingInputsEvent(executableInputs, executableContext, runEnv, executionRuntimeServices,
+                "Post Input binding for operation/flow",nodeName, levelName.EXECUTABLE_NAME);
+
+        // put the next step position for the navigation
+        runEnv.putNextStepPosition(nextStepId);
+// RIGHT //        } catch (RuntimeException e){
+// RIGHT //            logger.error("There was an error running the start executable execution step of: \'" + nodeName + "\'. Error is: " + e.getMessage());
+// RIGHT //            throw new RuntimeException("Error running: \'" + nodeName + "\': " + e.getMessage(), e);
+        }
+// END startExecutable(List<Input>-List<Input>-RunEnvironment-RunEnvironment-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String-Long-Long)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\ExecutableSteps.java
+Different Spacing: false
+Left editions: []
+Right editions: [145, 181, 182, 183]
+Merged body: 
+// START finishExecutable(RunEnvironment-RunEnvironment-List<Output>-List<Output>-List<Result>-List<Result>-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String)//public void finishExecutable(@Param(RUN_ENV) RunEnvironment runEnv,
+                                 @Param(EXECUTABLE_OUTPUTS_KEY) List<Output> executableOutputs,
+                                 @Param(EXECUTABLE_RESULTS_KEY) List<Result> executableResults,
+                                 @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                                 @Param(NODE_NAME_KEY) String nodeName) {
+// RIGHT //		try{
+		ExecutionPath executionPath = runEnv.getExecutionPath();
+		executionPath.up();
+		if(executionPath.getDepth() < 1) executionPath.down(); // In case we're at top level
+        Context operationContext = runEnv.getStack().popContext();
+        Map<String, Serializable> operationVariables = operationContext == null ? null : operationContext.getImmutableViewOfVariables();
+        ReturnValues actionReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(ScoreLangConstants.EXECUTABLE_OUTPUTS_KEY, (Serializable) executableOutputs),
+                Pair.of(ScoreLangConstants.EXECUTABLE_RESULTS_KEY, (Serializable)executableResults),
+                Pair.of("actionReturnValues", actionReturnValues),Pair.of(levelName.EXECUTABLE_NAME.toString(),nodeName));
+
+        // Resolving the result of the operation/flow
+        String result = resultsBinding.resolveResult(operationVariables, actionReturnValues.getOutputs(), executableResults, actionReturnValues.getResult());
+
+        Map<String, String> operationReturnOutputs = outputsBinding.bindOutputs(operationVariables, actionReturnValues.getOutputs(), executableOutputs);
+
+        //todo: hook
+
+        ReturnValues returnValues = new ReturnValues(operationReturnOutputs, result);
+        runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(OUTPUTS, (Serializable) operationReturnOutputs),
+                Pair.of(RESULT, returnValues.getResult()),
+                Pair.of(levelName.EXECUTABLE_NAME.toString(),nodeName));
+
+        // If we have parent flow data on the stack, we pop it and request the score engine to switch to the parent
+        // execution plan id once it can, and we set the next position that was stored there for the use of the navigation
+        if(!runEnv.getParentFlowStack().isEmpty()) {
+            handleNavigationToParent(runEnv, executionRuntimeServices);
+        } else {
+            fireEvent(executionRuntimeServices, runEnv, EVENT_EXECUTION_FINISHED, "Execution finished running",
+                    Pair.of(RESULT, returnValues.getResult()),
+                    Pair.of(OUTPUTS, (Serializable) operationReturnOutputs),
+                    Pair.of(levelName.EXECUTABLE_NAME.toString(),nodeName));
+        }
+// RIGHT //        } catch (RuntimeException e){
+// RIGHT //            logger.error("There was an error running the finish executable execution step of: \'" + nodeName + "\'. Error is: " + e.getMessage());
+// RIGHT //            throw new RuntimeException("Error running: \'" + nodeName + "\': " + e.getMessage(), e);
+        }
+// END finishExecutable(RunEnvironment-RunEnvironment-List<Output>-List<Output>-List<Result>-List<Result>-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6dadf-4c8e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ecdc8-4c8e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c4348-7cb44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca9ac-4c8e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d3d8-7cb44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7cb44-cf46e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_200fc-cf205
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_118ff-cf205
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e017d-cf205
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10561-e6da2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00b20-e6da2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6da2-d70d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b6f5-1907a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21f0d-69a72
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_748f0-d6105
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c7a2-d6105
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_079d1-a7204
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1996-1a691
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_975b0-13d23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9255-13d23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9d56c-13d23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77d48-13d23
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_77d48_13d23\rev_rev_left_77d48-rev_right_13d23\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+Different Spacing: false
+Left editions: [126]
+Right editions: [138, 139, 140, 141, 142, 143, 144]
+Merged body: 
+// START triggerSync(CompilationArtifact-CompilationArtifact-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>)//@Override
+	public Long triggerSync(CompilationArtifact compilationArtifact, Map<String, ? extends Serializable> inputs, Map<String, ? extends Serializable> systemProperties){
+        //add start event
+        Set<String> handlerTypes = new HashSet<>();
+        handlerTypes.add(EventConstants.SCORE_FINISHED_EVENT);
+        handlerTypes.add(EventConstants.SCORE_ERROR_EVENT);
+        handlerTypes.add(EventConstants.SCORE_FAILURE_EVENT);
+        handlerTypes.add(SLANG_EXECUTION_EXCEPTION);
+        handlerTypes.add(EVENT_EXECUTION_FINISHED);
+        handlerTypes.add(EVENT_INPUT_END);
+// LEFT //        handlerTypes.add(EVENT_OUTPUT_END);
+        SyncTriggerEventListener scoreEventListener = new SyncTriggerEventListener();
+        slang.subscribeOnEvents(scoreEventListener, handlerTypes);
+
+        Long executionId = trigger(compilationArtifact, inputs, systemProperties);
+
+        while(!scoreEventListener.isFlowFinished()){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ignore) {}
+        }
+        slang.unSubscribeOnEvents(scoreEventListener);
+// RIGHT //
+// RIGHT //        String errorMessageFlowExecution = scoreEventListener.getErrorMessage();
+// RIGHT //        if (StringUtils.isNotEmpty(errorMessageFlowExecution)) {
+// RIGHT //            // exception occurred during flow execution
+// RIGHT //            throw new RuntimeException(errorMessageFlowExecution);
+// RIGHT //        }
+// RIGHT //
+        return executionId;
+// END triggerSync(CompilationArtifact-CompilationArtifact-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>-Map<String,?extendsSerializable>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_77d48_13d23\rev_rev_left_77d48-rev_right_13d23\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+Different Spacing: false
+Left editions: [175, 193, 195, 199, 200, 201, 202]
+Right editions: [181, 189]
+Merged body: 
+// START onEvent(ScoreEvent-ScoreEvent)//@Override
+        public synchronized void onEvent(ScoreEvent scoreEvent) throws InterruptedException {
+            @SuppressWarnings("unchecked") Map<String,Serializable> data = (Map<String,Serializable>)scoreEvent.getData();
+// LEFT //
+            switch (scoreEvent.getEventType()){
+                case EventConstants.SCORE_FINISHED_EVENT :
+                    flowFinished.set(true);
+                    break;
+                case EventConstants.SCORE_ERROR_EVENT :
+// RIGHT //                    errorMessage.set(SCORE_ERROR_EVENT_MSG + data.get(EventConstants.SCORE_ERROR_LOG_MSG) + " , " +
+                            data.get(EventConstants.SCORE_ERROR_MSG));
+                    break;
+                case EventConstants.SCORE_FAILURE_EVENT :
+                    printWithColor(Ansi.Color.RED,FLOW_FINISHED_WITH_FAILURE_MSG);
+                    flowFinished.set(true);
+                    break;
+                case ScoreLangConstants.SLANG_EXECUTION_EXCEPTION:
+// RIGHT //                    errorMessage.set(SLANG_STEP_ERROR_MSG + data.get(EXCEPTION));
+                    break;
+                case ScoreLangConstants.EVENT_INPUT_END:
+                    String taskName = (String)data.get(LanguageEventData.levelName.TASK_NAME.name());
+// LEFT //
+                    if(StringUtils.isNotEmpty(taskName)){
+// LEFT //                        String prefix = getPrefix(data);
+                        printWithColor(Ansi.Color.YELLOW, prefix + taskName);
+                    }
+                    break;
+// LEFT //                case ScoreLangConstants.EVENT_OUTPUT_END:
+// LEFT //                    printOutputs(data);
+// LEFT //                    break;
+// LEFT //
+                case EVENT_EXECUTION_FINISHED :
+                    printFinishEvent(data);
+                    break;
+            }
+// END onEvent(ScoreEvent-ScoreEvent)//        }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13d23-ba182
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11d75-85bc1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3e14-a9ecc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56446-31d40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c4c5-31d40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_165b4-651b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_886a8-e3cfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f738e-e3cfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ba5cf-e3cfe
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Different Spacing: false
+Left editions: [163]
+Right editions: [154, 160, 161, 165, 166, 168]
+Merged body: 
+// START testRunValidFilePathAsync({FormalParametersInternal})//@Test (timeout = DEFAULT_TIMEOUT)
+// RIGHT //    public void testRunValidFilePathAsync() throws Exception {
+        //set async mode
+        slangCLI.setEnvVar(true);
+
+        long executionID = 1;
+
+// RIGHT //        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(emptyCompilationArtifact);
+// RIGHT //        when(ScoreServicesMock.trigger(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+
+// LEFT //        CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT);
+
+// RIGHT //        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+// RIGHT //        verify(ScoreServicesMock).trigger(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+
+// RIGHT //        Assert.assertEquals("method result mismatch", SlangCLI.triggerAsyncMsg(executionID, emptyCompilationArtifact.getExecutionPlan().getName()), cr.getResult());
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+// END testRunValidFilePathAsync({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Different Spacing: false
+Left editions: [280]
+Right editions: [277, 278, 282, 283, 285]
+Merged body: 
+// START testRunAsyncWithInputs({FormalParametersInternal})//@Test (timeout = DEFAULT_TIMEOUT)
+    public void testRunAsyncWithInputs() throws Exception {
+        //set async mode
+        slangCLI.setEnvVar(true);
+
+        long executionID = 1;
+        String inputsString = "--i input1=value1,input2=value2";
+        Map<String, Serializable> inputsMap = new HashMap<>();
+        inputsMap.put("input1", "value1");
+        inputsMap.put("input2", "value2");
+
+// RIGHT //        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(emptyCompilationArtifact);
+// RIGHT //        when(ScoreServicesMock.trigger(eq(emptyCompilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+
+// LEFT //        CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT + " " + inputsString);
+
+// RIGHT //        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+// RIGHT //        verify(ScoreServicesMock).trigger(eq(emptyCompilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class));
+
+// RIGHT //        Assert.assertEquals("method result mismatch", SlangCLI.triggerAsyncMsg(executionID, emptyCompilationArtifact.getExecutionPlan().getName()), cr.getResult());
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+// END testRunAsyncWithInputs({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Different Spacing: false
+Left editions: [368]
+Right editions: [362, 364, 366, 370]
+Merged body: 
+// START testGetFlowInputs({FormalParametersInternal})//@Test (timeout = DEFAULT_TIMEOUT)
+// RIGHT //    public void testGetFlowInputs() throws Exception {
+        List<Input> inputsList = Lists.newArrayList(new Input("input1", "expression1"), new Input("input2", "expression2"));
+// RIGHT //        CompilationArtifact compilationArtifact = new CompilationArtifact(new ExecutionPlan(), new HashMap<String, ExecutionPlan>(), inputsList, null);
+
+// RIGHT //        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(compilationArtifact);
+
+// LEFT //        CommandResult cr = shell.executeCommand("inputs --f " + FLOW_PATH_BACKSLASH_INPUT);
+
+// RIGHT //        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+
+        Assert.assertEquals("input list mismatch", Lists.newArrayList("input1", "input2"), cr.getResult());
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+// END testGetFlowInputs({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Different Spacing: false
+Left editions: [385]
+Right editions: [379, 381, 383, 387]
+Merged body: 
+// START testGetFlowInputsWithOverride({FormalParametersInternal})//@Test (timeout = DEFAULT_TIMEOUT)
+// RIGHT //    public void testGetFlowInputsWithOverride() throws Exception {
+        List<Input> inputsList = Lists.newArrayList(new Input("input1", "expression1"),new Input("input_override", "expression_override", false, true, false, null) , new Input("input2", "expression2"));
+// RIGHT //        CompilationArtifact compilationArtifact = new CompilationArtifact(new ExecutionPlan(), new HashMap<String, ExecutionPlan>(), inputsList, null);
+
+// RIGHT //        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(compilationArtifact);
+
+// LEFT //        CommandResult cr = shell.executeCommand("inputs --f " + FLOW_PATH_BACKSLASH_INPUT);
+
+// RIGHT //        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+
+        Assert.assertEquals("input list mismatch", Lists.newArrayList("input1", "input2"), cr.getResult());
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+// END testGetFlowInputsWithOverride({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+Different Spacing: false
+Left editions: [203, 204, 205, 208, 212, 213, 222, 226, 227, 228, 229, 230, 231, 232]
+Right editions: [209, 217]
+Merged body: 
+// START onEvent(ScoreEvent-ScoreEvent)//@Override
+        public synchronized void onEvent(ScoreEvent scoreEvent) throws InterruptedException {
+// LEFT //            @SuppressWarnings("unchecked") Map<String, Serializable> data = (Map<String, Serializable>) scoreEvent.getData();
+// LEFT //            switch (scoreEvent.getEventType()) {
+// LEFT //                case EventConstants.SCORE_FINISHED_EVENT:
+                    flowFinished.set(true);
+                    break;
+// LEFT //                case EventConstants.SCORE_ERROR_EVENT:
+// RIGHT //                    errorMessage.set(SCORE_ERROR_EVENT_MSG + data.get(EventConstants.SCORE_ERROR_LOG_MSG) + " , " +
+                            data.get(EventConstants.SCORE_ERROR_MSG));
+                    break;
+// LEFT //                case EventConstants.SCORE_FAILURE_EVENT:
+// LEFT //                    printWithColor(Ansi.Color.RED, FLOW_FINISHED_WITH_FAILURE_MSG);
+                    flowFinished.set(true);
+                    break;
+                case ScoreLangConstants.SLANG_EXECUTION_EXCEPTION:
+// RIGHT //                    errorMessage.set(SLANG_STEP_ERROR_MSG + data.get(EXCEPTION));
+                    break;
+                case ScoreLangConstants.EVENT_INPUT_END:
+                    String taskName = (String)data.get(LanguageEventData.levelName.TASK_NAME.name());
+                    if(StringUtils.isNotEmpty(taskName)){
+// LEFT //                        String prefix = getPrefix(data);
+                        printWithColor(Ansi.Color.YELLOW, prefix + taskName);
+                    }
+                    break;
+// LEFT //                case ScoreLangConstants.EVENT_OUTPUT_END:
+// LEFT //                        printOutputs(data);
+// LEFT //                    break;
+// LEFT //                case EVENT_EXECUTION_FINISHED:
+// LEFT //                    if (!flowFinished.get()) {
+// LEFT //                        flowFinished.set(true);
+// LEFT //                    }
+                    printFinishEvent(data);
+                    break;
+            }
+// END onEvent(ScoreEvent-ScoreEvent)//        }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8150b-e3cfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ef1a-e3cfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8ad25-e2a91
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fd603-e2a91
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2a91-372ac
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d40e1-05e0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b239f-ef252
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6478a-05e0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c58c1-5220e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de1a2-5220e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a71f3-5220e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4d85-dcb31
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79ff5-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5716c-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cdcde-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_476f4-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3eb1-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67756-e0d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a4e4e-5542b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0d42-250bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_959d1-dfe37
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be7b8-f08a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a83ff-26afc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_700d3-53816
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53816-1f056
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcbb7-2ca17
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70413-2ea72
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19229-2ea72
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0fab9-2ea72
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9be1-c0ce6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51443-9a7bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a300d-26e71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_14c24-7f18b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_baede-53b7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e31b-2fe83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d33c9-2fe83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9f24-124e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_124e0-3d998
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fe38-98572
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9496-a83b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a83b8-0b561
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75ab9-d84a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69d11-22df8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eaf91-d724a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9d6fc-c6579
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79325-430c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15595-430c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7fc58-00560
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0f24-e8f0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c61ac-1ca8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1bcd8-3c6a9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1bcd8_3c6a9\rev_rev_left_1bcd8-rev_right_3c6a9\cloudslang-compiler\src\main\java\io\cloudslang\lang\compiler\scorecompiler\ExecutionPlanBuilder.java
+Different Spacing: false
+Left editions: [119]
+Right editions: [97]
+Merged body: 
+// START createFlowExecutionPlan(Flow-Flow)//public ExecutionPlan createFlowExecutionPlan(Flow compiledFlow) {
+        ExecutionPlan executionPlan = new ExecutionPlan();
+        executionPlan.setName(compiledFlow.getName());
+// RIGHT //        executionPlan.setLanguage(CLOUDSLANG_NAME);
+        executionPlan.setFlowUuid(compiledFlow.getId());
+
+        executionPlan.setBeginStep(FLOW_START_STEP_ID);
+        //flow start step
+        executionPlan.addStep(stepFactory.createStartStep(FLOW_START_STEP_ID, compiledFlow.getPreExecActionData(),
+                compiledFlow.getInputs(), compiledFlow.getName()));
+        //flow end step
+        executionPlan.addStep(stepFactory.createEndStep(FLOW_END_STEP_ID, compiledFlow.getPostExecActionData(),
+                compiledFlow.getOutputs(), compiledFlow.getResults(), compiledFlow.getName()));
+
+        Map<String, Long> taskReferences = new HashMap<>();
+        for (Result result : compiledFlow.getResults()) {
+            taskReferences.put(result.getName(), FLOW_END_STEP_ID);
+        }
+
+        Deque<Task> tasks = compiledFlow.getWorkflow().getTasks();
+
+        if (CollectionUtils.isEmpty(tasks)) {
+            throw new RuntimeException("Flow: " + compiledFlow.getName() + " has no tasks");
+        }
+
+// LEFT //        List<ExecutionStep> taskExecutionSteps = buildTaskExecutionSteps(tasks.getFirst(), taskReferences, tasks, compiledFlow);
+        executionPlan.addSteps(taskExecutionSteps);
+
+        return executionPlan;
+// END createFlowExecutionPlan(Flow-Flow)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1bcd8_3c6a9\rev_rev_left_1bcd8-rev_right_3c6a9\cloudslang-compiler\src\test\java\io\cloudslang\lang\compiler\scorecompiler\ExecutionPlanBuilderTest.java
+Different Spacing: false
+Left editions: [145]
+Right editions: []
+Merged body: 
+// START mockFinishTask(Long-Long-Task-Task)//private void mockFinishTask(Long stepId, Task task) {
+        Map<String, Serializable> postTaskActionData = task.getPostTaskActionData();
+        String taskName = task.getName();
+// LEFT //        when(stepFactory.createFinishTaskStep(eq(stepId), same(postTaskActionData), anyMapOf(String.class, ResultNavigation.class), same(taskName), eq(false))).thenReturn(new ExecutionStep(stepId));
+// END mockFinishTask(Long-Long-Task-Task)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1bcd8_3c6a9\rev_rev_left_1bcd8-rev_right_3c6a9\cloudslang-compiler\src\test\java\io\cloudslang\lang\compiler\scorecompiler\ExecutionPlanBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [252]
+Merged body: 
+// START createFlowWithTwoTasks({FormalParametersInternal})//@Test
+    public void createFlowWithTwoTasks() throws Exception {
+        Deque<Task> tasks = new LinkedList<>();
+        String secondTaskName = "2ndTask";
+        HashMap<String, String> navigationStrings = new HashMap<>();
+        navigationStrings.put(ScoreLangConstants.SUCCESS_RESULT, secondTaskName);
+        navigationStrings.put(ScoreLangConstants.FAILURE_RESULT, ScoreLangConstants.FAILURE_RESULT);
+        Task firstTask = createSimpleCompiledTask("firstTaskName", navigationStrings);
+        Task secondTask = createSimpleCompiledTask(secondTaskName);
+        tasks.add(firstTask);
+        tasks.add(secondTask);
+        Map<String, Serializable> preFlowActionData = new HashMap<>();
+        Map<String, Serializable> postFlowActionData = new HashMap<>();
+
+        Workflow workflow = new Workflow(tasks);
+        String flowName = "flowName";
+        String flowNamespace = "user.flows";
+        List<Input> inputs = new ArrayList<>();
+        List<Output> outputs = new ArrayList<>();
+        List<Result> results = defaultFlowResults();
+
+
+        Flow compiledFlow =
+                new Flow(preFlowActionData, postFlowActionData, workflow, flowNamespace, flowName, inputs, outputs, results, null);
+
+        mockStartStep(compiledFlow);
+        mockEndStep(0L, compiledFlow);
+
+        mockBeginTask(2L, firstTask);
+        mockFinishTask(3L, firstTask);
+        mockBeginTask(4L, secondTask);
+        mockFinishTask(5L, secondTask);
+        ExecutionPlan executionPlan = executionPlanBuilder.createFlowExecutionPlan(compiledFlow);
+
+        assertEquals("different number of execution steps than expected", 6, executionPlan.getSteps().size());
+        assertEquals("flow name is different than expected", flowName, executionPlan.getName());
+// RIGHT //        assertEquals("language name is different than expected", "CloudSlang", executionPlan.getLanguage());
+        assertEquals("begin step is different than expected", new Long(1), executionPlan.getBeginStep());
+// END createFlowWithTwoTasks({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1bcd8_3c6a9\rev_rev_left_1bcd8-rev_right_3c6a9\cloudslang-compiler\src\test\java\io\cloudslang\lang\compiler\scorecompiler\ExecutionPlanBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [211]
+Merged body: 
+// START createSimpleFlow({FormalParametersInternal})//@Test
+    public void createSimpleFlow() throws Exception {
+        Map<String, Serializable> preFlowActionData = new HashMap<>();
+        Map<String, Serializable> postFlowActionData = new HashMap<>();
+        Deque<Task> tasks = new LinkedList<>();
+        Task task = createSimpleCompiledTask("taskName");
+        tasks.add(task);
+        Workflow workflow = new Workflow(tasks);
+        String flowName = "flowName";
+        String flowNamespace = "user.flows";
+        List<Input> inputs = new ArrayList<>();
+        List<Output> outputs = new ArrayList<>();
+        List<Result> results = defaultFlowResults();
+
+        Flow compiledFlow =
+                new Flow(preFlowActionData, postFlowActionData, workflow, flowNamespace, flowName, inputs, outputs, results, null);
+
+        mockStartStep(compiledFlow);
+        mockEndStep(0L, compiledFlow);
+        mockBeginTask(2L, task);
+        mockFinishTask(3L, task);
+        ExecutionPlan executionPlan = executionPlanBuilder.createFlowExecutionPlan(compiledFlow);
+
+        assertEquals("different number of execution steps than expected", 4, executionPlan.getSteps().size());
+        assertEquals("flow name is different than expected", flowName, executionPlan.getName());
+// RIGHT //        assertEquals("language name is different than expected", "CloudSlang", executionPlan.getLanguage());
+        assertEquals("begin step is different than expected", new Long(1), executionPlan.getBeginStep());
+// END createSimpleFlow({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d5d4-cedd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8c93-cedd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cedd4-d8ee0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef8bc-7b86c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_feb9d-6a0dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7902a-0f01b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a0dc-b005d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5ec4-858c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55110-8b808
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d2e0-b46e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00b60-0a4b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8c15-63115
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c380-d2ed5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_rev_left_1c380-rev_right_d2ed5\cloudslang-runtime\src\main\java\io\cloudslang\lang\runtime\steps\TaskSteps.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START beginTask(List<Input>-List<Input>-ForLoopStatement-ForLoopStatement-RunEnvironment-RunEnvironment-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String-Long-Long-Long-Long-String-String)//public void beginTask(@Param(ScoreLangConstants.TASK_INPUTS_KEY) List<Input> taskInputs,
+                          @Param(ScoreLangConstants.LOOP_KEY) ForLoopStatement loop,
+                          @Param(ScoreLangConstants.RUN_ENV) RunEnvironment runEnv,
+                          @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                          @Param(ScoreLangConstants.NODE_NAME_KEY) String nodeName,
+                          @Param(ExecutionParametersConsts.RUNNING_EXECUTION_PLAN_ID) Long RUNNING_EXECUTION_PLAN_ID,
+                          @Param(ScoreLangConstants.NEXT_STEP_ID_KEY) Long nextStepId,
+                          @Param(ScoreLangConstants.REF_ID) String refId) {
+        try {
+            runEnv.getExecutionPath().forward();
+            runEnv.removeCallArguments();
+            runEnv.removeReturnValues();
+
+            Context flowContext = runEnv.getStack().popContext();
+
+            //loops
+            if (loopStatementExist(loop)) {
+                LoopCondition loopCondition = loopsBinding.getOrCreateLoopCondition(loop, flowContext, nodeName);
+                if (!loopCondition.hasMore()) {
+                    runEnv.putNextStepPosition(nextStepId);
+                    runEnv.getStack().pushContext(flowContext);
+                    return;
+                }
+
+                if (loopCondition instanceof ForLoopCondition) {
+                    ForLoopCondition forLoopCondition = (ForLoopCondition) loopCondition;
+
+                    if (loop instanceof ListForLoopStatement) {
+                        // normal iteration
+                        String varName = ((ListForLoopStatement) loop).getVarName();
+                        loopsBinding.incrementListForLoop(varName, flowContext, forLoopCondition);
+                    } else {
+                        // map iteration
+                        MapForLoopStatement mapForLoopStatement = (MapForLoopStatement) loop;
+                        String keyName = mapForLoopStatement.getKeyName();
+                        String valueName = mapForLoopStatement.getValueName();
+                        loopsBinding.incrementMapForLoop(keyName, valueName, flowContext, forLoopCondition);
+                    }
+                }
+            }
+
+            Map<String, Serializable> flowVariables = flowContext.getImmutableViewOfVariables();
+            Map<String, Serializable> operationArguments = inputsBinding.bindInputs(taskInputs, flowVariables, runEnv.getSystemProperties());
+
+            //todo: hook
+
+            sendBindingInputsEvent(taskInputs, operationArguments, runEnv, executionRuntimeServices, "Task inputs resolved",
+                    nodeName, LanguageEventData.levelName.TASK_NAME);
+
+            updateCallArgumentsAndPushContextToStack(runEnv, flowContext, operationArguments);
+
+            // request the score engine to switch to the execution plan of the given ref
+            requestSwitchToRefExecutableExecutionPlan(runEnv, executionRuntimeServices, RUNNING_EXECUTION_PLAN_ID, refId, nextStepId);
+
+            // set the start step of the given ref as the next step to execute (in the new running execution plan that will be set)
+            runEnv.putNextStepPosition(executionRuntimeServices.getSubFlowBeginStep(refId));
+			runEnv.getExecutionPath().down();
+        } catch(RuntimeException e) {
+            logger.error("There was an error running the begin task execution step of: \'" + nodeName + "\'.\n\tError is: " + e.getMessage());
+            throw new RuntimeException("Error running: " + nodeName + ".\n\t" + e.getMessage(), e);
+        }
+// END beginTask(List<Input>-List<Input>-ForLoopStatement-ForLoopStatement-RunEnvironment-RunEnvironment-ExecutionRuntimeServices-ExecutionRuntimeServices-String-String-Long-Long-Long-Long-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_rev_left_1c380-rev_right_d2ed5\cloudslang-runtime\src\main\java\io\cloudslang\lang\runtime\bindings\LoopsBinding.java
+Different Spacing: false
+Left editions: [114]
+Right editions: [118]
+Merged body: 
+// START createForLoopCondition(ForLoopStatement-ForLoopStatement-Context-Context-String-String)//private LoopCondition createForLoopCondition(ForLoopStatement forLoopStatement, Context flowContext, String nodeName) {
+        Map<String, Serializable> variables = flowContext.getImmutableViewOfVariables();
+        Serializable evalResult;
+// LEFT //        String collectionExpression = forLoopStatement.getExpression();
+        try {
+            evalResult = scriptEvaluator.evalExpr(collectionExpression, variables);
+        } catch (Throwable t) {
+// RIGHT //            throw new RuntimeException("Error evaluating for loop expression in task '" + nodeName + "',\n\tError is: " + t.getMessage(), t);
+        }
+
+        if (forLoopStatement instanceof MapForLoopStatement) {
+            if (evalResult instanceof Map) {
+                List<Map.Entry<Serializable, Serializable>> entriesAsSerializable = new ArrayList<>();
+                @SuppressWarnings("unchecked") Set<Map.Entry<Serializable, Serializable>> entrySet = ((Map) evalResult).entrySet();
+                for (Map.Entry<Serializable, Serializable> entry : entrySet) {
+                    entriesAsSerializable.add(Pair.of(entry.getKey(), entry.getValue()));
+                }
+                evalResult = (Serializable) entriesAsSerializable;
+            } else {
+                throw new RuntimeException("Invalid expression for iterating maps: " + collectionExpression);
+            }
+        }
+
+        ForLoopCondition forLoopCondition = createForLoopCondition(evalResult);
+        if (forLoopCondition == null) {
+            throw new RuntimeException("collection expression: '" + collectionExpression + "' in the 'for' loop " +
+                    "in task: '" + nodeName + "' " +
+                    "doesn't return an iterable, other types are not supported");
+        }
+        return forLoopCondition;
+// END createForLoopCondition(ForLoopStatement-ForLoopStatement-Context-Context-String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_rev_left_1c380-rev_right_d2ed5\cloudslang-runtime\src\main\java\io\cloudslang\lang\runtime\bindings\LoopsBinding.java
+Different Spacing: false
+Left editions: [73, 75, 77]
+Right editions: []
+Merged body: 
+// START getOrCreateLoopCondition(ForLoopStatement-ForLoopStatement-Context-Context-String-String)//public LoopCondition getOrCreateLoopCondition(ForLoopStatement forLoopStatement, Context flowContext, String nodeName) {
+        Validate.notNull(forLoopStatement, "loop statement cannot be null");
+        Validate.notNull(flowContext, "flow context cannot be null");
+        Validate.notNull(nodeName, "node name cannot be null");
+
+        Map<String, Serializable> langVariables = flowContext.getLangVariables();
+// LEFT //        if (!langVariables.containsKey(LOOP_CONDITION_KEY)) {
+            LoopCondition loopCondition = createForLoopCondition(forLoopStatement, flowContext, nodeName);
+// LEFT //            langVariables.put(LOOP_CONDITION_KEY, loopCondition);
+        }
+// LEFT //        return (LoopCondition) langVariables.get(LOOP_CONDITION_KEY);
+// END getOrCreateLoopCondition(ForLoopStatement-ForLoopStatement-Context-Context-String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7783c-56f3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83876-7f320
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2d18-71372
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9aef-c898d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a709-840d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8798-072c1
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_f8798_072c1\rev_rev_left_f8798-rev_right_072c1\cloudslang-tests\src\test\java\io\cloudslang\lang\systemtests\LoopFlowsTest.java
+Different Spacing: false
+Left editions: [199]
+Right editions: [201]
+Merged body: 
+// START testFlowWithMapLoopsWithDefaultBreak({FormalParametersInternal})//@Test
+    public void testFlowWithMapLoopsWithDefaultBreak() throws Exception {
+        URI resource = getClass().getResource("/yaml/loops/loop_with_default_break_with_map.sl").toURI();
+        URI operation1 = getClass().getResource("/yaml/loops/operation_that_fails_when_value_is_2.sl").toURI();
+
+        Set<SlangSource> path = Sets.newHashSet(SlangSource.fromFile(operation1));
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+// LEFT //        Map<String, StepData> stepsData = triggerWithData(compilationArtifact, userInputs, null).getTasks();
+        List<String> actualTasks = getTasksOnly(stepsData);
+// RIGHT //        Assert.assertEquals(1, actualTasks.size());
+// END testFlowWithMapLoopsWithDefaultBreak({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_f8798_072c1\rev_rev_left_f8798-rev_right_072c1\cloudslang-tests\src\test\java\io\cloudslang\lang\systemtests\LoopFlowsTest.java
+Different Spacing: false
+Left editions: [230]
+Right editions: [232, 233, 234]
+Merged body: 
+// START testFlowWithMapLoopsWithBreak({FormalParametersInternal})//@Test
+    public void testFlowWithMapLoopsWithBreak() throws Exception {
+        URI resource = getClass().getResource("/yaml/loops/loop_with_break_with_map.sl").toURI();
+        URI operation1 = getClass().getResource("/yaml/loops/operation_that_goes_to_custom_when_value_is_2.sl").toURI();
+        URI operation2 = getClass().getResource("/yaml/loops/print.sl").toURI();
+
+        Set<SlangSource> path = Sets.newHashSet(SlangSource.fromFile(operation1), SlangSource.fromFile(operation2));
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+// LEFT //        Map<String, StepData> stepsData = triggerWithData(compilationArtifact, userInputs, null).getTasks();
+        List<String> actualTasks = getTasksOnly(stepsData);
+// RIGHT //        Assert.assertEquals(2, actualTasks.size());
+// RIGHT //        StepData secondTask = stepsData.get(SECOND_STEP_KEY);
+// RIGHT //        Assert.assertEquals("print_other_values", secondTask.getName());
+// END testFlowWithMapLoopsWithBreak({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac007-898e7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d6c4-c6c74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c413-27363
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e273-4804c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_788e3-a1d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec0f9-626b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5f8a-cd6e2
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\cloud-slang\revisions\rev_d5f8a_cd6e2\rev_rev_left_d5f8a-rev_right_cd6e2\cloudslang-content-verifier\src\main\java\io\cloudslang\lang\tools\build\tester\SlangTestRunner.java
+Different Spacing: false
+Left editions: [112]
+Right editions: [102, 103]
+Merged body: 
+// START createTestCases(String-String)//public Map<String, SlangTestCase> createTestCases(String testPath) {
+        Validate.notEmpty(testPath, "You must specify a path for tests");
+        File testPathDir = new File(testPath);
+        Validate.isTrue(testPathDir.isDirectory(),
+                "Directory path argument \'" + testPath + "\' does not lead to a directory");
+        Collection<File> testCasesFiles = FileUtils.listFiles(testPathDir, TEST_CASE_FILE_EXTENSIONS, true);
+
+// RIGHT //        log.info("");
+// RIGHT //        log.info("--- parsing test cases ---");
+        log.info("Start parsing all test cases files under: " + testPath);
+        log.info(testCasesFiles.size() + " test cases files were found");
+
+        Map<String, SlangTestCase> testCases = new HashMap<>();
+        for (File testCaseFile : testCasesFiles) {
+            Validate.isTrue(testCaseFile.isFile(),
+                    "file path \'" + testCaseFile.getAbsolutePath() + "\' must lead to a file");
+
+// LEFT //            Map<String, SlangTestCase> testCasesFromCurrentFile = parser.parseTestCases(SlangSource.fromFile(testCaseFile));
+            for (String currentTestCaseName : testCasesFromCurrentFile.keySet()) {
+                SlangTestCase currentTestCase = testCasesFromCurrentFile.get(currentTestCaseName);
+                //todo: temporary solution
+                currentTestCase.setName(currentTestCaseName);
+                if(StringUtils.isBlank(currentTestCase.getResult())){
+                    currentTestCase.setResult(getResultFromFileName(currentTestCase.getTestFlowPath()));
+                }
+                if(currentTestCase.getThrowsException() == null){
+                    currentTestCase.setThrowsException(false);
+                }
+            }
+            testCases.putAll(testCasesFromCurrentFile);
+        }
+        return testCases;
+// END createTestCases(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_caa2e-c1897
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf465-a801f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fde0f-9b0b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71bbc-be010
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be010-ffdbe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71bbc-fe7c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a23f-0b134
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bbdf3-0b134
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4b2d-61ef8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c964-4fe2f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c914-4fe2f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34558-b01d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b01d4-34558
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18f51-3bbbc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d20a9-d41c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71914-93486
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e8e6-a2b3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e586f-9df0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0288-b1109
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c23db-3aa6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09983-9550f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f052-dfff0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4466e-f6f6a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8ba3-e659e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e552f-a8d4d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a0c7-c5fce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22848-2a4c3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20ec8-07280
+#MS_XXX_MS#

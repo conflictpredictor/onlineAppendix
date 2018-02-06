@@ -1,0 +1,822 @@
+=========================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_9338e_21eca\rev_9338e-21eca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ad66d_ce988\rev_ad66d-ce988.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_9bba0_3084a\rev_9bba0-3084a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_b9eeb_aefd0\rev_b9eeb-aefd0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ac4cd_4d023\rev_ac4cd-4d023.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ef4cf_bf8e4\rev_ef4cf-bf8e4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_4a4b5_fb693\rev_4a4b5-fb693.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Object process(Page page) {
+        boolean matched = false;
+        for (Pattern targetPattern : targetUrlPatterns) {
+            if (targetPattern.matcher(page.getUrl().toString()).matches()) {
+                matched = true;
+            }
+        }
+        if (!matched) {
+            return null;
+        }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288942044\fstmerge_var1_8612794647613739615
+        if (objectExtractor == null) {
+            return processSingle(page, null, false);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288942044\fstmerge_base_5833610563511677996
+        if (extractor == null) {
+            return processSingle(page, page.getHtml().toString());
+=======
+        if (objectExtractor == null) {
+            return processSingle(page, null, true);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288942044\fstmerge_var2_8557131771367266851
+        } else {
+            if (objectExtractor.multi) {
+                List<Object> os = new ArrayList<Object>();
+                List<String> list = objectExtractor.getSelector().selectList(page.getHtml().toString());
+                for (String s : list) {
+                    Object o = processSingle(page, s, false);
+                    if (o != null) {
+                        os.add(o);
+                    }
+                }
+                return os;
+            } else {
+                String select = objectExtractor.getSelector().select(page.getHtml().toString());
+                Object o = processSingle(page, select, false);
+                return o;
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_4a4b5_fb693\rev_rev_left_4a4b5-rev_right_fb693\webmagic-extension\src\main\java\us\codecraft\webmagic\model\PageModelExtractor.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void process(Page page) {
+        List<String> requests = page.getHtml().links().regex(".*article.*").all();
+        page.addTargetRequests(requests);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288967717\fstmerge_var1_8583357459338409050
+        page.putField("title",page.getHtml().xpath("//div[@class='clearfix neirong']//h1/text()"));
+        page.putField("content",page.getHtml().smartContent());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288967717\fstmerge_base_6480364829329574987
+        page.putField("title",page.getHtml().xpath("//div[@class='neirong']//h1[@class='ph xs5']"));
+        page.putField("content",page.getHtml().smartContent());
+=======
+        page.putField("title",page.getHtml().xpath("//div[@class='clearfix neirong']//h1/text()"));
+        page.putField("content",page.getHtml().xpath("//div[@id='neirong_box']/tidyText()"));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513288967717\fstmerge_var2_5395101180147859385
+    }
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_4a4b5_fb693\rev_rev_left_4a4b5-rev_right_fb693\webmagic-samples\src\main\java\us\codecraft\webmagic\samples\HuxiuProcessor.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_bd1e2_4acbc\rev_bd1e2-4acbc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_372cc_ba052\rev_372cc-ba052.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_46e10_0b4fa\rev_46e10-0b4fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_35068_e7083\rev_35068-e7083.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_cb842_9a524\rev_cb842-9a524.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_07bcb_4f53b\rev_07bcb-4f53b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_057b3_ac516\rev_057b3-ac516.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_0c3ff_91ed6\rev_0c3ff-91ed6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d9a15_1bdff\rev_d9a15-1bdff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d9a15_2b46b\rev_d9a15-2b46b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_5d9fd_a5a9b\rev_5d9fd-a5a9b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_09082_a722f\rev_09082-a722f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_31ff4_6cade\rev_31ff4-6cade.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_af809_7e8a5\rev_af809-7e8a5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_0e981_4fc89\rev_0e981-4fc89.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d5a97_af072\rev_d5a97-af072.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_0c3ff_757cc\rev_0c3ff-757cc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_98e2b_1bdff\rev_98e2b-1bdff.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513289712514\fstmerge_var1_3810262985291315829
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        // Check bracket for regex group. Add default group 1 if there is no group.
+        // Only check if there exists the valid left parenthesis, leave regexp validation for Pattern.
+        if (StringUtils.countMatches(regexStr, "(") - StringUtils.countMatches(regexStr, "\\(") ==
+                StringUtils.countMatches(regexStr, "(?:") - StringUtils.countMatches(regexStr, "\\(?:")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513289712514\fstmerge_base_1929118291890518636
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        if (!StringUtils.contains(regexStr, "(") && !StringUtils.contains(regexStr, ")")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        if (!StringUtils.contains(regexStr, "(") || !StringUtils.contains(regexStr, ")")) {
+            throw new IllegalArgumentException("regex must have capture group 1");
+        }
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+=======
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        /* Can't detect '\(', '(?:)' so that would result in ArrayIndexOutOfBoundsException
+        if (!StringUtils.contains(regexStr, "(") && !StringUtils.contains(regexStr, ")")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        if (!StringUtils.contains(regexStr, "(") || !StringUtils.contains(regexStr, ")")) {
+            throw new IllegalArgumentException("regex must have capture group 1");
+        }
+        */
+        
+        // Try to fix: Only check if there exists the valid left parenthesis, leave regexp validation for Pattern
+        if (StringUtils.countMatches(regexStr, "(") - StringUtils.countMatches(regexStr, "\\\\\\(") ==
+                StringUtils.countMatches(regexStr, "(?:") - StringUtils.countMatches(regexStr, "\\\\\\(?:")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513289712514\fstmerge_var2_404967591840052499
+    }
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_98e2b_1bdff\rev_rev_left_98e2b-rev_right_1bdff\webmagic-core\src\main\java\us\codecraft\webmagic\selector\RegexSelector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c383e_2801d\rev_c383e-2801d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_44293_762a3\rev_44293-762a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_22c39_3efa7\rev_22c39-3efa7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_8fe96_38a12\rev_8fe96-38a12.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_474f7_b043a\rev_474f7-b043a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c143f_159ee\rev_c143f-159ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c1e72_93380\rev_c1e72-93380.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c2873_7cb4e\rev_c2873-7cb4e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_f7950_32ba1\rev_f7950-32ba1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_da2f0_99e12\rev_da2f0-99e12.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_a03f6_4abdf\rev_a03f6-4abdf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c8014_16377\rev_c8014-16377.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_1fbfc_93c4a\rev_1fbfc-93c4a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_74fdd_42a26\rev_74fdd-42a26.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_04ade_c07b3\rev_04ade-c07b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_3abb9_66692\rev_3abb9-66692.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_a08d8_66692\rev_a08d8-66692.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d5f34_dbebc\rev_d5f34-dbebc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_feb60_81e6e\rev_feb60-81e6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_4a0e9_5f6f4\rev_4a0e9-5f6f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_7fbe1_259f0\rev_7fbe1-259f0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_928f9_5883e\rev_928f9-5883e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_b1650_c146e\rev_b1650-c146e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_b21e2_db019\rev_b21e2-db019.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_baeb9_eb89d\rev_baeb9-eb89d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_eb89d_2f89c\rev_eb89d-2f89c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_eb89d_074d7\rev_eb89d-074d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_14740_1db94\rev_14740-1db94.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_42a30_bc666\rev_42a30-bc666.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_3a9c1_eb3c7\rev_3a9c1-eb3c7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_8ffc1_49786\rev_8ffc1-49786.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_6b9d2_74962\rev_6b9d2-74962.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_05a1f_59056\rev_05a1f-59056.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_56e0c_afd16\rev_56e0c-afd16.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_7d7eb_90e14\rev_7d7eb-90e14.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_5f9e1_165e5\rev_5f9e1-165e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_cfde3_15521\rev_cfde3-15521.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_84b04_5d365\rev_84b04-5d365.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ce549_2a8e1\rev_ce549-2a8e1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291061714\fstmerge_var1_4369711106881182246
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        // Check bracket for regex group. Add default group 1 if there is no group.
+        // Only check if there exists the valid left parenthesis, leave regexp validation for Pattern.
+        if (StringUtils.countMatches(regexStr, "(") - StringUtils.countMatches(regexStr, "\\(") ==
+                StringUtils.countMatches(regexStr, "(?:") - StringUtils.countMatches(regexStr, "\\(?:")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291061714\fstmerge_base_1448273410040544547
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        if (!StringUtils.contains(regexStr, "(") && !StringUtils.contains(regexStr, ")")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        if (!StringUtils.contains(regexStr, "(") || !StringUtils.contains(regexStr, ")")) {
+            throw new IllegalArgumentException("regex must have capture group 1");
+        }
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+=======
+public RegexSelector(String regexStr, int group) {
+        if (StringUtils.isBlank(regexStr)) {
+            throw new IllegalArgumentException("regex must not be empty");
+        }
+        /* Can't detect '\(', '(?:)' so that would result in ArrayIndexOutOfBoundsException
+        if (!StringUtils.contains(regexStr, "(") && !StringUtils.contains(regexStr, ")")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        if (!StringUtils.contains(regexStr, "(") || !StringUtils.contains(regexStr, ")")) {
+            throw new IllegalArgumentException("regex must have capture group 1");
+        }
+        */
+        
+        // Try to fix: Only check if there exists the valid left parenthesis, leave regexp validation for Pattern
+        if (StringUtils.countMatches(regexStr, "(") - StringUtils.countMatches(regexStr, "\\\\\\(") ==
+                StringUtils.countMatches(regexStr, "(?:") - StringUtils.countMatches(regexStr, "\\\\\\(?:")) {
+            regexStr = "(" + regexStr + ")";
+        }
+        
+        this.regexStr = regexStr;
+        try {
+            regex = Pattern.compile(regexStr, Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
+        } catch (PatternSyntaxException e) {
+            throw new IllegalArgumentException("invalid regex", e);
+        }
+        this.group = group;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291061714\fstmerge_var2_2264487797596443711
+    }
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_ce549_2a8e1\rev_rev_left_ce549-rev_right_2a8e1\webmagic-core\src\main\java\us\codecraft\webmagic\selector\RegexSelector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ca072_83c27\rev_ca072-83c27.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_b5413_19474\rev_b5413-19474.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_b5413_61c28\rev_b5413-61c28.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d8f97_89c6e\rev_d8f97-89c6e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291431096\fstmerge_var1_7287580685407358162
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291431096\fstmerge_base_3356502768156826555
+private CloseableHttpClient generateClient(Site site) {
+        HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(connectionManager);
+        if (site != null && site.getUserAgent() != null) {
+            httpClientBuilder.setUserAgent(site.getUserAgent());
+        } else {
+            httpClientBuilder.setUserAgent("");
+        }
+        if (site == null || site.isUseGzip()) {
+            httpClientBuilder.addInterceptorFirst(new HttpRequestInterceptor() {
+
+                public void process(
+                        final HttpRequest request,
+                        final HttpContext context) throws HttpException, IOException {
+                    if (!request.containsHeader("Accept-Encoding")) {
+                        request.addHeader("Accept-Encoding", "gzip");
+                    }
+
+                }
+            });
+        }
+        SocketConfig socketConfig = SocketConfig.custom().setSoKeepAlive(true).setTcpNoDelay(true).build();
+        httpClientBuilder.setDefaultSocketConfig(socketConfig);
+        if (site != null) {
+            httpClientBuilder.setRetryHandler(new DefaultHttpRequestRetryHandler(site.getRetryTimes(), true));
+        }
+        generateCookie(httpClientBuilder, site);
+        return httpClientBuilder.build();
+    }
+=======
+private CloseableHttpClient generateClient(Site site) {
+        HttpClientBuilder httpClientBuilder = HttpClients.custom().setConnectionManager(connectionManager);
+        if (site != null && site.getUserAgent() != null) {
+            httpClientBuilder.setUserAgent(site.getUserAgent());
+        } else {
+            httpClientBuilder.setUserAgent("");
+        }
+        if (site == null || site.isUseGzip()) {
+            httpClientBuilder.addInterceptorFirst(new HttpRequestInterceptor() {
+
+                public void process(
+                        final HttpRequest request,
+                        final HttpContext context) throws HttpException, IOException {
+                    if (!request.containsHeader("Accept-Encoding")) {
+                        request.addHeader("Accept-Encoding", "gzip");
+                    }
+
+                }
+            });
+        }
+
+        if(site!=null&&site.getHttpProxy()!=null&&site.getUsernamePasswordCredentials()!=null){
+            CredentialsProvider credsProvider = new BasicCredentialsProvider();
+            credsProvider.setCredentials(
+                    new AuthScope(site.getHttpProxy()),//???????
+                    site.getUsernamePasswordCredentials());//??????
+            httpClientBuilder.setDefaultCredentialsProvider(credsProvider);
+        }
+
+        SocketConfig socketConfig = SocketConfig.custom().setSoKeepAlive(true).setTcpNoDelay(true).build();
+        httpClientBuilder.setDefaultSocketConfig(socketConfig);
+        if (site != null) {
+            httpClientBuilder.setRetryHandler(new DefaultHttpRequestRetryHandler(site.getRetryTimes(), true));
+        }
+        generateCookie(httpClientBuilder, site);
+        return httpClientBuilder.build();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513291431096\fstmerge_var2_6835334491318940451
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_d8f97_89c6e\rev_rev_left_d8f97-rev_right_89c6e\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientGenerator.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_d8f97_b7f3c\rev_d8f97-b7f3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_2400f_7628d\rev_2400f-7628d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_37cb4_6b179\rev_37cb4-6b179.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_37cb4_8730e\rev_37cb4-8730e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_448e5_f89a6\rev_448e5-f89a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_50755_70089\rev_50755-70089.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_22891_e56b8\rev_22891-e56b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_2189a_14910\rev_2189a-14910.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_fdf39_ebc61\rev_fdf39-ebc61.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_65fe2_862ce\rev_65fe2-862ce.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ebc61_1987c\rev_ebc61-1987c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_1b886_e3131\rev_1b886-e3131.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_7ca4e_c2362\rev_7ca4e-c2362.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_e919b_e4af0\rev_e919b-e4af0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_4f76d_0dc26\rev_4f76d-0dc26.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_93e70_6d78d\rev_93e70-6d78d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c2362_76076\rev_c2362-76076.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_11904_e6455\rev_11904-e6455.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ef325_50247\rev_ef325-50247.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c175e_79152\rev_c175e-79152.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_aa01e_65046\rev_aa01e-65046.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_65046_e9341\rev_65046-e9341.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_e9341_79522\rev_e9341-79522.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_76729_221c1\rev_76729-221c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_221c1_c93a8\rev_221c1-c93a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_74110-39539.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Override
+    public Page download(Request request, Task task) {
+        if (task == null || task.getSite() == null) {
+            throw new NullPointerException("task or site can not be null");
+        }
+        logger.debug("downloading page {}", request.getUrl());
+        CloseableHttpResponse httpResponse = null;
+        int statusCode = 0;
+        Site site = task.getSite();
+        Proxy proxy = null;
+        HttpContext httpContext = new BasicHttpContext();
+        if (proxyProvider != null) {
+            proxy = proxyProvider.getProxy(task);
+            AuthState authState = new AuthState();
+            authState.update(new BasicScheme(), new UsernamePasswordCredentials(proxy.getUsername(), proxy.getPassword()));
+            httpContext.setAttribute(HttpClientContext.PROXY_AUTH_STATE, authState);
+        }
+        CloseableHttpClient httpClient = getHttpClient(site);
+        HttpUriRequest httpUriRequest = httpUriRequestConverter.convert(request, site, proxy);
+        try {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_var1_4360896237570308394
+            httpResponse = httpClient.execute(httpUriRequest, httpContext);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_base_5242645926231995702
+            HttpHost proxyHost = null;
+            Proxy proxy = null; //TODO
+            if (site != null && site.getHttpProxyPool() != null && site.getHttpProxyPool().isEnable()) {
+                proxy = site.getHttpProxyFromPool();
+                proxyHost = proxy.getHttpHost();
+            } else if (site != null && site.getHttpProxy() != null){
+                proxyHost = site.getHttpProxy();
+            }
+            
+            HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
+            httpResponse = getHttpClient(site, proxy).execute(httpUriRequest);
+=======
+            HttpHost proxyHost = null;
+            Proxy proxy = null; //TODO
+            if (site != null && site.getHttpProxyPool() != null && site.getHttpProxyPool().isEnable()) {
+                proxy = site.getHttpProxyFromPool();
+                proxyHost = proxy.getHttpHost();
+            } else if (site != null && site.getHttpProxy() != null){
+                proxyHost = site.getHttpProxy();
+            }
+            
+            HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);
+            HttpClientContext context=null;
+            if(request.getCookies()!=null && CollectionUtils.isNotEmpty(request.getCookies())){
+            	context=new HttpClientContext();
+            	CookieStore cookieStore=new BasicCookieStore();
+            	for(Cookie c:request.getCookies()){
+            		cookieStore.addCookie(c);
+            	}
+            	context.setCookieStore(cookieStore);
+            }
+            if(request.getHeaders()!=null && CollectionUtils.isNotEmpty(request.getHeaders())){
+            	for(Header h:request.getHeaders()){
+            		httpUriRequest.setHeader(h);
+            	}
+            }
+            httpResponse = getHttpClient(site, proxy).execute(httpUriRequest,context);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_var2_3211789842302248952
+            statusCode = httpResponse.getStatusLine().getStatusCode();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_var1_4360896237570308394
+            if (site.getAcceptStatCode().contains(statusCode)) {
+                Page page = handleResponse(request, site.getCharset(), httpResponse, task);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_base_5242645926231995702
+            request.putExtra(Request.STATUS_CODE, statusCode);
+            if (statusAccept(acceptStatCode, statusCode)) {
+                Page page = handleResponse(request, charset, httpResponse, task);
+=======
+            request.putExtra(Request.STATUS_CODE, statusCode);
+            if (statusAccept(acceptStatCode, statusCode)) {
+                Page page = handleResponse(request, charset, httpResponse, task);
+                page.setHeaders(httpResponse.getAllHeaders());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365277\fstmerge_var2_3211789842302248952
+                onSuccess(request);
+                return page;
+            } else {
+                logger.warn("get page {} error, status code {} ",request.getUrl(),statusCode);
+                return null;
+            }
+        } catch (IOException e) {
+            logger.warn("download page {} error", request.getUrl(), e);
+            if (site != null && site.getCycleRetryTimes() > 0) {
+                return addToCycleRetry(request, site);
+            }
+            onError(request);
+            return null;
+        } finally {
+            if (httpResponse != null) {
+                //ensure the connection is released back to pool
+                EntityUtils.consumeQuietly(httpResponse.getEntity());
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_rev_left_74110-rev_right_39539\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365375\fstmerge_var1_2288289283913372136
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365375\fstmerge_base_313854458503203207
+protected RequestBuilder selectRequestMethod(Request request) {
+        String method = request.getMethod();
+        if (method == null || method.equalsIgnoreCase(HttpConstant.Method.GET)) {
+            //default get
+            return addQueryParams(RequestBuilder.get(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {
+            return addFormParams(RequestBuilder.post(), (NameValuePair[]) request.getExtra("nameValuePair"), request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.HEAD)) {
+            return addQueryParams(RequestBuilder.head(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.PUT)) {
+            return addFormParams(RequestBuilder.put(), (NameValuePair[]) request.getExtra("nameValuePair"), request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.DELETE)) {
+            return addQueryParams(RequestBuilder.delete(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.TRACE)) {
+            return addQueryParams(RequestBuilder.trace(),request.getParams());
+        }
+        throw new IllegalArgumentException("Illegal HTTP Method " + method);
+    }
+=======
+protected RequestBuilder selectRequestMethod(Request request) {
+        String method = request.getMethod();
+        if (method == null || method.equalsIgnoreCase(HttpConstant.Method.GET)) {
+            //default get
+            return addQueryParams(RequestBuilder.get(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.POST)) {
+        	if(request.getEntity()!=null){
+        		return RequestBuilder.post().setEntity(request.getEntity());
+        	}else{
+        		return addFormParams(RequestBuilder.post(), (NameValuePair[]) request.getExtra("nameValuePair"), request.getParams());
+        	}
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.HEAD)) {
+            return addQueryParams(RequestBuilder.head(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.PUT)) {
+            return addFormParams(RequestBuilder.put(), (NameValuePair[]) request.getExtra("nameValuePair"), request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.DELETE)) {
+            return addQueryParams(RequestBuilder.delete(),request.getParams());
+        } else if (method.equalsIgnoreCase(HttpConstant.Method.TRACE)) {
+            return addQueryParams(RequestBuilder.trace(),request.getParams());
+        }
+        throw new IllegalArgumentException("Illegal HTTP Method " + method);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292365375\fstmerge_var2_4292051100037510719
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_rev_left_74110-rev_right_39539\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Conflict type: AddSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354487\fstmerge_var1_3495310916948205424
+private Map<String,List<String>> headers;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354487\fstmerge_base_4361788040006763479
+=======
+private Header[] headers=null;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354487\fstmerge_var2_3674214790518821329
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_rev_left_74110-rev_right_39539\webmagic-core\src\main\java\us\codecraft\webmagic\Page.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: smallMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354582\fstmerge_var1_4425116445065347437
+public Map<String, List<String>> getHeaders() {
+        return headers;
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354582\fstmerge_base_7779957925556456412
+=======
+public Header[] getHeaders() {
+		return headers;
+	}
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513292354582\fstmerge_var2_1548690767474617303
+
+File path: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_rev_left_74110-rev_right_39539\webmagic-core\src\main\java\us\codecraft\webmagic\Page.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_25df6_0f4d6\rev_25df6-0f4d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_4a2c0_5f34a\rev_4a2c0-5f34a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c3183_0c359\rev_c3183-0c359.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_39c3c_c80f2\rev_39c3c-c80f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_ec7c5_bc828\rev_ec7c5-bc828.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_5a932_9903f\rev_5a932-9903f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_f02f4_9e1b7\rev_f02f4-9e1b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_6f5b9_a7e30\rev_6f5b9-a7e30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_e5db5_26608\rev_e5db5-26608.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c701f_adf54\rev_c701f-adf54.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\webmagic\revisions\rev_c7d1e_00375\rev_c7d1e-00375.revisions
+
+=========================================================

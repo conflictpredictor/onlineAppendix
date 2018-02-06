@@ -1,0 +1,2244 @@
+=========================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7a9c1_b8edb\rev_7a9c1-b8edb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ad556_3f953\rev_ad556-3f953.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a1959_12ddc\rev_a1959-12ddc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3c906_5823c\rev_3c906-5823c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_720fe_f0946\rev_720fe-f0946.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3625f_0a7fa\rev_3625f-0a7fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_580fa_b0db4\rev_580fa-b0db4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f857e_089f7\rev_f857e-089f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c65a0_d89bc\rev_c65a0-d89bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_993d4_8ecb6\rev_993d4-8ecb6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4ff09_33987\rev_4ff09-33987.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8718f_a0dee\rev_8718f-a0dee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_228af_095d7\rev_228af-095d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_90019_1ecd4\rev_90019-1ecd4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_895fb_d569d\rev_895fb-d569d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5faec_2c0c3\rev_5faec-2c0c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c5366_109d6\rev_c5366-109d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a2498_804a4\rev_a2498-804a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c7600_96bfb\rev_c7600-96bfb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_d0b75_7b877\rev_d0b75-7b877.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ef4a9_ffe3b\rev_ef4a9-ffe3b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_efa79_a8824\rev_efa79-a8824.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_631e1_e1286\rev_631e1-e1286.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2f578_25d3a\rev_2f578-25d3a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e12ed_c052b\rev_e12ed-c052b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_37b9d_8bb92\rev_37b9d-8bb92.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e988c_31005\rev_e988c-31005.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b1bf5_f27bd\rev_b1bf5-f27bd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e5a4e_8dcf2\rev_e5a4e-8dcf2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b7543_7163b\rev_b7543-7163b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_383b6_03057\rev_383b6-03057.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_75397_79b70\rev_75397-79b70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_999b8_521f7\rev_999b8-521f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3b2ac_b397f\rev_3b2ac-b397f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8e428_b6213\rev_8e428-b6213.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_d46ce_f762b\rev_d46ce-f762b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_9299d_75c2e\rev_9299d-75c2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4a2bd_63736\rev_4a2bd-63736.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690777933\fstmerge_var1_1281857554335097630
+                boolean acceptsGzip = Collections.list(httpRequest.getHeaders("Accept-Encoding")).stream().anyMatch(s -> s.contains("gzip"));
+                
+                //gzip compression support
+                if(acceptsGzip && httpResponse.getHeaders("Content-Encoding").contains("gzip"))
+                {
+                    try(GZIPOutputStream gzipOut = new GZIPOutputStream(httpResponse.getOutputStream()))
+                    {
+                        gzipOut.write(bodyContent.getBytes("utf-8"));
+                    }
+                }
+                else
+                    httpResponse.getOutputStream().write(bodyContent.getBytes("utf-8"));
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690777933\fstmerge_base_7081956385060032842
+                httpResponse.getOutputStream().write(bodyContent.getBytes("utf-8"));
+=======
+                serializerChain.process(httpResponse.getOutputStream(), bodyContent);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690777933\fstmerge_var2_4482650539369177670
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_4a2bd_63736\rev_rev_left_4a2bd-rev_right_63736\src\main\java\spark\webserver\MatcherFilter.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_63736_bcc05\rev_63736-bcc05.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b71eb_625fb\rev_b71eb-625fb.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690804351\fstmerge_var1_3905774412036300516
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+
+                // Check if gzip is wanted/accepted and in that case handle that
+                OutputStream outputStream = GzipUtils.checkAndWrap(httpRequest, httpResponse);
+
+                // serialize the body to output stream
+                serializerChain.process(outputStream, bodyContent);
+
+                outputStream.flush();//needed for GZIP stream. NOt sure where the HTTP response actually gets cleaned up
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690804351\fstmerge_base_2838241955507706651
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+                serializerChain.process(httpResponse.getOutputStream(), bodyContent);
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+=======
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+                
+                OutputStream outstream = httpResponse.getOutputStream();
+                
+                //GZIP Support handled here. First we must ensure that we want to use gzip, and that the client supports gzip
+                boolean acceptsGzip = Collections.list(httpRequest.getHeaders("Accept-Encoding")).stream().anyMatch(s -> s.contains("gzip"));
+                boolean wantGzip = httpResponse.getHeaders("Content-Encoding").contains("gzip");
+                
+                if(acceptsGzip && wantGzip)
+                    outstream = new GZIPOutputStream(outstream, true);
+                
+                serializerChain.process(outstream, bodyContent);
+                outstream.flush();//needed for GZIP stream. NOt sure where the HTTP response actually gets cleaned up
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690804351\fstmerge_var2_6790254531252624337
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_b71eb_625fb\rev_rev_left_b71eb-rev_right_625fb\src\main\java\spark\webserver\MatcherFilter.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_faa41_4a16e\rev_faa41-4a16e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private static synchronized void init() {
+        if (!initialized) {
+            routeMatcher = RouteMatcherFactory.get();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    server = SparkServerFactory.create(hasMultipleHandlers());
+                    server.ignite(
+                            ipAddress,
+                            port,
+                            keystoreFile,
+                            keystorePassword,
+                            truststoreFile,
+                            truststorePassword,
+                            staticFileFolder,
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690825890\fstmerge_var1_940530859048160200
+                            externalStaticFileFolder, latch);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690825890\fstmerge_base_588685227528318130
+                            externalStaticFileFolder);
+=======
+                            externalStaticFileFolder,
+                            maxThreads,
+                            minThreads,
+                            threadIdleTimeoutMillis);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513690825890\fstmerge_var2_315772972057980418
+                }
+            }).start();
+            initialized = true;
+        }
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_faa41_4a16e\rev_rev_left_faa41-rev_right_4a16e\src\main\java\spark\SparkBase.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_faa41_a12f2\rev_faa41-a12f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_20d05_69bec\rev_20d05-69bec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_931cc_f10a7\rev_931cc-f10a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_04cb6_61098\rev_04cb6-61098.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_607f3_abad0\rev_607f3-abad0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_77c93_755df\rev_77c93-755df.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_da1d1_f9ac1\rev_da1d1-f9ac1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_99c46_fc9d0\rev_99c46-fc9d0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_acf84_cc8f7\rev_acf84-cc8f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c6dcf_5359a\rev_c6dcf-5359a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c6dcf_2886a\rev_c6dcf-2886a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_0eb01_2dc82\rev_0eb01-2dc82.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_0eb38_9b6c2\rev_0eb38-9b6c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_54745_eec48\rev_54745-eec48.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_35eda_2a6b3\rev_35eda-2a6b3.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@BeforeClass
+    public static void setup() throws InterruptedException {
+        testUtil = new SparkTestUtil(PORT);
+
+        final Server server = new Server();
+        ServerConnector connector = new ServerConnector(server);
+
+        // Set some timeout options to make debugging easier.
+        connector.setIdleTimeout(1000 * 60 * 60);
+        connector.setSoLingerTime(-1);
+        connector.setPort(PORT);
+        server.setConnectors(new Connector[] {connector});
+
+        WebAppContext bb = new WebAppContext();
+        bb.setServer(server);
+        bb.setContextPath(SOMEPATH);
+        bb.setWar("src/test/webapp");
+
+        server.setHandler(bb);
+        CountDownLatch latch = new CountDownLatch(1);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    LOGGER.info(">>> STARTING EMBEDDED JETTY SERVER for jUnit testing of SparkFilter");
+                    server.start();
+                    latch.countDown();
+                    System.in.read();
+                    LOGGER.info(">>> STOPPING EMBEDDED JETTY SERVER");
+                    server.stop();
+                    server.join();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(100);
+                }
+            }
+        }).start();
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513691519256\fstmerge_var1_3243882855351927792
+        latch.await();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513691519256\fstmerge_base_5378512357536824169
+        sleep(1000);
+=======
+        while (!server.isStarted()) {
+            sleep(1000);
+            LOGGER.info(">>> WAITING FOR EMBEDDED JETTY SERVER TO START");
+        }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513691519256\fstmerge_var2_3362246838906446657
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_35eda_2a6b3\rev_rev_left_35eda-rev_right_2a6b3\src\test\java\spark\servlet\ServletTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2a6b3_5af5a\rev_2a6b3-5af5a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cbfbe_fe0ef\rev_cbfbe-fe0ef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6bb93_4f64c\rev_6bb93-4f64c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6bb93_95d3d\rev_6bb93-95d3d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_83f98_24963\rev_83f98-24963.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ded78_67ec8\rev_ded78-67ec8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_dc40b_5b071\rev_dc40b-5b071.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6530f_b75ae\rev_6530f-b75ae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_dd990_0f3bf\rev_dd990-0f3bf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_0eed9_2f17e\rev_0eed9-2f17e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4558b_10291\rev_4558b-10291.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e2c7a_1853c\rev_e2c7a-1853c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e13ef_71775\rev_e13ef-71775.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2eb83_e7b30\rev_2eb83-e7b30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_212fc_2c5cb\rev_212fc-2c5cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e5f4d_5c7b2\rev_e5f4d-5c7b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_9ea3b_666e8\rev_9ea3b-666e8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_983c9\rev_cb790-983c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_c20f2\rev_cb790-c20f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_bd5f1\rev_cb790-bd5f1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_89a0f\rev_cb790-89a0f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_7f9cb\rev_cb790-7f9cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cb790_8f5f5\rev_cb790-8f5f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_45e82_d92c2\rev_45e82-d92c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_75157_b481c\rev_75157-b481c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_09436_565a5\rev_09436-565a5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_daeba_c248d\rev_daeba-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f2b0a_c248d\rev_f2b0a-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_bdcbb_c248d\rev_bdcbb-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_10541_c248d\rev_10541-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2bc50_c248d\rev_2bc50-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1b507_c248d\rev_1b507-c248d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c248d_43fc4\rev_c248d-43fc4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_67f66_647f8\rev_67f66-647f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_335f5_45558\rev_335f5-45558.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_95a19_9cca2\rev_95a19-9cca2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_418f1_81236\rev_418f1-81236.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_418f1_62d2e\rev_418f1-62d2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_418f1_13618\rev_418f1-13618.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4e1c3_384d6\rev_4e1c3-384d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_144fe_b887a\rev_144fe-b887a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_144fe_679ca\rev_144fe-679ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_d1c24_110ed\rev_d1c24-110ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_d1c24_318dc\rev_d1c24-318dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5be20_bae48\rev_5be20-bae48.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5be20_68034\rev_5be20-68034.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1db55_bb1e0\rev_1db55-bb1e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1db55_ff430\rev_1db55-ff430.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_07ba5_82be0\rev_07ba5-82be0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_07ba5_c7e52\rev_07ba5-c7e52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ec084_9be7f\rev_ec084-9be7f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_66bba_3a35e\rev_66bba-3a35e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3a35e_ae07a\rev_3a35e-ae07a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c9155_ccd09\rev_c9155-ccd09.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a9afe_e213a\rev_a9afe-e213a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e213a_11c60\rev_e213a-11c60.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ff0ca_f88bc\rev_ff0ca-f88bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8f413_3d9bc\rev_8f413-3d9bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3cfff_ea8b5\rev_3cfff-ea8b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c4c40_df588\rev_c4c40-df588.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4c015_e4af6\rev_4c015-e4af6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_981e5_f9b6b\rev_981e5-f9b6b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f47f5_e4759\rev_f47f5-e4759.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b195f_8ee25\rev_b195f-8ee25.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3c22b_b0178\rev_3c22b-b0178.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b0178_98de7\rev_b0178-98de7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_43b7a_9b7f9\rev_43b7a-9b7f9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f41bf_1b843\rev_f41bf-1b843.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f34e7_1b7ac\rev_f34e7-1b7ac.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cf70a_e158f\rev_cf70a-e158f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1c41e_33a13\rev_1c41e-33a13.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_33a13_bd967\rev_33a13-bd967.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_99b09_18556\rev_99b09-18556.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_52df5_97140\rev_52df5-97140.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_52df5_b5968\rev_52df5-b5968.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_424fc_aff7e\rev_424fc-aff7e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e0ccf_8819a\rev_e0ccf-8819a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_88f93_e175f\rev_88f93-e175f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e175f_6b4ff\rev_e175f-6b4ff.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694279693\fstmerge_var1_9004185056361805799
+public static void halt() {
+        getInstance().halt();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694279693\fstmerge_base_4866363611445470563
+public static void halt() {
+        throw new HaltException();
+=======
+public static HaltException halt() {
+        throw new HaltException();
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694279693\fstmerge_var2_6485153765388839505
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_e175f_6b4ff\rev_rev_left_e175f-rev_right_6b4ff\src\main\java\spark\Spark.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280006\fstmerge_var1_927695582070784695
+public static void halt(int status) {
+        getInstance().halt(status);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280006\fstmerge_base_8903124184257200862
+public static void halt(int status) {
+        throw new HaltException(status);
+=======
+public static HaltException halt(int status) {
+        throw new HaltException(status);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280006\fstmerge_var2_7821137985027078468
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_e175f_6b4ff\rev_rev_left_e175f-rev_right_6b4ff\src\main\java\spark\Spark.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280490\fstmerge_var1_5812065057209521734
+public static void halt(String body) {
+        getInstance().halt(body);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280490\fstmerge_base_4238551005473987965
+public static void halt(String body) {
+        throw new HaltException(body);
+=======
+public static HaltException halt(String body) {
+        throw new HaltException(body);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280490\fstmerge_var2_7939139177852376236
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_e175f_6b4ff\rev_rev_left_e175f-rev_right_6b4ff\src\main\java\spark\Spark.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280787\fstmerge_var1_3051105454502771242
+public static void halt(int status, String body) {
+        getInstance().halt(status, body);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280787\fstmerge_base_5178444998492632798
+public static void halt(int status, String body) {
+        throw new HaltException(status, body);
+=======
+public static HaltException halt(int status, String body) {
+        throw new HaltException(status, body);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513694280787\fstmerge_var2_1279339525720694216
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_e175f_6b4ff\rev_rev_left_e175f-rev_right_6b4ff\src\main\java\spark\Spark.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e175f_24e7b\rev_e175f-24e7b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_114d2_2702c\rev_114d2-2702c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_9bfab_d7057\rev_9bfab-d7057.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6f944_b5d9b\rev_6f944-b5d9b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_51756_a4e25\rev_51756-a4e25.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5a66f_36f1b\rev_5a66f-36f1b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e3230_87cb3\rev_e3230-87cb3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4db08_19da5\rev_4db08-19da5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a38c7_7fce0\rev_a38c7-7fce0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_68281_f8069\rev_68281-f8069.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_02b25_1b005\rev_02b25-1b005.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f68a2_e0d89\rev_f68a2-e0d89.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_57d14_b2439\rev_57d14-b2439.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a0801_6add2\rev_a0801-6add2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_12774_f8359\rev_12774-f8359.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_12774_ae306\rev_12774-ae306.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8221f_0e7d1\rev_8221f-0e7d1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b48fe_d8d29\rev_b48fe-d8d29.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_dc862_0c889\rev_dc862-0c889.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_0be1d_5a21d\rev_0be1d-5a21d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3fec1_11a78\rev_3fec1-11a78.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6f29d_70d58\rev_6f29d-70d58.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4a6a3_ad53c\rev_4a6a3-ad53c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_22261_b52b3\rev_22261-b52b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_19f4d_6f1ee\rev_19f4d-6f1ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1a3e0_aaf43\rev_1a3e0-aaf43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_fceb3_6ab3c\rev_fceb3-6ab3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_fe2ba_d1e43\rev_fe2ba-d1e43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ce46d_0a7ed\rev_ce46d-0a7ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_21006_64a11\rev_21006-64a11.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c57e5_afeee\rev_c57e5-afeee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_74deb_83dca\rev_74deb-83dca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_bb2f6-16f51.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public boolean consume(HttpServletRequest httpRequest,
+                           HttpServletResponse httpResponse) throws IOException {
+        try {
+            if (consumeWithFileResourceHandlers(httpRequest, httpResponse)) {
+                return true;
+            }
+
+            if (consumeWithJarResourceHandler(httpRequest, httpResponse)) {
+                return true;
+            }
+        } catch (DirectoryTraversal.DirectoryTraversalDetection directoryTraversalDetection) {
+            LOG.warn(directoryTraversalDetection.getMessage() + " directory traversal detection for path: "
+                             + httpRequest.getPathInfo());
+        }
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695391357\fstmerge_var1_7269644594844667707
+
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695391357\fstmerge_base_906479330430261101
+
+        if (consumeWithJarResourceHandler(httpRequest, httpResponse)) {
+            return true;
+        }
+
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695391357\fstmerge_var2_6733257924162012615
+        return false;
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_rev_left_bb2f6-rev_right_16f51\src\main\java\spark\staticfiles\StaticFilesConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695392422\fstmerge_var1_8115990042433372773
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695392422\fstmerge_base_3793081555222926268
+private boolean consumeWithJarResourceHandler(HttpServletRequest httpRequest,
+                                                  HttpServletResponse httpResponse) throws IOException {
+        if (jarResourceHandlers != null) {
+
+            for (JarResourceHandler jarResourceHandler : jarResourceHandlers) {
+                InputStream stream = jarResourceHandler.getResource(httpRequest);
+
+                if (stream != null) {
+                    OutputStream wrappedOutputStream = GzipUtils.checkAndWrap(httpRequest, httpResponse, false);
+                    customHeaders.forEach(httpResponse::setHeader); //add all user-defined headers to response
+
+                    IOUtils.copy(stream, wrappedOutputStream);
+
+                    wrappedOutputStream.flush();
+                    wrappedOutputStream.close();
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+=======
+private boolean consumeWithJarResourceHandler(HttpServletRequest httpRequest,
+                                                  HttpServletResponse httpResponse) throws IOException {
+        if (jarResourceHandlers != null) {
+
+            for (JarResourceHandler jarResourceHandler : jarResourceHandlers) {
+                InputStream stream = jarResourceHandler.getResource(httpRequest);
+
+                if (stream != null) {
+                    if (MimeType.shouldGuess()) {
+                        httpResponse.setHeader(MimeType.CONTENT_TYPE, MimeType.fromPathInfo(httpRequest.getPathInfo()));
+                    }
+                    customHeaders.forEach(httpResponse::setHeader); //add all user-defined headers to response
+                    OutputStream wrappedOutputStream = GzipUtils.checkAndWrap(httpRequest, httpResponse, false);
+
+                    IOUtils.copy(stream, wrappedOutputStream);
+                    wrappedOutputStream.flush();
+                    wrappedOutputStream.close();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695392422\fstmerge_var2_4938458665728489167
+
+File path: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_rev_left_bb2f6-rev_right_16f51\src\main\java\spark\staticfiles\StaticFilesConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public synchronized void configure(String folder) {
+        Assert.notNull(folder, "'folder' must not be null");
+
+        if (!staticResourcesSet) {
+
+            if (staticResourceHandlers == null) {
+                staticResourceHandlers = new ArrayList<>();
+            }
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393482\fstmerge_var1_7502681314136086707
+
+            staticResourceHandlers.add(new ClassPathResourceHandler(folder, "index.html"));
+            LOG.info("StaticResourceHandler configured with folder = " + folder);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393482\fstmerge_base_3657937266295407592
+=======
+
+            StaticFilesFolder.localConfiguredTo(folder);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393482\fstmerge_var2_5570629464091817517
+            staticResourcesSet = true;
+        }
+
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_rev_left_bb2f6-rev_right_16f51\src\main\java\spark\staticfiles\StaticFilesConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393842\fstmerge_var1_7612546247708508748
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393842\fstmerge_base_6593714690820867035
+private boolean configureJarCase(String folder, ClassPathResource resource) throws IOException {
+        if (resource.getURL().getProtocol().equals("jar")) {
+
+            InputStream stream = StaticFilesConfiguration.class.getResourceAsStream(folder);
+
+            if (stream != null) {
+                if (jarResourceHandlers == null) {
+                    jarResourceHandlers = new ArrayList<>();
+                }
+
+                // Add jar file resource handler
+                jarResourceHandlers.add(new JarResourceHandler(folder, "index.html"));
+                staticResourcesSet = true;
+                return true;
+            } else {
+                LOG.error("Static file configuration failed.");
+            }
+
+        }
+        return false;
+    }
+=======
+private boolean configureJarCase(String folder, ClassPathResource resource) throws IOException {
+        if (resource.getURL().getProtocol().equals("jar")) {
+
+            InputStream stream = StaticFilesConfiguration.class.getResourceAsStream(folder);
+
+            if (stream != null) {
+                if (jarResourceHandlers == null) {
+                    jarResourceHandlers = new ArrayList<>();
+                }
+
+                // Add jar file resource handler
+                jarResourceHandlers.add(new JarResourceHandler(folder, "index.html"));
+                staticResourcesSet = true;
+                return true;
+            }
+
+            LOG.error("Static file configuration failed.");
+        }
+        return false;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695393842\fstmerge_var2_3314824653602229865
+
+File path: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_rev_left_bb2f6-rev_right_16f51\src\main\java\spark\staticfiles\StaticFilesConfiguration.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_16f51_216e3\rev_16f51-216e3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a42d2_1d006\rev_a42d2-1d006.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_bcecb_c9a55\rev_bcecb-c9a55.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c9a55_d8f63\rev_c9a55-d8f63.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_de44c_b1388\rev_de44c-b1388.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ba5c3_86599\rev_ba5c3-86599.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695710373\fstmerge_var1_32116298042406462
+static void modify(HttpServletResponse httpResponse,
+                       Body body,
+                       RequestWrapper requestWrapper,
+                       ResponseWrapper responseWrapper,
+                       Exception e) {
+
+        ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+
+        if (handler != null) {
+            handler.handle(e, requestWrapper, responseWrapper);
+            String bodyAfterFilter = responseWrapper.getDelegate().body();
+
+            if (bodyAfterFilter != null) {
+                body.set(bodyAfterFilter);
+            }
+        } else {
+            LOG.error("", e);
+            httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            body.set(INTERNAL_ERROR);
+        }
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695710373\fstmerge_base_9181503183025537018
+static void modify(HttpServletResponse httpResponse,
+                       Body body,
+                       RequestWrapper requestWrapper,
+                       ResponseWrapper responseWrapper,
+                       Exception e) {
+
+        ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+
+        if (handler != null) {
+            handler.handle(e, requestWrapper, responseWrapper);
+            String bodyAfterFilter = responseWrapper.getDelegate().body();
+
+            if (bodyAfterFilter != null) {
+                body.set(bodyAfterFilter);
+            }
+        } else {
+            httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            body.set(INTERNAL_ERROR);
+        }
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513695710373\fstmerge_var2_6271528395191637267
+
+File path: C:\download\ssmerge\spark\revisions\rev_ba5c3_86599\rev_rev_left_ba5c3-rev_right_86599\src\main\java\spark\http\matching\GeneralError.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e5d84_86599\rev_e5d84-86599.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_86599_c1620\rev_86599-c1620.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a8ed2_14ac2\rev_a8ed2-14ac2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_6d424_14ac2\rev_6d424-14ac2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_14ac2_e7713\rev_14ac2-e7713.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7d369_22d10\rev_7d369-22d10.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a287f_d29b2\rev_a287f-d29b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_3a578_9e180\rev_3a578-9e180.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7f283_6e6bc\rev_7f283-6e6bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2e518_9b027\rev_2e518-9b027.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_f28df_7c98d\rev_f28df-7c98d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_433dc_77c85\rev_433dc-77c85.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e9756_c6e1e\rev_e9756-c6e1e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_cf088_edc38\rev_cf088-edc38.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8ba49_25482\rev_8ba49-25482.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7dfd2_d9c87\rev_7dfd2-d9c87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_9618b_ad135\rev_9618b-ad135.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_152e4_49ce2\rev_152e4-49ce2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_152e4_c72b0\rev_152e4-c72b0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_59eef_3b2b3\rev_59eef-3b2b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_59eef_a3685\rev_59eef-a3685.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_996a3_abe3f\rev_996a3-abe3f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_b7399_465b1\rev_b7399-465b1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_33162_a06d9\rev_33162-a06d9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7f6bd_cd8c2\rev_7f6bd-cd8c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c3b0a_fa5ed\rev_c3b0a-fa5ed.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697023112\fstmerge_var1_1449250397669580337
+void ignite(String host,
+                int port,
+                SslStores sslStores,
+                CountDownLatch latch,
+                int maxThreads,
+                int minThreads,
+                int threadIdleTimeoutMillis) throws Exception;
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697023112\fstmerge_base_8663061831506669157
+void ignite(String host,
+                int port,
+                SslStores sslStores,
+                CountDownLatch latch,
+                int maxThreads,
+                int minThreads,
+                int threadIdleTimeoutMillis);
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697023112\fstmerge_var2_7174498313969128774
+
+File path: C:\download\ssmerge\spark\revisions\rev_c3b0a_fa5ed\rev_rev_left_c3b0a-rev_right_fa5ed\src\main\java\spark\embeddedserver\EmbeddedServer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697025361\fstmerge_var1_1214165783961762681
+@Override
+    public void ignite(String host,
+                       int port,
+                       SslStores sslStores,
+                       CountDownLatch latch,
+                       int maxThreads,
+                       int minThreads,
+                       int threadIdleTimeoutMillis) throws Exception {
+
+        if (port == 0) {
+            try (ServerSocket s = new ServerSocket(0)) {
+                port = s.getLocalPort();
+            } catch (IOException e) {
+                logger.error("Could not get first available port (port set to 0), using default: {}", SPARK_DEFAULT_PORT);
+                port = SPARK_DEFAULT_PORT;
+            }
+        }
+
+        server = JettyServer.create(maxThreads, minThreads, threadIdleTimeoutMillis);
+
+        ServerConnector connector;
+
+        if (sslStores == null) {
+            connector = SocketConnectorFactory.createSocketConnector(server, host, port);
+        } else {
+            connector = SocketConnectorFactory.createSecureSocketConnector(server, host, port, sslStores);
+        }
+
+        server = connector.getServer();
+        server.setConnectors(new Connector[] {connector});
+
+        ServletContextHandler webSocketServletContextHandler =
+                WebSocketServletContextHandlerFactory.create(webSocketHandlers, webSocketIdleTimeoutMillis);
+
+        // Handle web socket routes
+        if (webSocketServletContextHandler == null) {
+            server.setHandler(handler);
+        } else {
+            List<Handler> handlersInList = new ArrayList<>();
+            handlersInList.add(handler);
+
+            // WebSocket handler must be the last one
+            if (webSocketServletContextHandler != null) {
+                handlersInList.add(webSocketServletContextHandler);
+            }
+
+            HandlerList handlers = new HandlerList();
+            handlers.setHandlers(handlersInList.toArray(new Handler[handlersInList.size()]));
+            server.setHandler(handlers);
+        }
+
+        logger.info("== {} has ignited ...", NAME);
+        logger.info(">> Listening on {}:{}", host, port);
+
+        server.start();
+        latch.countDown();
+        server.join();
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697025361\fstmerge_base_7062098794605815347
+@Override
+    public void ignite(String host,
+                       int port,
+                       SslStores sslStores,
+                       CountDownLatch latch,
+                       int maxThreads,
+                       int minThreads,
+                       int threadIdleTimeoutMillis) {
+
+        if (port == 0) {
+            try (ServerSocket s = new ServerSocket(0)) {
+                port = s.getLocalPort();
+            } catch (IOException e) {
+                logger.error("Could not get first available port (port set to 0), using default: {}", SPARK_DEFAULT_PORT);
+                port = SPARK_DEFAULT_PORT;
+            }
+        }
+
+        server = JettyServer.create(maxThreads, minThreads, threadIdleTimeoutMillis);
+
+        ServerConnector connector;
+
+        if (sslStores == null) {
+            connector = SocketConnectorFactory.createSocketConnector(server, host, port);
+        } else {
+            connector = SocketConnectorFactory.createSecureSocketConnector(server, host, port, sslStores);
+        }
+
+        server = connector.getServer();
+        server.setConnectors(new Connector[] {connector});
+
+        ServletContextHandler webSocketServletContextHandler =
+                WebSocketServletContextHandlerFactory.create(webSocketHandlers, webSocketIdleTimeoutMillis);
+
+        // Handle web socket routes
+        if (webSocketServletContextHandler == null) {
+            server.setHandler(handler);
+        } else {
+            List<Handler> handlersInList = new ArrayList<>();
+            handlersInList.add(handler);
+
+            // WebSocket handler must be the last one
+            if (webSocketServletContextHandler != null) {
+                handlersInList.add(webSocketServletContextHandler);
+            }
+
+            HandlerList handlers = new HandlerList();
+            handlers.setHandlers(handlersInList.toArray(new Handler[handlersInList.size()]));
+            server.setHandler(handlers);
+        }
+
+        try {
+            logger.info("== {} has ignited ...", NAME);
+            logger.info(">> Listening on {}:{}", host, port);
+
+            server.start();
+            latch.countDown();
+            server.join();
+        } catch (Exception e) {
+            logger.error("ignite failed", e);
+            System.exit(100); // NOSONAR
+        }
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697025361\fstmerge_var2_7912171278782699676
+
+File path: C:\download\ssmerge\spark\revisions\rev_c3b0a_fa5ed\rev_rev_left_c3b0a-rev_right_fa5ed\src\main\java\spark\embeddedserver\jetty\EmbeddedJettyServer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public synchronized void init() {
+        if (!initialized) {
+
+            initializeRouteMatcher();
+
+            if (!isRunningFromServlet()) {
+                new Thread(() -> {
+                  try {
+                    EmbeddedServers.initialize();
+
+                    if (embeddedServerIdentifier == null) {
+                        embeddedServerIdentifier = EmbeddedServers.defaultIdentifier();
+                    }
+
+                    server = EmbeddedServers.create(embeddedServerIdentifier,
+                                                    routes,
+                                                    staticFilesConfiguration,
+                                                    hasMultipleHandlers());
+
+                    server.configureWebSockets(webSocketHandlers, webSocketIdleTimeoutMillis);
+
+                    port = server.ignite(
+                            ipAddress,
+                            port,
+                            sslStores,
+                            maxThreads,
+                            minThreads,
+                            threadIdleTimeoutMillis);
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697011872\fstmerge_var1_4630751002475650792
+                  } catch (Exception e) {
+                    initExceptionHandler.accept(e);
+                  }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697011872\fstmerge_base_8644228572098184728
+=======
+                    try {
+                        latch.countDown();
+                        server.join();
+                    } catch (InterruptedException e) {
+                        LOG.error("server interrupted", e);
+                        Thread.currentThread().interrupt();
+                    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697011872\fstmerge_var2_4576826855436806068
+                }).start();
+            }
+            initialized = true;
+        }
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_c3b0a_fa5ed\rev_rev_left_c3b0a-rev_right_fa5ed\src\main\java\spark\Service.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_fa5ed_46b87\rev_fa5ed-46b87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_1ee84_1aad1\rev_1ee84-1aad1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_86a92_34074\rev_86a92-34074.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_d8768_57425\rev_d8768-57425.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_a9bad_52389\rev_a9bad-52389.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8782a_3f062\rev_8782a-3f062.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_321f9_a43b8\rev_321f9-a43b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_21ef2_92db5\rev_21ef2-92db5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_af5df_a0f88\rev_af5df-a0f88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_bcd29_ada4a\rev_bcd29-ada4a.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697658758\fstmerge_var1_2241741412063606234
+public static Object getFor(int status, Request request, Response response) {
+
+        Object customRenderer = CustomErrorPages.getInstance().customPages.get(status);
+        Object customPage = CustomErrorPages.getInstance().getDefaultFor(status);
+
+        if (customRenderer instanceof String) {
+            customPage = customRenderer;
+        } else if (customRenderer instanceof Route) {
+            try {
+                customPage = ((Route) customRenderer).handle(request, response);
+            } catch (Exception e) {
+             // The custom page renderer is causing an internal server error.  Log exception as a warning and use default page instead
+                LOG.warn("Custom error page handler for status code {} has thrown an exception: {}. Using default page instead.", status, e.getMessage());
+            }
+        }
+
+        return customPage;
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697658758\fstmerge_base_7439978613553180832
+public static Object getFor(int status, Request request, Response response) {
+
+        Object customRenderer = CustomErrorPages.getInstance().customPages.get(status);
+        Object customPage;
+
+        customPage = status == 400 ? NOT_FOUND : INTERNAL_ERROR;
+
+        if (customRenderer instanceof String) {
+            customPage = customRenderer;
+        } else if (customRenderer instanceof Route) {
+            try {
+                customPage = ((Route) customRenderer).handle(request, response);
+            } catch (Exception e) {
+                // customPage is already set to default error so nothing needed here
+            }
+        }
+
+        return customPage;
+=======
+public static Object getFor(int status, Request request, Response response) {
+
+        Object customRenderer = CustomErrorPages.getInstance().customPages.get(status);
+        Object customPage;
+
+        customPage = status == 404 ? NOT_FOUND : INTERNAL_ERROR;
+
+        if (customRenderer instanceof String) {
+            customPage = customRenderer;
+        } else if (customRenderer instanceof Route) {
+            try {
+                customPage = ((Route) customRenderer).handle(request, response);
+            } catch (Exception e) {
+                // customPage is already set to default error so nothing needed here
+            }
+        }
+
+        return customPage;
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513697658758\fstmerge_var2_7752261507632503036
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_bcd29_ada4a\rev_rev_left_bcd29-rev_right_ada4a\src\main\java\spark\CustomErrorPages.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ada4a_81549\rev_ada4a-81549.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ddda7_3c253\rev_ddda7-3c253.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c8949_f01ad\rev_c8949-f01ad.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_20109_45204\rev_20109-45204.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_c2c97_5755c\rev_c2c97-5755c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698130625\fstmerge_var1_3943685097977941351
+public synchronized void exception(Class<? extends Exception> exceptionClass, ExceptionHandler handler) {
+        // wrap
+        ExceptionHandlerImpl wrapper = new ExceptionHandlerImpl(exceptionClass) {
+            @Override
+            public void handle(Exception exception, Request request, Response response) {
+                handler.handle(exception, request, response);
+            }
+        };
+
+        exceptionMapper.map(exceptionClass, wrapper);
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698130625\fstmerge_base_7797320436130319015
+public synchronized void exception(Class<? extends Exception> exceptionClass, ExceptionHandler handler) {
+        // wrap
+        ExceptionHandlerImpl wrapper = new ExceptionHandlerImpl(exceptionClass) {
+            @Override
+            public void handle(Exception exception, Request request, Response response) {
+                handler.handle(exception, request, response);
+            }
+        };
+
+        ExceptionMapper.getInstance().map(exceptionClass, wrapper);
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698130625\fstmerge_var2_7513257243850580427
+
+File path: C:\download\ssmerge\spark\revisions\rev_c2c97_5755c\rev_rev_left_c2c97-rev_right_5755c\src\main\java\spark\Service.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_deb60_1080c\rev_deb60-1080c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5c146_37c98\rev_5c146-37c98.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_5becf_01cb4\rev_5becf-01cb4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_4f681_7da00\rev_4f681-7da00.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_8706b_e61dc\rev_8706b-e61dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_7e20e_2ce4e\rev_7e20e-2ce4e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@BeforeClass
+    public static void setUpClass() throws Exception {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698532312\fstmerge_var1_4852750642917665849
+        service1 = ignite();
+        service1.port(1122);
+        service1.init();
+        service1.awaitInitialization();
+
+        service2 = ignite();
+        service2.port(70000);
+        service2.initExceptionHandler((e) -> errorMessage = "Custom init error");
+        service2.init();
+        service2.awaitInitialization();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698532312\fstmerge_base_3544056593282302150
+
+        service1 = ignite();
+        service1.port(1122);
+        service1.init();
+        service1.awaitInitialization();
+
+        service2 = ignite();
+        service2.port(1122);
+        service2.initExceptionHandler((e) -> errorMessage = "Custom init error");
+        service2.init();
+        service2.awaitInitialization();
+
+=======
+        service = ignite();
+        service.port(NON_VALID_PORT);
+        service.initExceptionHandler((e) -> errorMessage = "Custom init error");
+        service.init();
+        service.awaitInitialization();
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698532312\fstmerge_var2_7650224530567623204
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_7e20e_2ce4e\rev_rev_left_7e20e-rev_right_2ce4e\src\test\java\spark\InitExceptionHandlerTest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+    public void testDirectoryTraversalProtectionLocal() throws Exception {
+        String path = "/" + URLEncoder.encode("..\\spark\\", "UTF-8") + "Spark.class";
+        SparkTestUtil.UrlResponse response = doGet(path);
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698538124\fstmerge_var1_1585919473942773417
+        // Attempt to access context above root is either a 400 or 404 depending on environment
+        Assert.assertThat( response.status, CoreMatchers.anyOf(
+            CoreMatchers.is(400),
+            CoreMatchers.is(404)));
+        Assert.assertThat( response.body, CoreMatchers.anyOf(
+            CoreMatchers.containsString("Bad Message 400"),
+            CoreMatchers.containsString(NOT_FOUND_BRO)));
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698538124\fstmerge_base_3480907234586907957
+        Assert.assertEquals(404, response.status);
+        Assert.assertEquals(NOT_FOUND_BRO, response.body);
+=======
+        Assert.assertEquals(400, response.status);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513698538124\fstmerge_var2_2248603465314406086
+
+        testGet();
+    }
+
+File path: C:\download\ssmerge\spark\revisions\rev_7e20e_2ce4e\rev_rev_left_7e20e-rev_right_2ce4e\src\test\java\spark\staticfiles\StaticFilesTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_2ce4e_4ceff\rev_2ce4e-4ceff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e2295_cd579\rev_e2295-cd579.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_73586_98a56\rev_73586-98a56.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_ff5e1_04929\rev_ff5e1-04929.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spark\revisions\rev_e08f4_266ba\rev_e08f4-266ba.revisions
+
+=========================================================

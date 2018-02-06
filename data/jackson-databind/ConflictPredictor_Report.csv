@@ -1,0 +1,3543 @@
+#MS_XXX_MS#
+Merge scenario: rev_7d044-184ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72ce5-e6027
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf315-9a3bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ba4b-c4a14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2fff9-81017
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_2fff9_81017\rev_rev_left_2fff9-rev_right_81017\src\main\java\com\fasterxml\jackson\databind\ser\std\MapSerializer.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START serialize(Map<?,?>-Map<?,?>-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//@Override
+    public void serialize(Map<?,?> value, JsonGenerator jgen, SerializerProvider provider)
+        throws IOException, JsonGenerationException
+    {
+        jgen.writeStartObject();
+        if (!value.isEmpty()) {
+            if (_filterId != null) {
+                serializeFilteredFields(value, jgen, provider,
+                        findPropertyFilter(provider, _filterId, value));
+                return;
+            }
+            if (_sortKeys || provider.isEnabled(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS)) {
+                value = _orderEntries(value);
+            }
+            if (_valueSerializer != null) {
+                serializeFieldsUsing(value, jgen, provider, _valueSerializer);
+            } else {
+                serializeFields(value, jgen, provider);
+            }
+        }        
+        jgen.writeEndObject();
+// END serialize(Map<?,?>-Map<?,?>-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8d6fa-354f3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31046-6b891
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a00cd-06d44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aec62-1b824
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf65e-18e21
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09bf8-a8000
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_953ea-97d03
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49dd1-6c737
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c802-0d3a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0bdf6-30bb9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae0d2-40f1c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9336-50a8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4bc7a-de296
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f317a-779a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1be37-c6c88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eefb6-1e610
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5fac3-b2199
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4309a-a818b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_62425-fd0f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e88a8-e5422
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1f58-21df3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2dde6-52dc7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c2dc-25bec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6cf65-4865f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e935-295d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10ba2-c598b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a70b-27350
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e217f-6fc19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2bfcd-0f581
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9c92-11c45
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32614-d9c92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b11ea-46249
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17ab2-c271f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_abbcd-bfbb6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07969-c28f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef5c5-ac2b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8be8-0ac3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76731-7c4b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4eebc-2fd20
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8422f-74711
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f76a7-bcccd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6850-23328
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_f6850_23328\rev_rev_left_f6850-rev_right_23328\src\test\java\com\fasterxml\jackson\databind\mixins\TestMixinSerForClass.java
+Different Spacing: false
+Left editions: [166]
+Right editions: [170, 171, 172, 173, 174, 175, 176, 177, 178, 179]
+Merged body: 
+// START testClassMixInsMidLevel({FormalParametersInternal})//public void testClassMixInsMidLevel() throws IOException
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String,Object> result;
+        LeafClass bean = new LeafClass("xyz");
+        bean._c = "c2";
+
+        // with no mix-ins first...
+        result = writeAndMap(mapper, bean);
+        assertEquals(2, result.size());
+        assertEquals("xyz", result.get("a"));
+        assertEquals("c2", result.get("c"));
+
+        // then with working mid-level override, which effectively suppresses 'a'
+        mapper = new ObjectMapper();
+// LEFT //        mapper.addMixIn(BaseClass.class, MixInAutoDetect.class);
+        result = writeAndMap(mapper, bean);
+        assertEquals(1, result.size());
+        assertEquals("c2", result.get("c"));
+// RIGHT //
+// RIGHT //        // and related to [databind#245], apply mix-ins to a copy of ObjectMapper
+// RIGHT //        ObjectMapper mapper2 = new ObjectMapper();
+// RIGHT //        result = writeAndMap(mapper2, bean);
+// RIGHT //        assertEquals(2, result.size());
+// RIGHT //        ObjectMapper mapper3 = mapper2.copy();
+// RIGHT //        mapper3.addMixInAnnotations(BaseClass.class, MixInAutoDetect.class);
+// RIGHT //        result = writeAndMap(mapper3, bean);
+// RIGHT //        assertEquals(1, result.size());
+// RIGHT //        assertEquals("c2", result.get("c"));
+// END testClassMixInsMidLevel({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_655d2-edf86
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_655d2_edf86\rev_rev_left_655d2-rev_right_edf86\src\main\java\com\fasterxml\jackson\databind\ser\std\EnumSerializer.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START acceptJsonFormatVisitor(JsonFormatVisitorWrapper-JsonFormatVisitorWrapper-JavaType-JavaType)//@Override
+    public void acceptJsonFormatVisitor(JsonFormatVisitorWrapper visitor, JavaType typeHint)
+        throws JsonMappingException
+    {
+        // [JACKSON-684]: serialize as index?
+        if (_serializeAsIndex(visitor.getProvider())) {
+            JsonIntegerFormatVisitor v2 = visitor.expectIntegerFormat(typeHint);
+            if (v2 != null) { // typically serialized as a small number (byte or int)
+                v2.numberType(JsonParser.NumberType.INT);
+            }
+        } else {
+    		JsonStringFormatVisitor stringVisitor = visitor.expectStringFormat(typeHint);
+    		if (typeHint != null && stringVisitor != null) {
+    			if (typeHint.isEnumType()) {
+    				Set<String> enums = new LinkedHashSet<String>();
+    				for (SerializableString value : _values.values()) {
+    					enums.add(value.getValue());
+    				}
+    				stringVisitor.enumTypes(enums);
+    			}
+    		}
+        }
+// END acceptJsonFormatVisitor(JsonFormatVisitorWrapper-JsonFormatVisitorWrapper-JavaType-JavaType)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0707a-690af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_16212-3cd2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57321-b3f6f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_57321_b3f6f\rev_rev_left_57321-rev_right_b3f6f\src\main\java\com\fasterxml\jackson\databind\ser\BasicSerializerFactory.java
+Different Spacing: false
+Left editions: [768, 771, 772, 773, 774, 775, 776]
+Right editions: [751, 752, 753, 754, 755]
+Merged body: 
+// START buildMapSerializer(SerializationConfig-SerializationConfig-MapType-MapType-BeanDescription-BeanDescription-boolean-boolean-JsonSerializer<Object>-JsonSerializer<Object>-TypeSerializer-TypeSerializer-JsonSerializer<Object>-JsonSerializer<Object>)//protected JsonSerializer<?> buildMapSerializer(SerializationConfig config,
+            MapType type, BeanDescription beanDesc,
+            boolean staticTyping, JsonSerializer<Object> keySerializer,
+            TypeSerializer elementTypeSerializer, JsonSerializer<Object> elementValueSerializer)
+        throws JsonMappingException
+    {
+        JsonSerializer<?> ser = null;
+        for (Serializers serializers : customSerializers()) {
+            ser = serializers.findMapSerializer(config, type, beanDesc,
+                    keySerializer, elementTypeSerializer, elementValueSerializer);
+            if (ser != null) { break; }
+        }
+        if (ser == null) {
+// RIGHT //            /* 05-Nov-2014, tatu: As per [databind#601], may be easier NOT to use specialized
+// RIGHT //             *    serializers, if custom serialization of keys is needed.
+// RIGHT //             */
+// RIGHT //            if (EnumMap.class.isAssignableFrom(type.getRawClass())
+// RIGHT //                    && ((keySerializer == null) || ClassUtil.isJacksonStdImpl(keySerializer))) {
+                JavaType keyType = type.getKeyType();
+                // Need to find key enum values...
+                EnumValues enums = null;
+                if (keyType.isEnumType()) { // non-enum if we got it as type erased class (from instance)
+                    @SuppressWarnings("unchecked")
+                    Class<Enum<?>> enumClass = (Class<Enum<?>>) keyType.getRawClass();
+                    enums = EnumValues.construct(config, enumClass);
+                }
+                ser = new EnumMapSerializer(type.getContentType(), staticTyping, enums,
+                    elementTypeSerializer, elementValueSerializer);
+            } else {
+                Object filterId = findFilterId(config, beanDesc);
+// LEFT //                MapSerializer mapSer = MapSerializer.construct(config.getAnnotationIntrospector().findPropertiesToIgnore(beanDesc.getClassInfo()),
+                    type, staticTyping, elementTypeSerializer,
+                    keySerializer, elementValueSerializer, filterId);
+// LEFT //                Object suppressableValue = findSuppressableContentValue(config,
+// LEFT //                        type.getContentType(), beanDesc);
+// LEFT //                if (suppressableValue != null) {
+// LEFT //                    mapSer = mapSer.withContentInclusion(suppressableValue);
+// LEFT //                }
+// LEFT //                ser = mapSer;
+            }
+        }
+        // [Issue#120]: Allow post-processing
+        if (_factoryConfig.hasSerializerModifiers()) {
+            for (BeanSerializerModifier mod : _factoryConfig.serializerModifiers()) {
+                ser = mod.modifyMapSerializer(config, type, beanDesc, ser);
+            }
+        }
+        return ser;
+// END buildMapSerializer(SerializationConfig-SerializationConfig-MapType-MapType-BeanDescription-BeanDescription-boolean-boolean-JsonSerializer<Object>-JsonSerializer<Object>-TypeSerializer-TypeSerializer-JsonSerializer<Object>-JsonSerializer<Object>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c0de-7cf95
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5614e-95267
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab3e1-6b201
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_785c4-fd4eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2657f-afa71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a2ae-d7a94
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_2a2ae_d7a94\rev_rev_left_2a2ae-rev_right_d7a94\src\main\java\com\fasterxml\jackson\databind\deser\AbstractDeserializer.java
+Different Spacing: false
+Left editions: [237, 244]
+Right editions: []
+Merged body: 
+// START _deserializeFromObjectId(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//// LEFT //protected Object _deserializeFromObjectId(JsonParser jp, DeserializationContext ctxt) throws IOException
+    {
+        Object id = _objectIdReader.readObjectReference(jp, ctxt);
+        ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, _objectIdReader.resolver);
+        // do we have it resolved?
+        Object pojo = roid.resolve();
+        if (pojo == null) { // not yet; should wait...
+// LEFT //            throw new UnresolvedForwardReference("Could not resolve Object Id ["+id+"] -- unresolved forward-reference?", jp.getCurrentLocation(), roid);
+        }
+        return pojo;
+// END _deserializeFromObjectId(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e580e-f062a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e580e-30000
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1842f-f16c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cdb32-d672b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68700-ae3f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cde54-ce8be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b642-62c08
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_45bfc-6822f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3aea6-dc115
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3718b-35ec0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64319-87e46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5dca5-04db8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60399-7d420
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7bbb-b07c1
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_c7bbb_b07c1\rev_rev_left_c7bbb-rev_right_b07c1\src\main\java\com\fasterxml\jackson\databind\deser\std\UntypedObjectDeserializer.java
+Different Spacing: false
+Left editions: [154, 155, 156]
+Right editions: []
+Merged body: 
+// START _findCustomDeser(DeserializationContext-DeserializationContext-JavaType-JavaType)//@SuppressWarnings("unchecked")
+    protected JsonDeserializer<Object> _findCustomDeser(DeserializationContext ctxt, JavaType type)
+        throws JsonMappingException
+    {
+// LEFT //        // Since we are calling from `resolve`, we should NOT try to contextualize yet;
+// LEFT //        // contextualization will only occur at a later point
+// LEFT //        JsonDeserializer<?> deser = ctxt.findNonContextualValueDeserializer(type);
+        if (ClassUtil.isJacksonStdImpl(deser)) {
+            return null;
+        }
+        return (JsonDeserializer<Object>) deser;
+// END _findCustomDeser(DeserializationContext-DeserializationContext-JavaType-JavaType)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_c7bbb_b07c1\rev_rev_left_c7bbb-rev_right_b07c1\src\main\java\com\fasterxml\jackson\databind\deser\std\UntypedObjectDeserializer.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START resolve(DeserializationContext-DeserializationContext)//@SuppressWarnings("unchecked")
+    @Override
+    public void resolve(DeserializationContext ctxt) throws JsonMappingException
+    {
+        JavaType obType = ctxt.constructType(Object.class);
+        JavaType stringType = ctxt.constructType(String.class);
+        TypeFactory tf = ctxt.getTypeFactory();
+
+        /* 26-Nov-2014, tatu: This is highly unusual, as in general contextualization
+         *    should always be called separately, from within "createContextual()".
+         *    But this is a very singular deserializer since it operates on `Object`
+         *    (and often for `?` type parameter), and as a result, easily and commonly
+         *    results in cycles, being value deserializer for various Maps and Collections.
+         *    Because of this, we must somehow break the cycles. This is done here by
+         *    forcing pseudo-contextualization with null property.
+         */
+
+        // So: first find possible custom instances
+        _mapDeserializer = _findCustomDeser(ctxt, tf.constructMapType(Map.class, stringType, obType));
+        _listDeserializer = _findCustomDeser(ctxt, tf.constructCollectionType(List.class, obType));
+        _stringDeserializer = _findCustomDeser(ctxt, stringType);
+        _numberDeserializer = _findCustomDeser(ctxt, tf.constructType(Number.class));
+// END resolve(DeserializationContext-DeserializationContext)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed66a-cb577
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ede7d-531fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9c0b-f4cde
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7af42-7b90a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df9b1-edad1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab554-551f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_333f5-54c90
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_966dd-7ec59
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5b80-5a3c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_560bd-ac041
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92360-d180b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c36f-7fced
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c36f-74c8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38573-3e0d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ad54-4dfcc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10b5d-b15ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fbe9a-44df4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a223-ae101
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17102-00bb1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c006-7949d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00bb1-7949d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54cc7-16c5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_658b5-ae3f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f096-102ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_102ab-d01f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_457ca-206bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0312-4a991
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_474c0-14d97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e507-e4ece
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c027-186b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ba4d-6290e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc7bd-f2406
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_605db-bff35
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7fee9-54e23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7cf96-195e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_195e9-cc054
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_618e4-e57b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cc054-0b059
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e57b7-36d9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac63c-6262d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43f2f-466f7
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_43f2f_466f7\rev_rev_left_43f2f-rev_right_466f7\src\main\java\com\fasterxml\jackson\databind\ser\BeanSerializerFactory.java
+Different Spacing: false
+Left editions: [444]
+Right editions: [436, 437, 438, 440, 442, 447]
+Merged body: 
+// START constructBeanSerializer(SerializerProvider-SerializerProvider-BeanDescription-BeanDescription)//@SuppressWarnings("unchecked")
+    protected JsonSerializer<Object> constructBeanSerializer(SerializerProvider prov,
+            BeanDescription beanDesc)
+        throws JsonMappingException
+    {
+        // 13-Oct-2010, tatu: quick sanity check: never try to create bean serializer for plain Object
+        // 05-Jul-2012, tatu: ... but we should be able to just return "unknown type" serializer, right?
+        if (beanDesc.getBeanClass() == Object.class) {
+            return prov.getUnknownTypeSerializer(Object.class);
+//            throw new IllegalArgumentException("Can not create bean serializer for Object.class");
+        }
+        final SerializationConfig config = prov.getConfig();
+        BeanSerializerBuilder builder = constructBeanSerializerBuilder(beanDesc);
+        builder.setConfig(config);
+
+        // First: any detectable (auto-detect, annotations) properties to serialize?
+        List<BeanPropertyWriter> props = findBeanProperties(prov, beanDesc, builder);
+        if (props == null) {
+            props = new ArrayList<BeanPropertyWriter>();
+        }
+        // [databind#638]: Allow injection of "virtual" properties:
+        prov.getAnnotationIntrospector().findAndAddVirtualProperties(config, beanDesc.getClassInfo(), props);
+
+        // [JACKSON-440] Need to allow modification bean properties to serialize:
+        if (_factoryConfig.hasSerializerModifiers()) {
+            for (BeanSerializerModifier mod : _factoryConfig.serializerModifiers()) {
+                props = mod.changeProperties(config, beanDesc, props);
+            }
+        }
+
+        // Any properties to suppress?
+        props = filterBeanProperties(config, beanDesc, props);
+
+        // [JACKSON-440] Need to allow reordering of properties to serialize
+        if (_factoryConfig.hasSerializerModifiers()) {
+            for (BeanSerializerModifier mod : _factoryConfig.serializerModifiers()) {
+                props = mod.orderProperties(config, beanDesc, props);
+            }
+        }
+
+        /* And if Object Id is needed, some preparation for that as well: better
+         * do before view handling, mostly for the custom id case which needs
+         * access to a property
+         */
+        builder.setObjectIdWriter(constructObjectIdHandler(prov, beanDesc, props));
+        
+        builder.setProperties(props);
+        builder.setFilterId(findFilterId(config, beanDesc));
+        
+        AnnotatedMember anyGetter = beanDesc.findAnyGetter();
+        if (anyGetter != null) {
+            if (config.canOverrideAccessModifiers()) {
+                anyGetter.fixAccess();
+            }
+            JavaType type = anyGetter.getType(beanDesc.bindingsForBeanType());
+            // copied from BasicSerializerFactory.buildMapSerializer():
+            boolean staticTyping = config.isEnabled(MapperFeature.USE_STATIC_TYPING);
+            JavaType valueType = type.getContentType();
+            TypeSerializer typeSer = createTypeSerializer(config, valueType);
+            // last 2 nulls; don't know key, value serializers (yet)
+// RIGHT //            // 23-Feb-2015, tatu: As per [#705], need to support custom serializers
+// RIGHT //            JsonSerializer<?> anySer = findSerializerFromAnnotation(prov, anyGetter);
+// RIGHT //            if (anySer == null) {
+            // TODO: support '@JsonIgnoreProperties' with any setter?
+// RIGHT //                anySer = MapSerializer.construct(/* ignored props*/ null, type, staticTyping,
+                    typeSer, null, null, /*filterId*/ null);
+// RIGHT //            }
+            // TODO: can we find full PropertyName?
+// LEFT //            PropertyName name = PropertyName.construct(anyGetter.getName());
+            BeanProperty.Std anyProp = new BeanProperty.Std(name, valueType, null,
+                    beanDesc.getClassAnnotations(), anyGetter, PropertyMetadata.STD_OPTIONAL);
+// RIGHT //            builder.setAnyGetter(new AnyGetterWriter(anyProp, anyGetter, anySer));
+        }
+        // Next: need to gather view information, if any:
+        processViews(config, builder);
+        
+        // Finally: let interested parties mess with the result bit more...
+        if (_factoryConfig.hasSerializerModifiers()) {
+            for (BeanSerializerModifier mod : _factoryConfig.serializerModifiers()) {
+                builder = mod.updateBuilder(config, beanDesc, builder);
+            }
+        }
+        
+        JsonSerializer<Object> ser = (JsonSerializer<Object>) builder.build();
+        
+        if (ser == null) {
+            // If we get this far, there were no properties found, so no regular BeanSerializer
+            // would be constructed. But, couple of exceptions.
+            // First: if there are known annotations, just create 'empty bean' serializer
+            if (beanDesc.hasKnownClassAnnotations()) {
+                return builder.createDummy();
+            }
+        }
+        return ser;
+// END constructBeanSerializer(SerializerProvider-SerializerProvider-BeanDescription-BeanDescription)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d9ab-6e774
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37879-66e8a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_935cc-612f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5064a-fe8c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66513-2b38b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd955-66bfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8df06-63e27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19e5e-df716
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7574-436c3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_436c3-1d57c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_881cc-05db8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05db8-de564
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2360f-60980
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60980-7ff74
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_60980_7ff74\rev_rev_left_60980-rev_right_7ff74\src\main\java\com\fasterxml\jackson\databind\deser\DeserializerCache.java
+Different Spacing: false
+Left editions: [363, 364, 365, 366, 367, 368]
+Right editions: []
+Merged body: 
+// START _createDeserializer(DeserializationContext-DeserializationContext-DeserializerFactory-DeserializerFactory-JavaType-JavaType)//@SuppressWarnings("unchecked")
+    protected JsonDeserializer<Object> _createDeserializer(DeserializationContext ctxt,
+            DeserializerFactory factory, JavaType type)
+        throws JsonMappingException
+    {
+        final DeserializationConfig config = ctxt.getConfig();
+
+        // First things first: do we need to use abstract type mapping?
+        if (type.isAbstract() || type.isMapLikeType() || type.isCollectionLikeType()) {
+            type = factory.mapAbstractType(config, type);
+        }
+// LEFT //        BeanDescription beanDesc;
+// LEFT //        try {
+// LEFT //            beanDesc = config.introspect(type);
+// LEFT //        } catch (NoClassDefFoundError error) {
+// LEFT //            return new NoClassDefFoundDeserializer<Object>(error);
+// LEFT //        }
+        // Then: does type define explicit deserializer to use, with annotation(s)?
+        JsonDeserializer<Object> deser = findDeserializerFromAnnotation(ctxt,
+                beanDesc.getClassInfo());
+        if (deser != null) {
+            return deser;
+        }
+
+        // If not, may have further type-modification annotations to check:
+        JavaType newType = modifyTypeByAnnotation(ctxt, beanDesc.getClassInfo(), type);
+        if (newType != type) {
+            type = newType;
+            beanDesc = config.introspect(newType);
+        }
+
+        // We may also have a Builder type to consider...
+        Class<?> builder = beanDesc.findPOJOBuilder();
+        if (builder != null) {
+            return (JsonDeserializer<Object>) factory.createBuilderBasedDeserializer(
+            		ctxt, type, beanDesc, builder);
+        }
+
+        // Or perhaps a Converter?
+        Converter<Object,Object> conv = beanDesc.findDeserializationConverter();
+        if (conv == null) { // nope, just construct in normal way
+            return (JsonDeserializer<Object>) _createDeserializer2(ctxt, factory, type, beanDesc);
+        }
+        // otherwise need to do bit of introspection
+        JavaType delegateType = conv.getInputType(ctxt.getTypeFactory());
+        // One more twist, as per [Issue#288]; probably need to get new BeanDesc
+        if (!delegateType.hasRawClass(type.getRawClass())) {
+            beanDesc = config.introspect(delegateType);
+        }
+        return new StdDelegatingDeserializer<Object>(conv, delegateType,
+                _createDeserializer2(ctxt, factory, delegateType, beanDesc));
+// END _createDeserializer(DeserializationContext-DeserializationContext-DeserializerFactory-DeserializerFactory-JavaType-JavaType)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_60980_7ff74\rev_rev_left_60980-rev_right_7ff74\src\main\java\com\fasterxml\jackson\databind\deser\DeserializerCache.java
+Different Spacing: false
+Left editions: []
+Right editions: [314, 315]
+Merged body: 
+// START _createAndCache2(DeserializationContext-DeserializationContext-DeserializerFactory-DeserializerFactory-JavaType-JavaType)//protected JsonDeserializer<Object> _createAndCache2(DeserializationContext ctxt,
+            DeserializerFactory factory, JavaType type)
+        throws JsonMappingException
+    {
+        JsonDeserializer<Object> deser;
+        try {
+            deser = _createDeserializer(ctxt, factory, type);
+        } catch (IllegalArgumentException iae) {
+            /* We better only expose checked exceptions, since those
+             * are what caller is expected to handle
+             */
+            throw new JsonMappingException(iae.getMessage(), null, iae);
+        }
+        if (deser == null) {
+            return null;
+        }
+        /* cache resulting deserializer? always true for "plain" BeanDeserializer
+         * (but can be re-defined for sub-classes by using @JsonCachable!)
+         */
+        // 08-Jun-2010, tatu: Related to [JACKSON-296], need to avoid caching MapSerializers... so:
+        boolean isResolvable = (deser instanceof ResolvableDeserializer);
+// RIGHT //        // 27-Mar-2015, tatu: As per [databind#735], avoid caching types with custom value desers
+// RIGHT //        boolean addToCache = !_hasCustomValueHandler(type) && deser.isCachable();
+
+        /* we will temporarily hold on to all created deserializers (to
+         * handle cyclic references, and possibly reuse non-cached
+         * deserializers (list, map))
+         */
+        /* 07-Jun-2010, tatu: Danger: [JACKSON-296] was caused by accidental
+         *   resolution of a reference -- couple of ways to prevent this;
+         *   either not add Lists or Maps, or clear references eagerly.
+         *   Let's actually do both; since both seem reasonable.
+         */
+        /* Need to resolve? Mostly done for bean deserializers; required for
+         * resolving cyclic references.
+         */
+        if (isResolvable) {
+            _incompleteDeserializers.put(type, deser);
+            ((ResolvableDeserializer)deser).resolve(ctxt);
+            _incompleteDeserializers.remove(type);
+        }
+        if (addToCache) {
+            _cachedDeserializers.put(type, deser);
+        }
+        return deser;
+// END _createAndCache2(DeserializationContext-DeserializationContext-DeserializerFactory-DeserializerFactory-JavaType-JavaType)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ed43-841a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2efd3-c568f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e34e-ec182
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c582-7c720
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0f7f5-61c22
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4c90-50ea0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7785d-0ec81
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_817a4-85282
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: []
+Right editions: [1535, 1536, 1537, 1538]
+Merged body: 
+// START _findRootDeserializer(DeserializationContext-DeserializationContext-JavaType-JavaType)//protected JsonDeserializer<Object> _findRootDeserializer(DeserializationContext ctxt,
+            JavaType valueType)
+        throws JsonMappingException
+    {
+        if (_rootDeserializer != null) {
+// RIGHT //            // 02-Apr-2015, tatu: Patch for #744 (better fix in 2.5.3)
+// RIGHT //            if (valueType != JSON_NODE_TYPE) {
+// RIGHT //                return _rootDeserializer;
+// RIGHT //            }
+        }
+
+        // Sanity check: must have actual type...
+        if (valueType == null) {
+            throw new JsonMappingException("No value type configured for ObjectReader");
+        }
+        
+        // First: have we already seen it?
+        JsonDeserializer<Object> deser = _rootDeserializers.get(valueType);
+        if (deser != null) {
+            return deser;
+        }
+        // Nope: need to ask provider to resolve it
+        deser = ctxt.findRootValueDeserializer(valueType);
+        if (deser == null) { // can this happen?
+            throw new JsonMappingException("Can not find a deserializer for type "+valueType);
+        }
+        _rootDeserializers.put(valueType, deser);
+        return deser;
+// END _findRootDeserializer(DeserializationContext-DeserializationContext-JavaType-JavaType)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1405]
+Right editions: []
+Merged body: 
+// START _bindAndClose(JsonParser-JsonParser-Object-Object)//// LEFT //protected Object _bindAndClose(JsonParser jp, Object valueToUpdate) throws IOException
+    {
+        try {
+            Object result;
+            JsonToken t = _initForReading(jp);
+            if (t == JsonToken.VALUE_NULL) {
+                if (valueToUpdate == null) {
+                    DeserializationContext ctxt = createDeserializationContext(jp, _config);
+                    result = _findRootDeserializer(ctxt, _valueType).getNullValue();
+                } else {
+                    result = valueToUpdate;
+                }
+            } else if (t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {
+                result = valueToUpdate;
+            } else {
+                DeserializationContext ctxt = createDeserializationContext(jp, _config);
+                JsonDeserializer<Object> deser = _findRootDeserializer(ctxt, _valueType);
+                if (_unwrapRoot) {
+                    result = _unwrapAndDeserialize(jp, ctxt, _valueType, deser);
+                } else {
+                    if (valueToUpdate == null) {
+                        result = deser.deserialize(jp, ctxt);
+                    } else {
+                        deser.deserialize(jp, ctxt, valueToUpdate);
+                        result = valueToUpdate;                    
+                    }
+                }
+            }
+            return result;
+        } finally {
+            try {
+                jp.close();
+            } catch (IOException ioe) { }
+        }
+// END _bindAndClose(JsonParser-JsonParser-Object-Object)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1268, 1269, 1270, 1271, 1272]
+Right editions: []
+Merged body: 
+// START readValues(String-String)//@SuppressWarnings("resource")
+    public <T> MappingIterator<T> readValues(String json)
+        throws IOException, JsonProcessingException
+    {
+        if (_dataFormatReaders != null) {
+            _reportUndetectableSource(json);
+        }
+// LEFT //        JsonParser p = _parserFactory.createParser(json);
+// LEFT //        _initForMultiRead(p);
+// LEFT //        p.nextToken();
+// LEFT //        DeserializationContext ctxt = createDeserializationContext(p, _config);
+// LEFT //        return _newIterator(_valueType, p, ctxt,
+                _findRootDeserializer(ctxt, _valueType), true, _valueToUpdate);
+// END readValues(String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1247, 1248, 1249, 1250, 1251]
+Right editions: []
+Merged body: 
+// START readValues(Reader-Reader)//@SuppressWarnings("resource")
+    public <T> MappingIterator<T> readValues(Reader src)
+        throws IOException, JsonProcessingException
+    {
+        if (_dataFormatReaders != null) {
+            _reportUndetectableSource(src);
+        }
+// LEFT //        JsonParser p = _parserFactory.createParser(src);
+// LEFT //        _initForMultiRead(p);
+// LEFT //        p.nextToken();
+// LEFT //        DeserializationContext ctxt = createDeserializationContext(p, _config);
+// LEFT //        return _newIterator(_valueType, p, ctxt,
+                _findRootDeserializer(ctxt, _valueType), true, _valueToUpdate);
+// END readValues(Reader-Reader)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1369]
+Right editions: []
+Merged body: 
+// START _bind(JsonParser-JsonParser-Object-Object)//// LEFT //protected Object _bind(JsonParser jp, Object valueToUpdate) throws IOException
+    {
+        /* First: may need to read the next token, to initialize state (either
+         * before first read from parser, or after previous token has been cleared)
+         */
+        Object result;
+        JsonToken t = _initForReading(jp);
+        if (t == JsonToken.VALUE_NULL) {
+            if (valueToUpdate == null) {
+                DeserializationContext ctxt = createDeserializationContext(jp, _config);
+                result = _findRootDeserializer(ctxt, _valueType).getNullValue();
+            } else {
+                result = valueToUpdate;
+            }
+        } else if (t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {
+            result = valueToUpdate;
+        } else { // pointing to event other than null
+            DeserializationContext ctxt = createDeserializationContext(jp, _config);
+            JsonDeserializer<Object> deser = _findRootDeserializer(ctxt, _valueType);
+            if (_unwrapRoot) {
+                result = _unwrapAndDeserialize(jp, ctxt, _valueType, deser);
+            } else {
+                if (valueToUpdate == null) {
+                    result = deser.deserialize(jp, ctxt);
+                } else {
+                    deser.deserialize(jp, ctxt, valueToUpdate);
+                    result = valueToUpdate;
+                }
+            }
+        }
+        // Need to consume the token too
+        jp.clearCurrentToken();
+        return result;
+// END _bind(JsonParser-JsonParser-Object-Object)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1477, 1479, 1482, 1483]
+Right editions: []
+Merged body: 
+// START _bindAndReadValues(JsonParser-JsonParser-Object-Object)//// LEFT //protected <T> MappingIterator<T> _bindAndReadValues(JsonParser p, Object valueToUpdate) throws IOException
+    {
+// LEFT //        _initForMultiRead(p);
+        p.nextToken();
+        DeserializationContext ctxt = createDeserializationContext(p, _config);
+// LEFT //        return _newIterator(_valueType, p, ctxt, 
+// LEFT //                _findRootDeserializer(ctxt, _valueType), true, _valueToUpdate);
+// END _bindAndReadValues(JsonParser-JsonParser-Object-Object)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_rev_left_817a4-rev_right_85282\src\main\java\com\fasterxml\jackson\databind\ObjectReader.java
+Different Spacing: false
+Left editions: [1200]
+Right editions: []
+Merged body: 
+// START readValues(JsonParser-JsonParser)//public <T> MappingIterator<T> readValues(JsonParser jp)
+        throws IOException, JsonProcessingException
+    {
+        DeserializationContext ctxt = createDeserializationContext(jp, _config);
+        // false -> do not close as caller gave parser instance
+// LEFT //        return _newIterator(_valueType, jp, ctxt,
+                _findRootDeserializer(ctxt, _valueType),
+                false, _valueToUpdate);
+// END readValues(JsonParser-JsonParser)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0cd97-fa1c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1cc1f-119dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_690bb-8d486
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_690bb_8d486\rev_rev_left_690bb-rev_right_8d486\src\main\java\com\fasterxml\jackson\databind\util\EnumValues.java
+Different Spacing: false
+Left editions: [47, 50, 52]
+Right editions: [43]
+Merged body: 
+// START constructFromName(MapperConfig<?>-MapperConfig<?>-Class<Enum<?>>-Class<Enum<?>>)//public static EnumValues constructFromName(MapperConfig<?> config, Class<Enum<?>> enumClass)
+    {
+// RIGHT //        // Enum types with per-instance sub-classes need special handling
+        Class<? extends Enum<?>> cls = ClassUtil.findEnumType(enumClass);
+        Enum<?>[] values = cls.getEnumConstants();
+        if (values != null) {
+// LEFT //            SerializableString[] textual = new SerializableString[values.length];
+            for (Enum<?> en : values) {
+                String value = config.getAnnotationIntrospector().findEnumValue(en);
+// LEFT //                textual[en.ordinal()] = config.compileString(value);
+            }
+// LEFT //            return new EnumValues(enumClass, textual);
+        }
+        throw new IllegalArgumentException("Can not determine enum constants for Class "+enumClass.getName());
+// END constructFromName(MapperConfig<?>-MapperConfig<?>-Class<Enum<?>>-Class<Enum<?>>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_accef-4bbda
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db187-c94ec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43a4a-ac21a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2451b-e1159
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2c9fa-34708
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_2c9fa_34708\rev_rev_left_2c9fa-rev_right_34708\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBuilder.java
+Different Spacing: false
+Left editions: [467, 468, 469, 470, 477]
+Right editions: []
+Merged body: 
+// START buildBuilderBased(JavaType-JavaType-String-String)//public JsonDeserializer<?> buildBuilderBased(JavaType valueType,
+    		String expBuildMethodName)
+    {
+        // First: validation; must have build method that returns compatible type
+        if (_buildMethod == null) {
+            throw new IllegalArgumentException("Builder class "+_beanDesc.getBeanClass().getName()
+                    +" does not have build method '"+expBuildMethodName+"()'");
+        }
+        // also: type of the method must be compatible
+        Class<?> rawBuildType = _buildMethod.getRawReturnType();
+// LEFT //        Class<?> rawValueType = valueType.getRawClass();
+// LEFT //        if ((rawBuildType != rawValueType)
+// LEFT //                && !rawBuildType.isAssignableFrom(rawValueType)
+// LEFT //                && !rawValueType.isAssignableFrom(rawBuildType)) {
+            throw new IllegalArgumentException("Build method '"+_buildMethod.getFullName()
+        			+" has bad return type ("+rawBuildType.getName()
+        			+"), not compatible with POJO type ("+valueType.getRawClass().getName()+")");
+        }
+        // And if so, we can try building the deserializer
+        Collection<SettableBeanProperty> props = _properties.values();
+// LEFT //        BeanPropertyMap propertyMap = BeanPropertyMap.construct(props, _caseInsensitivePropertyComparison);
+        propertyMap.assignIndexes();
+
+        boolean anyViews = !_defaultViewInclusion;
+
+        if (!anyViews) {
+            for (SettableBeanProperty prop : props) {
+                if (prop.hasViews()) {
+                    anyViews = true;
+                    break;
+                }
+            }
+        }
+
+        if (_objectIdReader != null) {
+            /* 18-Nov-2012, tatu: May or may not have annotations for id property;
+             *   but no easy access. But hard to see id property being optional,
+             *   so let's consider required at this point.
+             */
+            ObjectIdValueProperty prop = new ObjectIdValueProperty(_objectIdReader,
+                    PropertyMetadata.STD_REQUIRED);
+            propertyMap = propertyMap.withProperty(prop);
+        }
+        
+        return new BuilderBasedDeserializer(this,
+                _beanDesc, propertyMap, _backRefProperties, _ignorableProps, _ignoreAllUnknown,
+                anyViews);
+// END buildBuilderBased(JavaType-JavaType-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34708-309bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3455c-cb734
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb734-7dc9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3c2d-035b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a52e6-035b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_091fa-46d70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95437-47d51
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54b2a-7d5c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e71fd-059d3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30e8a-6dcb1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3ccf-db612
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1920-b02bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ab9a-f3d39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08efe-b0649
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30b45-7e2c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b979b-33fc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b02bf-c5a5f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41f8c-bcda4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0d08-f4ef3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5a5f-38588
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4ef3-7db1f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_f4ef3_7db1f\rev_rev_left_f4ef3-rev_right_7db1f\src\main\java\com\fasterxml\jackson\databind\introspect\AnnotatedClass.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START _addMemberMethods(Class<?>-Class<?>-AnnotatedMethodMap-AnnotatedMethodMap-Class<?>-Class<?>-AnnotatedMethodMap-AnnotatedMethodMap)//protected void _addMemberMethods(Class<?> cls, AnnotatedMethodMap methods,
+            Class<?> mixInCls, AnnotatedMethodMap mixIns)
+    {
+        // first, mixIns, since they have higher priority then class methods
+        if (mixInCls != null) {
+            _addMethodMixIns(cls, methods, mixInCls, mixIns);
+        }        
+        if (cls == null) { // just so caller need not check when passing super-class
+            return;
+        }
+        // then methods from the class itself
+        for (Method m : _findClassMethods(cls)) {
+            if (!_isIncludableMemberMethod(m)) {
+                continue;
+            }
+            AnnotatedMethod old = methods.find(m);
+            if (old == null) {
+                AnnotatedMethod newM = _constructMethod(m);
+                methods.add(newM);
+                // Ok, but is there a mix-in to connect now?
+                old = mixIns.remove(m);
+                if (old != null) {
+                    _addMixOvers(old.getAnnotated(), newM, false);
+                }
+            } else {
+                /* If sub-class already has the method, we only want to augment
+                 * annotations with entries that are not masked by sub-class.
+                 */
+                _addMixUnders(m, old);
+
+                /* 06-Jan-2010, tatu: [JACKSON-450] Except that if method we saw first is
+                 *   from an interface, and we now find a non-interface definition, we should
+                 *   use this method, but with combination of annotations.
+                 *   This helps (or rather, is essential) with JAXB annotations and
+                 *   may also result in faster method calls (interface calls are slightly
+                 *   costlier than regular method calls)
+                 */
+                if (old.getDeclaringClass().isInterface() && !m.getDeclaringClass().isInterface()) {
+                    methods.add(old.withMethod(m));
+                }
+            }
+        }
+// END _addMemberMethods(Class<?>-Class<?>-AnnotatedMethodMap-AnnotatedMethodMap-Class<?>-Class<?>-AnnotatedMethodMap-AnnotatedMethodMap)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_f4ef3_7db1f\rev_rev_left_f4ef3-rev_right_7db1f\src\main\java\com\fasterxml\jackson\databind\introspect\AnnotatedClass.java
+Different Spacing: false
+Left editions: [915, 917]
+Right editions: []
+Merged body: 
+// START _constructCreatorMethod(Method-Method)//protected AnnotatedMethod _constructCreatorMethod(Method m)
+    {
+        if (_annotationIntrospector == null) { // when annotation processing is disabled
+// LEFT //            return new AnnotatedMethod(this, m, _emptyAnnotationMap(), _emptyAnnotationMaps(m.getParameterTypes().length));
+        }
+// LEFT //        return new AnnotatedMethod(this, m, _collectRelevantAnnotations(m.getDeclaredAnnotations()),
+                                   _collectRelevantAnnotations(m.getParameterAnnotations()));
+// END _constructCreatorMethod(Method-Method)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_f4ef3_7db1f\rev_rev_left_f4ef3-rev_right_7db1f\src\main\java\com\fasterxml\jackson\databind\introspect\AnnotatedClass.java
+Different Spacing: false
+Left editions: []
+Right editions: [465]
+Merged body: 
+// START resolveCreators({FormalParametersInternal})//private void resolveCreators()
+    {
+        // Then see which constructors we have
+        List<AnnotatedConstructor> constructors = null;
+        Constructor<?>[] declaredCtors = _class.getDeclaredConstructors();
+        for (Constructor<?> ctor : declaredCtors) {
+            if (ctor.getParameterTypes().length == 0) {
+                _defaultConstructor = _constructConstructor(ctor, true);
+            } else {
+                if (constructors == null) {
+                    constructors = new ArrayList<AnnotatedConstructor>(Math.max(10, declaredCtors.length));
+                }
+                constructors.add(_constructConstructor(ctor, false));
+            }
+        }
+        if (constructors == null) {
+            _constructors = Collections.emptyList();
+        } else {
+            _constructors = constructors;
+        }
+        // and if need be, augment with mix-ins
+        if (_primaryMixIn != null) {
+            if (_defaultConstructor != null || !_constructors.isEmpty()) {
+                _addConstructorMixIns(_primaryMixIn);
+            }
+        }
+
+
+        /* And then... let's remove all constructors that are deemed
+         * ignorable after all annotations have been properly collapsed.
+         */
+        // 14-Feb-2011, tatu: AnnotationIntrospector is null if annotations not enabled; if so, can skip:
+        if (_annotationIntrospector != null) {
+            if (_defaultConstructor != null) {
+                if (_annotationIntrospector.hasIgnoreMarker(_defaultConstructor)) {
+                    _defaultConstructor = null;
+                }
+            }
+            if (_constructors != null) {
+                // count down to allow safe removal
+                for (int i = _constructors.size(); --i >= 0; ) {
+                    if (_annotationIntrospector.hasIgnoreMarker(_constructors.get(i))) {
+                        _constructors.remove(i);
+                    }
+                }
+            }
+        }
+        List<AnnotatedMethod> creatorMethods = null;
+        
+        // Then static methods which are potential factory methods
+// RIGHT //        for (Method m : _findClassMethods(_class)) {
+            if (!Modifier.isStatic(m.getModifiers())) {
+                continue;
+            }
+            // all factory methods are fine, as per [JACKSON-850]
+            //int argCount = m.getParameterTypes().length;
+            if (creatorMethods == null) {
+                creatorMethods = new ArrayList<AnnotatedMethod>(8);
+            }
+            creatorMethods.add(_constructCreatorMethod(m));
+        }
+        if (creatorMethods == null) {
+            _creatorMethods = Collections.emptyList();
+        } else {
+            _creatorMethods = creatorMethods;
+            // mix-ins to mix in?
+            if (_primaryMixIn != null) {
+                _addFactoryMixIns(_primaryMixIn);
+            }
+            // anything to ignore at this point?
+            if (_annotationIntrospector != null) {
+                // count down to allow safe removal
+                for (int i = _creatorMethods.size(); --i >= 0; ) {
+                    if (_annotationIntrospector.hasIgnoreMarker(_creatorMethods.get(i))) {
+                        _creatorMethods.remove(i);
+                    }
+                }
+            }
+        }
+        _creatorsResolved = true;
+// END resolveCreators({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47683-34043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_282cf-ba20f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_282cf_ba20f\rev_rev_left_282cf-rev_right_ba20f\src\main\java\com\fasterxml\jackson\databind\introspect\POJOPropertiesCollector.java
+Different Spacing: false
+Left editions: [560]
+Right editions: [541, 566, 567, 568, 570]
+Merged body: 
+// START _addCreatorParam(AnnotatedParameter-AnnotatedParameter)//protected void _addCreatorParam(AnnotatedParameter param)
+    {
+// RIGHT //        // JDK 8, paranamer, Scala can give implicit name
+        String impl = _annotationIntrospector.findImplicitPropertyName(param);
+        if (impl == null) {
+            impl = "";
+        }
+        PropertyName pn = _annotationIntrospector.findNameForDeserialization(param);
+        boolean expl = (pn != null && !pn.isEmpty());
+        if (!expl) {
+            if (impl.isEmpty()) {
+                /* Important: if neither implicit nor explicit name, can not make use
+                 * of this creator parameter -- may or may not be a problem, verified
+                 * at a later point.
+                 */
+                return;
+            }
+            // Also: if this occurs, there MUST be explicit annotation on creator itself
+            if (!_annotationIntrospector.hasCreatorAnnotation(param.getOwner())) {
+                return;
+            }
+// LEFT //            pn = PropertyName.construct(impl);
+        }
+
+        // shouldn't need to worry about @JsonIgnore, since creators only added
+        // if so annotated
+
+// RIGHT //        /* 13-May-2015, tatu: We should try to start with implicit name, similar to how
+// RIGHT //         *   fields and methods work; but unlike those, we don't necessarily have
+// RIGHT //         *   implicit name to use (pre-Java8 at least). So:
+         */
+// RIGHT //        POJOPropertyBuilder prop = (expl && impl.isEmpty()) ?  _property(pn) : _property(impl);
+        prop.addCtor(param, pn, expl, true, false);
+        _creatorProperties.add(prop);
+// END _addCreatorParam(AnnotatedParameter-AnnotatedParameter)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_282cf_ba20f\rev_rev_left_282cf-rev_right_ba20f\src\main\java\com\fasterxml\jackson\databind\introspect\POJOPropertiesCollector.java
+Different Spacing: false
+Left editions: [1006]
+Right editions: []
+Merged body: 
+// START _property(String-String)//protected POJOPropertyBuilder _property(String implName)
+    {
+        POJOPropertyBuilder prop = _properties.get(implName);
+        if (prop == null) {
+// LEFT //            prop = new POJOPropertyBuilder(PropertyName.construct(implName),
+                    _annotationIntrospector, _forSerialization);
+            _properties.put(implName, prop);
+        }
+        return prop;
+// END _property(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_282cf_ba20f\rev_rev_left_282cf-rev_right_ba20f\src\main\java\com\fasterxml\jackson\databind\introspect\POJOPropertiesCollector.java
+Different Spacing: false
+Left editions: [560]
+Right editions: [541, 566, 567, 568, 570]
+Merged body: 
+// START _addCreatorParam(AnnotatedParameter-AnnotatedParameter)//protected void _addCreatorParam(AnnotatedParameter param)
+    {
+// RIGHT //        // JDK 8, paranamer, Scala can give implicit name
+        String impl = _annotationIntrospector.findImplicitPropertyName(param);
+        if (impl == null) {
+            impl = "";
+        }
+        PropertyName pn = _annotationIntrospector.findNameForDeserialization(param);
+        boolean expl = (pn != null && !pn.isEmpty());
+        if (!expl) {
+            if (impl.isEmpty()) {
+                /* Important: if neither implicit nor explicit name, can not make use
+                 * of this creator parameter -- may or may not be a problem, verified
+                 * at a later point.
+                 */
+                return;
+            }
+            // Also: if this occurs, there MUST be explicit annotation on creator itself
+            if (!_annotationIntrospector.hasCreatorAnnotation(param.getOwner())) {
+                return;
+            }
+// LEFT //            pn = PropertyName.construct(impl);
+        }
+
+        // shouldn't need to worry about @JsonIgnore, since creators only added
+        // if so annotated
+
+// RIGHT //        /* 13-May-2015, tatu: We should try to start with implicit name, similar to how
+// RIGHT //         *   fields and methods work; but unlike those, we don't necessarily have
+// RIGHT //         *   implicit name to use (pre-Java8 at least). So:
+         */
+// RIGHT //        POJOPropertyBuilder prop = (expl && impl.isEmpty()) ?  _property(pn) : _property(impl);
+        prop.addCtor(param, pn, expl, true, false);
+        _creatorProperties.add(prop);
+// END _addCreatorParam(AnnotatedParameter-AnnotatedParameter)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d62e-4b9e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3da7c-a143c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb6dd-f92a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b9d1-e4129
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_467a8-80421
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4129-0e8d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2abf5-5f093
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_384e6-ea2c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72740-b9c83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04413-d4923
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d4923-3cbb7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3146-e9fa0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07876-2cfcb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c4b69-aed34
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3fdb-6f65b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad598-99fc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5f9d-b4547
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b359-6511c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38f27-d5865
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53902-9317e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37811-55c5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb9d1-b43e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72968-d542f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6172d-726b6
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [217, 230, 231, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 251, 253, 254, 255, 256, 257, 258, 259, 260, 261, 263, 264]
+Right editions: []
+Merged body: 
+// START deserialize(JsonParser-JsonParser-DeserializationContext-DeserializationContext-Object-Object)//@Override
+// LEFT //    public Object deserialize(JsonParser p, DeserializationContext ctxt, Object bean) throws IOException
+    {
+        // [databind#631]: Assign current value, to be accessible by custom serializers
+        p.setCurrentValue(bean);
+        if (_injectables != null) {
+            injectValues(ctxt, bean);
+        }
+        if (_unwrappedPropertyHandler != null) {
+            return deserializeWithUnwrapped(p, ctxt, bean);
+        }
+        if (_externalTypeIdHandler != null) {
+            return deserializeWithExternalTypeId(p, ctxt, bean);
+        }
+// LEFT //        String propName;
+// LEFT //
+        // 23-Mar-2010, tatu: In some cases, we start with full JSON object too...
+// LEFT //        if (p.isExpectedStartObjectToken()) {
+// LEFT //            propName = p.nextFieldName();
+// LEFT //            if (propName == null) {
+// LEFT //                return bean;
+// LEFT //            }
+// LEFT //        } else {
+// LEFT //            if (p.hasTokenId(JsonTokenId.ID_FIELD_NAME)) {
+// LEFT //                propName = p.getCurrentName();
+// LEFT //            } else {
+// LEFT //                return bean;
+// LEFT //            }
+        }
+        if (_needViewProcesing) {
+            Class<?> view = ctxt.getActiveView();
+            if (view != null) {
+                return deserializeWithView(p, ctxt, bean, view);
+            }
+        }
+// LEFT //        do {
+            p.nextToken();
+// LEFT //            SettableBeanProperty prop = _beanProperties.find(propName);
+// LEFT //
+// LEFT //            if (prop != null) { // normal case
+// LEFT //                try {
+// LEFT //                    prop.deserializeAndSet(p, ctxt, bean);
+// LEFT //                } catch (Exception e) {
+// LEFT //                    wrapAndThrow(e, bean, propName, ctxt);
+// LEFT //                }
+// LEFT //                continue;
+            }
+// LEFT //            handleUnknownVanilla(p, ctxt, bean, propName);
+// LEFT //        } while ((propName = p.nextFieldName()) != null);
+        return bean;
+// END deserialize(JsonParser-JsonParser-DeserializationContext-DeserializationContext-Object-Object)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [416]
+Right editions: [422, 450, 451, 462, 464, 465, 466]
+Merged body: 
+// START _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@Override
+    @SuppressWarnings("resource")
+    protected Object _deserializeUsingPropertyBased(final JsonParser p, final DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        // 04-Jan-2010, tatu: May need to collect unknown properties for polymorphic cases
+        TokenBuffer unknown = null;
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+// LEFT //                if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+                    p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+// RIGHT //                        wrapInstantiationProblem(e, ctxt);
+                        bean = null; // never gets here
+                    }
+                    if (bean == null) {
+                        throw ctxt.instantiationException(_beanType.getRawClass(), "JSON Creator returned null");
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+
+                    //  polymorphic?
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        return handlePolymorphic(p, ctxt, bean, unknown);
+                    }
+                    if (unknown != null) { // nope, just extra unknown stuff...
+                        bean = handleUnknownProperties(ctxt, bean, unknown);
+                    }
+                    // or just clean?
+                    return deserialize(p, ctxt, bean);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+// RIGHT //                buffer.bufferProperty(prop,
+// RIGHT //                        deserializeWithErrorWrapping(prop, p, ctxt, propName));
+                continue;
+            }
+            // As per [JACKSON-313], things marked as ignorable should not be
+            // passed to any setter
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            // "any property"?
+            if (_anySetter != null) {
+// RIGHT //                try {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+// RIGHT //                } catch (Exception e) {
+// RIGHT //                    wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+// RIGHT //                }
+                continue;
+            }
+            // Ok then, let's collect the whole field; name and value
+            if (unknown == null) {
+                unknown = new TokenBuffer(p);
+            }
+            unknown.writeFieldName(propName);
+            unknown.copyCurrentStructure(p);
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            bean = null; // never gets here
+        }
+        if (unknown != null) {
+            // polymorphic?
+            if (bean.getClass() != _beanType.getRawClass()) {
+                return handlePolymorphic(null, ctxt, bean, unknown);
+            }
+            // no, just some extra unknown properties
+            return handleUnknownProperties(ctxt, bean, unknown);
+        }
+        return bean;
+// END _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [416]
+Right editions: [422, 450, 451, 462, 464, 465, 466]
+Merged body: 
+// START _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@Override
+    @SuppressWarnings("resource")
+    protected Object _deserializeUsingPropertyBased(final JsonParser p, final DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        // 04-Jan-2010, tatu: May need to collect unknown properties for polymorphic cases
+        TokenBuffer unknown = null;
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+// LEFT //                if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+                    p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+// RIGHT //                        wrapInstantiationProblem(e, ctxt);
+                        bean = null; // never gets here
+                    }
+                    if (bean == null) {
+                        throw ctxt.instantiationException(_beanType.getRawClass(), "JSON Creator returned null");
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+
+                    //  polymorphic?
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        return handlePolymorphic(p, ctxt, bean, unknown);
+                    }
+                    if (unknown != null) { // nope, just extra unknown stuff...
+                        bean = handleUnknownProperties(ctxt, bean, unknown);
+                    }
+                    // or just clean?
+                    return deserialize(p, ctxt, bean);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+// RIGHT //                buffer.bufferProperty(prop,
+// RIGHT //                        deserializeWithErrorWrapping(prop, p, ctxt, propName));
+                continue;
+            }
+            // As per [JACKSON-313], things marked as ignorable should not be
+            // passed to any setter
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            // "any property"?
+            if (_anySetter != null) {
+// RIGHT //                try {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+// RIGHT //                } catch (Exception e) {
+// RIGHT //                    wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+// RIGHT //                }
+                continue;
+            }
+            // Ok then, let's collect the whole field; name and value
+            if (unknown == null) {
+                unknown = new TokenBuffer(p);
+            }
+            unknown.writeFieldName(propName);
+            unknown.copyCurrentStructure(p);
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            bean = null; // never gets here
+        }
+        if (unknown != null) {
+            // polymorphic?
+            if (bean.getClass() != _beanType.getRawClass()) {
+                return handlePolymorphic(null, ctxt, bean, unknown);
+            }
+            // no, just some extra unknown properties
+            return handleUnknownProperties(ctxt, bean, unknown);
+        }
+        return bean;
+// END _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [697]
+Right editions: [703, 732, 733, 736, 748, 750, 751, 752]
+Merged body: 
+// START deserializeUsingPropertyBasedWithUnwrapped(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@SuppressWarnings("resource")
+    protected Object deserializeUsingPropertyBasedWithUnwrapped(JsonParser p, DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        TokenBuffer tokens = new TokenBuffer(p);
+        tokens.writeStartObject();
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+// LEFT //                if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+                    t = p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+// RIGHT //                        wrapInstantiationProblem(e, ctxt);
+                        continue; // never gets here
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+                    // if so, need to copy all remaining tokens into buffer
+                    while (t == JsonToken.FIELD_NAME) {
+                        p.nextToken(); // to skip name
+                        tokens.copyCurrentStructure(p);
+                        t = p.nextToken();
+                    }
+                    tokens.writeEndObject();
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        // !!! 08-Jul-2011, tatu: Could probably support; but for now
+                        //   it's too complicated, so bail out
+                        tokens.close();
+                        throw ctxt.mappingException("Can not create polymorphic instances with unwrapped values");
+                    }
+                    return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+// RIGHT //                buffer.bufferProperty(prop,
+// RIGHT //                        deserializeWithErrorWrapping(prop, p, ctxt, propName));
+                continue;
+            }
+// RIGHT //
+            /* As per [JACKSON-313], things marked as ignorable should not be
+             * passed to any setter
+             */
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            tokens.writeFieldName(propName);
+            tokens.copyCurrentStructure(p);
+            // "any property"?
+            if (_anySetter != null) {
+// RIGHT //                try {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+// RIGHT //                } catch (Exception e) {
+// RIGHT //                    wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+// RIGHT //                }
+            }
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            return null; // never gets here
+        }
+        return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);
+// END deserializeUsingPropertyBasedWithUnwrapped(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [592, 593, 594]
+Right editions: []
+Merged body: 
+// START deserializeWithUnwrapped(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@SuppressWarnings("resource")
+    protected Object deserializeWithUnwrapped(JsonParser p, DeserializationContext ctxt)
+        throws IOException
+    {
+        if (_delegateDeserializer != null) {
+            return _valueInstantiator.createUsingDelegate(ctxt, _delegateDeserializer.deserialize(p, ctxt));
+        }
+        if (_propertyBasedCreator != null) {
+            return deserializeUsingPropertyBasedWithUnwrapped(p, ctxt);
+        }
+        TokenBuffer tokens = new TokenBuffer(p);
+        tokens.writeStartObject();
+        final Object bean = _valueInstantiator.createUsingDefault(ctxt);
+
+        // [databind#631]: Assign current value, to be accessible by custom serializers
+        p.setCurrentValue(bean);
+
+        if (_injectables != null) {
+            injectValues(ctxt, bean);
+        }
+        final Class<?> activeView = _needViewProcesing ? ctxt.getActiveView() : null;
+// LEFT //        String propName = p.hasTokenId(JsonTokenId.ID_FIELD_NAME) ? p.getCurrentName() : null;
+// LEFT //
+// LEFT //        for (; propName != null; propName = p.nextFieldName()) {
+            p.nextToken();
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) { // normal case
+                if (activeView != null && !prop.visibleInView(activeView)) {
+                    p.skipChildren();
+                    continue;
+                }
+                try {
+                    prop.deserializeAndSet(p, ctxt, bean);
+                } catch (Exception e) {
+                    wrapAndThrow(e, bean, propName, ctxt);
+                }
+                continue;
+            }
+            // ignorable things should be ignored
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, bean, propName);
+                continue;
+            }
+            // but... others should be passed to unwrapped property deserializers
+            tokens.writeFieldName(propName);
+            tokens.copyCurrentStructure(p);
+            // how about any setter? We'll get copies but...
+            if (_anySetter != null) {
+                try {
+                    _anySetter.deserializeAndSet(p, ctxt, bean, propName);
+                } catch (Exception e) {
+                    wrapAndThrow(e, bean, propName, ctxt);
+                }
+                continue;
+            }
+        }
+        tokens.writeEndObject();
+        _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);
+        return bean;
+// END deserializeWithUnwrapped(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08345-46a99
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_817d8-41be8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c52fb-6cf2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_945c5-a23ff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8a40-1ef35
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fefcf-4312a
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: [676, 683, 689, 693]
+Right editions: []
+Merged body: 
+// START _serializeWithObjectId(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//protected final void _serializeWithObjectId(Object bean,
+// LEFT //            JsonGenerator gen, SerializerProvider provider,
+            TypeSerializer typeSer)
+        throws IOException, JsonGenerationException
+    {
+        final ObjectIdWriter w = _objectIdWriter;
+        WritableObjectId objectId = provider.findObjectId(bean, w.generator);
+        // If possible, write as id already
+// LEFT //        if (objectId.writeAsId(gen, provider, w)) {
+            return;
+        }
+        // If not, need to inject the id:
+        Object id = objectId.generateId(bean);
+        if (w.alwaysAsId) {
+// LEFT //            w.serializer.serialize(id, gen, provider);
+            return;
+        }
+
+// LEFT //        _serializeObjectId(bean, gen, provider, typeSer, objectId);
+// END _serializeWithObjectId(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [628, 629]
+Merged body: 
+// START serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//@Override
+    public void serializeWithType(Object bean, JsonGenerator gen,
+            SerializerProvider provider, TypeSerializer typeSer)
+        throws IOException
+    {
+        if (_objectIdWriter != null) {
+            _serializeWithObjectId(bean, gen, provider, typeSer);
+            return;
+        }
+
+        String typeStr = (_typeId == null) ? null : _customTypeId(bean);
+        if (typeStr == null) {
+            typeSer.writeTypePrefixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypePrefixForObject(bean, gen, typeStr);
+        }
+// RIGHT //        // [databind#631]: Assign current value, to be accessible by custom serializers
+// RIGHT //        gen.setCurrentValue(bean);
+        if (_propertyFilterId != null) {
+            serializeFieldsFiltered(bean, gen, provider);
+        } else {
+            serializeFields(bean, gen, provider);
+        }
+        if (typeStr == null) {
+            typeSer.writeTypeSuffixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypeSuffixForObject(bean, gen, typeStr);
+        }
+// END serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: [739, 753, 757]
+Right editions: []
+Merged body: 
+// START serializeFields(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//// LEFT //protected void serializeFields(Object bean, JsonGenerator gen, SerializerProvider provider)
+        throws IOException, JsonGenerationException
+    {
+        final BeanPropertyWriter[] props;
+        if (_filteredProps != null && provider.getActiveView() != null) {
+            props = _filteredProps;
+        } else {
+            props = _props;
+        }
+        int i = 0;
+        try {
+            for (final int len = props.length; i < len; ++i) {
+                BeanPropertyWriter prop = props[i];
+                if (prop != null) { // can have nulls in filtered list
+// LEFT //                    prop.serializeAsField(bean, gen, provider);
+                }
+            }
+            if (_anyGetterWriter != null) {
+// LEFT //                _anyGetterWriter.getAndSerialize(bean, gen, provider);
+            }
+        } catch (Exception e) {
+            String name = (i == props.length) ? "[anySetter]" : props[i].getName();
+            wrapAndThrow(provider, e, bean, name);
+        } catch (StackOverflowError e) {
+            /* 04-Sep-2009, tatu: Dealing with this is tricky, since we do not
+             *   have many stack frames to spare... just one or two; can't
+             *   make many calls.
+             */
+            JsonMappingException mapE = new JsonMappingException("Infinite recursion (StackOverflowError)", e);
+            String name = (i == props.length) ? "[anySetter]" : props[i].getName();
+            mapE.prependPath(new JsonMappingException.Reference(bean, name));
+            throw mapE;
+        }
+// END serializeFields(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [628, 629]
+Merged body: 
+// START serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//@Override
+    public void serializeWithType(Object bean, JsonGenerator gen,
+            SerializerProvider provider, TypeSerializer typeSer)
+        throws IOException
+    {
+        if (_objectIdWriter != null) {
+            _serializeWithObjectId(bean, gen, provider, typeSer);
+            return;
+        }
+
+        String typeStr = (_typeId == null) ? null : _customTypeId(bean);
+        if (typeStr == null) {
+            typeSer.writeTypePrefixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypePrefixForObject(bean, gen, typeStr);
+        }
+// RIGHT //        // [databind#631]: Assign current value, to be accessible by custom serializers
+// RIGHT //        gen.setCurrentValue(bean);
+        if (_propertyFilterId != null) {
+            serializeFieldsFiltered(bean, gen, provider);
+        } else {
+            serializeFields(bean, gen, provider);
+        }
+        if (typeStr == null) {
+            typeSer.writeTypeSuffixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypeSuffixForObject(bean, gen, typeStr);
+        }
+// END serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: [780, 796, 804, 808]
+Right editions: []
+Merged body: 
+// START serializeFieldsFiltered(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//// LEFT //protected void serializeFieldsFiltered(Object bean, JsonGenerator gen,
+            SerializerProvider provider)
+        throws IOException, JsonGenerationException
+    {
+        /* note: almost verbatim copy of "serializeFields"; copied (instead of merged)
+         * so that old method need not add check for existence of filter.
+         */
+        final BeanPropertyWriter[] props;
+        if (_filteredProps != null && provider.getActiveView() != null) {
+            props = _filteredProps;
+        } else {
+            props = _props;
+        }
+        final PropertyFilter filter = findPropertyFilter(provider, _propertyFilterId, bean);
+        // better also allow missing filter actually..
+        if (filter == null) {
+// LEFT //            serializeFields(bean, gen, provider);
+            return;
+        }
+        int i = 0;
+        try {
+            for (final int len = props.length; i < len; ++i) {
+                BeanPropertyWriter prop = props[i];
+                if (prop != null) { // can have nulls in filtered list
+// LEFT //                    filter.serializeAsField(bean, gen, provider, prop);
+                }
+            }
+            if (_anyGetterWriter != null) {
+// LEFT //                _anyGetterWriter.getAndFilter(bean, gen, provider, filter);
+            }
+        } catch (Exception e) {
+            String name = (i == props.length) ? "[anySetter]" : props[i].getName();
+            wrapAndThrow(provider, e, bean, name);
+        } catch (StackOverflowError e) {
+            JsonMappingException mapE = new JsonMappingException("Infinite recursion (StackOverflowError)", e);
+            String name = (i == props.length) ? "[anySetter]" : props[i].getName();
+            mapE.prependPath(new JsonMappingException.Reference(bean, name));
+            throw mapE;
+        }
+// END serializeFieldsFiltered(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_rev_left_fefcf-rev_right_4312a\src\main\java\com\fasterxml\jackson\databind\ser\std\BeanSerializerBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [628, 629]
+Merged body: 
+// START serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//@Override
+    public void serializeWithType(Object bean, JsonGenerator gen,
+            SerializerProvider provider, TypeSerializer typeSer)
+        throws IOException
+    {
+        if (_objectIdWriter != null) {
+            _serializeWithObjectId(bean, gen, provider, typeSer);
+            return;
+        }
+
+        String typeStr = (_typeId == null) ? null : _customTypeId(bean);
+        if (typeStr == null) {
+            typeSer.writeTypePrefixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypePrefixForObject(bean, gen, typeStr);
+        }
+// RIGHT //        // [databind#631]: Assign current value, to be accessible by custom serializers
+// RIGHT //        gen.setCurrentValue(bean);
+        if (_propertyFilterId != null) {
+            serializeFieldsFiltered(bean, gen, provider);
+        } else {
+            serializeFields(bean, gen, provider);
+        }
+        if (typeStr == null) {
+            typeSer.writeTypeSuffixForObject(bean, gen);
+        } else {
+            typeSer.writeCustomTypeSuffixForObject(bean, gen, typeStr);
+        }
+// END serializeWithType(Object-Object-JsonGenerator-JsonGenerator-SerializerProvider-SerializerProvider-TypeSerializer-TypeSerializer)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d2b2-4d4dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e77e9-2e364
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_203fc-73f54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12918-2ea6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72e3e-1fb5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d5c6-a7b26
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06e37-f4a27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77f8e-b6a26
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df8b4-7d45f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5b8f-51839
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9352-af224
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_62c80-32a52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_090da-f2f61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7fa1-33ca8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_642af-344b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e7b69-6aee8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32321-c73b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9741a-147dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49063-ca42a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15a86-e9ea5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76985-1eb49
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_76985_1eb49\rev_rev_left_76985-rev_right_1eb49\src\main\java\com\fasterxml\jackson\databind\type\TypeFactory.java
+Different Spacing: false
+Left editions: [1194, 1196]
+Right editions: [1136, 1137, 1162, 1163, 1164, 1179, 1180, 1181, 1182, 1183]
+Merged body: 
+// START _fromParamType(ParameterizedType-ParameterizedType-TypeBindings-TypeBindings)//protected JavaType _fromParamType(ParameterizedType type, TypeBindings context)
+    {
+        /* First: what is the actual base type? One odd thing
+         * is that 'getRawType' returns Type, not Class<?> as
+         * one might expect. But let's assume it is always of
+         * type Class: if not, need to add more code to resolve
+         * it to Class.
+         */
+        Class<?> rawType = (Class<?>) type.getRawType();
+        Type[] args = type.getActualTypeArguments();
+        int paramCount = (args == null) ? 0 : args.length;
+
+        JavaType[] pt;
+        
+        if (paramCount == 0) {
+            pt = NO_TYPES;
+        } else {
+            pt = new JavaType[paramCount];
+            for (int i = 0; i < paramCount; ++i) {
+                pt[i] = _constructType(args[i], context);
+            }
+        }
+
+        // Ok: Map or Collection?
+        if (Map.class.isAssignableFrom(rawType)) {
+            // 19-Mar-2015, tatu: Looks like 2nd arg ought to be Map.class, but that causes fails
+            JavaType subtype = constructSimpleType(rawType, rawType, pt);
+// RIGHT //            // 23-Sep-2015, tatu: and why do we not pass 3rd arg of 'context'? Won't help, it seems,
+// RIGHT //            //   plus causes other issues. Sigh.
+            JavaType[] mapParams = findTypeParameters(subtype, Map.class);
+            if (mapParams.length != 2) {
+                throw new IllegalArgumentException("Could not find 2 type parameters for Map class "+rawType.getName()+" (found "+mapParams.length+")");
+            }
+            return MapType.construct(rawType, mapParams[0], mapParams[1]);
+        }
+        if (Collection.class.isAssignableFrom(rawType)) {
+            // 19-Mar-2015, tatu: Looks like 2nd arg ought to be Collection.class, but that causes fails
+            JavaType subtype = constructSimpleType(rawType, rawType, pt);
+            JavaType[] collectionParams = findTypeParameters(subtype, Collection.class);
+            if (collectionParams.length != 1) {
+                throw new IllegalArgumentException("Could not find 1 type parameter for Collection class "+rawType.getName()+" (found "+collectionParams.length+")");
+            }
+            return CollectionType.construct(rawType, collectionParams[0]);
+        }
+        // 28-Apr-2015, tatu: New class of types, referential...
+        if (AtomicReference.class.isAssignableFrom(rawType)) {
+            JavaType rt = null;
+
+            if (rawType == AtomicReference.class) {
+                if (paramCount == 1) {
+                    rt = pt[0];
+                }
+            } else {
+// RIGHT //                JavaType subtype = constructSimpleType(rawType, rawType, pt);
+// RIGHT //                JavaType[] pts = findTypeParameters(subtype, AtomicReference.class, context);
+// RIGHT //                if (pts != null && pts.length == 1) {
+                    rt = pts[0];
+                }
+            }
+            return constructReferenceType(rawType, (rt == null) ? unknownType() : rt);
+        }
+        if (Map.Entry.class.isAssignableFrom(rawType)) {
+            JavaType kt = null, vt = null;
+
+            if (rawType == Map.Entry.class) {
+                if (paramCount == 2) {
+                    kt = pt[0];
+                    vt = pt[1];
+                }
+            } else {
+// RIGHT //                // 23-Sep-2015, tatu: Must be careful here; type resolution can NOT be done
+// RIGHT //                //    directly quite yet. Instead, need to do indirectly...
+// RIGHT //                JavaType subtype = constructSimpleType(rawType, rawType, pt);
+// RIGHT //                JavaType[] pts = findTypeParameters(subtype, Map.Entry.class, context);
+// RIGHT //                if (pts != null && pts.length == 2) {
+                    kt = pts[0];
+                    vt = pts[1];
+                }
+            }
+            return constructSimpleType(rawType, Map.Entry.class, new JavaType[] {
+                (kt == null) ? unknownType() : kt,
+                (vt == null) ? unknownType() : vt });
+        }
+        
+        if (paramCount == 0) { // no generics
+// LEFT //            return _constructSimple(rawType);
+        }
+// LEFT //        return constructSimpleType(rawType, rawType, pt);
+// END _fromParamType(ParameterizedType-ParameterizedType-TypeBindings-TypeBindings)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6721d-e258e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3975a-b0497
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_3975a_b0497\rev_rev_left_3975a-rev_right_b0497\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: [168]
+Right editions: [160, 161]
+Merged body: 
+// START deserialize(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@Override
+    public Object deserialize(JsonParser p, DeserializationContext ctxt) throws IOException
+    {
+        // common case first
+        if (p.isExpectedStartObjectToken()) {
+            if (_vanillaProcessing) {
+                return vanillaDeserialize(p, ctxt, p.nextToken());
+            }
+// RIGHT //            // 23-Sep-2015, tatu: This is wrong at some many levels, but for now... it is
+// RIGHT //            //    what it is, including "expected behavior".
+            p.nextToken();
+            if (_objectIdReader != null) {
+                return deserializeWithObjectId(p, ctxt);
+            }
+            return deserializeFromObject(p, ctxt);
+        }
+// LEFT //        return _deserializeOther(p, ctxt, p.getCurrentToken());
+// END deserialize(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98abe-8574e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56121-78621
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_313a7-d2121
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b51dc-812d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5aa2f-7d713
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4f71-2eafc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8aa95-80131
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fbb25-e2736
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6ae1-ed7d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90da5-2a980
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90da5-41613
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb8eb-30a3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c1ba-795dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1e06-9566e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9566e-bce67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4bf5d-04cb0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25a37-abd50
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_25a37_abd50\rev_rev_left_25a37-rev_right_abd50\src\main\java\com\fasterxml\jackson\databind\util\ISO8601Utils.java
+Different Spacing: false
+Left editions: [342, 349]
+Right editions: []
+Merged body: 
+// START parseInt(String-String-int-int-int-int)//private static int parseInt(String value, int beginIndex, int endIndex) throws NumberFormatException {
+        if (beginIndex < 0 || endIndex > value.length() || beginIndex > endIndex) {
+            throw new NumberFormatException(value);
+        }
+        // use same logic as in Integer.parseInt() but less generic we're not supporting negative values
+        int i = beginIndex;
+        int result = 0;
+        int digit;
+        if (i < endIndex) {
+            digit = Character.digit(value.charAt(i++), 10);
+            if (digit < 0) {
+// LEFT //                throw new NumberFormatException("Invalid number: " + value.substring(beginIndex, endIndex));
+            }
+            result = -digit;
+        }
+        while (i < endIndex) {
+            digit = Character.digit(value.charAt(i++), 10);
+            if (digit < 0) {
+// LEFT //                throw new NumberFormatException("Invalid number: " + value.substring(beginIndex, endIndex));
+            }
+            result *= 10;
+            result -= digit;
+        }
+        return -result;
+// END parseInt(String-String-int-int-int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_25a37_abd50\rev_rev_left_25a37-rev_right_abd50\src\main\java\com\fasterxml\jackson\databind\util\ISO8601Utils.java
+Different Spacing: false
+Left editions: []
+Right editions: [222, 225, 226, 227, 228, 229, 230]
+Merged body: 
+// START parse(String-String-ParsePosition-ParsePosition)//public static Date parse(String date, ParsePosition pos) throws ParseException {
+        Exception fail = null;
+        try {
+            int offset = pos.getIndex();
+
+            // extract year
+            int year = parseInt(date, offset, offset += 4);
+            if (checkOffset(date, offset, '-')) {
+                offset += 1;
+            }
+
+            // extract month
+            int month = parseInt(date, offset, offset += 2);
+            if (checkOffset(date, offset, '-')) {
+                offset += 1;
+            }
+
+            // extract day
+            int day = parseInt(date, offset, offset += 2);
+            // default time value
+            int hour = 0;
+            int minutes = 0;
+            int seconds = 0;
+            int milliseconds = 0; // always use 0 otherwise returned date will include millis of current time
+
+            // if the value has no time component (and no time zone), we are done
+            boolean hasT = checkOffset(date, offset, 'T');
+            
+            if (!hasT && (date.length() <= offset)) {
+                Calendar calendar = new GregorianCalendar(year, month - 1, day);
+
+                pos.setIndex(offset);
+                return calendar.getTime();
+            }
+
+            if (hasT) {
+
+                // extract hours, minutes, seconds and milliseconds
+                hour = parseInt(date, offset += 1, offset += 2);
+                if (checkOffset(date, offset, ':')) {
+                    offset += 1;
+                }
+
+                minutes = parseInt(date, offset, offset += 2);
+                if (checkOffset(date, offset, ':')) {
+                    offset += 1;
+                }
+                // second and milliseconds can be optional
+                if (date.length() > offset) {
+                    char c = date.charAt(offset);
+                    if (c != 'Z' && c != '+' && c != '-') {
+                        seconds = parseInt(date, offset, offset += 2);
+// RIGHT //                        if (seconds > 59 && seconds < 63) seconds = 59; // truncate up to 3 leap seconds
+                        // milliseconds can be optional in the format
+                        if (checkOffset(date, offset, '.')) {
+// RIGHT //                            offset += 1;
+// RIGHT //                            int endOffset = indexOfNonDigit(date, offset + 1); // assume at least one digit
+// RIGHT //                            int parseEndOffset = Math.min(endOffset, offset + 3); // parse up to 3 digits
+// RIGHT //                            int fraction = parseInt(date, offset, parseEndOffset);
+// RIGHT //                            milliseconds = (int) (Math.pow(10, 3 - (parseEndOffset - offset)) * fraction);
+// RIGHT //                            offset = endOffset;
+                        }
+                    }
+                }
+            }
+
+            // extract timezone
+            if (date.length() <= offset) {
+                throw new IllegalArgumentException("No time zone indicator");
+            }
+
+            TimeZone timezone = null;
+            char timezoneIndicator = date.charAt(offset);
+
+            if (timezoneIndicator == 'Z') {
+                timezone = TIMEZONE_Z;
+                offset += 1;
+            } else if (timezoneIndicator == '+' || timezoneIndicator == '-') {
+                String timezoneOffset = date.substring(offset);
+                offset += timezoneOffset.length();
+                // 18-Jun-2015, tatu: Minor simplification, skip offset of "+0000"/"+00:00"
+                if ("+0000".equals(timezoneOffset) || "+00:00".equals(timezoneOffset)) {
+                    timezone = TIMEZONE_Z;
+                } else {
+                    // 18-Jun-2015, tatu: Looks like offsets only work from GMT, not UTC...
+                    //    not sure why, but it is what it is.
+                    String timezoneId = GMT_ID + timezoneOffset;
+                    timezone = TimeZone.getTimeZone(timezoneId);
+                    String act = timezone.getID();
+                    if (!act.equals(timezoneId)) {
+                        /* 22-Jan-2015, tatu: Looks like canonical version has colons, but we may be given
+                         *    one without. If so, don't sweat.
+                         *   Yes, very inefficient. Hopefully not hit often.
+                         *   If it becomes a perf problem, add 'loose' comparison instead.
+                         */
+                        String cleaned = act.replace(":", "");
+                        if (!cleaned.equals(timezoneId)) {
+                            throw new IndexOutOfBoundsException("Mismatching time zone indicator: "+timezoneId+" given, resolves to "
+                                    +timezone.getID());
+                        }
+                    }
+                }
+            } else {
+                throw new IndexOutOfBoundsException("Invalid time zone indicator '" + timezoneIndicator+"'");
+            }
+
+            Calendar calendar = new GregorianCalendar(timezone);
+            calendar.setLenient(false);
+            calendar.set(Calendar.YEAR, year);
+            calendar.set(Calendar.MONTH, month - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            calendar.set(Calendar.HOUR_OF_DAY, hour);
+            calendar.set(Calendar.MINUTE, minutes);
+            calendar.set(Calendar.SECOND, seconds);
+            calendar.set(Calendar.MILLISECOND, milliseconds);
+
+            pos.setIndex(offset);
+            return calendar.getTime();
+            // If we get a ParseException it'll already have the right message/offset.
+            // Other exception types can convert here.
+        } catch (IndexOutOfBoundsException e) {
+            fail = e;
+        } catch (NumberFormatException e) {
+            fail = e;
+        } catch (IllegalArgumentException e) {
+            fail = e;
+        }
+        String input = (date == null) ? null : ('"' + date + "'");
+        String msg = fail.getMessage();
+        if (msg == null || msg.isEmpty()) {
+            msg = "("+fail.getClass().getName()+")";
+        }
+        ParseException ex = new ParseException("Failed to parse date [" + input + "]: " + msg, pos.getIndex());
+        ex.initCause(fail);
+        throw ex;
+// END parse(String-String-ParsePosition-ParsePosition)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2d1b-e1426
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bfd25-30b54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13b69-5ae6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bdf60-16aa3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e592f-ca6c3
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Different Spacing: false
+Left editions: []
+Right editions: [476]
+Merged body: 
+// START _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//@Override
+    @SuppressWarnings("resource")
+    protected Object _deserializeUsingPropertyBased(final JsonParser p, final DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        // 04-Jan-2010, tatu: May need to collect unknown properties for polymorphic cases
+        TokenBuffer unknown = null;
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+                if (buffer.assignParameter(creatorProp,
+                        _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+                    p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+                        wrapInstantiationProblem(e, ctxt);
+                        bean = null; // never gets here
+                    }
+                    if (bean == null) {
+                        throw ctxt.instantiationException(_beanType.getRawClass(), "JSON Creator returned null");
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+
+                    //  polymorphic?
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        return handlePolymorphic(p, ctxt, bean, unknown);
+                    }
+                    if (unknown != null) { // nope, just extra unknown stuff...
+                        bean = handleUnknownProperties(ctxt, bean, unknown);
+                    }
+                    // or just clean?
+                    return deserialize(p, ctxt, bean);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+                buffer.bufferProperty(prop, _deserializeWithErrorWrapping(p, ctxt, prop));
+                continue;
+            }
+            // As per [JACKSON-313], things marked as ignorable should not be
+            // passed to any setter
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            // "any property"?
+            if (_anySetter != null) {
+                try {
+                    buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+                } catch (Exception e) {
+                    wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+                }
+                continue;
+            }
+            // Ok then, let's collect the whole field; name and value
+            if (unknown == null) {
+// RIGHT //                unknown = new TokenBuffer(p, ctxt);
+            }
+            unknown.writeFieldName(propName);
+            unknown.copyCurrentStructure(p);
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            bean = null; // never gets here
+        }
+        if (unknown != null) {
+            // polymorphic?
+            if (bean.getClass() != _beanType.getRawClass()) {
+                return handlePolymorphic(null, ctxt, bean, unknown);
+            }
+            // no, just some extra unknown properties
+            return handleUnknownProperties(ctxt, bean, unknown);
+        }
+        return bean;
+// END _deserializeUsingPropertyBased(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBase.java
+Different Spacing: false
+Left editions: [1231, 1236, 1239, 1243, 1246]
+Right editions: []
+Merged body: 
+// START deserializeFromObjectUsingNonDefault(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//// LEFT //protected Object deserializeFromObjectUsingNonDefault(JsonParser p,
+            DeserializationContext ctxt) throws IOException
+    {
+        if (_delegateDeserializer != null) {
+            return _valueInstantiator.createUsingDelegate(ctxt,
+// LEFT //                    _delegateDeserializer.deserialize(p, ctxt));
+        }
+        if (_propertyBasedCreator != null) {
+// LEFT //            return _deserializeUsingPropertyBased(p, ctxt);
+        }
+        // should only occur for abstract types...
+        if (_beanType.isAbstract()) {
+// LEFT //            throw JsonMappingException.from(p, "Can not instantiate abstract type "+_beanType
+                    +" (need to add/enable type information?)");
+        }
+// LEFT //        throw JsonMappingException.from(p, "No suitable constructor found for type "
+                +_beanType+": can not instantiate from JSON object (missing default constructor or creator, or perhaps need to add/enable type information?)");
+// END deserializeFromObjectUsingNonDefault(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\ObjectMapper.java
+Different Spacing: false
+Left editions: [4272, 4273]
+Right editions: []
+Merged body: 
+// START _initForReading(JsonParser-JsonParser)//protected JsonToken _initForReading(JsonParser p) throws IOException
+    {
+        _deserializationConfig.initialize(p); // since 2.5
+
+        /* First: must point to a token; if not pointing to one, advance.
+         * This occurs before first read from JsonParser, as well as
+         * after clearing of current token.
+         */
+        JsonToken t = p.getCurrentToken();
+        if (t == null) {
+            // and then we must get something...
+            t = p.nextToken();
+            if (t == null) {
+// LEFT //                // Throw mapping exception, since it's failure to map,
+// LEFT //                //   not an actual parsing problem
+                throw JsonMappingException.from(p, "No content to map due to end-of-input");
+            }
+        }
+        return t;
+// END _initForReading(JsonParser-JsonParser)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\ObjectMapper.java
+Different Spacing: false
+Left editions: []
+Right editions: [3898, 3899, 3900]
+Merged body: 
+// START _convert(Object-Object-JavaType-JavaType)//@SuppressWarnings("resource")
+    protected Object _convert(Object fromValue, JavaType toValueType)
+        throws IllegalArgumentException
+    {        
+        // also, as per [Issue-11], consider case for simple cast
+        /* But with caveats: one is that while everything is Object.class, we don't
+         * want to "optimize" that out; and the other is that we also do not want
+         * to lose conversions of generic types.
+         */
+        Class<?> targetType = toValueType.getRawClass();
+        if (targetType != Object.class
+                && !toValueType.hasGenericTypes()
+                && targetType.isAssignableFrom(fromValue.getClass())) {
+            return fromValue;
+        }
+        
+        // Then use TokenBuffer, which is a JsonGenerator:
+        TokenBuffer buf = new TokenBuffer(this, false);
+// RIGHT //        if (isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+// RIGHT //            buf = buf.forceUseOfBigDecimal(true);
+// RIGHT //        }
+        try {
+            // inlined 'writeValue' with minor changes:
+            // first: disable wrapping when writing
+            SerializationConfig config = getSerializationConfig().without(SerializationFeature.WRAP_ROOT_VALUE);
+            // no need to check for closing of TokenBuffer
+            _serializerProvider(config).serializeValue(buf, fromValue);
+
+            // then matching read, inlined 'readValue' with minor mods:
+            final JsonParser jp = buf.asParser();
+            Object result;
+            // ok to pass in existing feature flags; unwrapping handled by mapper
+            final DeserializationConfig deserConfig = getDeserializationConfig();
+            JsonToken t = _initForReading(jp);
+            if (t == JsonToken.VALUE_NULL) {
+                DeserializationContext ctxt = createDeserializationContext(jp, deserConfig);
+                result = _findRootDeserializer(ctxt, toValueType).getNullValue(ctxt);
+            } else if (t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {
+                result = null;
+            } else { // pointing to event other than null
+                DeserializationContext ctxt = createDeserializationContext(jp, deserConfig);
+                JsonDeserializer<Object> deser = _findRootDeserializer(ctxt, toValueType);
+                // note: no handling of unwarpping
+                result = deser.deserialize(jp, ctxt);
+            }
+            jp.close();
+            return result;
+        } catch (IOException e) { // should not occur, no real i/o...
+            throw new IllegalArgumentException(e.getMessage(), e);
+        }
+// END _convert(Object-Object-JavaType-JavaType)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\ObjectMapper.java
+Different Spacing: false
+Left editions: [4336, 4337]
+Right editions: []
+Merged body: 
+// START _findRootDeserializer(DeserializationContext-DeserializationContext-JavaType-JavaType)//protected JsonDeserializer<Object> _findRootDeserializer(DeserializationContext ctxt,
+            JavaType valueType)
+        throws JsonMappingException
+    {
+        // First: have we already seen it?
+        JsonDeserializer<Object> deser = _rootDeserializers.get(valueType);
+        if (deser != null) {
+            return deser;
+        }
+        // Nope: need to ask provider to resolve it
+        deser = ctxt.findRootValueDeserializer(valueType);
+        if (deser == null) { // can this happen?
+// LEFT //            throw JsonMappingException.from(ctxt,
+// LEFT //                    "Can not find a deserializer for type "+valueType);
+        }
+        _rootDeserializers.put(valueType, deser);
+        return deser;
+// END _findRootDeserializer(DeserializationContext-DeserializationContext-JavaType-JavaType)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_rev_left_e592f-rev_right_ca6c3\src\main\java\com\fasterxml\jackson\databind\ObjectMapper.java
+Different Spacing: false
+Left editions: []
+Right editions: [3898, 3899, 3900]
+Merged body: 
+// START _convert(Object-Object-JavaType-JavaType)//@SuppressWarnings("resource")
+    protected Object _convert(Object fromValue, JavaType toValueType)
+        throws IllegalArgumentException
+    {        
+        // also, as per [Issue-11], consider case for simple cast
+        /* But with caveats: one is that while everything is Object.class, we don't
+         * want to "optimize" that out; and the other is that we also do not want
+         * to lose conversions of generic types.
+         */
+        Class<?> targetType = toValueType.getRawClass();
+        if (targetType != Object.class
+                && !toValueType.hasGenericTypes()
+                && targetType.isAssignableFrom(fromValue.getClass())) {
+            return fromValue;
+        }
+        
+        // Then use TokenBuffer, which is a JsonGenerator:
+        TokenBuffer buf = new TokenBuffer(this, false);
+// RIGHT //        if (isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+// RIGHT //            buf = buf.forceUseOfBigDecimal(true);
+// RIGHT //        }
+        try {
+            // inlined 'writeValue' with minor changes:
+            // first: disable wrapping when writing
+            SerializationConfig config = getSerializationConfig().without(SerializationFeature.WRAP_ROOT_VALUE);
+            // no need to check for closing of TokenBuffer
+            _serializerProvider(config).serializeValue(buf, fromValue);
+
+            // then matching read, inlined 'readValue' with minor mods:
+            final JsonParser jp = buf.asParser();
+            Object result;
+            // ok to pass in existing feature flags; unwrapping handled by mapper
+            final DeserializationConfig deserConfig = getDeserializationConfig();
+            JsonToken t = _initForReading(jp);
+            if (t == JsonToken.VALUE_NULL) {
+                DeserializationContext ctxt = createDeserializationContext(jp, deserConfig);
+                result = _findRootDeserializer(ctxt, toValueType).getNullValue(ctxt);
+            } else if (t == JsonToken.END_ARRAY || t == JsonToken.END_OBJECT) {
+                result = null;
+            } else { // pointing to event other than null
+                DeserializationContext ctxt = createDeserializationContext(jp, deserConfig);
+                JsonDeserializer<Object> deser = _findRootDeserializer(ctxt, toValueType);
+                // note: no handling of unwarpping
+                result = deser.deserialize(jp, ctxt);
+            }
+            jp.close();
+            return result;
+        } catch (IOException e) { // should not occur, no real i/o...
+            throw new IllegalArgumentException(e.getMessage(), e);
+        }
+// END _convert(Object-Object-JavaType-JavaType)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf4f1-c5b23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cfbf1-df087
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d51c9-b8b7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b2804-3bd5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fec0b-fe25f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adec6-d5a25
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32156-6aaa3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cc8b4-1ed7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f75f2-660ec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4dd7-f5988
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be113-c966a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf2b2-e59a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e5f0-91e41
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91b52-19e6d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8caf2-ccf82
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7030-5aece
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_b7030_5aece\rev_rev_left_b7030-rev_right_5aece\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBase.java
+Different Spacing: false
+Left editions: [859, 860]
+Right editions: []
+Merged body: 
+// START _resolveInnerClassValuedProperty(DeserializationContext-DeserializationContext-SettableBeanProperty-SettableBeanProperty)//protected SettableBeanProperty _resolveInnerClassValuedProperty(DeserializationContext ctxt,
+            SettableBeanProperty prop)
+    {            
+        /* Should we encounter a property that has non-static inner-class
+         * as value, we need to add some more magic to find the "hidden" constructor...
+         */
+        JsonDeserializer<Object> deser = prop.getValueDeserializer();
+        // ideally wouldn't rely on it being BeanDeserializerBase; but for now it'll have to do
+        if (deser instanceof BeanDeserializerBase) {
+            BeanDeserializerBase bd = (BeanDeserializerBase) deser;
+            ValueInstantiator vi = bd.getValueInstantiator();
+            if (!vi.canCreateUsingDefault()) { // no default constructor
+                Class<?> valueClass = prop.getType().getRawClass();
+                Class<?> enclosing = ClassUtil.getOuterClass(valueClass);
+                // and is inner class of the bean class...
+                if (enclosing != null && enclosing == _beanType.getRawClass()) {
+                    for (Constructor<?> ctor : valueClass.getConstructors()) {
+                        Class<?>[] paramTypes = ctor.getParameterTypes();
+                        if (paramTypes.length == 1 && paramTypes[0] == enclosing) {
+// LEFT //                            if (ctxt.canOverrideAccessModifiers()) {
+// LEFT //                                ClassUtil.checkAndFixAccess(ctor, ctxt.isEnabled(MapperFeature.OVERRIDE_PUBLIC_ACCESS_MODIFIERS));
+                            }
+                            return new InnerClassProperty(prop, ctor);
+                        }
+                    }
+                }
+            }
+        }
+        return prop;
+// END _resolveInnerClassValuedProperty(DeserializationContext-DeserializationContext-SettableBeanProperty-SettableBeanProperty)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_b7030_5aece\rev_rev_left_b7030-rev_right_5aece\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [539, 542, 546, 560]
+Merged body: 
+// START resolve(DeserializationContext-DeserializationContext)//@Override
+    public void resolve(DeserializationContext ctxt)
+        throws JsonMappingException
+    {
+        ExternalTypeHandler.Builder extTypes = null;
+        // if ValueInstantiator can use "creator" approach, need to resolve it here...
+        SettableBeanProperty[] creatorProps;
+        if (_valueInstantiator.canCreateFromObjectWith()) {
+            creatorProps = _valueInstantiator.getFromObjectArguments(ctxt.getConfig());
+            // also: need to try to resolve 'external' type ids...
+            for (SettableBeanProperty prop : creatorProps) {
+                if (prop.hasValueTypeDeserializer()) {
+                    TypeDeserializer typeDeser = prop.getValueTypeDeserializer();
+                    if (typeDeser.getTypeInclusion() == JsonTypeInfo.As.EXTERNAL_PROPERTY) {
+                        if (extTypes == null) {
+                            extTypes = new ExternalTypeHandler.Builder();
+                        }
+                        extTypes.addExternal(prop, typeDeser);
+                    }
+                }
+            }
+        } else {
+            creatorProps = null;
+        }
+
+        UnwrappedPropertyHandler unwrapped = null;
+
+        for (SettableBeanProperty origProp : _beanProperties) {
+            SettableBeanProperty prop = origProp;
+
+            // May already have deserializer from annotations, if so, skip:
+            if (!prop.hasValueDeserializer()) {
+                // [Issue#125]: allow use of converters
+                JsonDeserializer<?> deser = findConvertingDeserializer(ctxt, prop);
+                if (deser == null) {
+                    deser = findDeserializer(ctxt, prop.getType(), prop);
+                }
+                prop = prop.withValueDeserializer(deser);
+            } else { // may need contextual version
+                JsonDeserializer<Object> deser = prop.getValueDeserializer();
+                /* Important! This is the only place where actually handle "primary"
+                 * property deserializers -- call is different from other places.
+                 */
+                JsonDeserializer<?> cd = ctxt.handlePrimaryContextualization(deser, prop,
+                        prop.getType());
+                if (cd != deser) {
+                    prop = prop.withValueDeserializer(cd);
+                }
+            }
+
+// RIGHT //            // Need to link managed references with matching back references
+            prop = _resolveManagedReferenceProperty(ctxt, prop);
+
+// RIGHT //            // [databind#351[: need to wrap properties that require object id resolution.
+            if (!(prop instanceof ManagedReferenceProperty)) {
+                prop = _resolvedObjectIdProperty(ctxt, prop);
+            }
+// RIGHT //            // Support unwrapped values (via @JsonUnwrapped)
+            SettableBeanProperty u = _resolveUnwrappedProperty(ctxt, prop);
+            if (u != null) {
+                prop = u;
+                if (unwrapped == null) {
+                    unwrapped = new UnwrappedPropertyHandler();
+                }
+                unwrapped.addProperty(prop);
+                /* 12-Dec-2014, tatu: As per [databind#647], we will have problems if
+                 *    the original property is left in place. So let's remove it now.
+                 */
+                _beanProperties.remove(prop);
+                continue;
+            }
+// RIGHT //            // non-static inner classes too:
+            prop = _resolveInnerClassValuedProperty(ctxt, prop);
+            if (prop != origProp) {
+                _beanProperties.replace(prop);
+                // [databind#795]: Make sure PropertyBasedCreator's properties stay in sync
+                if (creatorProps != null) {
+                    // 18-May-2015, tatu: _Should_ start with consistent set. But can we really
+                    //   fully count on this? May need to revisit in future; seems to hold for now.
+                    for (int i = 0, len = creatorProps.length; i < len; ++i) {
+                        if (creatorProps[i] == origProp) {
+                            creatorProps[i] = prop;
+                            break;
+                        }
+                        // ... as per above, it is possible we'd need to add this as fallback
+                        // if (but only if) identity check fails?
+                        /*
+                        if (creatorProps[i].getName().equals(prop.getName())) {
+                            creatorProps[i] = prop;
+                            break;
+                        }
+                        */
+                    }
+                }
+            }
+            // one more thing: if this property uses "external property" type inclusion,
+            // it needs different handling altogether
+            if (prop.hasValueTypeDeserializer()) {
+                TypeDeserializer typeDeser = prop.getValueTypeDeserializer();
+                if (typeDeser.getTypeInclusion() == JsonTypeInfo.As.EXTERNAL_PROPERTY) {
+                    if (extTypes == null) {
+                        extTypes = new ExternalTypeHandler.Builder();
+                    }
+                    extTypes.addExternal(prop, typeDeser);
+                    // In fact, remove from list of known properties to simplify later handling
+                    _beanProperties.remove(prop);
+                    continue;
+                }
+            }
+        }
+
+        // "any setter" may also need to be resolved now
+        if (_anySetter != null && !_anySetter.hasValueDeserializer()) {
+            _anySetter = _anySetter.withValueDeserializer(findDeserializer(ctxt,
+                    _anySetter.getType(), _anySetter.getProperty()));
+        }
+
+        // as well as delegate-based constructor:
+        if (_valueInstantiator.canCreateUsingDelegate()) {
+            JavaType delegateType = _valueInstantiator.getDelegateType(ctxt.getConfig());
+            if (delegateType == null) {
+                throw new IllegalArgumentException("Invalid delegate-creator definition for "+_beanType
+                        +": value instantiator ("+_valueInstantiator.getClass().getName()
+                        +") returned true for 'canCreateUsingDelegate()', but null for 'getDelegateType()'");
+            }
+            AnnotatedWithParams delegateCreator = _valueInstantiator.getDelegateCreator();
+            // Need to create a temporary property to allow contextual deserializers:
+            BeanProperty.Std property = new BeanProperty.Std(TEMP_PROPERTY_NAME,
+                    delegateType, null, _classAnnotations, delegateCreator,
+                    PropertyMetadata.STD_OPTIONAL);
+
+            TypeDeserializer td = delegateType.getTypeHandler();
+            if (td == null) {
+                td = ctxt.getConfig().findTypeDeserializer(delegateType);
+            }
+            JsonDeserializer<Object> dd = findDeserializer(ctxt, delegateType, property);
+            if (td != null) {
+                td = td.forProperty(property);
+                dd = new TypeWrappedDeserializer(td, dd);
+            }
+            _delegateDeserializer = dd;
+        }
+
+        // And now that we know CreatorProperty instances are also resolved can finally create the creator:
+        if (creatorProps != null) {
+            _propertyBasedCreator = PropertyBasedCreator.construct(ctxt, _valueInstantiator, creatorProps);
+        }
+
+        if (extTypes != null) {
+            _externalTypeIdHandler = extTypes.build();
+            // we consider this non-standard, to offline handling
+            _nonStandardCreation = true;
+        }
+        
+        _unwrappedPropertyHandler = unwrapped;
+        if (unwrapped != null) { // we consider this non-standard, to offline handling
+            _nonStandardCreation = true;
+        }
+
+        // may need to disable vanilla processing, if unwrapped handling was enabled...
+        _vanillaProcessing = _vanillaProcessing && !_nonStandardCreation;
+// END resolve(DeserializationContext-DeserializationContext)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_261be-e43a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9b32-9dbee
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e9b32_9dbee\rev_rev_left_e9b32-rev_right_9dbee\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBase.java
+Different Spacing: false
+Left editions: [1437]
+Right editions: []
+Merged body: 
+// START injectValues(DeserializationContext-DeserializationContext-Object-Object)//protected void injectValues(DeserializationContext ctxt, Object bean)
+// LEFT //        throws IOException
+    {
+        for (ValueInjector injector : _injectables) {
+            injector.inject(ctxt, bean);
+        }
+// END injectValues(DeserializationContext-DeserializationContext-Object-Object)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_e9b32_9dbee\rev_rev_left_e9b32-rev_right_9dbee\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializerBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [1383]
+Merged body: 
+// START deserializeFromArray(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//public Object deserializeFromArray(JsonParser p, DeserializationContext ctxt) throws IOException
+    {
+        if (_delegateDeserializer != null) {
+            try {
+// RIGHT //                Object bean = _valueInstantiator.createUsingArrayDelegate(ctxt, _delegateDeserializer.deserialize(p, ctxt));
+                if (_injectables != null) {
+                    injectValues(ctxt, bean);
+                }
+                return bean;
+            } catch (Exception e) {
+                wrapInstantiationProblem(e, ctxt);
+            }
+        }
+        if (ctxt.isEnabled(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS)) {
+            JsonToken t = p.nextToken();
+            if (t == JsonToken.END_ARRAY && ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT)) {
+                return null;
+            }
+            final Object value = deserialize(p, ctxt);
+            if (p.nextToken() != JsonToken.END_ARRAY) {
+                throw ctxt.wrongTokenException(p, JsonToken.END_ARRAY, 
+                        "Attempted to unwrap single value array for single '" + _valueClass.getName() + "' value but there was more than a single value in the array");
+            }
+            return value;
+        }
+        if (ctxt.isEnabled(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT)) {
+            JsonToken t = p.nextToken();
+            if (t == JsonToken.END_ARRAY) {
+                return null;
+            }
+            throw ctxt.mappingException(handledType(), JsonToken.START_ARRAY);
+        }
+        throw ctxt.mappingException(handledType());
+// END deserializeFromArray(JsonParser-JsonParser-DeserializationContext-DeserializationContext)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e43a7-cecd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12e81-7ed2d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fce3-c463f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11c20-3aee5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_11c20_3aee5\rev_rev_left_11c20-rev_right_3aee5\src\main\java\com\fasterxml\jackson\databind\deser\std\JsonNodeDeserializer.java
+Different Spacing: false
+Left editions: [343]
+Right editions: []
+Merged body: 
+// START deserializeArray(JsonParser-JsonParser-DeserializationContext-DeserializationContext-JsonNodeFactory-JsonNodeFactory)//protected final ArrayNode deserializeArray(JsonParser p, DeserializationContext ctxt,
+            final JsonNodeFactory nodeFactory) throws IOException
+    {
+        ArrayNode node = nodeFactory.arrayNode();
+        while (true) {
+            JsonToken t = p.nextToken();
+            if (t == null) {
+                throw ctxt.mappingException("Unexpected end-of-input when binding data into ArrayNode");
+            }
+            switch (t.id()) {
+            case JsonTokenId.ID_START_OBJECT:
+                node.add(deserializeObject(p, ctxt, nodeFactory));
+                break;
+            case JsonTokenId.ID_START_ARRAY:
+                node.add(deserializeArray(p, ctxt, nodeFactory));
+                break;
+            case JsonTokenId.ID_END_ARRAY:
+                return node;
+            case JsonTokenId.ID_EMBEDDED_OBJECT:
+                node.add(_fromEmbedded(p, ctxt, nodeFactory));
+// LEFT //                break;
+            case JsonTokenId.ID_STRING:
+                node.add(nodeFactory.textNode(p.getText()));
+                break;
+            case JsonTokenId.ID_NUMBER_INT:
+                node.add(_fromInt(p, ctxt, nodeFactory));
+                break;
+            case JsonTokenId.ID_TRUE:
+                node.add(nodeFactory.booleanNode(true));
+                break;
+            case JsonTokenId.ID_FALSE:
+                node.add(nodeFactory.booleanNode(false));
+                break;
+            case JsonTokenId.ID_NULL:
+                node.add(nodeFactory.nullNode());
+                break;
+            default:
+                node.add(deserializeAny(p, ctxt, nodeFactory));
+                break;
+            }
+        }
+// END deserializeArray(JsonParser-JsonParser-DeserializationContext-DeserializationContext-JsonNodeFactory-JsonNodeFactory)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a49ab-8497e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3da93-d6b35
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e87dd-c7168
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86c36-87160
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_87160-70d96
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_87160_70d96\rev_rev_left_87160-rev_right_70d96\src\main\java\com\fasterxml\jackson\databind\ser\std\StdJdkSerializers.java
+Different Spacing: false
+Left editions: [54]
+Right editions: [67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+Merged body: 
+// START all({FormalParametersInternal})//public static Collection<Map.Entry<Class<?>, Object>> all()
+    {
+        HashMap<Class<?>,Object> sers = new HashMap<Class<?>,Object>();
+
+        // First things that 'toString()' can handle
+        final ToStringSerializer sls = ToStringSerializer.instance;
+
+        sers.put(java.net.URL.class, sls);
+        sers.put(java.net.URI.class, sls);
+
+        sers.put(Currency.class, sls);
+        sers.put(UUID.class, new UUIDSerializer());
+        sers.put(java.util.regex.Pattern.class, sls);
+        sers.put(Locale.class, sls);
+
+        sers.put(Locale.class, sls);
+        
+// LEFT //        // then atomic types (note: AtomicReference needs better handling)
+        sers.put(AtomicBoolean.class, AtomicBooleanSerializer.class);
+        sers.put(AtomicInteger.class, AtomicIntegerSerializer.class);
+        sers.put(AtomicLong.class, AtomicLongSerializer.class);
+        
+        // then other types that need specialized serializers
+        sers.put(File.class, FileSerializer.class);
+        sers.put(Class.class, ClassSerializer.class);
+
+        // And then some stranger types... not 100% they are needed but:
+        sers.put(Void.class, NullSerializer.instance);
+        sers.put(Void.TYPE, NullSerializer.instance);
+
+// RIGHT //        // 09-Jan-2015, tatu: As per [databind#1073], let's try to guard against possibility
+// RIGHT //        //   of some environments missing `java.sql.` types
+// RIGHT //        try {
+// RIGHT //            // note: timestamps are very similar to java.util.Date, thus serialized as such
+// RIGHT //            sers.put(java.sql.Timestamp.class, DateSerializer.instance);
+// RIGHT //    
+// RIGHT //            // leave some of less commonly used ones as lazy, no point in proactive construction
+// RIGHT //            sers.put(java.sql.Date.class, SqlDateSerializer.class);
+// RIGHT //            sers.put(java.sql.Time.class, SqlTimeSerializer.class);
+// RIGHT //        } catch (NoClassDefFoundError e) {
+// RIGHT //            // nothing much we can do here; could log, but probably not useful for now.
+// RIGHT //        }
+// RIGHT //        
+        return sers.entrySet();
+// END all({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_290f9-386e9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jackson-databind\revisions\rev_290f9_386e9\rev_rev_left_290f9-rev_right_386e9\src\main\java\com\fasterxml\jackson\databind\ser\std\StdJdkSerializers.java
+Different Spacing: false
+Left editions: [51, 55]
+Right editions: [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]
+Merged body: 
+// START all({FormalParametersInternal})//public static Collection<Map.Entry<Class<?>, Object>> all()
+    {
+        HashMap<Class<?>,Object> sers = new HashMap<Class<?>,Object>();
+
+        // First things that 'toString()' can handle
+        final ToStringSerializer sls = ToStringSerializer.instance;
+
+        sers.put(java.net.URL.class, sls);
+        sers.put(java.net.URI.class, sls);
+
+        sers.put(Currency.class, sls);
+        sers.put(UUID.class, new UUIDSerializer());
+        sers.put(java.util.regex.Pattern.class, sls);
+        sers.put(Locale.class, sls);
+
+// LEFT //        // then atomic types (note: AtomicReference defined elsewhere)
+        sers.put(AtomicBoolean.class, AtomicBooleanSerializer.class);
+        sers.put(AtomicInteger.class, AtomicIntegerSerializer.class);
+        sers.put(AtomicLong.class, AtomicLongSerializer.class);
+// LEFT //
+        // then other types that need specialized serializers
+        sers.put(File.class, FileSerializer.class);
+        sers.put(Class.class, ClassSerializer.class);
+
+        // And then some stranger types... not 100% they are needed but:
+        sers.put(Void.class, NullSerializer.instance);
+        sers.put(Void.TYPE, NullSerializer.instance);
+
+// RIGHT //        // 09-Jan-2015, tatu: As per [databind#1073], let's try to guard against possibility
+// RIGHT //        //   of some environments missing `java.sql.` types
+// RIGHT //        try {
+// RIGHT //            // note: timestamps are very similar to java.util.Date, thus serialized as such
+// RIGHT //            sers.put(java.sql.Timestamp.class, DateSerializer.instance);
+// RIGHT //    
+// RIGHT //            // leave some of less commonly used ones as lazy, no point in proactive construction
+// RIGHT //            sers.put(java.sql.Date.class, SqlDateSerializer.class);
+// RIGHT //            sers.put(java.sql.Time.class, SqlTimeSerializer.class);
+// RIGHT //        } catch (NoClassDefFoundError e) {
+// RIGHT //            // nothing much we can do here; could log, but probably not useful for now.
+// RIGHT //        }
+// RIGHT //        
+        return sers.entrySet();
+// END all({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2f43-034f3
+#MS_XXX_MS#

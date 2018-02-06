@@ -1,0 +1,4042 @@
+#MS_XXX_MS#
+Merge scenario: rev_4a57f-ca1ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b78d-4a929
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79daa-c2714
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f863-4528b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bcf99-d9870
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_730c1-b8b54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68d87-77173
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72e9d-6dc43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_756ee-05381
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ea4d-07103
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_518e8-64ce1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2fda9-73f15
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5147a-30d45
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8acf8-6d8c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6b31-0088d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b402-29aab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29aab-5b402
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb504-bac85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3b82-f2a19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bac85-eb504
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83732-20cfc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20cfc-83732
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b8e7-35355
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b572-6f647
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dfaa3-3a94c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0331f-1f938
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b508f-f03a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad3db-f6477
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69029-9b64b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76bca-df084
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55242-e26d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd3c5-87377
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1f71-10385
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1c5b-40278
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcac4-dccd0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6119-d68aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1cfe-f7314
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed190-a9f1d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77a87-b0e6b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0edcb-eecdd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15605-7691c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ff9e-01c9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb498-d85ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a792-7879e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77d3b-5975c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d2ae-53c36
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8756d-ac80b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0efa-98f85
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_a0efa_98f85\rev_rev_left_a0efa-rev_right_98f85\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: false
+Left editions: [1104, 1105, 1106, 1107, 1108, 1110, 1112, 1113, 1114, 1127, 1133]
+Right editions: [1121]
+Merged body: 
+// START undeploy(String-String-String-String-int-int)//// LEFT //@JsonResponseExample(status = "success", responseBody = "{\"lifecycleEventContainerID\":\"bfae0a89-b5a0-4250-b393-6cedbf63ac76\"}")
+// LEFT //	@PossibleResponseStatuses(codes = {200,200}, descriptions = {"success", "failed_to_locate_service"})
+// LEFT //	@RequestMapping(
+// LEFT //			value = "applications/{applicationName}/services/{serviceName}/timeout/{timeoutInMinutes}/undeploy",
+// LEFT //			method = RequestMethod.DELETE)
+	public @ResponseBody
+// LEFT //	Map<String, Object> undeploy(@PathVariable final String applicationName, @PathVariable final String serviceName,
+			@PathVariable final int timeoutInMinutes) {
+// LEFT //		final String absolutePuName = ServiceUtils.getAbsolutePUName(applicationName, serviceName);
+// LEFT //		final ProcessingUnit processingUnit =
+// LEFT //				admin.getProcessingUnits().waitFor(absolutePuName, PU_DISCOVERY_TIMEOUT_SEC, TimeUnit.SECONDS);
+		if (processingUnit == null) {
+			return unavailableServiceError(absolutePuName);
+		}
+
+		FutureTask<Boolean> undeployTask = new FutureTask<Boolean>(  
+				new Callable<Boolean>() {  
+// RIGHT //					@Override
+					public Boolean call() throws Exception {  
+						return processingUnit.undeployAndWait(timeoutInMinutes, TimeUnit.MINUTES);
+					}  
+
+				});
+// LEFT //		undeployTask.run();
+		final UUID lifecycleEventContainerID =
+				startPollingForServiceUninstallLifecycleEvents(applicationName, serviceName,
+						timeoutInMinutes, undeployTask);
+		
+		final Map<String, Object> returnMap = new HashMap<String, Object>();
+// LEFT //		returnMap.put(CloudifyConstants.LIFECYCLE_EVENT_CONTAINER_ID, lifecycleEventContainerID);
+		return successStatus(returnMap);
+// END undeploy(String-String-String-String-int-int)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b900-abe0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53d09-76da4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22da6-de461
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92c95-5783b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a57f2-f9298
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41395-37a1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6e13-baeab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8b5cd-af44d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c04bf-17de9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34d3a-4b05d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5ffe1-cfbb3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_65efd-04755
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a23d-676e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0677-9d0cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_375d7-adf8a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5e59-c8ee1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_401f0-13cc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d77e-0d9cd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7cdd-b3a99
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_89f12-88f0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afaf6-342de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ab19-a3e49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b928-22bd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31959-9c338
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bbc1-e940f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8721d-3e152
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7560b-ae857
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af250-ff6fd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a777-19dc6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_275b9-49043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af35c-36001
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2e79-7f644
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59b7d-001fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7cfc-ea045
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60118-2c4d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84427-a6c37
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae083-46e0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48223-36b7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af646-9297f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcab5-6ddbd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94aee-f8c9a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5ae4e-e166a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cedd7-fb655
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_cedd7_fb655\rev_rev_left_cedd7-rev_right_fb655\esc\src\main\java\org\cloudifysource\esc\util\ShellCommandBuilder.java
+Different Spacing: false
+Left editions: [150, 151, 152, 155, 156]
+Right editions: []
+Merged body: 
+// START normalizeCifsPath(String-String)//public static String normalizeCifsPath(final String str) {
+		final String expression = CIFS_ABSOLUTE_PATH_WITH_DRIVE_REGEX;
+		if (pattern == null) {
+			pattern = Pattern.compile(expression);
+		}
+
+// LEFT //		if (str == null) {
+// LEFT //			return null;
+// LEFT //		}
+		if (pattern.matcher(str).matches()) {
+			final char drive = str.charAt(1);
+// LEFT //			return drive + ":\\"
+// LEFT //					+ str.substring("/c$/".length()).replace('/', '\\');
+		}
+		return str;
+// END normalizeCifsPath(String-String)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_cedd7_fb655\rev_rev_left_cedd7-rev_right_fb655\esc\src\main\java\org\cloudifysource\esc\util\ShellCommandBuilder.java
+Different Spacing: false
+Left editions: []
+Right editions: [123]
+Merged body: 
+// START call(String-String)//public ShellCommandBuilder call(final String str) {
+// RIGHT //		if (this.mode == RemoteExecutionModes.SSH) {
+			sb.append(str);
+		} else {
+			final String normalizedPathCommand = normalizeCifsPath(str);
+			sb.append(normalizedPathCommand);
+		}
+
+		return this;
+// END call(String-String)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c02ba-a2c28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07e3d-b76cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b540a-d8c40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_448de-15f55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34797-f1cb8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e64fb-90d1a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_e64fb_90d1a\rev_rev_left_e64fb-rev_right_90d1a\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START doDeploy(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-Service-Service-byte[]-byte[]-boolean-boolean)//private void doDeploy(final String applicationName,
+			final String serviceName, final String templateName,
+			final String[] agentZones, final File serviceFile,
+			final Properties contextProperties, final Service service,
+			final byte[] serviceCloudConfigurationContents,
+			final boolean selfHealing) throws TimeoutException, DSLException {
+
+		boolean locationAware = false;
+		boolean dedicated = true;
+		if (service != null) {
+			locationAware = service.isLocationAware();
+			if (service.getIsolationSLA() == null) {
+				// no deployment was specified
+				// fall back to dedicated
+				service.setIsolationSLA(IsolationSLAFactory
+						.newDedicatedIsolationSLA());
+			} else {
+				if (service.getIsolationSLA().getGlobal() != null) {
+					dedicated = false;
+				}
+			}
+		}
+
+		final int externalProcessMemoryInMB = 512;
+		final int containerMemoryInMB = 128;
+		final int reservedMemoryCapacityPerMachineInMB = 256;
+
+		contextProperties.setProperty(CloudifyConstants.CONTEXT_PROPERTY_ASYNC_INSTALL,
+				"true");
+		if (!selfHealing) {
+			contextProperties.setProperty(
+					CloudifyConstants.CONTEXT_PROPERTY_DISABLE_SELF_HEALING,
+					"false");
+		}
+
+		final ElasticStatelessProcessingUnitDeployment deployment = new ElasticStatelessProcessingUnitDeployment(
+				serviceFile)
+				.memoryCapacityPerContainer(externalProcessMemoryInMB,
+						MemoryUnit.MEGABYTES)
+				.addCommandLineArgument("-Xmx" + containerMemoryInMB + "m")
+				.addCommandLineArgument("-Xms" + containerMemoryInMB + "m")
+				.addContextProperty(
+						CloudifyConstants.CONTEXT_PROPERTY_APPLICATION_NAME,
+						applicationName).name(serviceName);
+
+		if (cloud == null) { // Azure or local-cloud
+			if (!isLocalCloud()) {
+				// Azure: Eager scale (1 container per machine per PU)
+				setSharedMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				deployment.scale(ElasticScaleConfigFactory
+						.createEagerScaleConfig());
+			} else {
+				// local cloud
+				setPublicMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				if (service == null || service.getScalingRules() == null) {
+
+					final int totalMemoryInMB = calculateTotalMemoryInMB(
+							serviceName, service, externalProcessMemoryInMB);
+					final ManualCapacityScaleConfig scaleConfig = new ManualCapacityScaleConfigurer()
+							.memoryCapacity(totalMemoryInMB,
+									MemoryUnit.MEGABYTES).create();
+					deployment.scale(scaleConfig);
+				} else {
+					final AutomaticCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+							.createAutomaticCapacityScaleConfig(serviceName,
+									service, externalProcessMemoryInMB, false);
+					deployment.scale(scaleConfig);
+				}
+			}
+		} else {
+
+			final CloudTemplate template = getComputeTemplate(cloud,
+					templateName);
+
+			final long cloudExternalProcessMemoryInMB = service
+					.getIsolationSLA().getGlobal() != null ? service
+					.getIsolationSLA().getGlobal().getInstanceMemoryMB()
+					: calculateExternalProcessMemory(cloud, template);
+
+			logger.info("Creating cloud machine provisioning config. Template remote directory is: "
+					+ template.getRemoteDirectory());
+			final CloudifyMachineProvisioningConfig config = new CloudifyMachineProvisioningConfig(
+					cloud, template, templateName,
+					this.managementTemplate.getRemoteDirectory());
+
+			if (serviceCloudConfigurationContents != null) {
+
+				config.setServiceCloudConfiguration(serviceCloudConfigurationContents);
+			}
+
+			final String locators = extractLocators(admin);
+			config.setLocator(locators);
+
+			// management machine should be isolated from other services. no
+			// matter of the deployment mode.
+			config.setDedicatedManagementMachines(true);
+			if (!dedicated) {
+				logger.info("public mode is on. will use public machine provisioning for "
+						+ serviceName + " deployment.");
+				// service instances can be deployed across all agents
+				setPublicMachineProvisioning(deployment, config);
+			} else {
+				// service deployment will have a dedicated agent per instance
+				setDedicatedMachineProvisioning(deployment, config);
+			}
+
+			deployment.memoryCapacityPerContainer(
+					(int) cloudExternalProcessMemoryInMB, MemoryUnit.MEGABYTES);
+
+			if (service == null || service.getScalingRules() == null) {
+				final int totalMemoryInMB = calculateTotalMemoryInMB(
+						serviceName, service,
+						(int) cloudExternalProcessMemoryInMB);
+				final double totalCpuCores = calculateTotalCpuCores(service);
+				final ManualCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+						.createManualCapacityScaleConfig(totalMemoryInMB,
+								totalCpuCores, locationAware, dedicated);
+				if (dedicated) {
+					scaleConfig.setAtMostOneContainerPerMachine(true);
+				}
+				deployment.scale(scaleConfig);
+			} else {
+				final AutomaticCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+						.createAutomaticCapacityScaleConfig(serviceName,
+								service, (int) cloudExternalProcessMemoryInMB,
+								locationAware);
+				if (dedicated) {
+					scaleConfig.setAtMostOneContainerPerMachine(true);
+				}
+				deployment.scale(scaleConfig);
+			}
+		}
+
+		// add context properties
+		setContextProperties(deployment, contextProperties);
+
+		verifyEsmExistsInCluster();
+		deployAndWait(serviceName, deployment);
+
+// END doDeploy(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-Service-Service-byte[]-byte[]-boolean-boolean)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5520e-6e88c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55ea9-ca0f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98095-367da
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc5b3-7d843
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_852ba-7817d
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_852ba_7817d\rev_rev_left_852ba-rev_right_7817d\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: false
+Left editions: [3480, 3481, 3482, 3483, 3484]
+Right editions: [3510]
+Merged body: 
+// START setServiceInstances(String-String-String-String-int-int-int-int-boolean-boolean-String-String)//@JsonRequestExample(requestBody = "{\"count\":1,\"location-aware\":true}")
+	@JsonResponseExample(status = "success", responseBody = "{\"lifecycleEventContainerID\":\"eventContainerID\"}")
+	@PossibleResponseStatuses(responseStatuses = {
+			@PossibleResponseStatus(code = HTTP_OK, description = "success"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = ResponseConstants.FAILED_TO_LOCATE_SERVICE),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = ResponseConstants.SERVICE_NOT_ELASTIC) })
+	@RequestMapping(value = "applications/{applicationName}/services/{serviceName}/timeout/{timeout}/set-instances", method = RequestMethod.POST)
+	public @ResponseBody
+	@PreAuthorize("isFullyAuthenticated() and hasPermission(#authGroups, 'deploy')")
+	Map<String, Object> setServiceInstances(
+			@PathVariable final String applicationName,
+			@PathVariable final String serviceName,
+			@PathVariable final int timeout,
+			@RequestParam(value = "count", required = true) final int count,
+			@RequestParam(value = "location-aware", required = true) final boolean locationAware,
+			@RequestParam(value = "authGroups", required = false) String authGroups)
+			throws DSLException, RestErrorException {
+
+		final Map<String, Object> returnMap = new HashMap<String, Object>();
+		final String puName = ServiceUtils.getAbsolutePUName(applicationName,
+				serviceName);
+		final ProcessingUnit pu = admin.getProcessingUnits().getProcessingUnit(
+				puName);
+		if (pu == null) {
+			throw new RestErrorException(
+					ResponseConstants.FAILED_TO_LOCATE_SERVICE, serviceName);
+		}
+
+		final Properties contextProperties = pu.getBeanLevelProperties()
+				.getContextProperties();
+		final String elasticProp = contextProperties
+				.getProperty(CloudifyConstants.CONTEXT_PROPERTY_ELASTIC);
+		final String templateName = contextProperties
+				.getProperty(CloudifyConstants.CONTEXT_PROPERTY_TEMPLATE);
+
+		if (elasticProp == null || !Boolean.parseBoolean(elasticProp)) {
+			throw new RestErrorException(ResponseConstants.SERVICE_NOT_ELASTIC,
+					serviceName);
+		}
+
+		logger.info("Scaling " + puName + " to " + count + " instances");
+		
+		//TODO how to set that as a context property on the new instance?
+		if (StringUtils.isBlank(authGroups)) {
+// LEFT //			if (permissionEvaluator != null) {
+// LEFT //				authGroups = permissionEvaluator.getUserAuthGroupsString();	
+// LEFT //			} else {
+// LEFT //				authGroups = "";
+// LEFT //			}
+		}
+
+		UUID eventContainerID;
+		if (cloud == null) {
+			if (isLocalCloud()) {
+				// Manual scale by number of instances
+				pu.scale(new ManualCapacityScaleConfigurer().memoryCapacity(
+						512 * count, MemoryUnit.MEGABYTES).create());
+			} else {
+				// Eager scale (1 container per machine per PU)
+				throw new RestErrorException(
+						ResponseConstants.SET_INSTANCES_NOT_SUPPORTED_IN_EAGER);
+			}
+		} else {
+
+			final CloudTemplate template = getComputeTemplate(cloud,
+					templateName);
+			final long cloudExternalProcessMemoryInMB = calculateExternalProcessMemory(
+					cloud, template);
+			// TODO - set-instances is not supported when the "shared" flag is
+			// (CLOUDIFY-1158)
+			// currently we fall back to the previous impl
+			// CPU = 0 , memoery is calculated as usual. shared = false
+			pu.scale(ElasticScaleConfigFactory.createManualCapacityScaleConfig(
+					(int) (cloudExternalProcessMemoryInMB * count), 0,
+// RIGHT //					locationAware, true));
+		}
+
+		logger.log(Level.INFO, "Starting to poll for lifecycle events.");
+		eventContainerID = startPollingForLifecycleEvents(serviceName,
+				applicationName, count, false, timeout, TimeUnit.MINUTES);
+		returnMap.put(CloudifyConstants.LIFECYCLE_EVENT_CONTAINER_ID,
+				eventContainerID);
+
+		return successStatus(returnMap);
+// END setServiceInstances(String-String-String-String-int-int-int-int-boolean-boolean-String-String)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_243ee-36470
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2da29-9c05f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74d9c-f6937
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3239-519d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_646bd-9ed11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0974b-46351
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a229f-cee08
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_a229f_cee08\rev_rev_left_a229f-rev_right_cee08\dsl\src\main\java\org\cloudifysource\dsl\internal\DSLReader.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START readDslObject({FormalParametersInternal})//private Object readDslObject()
+			throws DSLException {
+		try {
+			init();
+		} catch (final IOException e) {
+			throw new DSLException("Failed to initialize DSL Reader: " + e.getMessage(), e);
+		}
+
+		LinkedHashMap<Object, Object> properties = null;
+		try {
+			properties = createDSLProperties();
+			createDSLOverrides(overridesFile, overridesScript, overrideProperties);
+			overrideProperties(properties);
+			addApplicationProperties(properties);
+		} catch (final Exception e) {
+			// catching exception here, as groovy config slurper may throw just
+			// about anything
+			String msg = null;
+			if (propertiesFile != null) {
+				msg = "Failed to load properties file " + this.propertiesFile.getName() + ": " + e.getMessage();
+			} else {
+				msg = "Failed to load properties file: " + e.getMessage();
+			}
+			throw new IllegalArgumentException(msg, e);
+		}
+
+		if (this.variables != null) {
+			properties.putAll(this.variables);
+		}
+		ClusterInfo clusterInfoToUseInGsc = this.clusterInfo;
+		if (clusterInfoToUseInGsc == null) {
+			clusterInfoToUseInGsc = new ClusterInfo(null, 1, 0, 1, 0);
+		}
+
+		// create an uninitialized service context
+		if (this.createServiceContext) {
+			if (this.context == null) {
+				if (isRunningInGSC) {
+					this.context = new ServiceContextImpl(clusterInfoToUseInGsc, workDir.getAbsolutePath());
+				} else {
+					this.context = new ServiceContextImpl(new ClusterInfo(null, 1, 0, 1, 0), workDir.getAbsolutePath());
+				}
+			}
+
+		}
+
+		// create the groovy shell, loaded with our settings
+		final GroovyShell gs = createGroovyShell(properties);
+		final Object result = evaluateGroovyScript(gs);
+
+		if (result == null) {
+			throw new DSLException("The DSL evaluated to a null - check your syntax and try again");
+		}
+
+		// overrideFields(result);
+
+		if (this.createServiceContext) {
+			if (!(result instanceof Service)) {
+				throw new IllegalArgumentException(
+						"The DSL reader cannot create a service context to a DSL that does not evaluate to a Service. "
+								+ "Set the 'createServiceContext' option to false if you do not need a service conext");
+			}
+
+			if (isRunningInGSC) {
+				if (clusterInfoToUseInGsc.getName() == null) {
+					clusterInfoToUseInGsc.setName(ServiceUtils.getAbsolutePUName(
+							CloudifyConstants.DEFAULT_APPLICATION_NAME, ((Service) result).getName()));
+				}
+
+				this.context.init((Service) result, admin, clusterInfoToUseInGsc);
+			} else {
+
+				this.context.initInIntegratedContainer((Service) result);
+			}
+		}
+
+		return result;
+
+// END readDslObject({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_a229f_cee08\rev_rev_left_a229f-rev_right_cee08\dsl\src\main\java\org\cloudifysource\dsl\internal\DSLReader.java
+Different Spacing: false
+Left editions: [691, 692]
+Right editions: [683, 684]
+Merged body: 
+// START createGroovyBinding(LinkedHashMap<Object,Object>-LinkedHashMap<Object,Object>)//private Binding createGroovyBinding(final LinkedHashMap<Object, Object> properties) {
+		final Binding binding = new Binding();
+
+		final Set<Entry<String, Object>> bindingPropertiesEntries = this.bindingProperties.entrySet();
+		for (final Entry<String, Object> entry : bindingPropertiesEntries) {
+			binding.setVariable(entry.getKey(), entry.getValue());
+		}
+
+		if (properties != null) {
+			final Set<Entry<Object, Object>> entries = properties.entrySet();
+			for (final Entry<Object, Object> entry : entries) {
+				binding.setVariable((String) entry.getKey(), entry.getValue());
+			}
+			// add variable that contains all the properties 
+			// 		to distinguish between properties and other binding variables.
+			// This will be used in loading application's service process 
+// RIGHT //			// to transfer application properties to the service using the
+// RIGHT //			// application's binding.
+			binding.setVariable(DSLUtils.DSL_PROPERTIES, properties);
+			if (context != null) {
+				binding.setVariable("context", context);
+			}
+		}
+
+// LEFT //		binding.setVariable(DSLUtils.DSL_VALIDATE_OBJECTS_PROPERTY_NAME, validateObjects);
+// LEFT //		binding.setVariable(DSLUtils.DSL_FILE_PATH_PROPERTY_NAME, dslFile == null ? null : dslFile.getPath());
+		return binding;
+// END createGroovyBinding(LinkedHashMap<Object,Object>-LinkedHashMap<Object,Object>)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6998-b1512
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eee5d-b645e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d380-4dc05
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f776-c7439
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5fdf4-43066
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b56c-a346e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bafc5-a968d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_16e16-4e951
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_28798-1152e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_180a0-c5f44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_abbcf-1fb02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7ae8-bcda9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81cd8-ccee9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1cb7-18647
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73143-f7be7
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startLocalCloudOnLocalhostAndWait(String-String-String-String-String-String-String-String-String-String-String-String-int-int-TimeUnit-TimeUnit)//public void startLocalCloudOnLocalhostAndWait(final String securityProfile, final String securityFilePath, 
+			final String username, final String password, final String keystoreFilePath, final String keystorePassword,
+			final int timeout, final TimeUnit timeunit) throws CLIException, InterruptedException, TimeoutException {
+
+		setGridServiceAgentZone(LOCALCLOUD_GSA_ZONES);
+
+		setDefaultNicAddress();
+
+		setDefaultLocalcloudLookup();
+
+		if (isWindows()) {
+			startManagementOnLocalhostAndWaitInternal(LOCALCLOUD_WIN_MANAGEMENT_ARGUMENTS, securityProfile, 
+					securityFilePath, username, password, keystoreFilePath, keystorePassword, timeout, timeunit, true);
+		} else {
+			startManagementOnLocalhostAndWaitInternal(LOCALCLOUD_LINUX_MANAGEMENT_ARGUMENTS, securityProfile, 
+					securityFilePath, username, password, keystoreFilePath, keystorePassword, timeout, timeunit, true);
+		}
+// END startLocalCloudOnLocalhostAndWait(String-String-String-String-String-String-String-String-String-String-String-String-int-int-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startManagementOnLocalhostAndWait(String-String-String-String-String-String-String-String-String-String-String-String-int-int-TimeUnit-TimeUnit)//public void startManagementOnLocalhostAndWait(final String securityProfile, final String securityFilePath,
+			final String username, final String password, final String keystoreFilePath, final String keystorePassword,
+			final int timeout, final TimeUnit timeunit) throws CLIException, InterruptedException, TimeoutException {
+
+		try {
+			this.cloud = ServiceReader.readCloud(new File(this.cloudFilePath));
+		} catch (final IOException e) {
+			throw new CLIException("Failed to read cloud file: " + e.getMessage(), e);
+		} catch (final DSLException e) {
+			throw new CLIException("Failed to read cloud file: " + e.getMessage(), e);
+		}
+
+		setGridServiceAgentZone(MANAGEMENT_ZONE);
+
+		setDefaultNicAddress();
+
+		startManagementOnLocalhostAndWaitInternal(CLOUD_MANAGEMENT_ARGUMENTS, securityProfile, securityFilePath,
+				username, password, keystoreFilePath, keystorePassword, timeout, timeunit, false);
+// END startManagementOnLocalhostAndWait(String-String-String-String-String-String-String-String-String-String-String-String-int-int-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START uninstallApplications(long-long-TimeUnit-TimeUnit)//private void uninstallApplications(final long timeout, final TimeUnit timeunit) throws InterruptedException,
+			TimeoutException, CLIException {
+
+		Collection<String> applicationsList = null;
+		boolean applicationsExist = false;
+		try {
+			if (!adminFacade.isConnected()) {
+				throw new CLIException("Failed to fetch applications list. "
+						+ "Client is not connected to the rest server.");
+			}
+
+			applicationsList = adminFacade.getApplicationNamesList();
+			// If there existed other applications besides the management.
+			applicationsExist = applicationsList.size() > 1;
+		} catch (final CLIException e) {
+			if (!force) {
+				throw new CLIStatusException(e, "failed_to_access_rest_before_teardown");
+			}
+			final String errorMessage = "Failed to fetch the currently deployed applications list."
+					+ " Continuing teardown-localcloud.";
+			if (verbose) {
+				logger.log(Level.FINE, errorMessage, e);
+				publishEvent(errorMessage + System.getProperty("line.separator") + e.toString());
+			} else {
+				logger.log(Level.FINE, errorMessage);
+				publishEvent(errorMessage);
+			}
+			// Suppress exception. continue with teardown.
+			return;
+		}
+
+		if (applicationsExist && !force) {
+			throw new CLIStatusException("apps_deployed_before_teardown_localcloud", applicationsList.toString());
+		}
+		final String uninstallMessage = ShellUtils.getMessageBundle().getString(
+				"uninstalling_applications_before_teardown");
+		publishEvent(uninstallMessage);
+		for (final String appName : applicationsList) {
+			try {
+				if (!appName.equals(MANAGEMENT_APPLICATION)) {
+					logger.fine("Uninstalling application " + appName);
+					final Map<String, String> uninstallApplicationResponse = adminFacade.uninstallApplication(appName,
+							(int) timeout);
+					if (uninstallApplicationResponse.containsKey(CloudifyConstants.LIFECYCLE_EVENT_CONTAINER_ID)) {
+						final String pollingID = uninstallApplicationResponse
+								.get(CloudifyConstants.LIFECYCLE_EVENT_CONTAINER_ID);
+						this.adminFacade.waitForLifecycleEvents(pollingID, (int) timeout,
+                                CloudifyConstants.TIMEOUT_ERROR_MESSAGE);
+					} else {
+						publishEvent("Failed to retrieve lifecycle logs from rest. " + "Check logs for more details.");
+					}
+				}
+			} catch (final CLIException e) {
+				final String errorMessage = "Application " + appName + " faild to uninstall."
+						+ " Continuing teardown-localcloud.";
+				if (!force) {
+					throw new CLIStatusException(e, "failed_to_uninstall_app_before_teardown", appName);
+				}
+				if (verbose) {
+					logger.log(Level.FINE, errorMessage, e);
+					publishEvent(errorMessage);
+				} else {
+					logger.log(Level.FINE, errorMessage);
+				}
+			}
+		}
+		if (applicationsExist) {
+			waitForUninstallApplications(timeout, timeunit);
+			publishEvent(ShellUtils.getMessageBundle().getString("all_apps_removed_before_teardown"));
+			logger.fine(ShellUtils.getMessageBundle().getString("all_apps_removed_before_teardown"));
+		}
+// END uninstallApplications(long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START shutdownAgentAndWait(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//private void shutdownAgentAndWait(final GridServiceAgent agent, final long timeout, final TimeUnit timeunit)
+			throws InterruptedException, TimeoutException, CLIException {
+
+		// We need to shutdown the agent after we close the admin to avoid
+		// closed exception since the admin
+		// still monitors
+		// the deployment behind the scenes, we call the direct proxy to the gsa
+		// since the admin is closed and
+		// we don't
+		// want to use objects it generated
+		final GSA gsa = ((InternalGridServiceAgent) agent).getGSA();
+		try {
+			gsa.shutdown();
+		} catch (final RemoteException e) {
+			if (!NetworkExceptionHelper.isConnectOrCloseException(e)) {
+				logger.log(Level.FINER, "Failed to shutdown GSA", e);
+				throw new AdminException("Failed to shutdown GSA", e);
+			}
+		}
+
+		createConditionLatch(timeout, timeunit).waitFor(new ConditionLatch.Predicate() {
+
+			private boolean messagePublished = false;
+
+			/**
+			 * Pings the agent to verify it's not available, indicating it was shut down.
+			 */
+			@Override
+			public boolean isDone() throws CLIException, InterruptedException {
+				if (!messagePublished) {
+					final String shuttingDownAgentMessage = ShellUtils.getMessageBundle().getString(
+							"shutting_down_cloudify_agent_teardown_localcloud");
+					publishEvent(shuttingDownAgentMessage);
+
+					final String shuttingDownManagmentMessage = ShellUtils.getMessageBundle().getString(
+							"shutting_down_cloudify_management");
+					publishEvent(shuttingDownManagmentMessage);
+
+					messagePublished = true;
+				}
+				logger.fine("Waiting for agent to shutdown");
+				try {
+					gsa.ping();
+				} catch (final RemoteException e) {
+					// Probably NoSuchObjectException meaning the GSA is going
+					// down
+					return true;
+				}
+				publishEvent(null);
+				return false;
+			}
+
+		});
+// END shutdownAgentAndWait(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START runGsAgentOnLocalHost(String-String-String[]-String[]-String-String-String-String-String-String-String-String)//private void runGsAgentOnLocalHost(final String name, final String[] gsAgentArguments, 
+			final String securityProfile, final String securityFilePath, final String keystoreFilePath, 
+			final String keystorePassword) throws CLIException, InterruptedException {
+
+		final List<String> args = new ArrayList<String>();
+		args.addAll(Arrays.asList(gsAgentArguments));
+
+		String[] command;
+		if (isLocalCloud) {
+			publishEvent(ShellUtils.getMessageBundle().getString("starting_bootstrap_localcloud"));
+			if (isWindows()) {
+				command = Arrays.copyOf(WINDOWS_LOCALCLOUD_COMMAND, WINDOWS_LOCALCLOUD_COMMAND.length);
+				args.addAll(Arrays.asList(WINDOWS_ARGUMENTS_POSTFIX));
+			} else {
+				command = Arrays.copyOf(LINUX_LOCALCLOUD_COMMAND, LINUX_LOCALCLOUD_COMMAND.length);
+				args.addAll(Arrays.asList(LINUX_ARGUMENTS_POSTFIX));
+			}
+		} else {
+			if (isWindows()) {
+				command = Arrays.copyOf(WINDOWS_CLOUD_COMMAND, WINDOWS_CLOUD_COMMAND.length);
+				args.addAll(Arrays.asList(WINDOWS_ARGUMENTS_POSTFIX));
+			} else {
+				command = Arrays.copyOf(LINUX_CLOUD_COMMAND, LINUX_CLOUD_COMMAND.length);
+				args.addAll(Arrays.asList(LINUX_ARGUMENTS_POSTFIX));
+			}
+		}
+		if (verbose) {
+			final String message = "Starting "
+					+ name
+					+ (verbose ? ":\n" + StringUtils.collectionToDelimitedString(Arrays.asList(command), " ") + " "
+							+ StringUtils.collectionToDelimitedString(args, " ") : "");
+			publishEvent(message);
+			logger.fine(message);
+		}
+
+		publishEvent(ShellUtils.getMessageBundle().getString("starting_cloudify_management"));
+		runCommand(command, args.toArray(new String[args.size()]), securityProfile, securityFilePath, keystoreFilePath,
+				keystorePassword);
+
+// END runGsAgentOnLocalHost(String-String-String[]-String[]-String-String-String-String-String-String-String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWebservicePort(String-String-boolean-boolean)//private int getWebservicePort(final String portEnvVriable, final boolean isSecureConnection) {
+		final String port = System.getenv().get(portEnvVriable);
+		if (org.apache.commons.lang.StringUtils.isNotBlank(port)) {
+			return Integer.parseInt(port);
+		}
+		if (portEnvVriable.equals(CloudifyConstants.WEBUI_PORT_ENV_VAR)) {
+			if (isSecureConnection) {
+				return CloudifyConstants.SECURE_WEBUI_PORT;
+			} else {
+				return CloudifyConstants.DEFAULT_WEBUI_PORT;
+			}
+		} else {
+			if (isSecureConnection) {
+				return CloudifyConstants.SECURE_REST_PORT;
+			} else {
+				return CloudifyConstants.DEFAULT_REST_PORT;
+			}
+		}
+
+// END getWebservicePort(String-String-boolean-boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startAgentOnLocalhostAndWait(String-String-String-String-long-long-TimeUnit-TimeUnit)//public void startAgentOnLocalhostAndWait(final String securityProfile, final String keystorePassword,
+			final long timeout, final TimeUnit timeunit) throws CLIException, InterruptedException, TimeoutException {
+
+		setIsLocalCloud(false);
+
+		setDefaultNicAddress();
+
+		final ConnectionLogsFilter connectionLogs = new ConnectionLogsFilter();
+		connectionLogs.supressConnectionErrors();
+		final Admin admin = createAdmin();
+		try {
+			setLookupDefaults(admin);
+
+			try {
+				waitForExistingAgent(admin, WAIT_EXISTING_AGENT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+				throw new CLIException("Agent already running on local machine. Use shutdown-agent first.");
+			} catch (final TimeoutException e) {
+				// no existing agent running on local machine
+			}
+			runGsAgentOnLocalHost("agent", AGENT_ARGUMENTS, securityProfile, "" /*securityFilePath*/,
+					"" /*keystoreFilePath*/, keystorePassword);
+
+			// wait for agent to start
+			waitForNewAgent(admin, timeout, timeunit);
+		} finally {
+			admin.close();
+			connectionLogs.restoreConnectionErrors();
+		}
+// END startAgentOnLocalhostAndWait(String-String-String-String-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\LocalhostGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setCloudFilePath(String-String)//public void setCloudFilePath(final String cloudFilePath) {
+		this.cloudFilePath = cloudFilePath;
+// END setCloudFilePath(String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc-commands\src\main\java\org\cloudifysource\esc\shell\installer\CloudGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START stopManagementMachines({FormalParametersInternal})//private void stopManagementMachines() {
+		if (this.useExistingManagers || this.existingManagersFile != null) {
+			// if we did not start the machines, we will not close them.
+			return;
+		}
+		try {
+			provisioning.stopManagementMachines();
+		} catch (final CloudProvisioningException e) {
+			// log a warning, don't throw an exception on this failure
+			logger.warning("Failed to clean management machines after provisioning failure, reported error: "
+					+ e.getMessage());
+		} catch (final TimeoutException e) {
+			// log a warning, don't throw an exception on this failure
+			logger.warning("Failed to clean management machines after provisioning failure, the operation timed out ("
+					+ e.getMessage() + ")");
+		}
+// END stopManagementMachines({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc-commands\src\main\java\org\cloudifysource\esc\shell\installer\CloudGridAgentBootstrapper.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startManagememntProcesses(MachineDetails[]-MachineDetails[]-String-String-String-String-long-long)//private MachineDetails[] startManagememntProcesses(final MachineDetails[] machines, final String securityProfile,
+			final String keystorePassword, final long endTime) throws InterruptedException, TimeoutException,
+			InstallerException, IOException {
+
+		final AgentlessInstaller installer = new AgentlessInstaller();
+		installer.addListener(new CliAgentlessInstallerListener(this.verbose));
+
+		// Update the logging level of jsch used by the AgentlessInstaller
+		Logger.getLogger(AgentlessInstaller.SSH_LOGGER_NAME).setLevel(
+				Level.parse(cloud.getProvider().getSshLoggingLevel()));
+
+		final ComputeTemplate template = cloud.getCloudCompute().getTemplates().get(
+				cloud.getConfiguration().getManagementMachineTemplate());
+
+		// fixConfigRelativePaths(cloud, template);
+
+		final int numOfManagementMachines = machines.length;
+
+		final InstallationDetails[] installations = createInstallationDetails(numOfManagementMachines, machines,
+				template, securityProfile, keystorePassword);
+		// only one machine should try and deploy the WebUI and Rest Admin unless
+		// noWebServices is true
+		int i = isNoWebServices() ? 0 : 1;
+		for (; i < installations.length; i++) {
+			installations[i].setNoWebServices(true);
+		}
+
+		final String lookup = createLocatorsString(installations);
+		for (final InstallationDetails detail : installations) {
+			detail.setLocator(lookup);
+		}
+
+		// executes the agentless installer on all of the machines,
+		// asynchronously
+		installOnMachines(endTime, installer, numOfManagementMachines,
+				installations);
+
+		return machines;
+
+// END startManagememntProcesses(MachineDetails[]-MachineDetails[]-String-String-String-String-long-long)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\BaseProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START doStartManagementMachines(long-long-int-int)//protected MachineDetails[] doStartManagementMachines(final long endTime, final int numberOfManagementMachines)
+			throws TimeoutException, CloudProvisioningException {
+		final ExecutorService executors = Executors.newFixedThreadPool(numberOfManagementMachines);
+
+		@SuppressWarnings("unchecked")
+		final Future<MachineDetails>[] futures = (Future<MachineDetails>[]) new Future<?>[numberOfManagementMachines];
+
+		final ComputeTemplate managementTemplate =
+				this.cloud.getCloudCompute().getTemplates().get(this.cloud.getConfiguration().getManagementMachineTemplate());
+		try {
+			// Call startMachine asynchronously once for each management
+			// machine
+			for (int i = 0; i < numberOfManagementMachines; i++) {
+				final int index = i + 1;
+				futures[i] = executors.submit(new Callable<MachineDetails>() {
+
+					@Override
+					public MachineDetails call()
+							throws Exception {
+						return createServer(serverNamePrefix + index, endTime, managementTemplate);
+					}
+				});
+
+			}
+
+			// Wait for each of the async calls to terminate.
+			int numberOfErrors = 0;
+			Exception firstCreationException = null;
+			final MachineDetails[] createdManagementMachines = new MachineDetails[numberOfManagementMachines];
+			for (int i = 0; i < createdManagementMachines.length; i++) {
+				try {
+					createdManagementMachines[i] = futures[i].get(endTime - System.currentTimeMillis(),
+							TimeUnit.MILLISECONDS);
+				} catch (final InterruptedException e) {
+					++numberOfErrors;
+					publishEvent("failed_to_create_management_vm", e.getMessage());
+					logger.log(Level.SEVERE, "Failed to start a management machine", e);
+					if (firstCreationException == null) {
+						firstCreationException = e;
+					}
+
+				} catch (final ExecutionException e) {
+					++numberOfErrors;
+					publishEvent("failed_to_create_management_vm", e.getMessage());
+					logger.log(Level.SEVERE, "Failed to start a management machine", e);
+					if (firstCreationException == null) {
+						firstCreationException = e;
+					}
+				}
+			}
+
+			// In case of a partial error, shutdown all servers that did start
+			// up
+			if (numberOfErrors > 0) {
+				handleProvisioningFailure(numberOfManagementMachines, numberOfErrors, firstCreationException,
+						createdManagementMachines);
+			}
+
+			return createdManagementMachines;
+		} finally {
+			if (executors != null) {
+				executors.shutdownNow();
+			}
+		}
+// END doStartManagementMachines(long-long-int-int)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\main\java\org\cloudifysource\dsl\cloud\Cloud.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+	public String toString() {
+		return "Cloud [name=" + name + ", provider=" + provider + ", user=" + user + ", configuration="
+				+ configuration + ", cloudCompute=" + cloudCompute + ", custom=" + custom + "]";
+// END toString({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\main\java\org\cloudifysource\dsl\cloud\Cloud.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateManagementTemplateName(DSLValidationContext-DSLValidationContext)//@DSLValidation
+	void validateManagementTemplateName(final DSLValidationContext validationContext)
+			throws DSLValidationException {
+
+		final CloudConfiguration configuration = getConfiguration();
+		final Map<String, ComputeTemplate> templates = getCloudCompute().getTemplates();
+
+		final String managementTemplateName = configuration.getManagementMachineTemplate();
+
+		if (StringUtils.isBlank(managementTemplateName)) {
+			throw new DSLValidationException("managementMachineTemplate may not be empty");
+		}
+
+		if (!templates.containsKey(managementTemplateName)) {
+			throw new DSLValidationException("The management machine template \"" + managementTemplateName + "\" is "
+					+ "not listed in the cloud's templates section");
+		}
+
+// END validateManagementTemplateName(DSLValidationContext-DSLValidationContext)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\main\java\org\cloudifysource\dsl\cloud\Cloud.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateDynamicNodesClosures(DSLValidationContext-DSLValidationContext)//@DSLValidation
+	public void validateDynamicNodesClosures(final DSLValidationContext validationContext) 
+			throws DSLValidationException {
+		if (CloudifyConstants.DYNAMIC_BYON_NAME.equals(name)) {
+			String managementMachineTemplateName = configuration.getManagementMachineTemplate();
+			ComputeTemplate managementMachineTemplate = getCloudCompute().
+					getTemplates().get(managementMachineTemplateName);
+			Map<String, Object> mngTemplateCustom = managementMachineTemplate.getCustom();
+			validateClosureExists(mngTemplateCustom, CloudifyConstants.DYNAMIC_BYON_START_MNG_MACHINES_KEY, 
+					managementMachineTemplateName);			
+			validateClosureExists(mngTemplateCustom, CloudifyConstants.DYNAMIC_BYON_STOP_MNG_MACHINES_KEY, 
+					managementMachineTemplateName);
+			for (Entry<String, ComputeTemplate> templateEntry : getCloudCompute().getTemplates().entrySet()) {
+				final String templateName = templateEntry.getKey();
+				Map<String, Object> templateCustom = templateEntry.getValue().getCustom();
+				validateClosureExists(templateCustom, CloudifyConstants.DYNAMIC_BYON_START_MACHINE_KEY, templateName);
+				validateClosureExists(templateCustom, CloudifyConstants.DYNAMIC_BYON_STOP_MACHINE_KEY, templateName);
+			}
+		}
+// END validateDynamicNodesClosures(DSLValidationContext-DSLValidationContext)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\installer\AgentlessInstaller.java
+Different Spacing: false
+Left editions: [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319]
+Right editions: [256, 257, 258, 259, 260, 261, 262]
+Merged body: 
+// START createEnvironmentFile(InstallationDetails-InstallationDetails)//// LEFT //private File createEnvironmentFile(final InstallationDetails details) throws IOException {
+// LEFT //
+// LEFT //		String remoteDirectory = details.getRemoteDir();
+// LEFT //		if (remoteDirectory.endsWith("/")) {
+// LEFT //			remoteDirectory = remoteDirectory.substring(0, remoteDirectory.length() - 1);
+// LEFT //		}
+// LEFT //		if (details.isManagement()) {
+// LEFT //			// add the relative path to the cloud file location
+// LEFT //			remoteDirectory = remoteDirectory + "/" + details.getRelativeLocalDir();
+// LEFT //		}
+// LEFT //
+// LEFT //		String authGroups = null;
+// LEFT //		if (details.getAuthGroups() != null) {
+// LEFT //			// authgroups should be a strongly typed object convertible into a
+// LEFT //			// String
+// LEFT //			authGroups = details.getAuthGroups();
+// LEFT //		}
+// LEFT //
+// LEFT //		final String springProfiles = createSpringProfilesString(details);
+// LEFT //		final EnvironmentFileBuilder builder = new EnvironmentFileBuilder(details.getScriptLanguage())
+// LEFT //				.exportVar(LUS_IP_ADDRESS_ENV, details.getLocator())
+// LEFT //				.exportVar(GSA_MODE_ENV, details.isManagement() ? "lus" : "agent")
+// LEFT //				.exportVar(CloudifyConstants.SPRING_ACTIVE_PROFILE_ENV_VAR, springProfiles)
+// LEFT //				.exportVar(NO_WEB_SERVICES_ENV,
+// LEFT //						details.isNoWebServices() ? "true" : "false")
+// LEFT //				.exportVar(
+// LEFT //						MACHINE_IP_ADDRESS_ENV,
+// LEFT //						details.isBindToPrivateIp() ? details.getPrivateIp()
+// LEFT //								: details.getPublicIp())
+// LEFT //				.exportVar(MACHINE_ZONES_ENV, details.getZones())
+// LEFT //				.exportVarWithQuotes(CloudifyConstants.CLOUDIFY_LINK_ENV,
+// LEFT //						details.getCloudifyUrl())
+// LEFT //				.exportVarWithQuotes(CloudifyConstants.CLOUDIFY_OVERRIDES_LINK_ENV,
+// LEFT //						details.getOverridesUrl())
+// LEFT //				.exportVar(WORKING_HOME_DIRECTORY_ENV, remoteDirectory)
+// LEFT //				.exportVar(CloudifyConstants.GIGASPACES_AUTH_GROUPS, authGroups)
+// LEFT //				.exportVar(CloudifyConstants.GIGASPACES_AGENT_ENV_PRIVATE_IP, details.getPrivateIp())
+// LEFT //				.exportVar(CloudifyConstants.GIGASPACES_AGENT_ENV_PUBLIC_IP, details.getPublicIp())
+// LEFT //				.exportVar(CloudifyConstants.GIGASPACES_CLOUD_TEMPLATE_NAME, details.getTemplateName())
+// LEFT //				.exportVar(CloudifyConstants.GIGASPACES_CLOUD_MACHINE_ID, details.getMachineId())
+// LEFT //				.exportVar(CloudifyConstants.CLOUDIFY_CLOUD_MACHINE_ID, details.getMachineId())
+// LEFT //				// maintain backwards compatibility for pre 2.3.0
+// LEFT //				.exportVar(CloudifyConstants.CLOUDIFY_AGENT_ENV_PRIVATE_IP, details.getPrivateIp())
+// LEFT //				.exportVar(CloudifyConstants.CLOUDIFY_AGENT_ENV_PUBLIC_IP, details.getPublicIp());
+// LEFT //
+// RIGHT //		builder.exportVar(STORAGE_VOLUME_ATTACHED, Boolean.toString(details.isStorageVolumeAttached()));
+// RIGHT //		if (details.isStorageVolumeAttached()) {
+// RIGHT //			builder.exportVar(STORAGE_FORMAT_TYPE, details.getStorageFormatType());
+// RIGHT //			builder.exportVar(STORAGE_DEVICE_NAME, details.getStorageDeviceName());
+// RIGHT //			builder.exportVar(STORAGE_MOUNT_PATH, details.getStorageMountPath());
+// RIGHT //		}
+// RIGHT //
+// LEFT //		if (details.getReservationId() != null) {
+// LEFT //			builder.exportVar(GSA_RESERVATION_ID_ENV, details.getReservationId().toString());
+// LEFT //		}
+// LEFT //
+// LEFT //		if (details.isManagement()) {
+// LEFT //			String remotePath = details.getRemoteDir();
+// LEFT //			if (!remotePath.endsWith("/")) {
+// LEFT //				remotePath += "/";
+// LEFT //			}
+// LEFT //			builder.exportVar(CLOUD_FILE, remotePath + details.getCloudFile().getName());
+// LEFT //
+// LEFT //			logger.log(Level.FINE, "Setting ESM/GSM/LUS java options.");
+// LEFT //			builder.exportVar("ESM_JAVA_OPTIONS", details.getEsmCommandlineArgs());
+// LEFT //			builder.exportVar("LUS_JAVA_OPTIONS", details.getLusCommandlineArgs());
+// LEFT //			builder.exportVar("GSM_JAVA_OPTIONS", details.getGsmCommandlineArgs());
+// LEFT //
+// LEFT //			logger.log(Level.FINE, "Setting gsc lrmi port-range and custom rest/webui ports.");
+// LEFT //			builder.exportVar(CloudifyConstants.GSC_LRMI_PORT_RANGE_ENVIRONMENT_VAR, details.getGscLrmiPortRange());
+// LEFT //			builder.exportVar(CloudifyConstants.REST_PORT_ENV_VAR, details.getRestPort().toString());
+// LEFT //			builder.exportVar(CloudifyConstants.REST_MAX_MEMORY_ENVIRONMENT_VAR, details.getRestMaxMemory());
+// LEFT //			builder.exportVar(CloudifyConstants.WEBUI_PORT_ENV_VAR, details.getWebuiPort().toString());
+// LEFT //			builder.exportVar(CloudifyConstants.WEBUI_MAX_MEMORY_ENVIRONMENT_VAR, details.getWebuiMaxMemory());
+// LEFT //		}
+// LEFT //		logger.log(Level.FINE, "Setting GSA java options.");
+// LEFT //		builder.exportVar("GSA_JAVA_OPTIONS", details.getGsaCommandlineArgs());
+// LEFT //
+// LEFT //		if (details.getUsername() != null) {
+// LEFT //			builder.exportVar("USERNAME", details.getUsername());
+// LEFT //		}
+// LEFT //		if (details.getPassword() != null) {
+// LEFT //			builder.exportVar("PASSWORD", details.getPassword());
+// LEFT //		}
+// LEFT //
+// LEFT //		builder.exportVar(CloudifyConstants.SPRING_SECURITY_CONFIG_FILE_ENV_VAR, details.getRemoteDir()
+// LEFT //				+ "/" + CloudifyConstants.SECURITY_FILE_NAME);
+// LEFT //		if (StringUtils.isNotBlank(details.getKeystorePassword())) {
+// LEFT //			builder.exportVar(CloudifyConstants.KEYSTORE_FILE_ENV_VAR, details.getRemoteDir()
+// LEFT //					+ "/" + CloudifyConstants.KEYSTORE_FILE_NAME);
+// LEFT //			builder.exportVar(CloudifyConstants.KEYSTORE_PASSWORD_ENV_VAR, details.getKeystorePassword());
+// LEFT //		}
+// LEFT //
+// LEFT //		final Set<Entry<String, String>> entries = details.getExtraRemoteEnvironmentVariables().entrySet();
+// LEFT //		for (final Entry<String, String> entry : entries) {
+// LEFT //			builder.exportVar(entry.getKey(), entry.getValue());
+// LEFT //		}
+// LEFT //
+// LEFT //		final String fileContents = builder.toString();
+// LEFT //
+// LEFT //		final File tempFolder = Utils.createTempFolder();
+// LEFT //		final File tempFile = new File(tempFolder, builder.getEnvironmentFileName());
+// LEFT //		tempFile.deleteOnExit();
+// LEFT //		FileUtils.writeStringToFile(tempFile, fileContents);
+// LEFT //
+// LEFT //		if (logger.isLoggable(Level.FINE)) {
+// LEFT //			logger.fine("Created environment file with the following contents: " + fileContents);
+// LEFT //		}
+// LEFT //		return tempFile;
+// END createEnvironmentFile(InstallationDetails-InstallationDetails)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementSpaceServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START installOnLocalCloud({FormalParametersInternal})//public void installOnLocalCloud()
+			throws ProcessingUnitAlreadyDeployedException, CLIException {
+
+		if (agentZone == null) {
+			throw new IllegalStateException("Management services must be installed on management zone");
+		}
+
+		final File puFile = getManagementSpacePUFile();
+
+		final ProcessingUnitDeployment deployment =
+				new ProcessingUnitDeployment(puFile).name(serviceName).addZone(serviceName);
+
+		// SpaceDeployment deployment = new SpaceDeployment(serviceName).addZone(serviceName);
+
+		for (final Entry<Object, Object> prop : getContextProperties().entrySet()) {
+			deployment.setContextProperty(prop.getKey().toString(), prop.getValue().toString());
+		}
+
+		for (final String requiredPUName : dependencies) {
+			deployment.addDependencies(new ProcessingUnitDeploymentDependenciesConfigurer()
+					.dependsOnMinimumNumberOfDeployedInstancesPerPartition(requiredPUName, 1).create());
+		}
+
+		getGridServiceManager().deploy(deployment);
+
+// END installOnLocalCloud({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementSpaceServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START waitForInstallation(AdminFacade-AdminFacade-GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//@Override
+	public void waitForInstallation(final AdminFacade adminFacade, final GridServiceAgent agent, final long timeout,
+			final TimeUnit timeunit) throws InterruptedException, TimeoutException, CLIException {
+		createConditionLatch(timeout, timeunit).waitFor(new ConditionLatch.Predicate() {
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public boolean isDone() throws CLIException, InterruptedException {
+
+				final Space space = admin.getSpaces().getSpaceByName(serviceName);
+				if (space != null) {
+					final SpacePartition partition = space.getPartition(0);
+					if (partition != null && partition.getPrimary() != null) {
+						gigaspace = space.getGigaSpace();
+						return true;
+					}
+				}
+				
+				logger.fine("Connecting to management space.");
+				if (verbose){
+					publishEvent("Connecting to management space.");
+				}
+				return false;
+			}
+		});
+		
+		logger.fine("Management space is available.");
+		if (verbose){
+			logger.fine("Management space is available.");
+		}
+// END waitForInstallation(AdminFacade-AdminFacade-GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementSpaceServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addListener(LocalhostBootstrapperListener-LocalhostBootstrapperListener)//public void addListener(final LocalhostBootstrapperListener listener) {
+		this.eventsListenersList.add(listener);
+// END addListener(LocalhostBootstrapperListener-LocalhostBootstrapperListener)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementSpaceServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addListeners(List<LocalhostBootstrapperListener>-List<LocalhostBootstrapperListener>)//public void addListeners(final List<LocalhostBootstrapperListener> listeners) {
+		for (final LocalhostBootstrapperListener listener : listeners) {
+			this.eventsListenersList.add(listener);
+		}
+// END addListeners(List<LocalhostBootstrapperListener>-List<LocalhostBootstrapperListener>)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementSpaceServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setIsLocalCloud(boolean-boolean)//public void setIsLocalCloud(final boolean isLocalCloud) {
+		this.isLocalcloud = isLocalCloud;
+// END setIsLocalCloud(boolean-boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\ByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START initDeployer(Cloud-Cloud)//@Override
+	protected void initDeployer(final Cloud cloud) {
+		try {
+			deployer = (ByonDeployer) context.getOrCreate("UNIQUE_BYON_DEPLOYER_ID", new Callable<Object>() {
+
+				@Override
+				public Object call()
+						throws Exception {
+					logger.info("Creating BYON context deployer for cloud: " + cloud.getName());
+					final ByonDeployer newDeployer = new ByonDeployer();
+					addTemplatesToDeployer(newDeployer, cloud.getCloudCompute().getTemplates());
+					return newDeployer;
+				}
+			});
+		} catch (final Exception e) {
+			publishEvent("connection_to_cloud_api_failed", cloud.getProvider().getProvider());
+			throw new IllegalStateException("Failed to create cloud deployer", e);
+		}
+		try {
+			updateDeployerTemplates(cloud);
+		} catch (final Exception e) {
+			logger.log(Level.WARNING, "initDeployer - fialed to add tempaltes to deployer", e);
+			throw new IllegalStateException("Failed to update templates", e);
+		}
+		setCustomSettings(cloud);
+// END initDeployer(Cloud-Cloud)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\ByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START updateDeployerTemplates(Cloud-Cloud)//public void updateDeployerTemplates(final Cloud cloud) throws Exception {
+		final Map<String, ComputeTemplate> cloudTemplatesMap = cloud.getCloudCompute().getTemplates();
+		final List<String> cloudTemplateNames = new LinkedList<String>(cloudTemplatesMap.keySet());
+		final List<String> deployerTemplateNames = deployer.getTemplatesList();
+
+		final List<String> redundantTemplates = new LinkedList<String>(deployerTemplateNames);
+		redundantTemplates.removeAll(cloudTemplateNames);
+		if (!redundantTemplates.isEmpty()) {
+			logger.info("initDeployer - found redundant templates: " + redundantTemplates);
+			deployer.removeTemplates(redundantTemplates);
+		}
+		final List<String> missingTemplates = new LinkedList<String>(cloudTemplateNames);
+		missingTemplates.removeAll(deployerTemplateNames);
+		if (!missingTemplates.isEmpty()) {
+			logger.info("initDeployer - found missing templates: " + missingTemplates);
+			final Map<String, ComputeTemplate> templatesMap = new HashMap<String, ComputeTemplate>();
+			for (final String templateName : missingTemplates) {
+				final ComputeTemplate cloudTemplate = cloudTemplatesMap.get(templateName);
+				templatesMap.put(templateName, cloudTemplate);
+			}
+			addTemplatesToDeployer(deployer, templatesMap);
+		}
+// END updateDeployerTemplates(Cloud-Cloud)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\ByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startMachine(String-String-long-long-TimeUnit-TimeUnit)//@Override
+	public MachineDetails startMachine(final String locationId, final long timeout, final TimeUnit timeUnit)
+			throws TimeoutException,
+			CloudProvisioningException {
+
+		final long endTime = System.currentTimeMillis() + timeUnit.toMillis(timeout);
+
+		logger.info(this.getClass().getName() + ": startMachine, management mode: " + management);
+
+		final Set<String> activeMachinesIPs = admin.getMachines().getHostsByAddress().keySet();
+		deployer.setAllocated(cloudTemplateName, activeMachinesIPs);
+		if (logger.isLoggable(Level.INFO)) {
+			logger.info("Verifying the active machines are not in the free pool: "
+					+ "\n Admin reports the currently used machines are: "
+					+ Arrays.toString(activeMachinesIPs.toArray())
+					+ "\n Byon deployer reports the free machines for template " + cloudTemplateName + " are: "
+					+ Arrays.toString(deployer.getFreeNodesByTemplateName(cloudTemplateName).toArray())
+					+ "\n Byon deployer reports the currently used machines for template " + cloudTemplateName
+					+ " are:"
+					+ Arrays.toString(deployer.getAllocatedNodesByTemplateName(cloudTemplateName).toArray())
+					+ "\n Byon deployer reports the invalid used machines for template " + cloudTemplateName + " are: "
+					+ Arrays.toString(deployer.getInvalidNodesByTemplateName(cloudTemplateName).toArray()) + ")");
+		}
+		final String newServerName = createNewServerName();
+		logger.info("Attempting to start a new cloud machine");
+		final ComputeTemplate template = this.cloud.getCloudCompute().getTemplates().get(cloudTemplateName);
+
+		return createServer(newServerName, endTime, template);
+// END startMachine(String-String-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\ByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START createMachineDetailsFromNode(CustomNode-CustomNode)//private MachineDetails createMachineDetailsFromNode(final CustomNode node)
+			throws CloudProvisioningException {
+		final ComputeTemplate template = this.cloud.getCloudCompute().getTemplates().get(this.cloudTemplateName);
+
+		final MachineDetails md = createMachineDetailsForTemplate(template);
+
+		md.setMachineId(node.getId());
+		md.setPrivateAddress(node.getPrivateIP());
+		md.setPublicAddress(node.getPublicIP());
+		md.setCleanRemoteDirectoryOnStart(this.cleanRemoteDirectoryOnStart);
+		// if the node has user/pwd - use it. Otherwise - take the use/password
+		// from the template's settings.
+
+		if (!StringUtils.isBlank(node.getUsername()) && !StringUtils.isBlank(node.getCredential())) {
+			md.setRemoteUsername(node.getUsername());
+			md.setRemotePassword(node.getCredential());
+		} else if (!StringUtils.isBlank(template.getUsername())
+				&& !StringUtils.isBlank(template.getPassword())) {
+			md.setRemoteUsername(template.getUsername());
+			md.setRemotePassword(template.getPassword());
+		} else {
+			final String nodeStr = node.toString();
+			logger.severe("Cloud node loading failed, missing credentials for server: " + nodeStr);
+			publishEvent("prov_node_loading_failed", nodeStr);
+			throw new CloudProvisioningException("Cloud node loading failed, missing credentials for server: "
+					+ nodeStr);
+		}
+
+		return md;
+// END createMachineDetailsFromNode(CustomNode-CustomNode)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\test\java\org\cloudifysource\esc\byon\ParseByonCloudNodesTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testByonWithGstring({FormalParametersInternal})//@Test
+	public void testByonWithGstring() throws IOException, DSLException, CloudProvisioningException {
+		final File cloudFile = new File("src/test/resources/byon-gstring/testbyon-cloud.groovy");
+		final Cloud cloud = ServiceReader.readCloud(cloudFile);
+
+		validateCloud(cloud);
+
+		ByonProvisioningDriver driver = new ByonProvisioningDriver();
+		driver.setProvisioningDriverClassContext(new DefaultProvisioningDriverClassContext());
+		driver.setConfig(cloud, cloud.getCloudCompute().getTemplates().keySet().iterator().next(), true, "test");
+
+		Cloud modifiedCloud = driver.getCloud();
+
+		// make sure there were no modifications to the cloud object
+		validateCloud(modifiedCloud);
+
+		ByonDeployer deployer = driver.getDeployer();
+
+		Set<CustomNode> nodes = deployer.getAllNodesByTemplateName(cloud.getCloudCompute().
+				getTemplates().keySet().iterator().next());
+		Assert.assertNotNull(nodes);
+		Assert.assertEquals(1, nodes.size());
+		CustomNode node = nodes.iterator().next();
+		Assert.assertEquals("pc-lab100", node.getPrivateIP());
+
+
+
+// END testByonWithGstring({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\test\java\org\cloudifysource\esc\byon\ParseByonCloudNodesTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateCloud(Cloud-Cloud)//private void validateCloud(final Cloud cloud) {
+		Assert.assertNotNull(cloud);
+		Assert.assertTrue(cloud.getCloudCompute().getTemplates().size() == 1);
+		ComputeTemplate template = cloud.getCloudCompute().getTemplates().values().iterator().next();
+		Assert.assertNotNull(template.getCustom());
+
+		List<Object> list = (List<Object>) template.getCustom().get("nodesList");
+
+		Assert.assertTrue(list.size() == 1);
+
+		Map<Object, Object> map = (Map<Object, Object>) list.iterator().next();
+		Assert.assertTrue(map.containsKey("host-list"));
+		final Object hostList = map.get("host-list");
+
+		Assert.assertTrue(hostList instanceof GString);
+// END validateCloud(Cloud-Cloud)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\test\java\org\cloudifysource\esc\byon\ParseByonCloudNodesTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START test({FormalParametersInternal})//@Test
+	public void test() {
+		try {
+			// load the cloud file
+			final File cloudFile = new File(TEST_RESOURCES + "/testbyon-cloud.groovy");
+			System.out.println("Trying to read cloud file " + cloudFile.getAbsolutePath());
+			final Cloud cloud = ServiceReader.readCloud(cloudFile);
+
+			System.out.println("Creating BYON deployer");
+			final ByonDeployer deployer = new ByonDeployer();
+			List<Map<String, String>> nodesList = null;
+			final Map<String, ComputeTemplate> templatesMap = cloud.getCloudCompute().getTemplates();
+			for (final String templateName : templatesMap.keySet()) {
+				final Map<String, Object> customSettings = cloud.getCloudCompute().getTemplates().get(templateName).getCustom();
+				Assert.assertNotNull("Custom settings not found for template " + templateName, customSettings);
+				if (customSettings != null) {
+					nodesList = (List<Map<String, String>>) customSettings.get(CLOUD_NODES_LIST);
+				}
+				Assert.assertNotNull("NodesList not found for template " + templateName, nodesList);
+				if (nodesList == null) {
+					System.out.println("Failed to create cloud deployer, invalid configuration, nodesList is null");
+					throw new CloudProvisioningException("Failed to create BYON cloud deployer, invalid configuration");
+				}
+				deployer.addNodesList(templateName, templatesMap.get(templateName), nodesList);
+			}
+
+			Set<CustomNode> allNodes = deployer.getAllNodesByTemplateName("SMALL_LINUX");
+			Set<CustomNode> expectedNodes = new HashSet<CustomNode>();
+			// id, ip, username, credential
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test01", "0.0.0.1", "tgrid1", "tgrid1",
+					"byon-test01"));
+			// id, ip
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test02", "0.0.0.2", null, null, "byon-test02"));
+			// idPrefix, ipList
+			// expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test11", "0.0.0.3", null, null, "byon-test11"));
+			// expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test12", "0.0.0.4", null, null, "byon-test12"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test11", "pc-lab39", null, null, "byon-test11"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test12", "pc-lab40", null, null, "byon-test12"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test13", "0.0.0.5", null, null, "byon-test13"));
+			// id (template), ipList
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test21", "0.0.0.6", null, null, "byon-test21"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test22", "0.0.0.7", null, null, "byon-test22"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test23", "0.0.0.8", null, null, "byon-test23"));
+			// id, ipRange
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test31", "0.0.0.9", null, null, "byon-test31"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test32", "0.0.0.10", null, null, "byon-test32"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test33", "0.0.0.11", null, null, "byon-test33"));
+			// id, CIDR
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test41", "0.0.0.12", null, null, "byon-test41"));
+			expectedNodes.add(new CustomNodeImpl(PROVIDER, "byon-test42", "0.0.0.13", null, null, "byon-test42"));
+			System.out.println(Arrays.toString(allNodes.toArray()));
+
+			Assert.assertTrue("Wrong output", allNodes.size() == expectedNodes.size()
+					&& expectedNodes.containsAll(allNodes) && allNodes.containsAll(expectedNodes));
+		} catch (final Exception e) {
+			System.out.println("Failed to create cloud deployer, exception thrown: " + e.getMessage());
+			e.printStackTrace();
+			throw new IllegalStateException("Failed to create cloud deployer", e);
+		}
+// END test({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\installer\InstallationDetails.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+	public String toString() {
+		return "InstallationDetails [privateIP=" + privateIp + ", publicIP=" + publicIp + ", locator=" + locator
+				+ ", connectToPrivateIP=" + connectedToPrivateIp + ", cloudifyUrl=" + cloudifyUrl
+				+ ", bindToPrivateIP=" + bindToPrivateIp + ", username=" + username + ", password=***" + ", keyFile="
+				+ keyFile + ", localDir=" + localDir + ", remoteDir=" + remoteDir + ", isLus=" + isManagement
+				+ ", zones="
+				+ zones + ", extraRemoteEnvironmentVariables = " + extraRemoteEnvironmentVariables
+				+ ", authGroups=***]" + ", storageVolumeAttached=" + storageVolumeAttached
+				+ ", storageFormatType=" + storageFormatType + ", storageDeviceName=" + storageDeviceName
+				+ ", storageMountPath=" + storageMountPath;
+// END toString({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\installer\InstallationDetails.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setManagementOnlyFiles(List<String>-List<String>)//public void setManagementOnlyFiles(final List<String> managementOnlyFiles) {
+
+		// copy list into array - make sure to use '/' as separator char for string comparisons later on.
+		this.managementOnlyFiles = new String[managementOnlyFiles.size()];
+		final int i = 0;
+		for (final String string : managementOnlyFiles) {
+			this.managementOnlyFiles[i] = string.replace("\\", "/");
+		}
+
+// END setManagementOnlyFiles(List<String>-List<String>)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\test\java\org\cloudifysource\dsl\cloud\CloudTemplateTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testValidateDefaultValues_1({FormalParametersInternal})//@Test(expected = org.cloudifysource.dsl.internal.DSLValidationException.class)
+	public void testValidateDefaultValues_1()
+			throws Exception {
+		final ComputeTemplate fixture = new ComputeTemplate();
+		fixture.setRemoteExecution(RemoteExecutionModes.SSH);
+		fixture.setImageId("");
+		fixture.setOptions(new HashMap());
+		fixture.setHardwareId("");
+		fixture.setRemoteDirectory((String) null);
+		fixture.setNumberOfCores(1);
+		fixture.setFileTransfer(FileTransferModes.CIFS);
+		fixture.setCustom(new HashMap());
+		fixture.setUsername("");
+		fixture.setLocationId("");
+		fixture.setOverrides(new HashMap());
+		fixture.setPassword("");
+		fixture.setMachineMemoryMB(1);
+
+		fixture.validateDefaultValues(new DSLValidationContext());
+
+		// add additional test code here
+		// unverified
+// END testValidateDefaultValues_1({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\test\java\org\cloudifysource\dsl\cloud\CloudTemplateTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testValidateDefaultValues_2({FormalParametersInternal})//@Test(expected = org.cloudifysource.dsl.internal.DSLValidationException.class)
+	public void testValidateDefaultValues_2()
+			throws Exception {
+		final ComputeTemplate fixture = new ComputeTemplate();
+		fixture.setRemoteExecution(RemoteExecutionModes.SSH);
+		fixture.setImageId("");
+		fixture.setOptions(new HashMap());
+		fixture.setHardwareId("");
+		fixture.setRemoteDirectory("");
+		fixture.setNumberOfCores(1);
+		fixture.setFileTransfer(FileTransferModes.CIFS);
+		fixture.setCustom(new HashMap());
+		fixture.setUsername("");
+		fixture.setLocationId("");
+		fixture.setOverrides(new HashMap());
+		fixture.setPassword("");
+		fixture.setMachineMemoryMB(1);
+
+		fixture.validateDefaultValues(new DSLValidationContext());
+
+		// add additional test code here
+		// unverified
+// END testValidateDefaultValues_2({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\test\java\org\cloudifysource\dsl\cloud\CloudTemplateTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testValidateDefaultValues_3({FormalParametersInternal})//@Test(expected = org.cloudifysource.dsl.internal.DSLValidationException.class)
+	public void testValidateDefaultValues_3()
+			throws Exception {
+		final ComputeTemplate fixture = new ComputeTemplate();
+		fixture.setRemoteExecution(RemoteExecutionModes.SSH);
+		fixture.setImageId("");
+		fixture.setOptions(new HashMap());
+		fixture.setHardwareId("");
+		fixture.setRemoteDirectory("");
+		fixture.setNumberOfCores(1);
+		fixture.setFileTransfer(FileTransferModes.CIFS);
+		fixture.setCustom(new HashMap());
+		fixture.setUsername("");
+		fixture.setLocationId("");
+		fixture.setOverrides(new HashMap());
+		fixture.setPassword("");
+		fixture.setMachineMemoryMB(1);
+
+		fixture.validateDefaultValues(new DSLValidationContext());
+
+		// add additional test code here
+		// unverified
+// END testValidateDefaultValues_3({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START installLocalCloud({FormalParametersInternal})//public void installLocalCloud() throws CLIException {
+
+		if (agentZone == null) {
+			throw new IllegalStateException("Management services must be installed on management zone");
+		}
+		
+		final ProcessingUnitDeployment deployment = new ProcessingUnitDeployment(
+				getGSFile(warFile))
+				.addZone(serviceName) 
+				.name(serviceName);
+
+		for (final Entry<Object, Object> prop : getContextProperties().entrySet()) {
+			deployment.setContextProperty(prop.getKey().toString(), prop.getValue().toString());
+		}
+
+		for (final String requiredPUName : dependencies) {
+			deployment.addDependencies(new ProcessingUnitDeploymentDependenciesConfigurer()
+					.dependsOnMinimumNumberOfDeployedInstancesPerPartition(requiredPUName, 1).create());
+		}
+
+		getGridServiceManager().deploy(deployment);
+// END installLocalCloud({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START waitForProcessingUnitInstance(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//public URL waitForProcessingUnitInstance(final GridServiceAgent agent, final long timeout, final TimeUnit timeunit)
+			throws InterruptedException, TimeoutException, CLIException {
+
+		createConditionLatch(timeout, timeunit).waitFor(new ConditionLatch.Predicate() {
+			private boolean messagePublished = false;
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public boolean isDone() throws CLIException, InterruptedException {
+				logger.fine("Waiting for " + serviceName + " service.");
+				if (!messagePublished) {
+					final String message = ShellUtils.getMessageBundle().getString("starting_management_web_service");
+					publishEvent(MessageFormat.format(message, serviceName.toUpperCase()));
+					messagePublished = true;
+				}
+				final ProcessingUnit pu = getProcessingUnit();
+				boolean isDone = false;
+				if (pu != null) {
+					for (final ProcessingUnitInstance instance : pu) {
+						if (agent.equals(instance.getGridServiceContainer().getGridServiceAgent())) {
+							isDone = true;
+							break;
+						}
+					}
+				}
+				if (!isDone) {
+					publishEvent(null);
+				}
+				return isDone;
+			}
+		});
+
+		// TODO [noak]: verify this always the correct port (SSL-wise) ?
+		final URL url = getWebProcessingUnitURL(agent, getProcessingUnit(), isSecureConnection);
+		final String serviceNameCapital = StringUtils.capitalize(serviceName);
+		final String returnMessage = ShellUtils.getMessageBundle().getString("web_service_available_at");
+		logger.fine(returnMessage);
+		publishEvent(MessageFormat.format(returnMessage, serviceNameCapital, url));
+		return url;
+// END waitForProcessingUnitInstance(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START waitForConnection(AdminFacade-AdminFacade-String-String-String-String-URL-URL-long-long-TimeUnit-TimeUnit)//private void waitForConnection(final AdminFacade adminFacade, final String username, final String password,
+			final URL url, final long timeout, final TimeUnit timeunit)
+					throws InterruptedException, TimeoutException,
+			CLIException {
+		adminFacade.disconnect();
+		createConditionLatch(timeout, timeunit).waitFor(new ConditionLatch.Predicate() {
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public boolean isDone() throws CLIException, InterruptedException {
+
+				try {
+					adminFacade.connect(username, password, url.toString(), isSecureConnection);
+					return true;
+				} catch (final CLIException e) {
+					if (verbose) {
+						logger.log(Level.INFO, "Error connecting to web service [" + serviceName + "].", e);
+					}
+				}
+				logger.log(Level.INFO, "Connecting to web service [" + serviceName + "].");
+				return false;
+			}
+		});
+// END waitForConnection(AdminFacade-AdminFacade-String-String-String-String-URL-URL-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWebProcessingUnitURL(GridServiceAgent-GridServiceAgent-ProcessingUnit-ProcessingUnit-boolean-boolean)//public static URL getWebProcessingUnitURL(final GridServiceAgent agent, final ProcessingUnit pu, 
+			final boolean isSecureConnection) {
+		ProcessingUnitInstance pui = null;
+
+		for (final ProcessingUnitInstance instance : pu.getInstances()) {
+			if (instance.getGridServiceContainer() != null
+					&& instance.getGridServiceContainer().getGridServiceAgent() != null
+					&& instance.getGridServiceContainer().getGridServiceAgent().equals(agent)) {
+				pui = instance;
+			}
+		}
+
+		if (pui == null) {
+			throw new IllegalStateException("Failed finding " + pu.getName() + " on "
+					+ agent.getMachine().getHostAddress());
+		}
+
+		final Map<String, ServiceDetails> alldetails = pui.getServiceDetailsByServiceId();
+
+		final ServiceDetails details = alldetails.get("jee-container");
+		final String host = details.getAttributes().get("host").toString();
+		final String port = details.getAttributes().get("port").toString();
+		final String ctx = details.getAttributes().get("context-path").toString();
+		final String url = ShellUtils.getRestProtocol(isSecureConnection) + "://" + host + ":" + port + ctx;
+		try {
+			return new URL(url);
+		} catch (final MalformedURLException e) {
+			// this is a bug since we formed the URL correctly
+			throw new IllegalStateException(e);
+		}
+// END getWebProcessingUnitURL(GridServiceAgent-GridServiceAgent-ProcessingUnit-ProcessingUnit-boolean-boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addListener(LocalhostBootstrapperListener-LocalhostBootstrapperListener)//public void addListener(final LocalhostBootstrapperListener listener) {
+		this.eventsListenersList.add(listener);
+// END addListener(LocalhostBootstrapperListener-LocalhostBootstrapperListener)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addListeners(List<LocalhostBootstrapperListener>-List<LocalhostBootstrapperListener>)//public void addListeners(final List<LocalhostBootstrapperListener> listeners) {
+		for (final LocalhostBootstrapperListener listener : listeners) {
+			this.eventsListenersList.add(listener);
+		}
+// END addListeners(List<LocalhostBootstrapperListener>-List<LocalhostBootstrapperListener>)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setIsLocalCloud(boolean-boolean)//public void setIsLocalCloud(final boolean isLocalCloud) {
+		this.isLocalcloud = isLocalCloud;
+// END setIsLocalCloud(boolean-boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\installer\ManagementWebServiceInstaller.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setIsSecureConnection(boolean-boolean)//public void setIsSecureConnection(final boolean isSecureConnection) {
+		this.isSecureConnection = isSecureConnection;
+// END setIsSecureConnection(boolean-boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\DynamicByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startMachine(String-String-long-long-TimeUnit-TimeUnit)//@Override
+	public MachineDetails startMachine(String locationId, long duration, TimeUnit unit)
+			throws TimeoutException, CloudProvisioningException {
+		String currnentId = PROVIDER_ID + "{" + idCounter.getAndIncrement() + "}";
+		final ComputeTemplate template = cloud.getCloudCompute().getTemplates().get(cloudTemplateName);
+
+		Map<String, Object> custom = template.getCustom();
+		Closure<String> getNodeClosure =  (Closure<String>) custom.get(CloudifyConstants.DYNAMIC_BYON_START_MACHINE_KEY);
+		String ip = getNodeClosure.call();
+
+		return createMachine(currnentId, template, ip);
+// END startMachine(String-String-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\DynamicByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START startManagementMachines(long-long-TimeUnit-TimeUnit)//@Override
+	public MachineDetails[] startManagementMachines(long duration, TimeUnit unit)
+			throws TimeoutException, CloudProvisioningException {
+		publishEvent(EVENT_ATTEMPT_START_MGMT_VMS);
+
+		final ComputeTemplate managementTemplate =
+				this.cloud.getCloudCompute().getTemplates().get(this.cloud.getConfiguration().getManagementMachineTemplate());
+		Map<String, Object> custom = managementTemplate.getCustom();
+		@SuppressWarnings("unchecked")
+		Closure<List<String>> getNodesClosure =  (Closure<List<String>>) custom.get(CloudifyConstants.DYNAMIC_BYON_START_MNG_MACHINES_KEY);
+		List<String> ips = getNodesClosure.call();
+
+		final int numberOfManagementMachines = this.cloud.getProvider().getNumberOfManagementMachines();
+		final int size = ips.size();
+		if (size != numberOfManagementMachines) {
+			throw new CloudProvisioningException("DynamicByonProvisioningDriver [startManagementMachines] - expected "
+					+ numberOfManagementMachines + " management machines, but got " + size + " machines.");
+		}
+		synchronized (mutex) {
+			managementMachines.addAll(ips);
+		}
+
+		logger.info("Starting " + numberOfManagementMachines + " management machines.");
+		final long endTime = System.currentTimeMillis() + unit.toMillis(duration);
+		final MachineDetails[] createdMachines = doStartManagementMachines(endTime, numberOfManagementMachines);
+		publishEvent(EVENT_MGMT_VMS_STARTED);
+		logger.info("Successfully added " + numberOfManagementMachines + " management machines: " + ips);
+		return createdMachines;
+// END startManagementMachines(long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\byon\DynamicByonProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START stopManagementMachines({FormalParametersInternal})//@Override
+	public void stopManagementMachines()
+			throws TimeoutException, CloudProvisioningException {
+		ComputeTemplate template = cloud.getCloudCompute().getTemplates()
+				.get(cloud.getConfiguration().getManagementMachineTemplate());
+		Map<String, Object> custom = template.getCustom();
+		Closure<?> stopClosure =  (Closure<?>) custom.get(CloudifyConstants.DYNAMIC_BYON_STOP_MACHINE_KEY);
+		stopClosure.call();
+		synchronized (mutex) {
+			managementMachines.clear();
+		}
+// END stopManagementMachines({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\ElasticMachineProvisioningCloudifyAdapter.java
+Different Spacing: false
+Left editions: []
+Right editions: [295, 303, 304, 315, 316]
+Merged body: 
+// START createInstallationDetails(Cloud-Cloud-MachineDetails-MachineDetails-GSAReservationId-GSAReservationId)//private InstallationDetails createInstallationDetails(final Cloud cloud, final MachineDetails md,
+			final GSAReservationId reservationId) throws FileNotFoundException {
+// RIGHT //		final ComputeTemplate template = this.cloud.getCloudCompute().getTemplates().get(this.cloudTemplateName);
+
+		// Start with the default zone that are also used for discovering agents
+		// By default cloudify puts the service-name as the zone.
+		// We then add the location of the machine to the zone, so if it fails the ESM starts it with these zones
+		// and this adapter can look for the CLOUD_ZONE_PREFIX and start a machine with the same location.
+		// TODO Fix GS-9484 and then remove the service name from the machine zone and remove the CLOUD_ZONE_PREFIX.
+
+// RIGHT //		final ExactZonesConfigurer configurer = new ExactZonesConfigurer()
+// RIGHT //				.addZones(config.getGridServiceAgentZones().getZones());
+
+		if (!StringUtils.isBlank(md.getLocationId())) {
+			configurer.addZone(CLOUD_ZONE_PREFIX + md.getLocationId());
+		}
+
+		final ExactZonesConfig zones = configurer.create();
+
+		final InstallationDetails details =
+				Utils.createInstallationDetails(md, cloud, template, zones, lookupLocatorsString,
+						this.originalESMAdmin, false,
+// RIGHT //						null, reservationId, cloudTemplateName, ""/* securityProfile */, ""/* keystorePassword */,
+// RIGHT //						config.getAuthGroups());
+
+		logger.info("Created new Installation Details: " + details);
+		return details;
+
+// END createInstallationDetails(Cloud-Cloud-MachineDetails-MachineDetails-GSAReservationId-GSAReservationId)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\CloudDriverSupport.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setConfig(Cloud-Cloud-String-String-boolean-boolean-String-String)//@Override
+	public void setConfig(final Cloud cloud, final String templateName, final boolean management, final String serviceName) {
+		
+		this.cloud = cloud;
+		this.management = management;
+		this.templateName = templateName;
+		
+		if (this.cloud.getCloudCompute().getTemplates().isEmpty()) {
+			throw new IllegalArgumentException("No templates defined for this cloud");
+		}
+
+		// TODO - add automatic validation rules to the DSL Pojos!
+		if (StringUtils.isBlank(this.templateName)) {
+			this.template = this.cloud.getCloudCompute().getTemplates().values().iterator().next();
+		} else {
+			this.template = this.cloud.getCloudCompute().getTemplates().get(this.templateName);
+		}
+
+		if (this.template == null) {
+			throw new IllegalArgumentException("Could not find required template: " + this.templateName
+					+ " in templates list");
+		}
+// END setConfig(Cloud-Cloud-String-String-boolean-boolean-String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\jclouds\DefaultProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START createServer(long-long-String-String-String-String)//private MachineDetails createServer(final long end, final String groupName,
+			final String locationIdOverride) throws CloudProvisioningException {
+
+		final ComputeTemplate cloudTemplate = this.cloud.getCloudCompute().getTemplates().get(
+				this.cloudTemplateName);
+		String locationId;
+		if (locationIdOverride == null) {
+			locationId = cloudTemplate.getLocationId();
+		} else {
+			locationId = locationIdOverride;
+		}
+
+		NodeMetadata node;
+		final MachineDetails machineDetails;
+
+		try {
+			logger.fine("Cloudify Deployer is creating a new server with tag: "
+					+ groupName + ". This may take a few minutes");
+			node = deployer.createServer(groupName, locationId);
+		} catch (final InstallerException e) {
+			throw new CloudProvisioningException(
+					"Failed to create cloud server", e);
+		}
+		logger.fine("New node is allocated, group name: " + groupName);
+
+		final String nodeId = node.getId();
+
+		// At this point the machine is starting. Any error beyond this point
+		// must clean up the machine
+
+		try {
+			// wait for node to reach RUNNING state
+			node = waitForNodeToBecomeReady(nodeId, end);
+
+			// Create MachineDetails for the node metadata.
+			machineDetails = createMachineDetailsFromNode(node);
+
+			final FileTransferModes fileTransfer = cloudTemplate
+					.getFileTransfer();
+
+			if (this.cloud.getProvider().getProvider().equals("aws-ec2")
+					&& fileTransfer == FileTransferModes.CIFS) {
+				// Special password handling for windows on EC2
+				if (machineDetails.getRemotePassword() == null) {
+					// The template did not specify a password, so we must be
+					// using the aws windows password mechanism.
+					handleEC2WindowsCredentials(end, node, machineDetails,
+							cloudTemplate);
+				}
+
+			} else {
+				// Credentials required special handling.
+				handleServerCredentials(machineDetails, cloudTemplate);
+			}
+
+		} catch (final Exception e) {
+			// catch any exception - to prevent a cloud machine leaking.
+			logger.log(
+					Level.SEVERE,
+					"Cloud machine was started but an error occured during initialization. Shutting down machine",
+					e);
+			deployer.shutdownMachine(nodeId);
+			throw new CloudProvisioningException(e);
+		}
+
+		return machineDetails;
+// END createServer(long-long-String-String-String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\jclouds\DefaultProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START createMachineDetailsFromNode(NodeMetadata-NodeMetadata)//private MachineDetails createMachineDetailsFromNode(final NodeMetadata node) {
+		final ComputeTemplate template = this.cloud.getCloudCompute().getTemplates().get(
+				this.cloudTemplateName);
+
+		final MachineDetails md = createMachineDetailsForTemplate(template);
+
+		md.setCloudifyInstalled(false);
+		md.setInstallationDirectory(null);
+		md.setMachineId(node.getId());
+		if (node.getPrivateAddresses().size() > 0) {
+			md.setPrivateAddress(node.getPrivateAddresses().iterator().next());
+		}
+		if (node.getPublicAddresses().size() > 0) {
+			md.setPublicAddress(node.getPublicAddresses().iterator().next());
+		}
+
+		final String username = createMachineUsername(node, template);
+		final String password = createMachinePassword(node, template);
+
+		md.setRemoteUsername(username);
+		md.setRemotePassword(password);
+
+		// this will ensure that the availability zone is added to GSA that
+		// starts on this machine.
+		final String locationId = node.getLocation().getId();
+		md.setLocationId(locationId);
+
+		return md;
+// END createMachineDetailsFromNode(NodeMetadata-NodeMetadata)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\jclouds\DefaultProvisioningDriver.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START createDeployer(Cloud-Cloud)//private JCloudsDeployer createDeployer(final Cloud cloud)
+			throws IOException {
+		logger.fine("Creating JClouds context deployer with user: "
+				+ cloud.getUser().getUser());
+		final ComputeTemplate cloudTemplate = cloud.getCloudCompute().getTemplates().get(
+				cloudTemplateName);
+
+		logger.fine("Cloud Template: " + cloudTemplateName + ". Details: "
+				+ cloudTemplate);
+		final Properties props = new Properties();
+		props.putAll(cloudTemplate.getOverrides());
+
+		deployer = new JCloudsDeployer(cloud.getProvider().getProvider(), cloud
+				.getUser().getUser(), cloud.getUser().getApiKey(), props);
+
+		deployer.setImageId(cloudTemplate.getImageId());
+		deployer.setMinRamMegabytes(cloudTemplate.getMachineMemoryMB());
+		deployer.setHardwareId(cloudTemplate.getHardwareId());
+		deployer.setExtraOptions(cloudTemplate.getOptions());
+		return deployer;
+// END createDeployer(Cloud-Cloud)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: false
+Left editions: []
+Right editions: [499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537]
+Merged body: 
+// START init({FormalParametersInternal})//// RIGHT //@PostConstruct
+// RIGHT //	public void init() {
+// RIGHT //		logger.info("Initializing service controller cloud configuration");
+// RIGHT //		this.cloud = readCloud();
+// RIGHT //		if (cloud != null) {
+// RIGHT //			initCloudTemplates();
+// RIGHT //			if (this.cloud.getCloudCompute().getTemplates().isEmpty()) {
+// RIGHT //				throw new IllegalArgumentException(
+// RIGHT //						"No templates defined in cloud configuration!");
+// RIGHT //			}
+// RIGHT //			this.defaultTemplateName = this.cloud.getCloudCompute().getTemplates().keySet()
+// RIGHT //					.iterator().next();
+// RIGHT //			logger.info("Setting default template name to: "
+// RIGHT //					+ defaultTemplateName
+// RIGHT //					+ ". This template will be used for services that do not specify an explicit template");
+// RIGHT //
+// RIGHT //			this.managementTemplate = this.cloud.getCloudCompute().getTemplates().get(
+// RIGHT //					this.cloud.getConfiguration()
+// RIGHT //							.getManagementMachineTemplate());
+// RIGHT //		} else {
+// RIGHT //			logger.info("Service Controller is running in local cloud mode");
+// RIGHT //		}
+// RIGHT //
+// RIGHT //		/**
+// RIGHT //		 * Sets the folder used for temporary files. The value can be set in the configuration file
+// RIGHT //		 * ("config.properties"), otherwise the system's default setting will apply.
+// RIGHT //		 */
+// RIGHT //		try {
+// RIGHT //			if (StringUtils.isBlank(temporaryFolder)) {
+// RIGHT //				temporaryFolder = getTempFolderPath();
+// RIGHT //			}
+// RIGHT //		} catch (final IOException e) {
+// RIGHT //			logger.log(Level.SEVERE,
+// RIGHT //					"ServiceController failed to locate temp directory", e);
+// RIGHT //			throw new IllegalStateException(
+// RIGHT //					"ServiceController failed to locate temp directory", e);
+// RIGHT //		}
+// RIGHT //
+// RIGHT //		startLifecycleLogsCleanupTask();
+// END init({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START deployApplication(String-String-int-int-MultipartFile-MultipartFile-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-Boolean-Boolean)//@JsonRequestExample(requestBody = "{\"applicationName\" : \"petclinic\" , \"srcFile\" :"
+			+ " \"packaged application file\" "
+			+ ", \"recipeOverridesFile\" : \"recipe overrides file\"}")
+	@JsonResponseExample(status = "success", responseBody = "{\"serviceOrder\":\"[mongod,mongoConfig,"
+			+ "apacheLB,mongos,tomcat]\""
+			+ ",\"lifecycleEventContainerID\":\"07db2a16-62f8-4669-ac41-ed9afe3a3b02\"}", comments = "")
+	@PossibleResponseStatuses(responseStatuses = {
+			@PossibleResponseStatus(code = HTTP_OK, description = "success"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "DSLException"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "IOException") })
+	@RequestMapping(value = "applications/{applicationName}/timeout/{timeout}", method = RequestMethod.POST)
+	@PreAuthorize("isFullyAuthenticated() and hasPermission(#authGroups, 'deploy')")
+	@ResponseBody
+	public Object deployApplication(
+			@PathVariable final String applicationName,
+			@PathVariable final int timeout,
+			@RequestParam(value = "file", required = true) final MultipartFile srcFile,
+			@RequestParam(value = "authGroups", required = false) final String authGroups,
+			@RequestParam(value = APPLICATION_OVERRIDES_FILE_PARAM, required = false) final MultipartFile recipeOverridesFile,
+			@RequestParam(value = CLOUD_OVERRIDES_FILE_PARAM, required = false) final MultipartFile cloudOverrides,
+			@RequestParam(value = "selfHealing", required = false) final Boolean selfHealing)
+			throws IOException, DSLException, RestErrorException {
+		boolean actualSelfHealing = true;
+		if (selfHealing != null && !selfHealing) {
+			actualSelfHealing = false;
+		}
+		final File applicationFile = copyMultipartFileToLocalFile(srcFile);
+
+		String effectiveAuthGroups = authGroups;
+		if (StringUtils.isBlank(effectiveAuthGroups)) {
+			if (permissionEvaluator != null) {
+				effectiveAuthGroups = permissionEvaluator.getUserAuthGroupsString();
+			} else {
+				effectiveAuthGroups = "";
+			}
+		}
+
+		final File applicationOverridesFile = copyMultipartFileToLocalFile(recipeOverridesFile);
+		final File cloudOverridesFile = copyMultipartFileToLocalFile(cloudOverrides);
+		final Object returnObject = doDeployApplication(
+				applicationName,
+				applicationFile,
+				applicationOverridesFile,
+				effectiveAuthGroups,
+				timeout,
+				actualSelfHealing,
+				cloudOverridesFile);
+		FileUtils.deleteQuietly(applicationOverridesFile);
+		applicationFile.delete();
+		return returnObject;
+// END deployApplication(String-String-int-int-MultipartFile-MultipartFile-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-Boolean-Boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START deployElastic(String-String-String-String-int-int-String-String-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-Boolean-Boolean)//@JsonRequestExample(requestBody = "{\"zone\":5,\"template\":\"SMALL_LINUX\","
+			+ "\"file\":\"packaged service file\",\"props\":\"packaged properties file\"}")
+	@JsonResponseExample(status = "success", responseBody = "\"b41febb7-f48e-48d4-b14a-a6000d402d93\"")
+	@PossibleResponseStatuses(responseStatuses = {
+			@PossibleResponseStatus(code = HTTP_OK, description = "success"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "TimeoutException"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "PackagingException"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "IOException"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "AdminException"),
+			@PossibleResponseStatus(code = HTTP_INTERNAL_SERVER_ERROR, description = "DSLException") })
+	@RequestMapping(value = "applications/{applicationName}/services/{serviceName}/timeout/{timeout}",
+			method = RequestMethod.POST)
+	@PreAuthorize("isFullyAuthenticated() and hasPermission(#authGroups, 'deploy')")
+	@ResponseBody
+	public Object deployElastic(
+			@PathVariable final String applicationName,
+			@PathVariable final String serviceName,
+			@PathVariable final int timeout,
+			@RequestParam(value = "template", required = false) final String templateName,
+			@RequestParam(value = "zone", required = true) final String zone,
+			@RequestParam(value = "file", required = true) final MultipartFile srcFile,
+			@RequestParam(value = "props", required = true) final MultipartFile propsFile,
+			@RequestParam(value = "authGroups", required = false) final String authGroups,
+			@RequestParam(value = SERVICE_OVERRIDES_FILE_PARAM, required = false) final MultipartFile serviceOverridesFile,
+			@RequestParam(value = CLOUD_OVERRIDES_FILE_PARAM, required = false) final MultipartFile cloudOverridesFile,
+			@RequestParam(value = "selfHealing", required = false, defaultValue = "true") final Boolean selfHealing)
+			throws TimeoutException, IOException,
+			DSLException, RestErrorException, PackagingException {
+
+		logger.info("Deploying service with template: " + templateName);
+		String actualTemplateName = templateName;
+
+		if (cloud != null) {
+			if (templateName == null || templateName.length() == 0) {
+				if (cloud.getCloudCompute().getTemplates().isEmpty()) {
+					throw new IllegalStateException(
+							"Cloud configuration has no compute template defined!");
+				}
+				actualTemplateName = cloud.getCloudCompute().getTemplates().keySet().iterator()
+						.next();
+				logger.warning("Compute Template name missing from service deployment request."
+						+ " Defaulting to first template: "
+						+ actualTemplateName);
+
+			}
+		}
+
+		final String absolutePuName = ServiceUtils.getAbsolutePUName(
+				applicationName, serviceName);
+		final byte[] propsBytes = propsFile.getBytes();
+		final Properties props = new Properties();
+		final InputStream is = new ByteArrayInputStream(propsBytes);
+		props.load(is);
+		final File dest = copyMultipartFileToLocalFile(srcFile);
+		final File cloudOverrides = copyMultipartFileToLocalFile(cloudOverridesFile);
+		final File destFile = new File(dest.getParent(), absolutePuName + "."
+				+ FilenameUtils.getExtension(dest.getName()));
+		if (destFile.exists()) {
+			FileUtils.deleteQuietly(destFile);
+		}
+
+		String effectiveAuthGroups = authGroups;
+		if (StringUtils.isBlank(effectiveAuthGroups)) {
+			if (permissionEvaluator != null) {
+				effectiveAuthGroups = permissionEvaluator.getUserAuthGroupsString();
+			} else {
+				effectiveAuthGroups = "";
+			}
+		}
+		final File localServiceOverridesFile = copyMultipartFileToLocalFile(serviceOverridesFile);
+
+		String lifecycleEventsContainerID = "";
+		if (dest.renameTo(destFile)) {
+			FileUtils.deleteQuietly(dest);
+
+			final File cloudConfigurationFile = ZipUtils
+					.unzipEntry(
+							destFile,
+							"ext/"
+									+ CloudifyConstants.SERVICE_CLOUD_CONFIGURATION_FILE_NAME,
+							CloudifyConstants.SERVICE_CLOUD_CONFIGURATION_FILE_NAME);
+			byte[] cloudConfigurationContents = null;
+			if (cloudConfigurationFile != null) {
+				cloudConfigurationContents = FileUtils
+						.readFileToByteArray(cloudConfigurationFile);
+			}
+
+			lifecycleEventsContainerID = deployElasticProcessingUnit(
+					absolutePuName,
+					applicationName,
+					effectiveAuthGroups,
+					zone,
+					destFile,
+					props,
+					actualTemplateName,
+					false,
+					timeout,
+					TimeUnit.MINUTES,
+					cloudConfigurationContents,
+					selfHealing.booleanValue(),
+					localServiceOverridesFile,
+					cloudOverrides);
+			destFile.deleteOnExit();
+		} else {
+			logger.warning("Deployment file could not be renamed to the absolute pu name."
+					+ " Deploaying using the name " + dest.getName());
+			lifecycleEventsContainerID = deployElasticProcessingUnit(
+					absolutePuName,
+					applicationName,
+					effectiveAuthGroups,
+					zone,
+					dest,
+					props,
+					actualTemplateName,
+					false,
+					timeout,
+					TimeUnit.MINUTES,
+					null,
+					selfHealing.booleanValue(),
+					localServiceOverridesFile,
+					cloudOverrides);
+			dest.deleteOnExit();
+		}
+
+		// TODO: move this Key String to the DSL project as a constant.
+		// Map<String, String> serviceDetails = new HashMap<String, String>();
+		// serviceDetails.put("lifecycleEventsContainerID",
+		// lifecycleEventsContainerID.toString());
+		return successStatus(lifecycleEventsContainerID);
+// END deployElastic(String-String-String-String-int-int-String-String-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-String-String-MultipartFile-MultipartFile-MultipartFile-MultipartFile-Boolean-Boolean)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getComputeTemplate(Cloud-Cloud-String-String)//private ComputeTemplate getComputeTemplate(final Cloud cloud,
+			final String templateName) {
+		if (templateName == null) {
+			final Entry<String, ComputeTemplate> entry = cloud.getCloudCompute().getTemplates()
+					.entrySet().iterator().next();
+
+			logger.warning("Service does not specify template name! Defaulting to template: "
+					+ entry.getKey());
+			return entry.getValue();
+		}
+		final ComputeTemplate template = cloud.getCloudCompute().getTemplates().get(templateName);
+		if (template == null) {
+			throw new IllegalArgumentException(
+					"Could not find compute template: " + templateName);
+		}
+		return template;
+// END getComputeTemplate(Cloud-Cloud-String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateTemplate(String-String)//private void validateTemplate(final String templateName)
+			throws RestErrorException {
+
+		if (cloud == null) {
+			// no template validation for local cloud
+			return;
+		}
+		final ComputeTemplate template = cloud.getCloudCompute().getTemplates().get(
+				templateName);
+		if (template == null) {
+			throw new RestErrorException(
+					CloudifyErrorMessages.MISSING_TEMPLATE.getName(),
+					templateName);
+		}
+// END validateTemplate(String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START deployDataGrid(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-DataGrid-DataGrid-String-String-boolean-boolean-File-File)//private void deployDataGrid(final String applicationName, final String serviceName,
+			final String authGroups, final String[] agentZones,
+			final File srcFile, final Properties contextProperties,
+			final DataGrid dataGridConfig, final String templateName,
+			final boolean locationAware,
+			final File cloudOverrides) throws AdminException,
+			TimeoutException, DSLException, IOException {
+
+		final int containerMemoryInMB = dataGridConfig.getSla()
+				.getMemoryCapacityPerContainer();
+		final int maxMemoryInMB = dataGridConfig.getSla()
+				.getMaxMemoryCapacity();
+		final int reservedMemoryCapacityPerMachineInMB = 256;
+
+		logger.finer("received request to install datagrid");
+
+		final ElasticSpaceDeployment deployment = new ElasticSpaceDeployment(
+				serviceName)
+				.memoryCapacityPerContainer(containerMemoryInMB,
+						MemoryUnit.MEGABYTES)
+				.maxMemoryCapacity(maxMemoryInMB, MemoryUnit.MEGABYTES)
+				.addContextProperty(
+						CloudifyConstants.CONTEXT_PROPERTY_APPLICATION_NAME,
+						applicationName)
+				.addContextProperty(CloudifyConstants.CONTEXT_PROPERTY_AUTH_GROUPS, authGroups)
+				.highlyAvailable(dataGridConfig.getSla().getHighlyAvailable())
+				// allow single machine for local development purposes
+				.singleMachineDeployment();
+
+		setContextProperties(deployment, contextProperties);
+
+		if (cloud == null) {
+			if (isLocalCloud()) {
+				setPublicMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				deployment.scale(new ManualCapacityScaleConfigurer()
+						.memoryCapacity(
+								dataGridConfig.getSla().getMemoryCapacity(),
+								MemoryUnit.MEGABYTES).create());
+
+			} else {
+				setSharedMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				// eager scaling. 1 container per machine
+				deployment.scale(ElasticScaleConfigFactory
+						.createEagerScaleConfig());
+			}
+
+		} else {
+
+			final ComputeTemplate template = getComputeTemplate(cloud,
+					templateName);
+
+			validateAndPrepareStatefulSla(serviceName, dataGridConfig.getSla(),
+					cloud, template);
+
+			final long cloudExternalProcessMemoryInMB = calculateExternalProcessMemory(
+					cloud, template);
+
+			final CloudifyMachineProvisioningConfig config = new CloudifyMachineProvisioningConfig(
+					cloud, template, templateName,
+					this.managementTemplate.getRemoteDirectory(), null);
+			config.setAuthGroups(authGroups);
+
+			if (cloudOverrides != null) {
+				config.setCloudOverridesPerService(cloudOverrides);
+			}
+
+			final String locators = extractLocators(admin);
+			config.setLocator(locators);
+
+			setDedicatedMachineProvisioning(deployment, config);
+			deployment.memoryCapacityPerContainer(
+					(int) cloudExternalProcessMemoryInMB, MemoryUnit.MEGABYTES);
+
+			// TODO: [itaif] Why only capacity of one container ?
+			deployment.scale(ElasticScaleConfigFactory
+					.createManualCapacityScaleConfig(
+							(int) cloudExternalProcessMemoryInMB, 0,
+							locationAware, true));
+		}
+
+		deployAndWait(serviceName, deployment);
+
+// END deployDataGrid(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-DataGrid-DataGrid-String-String-boolean-boolean-File-File)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START deployStatelessProcessingUnitAndWait(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-StatelessProcessingUnit-StatelessProcessingUnit-String-String-int-int-boolean-boolean-File-File)//private void deployStatelessProcessingUnitAndWait(
+			final String applicationName, final String serviceName, final String authGroups,
+			final String[] agentZones, final File extractedServiceFolder,
+			final Properties contextProperties,
+			final StatelessProcessingUnit puConfig, final String templateName,
+			final int numberOfInstances, final boolean locationAware,
+			final File cloudOverride)
+			throws IOException, AdminException, TimeoutException, DSLException, RestErrorException {
+
+		final File jarFile = getJarFileFromDir(
+				new File(puConfig.getBinaries()), extractedServiceFolder,
+				serviceName);
+		// TODO:if not specified use machine memory defined in DSL
+		final int containerMemoryInMB = puConfig.getSla()
+				.getMemoryCapacityPerContainer();
+		// TODO:Read from cloud DSL
+		final int reservedMemoryCapacityPerMachineInMB = 256;
+		final ElasticStatelessProcessingUnitDeployment deployment = new ElasticStatelessProcessingUnitDeployment(
+				jarFile)
+				.memoryCapacityPerContainer(containerMemoryInMB,
+						MemoryUnit.MEGABYTES)
+				.addContextProperty(
+						CloudifyConstants.CONTEXT_PROPERTY_APPLICATION_NAME,
+						applicationName)
+				.addContextProperty(CloudifyConstants.CONTEXT_PROPERTY_AUTH_GROUPS, authGroups)
+				.name(serviceName);
+		// TODO:read from cloud DSL
+
+		setContextProperties(deployment, contextProperties);
+
+		if (cloud == null) {
+			verifyEsmExistsInCluster();
+
+			if (isLocalCloud()) {
+				setPublicMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				deployment.scale(new ManualCapacityScaleConfigurer()
+						.memoryCapacity(
+								containerMemoryInMB * numberOfInstances,
+								MemoryUnit.MEGABYTES).create());
+			} else {
+				setSharedMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				// eager scaling. one container per machine
+				deployment.scale(ElasticScaleConfigFactory
+						.createEagerScaleConfig());
+			}
+		} else {
+			final ComputeTemplate template = getComputeTemplate(cloud,
+					templateName);
+			validateAndPrepareStatelessSla(puConfig.getSla(), cloud, template);
+			final long cloudExternalProcessMemoryInMB = calculateExternalProcessMemory(
+					cloud, template);
+
+			final CloudifyMachineProvisioningConfig config = new CloudifyMachineProvisioningConfig(
+					cloud, template, templateName,
+					this.managementTemplate.getRemoteDirectory(), null);
+			config.setAuthGroups(authGroups);
+			if (cloudOverride != null) {
+				config.setCloudOverridesPerService(cloudOverride);
+			}
+
+			final String locators = extractLocators(admin);
+			config.setLocator(locators);
+
+			setDedicatedMachineProvisioning(deployment, config);
+			deployment.memoryCapacityPerContainer(
+					(int) cloudExternalProcessMemoryInMB, MemoryUnit.MEGABYTES);
+
+			deployment.scale(ElasticScaleConfigFactory
+					.createManualCapacityScaleConfig(containerMemoryInMB
+							* numberOfInstances, 0, locationAware, true));
+		}
+		deployAndWait(serviceName, deployment);
+		jarFile.delete();
+
+// END deployStatelessProcessingUnitAndWait(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-StatelessProcessingUnit-StatelessProcessingUnit-String-String-int-int-boolean-boolean-File-File)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START deployStatefulProcessingUnit(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-StatefulProcessingUnit-StatefulProcessingUnit-String-String-boolean-boolean-File-File)//private void deployStatefulProcessingUnit(final String applicationName,
+			final String serviceName, final String authGroups, final String[] agentZones,
+			final File extractedServiceFolder,
+			final Properties contextProperties,
+			final StatefulProcessingUnit puConfig, final String templateName,
+			final boolean locationAware,
+			final File cloudOverrides) throws IOException, AdminException,
+			TimeoutException, DSLException {
+
+		final File jarFile = getJarFileFromDir(
+				new File(puConfig.getBinaries()), extractedServiceFolder,
+				serviceName);
+		final int containerMemoryInMB = puConfig.getSla()
+				.getMemoryCapacityPerContainer();
+		final int maxMemoryCapacityInMB = puConfig.getSla()
+				.getMaxMemoryCapacity();
+		final int reservedMemoryCapacityPerMachineInMB = 256;
+
+		final ElasticStatefulProcessingUnitDeployment deployment = new ElasticStatefulProcessingUnitDeployment(
+				jarFile)
+				.name(serviceName)
+				.memoryCapacityPerContainer(containerMemoryInMB,
+						MemoryUnit.MEGABYTES)
+				.maxMemoryCapacity(maxMemoryCapacityInMB + "m")
+				.addContextProperty(
+						CloudifyConstants.CONTEXT_PROPERTY_APPLICATION_NAME,
+						applicationName)
+				.addContextProperty(CloudifyConstants.CONTEXT_PROPERTY_AUTH_GROUPS, authGroups)
+				.highlyAvailable(puConfig.getSla().getHighlyAvailable())
+				.singleMachineDeployment();
+
+		setContextProperties(deployment, contextProperties);
+
+		if (cloud == null) {
+			verifyEsmExistsInCluster();
+			if (isLocalCloud()) {
+				setPublicMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				deployment.scale(new ManualCapacityScaleConfigurer()
+						.memoryCapacity(puConfig.getSla().getMemoryCapacity(),
+								MemoryUnit.MEGABYTES).create());
+			} else {
+				setSharedMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				// eager scaling. one container per machine
+				deployment.scale(ElasticScaleConfigFactory
+						.createEagerScaleConfig());
+			}
+		} else {
+
+			final ComputeTemplate template = getComputeTemplate(cloud,
+					templateName);
+
+			validateAndPrepareStatefulSla(serviceName, puConfig.getSla(),
+					cloud, template);
+
+			final CloudifyMachineProvisioningConfig config = new CloudifyMachineProvisioningConfig(
+					cloud, template, templateName,
+					this.managementTemplate.getRemoteDirectory(), null);
+			config.setAuthGroups(authGroups);
+			if (cloudOverrides != null) {
+				config.setCloudOverridesPerService(cloudOverrides);
+			}
+
+			final String locators = extractLocators(admin);
+			config.setLocator(locators);
+
+			setDedicatedMachineProvisioning(deployment, config);
+
+			deployment.scale(ElasticScaleConfigFactory
+					.createManualCapacityScaleConfig(puConfig.getSla()
+							.getMemoryCapacity(), 0, locationAware, true));
+
+		}
+
+		deployAndWait(serviceName, deployment);
+		jarFile.delete();
+
+// END deployStatefulProcessingUnit(String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-StatefulProcessingUnit-StatefulProcessingUnit-String-String-boolean-boolean-File-File)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START listTemplates({FormalParametersInternal})//@RequestMapping(value = "templates", method = RequestMethod.GET)
+	@PreAuthorize("isFullyAuthenticated() and hasAnyRole('ROLE_CLOUDADMINS', 'ROLE_APPMANAGERS')")
+	public @ResponseBody
+	Map<String, Object>
+			listTemplates() throws RestErrorException {
+		if (cloud == null) {
+			throw new RestErrorException("local_cloud_not_support_templates_operations", "list-templates");
+		}
+		return successStatus(cloud.getCloudCompute().getTemplates());
+// END listTemplates({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: false
+Left editions: []
+Right editions: [5936, 5937, 5938, 5939, 5940, 5941, 5942, 5943, 5944, 5945, 5946, 5947, 5948, 5949, 5950, 5951, 5952, 5953, 5954, 5955, 5956, 5957, 5958, 5959, 5960, 5961, 5962, 5963, 5964, 5965, 5966, 5967, 5968, 5969, 5970, 5971, 5972, 5973, 5974, 5975, 5976, 5977]
+Merged body: 
+// START deleteTemplateFile(String-String)//// RIGHT //private void deleteTemplateFile(final String templateName) throws RestErrorException {
+// RIGHT //		final File templateFile = getTemplateFile(templateName);
+// RIGHT //		if (templateFile == null) {
+// RIGHT //			throw new RestErrorException("failed_to_remove_template_file", templateName,
+// RIGHT //					"template file doesn't exist");
+// RIGHT //		}
+// RIGHT //		// delete the file from the directory.
+// RIGHT //		final String templatesPath = templateFile.getAbsolutePath();
+// RIGHT //		logger.log(Level.FINE, "[deleteTemplateFile] - removing template file " + templatesPath);
+// RIGHT //		boolean deleted = false;
+// RIGHT //		try {
+// RIGHT //			deleted = templateFile.delete();
+// RIGHT //		} catch (final SecurityException e) {
+// RIGHT //			logger.log(Level.WARNING, "[deleteTemplateFile] - Failed to deleted template file " + templatesPath
+// RIGHT //					+ ", Error: " + e.getMessage(), e);
+// RIGHT //			throw new RestErrorException("failed_to_remove_template_file", templatesPath, e.getMessage());
+// RIGHT //		}
+// RIGHT //		if (!deleted) {
+// RIGHT //			throw new RestErrorException("failed_to_remove_template_file", templatesPath,
+// RIGHT //					"template file was not deleted.");
+// RIGHT //		}
+// RIGHT //		logger.log(Level.FINE, "[deleteTemplateFile] - Successfully deleted template file [" + templatesPath + "].");
+// RIGHT //		final File templateFolder = templateFile.getParentFile();
+// RIGHT //		final File[] templatesFiles =
+// RIGHT //				DSLReader.findDefaultDSLFiles(DSLUtils.TEMPLATE_DSL_FILE_NAME_SUFFIX, templateFolder);
+// RIGHT //		if (templatesFiles == null || templatesFiles.length == 0) {
+// RIGHT //			try {
+// RIGHT //				logger.log(Level.FINE, "[deleteTemplateFile] - templates folder is empty, deleting the folder ["
+// RIGHT //						+ templatesPath + "].");
+// RIGHT //				FileUtils.deleteDirectory(templateFolder);
+// RIGHT //			} catch (final IOException e) {
+// RIGHT //				logger.log(Level.WARNING, "[deleteTemplateFile] - Failed to delete templates folder"
+// RIGHT //						+ templateFolder, e);
+// RIGHT //			}
+// RIGHT //		} else {
+// RIGHT //			// delete properties and overrides files if exist.
+// RIGHT //			ComputeTemplatesReader.removeTemplateFiles(templateFolder, templateName);
+// RIGHT //		}
+// RIGHT //		final File templatesFolder = getTemplatesFolder();
+// RIGHT //		if (templatesFolder.list().length == 0) {
+// RIGHT //			templateFolder.delete();
+// RIGHT //		}
+// END deleteTemplateFile(String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\AdminFacade.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START listTemplates({FormalParametersInternal})//Map<String, ComputeTemplate> listTemplates() 
+// END listTemplates({FormalParametersInternal})//			throws CLIException;
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\CLI\src\main\java\org\cloudifysource\shell\AdminFacade.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getTemplate(String-String)//ComputeTemplate getTemplate(final String templateName) 
+// END getTemplate(String-String)//			throws CLIException;
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_73143_f7be7\rev_rev_left_73143-rev_right_f7be7\dsl\src\main\java\org\cloudifysource\dsl\internal\BaseDslScript.java
+Different Spacing: false
+Left editions: []
+Right editions: [504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571]
+Merged body: 
+// START getDSLInitializers({FormalParametersInternal})//// RIGHT //public static synchronized Map<String, DSLObjectInitializerData> getDSLInitializers() {
+// RIGHT //		if (dslObjectInitializersByName == null) {
+// RIGHT //			dslObjectInitializersByName = new HashMap<String, BaseDslScript.DSLObjectInitializerData>();
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, Application.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, Service.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, PluginDescriptor.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ServiceNetwork.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, DataGrid.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, Memcached.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ServiceLifecycle.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, StatefulProcessingUnit.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, StatelessProcessingUnit.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, MirrorProcessingUnit.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, Cloud.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudProvider.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudUser.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ComputeTemplate.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudCompute.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudConfiguration.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ComputeDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudStorage.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, StorageTemplate.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, StorageDetails.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ComputeDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, Sla.class);
+// RIGHT //
+// RIGHT //			dslObjectInitializersByName.put("userInterface", new DSLObjectInitializerData("userInterface",
+// RIGHT //					UserInterface.class, true, true, "service"));
+// RIGHT //
+// RIGHT //			dslObjectInitializersByName.put("metricGroup", new DSLObjectInitializerData("metricGroup",
+// RIGHT //					MetricGroup.class, false, true, "userInterface"));
+// RIGHT //			dslObjectInitializersByName.put("widgetGroup", new DSLObjectInitializerData("widgetGroup",
+// RIGHT //					WidgetGroup.class, false, true, "userInterface"));
+// RIGHT //			dslObjectInitializersByName.put("balanceGauge", new DSLObjectInitializerData("balanceGauge",
+// RIGHT //					BalanceGauge.class, false, true, "widgetGroup"));
+// RIGHT //			dslObjectInitializersByName.put("barLineChart", new DSLObjectInitializerData("barLineChart",
+// RIGHT //					BarLineChart.class, false, true, "widgetGroup"));
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ScalingRuleDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, HighThresholdDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, LowThresholdDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, ServiceStatisticsDetails.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, PerInstanceStatisticsDetails.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, IsolationSLA.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, GlobalIsolationSLADescriptor.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, TenantSharedIsolationSLADescriptor.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, AppSharedIsolationSLADescriptor.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, DedicatedIsolationSLADescriptor.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, GridComponents.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, OrchestratorComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, DiscoveryComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, DeployerComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, WebuiComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, UsmComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, RestComponent.class);
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, AgentComponent.class);
+// RIGHT //
+// RIGHT //			addObjectInitializerForClass(dslObjectInitializersByName, CloudTemplateInstallerConfiguration.class);
+// RIGHT //
+// RIGHT //		}
+// RIGHT //		return dslObjectInitializersByName;
+// RIGHT //
+// END getDSLInitializers({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df2d7-4c945
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8244-a03be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_815c3-144a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8db92-be6ff
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_8db92_be6ff\rev_rev_left_8db92-rev_right_be6ff\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\ElasticMachineProvisioningCloudifyAdapter.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START handleExceptionAfterMachineCreated(String-String-MachineDetails-MachineDetails-long-long)//private void handleExceptionAfterMachineCreated(final String machineIp, final MachineDetails machineDetails,
+			final long end) {
+		VolumeDetails attachedVolume = null;
+		boolean storageTemplateUsed = isStorageTemplateUsed();
+		try {
+			// if an agent is found (not supposed to, we got here after it wasn't found earlier) - shut it down
+			boolean machineIpExists = machineIp != null && !machineIp.trim().isEmpty();
+			if (machineIpExists) {
+				try {
+					final GridServiceAgent agent = getGSAByIpOrHost(machineIp);
+					if (agent != null) {
+						logger.info("handleExceptionAfterMachineCreated is shutting down agent: " + agent
+								+ " on host: " + machineIp);
+
+						agent.shutdown();
+						logger.fine("Agent on host: " + machineIp + " successfully shut down");
+
+					}
+				} catch (final Exception e) {
+					// even if shutting down the agent failed, this node will be shut down later
+					logger.log(Level.WARNING, "Failed to shutdown agent on host: " + machineIp
+							+ ". Continuing with shutdown of " + "machine.", e);
+				}
+				if (storageTemplateUsed) {
+					logger.log(Level.INFO, "Getting attached volume details from machine with ip " + machineIp);
+					long timeout = end - System.currentTimeMillis();
+					attachedVolume = getAttachedVolumeDetails(machineIp, timeout, TimeUnit.MILLISECONDS);
+				}
+			}
+
+			logger.info("Stopping machine " + machineDetails.getPrivateAddress()
+					+ ", DEFAULT_SHUTDOWN_TIMEOUT_AFTER_PROVISION_FAILURE");
+			this.cloudifyProvisioning.stopMachine(machineDetails.getPrivateAddress(),
+					DEFAULT_SHUTDOWN_TIMEOUT_AFTER_PROVISION_FAILURE, TimeUnit.MINUTES);
+			
+			if (storageTemplateUsed) {
+				if (machineIpExists && attachedVolume != null) {
+					long timeout = end - System.currentTimeMillis();
+					handleVolumeOnStopMachine(attachedVolume, timeout, TimeUnit.MILLISECONDS);
+				} else {
+					logger.log(Level.WARNING, "Failed detecting volume. Could not obtain volume details.");
+				}
+			}
+		} catch (final Exception e) {
+			logger.log(
+					Level.WARNING,
+					"Machine Provisioning failed. "
+							+ "An error was encountered while trying to shutdown the new machine ( "
+							+ machineDetails.toString() + "). Error was: " + e.getMessage(), e);
+		}
+// END handleExceptionAfterMachineCreated(String-String-MachineDetails-MachineDetails-long-long)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_8db92_be6ff\rev_rev_left_8db92-rev_right_be6ff\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\ElasticMachineProvisioningCloudifyAdapter.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START stopMachine(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//@Override
+	public boolean stopMachine(final GridServiceAgent agent, final long duration, final TimeUnit unit)
+			throws ElasticMachineProvisioningException,
+			ElasticGridServiceAgentProvisioningException,
+			InterruptedException, TimeoutException {
+		
+		final long endTime = System.currentTimeMillis() + unit.toMillis(duration);
+		final String machineIp = agent.getMachine().getHostAddress();
+		
+		Exception failedToShutdownAgentException = null;
+		final GridServiceAgentStopRequestedEvent agentStopEvent = new GridServiceAgentStopRequestedEvent();
+		agentStopEvent.setHostAddress(machineIp);
+		agentStopEvent.setAgentUid(agent.getUid());
+		agentEventListener.elasticGridServiceAgentProvisioningProgressChanged(agentStopEvent);
+
+		logger.fine("Shutting down agent: " + agent + " on host: " + machineIp);
+		try {
+			agent.shutdown();
+			logger.fine("Agent on host: " + machineIp + " successfully shut down");
+
+			final GridServiceAgentStoppedEvent agentStoppedEvent = new GridServiceAgentStoppedEvent();
+			agentStoppedEvent.setHostAddress(machineIp);
+			agentStoppedEvent.setAgentUid(agent.getUid());
+			agentEventListener.elasticGridServiceAgentProvisioningProgressChanged(agentStoppedEvent);
+		} catch (final Exception e) {
+			failedToShutdownAgentException = e;
+			logger.log(Level.FINE, "Failed to shutdown agent on host: " + machineIp
+					+ ". Continuing with shutdown of machine.", e);
+		}
+
+		try {
+
+			final MachineStopRequestedEvent machineStopEvent = new MachineStopRequestedEvent();
+			machineStopEvent.setHostAddress(machineIp);
+			machineEventListener.elasticMachineProvisioningProgressChanged(machineStopEvent);
+			
+			boolean storageTemplateUsed = isStorageTemplateUsed();
+			VolumeDetails attachedVolume = null;
+			if (storageTemplateUsed) {
+				logger.log(Level.INFO, "Getting attached volume details from machine with ip " + machineIp);
+				attachedVolume = getAttachedVolumeDetails(machineIp, duration, unit);
+			}
+
+			logger.fine("Cloudify Adapter is shutting down machine with ip: " + machineIp);
+			final boolean shutdownSuccessful = this.cloudifyProvisioning.stopMachine(machineIp, duration, unit);
+			logger.fine("Shutdown result of machine: " + machineIp + " was: " + shutdownSuccessful);
+
+			if (shutdownSuccessful) {
+				final MachineStoppedEvent machineStoppedEvent = new MachineStoppedEvent();
+				machineStoppedEvent.setHostAddress(machineIp);
+				machineEventListener.elasticMachineProvisioningProgressChanged(machineStoppedEvent);
+
+				// machine was shutdown, but an error happened while shutting down agent.
+				// lets wait for the agent to not be discovered until we reach the timeout.
+
+				while (agent.isDiscovered()) {
+					Thread.sleep(DEFAULT_AGENT_DISCOVERY_INTERVAL);
+					if (System.currentTimeMillis() > endTime && agent.isDiscovered()) {
+						if (failedToShutdownAgentException != null) {
+							throw new ElasticGridServiceAgentProvisioningException(
+									"Machine is stopped but agent [" + agent.getUid() + "] is still discovered."
+											+ "Failed to shutdown agent:" + failedToShutdownAgentException.getMessage(),
+									failedToShutdownAgentException);
+						}
+						throw new ElasticGridServiceAgentProvisioningException(
+								"Machine is stopped but agent[" + agent.getUid()
+										+ "] is still discovered.");
+
+					}
+				}
+			}
+			
+			// This step is not being done before shutting down the machine since it appears to 
+			// make the the stop machine process significantly longer. The correct way of detaching and 
+			// deleting a volume should be to first unmount the device, and then detach and delete. 
+			//we don't support it for now.
+			if (storageTemplateUsed) {
+				if (attachedVolume != null) {
+					handleVolumeOnStopMachine(attachedVolume, duration, unit);
+				} else {
+					logger.log(Level.WARNING, "Could not find an attached volume on machine with ip " + machineIp);
+				}
+			}
+			
+			return shutdownSuccessful;
+
+		} catch (final CloudProvisioningException e) {
+			throw new ElasticMachineProvisioningException("Attempt to shutdown machine with IP: " + machineIp
+					+ " for agent with UID: " + agent.getUid() + " has failed with error: " + e.getMessage(), e);
+		}
+// END stopMachine(GridServiceAgent-GridServiceAgent-long-long-TimeUnit-TimeUnit)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58f3c-c19c9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_58f3c_c19c9\rev_rev_left_58f3c-rev_right_c19c9\restful\src\main\java\org\cloudifysource\rest\controllers\ServiceController.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START doDeploy(String-String-String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-Service-Service-byte[]-byte[]-boolean-boolean-File-File)//private void doDeploy(
+			final String applicationName,
+			final String serviceName,
+			final String authGroups,
+			final String templateName,
+			final String[] agentZones,
+			final File serviceFile,
+			final Properties contextProperties,
+			final Service service,
+			final byte[] serviceCloudConfigurationContents,
+			final boolean selfHealing,
+			final File cloudOverrides) throws TimeoutException, DSLException, IOException, RestErrorException {
+
+		boolean locationAware = false;
+		boolean dedicated = true;
+		if (service != null) {
+			locationAware = service.isLocationAware();
+			dedicated = IsolationUtils.isDedicated(service);
+		}
+
+		final int externalProcessMemoryInMB = 512;
+		final int containerMemoryInMB = 128;
+		final int reservedMemoryCapacityPerMachineInMB = 256;
+
+		contextProperties.setProperty(CloudifyConstants.CONTEXT_PROPERTY_ASYNC_INSTALL,
+				"true");
+		if (!selfHealing) {
+			contextProperties.setProperty(
+					CloudifyConstants.CONTEXT_PROPERTY_DISABLE_SELF_HEALING,
+					"false");
+		}
+
+		final ElasticStatelessProcessingUnitDeployment deployment =
+				new ElasticStatelessProcessingUnitDeployment(serviceFile)
+						.memoryCapacityPerContainer(externalProcessMemoryInMB, MemoryUnit.MEGABYTES)
+						.addCommandLineArgument("-Xmx" + containerMemoryInMB + "m")
+						.addCommandLineArgument("-Xms" + containerMemoryInMB + "m")
+						.addContextProperty(CloudifyConstants.CONTEXT_PROPERTY_APPLICATION_NAME, applicationName)
+						.addContextProperty(CloudifyConstants.CONTEXT_PROPERTY_AUTH_GROUPS, authGroups)
+						.name(serviceName);
+		if (cloud == null) { // Azure or local-cloud
+			if (!isLocalCloud()) {
+				// Azure: Eager scale (1 container per machine per PU)
+				setSharedMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				deployment.scale(ElasticScaleConfigFactory
+						.createEagerScaleConfig());
+			} else {
+				// local cloud
+				setPublicMachineProvisioning(deployment, agentZones,
+						reservedMemoryCapacityPerMachineInMB);
+				if (service == null || service.getScalingRules() == null) {
+					final int totalMemoryInMB = calculateTotalMemoryInMB(
+							serviceName, service, externalProcessMemoryInMB);
+					final ManualCapacityScaleConfig scaleConfig = new ManualCapacityScaleConfigurer()
+							.memoryCapacity(totalMemoryInMB, MemoryUnit.MEGABYTES).create();
+					deployment.scale(scaleConfig);
+				} else {
+					final AutomaticCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+							.createAutomaticCapacityScaleConfig(serviceName,
+									service, externalProcessMemoryInMB, false, false);
+					deployment.scale(scaleConfig);
+				}
+			}
+		} else {
+
+			deployment.addCommandLineArgument("-Xmx" + cloud.getConfiguration().getComponents().getUsm().getMaxMemory())
+			.addCommandLineArgument("-Xms" + cloud.getConfiguration().getComponents().getUsm().getMinMemory())
+			.addCommandLineArgument("-D" + CloudifyConstants.LRMI_BIND_PORT_CONTEXT_PROPERTY + "="
+									+ cloud.getConfiguration().getComponents().getUsm().getPortRange());
+
+			final ComputeTemplate template = getComputeTemplate(cloud, templateName);
+
+			long cloudExternalProcessMemoryInMB = 0;
+
+			if (dedicated) {
+				cloudExternalProcessMemoryInMB = calculateExternalProcessMemory(cloud, template);
+			} else {
+				cloudExternalProcessMemoryInMB = IsolationUtils.getInstanceMemoryMB(service);
+			}
+
+			logger.info("Creating cloud machine provisioning config. Template remote directory is: "
+					+ template.getRemoteDirectory());
+
+			final CloudifyMachineProvisioningConfig config = new CloudifyMachineProvisioningConfig(
+					cloud, template, templateName, this.managementTemplate.getRemoteDirectory(), 
+					service.getStorage() != null ? service.getStorage().getTemplate() : null);
+			config.setAuthGroups(authGroups);
+			if (cloudOverrides != null) {
+				if (logger.isLoggable(Level.FINE)) {
+					logger.fine("Recieved request for installation of "
+							+ serviceName + " with cloud overrides parameters [ "
+							+ FileUtils.readFileToString(cloudOverrides) + "]");
+				}
+				config.setCloudOverridesPerService(cloudOverrides);
+			} else {
+				if (logger.isLoggable(Level.FINE)) {
+					logger.fine("No cloud overrides parameters were requested for the installation of "
+							+ serviceName);
+				}
+			}
+			if (serviceCloudConfigurationContents != null) {
+				config.setServiceCloudConfiguration(serviceCloudConfigurationContents);
+			}
+
+			final String locators = extractLocators(admin);
+			config.setLocator(locators);
+
+			if (IsolationUtils.isUseManagement(service)) {
+				config.setDedicatedManagementMachines(false);
+			} else {
+				config.setDedicatedManagementMachines(true);
+			}
+			if (dedicated) {
+				// service deployment will have a dedicated agent per instance
+				setDedicatedMachineProvisioning(deployment, config);
+			} else {
+
+				// check what mode of isolation we should use
+				if (IsolationUtils.isGlobal(service)) {
+					logger.info("global mode is on. will use public machine provisioning for "
+							+ serviceName + " deployment.");
+					logger.info("isolationSLA = " + service.getIsolationSLA());
+					// service instances can be deployed across all agents
+					setPublicMachineProvisioning(deployment, config);
+
+				} else if (IsolationUtils.isAppShared(service)) {
+					logger.info("app shared mode is on. will use shared machine provisioning for "
+							+ serviceName + " deployment. isolation id = " + applicationName);
+					// service instances can be deployed across all agents with the correct isolation id
+					setSharedMachineProvisioning(deployment, config, applicationName);
+				} else if (IsolationUtils.isTenantShared(service)) {
+					if (authGroups == null) {
+						throw new IllegalStateException("authGroups cannot be null when using tenant shared isolation");
+					}
+					logger.info("tenant shared mode is on. will use shared machine provisioning for "
+							+ serviceName + " deployment. isolation id = " + authGroups);
+					// service instances can be deployed across all agents with the correct isolation id
+					setSharedMachineProvisioning(deployment, config, authGroups);
+				}
+			}
+
+			deployment.memoryCapacityPerContainer((int) cloudExternalProcessMemoryInMB, MemoryUnit.MEGABYTES);
+			if (service == null || service.getScalingRules() == null) {
+				final int totalMemoryInMB = calculateTotalMemoryInMB(
+						serviceName, service,
+						(int) cloudExternalProcessMemoryInMB);
+				final double totalCpuCores = calculateTotalCpuCores(service);
+				final ManualCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+						.createManualCapacityScaleConfig(totalMemoryInMB,
+								totalCpuCores, locationAware, dedicated);
+				deployment.scale(scaleConfig);
+			} else {
+				final AutomaticCapacityScaleConfig scaleConfig = ElasticScaleConfigFactory
+						.createAutomaticCapacityScaleConfig(serviceName,
+								service, (int) cloudExternalProcessMemoryInMB,
+								locationAware, dedicated);
+				deployment.scale(scaleConfig);
+			}
+		}
+
+		// add context properties
+		setContextProperties(deployment, contextProperties);
+		verifyEsmExistsInCluster();
+		deployAndWait(serviceName, deployment);
+// END doDeploy(String-String-String-String-String-String-String-String-String[]-String[]-File-File-Properties-Properties-Service-Service-byte[]-byte[]-boolean-boolean-File-File)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2d65c-3433b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2f81-07600
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d4452-ebaa2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27292-174f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76df9-0e55b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94ec0-2b67c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fdfa8-cca5a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29120-ab17e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3345d-a86e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68da5-6ab44
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff94a-7eeb5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b258e-23ad1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1fde9-0e150
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed3f9-69dbf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43a46-78ec5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fa6e-1061b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc29c-a26a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b76b-e5a6c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1070a-a311a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7ef5-6c24e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_a7ef5_6c24e\rev_rev_left_a7ef5-rev_right_6c24e\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\jclouds\DefaultProvisioningDriver.java
+Different Spacing: false
+Left editions: [983, 984, 986, 1013, 1014, 1015, 1016, 1017]
+Right editions: []
+Merged body: 
+// START validateComputeTemplates(boolean-boolean-String-String-ValidationContext-ValidationContext)//private void validateComputeTemplates(final boolean endpointRequired, final String apiId,
+			final ValidationContext validationContext) throws CloudProvisioningException {
+
+		JCloudsDeployer deployer = null;
+		String templateName = "";
+		String imageId = "";
+		String hardwareId = "";
+		String locationId = "";
+
+		try {
+			validationContext.validationEvent(ValidationMessageType.TOP_LEVEL_VALIDATION_MESSAGE,
+					getFormattedMessage("validating_all_templates"));
+			for (Entry<String, ComputeTemplate> entry : cloud.getCloudCompute().getTemplates().entrySet()) {
+				templateName = entry.getKey();
+				validationContext.validationEvent(ValidationMessageType.GROUP_VALIDATION_MESSAGE,
+						getFormattedMessage("validating_template", templateName));
+				ComputeTemplate template = entry.getValue();
+				String endpoint = getEndpoint(template);
+				if (endpointRequired && StringUtils.isBlank(endpoint)) {
+					throw new CloudProvisioningException("Endpoint not defined. Please add a \"jclouds.endpoint\""
+							+ " entry in the template's overrides section");
+				}
+
+				try {
+					validationContext.validationOngoingEvent(ValidationMessageType.ENTRY_VALIDATION_MESSAGE,
+							getFormattedMessage("validating_cloud_credentials"));
+					final Properties templateProps = new Properties();
+					Map<String, Object> templateOverrides = template.getOverrides();
+					templateProps.putAll(templateOverrides);
+					logger.fine("Creating a new cloud deployer");
+					deployer = new JCloudsDeployer(cloud.getProvider().getProvider(), cloud.getUser().getUser(),
+							cloud.getUser().getApiKey(), templateProps);
+// LEFT //					logger.log(Level.FINE, "making API call");
+// LEFT //					deployer.getAllLocations();
+					validationContext.validationEventEnd(ValidationResultType.OK);
+// LEFT //				} catch (Exception e) {
+					closeDeployer(deployer);
+					validationContext.validationEventEnd(ValidationResultType.ERROR);
+					throw new CloudProvisioningException(getFormattedMessage("error_cloud_credentials_validation",
+							groovyFile, propertiesFile));
+				}
+
+				imageId = template.getImageId();
+				hardwareId = template.getHardwareId();
+				locationId = template.getLocationId();
+
+				deployer.setImageId(imageId);
+				deployer.setHardwareId(hardwareId);
+				deployer.setExtraOptions(template.getOptions());
+				// TODO: check this memory validation
+				// deployer.setMinRamMegabytes(template.getMachineMemoryMB());
+				try {
+
+					validationContext.validationOngoingEvent(ValidationMessageType.ENTRY_VALIDATION_MESSAGE,
+							getFormattedMessage("validating_image_hardware_location_combination",
+									imageId == null ? "" : imageId, hardwareId == null ? "" : hardwareId,
+									locationId == null ? "" : locationId));
+					// calling JCloudsDeployer.getTemplate effectively tests the above configuration through jclouds
+					deployer.getTemplate(locationId);
+					validationContext.validationEventEnd(ValidationResultType.OK);
+				} catch (Exception ex) {
+					validationContext.validationEventEnd(ValidationResultType.ERROR);
+// LEFT //					if (apiId.equalsIgnoreCase(OPENSTACK_API) && this.isVerboseValidation) {
+// LEFT //						validateLocationID(locationId);
+// LEFT //						validateHardwareID(hardwareId);
+// LEFT //						validateImageID(imageId);
+// LEFT //					}
+					throw new CloudProvisioningException(
+							getFormattedMessage("error_image_hardware_location_combination_validation",
+							imageId == null ? "" : imageId,
+									hardwareId == null ? "" : hardwareId, locationId == null ? "" : locationId,
+											groovyFile, propertiesFile), ex);
+				}
+
+				if (isKnownAPI(apiId)) {
+					validateSecurityGroupsForTemplate(template, apiId, deployer.getContext(), validationContext);
+					validateKeyPairForTemplate(template, apiId, deployer.getContext(), validationContext);
+				}
+				validationContext.validationOngoingEvent(ValidationMessageType.GROUP_VALIDATION_MESSAGE,
+						getFormattedMessage("template_validated", templateName));
+				validationContext.validationEventEnd(ValidationResultType.OK);
+				closeDeployer(deployer);
+			}
+		} finally {
+			closeDeployer(deployer);
+		}
+// END validateComputeTemplates(boolean-boolean-String-String-ValidationContext-ValidationContext)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7ef5-94f4c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_62b30-8c452
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_245c1-4841f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55723-5fa1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da9ed-021ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10850-69360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccfa5-876d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c7e8-0dfe6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d62a1-46200
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01c86-de006
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ec1c-48845
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3110b-3b5a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88ba3-46e78
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c0ba-a39fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_991cf-91be7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_066a8-6c36d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_258d3-2e84f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1feae-1d2bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2aadb-a92e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21329-f4ecb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec019-52d1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cec3f-8fd4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ad91-c7719
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98bc5-ba55d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6bf5f-d4fab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56020-e0ce4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b1bc-0015f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb210-a2bb6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a48d7-5dc52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3241e-573d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ca21-73f0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6b2a-bf3d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a33d-70330
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66d93-30ae6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d442-3b277
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b3749-43f7b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2cae9-a0a53
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ecea-099ce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5902-3744a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86777-c9a76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9559c-8a76f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6399-0f682
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2c5c-d0c47
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b1c4-f0398
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4f0ef-2789c
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_4f0ef_2789c\rev_rev_left_4f0ef-rev_right_2789c\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\openstack\OpenStackCloudifyDriver.java
+Different Spacing: false
+Left editions: []
+Right editions: [618, 619, 620, 621, 622, 623, 624, 625, 627]
+Merged body: 
+// START getOrCreateNetwork(NetworkConfiguration-NetworkConfiguration)//private Network getOrCreateNetwork(final NetworkConfiguration networkConfiguration)
+			throws OpenstackException, CloudProvisioningException {
+
+		Network network = networkApi.getNetworkByName(networkConfiguration.getName());
+		if (network == null) {
+// RIGHT //
+// RIGHT //			String networkNameRequest = null;
+// RIGHT //			if (!management) {
+// RIGHT //				networkNameRequest = networkConfiguration.getName();
+// RIGHT //			} else {
+// RIGHT //				networkNameRequest = this.securityGroupNames.getPrefix() + networkConfiguration.getName();
+// RIGHT //			}
+// RIGHT //
+			final Network networkRequest = new Network();
+// RIGHT //			networkRequest.setName(networkNameRequest);
+			networkRequest.setAdminStateUp(true);
+			network = networkApi.createNetworkIfNotExists(networkRequest);
+		}
+		return network;
+// END getOrCreateNetwork(NetworkConfiguration-NetworkConfiguration)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_4f0ef_2789c\rev_rev_left_4f0ef-rev_right_2789c\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\openstack\OpenStackCloudifyDriver.java
+Different Spacing: false
+Left editions: [515, 516, 517, 518, 519, 520, 524]
+Right editions: []
+Merged body: 
+// START createManagementNetworkAndSubnets({FormalParametersInternal})//private void createManagementNetworkAndSubnets() throws CloudProvisioningException {
+		try {
+			// Clear existing network
+			this.cleanAllNetworks();
+
+			final NetworkConfiguration networkConfiguration = this.networkHelper.getNetworkConfiguration();
+
+			// Network
+			final Network network = this.getOrCreateNetwork(networkConfiguration);
+
+// LEFT //			final List<Subnet> subnets = new ArrayList<Subnet>();
+// LEFT //			if (networkConfiguration.getSubnets() != null) {
+// LEFT //				for (org.cloudifysource.domain.cloud.network.Subnet subnetConfig : networkConfiguration.getSubnets()) {
+// LEFT //					Subnet subnet = this.getOrCreateSubnet(subnetConfig, network);
+// LEFT //					subnets.add(subnet);
+// LEFT //				}
+			}
+
+			if (!this.networkHelper.skipExternalNetworking()) {
+// LEFT //				this.createExternalNetworking(network, subnets.get(0));
+			}
+		} catch (final Exception e) {
+			try {
+				this.cleanAllNetworks();
+			} catch (OpenstackException e1) {
+				logger.warning("Couldn't clean all networks: " + e1.getMessage());
+			}
+			throw new CloudProvisioningException(e);
+		}
+// END createManagementNetworkAndSubnets({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_890e1-4e6d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86e69-bf7bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fae03-e22b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0796-9ffae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_367c1-3c3df
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3b6c-c5219
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db1f0-f51c0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76aa7-bf924
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2c3d-6818b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70c44-b2552
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6fdd5-6f87b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e92e9-2205a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_623ff-a34aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91b61-c3213
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11405-91419
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\Italo\Documents\paola\workspaces\workspace_tese\download\ssmerge\cloudify\revisions\rev_11405_91419\rev_rev_left_11405-rev_right_91419\esc\src\main\java\org\cloudifysource\esc\driver\provisioning\ElasticMachineProvisioningCloudifyAdapter.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getExternalApi(String-String)//@Override
+	public Object getExternalApi(final String apiName) throws InterruptedException,
+			ElasticMachineProvisioningException {
+		Object externalApi = null;
+		if (apiName.equals(CloudifyConstants.STORAGE_REMOTE_API_KEY)) {
+			externalApi = new RemoteStorageProvisioningDriverAdapter(storageProvisioning, cloud.getCloudStorage().
+					getTemplates().get(storageTemplateName));
+		} else if (apiName.equals(CloudifyConstants.NETWORK_REMOTE_API_KEY)) {
+			externalApi = new RemoteNetworkProvisioningDriverAdapter(this.networkProvisioning);
+		}
+
+		return externalApi;
+// END getExternalApi(String-String)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27bf6-3e873
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4344-626e4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f784e-2eefd
+#MS_XXX_MS#

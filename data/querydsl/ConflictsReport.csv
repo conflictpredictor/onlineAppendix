@@ -1,0 +1,2155 @@
+=========================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ae26e_a2b2e\rev_ae26e-a2b2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9a24c_56f7c\rev_9a24c-56f7c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b6684_56f7c\rev_b6684-56f7c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147490694\fstmerge_var1_3639633154284047067
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147490694\fstmerge_base_2291492479436962373
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+=======
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147490694\fstmerge_var2_841521177155426018
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_b6684_56f7c\rev_rev_left_b6684-rev_right_56f7c\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147491144\fstmerge_var1_6085655044708649828
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147491144\fstmerge_base_3332934835682169257
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+=======
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147491144\fstmerge_var2_4409511399487643468
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_b6684_56f7c\rev_rev_left_b6684-rev_right_56f7c\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_86798_56f7c\rev_86798-56f7c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147694627\fstmerge_var1_868423285134022416
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147694627\fstmerge_base_4654977124969580100
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147694627\fstmerge_var2_8265138115941031128
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_86798_56f7c\rev_rev_left_86798-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147701279\fstmerge_var1_5384428425533215420
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147701279\fstmerge_base_2652469566070355154
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147701279\fstmerge_var2_753050744908688721
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_86798_56f7c\rev_rev_left_86798-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147708290\fstmerge_var1_4335118810996491308
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147708290\fstmerge_base_4897933363777444769
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147708290\fstmerge_var2_141998106937164016
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_86798_56f7c\rev_rev_left_86798-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147716150\fstmerge_var1_8516514724537433697
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147716150\fstmerge_base_4474921250131620536
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147716150\fstmerge_var2_3436133811050866037
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_86798_56f7c\rev_rev_left_86798-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_e5265-56f7c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820252\fstmerge_var1_4921612434382519722
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820252\fstmerge_base_3089966773550020505
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820252\fstmerge_var2_6488376040052011921
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820330\fstmerge_var1_6475876504562959418
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820330\fstmerge_base_200778906791339374
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147820330\fstmerge_var2_2458447224644155796
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964031\fstmerge_var1_1884291439515315999
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964031\fstmerge_base_7346096254528543219
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964031\fstmerge_var2_7194722142938526337
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964125\fstmerge_var1_7086054098671305882
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964125\fstmerge_base_5176375650160889906
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147964125\fstmerge_var2_1468643637972215882
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969449\fstmerge_var1_8242788124008115137
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969449\fstmerge_base_4871346760625557742
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969449\fstmerge_var2_5738418744892003541
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969524\fstmerge_var1_7913857207161276496
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969524\fstmerge_base_2065761457539024725
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513147969524\fstmerge_var2_2379924117047678719
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_e5265_56f7c\rev_rev_left_e5265-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_47bf7_56f7c\rev_47bf7-56f7c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_d2cc3-56f7c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253014\fstmerge_var1_6120777864891083339
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253014\fstmerge_base_9141237891442957536
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253014\fstmerge_var2_1607264142803732001
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253093\fstmerge_var1_6428701365988625872
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253093\fstmerge_base_6978543790569908548
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148253093\fstmerge_var2_993945685029656512
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497518\fstmerge_var1_8376866389470572185
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497518\fstmerge_base_772575512745324084
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497518\fstmerge_var2_7715252790844905646
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497612\fstmerge_var1_1719772873711581416
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497612\fstmerge_base_7864343477586236979
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148497612\fstmerge_var2_1242990480207452264
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502862\fstmerge_var1_2539765734400381667
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502862\fstmerge_base_5851878602615828918
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502862\fstmerge_var2_6545122288866156245
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502940\fstmerge_var1_799100189123101184
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502940\fstmerge_base_4366104474415456977
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148502940\fstmerge_var2_7262941774985749010
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d2cc3_56f7c\rev_rev_left_d2cc3-rev_right_56f7c\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_dd38b_92007\rev_dd38b-92007.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148635787\fstmerge_var1_2178581217344826468
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148635787\fstmerge_base_6271540099604810383
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148635787\fstmerge_var2_5190717094811715778
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_dd38b_92007\rev_rev_left_dd38b-rev_right_92007\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148642466\fstmerge_var1_5883638614207176045
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148642466\fstmerge_base_6719968677706966851
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148642466\fstmerge_var2_6764771903410628411
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_dd38b_92007\rev_rev_left_dd38b-rev_right_92007\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148650660\fstmerge_var1_6707484659354069963
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148650660\fstmerge_base_4073115166823232885
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148650660\fstmerge_var2_4471340435704171804
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_dd38b_92007\rev_rev_left_dd38b-rev_right_92007\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148658568\fstmerge_var1_2112909279033584470
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148658568\fstmerge_base_3604950341908107320
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148658568\fstmerge_var2_5680242734038024747
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_dd38b_92007\rev_rev_left_dd38b-rev_right_92007\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_88de7_92007\rev_88de7-92007.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727076\fstmerge_var1_3884509270331379026
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727076\fstmerge_base_5073344985570327391
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+=======
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727076\fstmerge_var2_7849918683437844335
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_88de7_92007\rev_rev_left_88de7-rev_right_92007\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727515\fstmerge_var1_5578438113479841007
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727515\fstmerge_base_211786150900367811
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+=======
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513148727515\fstmerge_var2_8528965003508614785
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_88de7_92007\rev_rev_left_88de7-rev_right_92007\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_34841_92007\rev_34841-92007.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_92007_44fc3\rev_92007-44fc3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a082a_fe414\rev_a082a-fe414.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fe414_cfa65\rev_fe414-cfa65.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104647\fstmerge_var1_6770577323741452466
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104647\fstmerge_base_9039570726596865489
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104647\fstmerge_var2_5262252496852591533
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_fe414_cfa65\rev_rev_left_fe414-rev_right_cfa65\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104726\fstmerge_var1_9042732820997013267
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104726\fstmerge_base_4366795287914954766
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149104726\fstmerge_var2_7418982341729456730
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_fe414_cfa65\rev_rev_left_fe414-rev_right_cfa65\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3f617_74ba7\rev_3f617-74ba7.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149174884\fstmerge_var1_3803057408475934913
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149174884\fstmerge_base_608565362724191821
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+=======
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149174884\fstmerge_var2_2189182973247486080
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_3f617_74ba7\rev_rev_left_3f617-rev_right_74ba7\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149175325\fstmerge_var1_3587975212439998823
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149175325\fstmerge_base_7588303696750557588
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+=======
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149175325\fstmerge_var2_8701169329139953795
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_3f617_74ba7\rev_rev_left_3f617-rev_right_74ba7\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_261d3_f8eea\rev_261d3-f8eea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_09206_1cd43\rev_09206-1cd43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_70841_5d8a6\rev_70841-5d8a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_65e57_aea01\rev_65e57-aea01.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ecc39_7803c\rev_ecc39-7803c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521652\fstmerge_var1_2795111756782249349
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521652\fstmerge_base_8060545263329032625
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521652\fstmerge_var2_3704390146349881657
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ecc39_7803c\rev_rev_left_ecc39-rev_right_7803c\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521730\fstmerge_var1_1168221917301214793
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521730\fstmerge_base_6863956114505753279
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149521730\fstmerge_var2_181200579545793881
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ecc39_7803c\rev_rev_left_ecc39-rev_right_7803c\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7803c_03bfc\rev_7803c-03bfc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d78a5_23f60\rev_d78a5-23f60.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_1edf3_3f68d\rev_1edf3-3f68d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d17e6_3c4a7\rev_d17e6-3c4a7.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816003\fstmerge_var1_6615619153131724750
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816003\fstmerge_base_5917765000490634367
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816003\fstmerge_var2_506352644510077021
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d17e6_3c4a7\rev_rev_left_d17e6-rev_right_3c4a7\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816081\fstmerge_var1_5051608012151169715
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816081\fstmerge_base_8060831195066931910
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513149816081\fstmerge_var2_5611000415693286173
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d17e6_3c4a7\rev_rev_left_d17e6-rev_right_3c4a7\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3c4a7_5ec83\rev_3c4a7-5ec83.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7f665_3c4a7\rev_7f665-3c4a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f385e_fd717\rev_f385e-fd717.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_bd745_d581a\rev_bd745-d581a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_752e8_99b38\rev_752e8-99b38.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_8c4fb_ec4a8\rev_8c4fb-ec4a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e1e5a_07160\rev_e1e5a-07160.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3e730_5241f\rev_3e730-5241f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_ab466-3b528.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150494635\fstmerge_var1_6614472644696564575
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150494635\fstmerge_base_851039860024852460
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+=======
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150494635\fstmerge_var2_4747505550388382229
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150495057\fstmerge_var1_7843663284980850203
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150495057\fstmerge_base_8163381658241871101
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+=======
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150495057\fstmerge_var2_5808534510952791983
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150536054\fstmerge_var1_7751080846843590080
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150536054\fstmerge_base_2859955250383368617
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150536054\fstmerge_var2_8159361542757219413
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150542927\fstmerge_var1_6392078709107722821
+@WithBridgeMethods(value=AbstractSQLSubQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150542927\fstmerge_base_9044768401232276127
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150542927\fstmerge_var2_3885274998489979654
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-sql\src\main\java\com\mysema\query\sql\DetachableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150551313\fstmerge_var1_6540819166304189306
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150551313\fstmerge_base_8456311003710624038
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+=======
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150551313\fstmerge_var2_5057507681579656386
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150559244\fstmerge_var1_9182313153521829390
+@WithBridgeMethods(value=AbstractSQLQuery.class, castRequired=true)
+    public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150559244\fstmerge_base_4682882492907079827
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+=======
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513150559244\fstmerge_var2_4148336211940593393
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_ab466_3b528\rev_rev_left_ab466-rev_right_3b528\querydsl-sql\src\main\java\com\mysema\query\sql\ProjectableSQLQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_61947_dda54\rev_61947-dda54.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9bf44_c78a4\rev_9bf44-c78a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_0d712_c2c01\rev_0d712-c2c01.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_df821_9b8af\rev_df821-9b8af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9fd2d_1e6c1\rev_9fd2d-1e6c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_c9652-2c23b.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118160\fstmerge_var1_5934472120833128311
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118160\fstmerge_base_3266197294706986455
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118160\fstmerge_var2_6010305280267450351
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118238\fstmerge_var1_3867176457964800660
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118238\fstmerge_base_3403556350659278253
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151118238\fstmerge_var2_1105432486287574820
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-jdo\src\main\java\com\mysema\query\jdo\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137538\fstmerge_var1_6170321657477556990
+public T from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137538\fstmerge_base_6817622823422945087
+@Override
+    public T from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137538\fstmerge_var2_7421638355495732002
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137617\fstmerge_var1_7362982810117744841
+public T on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137617\fstmerge_base_3705547612144160375
+@Override
+    public T on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151137617\fstmerge_var2_934827571645692648
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-jpa\src\main\java\com\mysema\query\jpa\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464643\fstmerge_var1_8063092672059212752
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464643\fstmerge_base_8978245805079972228
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464643\fstmerge_var2_7158120124323307603
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464736\fstmerge_var1_5075310845988231213
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464736\fstmerge_base_4395443376257711601
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151464736\fstmerge_var2_1842622279844302413
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470523\fstmerge_var1_6847466543695445746
+public Q from(Expression<?> arg) {
+        return queryMixin.from(arg);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470523\fstmerge_base_733546667631535308
+@Override
+    public Q from(Expression<?>... args) {
+        return queryMixin.from(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470523\fstmerge_var2_4245275814834256377
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470601\fstmerge_var1_3723919488053511472
+public Q on(Predicate condition) {
+        return queryMixin.on(condition);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470601\fstmerge_base_2417716507655015559
+@Override
+    public Q on(Predicate... conditions) {
+        return queryMixin.on(conditions);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151470601\fstmerge_var2_2356658956095943333
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLSubQuery.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151518839\fstmerge_var1_4993280569689148843
+Q from(Expression<?> from);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151518839\fstmerge_base_6468524453951575870
+Q from(Expression<?>... from);
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151518839\fstmerge_var2_3565135397946086052
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\SQLQueryFactory.java
+Conflict type: AddSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151641683\fstmerge_var1_5753302349958646086
+private Target target = Connections.getTarget();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151641683\fstmerge_base_4461208339379153568
+=======
+protected Target target = Connections.getTarget();
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151641683\fstmerge_var2_2832267124324765895
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\test\java\com\mysema\query\AbstractBaseTest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 1
+Intersection: 1
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+    @ExcludeIn({CUBRID, DERBY, HSQLDB, SQLITE, TERADATA})
+    public void Date_Diff2() {
+        TestQuery query = query().from(employee).orderBy(employee.id.asc());
+        int offset = TimeZone.getDefault().getOffset(0);
+        Date date = new java.sql.Date(-offset);
+
+        int years = query.singleResult(SQLExpressions.datediff(DatePart.year, date, employee.datefield));
+        int months = query.singleResult(SQLExpressions.datediff(DatePart.month, date, employee.datefield));
+        // weeks
+        int days = query.singleResult(SQLExpressions.datediff(DatePart.day, date, employee.datefield));
+        int hours = query.singleResult(SQLExpressions.datediff(DatePart.hour, date, employee.datefield));
+        int minutes = query.singleResult(SQLExpressions.datediff(DatePart.minute, date, employee.datefield));
+        int seconds = query.singleResult(SQLExpressions.datediff(DatePart.second, date, employee.datefield));
+
+        assertEquals(30,        years);
+        assertEquals(361,       months);
+        assertEquals(10989,     days);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151655015\fstmerge_var1_3843544162224034619
+        if (Connections.getTarget() == DERBY) {
+            assertEquals(263737,    hours);
+            assertEquals(15824220,  minutes);
+            assertEquals(949453200, seconds);
+        } else {
+            assertEquals(263736,    hours);
+            assertEquals(15824160,  minutes);
+            assertEquals(949449600, seconds);
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151655015\fstmerge_base_7736891025708192961
+        if (Connections.getTarget() == DERBY) {
+            assertEquals(263737,    hours);
+            assertEquals(15824220,  minutes);
+            assertEquals(949453200, seconds);
+        } else {
+            assertEquals(263736,    hours);
+            assertEquals(15824160,  minutes);
+            assertEquals(949449600, seconds);
+        }
+
+=======
+        assertEquals(263736,    hours);
+        assertEquals(15824160,  minutes);
+        assertEquals(949449600, seconds);
+
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151655015\fstmerge_var2_5367222233470224857
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\test\java\com\mysema\query\SelectBase.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    protected void configure() {
+        super.configure();
+        bind(NamingStrategy.class, DefaultNamingStrategy.class);
+        bind(Configuration.class, Configuration.DEFAULT);
+        bind(Serializer.class, MetaDataSerializer.class);
+        bind(QueryTypeFactory.class, SQLQueryTypeFactory.class);
+        bind(BEAN_SERIALIZER, (Class<?>)null);
+
+        bind(INNER_CLASSES_FOR_KEYS, false);
+        bind(BEAN_PREFIX, "");
+        bind(BEAN_SUFFIX, "");
+        bind(BEAN_PACKAGE_NAME, "com.example");
+        bind(PACKAGE_NAME, "com.example");
+        bind(SCHEMA_TO_PACKAGE, false);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151685312\fstmerge_var1_8630901137382488975
+        bindInstance(ENTITYPATH_TYPE, RelationalPathBase.class);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151685312\fstmerge_base_3581656273200723322
+=======
+        bind(COLUMN_COMPARATOR, null);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513151685312\fstmerge_var2_3775376204301060049
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql-codegen\src\main\java\com\mysema\query\sql\codegen\SQLCodegenModule.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2c23b_07d87\rev_2c23b-07d87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_79c9d_a4df2\rev_79c9d-a4df2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_bd354_74b13\rev_bd354-74b13.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_90ef9_74b13\rev_90ef9-74b13.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_74b13_9608e\rev_74b13-9608e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e6eee_d58c8\rev_e6eee-d58c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b5c13_b9b04\rev_b5c13-b9b04.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a8b90_646e6\rev_a8b90-646e6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4831e_6daa0\rev_4831e-6daa0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a6824_466c4\rev_a6824-466c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7b8ec_7bf52\rev_7b8ec-7bf52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_167c7_436ef\rev_167c7-436ef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ac050_0aed6\rev_ac050-0aed6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c3bcf_0800b\rev_c3bcf-0800b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9360c_c8a1f\rev_9360c-c8a1f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_837cb_dbc84\rev_837cb-dbc84.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_41e55_84ec7\rev_41e55-84ec7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f09ea_6c193\rev_f09ea-6c193.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_13e5a_8c236\rev_13e5a-8c236.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fbcc1_f3e03\rev_fbcc1-f3e03.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_298c9_8bb81\rev_298c9-8bb81.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_59544_b0b87\rev_59544-b0b87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_feab1_6f2a8\rev_feab1-6f2a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_aa818_48a19\rev_aa818-48a19.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_51c37_350a1\rev_51c37-350a1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_75a8b_fd255\rev_75a8b-fd255.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_57e4d_7f4b9\rev_57e4d-7f4b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_151fd_b483d\rev_151fd-b483d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d7436_4a0e7\rev_d7436-4a0e7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_560ce_f5502\rev_560ce-f5502.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e8932_37f54\rev_e8932-37f54.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9a62b_f3560\rev_9a62b-f3560.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_682c0_63154\rev_682c0-63154.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ca4b1_ed1dd\rev_ca4b1-ed1dd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_30a8f_28f76\rev_30a8f-28f76.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_eba6e_5d18b\rev_eba6e-5d18b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c8094_30d02\rev_c8094-30d02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e2e39_ca4b1\rev_e2e39-ca4b1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2811b_f0c1c\rev_2811b-f0c1c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513155193119\fstmerge_var1_2705180379876095195
+    @ExcludeIn({FIREBIRD, HSQLDB, DERBY})
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513155193119\fstmerge_base_6405467376573645095
+    @ExcludeIn({HSQLDB, DERBY})
+=======
+    @ExcludeIn({HSQLDB, DERBY, ORACLE})
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513155193119\fstmerge_var2_5530941934743319589
+    public void Insert_Without_Values() {
+        assertEquals(1, insert(survey).execute());
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_2811b_f0c1c\rev_rev_left_2811b-rev_right_f0c1c\querydsl-sql\src\test\java\com\mysema\query\InsertBase.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f0c1c_5be3e\rev_f0c1c-5be3e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_397ed_6382e\rev_397ed-6382e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2f79e_751d0\rev_2f79e-751d0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_6daee_96154\rev_6daee-96154.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_594f7_26591\rev_594f7-26591.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e67b3_e2de2\rev_e67b3-e2de2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4e114_1dd5e\rev_4e114-1dd5e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a35b3_1e01f\rev_a35b3-1e01f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d1270_ef7c9\rev_d1270-ef7c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2616b_9df99\rev_2616b-9df99.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d2d48_0383a\rev_d2d48-0383a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f4afe_e790d\rev_f4afe-e790d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d2004_74af3\rev_d2004-74af3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_970e1_b3398\rev_970e1-b3398.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_91b1d_802a4\rev_91b1d-802a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_bc0c2_968e5\rev_bc0c2-968e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c2cd7_7efac\rev_c2cd7-7efac.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3c694_e2680\rev_3c694-e2680.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_dabdf_d8858\rev_dabdf-d8858.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_cc71e_2c3c4\rev_cc71e-2c3c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2c3c4_6a808\rev_2c3c4-6a808.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ef829_bc86c\rev_ef829-bc86c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7e65c_094ab\rev_7e65c-094ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_afb19_094ab\rev_afb19-094ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_094ab_1dfb1\rev_094ab-1dfb1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_353f8_ed267\rev_353f8-ed267.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4489b_2175c\rev_4489b-2175c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3c1ca_4f5f5\rev_3c1ca-4f5f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e8138_30b2c\rev_e8138-30b2c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_30b2c_1f049\rev_30b2c-1f049.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_1eff1_3b7bc\rev_1eff1-3b7bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_43e51_b0f2b\rev_43e51-b0f2b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_68e5c_901af\rev_68e5c-901af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c5586_871ba\rev_c5586-871ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d9535_73ca6\rev_d9535-73ca6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ed248_6c054\rev_ed248-6c054.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_1d2e3_af8fb\rev_1d2e3-af8fb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f2115_1ac0b\rev_f2115-1ac0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_63e20_e4d74\rev_63e20-e4d74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_572eb_46f3a\rev_572eb-46f3a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9b0f7_9c80c\rev_9b0f7-9c80c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_6d051_22ee4\rev_6d051-22ee4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_8f0bd_3a06e\rev_8f0bd-3a06e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_de17f_8f0bd\rev_de17f-8f0bd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5b29a_cd01b\rev_5b29a-cd01b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fa1cf_be3b5\rev_fa1cf-be3b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d6150_f1b89\rev_d6150-f1b89.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f69f2_67c4f\rev_f69f2-67c4f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_961e6_c851e\rev_961e6-c851e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5fe75_77a5c\rev_5fe75-77a5c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_0cc26_2b360\rev_0cc26-2b360.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_cd494_c8fa5\rev_cd494-c8fa5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9bc8e_6b3fb\rev_9bc8e-6b3fb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_04271_af897\rev_04271-af897.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_af897_1931b\rev_af897-1931b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e84c7_b3d42\rev_e84c7-b3d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_38968_439df\rev_38968-439df.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3d212_439df\rev_3d212-439df.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_439df_639f4\rev_439df-639f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_813d9_b801f\rev_813d9-b801f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_10326_e73c3\rev_10326-e73c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fc404_e73c3\rev_fc404-e73c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e73c3_9286f\rev_e73c3-9286f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7dc29_9be52\rev_7dc29-9be52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b1378_c2a19\rev_b1378-c2a19.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f98ad_b07c6\rev_f98ad-b07c6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_83542_64eaf\rev_83542-64eaf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4a1fe_8f120\rev_4a1fe-8f120.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_46d3a_daafb\rev_46d3a-daafb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_2ff8c_da88f\rev_2ff8c-da88f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ef1f9_da88f\rev_ef1f9-da88f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d5663_61757\rev_d5663-61757.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a7897_e99ba\rev_a7897-e99ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e99ba_aa3c6\rev_e99ba-aa3c6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_1b23b_40206\rev_1b23b-40206.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_dc9d1_6d2fe\rev_dc9d1-6d2fe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9e403_1b23b\rev_9e403-1b23b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_635cb_e6180\rev_635cb-e6180.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_23e68_c6971\rev_23e68-c6971.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b1b3d_535fe\rev_b1b3d-535fe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_0ddd9_0e03d\rev_0ddd9-0e03d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_99b02_42e03\rev_99b02-42e03.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_11941_b5e1f\rev_11941-b5e1f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_09f70_a3fa5\rev_09f70-a3fa5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5e48c_b1d3c\rev_5e48c-b1d3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_bc1a7_e4070\rev_bc1a7-e4070.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_6b412_ee5d1\rev_6b412-ee5d1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_77701_907d9\rev_77701-907d9.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513164658302\fstmerge_var1_6591567228213283425
+    @ExcludeIn({FIREBIRD}) // FIXME
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513164658302\fstmerge_base_7796161774640465086
+    @ExcludeIn({FIREBIRD, SQLSERVER}) // FIXME
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513164658302\fstmerge_var2_148034642824617500
+    public void Math() {
+        Expression<Double> expr = Expressions.numberTemplate(Double.class, "0.50");
+
+        assertEquals(Math.acos(0.5), singleResult(MathExpressions.acos(expr)), 0.001);
+        assertEquals(Math.asin(0.5), singleResult(MathExpressions.asin(expr)), 0.001);
+        assertEquals(Math.atan(0.5), singleResult(MathExpressions.atan(expr)), 0.001);
+        assertEquals(Math.cos(0.5),  singleResult(MathExpressions.cos(expr)), 0.001);
+        assertEquals(Math.cosh(0.5), singleResult(MathExpressions.cosh(expr)), 0.001);
+        assertEquals(cot(0.5),       singleResult(MathExpressions.cot(expr)), 0.001);
+        assertEquals(coth(0.5),      singleResult(MathExpressions.coth(expr)), 0.001);
+        assertEquals(degrees(0.5),   singleResult(MathExpressions.degrees(expr)), 0.001);
+        assertEquals(Math.exp(0.5),  singleResult(MathExpressions.exp(expr)), 0.001);
+        assertEquals(Math.log(0.5),  singleResult(MathExpressions.ln(expr)), 0.001);
+        assertEquals(log(0.5, 10),   singleResult(MathExpressions.log(expr, 10)), 0.001);
+        assertEquals(0.25,           singleResult(MathExpressions.power(expr, 2)), 0.001);
+        assertEquals(radians(0.5),   singleResult(MathExpressions.radians(expr)), 0.001);
+        assertEquals(Integer.valueOf(1),
+                singleResult(MathExpressions.sign(expr)));
+        assertEquals(Math.sin(0.5),  singleResult(MathExpressions.sin(expr)), 0.001);
+        assertEquals(Math.sinh(0.5), singleResult(MathExpressions.sinh(expr)), 0.001);
+        assertEquals(Math.tan(0.5),  singleResult(MathExpressions.tan(expr)), 0.001);
+        assertEquals(Math.tanh(0.5), singleResult(MathExpressions.tanh(expr)), 0.001);
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_77701_907d9\rev_rev_left_77701-rev_right_907d9\querydsl-sql\src\test\java\com\mysema\query\SelectBase.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_907d9_624d0\rev_907d9-624d0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_44488_2a298\rev_44488-2a298.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_da26e_bd032\rev_da26e-bd032.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_48b39_d4856\rev_48b39-d4856.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c3937_ea660\rev_c3937-ea660.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c2810_64ebd\rev_c2810-64ebd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a80f3_7c031\rev_a80f3-7c031.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3b79e_2831a\rev_3b79e-2831a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_8e64b_2e3ae\rev_8e64b-2e3ae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a5e08_10e7f\rev_a5e08-10e7f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4e7a9_51c4a\rev_4e7a9-51c4a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_88684_60a86\rev_88684-60a86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_593f8_d9e9c\rev_593f8-d9e9c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fb182_962c1\rev_fb182-962c1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public MySQLTemplates(char escape, boolean quote) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513165900284\fstmerge_var1_327785262114129318
+        super(MYSQL_RESERVED_WORDS, "`", escape, quote);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513165900284\fstmerge_base_5854819470119280808
+        super("`", escape, quote);
+=======
+        super("`", escape, quote);
+        setArraysSupported(false);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513165900284\fstmerge_var2_2529942113865378820
+        setParameterMetadataAvailable(false);
+        setLimitRequired(true);
+        setNullsFirst(null);
+        setNullsLast(null);
+
+        add(Ops.CONCAT, "concat({0}, {1})",0);
+
+        add(Ops.StringOps.LPAD, "lpad({0},{1},' ')");
+        add(Ops.StringOps.RPAD, "rpad({0},{1},' ')");
+
+        // like without escape
+        if (escape == '\\') {
+            add(Ops.LIKE, "{0} like {1}");
+            add(Ops.ENDS_WITH, "{0} like {%1}");
+            add(Ops.ENDS_WITH_IC, "{0l} like {%%1}");
+            add(Ops.STARTS_WITH, "{0} like {1%}");
+            add(Ops.STARTS_WITH_IC, "{0l} like {1%%}");
+            add(Ops.STRING_CONTAINS, "{0} like {%1%}");
+            add(Ops.STRING_CONTAINS_IC, "{0l} like {%%1%%}");
+        }
+
+        add(Ops.MathOps.LOG, "log({1},{0})");
+        add(Ops.MathOps.COSH, "(exp({0}) + exp({0} * -1)) / 2");
+        add(Ops.MathOps.COTH, "(exp({0} * 2) + 1) / (exp({0} * 2) - 1)");
+        add(Ops.MathOps.SINH, "(exp({0}) - exp({0} * -1)) / 2");
+        add(Ops.MathOps.TANH, "(exp({0} * 2) - 1) / (exp({0} * 2) + 1)");
+
+        add(Ops.AggOps.BOOLEAN_ANY, "bit_or({0})", 0);
+        add(Ops.AggOps.BOOLEAN_ALL, "bit_and({0})", 0);
+
+        add(Ops.DateTimeOps.DAY_OF_WEEK, "dayofweek({0})");
+        add(Ops.DateTimeOps.DAY_OF_YEAR, "dayofyear({0})");
+        add(Ops.DateTimeOps.YEAR_MONTH, "extract(year_month from {0})");
+        add(Ops.DateTimeOps.YEAR_WEEK, "yearweek({0})");
+
+        add(Ops.DateTimeOps.ADD_YEARS, "date_add({0}, interval {1s} year)");
+        add(Ops.DateTimeOps.ADD_MONTHS, "date_add({0}, interval {1s} month)");
+        add(Ops.DateTimeOps.ADD_WEEKS, "date_add({0}, interval {1s} week)");
+        add(Ops.DateTimeOps.ADD_DAYS, "date_add({0}, interval {1s} day)");
+        add(Ops.DateTimeOps.ADD_HOURS, "date_add({0}, interval {1s} hour)");
+        add(Ops.DateTimeOps.ADD_MINUTES, "date_add({0}, interval {1s} minute)");
+        add(Ops.DateTimeOps.ADD_SECONDS, "date_add({0}, interval {1s} second)");
+
+        add(Ops.DateTimeOps.DIFF_YEARS, "timestampdiff(year,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_MONTHS, "timestampdiff(month,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_WEEKS, "timestampdiff(week,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_DAYS, "timestampdiff(day,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_HOURS, "timestampdiff(hour,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_MINUTES, "timestampdiff(minute,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_SECONDS, "timestampdiff(second,{0},{1})");
+
+        addTypeNameToCode("bool", Types.BIT, true);
+        addTypeNameToCode("tinyint unsigned", Types.TINYINT);
+        addTypeNameToCode("bigint unsigned", Types.BIGINT);
+        addTypeNameToCode("long varbinary", Types.LONGVARBINARY, true);
+        addTypeNameToCode("mediumblob", Types.LONGVARBINARY);
+        addTypeNameToCode("longblob", Types.LONGVARBINARY);
+        addTypeNameToCode("blob", Types.LONGVARBINARY);
+        addTypeNameToCode("tinyblob", Types.LONGVARBINARY);
+        addTypeNameToCode("long varchar", Types.LONGVARCHAR, true);
+        addTypeNameToCode("mediumtext", Types.LONGVARCHAR);
+        addTypeNameToCode("longtext", Types.LONGVARCHAR);
+        addTypeNameToCode("text", Types.LONGVARCHAR);
+        addTypeNameToCode("tinytext", Types.LONGVARCHAR);
+        addTypeNameToCode("integer unsigned", Types.INTEGER);
+        addTypeNameToCode("int", Types.INTEGER);
+        addTypeNameToCode("int unsigned", Types.INTEGER);
+        addTypeNameToCode("mediumint", Types.INTEGER);
+        addTypeNameToCode("mediumint unsigned", Types.INTEGER);
+        addTypeNameToCode("smallint unsigned", Types.SMALLINT);
+        addTypeNameToCode("float", Types.REAL, true);
+        addTypeNameToCode("double precision", Types.DOUBLE, true);
+        addTypeNameToCode("real", Types.DOUBLE);
+        addTypeNameToCode("enum", Types.VARCHAR);
+        addTypeNameToCode("set", Types.VARCHAR);
+        addTypeNameToCode("datetime", Types.TIMESTAMP, true);
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_fb182_962c1\rev_rev_left_fb182-rev_right_962c1\querydsl-sql\src\main\java\com\mysema\query\sql\MySQLTemplates.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_962c1_9bb4d\rev_962c1-9bb4d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_355e3_fb9e9\rev_355e3-fb9e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d895d_b9bd3\rev_d895d-b9bd3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a94af_ee536\rev_a94af-ee536.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9ac2c_5d66d\rev_9ac2c-5d66d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_49a31_bfaa6\rev_49a31-bfaa6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a2c7b_b40ca\rev_a2c7b-b40ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_8cb13_a6972\rev_8cb13-a6972.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f893c_7c235\rev_f893c-7c235.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7c235_eadae\rev_7c235-eadae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_47e7a_3b90c\rev_47e7a-3b90c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d1118_bd6c0\rev_d1118-bd6c0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4a2d5_d4f7a\rev_4a2d5-d4f7a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d269c_5f057\rev_d269c-5f057.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_958c6_9a850\rev_958c6-9a850.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_ee803_4a2d5\rev_ee803-4a2d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_09234_fe220\rev_09234-fe220.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_51038_397ca\rev_51038-397ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_4c644_54e3f\rev_4c644-54e3f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fd572_10715\rev_fd572-10715.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_3508d_c83d1\rev_3508d-c83d1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_64d8d_d5225\rev_64d8d-d5225.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_dccc4_23803\rev_dccc4-23803.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a4146_29d87\rev_a4146-29d87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_81303_3a526\rev_81303-3a526.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c0ff2_b5d69\rev_c0ff2-b5d69.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_845aa_f3944\rev_845aa-f3944.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513168659939\fstmerge_var1_1335335008108046211
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        try {
+            return createQuery(expr).scroll(mode);
+        } finally {
+            reset();
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513168659939\fstmerge_base_7890987352695101815
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        Query query = createQuery(expr);
+        reset();
+        return query.scroll(mode);
+=======
+public ScrollableResults scroll(ScrollMode mode, Expression<?>... args) {
+        Query query = createQuery(args);
+        reset();
+        return query.scroll(mode);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513168659939\fstmerge_var2_1773129700984172185
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_845aa_f3944\rev_rev_left_845aa-rev_right_f3944\querydsl-jpa\src\main\java\com\mysema\query\jpa\hibernate\AbstractHibernateQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_17d91_40742\rev_17d91-40742.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_40742_8edfb\rev_40742-8edfb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_719eb_4c8c9\rev_719eb-4c8c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_0640a_a5e9e\rev_0640a-a5e9e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169158416\fstmerge_var1_7382935558687253576
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        try {
+            return createQuery(expr).scroll(mode);
+        } finally {
+            reset();
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169158416\fstmerge_base_6873630587210132416
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        Query query = createQuery(expr);
+        reset();
+        return query.scroll(mode);
+=======
+public ScrollableResults scroll(ScrollMode mode, Expression<?>... args) {
+        Query query = createQuery(args);
+        reset();
+        return query.scroll(mode);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169158416\fstmerge_var2_1995330096515596550
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_0640a_a5e9e\rev_rev_left_0640a-rev_right_a5e9e\querydsl-jpa\src\main\java\com\mysema\query\jpa\hibernate\AbstractHibernateQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a5db4_84173\rev_a5db4-84173.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_1f8dc_d1668\rev_1f8dc-d1668.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_f2738_33512\rev_f2738-33512.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_33512_c5bce\rev_33512-c5bce.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d0d86_568b0\rev_d0d86-568b0.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169793101\fstmerge_var1_4852292151075215330
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        try {
+            return createQuery(expr).scroll(mode);
+        } finally {
+            reset();
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169793101\fstmerge_base_3662591392680086147
+public ScrollableResults scroll(ScrollMode mode, Expression<?> expr) {
+        Query query = createQuery(expr);
+        reset();
+        return query.scroll(mode);
+=======
+public ScrollableResults scroll(ScrollMode mode, Expression<?>... args) {
+        Query query = createQuery(args);
+        reset();
+        return query.scroll(mode);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513169793101\fstmerge_var2_2884626331760087307
+    }
+
+File path: C:\download\ssmerge\querydsl\revisions\rev_d0d86_568b0\rev_rev_left_d0d86-rev_right_568b0\querydsl-jpa\src\main\java\com\mysema\query\jpa\hibernate\AbstractHibernateQuery.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_05b9e_13e55\rev_05b9e-13e55.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5d964_62edc\rev_5d964-62edc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_d7598_6683d\rev_d7598-6683d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e3850_6bca4\rev_e3850-6bca4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_88fa8_acd71\rev_88fa8-acd71.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_acd71_e26b5\rev_acd71-e26b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5c377_26d30\rev_5c377-26d30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_46874_12909\rev_46874-12909.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_9c093_12909\rev_9c093-12909.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_352c1_12909\rev_352c1-12909.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_12909_4ecba\rev_12909-4ecba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_daad4_d635a\rev_daad4-d635a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_58332_37e8f\rev_58332-37e8f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7d5e8_550b5\rev_7d5e8-550b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_fc232_81987\rev_fc232-81987.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b4c13_f7def\rev_b4c13-f7def.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_8e2df_69315\rev_8e2df-69315.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_5bc9d_5e328\rev_5bc9d-5e328.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c5d75_1f806\rev_c5d75-1f806.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_c669c_d505c\rev_c669c-d505c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7987e_34d48\rev_7987e-34d48.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_36488_469fc\rev_36488-469fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_469fc_0b052\rev_469fc-0b052.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_7c74d_eb076\rev_7c74d-eb076.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_b84ca_af968\rev_b84ca-af968.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_e4b20_54735\rev_e4b20-54735.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_afd5d_f5518\rev_afd5d-f5518.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_cfa11_4ed09\rev_cfa11-4ed09.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_dffad_51bea\rev_dffad-51bea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_df6b2_39099\rev_df6b2-39099.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_35f89_77d02\rev_35f89-77d02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_be6e5_645e0\rev_be6e5-645e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\querydsl\revisions\rev_a2cb0_eaa57\rev_a2cb0-eaa57.revisions
+
+=========================================================

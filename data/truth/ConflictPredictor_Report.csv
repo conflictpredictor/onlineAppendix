@@ -1,0 +1,101 @@
+#MS_XXX_MS#
+Merge scenario: rev_4e28c-6d571
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b696b-d6448
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_022e3-f1a5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd89d-55701
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4337a-c070f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9381-5dda4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bdd6e-bc2c7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d87f0-1a99a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff195-df659
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6e293-54f5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_426c4-66926
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_85426-5e2b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd62b-5a36b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39fa8-02823
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_377ee-bace8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_82282-a72a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d6e0b-d11c0
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\truth\revisions\rev_d6e0b_d11c0\rev_rev_left_d6e0b-rev_right_d11c0\core\src\main\java\com\google\common\truth\Subject.java
+Different Spacing: false
+Left editions: [223, 224, 225, 226, 227]
+Right editions: []
+Merged body: 
+// START getDisplaySubject({FormalParametersInternal})//protected String getDisplaySubject() {
+// LEFT //    if (customName != null) {
+// LEFT //      return customName + " (<" + getSubject() + ">)";
+// LEFT //    } else {
+// LEFT //      return "<" + getSubject() + ">";
+// LEFT //    }
+// END getDisplaySubject({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\truth\revisions\rev_d6e0b_d11c0\rev_rev_left_d6e0b-rev_right_d11c0\core\src\main\java\com\google\common\truth\Subject.java
+Different Spacing: false
+Left editions: []
+Right editions: [286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298]
+Merged body: 
+// START fail(String-String-Object-Object)//// RIGHT //protected void fail(String verb, Object... messageParts) {
+// RIGHT //    // For backwards binary compatibility
+// RIGHT //    if (messageParts.length == 0) {
+// RIGHT //      fail(verb);
+// RIGHT //    } else if (messageParts.length == 1) {
+// RIGHT //      fail(verb, messageParts[0]);
+// RIGHT //    } else {
+// RIGHT //      StringBuilder message = new StringBuilder("Not true that ");
+// RIGHT //      message.append(getDisplaySubject()).append(" ").append(verb);
+// RIGHT //      for (Object part : messageParts) {
+// RIGHT //        message.append(" <").append(part).append(">");
+// RIGHT //      }
+// RIGHT //      failureStrategy.fail(message.toString());
+    }
+// END fail(String-String-Object-Object)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4064e-63012
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_28cac-ada28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84916-9f894
+#MS_XXX_MS#

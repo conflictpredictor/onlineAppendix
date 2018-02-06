@@ -1,0 +1,9 @@
+Merge_Scenario,has_merge_Conflict,has_build_conflict,has_integration_conflict,has_test_conflict,has_predictor,Methods_With_Conflicts,Conflicting_EditSameMC,Conflicting_EditSameMC_DS,Conflicting_EditSameFD,Conflicting_EditSameFD_DS,NonConflicting_EditSameMC,NonConflicting_EditSameMC_DS,NonConflicting_EditSameFD,NonConflicting_EditSameFD_DS,EditDiffMC,EditDifffMC_EditSameMC,EditDiffMC_EditionAddsMethodInvocation,EditDiffMC_EditionAddsMethodInvocation_EditSameMC
+rev_6c9f6-cea9a,0,0,1,0,1,0,0,0,0,0,1,0,0,0,3,1,0,0
+rev_73425-f34b0,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+rev_e7b04-a762d,1,1,0,0,0,2,3,0,0,0,0,0,0,0,0,0,0,0
+rev_4b6be-f44b4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_3ebbc-ba9d7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_ba9d7-21c61,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_a83a3-a334c,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+rev_31566-401f3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

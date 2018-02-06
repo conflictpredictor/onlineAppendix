@@ -1,0 +1,401 @@
+=========================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_50090_b57f5\rev_50090-b57f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_e6de3_a4a7d\rev_e6de3-a4a7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_9800a_8e4fe\rev_9800a-8e4fe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_8e4fe_0e167\rev_8e4fe-0e167.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_bc656-d44b5.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700611877\fstmerge_var1_7610509701788731127
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700611877\fstmerge_base_5265617291659447874
+protected void validateEditableParameter(HttpServletRequest request, String target, String parameter,
+			String[] values, String dataType, Map<String, String[]> unauthorizedParameters) {
+
+		EditableDataValidationResult result = hdivConfig.areEditableParameterValuesValid(target, parameter, values,
+				dataType);
+		if (!result.isValid()) {
+
+			StringBuffer unauthorizedValues = new StringBuffer(values[0]);
+
+			for (int i = 1; i < values.length; i++) {
+				unauthorizedValues.append("," + values[i]);
+			}
+
+			if (dataType.equals("password")) {
+				String[] passwordError = { Constants.HDIV_EDITABLE_PASSWORD_ERROR_KEY };
+				unauthorizedParameters.put(parameter, passwordError);
+			} else {
+				unauthorizedParameters.put(parameter, values);
+			}
+
+			this.logger.log(HDIVErrorCodes.EDITABLE_VALIDATION_ERROR, target, parameter, unauthorizedValues.toString(),
+					null, result.getValidationId());
+		}
+	}
+=======
+protected void validateEditableParameter(HttpServletRequest request, String target, String parameter,
+			String[] values, String dataType, Map<String, String[]> unauthorizedParameters) {
+
+		EditableDataValidationResult result = this.hdivConfig.getEditableDataValidationProvider().validate(target,
+				parameter, values, dataType);
+		if (!result.isValid()) {
+
+			StringBuffer unauthorizedValues = new StringBuffer(values[0]);
+
+			for (int i = 1; i < values.length; i++) {
+				unauthorizedValues.append("," + values[i]);
+			}
+
+			if (dataType.equals("password")) {
+				String[] passwordError = { Constants.HDIV_EDITABLE_PASSWORD_ERROR_KEY };
+				unauthorizedParameters.put(parameter, passwordError);
+			} else {
+				unauthorizedParameters.put(parameter, values);
+			}
+
+			this.logger.log(HDIVErrorCodes.EDITABLE_VALIDATION_ERROR, target, parameter, unauthorizedValues.toString(),
+					null, result.getValidationId());
+		}
+	}
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700611877\fstmerge_var2_2879041738860304352
+
+File path: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700612331\fstmerge_var1_7720260839332839818
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700612331\fstmerge_base_7644128022252405456
+protected ValidatorHelperResult validateParameter(HttpServletRequest request, IParameter stateParameter,
+			String[] actionParamValues, Map<String, String[]> unauthorizedEditableParameters, String hdivParameter,
+			String target, String parameter) {
+
+		// If the parameter requires no validation it is considered a valid parameter
+		if (this.isUserDefinedNonValidationParameter(target, parameter, hdivParameter)) {
+			return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+		}
+
+		if (stateParameter == null && actionParamValues == null) {
+
+			// If the parameter is not defined in the state, it is an error.
+			// With this verification we guarantee that no extra parameters are added.
+			this.logger.log(HDIVErrorCodes.PARAMETER_NOT_EXISTS, target, parameter, null);
+
+			if (log.isDebugEnabled()) {
+				log.debug("Validation Error Detected: Parameter [" + parameter
+						+ "] does not exist in the state for action [" + target + "]");
+			}
+
+			return new ValidatorHelperResult(HDIVErrorCodes.PARAMETER_NOT_EXISTS);
+		}
+
+		// At this point we are processing a noneditable parameter
+		String[] values = request.getParameterValues(parameter);
+
+		// Check if the parameter is editable
+		if (stateParameter != null && stateParameter.isEditable()) {
+
+			// Mark parameter as editable
+			this.addEditableParameter(request, parameter);
+
+			if (stateParameter.getEditableDataType() != null) {
+				this.validateEditableParameter(request, target, parameter, values,
+						stateParameter.getEditableDataType(), unauthorizedEditableParameters);
+			}
+			return ValidatorHelperResult.VALID;
+		}
+
+		try {
+			ValidatorHelperResult result = this.validateParameterValues(request, target, stateParameter,
+					actionParamValues, parameter, values);
+			return result;
+		} catch (HDIVException e) {
+			String errorMessage = HDIVUtil.getMessage("validation.error", e.getMessage());
+			throw new HDIVException(errorMessage, e);
+		}
+	}
+=======
+protected ValidatorHelperResult validateParameter(HttpServletRequest request, IParameter stateParameter,
+			String[] actionParamValues, Map<String, String[]> unauthorizedEditableParameters, String hdivParameter,
+			String target, String parameter) {
+
+		// If the parameter requires no validation it is considered a valid parameter
+		if (this.isUserDefinedNonValidationParameter(target, parameter, hdivParameter)) {
+			return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+		}
+
+		if (stateParameter == null && actionParamValues == null) {
+
+			// The parameter is not defined in the state, it is an extra parameter.
+			return validateExtraParameter(request, stateParameter, actionParamValues, unauthorizedEditableParameters,
+					hdivParameter, target, parameter);
+		}
+
+		// At this point we are processing a noneditable parameter
+		String[] values = request.getParameterValues(parameter);
+
+		// Check if the parameter is editable
+		if (stateParameter != null && stateParameter.isEditable()) {
+
+			// Mark parameter as editable
+			this.addEditableParameter(request, parameter);
+
+			if (stateParameter.getEditableDataType() != null) {
+				this.validateEditableParameter(request, target, parameter, values,
+						stateParameter.getEditableDataType(), unauthorizedEditableParameters);
+			}
+			return ValidatorHelperResult.VALID;
+		}
+
+		try {
+			ValidatorHelperResult result = this.validateParameterValues(request, target, stateParameter,
+					actionParamValues, parameter, values);
+			return result;
+		} catch (HDIVException e) {
+			String errorMessage = HDIVUtil.getMessage("validation.error", e.getMessage());
+			throw new HDIVException(errorMessage, e);
+		}
+	}
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700612331\fstmerge_var2_7633465294652529978
+
+File path: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+protected ValidatorHelperResult hasConfidentialIncorrectValues(String target, String parameter, String[] values,
+			List<String> stateValues) {
+
+		Set<String> receivedValues = new HashSet<String>();
+
+		for (int i = 0; i < values.length; i++) {
+
+			if (this.hdivConfig.isParameterWithoutConfidentiality(parameter)) {
+				return ValidatorHelperResult.VALID;
+			}
+
+			ValidatorHelperResult result = this.isInRange(target, parameter, values[i], stateValues);
+			if (!result.isValid()) {
+				return result;
+			}
+
+			if (receivedValues.contains(values[i])) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613223\fstmerge_var1_4697726480337802918
+				String originalValue = stateValues.size() > 1 ? stateValues.toString() : stateValues.get(0);
+				ValidatorError error = new ValidatorError(HDIVErrorCodes.REPEATED_VALUES, target, parameter, values[i],
+						originalValue);
+				return new ValidatorHelperResult(error);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613223\fstmerge_base_2895884971524592372
+				String originalValue = stateValues.size() > 1 ? stateValues.toString() : stateValues.get(0);
+				this.logger.log(HDIVErrorCodes.REPEATED_VALUES, target, parameter, values[i], originalValue);
+				return new ValidatorHelperResult(HDIVErrorCodes.REPEATED_VALUES);
+=======
+				this.logger.log(HDIVErrorCodes.REPEATED_VALUES, target, parameter, values[i]);
+				return new ValidatorHelperResult(HDIVErrorCodes.REPEATED_VALUES);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613223\fstmerge_var2_5874416022993406556
+			}
+
+			receivedValues.add(values[i]);
+		}
+		return ValidatorHelperResult.VALID;
+	}
+
+File path: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+protected ValidatorHelperResult hasNonConfidentialIncorrectValues(String target, String parameter, String[] values,
+			List<String> tempStateValues) {
+
+		Set<String> receivedValues = new HashSet<String>();
+
+		for (int i = 0; i < values.length; i++) {
+
+			boolean exists = false;
+			for (int j = 0; j < tempStateValues.size() && !exists; j++) {
+
+				String tempValue = tempStateValues.get(j);
+
+				if (tempValue.equalsIgnoreCase(values[i])) {
+					tempStateValues.remove(j);
+					exists = true;
+				}
+			}
+
+			if (!exists) {
+				if (receivedValues.contains(values[i])) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_var1_8020350590191181103
+					String originalValue = tempStateValues.size() > 1 ? tempStateValues.toString() : tempStateValues
+							.get(0);
+					ValidatorError error = new ValidatorError(HDIVErrorCodes.REPEATED_VALUES, target, parameter,
+							values[i], originalValue);
+					return new ValidatorHelperResult(error);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_base_8032806740033587029
+					String originalValue = tempStateValues.size() > 1 ? tempStateValues.toString() : tempStateValues
+							.get(0);
+					this.logger.log(HDIVErrorCodes.REPEATED_VALUES, target, parameter, values[i], originalValue);
+					return new ValidatorHelperResult(HDIVErrorCodes.REPEATED_VALUES);
+=======
+					this.logger.log(HDIVErrorCodes.REPEATED_VALUES, target, parameter, values[i]);
+					return new ValidatorHelperResult(HDIVErrorCodes.REPEATED_VALUES);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_var2_3286435761970541536
+				}
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_var1_8020350590191181103
+				String originalValue = tempStateValues.size() > 1 ? tempStateValues.toString() : tempStateValues.get(0);
+
+				ValidatorError error = new ValidatorError(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT, target, parameter,
+						values[i], originalValue);
+				return new ValidatorHelperResult(error);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_base_8032806740033587029
+				String originalValue = tempStateValues.size() > 1 ? tempStateValues.toString() : tempStateValues.get(0);
+				this.logger.log(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT, target, parameter, values[i], originalValue);
+				return new ValidatorHelperResult(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT);
+=======
+
+				this.logger.log(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT, target, parameter, values[i]);
+				return new ValidatorHelperResult(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700613301\fstmerge_var2_3286435761970541536
+			}
+
+			receivedValues.add(values[i]);
+		}
+		return ValidatorHelperResult.VALID;
+	}
+
+File path: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+public ActionMessages getEditableParametersErrors(HttpServletRequest request) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_var1_6654710059360001443
+
+		@SuppressWarnings("unchecked")
+		List<ValidatorError> validationErrors = (List<ValidatorError>)  request
+				.getAttribute(EDITABLE_PARAMETER_ERROR);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_base_3569915819893769059
+		
+	    	@SuppressWarnings("unchecked")
+		Map<String, String[]> unauthorizedEditableParameters = 
+			(Map<String, String[]>) request.getAttribute(EDITABLE_PARAMETER_ERROR);
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_var2_6636283405962790532
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_var1_6654710059360001443
+		ActionMessages errors = null;
+		if (validationErrors != null && validationErrors.size() > 0) {
+
+			errors = new ActionMessages();
+
+			for (ValidatorError validationError: validationErrors) {
+				
+				String errorValues = validationError.getParameterValue();
+				
+				ActionMessage error = null;
+				if (errorValues.contains(HDIV_EDITABLE_PASSWORD_ERROR)) {					
+					error = new ActionMessage(HDIV_EDITABLE_PASSWORD_ERROR);															
+				} else {			
+					String printedValue = this.createMessageError(errorValues);	
+					error = new ActionMessage(HDIV_EDITABLE_ERROR, printedValue);
+				}	
+				errors.add("hdiv.editable." + validationError.getParameterName(), error);				
+			}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_base_3569915819893769059
+		ActionMessages errors = null;
+		if ((unauthorizedEditableParameters != null) && (unauthorizedEditableParameters.size() > 0)) {
+			errors = new ActionMessages();
+			for (Iterator it = unauthorizedEditableParameters.keySet().iterator(); it.hasNext();) {
+				
+				String currentParameter = (String) it.next();
+				String [] currentUnauthorizedValues = (String []) unauthorizedEditableParameters.get(currentParameter);
+				
+				ActionMessage error = null;
+				if ((currentUnauthorizedValues.length == 1) && (currentUnauthorizedValues[0].equals(HDIV_EDITABLE_PASSWORD_ERROR))) {					
+					error = new ActionMessage(HDIV_EDITABLE_PASSWORD_ERROR);															
+					
+				} else {			
+					String printedValue = this.createMessageError(currentUnauthorizedValues);	
+					error = new ActionMessage(HDIV_EDITABLE_ERROR, printedValue);
+				}	
+				errors.add("hdiv.editable." + currentParameter, error);				
+			}
+=======
+	@SuppressWarnings("unchecked")
+	Map<String, String[]> unauthorizedEditableParameters = (Map<String, String[]>) request
+		.getAttribute(EDITABLE_PARAMETER_ERROR);
+
+	ActionMessages errors = null;
+	if ((unauthorizedEditableParameters != null) && (unauthorizedEditableParameters.size() > 0)) {
+	    errors = new ActionMessages();
+	    for (Iterator it = unauthorizedEditableParameters.keySet().iterator(); it.hasNext();) {
+
+		String currentParameter = (String) it.next();
+		String[] currentUnauthorizedValues = (String[]) unauthorizedEditableParameters.get(currentParameter);
+
+		ActionMessage error = null;
+		if ((currentUnauthorizedValues.length == 1)
+			&& (currentUnauthorizedValues[0].equals(HDIV_EDITABLE_PASSWORD_ERROR))) {
+		    error = new ActionMessage(HDIV_EDITABLE_PASSWORD_ERROR);
+
+		} else {
+		    String printedValue = this.createMessageError(currentUnauthorizedValues);
+		    error = new ActionMessage(HDIV_EDITABLE_ERROR, printedValue);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513700718510\fstmerge_var2_6636283405962790532
+		}
+		errors.add("hdiv.editable." + currentParameter, error);
+	    }
+	}
+	return errors;
+    }
+
+File path: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-struts-1\src\main\java\org\hdiv\tiles\HDIVTilesRequestProcessor.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_2e215_b0718\rev_2e215-b0718.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_37926_d6391\rev_37926-d6391.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_fa9e1_9878d\rev_fa9e1-9878d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\hdiv\revisions\rev_4acd8_4ee7a\rev_4acd8-4ee7a.revisions
+
+=========================================================

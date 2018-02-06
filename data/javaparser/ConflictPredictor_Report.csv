@@ -1,0 +1,1492 @@
+#MS_XXX_MS#
+Merge scenario: rev_157b2-2b77f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7db30-215e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_edab1-f29e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20fcf-e93da
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e02dd-0c866
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49faa-9a174
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_725cc-84087
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_96e17-e2dab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_109e4-3d173
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e371f-808fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21f4f-5eca3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9358-2ec5b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe096-a18eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b598-9540f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9325-2a813
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af08b-b607d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37388-a9b8b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_091c0-70113
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ed93-5f915
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ea663-6a879
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a2ec-dfc87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7c51-d907f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58823-2a9ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_85daf-b5636
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c800d-902d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e66e9-dae95
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddf5c-08392
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d628b-4a593
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e63d5-263af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49788-dfe96
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38e0d-58b49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d3e6-c6789
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84faf-34898
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8ded9-1986c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c2fc-e2c80
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bfa07-1974a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_409ba-9f2e2
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_409ba_9f2e2\rev_rev_left_409ba-rev_right_9f2e2\javaparser-core\src\main\java\com\github\javaparser\ast\comments\CommentsParser.java
+Different Spacing: false
+Left editions: [83]
+Right editions: []
+Merged body: 
+// START isLastChar(char-char)//boolean isLastChar(char expectedChar) {
+// LEFT //            return !prevTwoChars.isEmpty() && prevTwoChars.peekLast().equals(expectedChar);
+// END isLastChar(char-char)//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_409ba_9f2e2\rev_rev_left_409ba-rev_right_9f2e2\javaparser-core\src\main\java\com\github\javaparser\ast\comments\CommentsParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [132, 154, 160]
+Merged body: 
+// START parse(InputStream-InputStream-String-String)//public CommentsCollection parse(final InputStream in, final String charsetName) throws IOException, UnsupportedEncodingException {
+        boolean lastWasASlashR = false;
+        BufferedReader br = new BufferedReader(new InputStreamReader(in, charsetName));
+        CommentsCollection comments = new CommentsCollection();
+        int r;
+
+        ParserState parserState = new ParserState();
+
+        State state = State.CODE;
+        LineComment currentLineComment = null;
+        BlockComment currentBlockComment = null;
+// RIGHT //        StringBuilder currentContent = null;
+
+        int currLine = 1;
+        int currCol  = 1;
+
+        while ((r=br.read()) != -1){
+            char c = (char)r;
+            if (c=='\r'){
+                lastWasASlashR = true;
+            } else if (c=='\n'&&lastWasASlashR){
+                lastWasASlashR=false;
+                continue;
+            } else {
+                lastWasASlashR=false;
+            }
+            switch (state) {
+                case CODE:
+                    if (parserState.isLastChar('/') && c == '/') {
+                        currentLineComment = new LineComment();
+                        currentLineComment.setBeginLine(currLine);
+                        currentLineComment.setBeginColumn(currCol - 1);
+                        state = State.IN_LINE_COMMENT;
+// RIGHT //                        currentContent = new StringBuilder();
+                    } else if (parserState.isLastChar('/') && c == '*') {
+                        currentBlockComment = new BlockComment();
+                        currentBlockComment.setBeginLine(currLine);
+                        currentBlockComment.setBeginColumn(currCol - 1);
+                        state = State.IN_BLOCK_COMMENT;
+// RIGHT //                        currentContent = new StringBuilder();
+                    } else if (c == '"') {
+                        state = State.IN_STRING;
+                    } else if (c == '\'') {
+                        state = State.IN_CHAR;
+                    } else {
+                        // nothing to do
+                    }
+                    break;
+                case IN_LINE_COMMENT:
+                    if (c=='\n' || c=='\r'){
+                        currentLineComment.setContent(currentContent.toString());
+                        currentLineComment.setEndLine(currLine);
+                        currentLineComment.setEndColumn(currCol);
+                        comments.addComment(currentLineComment);
+                        state = State.CODE;
+                    } else {
+                        currentContent.append(c);
+                    }
+                    break;
+                case IN_BLOCK_COMMENT:
+                    // '/*/' is not a valid block comment: it starts the block comment but it does not close it
+                    // However this sequence can be contained inside a comment and in that case it close the comment
+                    // For example:
+                    // /* blah blah /*/
+                    // At the previous line we had a valid block comment
+                    if (parserState.isLastChar('*') && c=='/' && (!parserState.isSecondToLastChar('/') || currentContent.length() > 0)){
+
+                        // delete last character
+                        String content = currentContent.deleteCharAt(currentContent.toString().length()-1).toString();
+
+                        if (content.startsWith("*")){
+                            JavadocComment javadocComment = new JavadocComment();
+                            javadocComment.setContent(content.substring(1));
+                            javadocComment.setBeginLine(currentBlockComment.getBeginLine());
+                            javadocComment.setBeginColumn(currentBlockComment.getBeginColumn());
+                            javadocComment.setEndLine(currLine);
+                            javadocComment.setEndColumn(currCol+1);
+                            comments.addComment(javadocComment);
+                        } else {
+                            currentBlockComment.setContent(content);
+                            currentBlockComment.setEndLine(currLine);
+                            currentBlockComment.setEndColumn(currCol+1);
+                            comments.addComment(currentBlockComment);
+                        }
+                        state = State.CODE;
+                    } else {
+                        currentContent.append(c=='\r'?'\n':c);
+                    }
+                    break;
+                case IN_STRING:
+                    if (!parserState.isLastChar('\\') && c == '"') {
+                        state = State.CODE;
+                    }
+                    break;
+                case IN_CHAR:
+                    if (!parserState.isLastChar('\\') && c == '\'') {
+                        state = State.CODE;
+                    }
+                    break;
+                default:
+                    throw new RuntimeException("Unexpected");
+            }
+            switch (c){
+                case '\n':
+                case '\r':
+                    currLine+=1;
+                    currCol = 1;
+                    break;
+                case '\t':
+                    currCol+=COLUMNS_PER_TAB;
+                    break;
+                default:
+                    currCol+=1;
+            }
+            // ok we have two slashes in a row inside a string
+            // we want to replace them with... anything else, to not confuse
+            // the parser
+            if (state==State.IN_STRING && parserState.isLastChar('\\') && c == '\\') {
+                parserState.reset();
+            } else {
+                parserState.update(c);
+            }
+        }
+
+        if (state==State.IN_LINE_COMMENT){
+            currentLineComment.setContent(currentContent.toString());
+            currentLineComment.setEndLine(currLine);
+            currentLineComment.setEndColumn(currCol);
+            comments.addComment(currentLineComment);
+        }
+
+        return comments;
+// END parse(InputStream-InputStream-String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_409ba_9f2e2\rev_rev_left_409ba-rev_right_9f2e2\javaparser-core\src\main\java\com\github\javaparser\ast\comments\CommentsParser.java
+Different Spacing: false
+Left editions: [91]
+Right editions: []
+Merged body: 
+// START isSecondToLastChar(char-char)//public boolean isSecondToLastChar(char expectedChar) {
+// LEFT //            return !prevTwoChars.isEmpty() && prevTwoChars.peekFirst().equals(expectedChar);
+// END isSecondToLastChar(char-char)//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_409ba_9f2e2\rev_rev_left_409ba-rev_right_9f2e2\javaparser-core\src\main\java\com\github\javaparser\ast\comments\CommentsParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [132, 154, 160]
+Merged body: 
+// START parse(InputStream-InputStream-String-String)//public CommentsCollection parse(final InputStream in, final String charsetName) throws IOException, UnsupportedEncodingException {
+        boolean lastWasASlashR = false;
+        BufferedReader br = new BufferedReader(new InputStreamReader(in, charsetName));
+        CommentsCollection comments = new CommentsCollection();
+        int r;
+
+        ParserState parserState = new ParserState();
+
+        State state = State.CODE;
+        LineComment currentLineComment = null;
+        BlockComment currentBlockComment = null;
+// RIGHT //        StringBuilder currentContent = null;
+
+        int currLine = 1;
+        int currCol  = 1;
+
+        while ((r=br.read()) != -1){
+            char c = (char)r;
+            if (c=='\r'){
+                lastWasASlashR = true;
+            } else if (c=='\n'&&lastWasASlashR){
+                lastWasASlashR=false;
+                continue;
+            } else {
+                lastWasASlashR=false;
+            }
+            switch (state) {
+                case CODE:
+                    if (parserState.isLastChar('/') && c == '/') {
+                        currentLineComment = new LineComment();
+                        currentLineComment.setBeginLine(currLine);
+                        currentLineComment.setBeginColumn(currCol - 1);
+                        state = State.IN_LINE_COMMENT;
+// RIGHT //                        currentContent = new StringBuilder();
+                    } else if (parserState.isLastChar('/') && c == '*') {
+                        currentBlockComment = new BlockComment();
+                        currentBlockComment.setBeginLine(currLine);
+                        currentBlockComment.setBeginColumn(currCol - 1);
+                        state = State.IN_BLOCK_COMMENT;
+// RIGHT //                        currentContent = new StringBuilder();
+                    } else if (c == '"') {
+                        state = State.IN_STRING;
+                    } else if (c == '\'') {
+                        state = State.IN_CHAR;
+                    } else {
+                        // nothing to do
+                    }
+                    break;
+                case IN_LINE_COMMENT:
+                    if (c=='\n' || c=='\r'){
+                        currentLineComment.setContent(currentContent.toString());
+                        currentLineComment.setEndLine(currLine);
+                        currentLineComment.setEndColumn(currCol);
+                        comments.addComment(currentLineComment);
+                        state = State.CODE;
+                    } else {
+                        currentContent.append(c);
+                    }
+                    break;
+                case IN_BLOCK_COMMENT:
+                    // '/*/' is not a valid block comment: it starts the block comment but it does not close it
+                    // However this sequence can be contained inside a comment and in that case it close the comment
+                    // For example:
+                    // /* blah blah /*/
+                    // At the previous line we had a valid block comment
+                    if (parserState.isLastChar('*') && c=='/' && (!parserState.isSecondToLastChar('/') || currentContent.length() > 0)){
+
+                        // delete last character
+                        String content = currentContent.deleteCharAt(currentContent.toString().length()-1).toString();
+
+                        if (content.startsWith("*")){
+                            JavadocComment javadocComment = new JavadocComment();
+                            javadocComment.setContent(content.substring(1));
+                            javadocComment.setBeginLine(currentBlockComment.getBeginLine());
+                            javadocComment.setBeginColumn(currentBlockComment.getBeginColumn());
+                            javadocComment.setEndLine(currLine);
+                            javadocComment.setEndColumn(currCol+1);
+                            comments.addComment(javadocComment);
+                        } else {
+                            currentBlockComment.setContent(content);
+                            currentBlockComment.setEndLine(currLine);
+                            currentBlockComment.setEndColumn(currCol+1);
+                            comments.addComment(currentBlockComment);
+                        }
+                        state = State.CODE;
+                    } else {
+                        currentContent.append(c=='\r'?'\n':c);
+                    }
+                    break;
+                case IN_STRING:
+                    if (!parserState.isLastChar('\\') && c == '"') {
+                        state = State.CODE;
+                    }
+                    break;
+                case IN_CHAR:
+                    if (!parserState.isLastChar('\\') && c == '\'') {
+                        state = State.CODE;
+                    }
+                    break;
+                default:
+                    throw new RuntimeException("Unexpected");
+            }
+            switch (c){
+                case '\n':
+                case '\r':
+                    currLine+=1;
+                    currCol = 1;
+                    break;
+                case '\t':
+                    currCol+=COLUMNS_PER_TAB;
+                    break;
+                default:
+                    currCol+=1;
+            }
+            // ok we have two slashes in a row inside a string
+            // we want to replace them with... anything else, to not confuse
+            // the parser
+            if (state==State.IN_STRING && parserState.isLastChar('\\') && c == '\\') {
+                parserState.reset();
+            } else {
+                parserState.update(c);
+            }
+        }
+
+        if (state==State.IN_LINE_COMMENT){
+            currentLineComment.setContent(currentContent.toString());
+            currentLineComment.setEndLine(currLine);
+            currentLineComment.setEndColumn(currCol);
+            comments.addComment(currentLineComment);
+        }
+
+        return comments;
+// END parse(InputStream-InputStream-String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b11ba-9d894
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b7f3-417be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1ba4-58c53
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_c1ba4_58c53\rev_rev_left_c1ba4-rev_right_58c53\javaparser-core\src\main\java\com\github\javaparser\CommentsInserter.java
+Different Spacing: false
+Left editions: [137]
+Right editions: [170, 171]
+Merged body: 
+// START insertCommentsInNode(Node-Node-List<Comment>-List<Comment>)//private void insertCommentsInNode(Node node,
+            List<Comment> commentsToAttribute) {
+// LEFT //        if (commentsToAttribute.isEmpty())
+            return;
+
+        // the comments can:
+        // 1) Inside one of the child, then it is the child that have to
+        // associate them
+        // 2) If they are not inside a child they could be preceeding nothing, a
+        // comment or a child
+        // if they preceed a child they are assigned to it, otherweise they
+        // remain "orphans"
+
+        List<Node> children = node.getChildrenNodes();
+        PositionUtils.sortByBeginPosition(children);
+
+        for (Node child : children) {
+            List<Comment> commentsInsideChild = new LinkedList<Comment>();
+            for (Comment c : commentsToAttribute) {
+                if (PositionUtils.nodeContains(child, c,
+                        doNotConsiderAnnotationsAsNodeStartForCodeAttribution)) {
+                    commentsInsideChild.add(c);
+                }
+            }
+            commentsToAttribute.removeAll(commentsInsideChild);
+            insertCommentsInNode(child, commentsInsideChild);
+        }
+
+        // I can attribute in line comments to elements preceeding them, if
+        // there
+        // is something contained in their line
+        List<Comment> attributedComments = new LinkedList<Comment>();
+        for (Comment comment : commentsToAttribute) {
+            if (comment.isLineComment()) {
+                for (Node child : children) {
+// RIGHT //                    if (child.getEndLine() == comment.getBeginLine()
+// RIGHT //                        && attributeLineCommentToNodeOrChild(child,
+                                comment.asLineComment())) {
+                            attributedComments.add(comment);
+                        }
+                    }
+                }
+            }
+
+        // at this point I create an ordered list of all remaining comments and
+        // children
+        Comment previousComment = null;
+        attributedComments = new LinkedList<Comment>();
+        List<Node> childrenAndComments = new LinkedList<Node>();
+        childrenAndComments.addAll(children);
+        childrenAndComments.addAll(commentsToAttribute);
+        PositionUtils.sortByBeginPosition(childrenAndComments,
+                doNotConsiderAnnotationsAsNodeStartForCodeAttribution);
+
+        for (Node thing : childrenAndComments) {
+            if (thing instanceof Comment) {
+                previousComment = (Comment) thing;
+                if (!previousComment.isOrphan()) {
+                    previousComment = null;
+                }
+            } else {
+                if (previousComment != null && !thing.hasComment()) {
+                    if (!doNotAssignCommentsPreceedingEmptyLines
+                            || !thereAreLinesBetween(previousComment, thing)) {
+                        thing.setComment(previousComment);
+                        attributedComments.add(previousComment);
+                        previousComment = null;
+                    }
+                }
+            }
+        }
+
+        commentsToAttribute.removeAll(attributedComments);
+
+        // all the remaining are orphan nodes
+        for (Comment c : commentsToAttribute) {
+            if (c.isOrphan()) {
+                node.addOrphanComment(c);
+            }
+        }
+// END insertCommentsInNode(Node-Node-List<Comment>-List<Comment>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7204c-b407e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4df43-9f321
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dfcca-6a7d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1e0ba-43ac5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_52561-4b3d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b3d8-5684d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06d6d-3d405
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aea09-de323
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e7ca7-cddf2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5441-1a4c6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75ace-55e05
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04afc-2b2d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab39a-51a5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de183-51a5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bdcc2-7dd12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9203a-d378a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21dce-d378a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ceb1a-bd9e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b606-c4e62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d459b-7fce4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_113db-25ca6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eab92-14cad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5aad1-b8272
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8b47e-d1b21
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53d28-c5e01
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39d89-1380d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_720b6-1380d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_917d4-ee6aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e677-44424
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_9e677_44424\rev_rev_left_9e677-rev_right_44424\javaparser-core\src\main\java\com\github\javaparser\ast\visitor\DumpVisitor.java
+Different Spacing: false
+Left editions: [1975]
+Right editions: []
+Merged body: 
+// START printOrphanCommentsEnding(Node-Node)//private void printOrphanCommentsEnding(final Node node){
+// LEFT //        List<Node> everything = new LinkedList<>();
+        everything.addAll(node.getChildrenNodes());
+        sortByBeginPosition(everything);
+        if (everything.isEmpty()) {
+            return;
+        }
+
+        int commentsAtEnd = 0;
+        boolean findingComments = true;
+        while (findingComments && commentsAtEnd<everything.size()){
+            Node last = everything.get(everything.size() - 1 - commentsAtEnd);
+            findingComments = (last instanceof Comment);
+            if (findingComments) {
+                commentsAtEnd++;
+            }
+        }
+        for (int i=0; i<commentsAtEnd; i++){
+            everything.get(everything.size()-commentsAtEnd+i).accept(this, null);
+        }
+// END printOrphanCommentsEnding(Node-Node)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_9e677_44424\rev_rev_left_9e677-rev_right_44424\javaparser-core\src\main\java\com\github\javaparser\ast\visitor\DumpVisitor.java
+Different Spacing: false
+Left editions: []
+Right editions: [476, 477, 478, 479, 480, 481, 482, 483, 484]
+Merged body: 
+// START visit(ImportDeclaration-ImportDeclaration-Object-Object)//@Override public void visit(final ImportDeclaration n, final Object arg) {
+		printJavaComment(n.getComment(), arg);
+// RIGHT //		if (!n.isEmptyImportDeclaration()) {
+// RIGHT //			printer.print("import ");
+// RIGHT //			if (n.isStatic()) {
+// RIGHT //				printer.print("static ");
+// RIGHT //			}
+// RIGHT //			n.getName().accept(this, arg);
+// RIGHT //			if (n.isAsterisk()) {
+// RIGHT //				printer.print(".*");
+// RIGHT //			}
+		}
+		printer.printLn(";");
+
+        printOrphanCommentsEnding(n);
+// END visit(ImportDeclaration-ImportDeclaration-Object-Object)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2d518-174c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3650-27e58
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_d3650_27e58\rev_rev_left_d3650-rev_right_27e58\javaparser-core\src\main\java\com\github\javaparser\ast\body\MethodDeclaration.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getModifiers({FormalParametersInternal})//@Override
+    public EnumSet<Modifier> getModifiers() {
+		return modifiers;
+// END getModifiers({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_d3650_27e58\rev_rev_left_d3650-rev_right_27e58\javaparser-core\src\main\java\com\github\javaparser\ast\body\MethodDeclaration.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getDeclarationAsString(boolean-boolean-boolean-boolean-boolean-boolean)//@Override
+    public String getDeclarationAsString(boolean includingModifiers, boolean includingThrows, boolean includingParameterName) {
+        StringBuilder sb = new StringBuilder();
+        if (includingModifiers) {
+            AccessSpecifier accessSpecifier = Modifier.getAccessSpecifier(getModifiers());
+            sb.append(accessSpecifier.getCodeRepresenation());
+            sb.append(accessSpecifier == AccessSpecifier.DEFAULT ? "" : " ");
+            if (getModifiers().contains(Modifier.STATIC)) {
+                sb.append("static ");
+            }
+            if (getModifiers().contains(Modifier.ABSTRACT)) {
+                sb.append("abstract ");
+            }
+            if (getModifiers().contains(Modifier.FINAL)) {
+                sb.append("final ");
+            }
+            if (getModifiers().contains(Modifier.NATIVE)) {
+                sb.append("native ");
+            }
+            if (getModifiers().contains(Modifier.SYNCHRONIZED)) {
+                sb.append("synchronized ");
+            }
+        }
+        // TODO verify it does not print comments connected to the type
+        sb.append(getType().toStringWithoutComments());
+        sb.append(" ");
+        sb.append(getName());
+        sb.append("(");
+        boolean firstParam = true;
+        for (Parameter param : getParameters())
+        {
+            if (firstParam) {
+                firstParam = false;
+            } else {
+                sb.append(", ");
+            }
+            if (includingParameterName) {
+                sb.append(param.toStringWithoutComments());
+            } else {
+                sb.append(param.getType().toStringWithoutComments());
+                if (param.isVarArgs()) {
+                	sb.append("...");
+                }
+            }
+        }
+        sb.append(")");
+        if (includingThrows) {
+            boolean firstThrow = true;
+            for (ReferenceType thr : getThrows()) {
+                if (firstThrow) {
+                    firstThrow = false;
+                    sb.append(" throws ");
+                } else {
+                    sb.append(", ");
+                }
+                sb.append(thr.toStringWithoutComments());
+            }
+        }
+        return sb.toString();
+// END getDeclarationAsString(boolean-boolean-boolean-boolean-boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_d3650_27e58\rev_rev_left_d3650-rev_right_27e58\javaparser-core\src\main\java\com\github\javaparser\ast\body\ConstructorDeclaration.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getDeclarationAsString(boolean-boolean-boolean-boolean-boolean-boolean)//@Override
+    public String getDeclarationAsString(boolean includingModifiers, boolean includingThrows,
+                                         boolean includingParameterName) {
+        StringBuilder sb = new StringBuilder();
+        if (includingModifiers) {
+            AccessSpecifier accessSpecifier = Modifier.getAccessSpecifier(getModifiers());
+            sb.append(accessSpecifier.getCodeRepresenation());
+            sb.append(accessSpecifier == AccessSpecifier.DEFAULT ? "" : " ");
+        }
+        sb.append(getName());
+        sb.append("(");
+        boolean firstParam = true;
+        for (Parameter param : getParameters())
+        {
+            if (firstParam) {
+                firstParam = false;
+            } else {
+                sb.append(", ");
+            }
+            if (includingParameterName) {
+                sb.append(param.toStringWithoutComments());
+            } else {
+                sb.append(param.getType().toStringWithoutComments());
+            }
+        }
+        sb.append(")");
+        if (includingThrows) {
+            boolean firstThrow = true;
+            for (ReferenceType thr : getThrows()) {
+                if (firstThrow) {
+                    firstThrow = false;
+                    sb.append(" throws ");
+                } else {
+                    sb.append(", ");
+                }
+                sb.append(thr.toStringWithoutComments());
+            }
+        }
+        return sb.toString();
+// END getDeclarationAsString(boolean-boolean-boolean-boolean-boolean-boolean)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27e58-7181d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09f3f-e6608
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0604-72b09
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb9f4-5b276
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9ecd-8e44e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c924-8e44e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56f74-c3bbf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_97f97-a3731
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10196-b5d03
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a1f66-13818
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07818-183a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3638c-498d5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_3638c_498d5\rev_rev_left_3638c-rev_right_498d5\javaparser-core\src\main\java\com\github\javaparser\ast\expr\MethodCallExpr.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setArgs(List<Expression>-List<Expression>)//public MethodCallExpr setArgs(final List<Expression> args) {
+        this.args = args;
+        setAsParentNodeOf(this.args);
+        return this;
+// END setArgs(List<Expression>-List<Expression>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_3638c_498d5\rev_rev_left_3638c-rev_right_498d5\javaparser-core\src\main\java\com\github\javaparser\ast\CompilationUnit.java
+Different Spacing: false
+Left editions: []
+Right editions: [223, 226]
+Merged body: 
+// START setPackage(PackageDeclaration-PackageDeclaration)//// RIGHT //public CompilationUnit setPackage(PackageDeclaration pakage) {
+        this.pakage = pakage;
+        setAsParentNodeOf(this.pakage);
+// RIGHT //        return this;
+// END setPackage(PackageDeclaration-PackageDeclaration)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\javaparser\revisions\rev_3638c_498d5\rev_rev_left_3638c-rev_right_498d5\javaparser-core\src\main\java\com\github\javaparser\ast\CompilationUnit.java
+Different Spacing: false
+Left editions: [250]
+Right editions: []
+Merged body: 
+// START setPackageName(String-String)//public CompilationUnit setPackageName(String name) {
+// LEFT //        setPackage(new PackageDeclaration(name(name)));
+        return this;
+// END setPackageName(String-String)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5085a-b7b8e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_5085a_b7b8e\rev_rev_left_5085a-rev_right_b7b8e\javaparser-core\src\main\java\com\github\javaparser\ast\visitor\CloneVisitor.java
+Different Spacing: false
+Left editions: [369]
+Right editions: []
+Merged body: 
+// START visit(AnnotationMemberDeclaration-AnnotationMemberDeclaration-Object-Object)//@Override
+	public Node visit(AnnotationMemberDeclaration _n, Object _arg) {
+		List<AnnotationExpr> annotations = visit(_n.getAnnotations(), _arg);
+// LEFT //		Type<?> type_ = cloneNodes(_n.getType(), _arg);
+		Expression defaultValue = cloneNodes(_n.getDefaultValue(), _arg);
+		Comment comment = cloneNodes(_n.getComment(), _arg);
+
+		AnnotationMemberDeclaration r = new AnnotationMemberDeclaration(
+				_n.getRange(),
+				 _n.getModifiers(), annotations, type_, _n.getName(), defaultValue
+		);
+		r.setComment(comment);
+		return r;
+// END visit(AnnotationMemberDeclaration-AnnotationMemberDeclaration-Object-Object)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_5085a_b7b8e\rev_rev_left_5085a-rev_right_b7b8e\javaparser-core\src\main\java\com\github\javaparser\ast\visitor\CloneVisitor.java
+Different Spacing: false
+Left editions: [1476, 1481]
+Right editions: []
+Merged body: 
+// START visit(CatchClause-CatchClause-Object-Object)//@Override
+	public Node visit(CatchClause _n, Object _arg) {
+		Parameter param = cloneNodes(_n.getParam(), _arg);
+// LEFT //		BlockStmt catchBlock = cloneNodes(_n.getBody(), _arg);
+		Comment comment = cloneNodes(_n.getComment(), _arg);
+
+		CatchClause r = new CatchClause(
+				_n.getRange(),
+// LEFT //				param.getModifiers(), param.getAnnotations(), param.getElementType(), param.getId(), catchBlock
+		);
+		r.setComment(comment);
+		return r;
+// END visit(CatchClause-CatchClause-Object-Object)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc5f5-39aaa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8d05b-212fd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f111-87bd2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57a10-db528
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afbb8-c0ef4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0e1f-095cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be223-c673e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c44e-57f6e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_9c44e_57f6e\rev_rev_left_9c44e-rev_right_57f6e\javaparser-core\src\main\java\com\github\javaparser\ast\body\MethodDeclaration.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START MethodDeclaration(EnumSet<Modifier>-EnumSet<Modifier>-NodeList<AnnotationExpr>-NodeList<AnnotationExpr>-NodeList<TypeParameter>-NodeList<TypeParameter>-Type<?>-Type<?>-NodeList<ArrayBracketPair>-NodeList<ArrayBracketPair>-SimpleName-SimpleName-boolean-boolean-NodeList<Parameter>-NodeList<Parameter>-NodeList<ArrayBracketPair>-NodeList<ArrayBracketPair>-NodeList<ReferenceType<?>>-NodeList<ReferenceType<?>>-BlockStmt-BlockStmt)//public MethodDeclaration(final EnumSet<Modifier> modifiers, 
+                             final NodeList<AnnotationExpr> annotations,
+                             final NodeList<TypeParameter> typeParameters, 
+                             final Type<?> elementType,
+                             final NodeList<ArrayBracketPair> arrayBracketPairsAfterElementType,
+                             final SimpleName name,
+                             final boolean isDefault,
+                             final NodeList<Parameter> parameters, 
+                             final NodeList<ArrayBracketPair> arrayBracketPairsAfterParameterList,
+                             final NodeList<ReferenceType<?>> throws_, 
+                             final BlockStmt body) {
+        this(null,
+                modifiers,
+                annotations,
+                typeParameters,
+                elementType,
+                arrayBracketPairsAfterElementType,
+                name,
+                isDefault,
+                parameters,
+                arrayBracketPairsAfterParameterList,
+                throws_,
+                body);
+// END MethodDeclaration(EnumSet<Modifier>-EnumSet<Modifier>-NodeList<AnnotationExpr>-NodeList<AnnotationExpr>-NodeList<TypeParameter>-NodeList<TypeParameter>-Type<?>-Type<?>-NodeList<ArrayBracketPair>-NodeList<ArrayBracketPair>-SimpleName-SimpleName-boolean-boolean-NodeList<Parameter>-NodeList<Parameter>-NodeList<ArrayBracketPair>-NodeList<ArrayBracketPair>-NodeList<ReferenceType<?>>-NodeList<ReferenceType<?>>-BlockStmt-BlockStmt)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_9c44e_57f6e\rev_rev_left_9c44e-rev_right_57f6e\javaparser-core\src\main\java\com\github\javaparser\ast\expr\ObjectCreationExpr.java
+Different Spacing: false
+Left editions: [93]
+Right editions: [98]
+Merged body: 
+// START ObjectCreationExpr({FormalParametersInternal})//public ObjectCreationExpr() {
+// LEFT //        this(null,
+                null,
+                new ClassOrInterfaceType(),
+                new NodeList<>(),
+                new NodeList<>(),
+// RIGHT //                null);
+// END ObjectCreationExpr({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_9c44e_57f6e\rev_rev_left_9c44e-rev_right_57f6e\javaparser-core\src\main\java\com\github\javaparser\ast\expr\ObjectCreationExpr.java
+Different Spacing: false
+Left editions: [111]
+Right editions: [116]
+Merged body: 
+// START ObjectCreationExpr(Expression-Expression-ClassOrInterfaceType-ClassOrInterfaceType-NodeList<Expression>-NodeList<Expression>)//public ObjectCreationExpr(final Expression scope, final ClassOrInterfaceType type,
+                              final NodeList<Expression> args) {
+// LEFT //        this(null,
+                scope,
+                type,
+                new NodeList<>(),
+                args,
+// RIGHT //                null);
+// END ObjectCreationExpr(Expression-Expression-ClassOrInterfaceType-ClassOrInterfaceType-NodeList<Expression>-NodeList<Expression>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c530-b00ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47379-1ad9a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_47379_1ad9a\rev_rev_left_47379-rev_right_1ad9a\javaparser-core\src\main\java\com\github\javaparser\ast\type\PrimitiveType.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START PrimitiveType({FormalParametersInternal})//public PrimitiveType() {
+        this(null, Primitive.Int);
+// END PrimitiveType({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_47379_1ad9a\rev_rev_left_47379-rev_right_1ad9a\javaparser-core\src\main\java\com\github\javaparser\ast\type\PrimitiveType.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START PrimitiveType(Primitive-Primitive)//public PrimitiveType(final Primitive type) {
+        this(null, type);
+// END PrimitiveType(Primitive-Primitive)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1352-2a73f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11887-c6959
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66b0b-5ffda
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_821bd-ceb32
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_faafd-ceb32
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_96486-ceb32
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e516a-4083a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30635-4083a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66b0b-4083a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_549fa-8ede9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_faafd-0bc8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8ea06-dd5d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23c49-69dd8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95855-fed8e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab893-b7cf2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dff69-59786
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4ae4-b6674
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e426a-96e91
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1fc4-122dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18379-77d9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_072ca-9bbbf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c11f5-9ce73
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cef8d-9ce73
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9d751-a751b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9dfe6-bb1ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b784-416e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2858-ea5c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40c47-e0d5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0d5e-ea5c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef8a0-76304
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20249-76304
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0475d-1bb69
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40c47-4edd1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_717ef-4edd1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8dc2e-71f86
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc9c4-4edd1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab3fe-c4ce2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_efcf3-47eed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3d55-0f9f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24842-0f9f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe63c-0f9f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03dd4-a2d61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7dfb3-a4e3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b98c7-6a29c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_828b9-6a29c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b98c7-bab23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddc2c-f3b30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15c2a-900fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59cb3-900fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_900fa-be7a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38861-c1e71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59feb-e34b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04735-233fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_066dd-233fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5be5f-e8527
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_5be5f_e8527\rev_rev_left_5be5f-rev_right_e8527\javaparser-core\src\main\java\com\github\javaparser\printer\PrettyPrintVisitor.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START visit(VariableDeclarator-VariableDeclarator-Void-Void)//@Override
+    public void visit(final VariableDeclarator n, final Void arg) {
+        printJavaComment(n.getComment(), arg);
+        n.getName().accept(this, arg);
+
+        Type commonType = getMaximumCommonType(n.getAncestorOfType(NodeWithVariables.class).get());
+
+        Type type = n.getType();
+
+        ArrayType arrayType = null;
+
+        for (int i=commonType.getArrayLevel();i<type.getArrayLevel();i++){
+            if (arrayType == null) {
+                arrayType = (ArrayType)type;
+            } else {
+                arrayType = (ArrayType) arrayType.getComponentType();
+            }
+            printAnnotations(arrayType.getAnnotations(), true, arg);
+            printer.print("[]");
+        }
+
+        if (n.getInitializer().isPresent()) {
+            printer.print(" = ");
+            n.getInitializer().get().accept(this, arg);
+        }
+// END visit(VariableDeclarator-VariableDeclarator-Void-Void)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_5be5f_e8527\rev_rev_left_5be5f-rev_right_e8527\javaparser-core\src\main\java\com\github\javaparser\printer\PrettyPrintVisitor.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getMaximumCommonType(NodeWithVariables<?>-NodeWithVariables<?>)//static Type getMaximumCommonType(NodeWithVariables<?> nodeWithVariables) {
+        // we use a local class because we cannot use an helper static method in an interface
+        class Helper {
+            // Conceptually: given a type we start from the Element Type and get as many array levels as indicated
+            // From the implementation point of view we start from the actual type and we remove how many array
+            // levels as needed to get the target level of arrays
+            // It returns null if the type has less array levels then the desired target
+            private Type toArrayLevel(Type type, int level) {
+                if (level > type.getArrayLevel()) {
+                    return null;
+                }
+                for (int i=type.getArrayLevel();i>level;i--) {
+                    type = ((ArrayType)type).getComponentType();
+                }
+                return type;
+            }
+        }
+
+        Helper helper = new Helper();
+        int level = 0;
+        boolean keepGoing = true;
+        // In practice we want to check for how many levels of arrays all the variables have the same type,
+        // including also the annotations
+        while (keepGoing) {
+            final int currentLevel = level;
+            // Now, given that equality on nodes consider the position the simplest way is to compare
+            // the pretty-printed string got for a node. We just check all them are the same and if they
+            // are we just just is not null
+            Object[] values = nodeWithVariables.getVariables().stream().map(v -> {
+                Type t = helper.toArrayLevel(v.getType(), currentLevel);
+                return t == null ? null : t.toString();
+            }).distinct().toArray();
+            if (values.length == 1 && values[0] != null) {
+                level++;
+            } else {
+                keepGoing = false;
+            }
+        }
+        return helper.toArrayLevel(nodeWithVariables.getVariables().get(0).getType(), --level);
+// END getMaximumCommonType(NodeWithVariables<?>-NodeWithVariables<?>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2e22-e8527
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d84be-fd7b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_062d9-6453e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d21ec-2d90a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c4f5e-0d1a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_97a64-247db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa985-90c4f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4dc89-85574
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0bfc6-1705b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c42b-3f150
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b54b3-3f150
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9ad8-01a93
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_906cc-d5dd8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed31b-d5dd8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9ad8-d5dd8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b55c4-10943
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_b55c4_10943\rev_rev_left_b55c4-rev_right_10943\javaparser-core\src\main\java\com\github\javaparser\ast\expr\Name.java
+Different Spacing: false
+Left editions: [117, 118, 119, 121]
+Right editions: []
+Merged body: 
+// START setIdentifier(String-String)//// LEFT //@Override
+// LEFT //    public Name setIdentifier(final String identifier) {
+// LEFT //        assertNonEmpty(identifier);
+        notifyPropertyChange(ObservableProperty.IDENTIFIER, this.identifier, identifier);
+// LEFT //        this.identifier = identifier;
+        return this;
+// END setIdentifier(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5633-90dd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9b3f-a5345
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f7ca-1bddb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8edab-c7073
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94a6b-5d69c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e636c-021de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e172-021de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e10c9-021de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_139ce-a1f6b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35bdd-74963
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58052-edd23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54544-9d88c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\javaparser\revisions\rev_54544_9d88c\rev_rev_left_54544-rev_right_9d88c\javaparser-core-generators\src\main\java\com\github\javaparser\generator\core\node\PropertyGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [70, 81, 82, 83, 84, 85, 86, 87, 99, 100, 101]
+Merged body: 
+// START generateSetter(BaseNodeMetaModel-BaseNodeMetaModel-ClassOrInterfaceDeclaration-ClassOrInterfaceDeclaration-PropertyMetaModel-PropertyMetaModel)//private void generateSetter(BaseNodeMetaModel nodeMetaModel, ClassOrInterfaceDeclaration nodeCoid, PropertyMetaModel property) {
+        final List<MethodDeclaration> setters = nodeCoid.getMethodsBySignature(property.getSetterMethodName(), property.getTypeNameForSetter());
+// RIGHT //        final String name = property.getName();
+        if (setters.size() != 1) {
+            throw new AssertionError(f("Not exactly one setter exists: %s.%s = %s", nodeMetaModel.getTypeName(), name, setters.size()));
+        }
+        // Fix parameter name
+        final MethodDeclaration setter = setters.get(0);
+        setter.getParameters().clear();
+        setter.addAndGetParameter(property.getTypeNameForSetter(), property.getName())
+                .addModifier(FINAL);
+
+        // Fill body
+// RIGHT //        final String observableName = camelCaseToScreaming(name.startsWith("is") ? name.substring(2) : name);
+// RIGHT //        observablePropertyNames.add(observableName);
+// RIGHT //        if (property == JavaParserMetaModel.nodeMetaModel.commentPropertyMetaModel) {
+// RIGHT //            // Node.comment has a very specific setter that we shouldn't overwrite.
+// RIGHT //            return;
+// RIGHT //        }
+// RIGHT //
+        final BlockStmt body = setter.getBody().get();
+        body.getStatements().clear();
+        if (property.isRequired()) {
+            Class<?> type = property.getType();
+            if (property.isNonEmpty()) {
+                body.addStatement(f("assertNonEmpty(%s);", name));
+            } else if (type != boolean.class && type != int.class) {
+                body.addStatement(f("assertNotNull(%s);", name));
+            }
+        }
+        body.addStatement(f("notifyPropertyChange(ObservableProperty.%s, this.%s, %s);", observableName, name, name));
+// RIGHT //        if (property.isNode()) {
+// RIGHT //            body.addStatement(f("if (this.%s != null) this.%s.setParentNode(null);", name, name));
+// RIGHT //        }
+        body.addStatement(f("this.%s = %s;", name, name));
+        if (property.isNode()) {
+            body.addStatement(f("setAsParentNodeOf(%s);", name));
+        }
+        if (property.getContainingNodeMetaModel().hasWildcard()) {
+            body.addStatement(f("return (T) this;"));
+        } else {
+            body.addStatement(f("return this;"));
+        }
+// END generateSetter(BaseNodeMetaModel-BaseNodeMetaModel-ClassOrInterfaceDeclaration-ClassOrInterfaceDeclaration-PropertyMetaModel-PropertyMetaModel)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15e9b-9300a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6998-9300a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aceab-9300a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_111b8-9300a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_295fa-4f172
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6931d-711af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff9e9-81af9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23d54-e5294
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef4d7-81af9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd9eb-3d7ae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73f1f-c4abb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ec60-80456
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78588-fe380
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00e95-fe380
+#MS_XXX_MS#

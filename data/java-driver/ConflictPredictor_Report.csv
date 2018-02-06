@@ -1,0 +1,3475 @@
+#MS_XXX_MS#
+Merge scenario: rev_223c3-48e24
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca347-22323
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2337-a406a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99e0d-a3130
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_99e0d_a3130\rev_rev_left_99e0d-rev_right_a3130\driver-core\src\test\java\com\datastax\driver\core\SchemaTest.java
+Different Spacing: false
+Left editions: [168, 169, 170, 171, 172, 175, 176, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191]
+Right editions: [165]
+Merged body: 
+// START schemaExportOptionsTest({FormalParametersInternal})//@Test(groups = "short")
+    public void schemaExportOptionsTest() {
+// RIGHT //        TableMetadata metadata = cluster.getMetadata().getKeyspace(keyspace).getTable("with_options");
+
+        String withOpts = withOptions;
+// LEFT //        VersionNumber version = cluster.getMetadata()
+// LEFT //                                       .getHost(new InetSocketAddress(CCMBridge.IP_PREFIX + "1", 9042))
+// LEFT //                                       .getCassandraVersion();
+// LEFT //
+// LEFT //        if (version.getMajor() == 2) {
+            // Strip the last ';'
+            withOpts = withOpts.substring(0, withOpts.length() - 1) + '\n';
+// LEFT //
+// LEFT //            // With C* 2.x we'll have a few additional options
+            withOpts += "   AND default_time_to_live = 0\n"
+// LEFT //                      + "   AND speculative_retry = '99.0PERCENTILE'\n";
+// LEFT //
+// LEFT //            if (version.getMinor() == 0) {
+// LEFT //                // With 2.0 we'll have one more options
+// LEFT //                withOpts += "   AND index_interval = 128;";
+// LEFT //            } else {
+// LEFT //                // With 2.1 we have different options, the caching option changes and replicate_on_write disappears
+// LEFT //                withOpts += "   AND min_index_interval = 128\n"
+// LEFT //                          + "   AND max_index_interval = 2048;";
+// LEFT //
+// LEFT //                withOpts = withOpts.replace("caching = 'ALL'",
+// LEFT //                                            "caching = { 'keys' : 'ALL', 'rows_per_partition' : 'ALL' }")
+// LEFT //                                   .replace("   AND replicate_on_write = true\n", "");
+// LEFT //            }
+        }
+        assertEquals(metadata.exportAsString(), withOpts);
+// END schemaExportOptionsTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_99e0d_a3130\rev_rev_left_99e0d-rev_right_a3130\driver-core\src\test\java\com\datastax\driver\core\SessionTest.java
+Different Spacing: false
+Left editions: [337]
+Right editions: [301]
+Merged body: 
+// START closeDuringClusterInitTest({FormalParametersInternal})//@Test(groups = "short")
+    public void closeDuringClusterInitTest() throws InterruptedException {
+        for (int i = 0; i < 500; i++) {
+
+            // Use our own cluster and session (not the ones provided by the parent class) because we want an uninitialized cluster
+            // (note the use of newSession below)
+// RIGHT //            final Cluster cluster = Cluster.builder().addContactPointsWithPorts(Collections.singletonList(hostAddress)).build();
+            final Session session = cluster.newSession();
+
+            // Spawn two threads to simulate the race
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+            final CountDownLatch startLatch = new CountDownLatch(1);
+
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        startLatch.await();
+                        cluster.init();
+                    } catch (InterruptedException e) {
+                        fail("unexpected interruption", e);
+                    }
+                }
+            });
+
+            executor.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        startLatch.await();
+                        TimeUnit.MILLISECONDS.sleep(10);
+                        session.close();
+                    } catch (InterruptedException e) {
+                        fail("unexpected interruption", e);
+                    }
+                }
+            });
+
+            // Start the threads
+            startLatch.countDown();
+
+            executor.shutdown();
+// LEFT //            boolean normalShutdown = executor.awaitTermination(1, TimeUnit.SECONDS);
+            assertTrue(normalShutdown);
+
+            // The deadlock occurred here before JAVA-418
+            cluster.close();
+        }
+// END closeDuringClusterInitTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3130-e8b83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a1bb-103c8
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_5a1bb_103c8\rev_rev_left_5a1bb-rev_right_103c8\driver-core\src\main\java\com\datastax\driver\core\ArrayBackedRow.java
+Different Spacing: false
+Left editions: [123]
+Right editions: [119]
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Row[");
+        for (int i = 0; i < metadata.size(); i++) {
+            if (i != 0)
+                sb.append(", ");
+// RIGHT //            ByteBuffer bb = getValue(i);
+            if (bb == null)
+                sb.append("NULL");
+            else
+// LEFT //                sb.append(metadata.getType(i).codec(protocolVersion).deserialize(bb).toString());
+        }
+        sb.append(']');
+        return sb.toString();
+// END toString({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_5a1bb_103c8\rev_rev_left_5a1bb-rev_right_103c8\driver-core\src\main\java\com\datastax\driver\core\BoundStatement.java
+Different Spacing: false
+Left editions: [94, 95, 96, 97]
+Right editions: [99, 100, 101, 102]
+Merged body: 
+// START BoundStatement(PreparedStatement-PreparedStatement)//public BoundStatement(PreparedStatement statement) {
+        this.statement = statement;
+// LEFT //        this.wrapper = new DataWrapper(this, statement.getVariables().size());
+// LEFT //        for (int i = 0; i < wrapper.values.length; i++) {
+// LEFT //            wrapper.values[i] = UNSET;
+// LEFT //        }
+
+// RIGHT //        // We want to reuse code from AbstractGettableData, but this class already extends Statement,
+// RIGHT //        // so we emulate a mixin with a delegate.
+// RIGHT //        this.wrapper = new DataWrapper(this);
+// RIGHT //
+        if (statement.getConsistencyLevel() != null)
+            this.setConsistencyLevel(statement.getConsistencyLevel());
+        if (statement.getSerialConsistencyLevel() != null)
+            this.setSerialConsistencyLevel(statement.getSerialConsistencyLevel());
+        if (statement.isTracing())
+            this.enableTracing();
+        if (statement.getRetryPolicy() != null)
+            this.setRetryPolicy(statement.getRetryPolicy());
+// END BoundStatement(PreparedStatement-PreparedStatement)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_5a1bb_103c8\rev_rev_left_5a1bb-rev_right_103c8\driver-core\src\test\java\com\datastax\driver\core\DataTypeTest.java
+Different Spacing: false
+Left editions: [101, 103, 104]
+Right editions: []
+Merged body: 
+// START serializeDeserializeCollectionsTest({FormalParametersInternal})//// LEFT //@Test(groups = "unit")
+    public void serializeDeserializeCollectionsTest() {
+// LEFT //        for (ProtocolVersion v : ProtocolVersion.values())
+// LEFT //            serializeDeserializeCollectionsTest(v);
+// END serializeDeserializeCollectionsTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_103c8-1716b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed94a-7321c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a061-c8d0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0404c-49019
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06e11-41456
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_291d8-db7cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0b9c-62c27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c1b1-9d9c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0715c-f6705
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42268-f00c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7bd8d-75de2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_634ae-b9719
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95123-4e2a5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7af52-0c75a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_87e42-989a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c201-1fe4b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8189-817ff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f861d-9639f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a295b-b91d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78051-7963a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c38b9-87511
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0c30-3a602
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b336e-74285
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\DefaultResultSetFuture.java
+Different Spacing: false
+Left editions: [92, 96, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 160]
+Right editions: [139]
+Merged body: 
+// START onSet(Connection-Connection-Message.Response-Message.Response-ExecutionInfo-ExecutionInfo-Statement-Statement-long-long)//@Override
+    public void onSet(Connection connection, Message.Response response, ExecutionInfo info, Statement statement, long latency) {
+        try {
+            switch (response.type) {
+                case RESULT:
+                    Responses.Result rm = (Responses.Result)response;
+                    switch (rm.kind) {
+                        case SET_KEYSPACE:
+                            // propagate the keyspace change to other connections
+                            session.poolsState.setKeyspace(((Responses.Result.SetKeyspace)rm).keyspace);
+// LEFT //                            set(ArrayBackedResultSet.fromMessage(rm, session, protocolVersion, info, statement));
+                            break;
+                        case SCHEMA_CHANGE:
+                            Responses.Result.SchemaChange scc = (Responses.Result.SchemaChange)rm;
+// LEFT //                            ResultSet rs = ArrayBackedResultSet.fromMessage(rm, session, protocolVersion, info, statement);
+                            switch (scc.change) {
+                                case CREATED:
+// LEFT //                                    switch (scc.target) {
+// LEFT //                                        case KEYSPACE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, null, null);
+// LEFT //                                            break;
+// LEFT //                                        case TABLE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, scc.name, null);
+// LEFT //                                            break;
+// LEFT //                                        case TYPE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, null, scc.name);
+// LEFT //                                            break;
+                                    }
+                                    break;
+                                case DROPPED:
+// LEFT //                                    KeyspaceMetadata keyspace;
+// LEFT //                                    switch (scc.target) {
+// LEFT //                                        case KEYSPACE:
+// LEFT //                                            // If that the one keyspace we are logged in, reset to null (it shouldn't really happen but ...)
+// LEFT //                                            // Note: Actually, Cassandra doesn't do that so we don't either as this could confuse prepared statements.
+// LEFT //                                            // We'll add it back if CASSANDRA-5358 changes that behavior
+// LEFT //                                            //if (scc.keyspace.equals(session.poolsState.keyspace))
+// LEFT //                                            //    session.poolsState.setKeyspace(null);
+// LEFT //                                            session.cluster.manager.metadata.removeKeyspace(scc.keyspace);
+// LEFT //                                            break;
+// LEFT //                                        case TABLE:
+// LEFT //                                            keyspace = session.cluster.manager.metadata.getKeyspaceInternal(scc.keyspace);
+// LEFT //                                            if (keyspace == null)
+// LEFT //                                                logger.warn("Received a DROPPED notification for table {}.{}, but this keyspace is unknown in our metadata",
+// LEFT //                                                    scc.keyspace, scc.name);
+// LEFT //                                            else
+// LEFT //                                                keyspace.removeTable(scc.name);
+// LEFT //                                            break;
+// LEFT //                                        case TYPE:
+// LEFT //                                            keyspace = session.cluster.manager.metadata.getKeyspaceInternal(scc.keyspace);
+// LEFT //                                            if (keyspace == null)
+// LEFT //                                                logger.warn("Received a DROPPED notification for UDT {}.{}, but this keyspace is unknown in our metadata",
+// LEFT //                                                    scc.keyspace, scc.name);
+// LEFT //                                            else
+// LEFT //                                                keyspace.removeUserType(scc.name);
+// LEFT //                                            break;
+                                    }
+// RIGHT //                                    session.cluster.manager.waitForSchemaAgreementAndSignal(connection, this, rs);
+                                    break;
+                                case UPDATED:
+// LEFT //                                    switch (scc.target) {
+// LEFT //                                        case KEYSPACE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, null, null);
+// LEFT //                                            break;
+// LEFT //                                        case TABLE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, scc.name, null);
+// LEFT //                                            break;
+// LEFT //                                        case TYPE:
+// LEFT //                                            session.cluster.manager.refreshSchemaAndSignal(connection, this, rs, scc.keyspace, null, scc.name);
+// LEFT //                                            break;
+                                    }
+                                    break;
+                                default:
+                                    logger.info("Ignoring unknown schema change result");
+                                    break;
+                            }
+                            break;
+                        default:
+// LEFT //                            set(ArrayBackedResultSet.fromMessage(rm, session, protocolVersion, info, statement));
+                            break;
+                    }
+                    break;
+                case ERROR:
+                    setException(((Responses.Error)response).asException(connection.address));
+                    break;
+                default:
+                    // This mean we have probably have a bad node, so defunct the connection
+                    connection.defunct(new ConnectionException(connection.address, String.format("Got unexpected %s response", response.type)));
+                    setException(new DriverInternalError(String.format("Got unexpected %s response from %s", response.type, connection.address)));
+                    break;
+            }
+        } catch (RuntimeException e) {
+            // If we get a bug here, the client will not get it, so better forwarding the error
+            setException(new DriverInternalError("Unexpected error while processing response from " + connection.address, e));
+        }
+// END onSet(Connection-Connection-Message.Response-Message.Response-ExecutionInfo-ExecutionInfo-Statement-Statement-long-long)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: []
+Right editions: [110, 113]
+Merged body: 
+// START init({FormalParametersInternal})//public synchronized Session init() {
+        if (isInit)
+            return this;
+
+        // If we haven't initialized the cluster, do it now
+        cluster.init();
+
+        // Create pools to initial nodes (and wait for them to be created)
+        Collection<Host> hosts = cluster.getMetadata().allHosts();
+// RIGHT //        createPoolsInParallel(hosts);
+
+        isInit = true;
+// RIGHT //        updateCreatedPools();
+        return this;
+// END init({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [530, 531, 532, 533, 534, 541, 542, 543, 544, 547, 548, 549, 550, 551, 552, 553, 554]
+Right editions: []
+Merged body: 
+// START makeRequestMessage(Statement-Statement-ByteBuffer-ByteBuffer)//Message.Request makeRequestMessage(Statement statement, ByteBuffer pagingState) {
+// LEFT //        // We need the protocol version, which is only available once the cluster has initialized. Initialize the session to ensure this is the case.
+// LEFT //        // init() locks, so avoid if we know we don't need it.
+// LEFT //        if (!isInit)
+// LEFT //            init();
+// LEFT //        ProtocolVersion version = cluster.manager.protocolVersion();
+
+        ConsistencyLevel consistency = statement.getConsistencyLevel();
+        if (consistency == null)
+            consistency = configuration().getQueryOptions().getConsistencyLevel();
+
+        ConsistencyLevel serialConsistency = statement.getSerialConsistencyLevel();
+// LEFT //        if (version.compareTo(ProtocolVersion.V3) < 0 && statement instanceof BatchStatement) {
+// LEFT //            if (serialConsistency != null)
+// LEFT //                throw new UnsupportedFeatureException(version, "Serial consistency on batch statements is not supported");
+// LEFT //        } else if (serialConsistency == null)
+            serialConsistency = configuration().getQueryOptions().getSerialConsistencyLevel();
+
+// LEFT //        long defaultTimestamp = Long.MIN_VALUE;
+// LEFT //        if (cluster.manager.protocolVersion().compareTo(ProtocolVersion.V3) >= 0) {
+// LEFT //            defaultTimestamp = statement.getDefaultTimestamp();
+// LEFT //            if (defaultTimestamp == Long.MIN_VALUE)
+// LEFT //                defaultTimestamp = cluster.getConfiguration().getPolicies().getTimestampGenerator().next();
+// LEFT //        }
+// LEFT //
+// LEFT //        return makeRequestMessage(statement, consistency, serialConsistency, pagingState, defaultTimestamp);
+// END makeRequestMessage(Statement-Statement-ByteBuffer-ByteBuffer)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\test\java\com\datastax\driver\core\RequestHandlerTest.java
+Different Spacing: false
+Left editions: [82, 83, 84, 85]
+Right editions: [80]
+Merged body: 
+// START getSingleConnection(Session-Session)//// RIGHT //private Connection getSingleConnection(Session session) {
+        HostConnectionPool pool = ((SessionManager)session).pools.values().iterator().next();
+// LEFT //        if (pool instanceof DynamicConnectionPool)
+// LEFT //            return ((DynamicConnectionPool)pool).connections.get(0);
+// LEFT //        else
+// LEFT //            return ((SingleConnectionPool)pool).connectionRef.get();
+// END getSingleConnection(Session-Session)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\test\java\com\datastax\driver\core\RequestHandlerTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [70]
+Merged body: 
+// START should_handle_race_between_response_and_cancellation({FormalParametersInternal})//@Test(groups = "long")
+    public void should_handle_race_between_response_and_cancellation() {
+        Scassandra scassandra = TestUtils.createScassandraServer();
+        Cluster cluster = null;
+
+        try {
+            // Use a mock server that takes a constant time to reply
+            scassandra.start();
+            scassandra.primingClient().prime(
+                PrimingRequest.queryBuilder()
+                    .withQuery("mock query")
+                    .withRows(ImmutableMap.of("key", 1))
+                    .withFixedDelay(10)
+                    .build()
+            );
+
+            cluster = Cluster.builder().addContactPoint("127.0.0.1").withPort(scassandra.getBinaryPort())
+                .withPoolingOptions(new PoolingOptions()
+                    .setCoreConnectionsPerHost(HostDistance.LOCAL, 1)
+                    .setMaxConnectionsPerHost(HostDistance.LOCAL, 1)
+                    .setHeartbeatIntervalSeconds(0))
+                .build();
+
+            Session session = cluster.connect();
+
+            // To reproduce, we need to cancel the query exactly when the reply arrives.
+            // Run a few queries to estimate how much that will take.
+            int samples = 100;
+            long start = System.currentTimeMillis();
+            for (int i = 0; i < samples; i++) {
+                session.execute("mock query");
+            }
+            long elapsed = System.currentTimeMillis() - start;
+            long queryDuration = elapsed / samples;
+
+            // Now run queries and cancel them after that estimated time
+            for (int i = 0; i < 2000; i++) {
+                ResultSetFuture future = session.executeAsync("mock query");
+                try {
+                    future.getUninterruptibly(queryDuration, TimeUnit.MILLISECONDS);
+                } catch (TimeoutException e) {
+                    future.cancel(true);
+                }
+            }
+
+// RIGHT //            Connection connection = getSingleConnection(session);
+            assertThat(connection.inFlight.get()).isEqualTo(0);
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            scassandra.stop();
+        }
+// END should_handle_race_between_response_and_cancellation({FormalParametersInternal})//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1535, 1536, 1537, 1538, 1540, 1541, 1542, 1543, 1544, 1545, 1548, 1549, 1552, 1553, 1554, 1555, 1556, 1557, 1558, 1559, 1560, 1561, 1562, 1563, 1564, 1565, 1566, 1567, 1568, 1569, 1570, 1571, 1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 1591, 1592]
+Right editions: [1500, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1516, 1517, 1518, 1519, 1520, 1521, 1522, 1523, 1524, 1525, 1526, 1527]
+Merged body: 
+// START init({FormalParametersInternal})//synchronized void init() {
+// RIGHT //            checkNotClosed(this);
+            if (isInit)
+                return;
+            isInit = true;
+
+// RIGHT //            logger.debug("Starting new cluster with contact points " + contactPoints);
+// RIGHT //
+// RIGHT //            this.configuration.register(this);
+// RIGHT //
+// RIGHT //            this.executorQueue = new LinkedBlockingQueue<Runnable>();
+// RIGHT //            this.executor = makeExecutor(NON_BLOCKING_EXECUTOR_SIZE, "worker", executorQueue);
+// RIGHT //            this.blockingExecutorQueue = new LinkedBlockingQueue<Runnable>();
+// RIGHT //            this.blockingExecutor = makeExecutor(2, "blocking-task-worker", blockingExecutorQueue);
+// RIGHT //            this.reconnectionExecutor = new ScheduledThreadPoolExecutor(2, threadFactory("reconnection"));
+// RIGHT //            // scheduledTasksExecutor is used to process C* notifications. So having it mono-threaded ensures notifications are
+// RIGHT //            // applied in the order received.
+// RIGHT //            this.scheduledTasksExecutor = new ScheduledThreadPoolExecutor(1, threadFactory("scheduled-task-worker"));
+// RIGHT //
+// RIGHT //            this.reaper = new ConnectionReaper(this);
+// RIGHT //            this.metadata = new Metadata(this);
+// RIGHT //            this.connectionFactory = new Connection.Factory(this, configuration);
+// RIGHT //            this.controlConnection = new ControlConnection(this);
+// RIGHT //            this.metrics = configuration.getMetricsOptions() == null ? null : new Metrics(this);
+// RIGHT //            this.preparedQueries = new MapMaker().weakValues().makeMap();
+// RIGHT //
+// RIGHT //            this.scheduledTasksExecutor.scheduleWithFixedDelay(new CleanupIdleConnectionsTask(), 10, 10, TimeUnit.SECONDS);
+// RIGHT //
+// RIGHT //
+            for (InetSocketAddress address : contactPoints) {
+                // We don't want to signal -- call onAdd() -- because nothing is ready
+                // yet (loadbalancing policy, control connection, ...). All we want is
+                // create the Host object so we can initialize the control connection.
+                metadata.add(address);
+            }
+
+// LEFT //            // At this stage, metadata.allHosts() only contains the contact points, that's what we want to pass to LBP.init().
+// LEFT //            // But the control connection will initialize first and discover more hosts, so make a copy.
+// LEFT //            Set<Host> contactPointHosts = Sets.newHashSet(metadata.allHosts());
+// LEFT //
+            try {
+// LEFT //                try {
+// LEFT //                    controlConnection.connect();
+// LEFT //                } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                    logger.debug("Cannot connect with protocol {}, trying {}", e.unsupportedVersion, e.serverVersion);
+// LEFT //
+// LEFT //                    connectionFactory.protocolVersion = e.serverVersion;
+                    try {
+                        controlConnection.connect();
+// LEFT //                    } catch (UnsupportedProtocolVersionException e1) {
+// LEFT //                        throw new DriverInternalError("Cannot connect to node with its own version, this makes no sense", e);
+                    }
+                }
+// LEFT //
+// LEFT //                // The control connection can mark hosts down if it failed to connect to them, separate them
+// LEFT //                Set<Host> downContactPointHosts = Sets.newHashSet();
+// LEFT //                for (Host host : contactPointHosts)
+// LEFT //                    if (host.state == Host.State.DOWN)
+// LEFT //                        downContactPointHosts.add(host);
+// LEFT //                contactPointHosts.removeAll(downContactPointHosts);
+// LEFT //
+// LEFT //                // Now that the control connection is ready, we have all the information we need about the nodes (datacenter,
+// LEFT //                // rack...) to initialize the load balancing policy
+// LEFT //                loadBalancingPolicy().init(Cluster.this, contactPointHosts);
+// LEFT //                for (Host host : downContactPointHosts) {
+// LEFT //                    loadBalancingPolicy().onDown(host);
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onDown(host);
+// LEFT //                }
+// LEFT //
+// LEFT //                for (Host host : metadata.allHosts()) {
+// LEFT //                    // If the host is down at this stage, it's a contact point that the control connection failed to reach.
+// LEFT //                    // Reconnection attempts are already scheduled, and the LBP and listeners have been notified above.
+// LEFT //                    if (host.state == Host.State.DOWN) continue;
+// LEFT //
+// LEFT //                    // Otherwise, we want to do the equivalent of onAdd(). But since we know for sure that no sessions or prepared
+// LEFT //                    // statements exist at this point, we can skip some of the steps (plus this avoids scheduling concurrent pool
+// LEFT //                    // creations if a session is created right after this method returns).
+// LEFT //                    logger.info("New Cassandra host {} added", host);
+// LEFT //
+// LEFT //                    if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                        logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+// LEFT //                        return;
+// LEFT //                    }
+// LEFT //                    
+// LEFT //                    if (!contactPointHosts.contains(host))
+// LEFT //                        loadBalancingPolicy().onAdd(host);
+// LEFT //
+// LEFT //                    host.setUp();
+// LEFT //
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onAdd(host);
+// LEFT //                }
+// LEFT //                isFullyInit = true;
+            } catch (NoHostAvailableException e) {
+                close();
+                throw e;
+            }
+// END init({FormalParametersInternal})//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [303]
+Merged body: 
+// START connect({FormalParametersInternal})//public Session connect() {
+// RIGHT //        checkNotClosed(manager);
+        init();
+        Session session = manager.newSession();
+        session.init();
+        return session;
+// END connect({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [1687, 1688, 1690, 1691, 1692, 1693, 1694, 1696, 1697, 1699, 1700, 1701, 1703, 1704, 1705, 1706, 1708, 1709, 1710, 1712, 1713, 1714, 1715, 1716, 1718, 1719, 1720, 1721, 1722, 1725, 1726]
+Merged body: 
+// START close({FormalParametersInternal})//private CloseFuture close() {
+
+            CloseFuture future = closeFuture.get();
+            if (future != null)
+                return future;
+
+// RIGHT //            if (isInit) {
+// RIGHT //                logger.debug("Shutting down");
+
+// RIGHT //                // If we're shutting down, there is no point in waiting on scheduled reconnections, nor on notifications
+// RIGHT //                // delivery or blocking tasks so we use shutdownNow
+// RIGHT //                shutdownNow(reconnectionExecutor);
+// RIGHT //                shutdownNow(scheduledTasksExecutor);
+// RIGHT //                shutdownNow(blockingExecutor);
+
+// RIGHT //                // but for the worker executor, we want to let submitted tasks finish unless the shutdown is forced.
+// RIGHT //                executor.shutdown();
+
+// RIGHT //                // We also close the metrics
+// RIGHT //                if (metrics != null)
+// RIGHT //                    metrics.shutdown();
+
+// RIGHT //                // And the load balancing policy
+// RIGHT //                LoadBalancingPolicy loadBalancingPolicy = loadBalancingPolicy();
+// RIGHT //                if (loadBalancingPolicy instanceof CloseableLoadBalancingPolicy)
+// RIGHT //                    ((CloseableLoadBalancingPolicy)loadBalancingPolicy).close();
+
+// RIGHT //                AddressTranslater translater = configuration.getPolicies().getAddressTranslater();
+// RIGHT //                if (translater instanceof CloseableAddressTranslater)
+// RIGHT //                    ((CloseableAddressTranslater)translater).close();
+
+// RIGHT //                // Then we shutdown all connections
+// RIGHT //                List<CloseFuture> futures = new ArrayList<CloseFuture>(sessions.size() + 1);
+// RIGHT //                futures.add(controlConnection.closeAsync());
+// RIGHT //                for (Session session : sessions)
+// RIGHT //                    futures.add(session.closeAsync());
+
+// RIGHT //                future = new ClusterCloseFuture(futures);
+// RIGHT //                // The rest will happen asynchronously, when all connections are successfully closed
+// RIGHT //            } else {
+// RIGHT //                future = CloseFuture.immediateFuture();
+// RIGHT //            }
+
+            return closeFuture.compareAndSet(null, future)
+// RIGHT //                ? future
+// RIGHT //                : closeFuture.get(); // We raced, it's ok, return the future that was actually set
+// END close({FormalParametersInternal})//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1535, 1536, 1537, 1538, 1540, 1541, 1542, 1543, 1544, 1545, 1548, 1549, 1552, 1553, 1554, 1555, 1556, 1557, 1558, 1559, 1560, 1561, 1562, 1563, 1564, 1565, 1566, 1567, 1568, 1569, 1570, 1571, 1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 1588, 1589, 1590, 1591, 1592]
+Right editions: [1500, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1516, 1517, 1518, 1519, 1520, 1521, 1522, 1523, 1524, 1525, 1526, 1527]
+Merged body: 
+// START init({FormalParametersInternal})//synchronized void init() {
+// RIGHT //            checkNotClosed(this);
+            if (isInit)
+                return;
+            isInit = true;
+
+// RIGHT //            logger.debug("Starting new cluster with contact points " + contactPoints);
+// RIGHT //
+// RIGHT //            this.configuration.register(this);
+// RIGHT //
+// RIGHT //            this.executorQueue = new LinkedBlockingQueue<Runnable>();
+// RIGHT //            this.executor = makeExecutor(NON_BLOCKING_EXECUTOR_SIZE, "worker", executorQueue);
+// RIGHT //            this.blockingExecutorQueue = new LinkedBlockingQueue<Runnable>();
+// RIGHT //            this.blockingExecutor = makeExecutor(2, "blocking-task-worker", blockingExecutorQueue);
+// RIGHT //            this.reconnectionExecutor = new ScheduledThreadPoolExecutor(2, threadFactory("reconnection"));
+// RIGHT //            // scheduledTasksExecutor is used to process C* notifications. So having it mono-threaded ensures notifications are
+// RIGHT //            // applied in the order received.
+// RIGHT //            this.scheduledTasksExecutor = new ScheduledThreadPoolExecutor(1, threadFactory("scheduled-task-worker"));
+// RIGHT //
+// RIGHT //            this.reaper = new ConnectionReaper(this);
+// RIGHT //            this.metadata = new Metadata(this);
+// RIGHT //            this.connectionFactory = new Connection.Factory(this, configuration);
+// RIGHT //            this.controlConnection = new ControlConnection(this);
+// RIGHT //            this.metrics = configuration.getMetricsOptions() == null ? null : new Metrics(this);
+// RIGHT //            this.preparedQueries = new MapMaker().weakValues().makeMap();
+// RIGHT //
+// RIGHT //            this.scheduledTasksExecutor.scheduleWithFixedDelay(new CleanupIdleConnectionsTask(), 10, 10, TimeUnit.SECONDS);
+// RIGHT //
+// RIGHT //
+            for (InetSocketAddress address : contactPoints) {
+                // We don't want to signal -- call onAdd() -- because nothing is ready
+                // yet (loadbalancing policy, control connection, ...). All we want is
+                // create the Host object so we can initialize the control connection.
+                metadata.add(address);
+            }
+
+// LEFT //            // At this stage, metadata.allHosts() only contains the contact points, that's what we want to pass to LBP.init().
+// LEFT //            // But the control connection will initialize first and discover more hosts, so make a copy.
+// LEFT //            Set<Host> contactPointHosts = Sets.newHashSet(metadata.allHosts());
+// LEFT //
+            try {
+// LEFT //                try {
+// LEFT //                    controlConnection.connect();
+// LEFT //                } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                    logger.debug("Cannot connect with protocol {}, trying {}", e.unsupportedVersion, e.serverVersion);
+// LEFT //
+// LEFT //                    connectionFactory.protocolVersion = e.serverVersion;
+                    try {
+                        controlConnection.connect();
+// LEFT //                    } catch (UnsupportedProtocolVersionException e1) {
+// LEFT //                        throw new DriverInternalError("Cannot connect to node with its own version, this makes no sense", e);
+                    }
+                }
+// LEFT //
+// LEFT //                // The control connection can mark hosts down if it failed to connect to them, separate them
+// LEFT //                Set<Host> downContactPointHosts = Sets.newHashSet();
+// LEFT //                for (Host host : contactPointHosts)
+// LEFT //                    if (host.state == Host.State.DOWN)
+// LEFT //                        downContactPointHosts.add(host);
+// LEFT //                contactPointHosts.removeAll(downContactPointHosts);
+// LEFT //
+// LEFT //                // Now that the control connection is ready, we have all the information we need about the nodes (datacenter,
+// LEFT //                // rack...) to initialize the load balancing policy
+// LEFT //                loadBalancingPolicy().init(Cluster.this, contactPointHosts);
+// LEFT //                for (Host host : downContactPointHosts) {
+// LEFT //                    loadBalancingPolicy().onDown(host);
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onDown(host);
+// LEFT //                }
+// LEFT //
+// LEFT //                for (Host host : metadata.allHosts()) {
+// LEFT //                    // If the host is down at this stage, it's a contact point that the control connection failed to reach.
+// LEFT //                    // Reconnection attempts are already scheduled, and the LBP and listeners have been notified above.
+// LEFT //                    if (host.state == Host.State.DOWN) continue;
+// LEFT //
+// LEFT //                    // Otherwise, we want to do the equivalent of onAdd(). But since we know for sure that no sessions or prepared
+// LEFT //                    // statements exist at this point, we can skip some of the steps (plus this avoids scheduling concurrent pool
+// LEFT //                    // creations if a session is created right after this method returns).
+// LEFT //                    logger.info("New Cassandra host {} added", host);
+// LEFT //
+// LEFT //                    if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                        logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+// LEFT //                        return;
+// LEFT //                    }
+// LEFT //                    
+// LEFT //                    if (!contactPointHosts.contains(host))
+// LEFT //                        loadBalancingPolicy().onAdd(host);
+// LEFT //
+// LEFT //                    host.setUp();
+// LEFT //
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onAdd(host);
+// LEFT //                }
+// LEFT //                isFullyInit = true;
+            } catch (NoHostAvailableException e) {
+                close();
+                throw e;
+            }
+// END init({FormalParametersInternal})//        }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_b336e_74285\rev_rev_left_b336e-rev_right_74285\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [2511, 2512, 2513, 2514, 2515, 2516, 2517, 2518, 2519, 2520, 2521, 2524, 2525, 2526, 2527, 2528, 2529, 2530, 2531, 2532, 2533, 2534, 2535, 2536, 2537, 2538, 2539, 2540, 2541, 2542, 2543, 2544, 2548, 2549, 2550, 2551, 2552, 2553, 2554, 2555, 2556, 2557, 2558]
+Right editions: [2433, 2475, 2488]
+Merged body: 
+// START handle(Message.Response-Message.Response)//@Override
+        public void handle(Message.Response response) {
+
+            if (!(response instanceof Responses.Event)) {
+                logger.error("Received an unexpected message from the server: {}", response);
+                return;
+            }
+
+            final ProtocolEvent event = ((Responses.Event)response).event;
+
+            logger.debug("Received event {}, scheduling delivery", response);
+
+            switch (event.type) {
+                case TOPOLOGY_CHANGE:
+                    ProtocolEvent.TopologyChange tpc = (ProtocolEvent.TopologyChange)event;
+                    InetSocketAddress tpAddr = translateAddress(tpc.node.getAddress());
+                    switch (tpc.change) {
+                        case NEW_NODE:
+                            final Host newHost = metadata.add(tpAddr);
+                            if (newHost != null) {
+                                // Cassandra tends to send notifications for new/up nodes a bit early (it is triggered once
+                                // gossip is up, but that is before the client-side server is up), so we add a delay
+                                // (otherwise the connection will likely fail and have to be retry which is wasteful). This
+                                // probably should be fixed C* side, after which we'll be able to remove this.
+                                scheduledTasksExecutor.schedule(new ExceptionCatchingRunnable() {
+                                    @Override
+                                    public void runMayThrow() throws InterruptedException, ExecutionException {
+                                        // Make sure we have up-to-date infos on that host before adding it (so we typically
+                                        // catch that an upgraded node uses a new cassandra version).
+                                        if (controlConnection.refreshNodeInfo(newHost)) {
+// RIGHT //                                            onAdd(newHost, null);
+                                        } else {
+                                            logger.debug("Not enough info for {}, ignoring host", newHost);
+                                        }
+                                    }
+                                }, NEW_NODE_DELAY_SECONDS, TimeUnit.SECONDS);
+                            }
+                            break;
+                        case REMOVED_NODE:
+                            removeHost(metadata.getHost(tpAddr), false);
+                            break;
+                        case MOVED_NODE:
+                            executor.submit(new ExceptionCatchingRunnable() {
+                                @Override
+                                public void runMayThrow() {
+                                    controlConnection.refreshNodeListAndTokenMap();
+                                }
+                            });
+                            break;
+                    }
+                    break;
+                case STATUS_CHANGE:
+                    ProtocolEvent.StatusChange stc = (ProtocolEvent.StatusChange)event;
+                    InetSocketAddress stAddr = translateAddress(stc.node.getAddress());
+                    switch (stc.status) {
+                        case UP:
+                            final Host hostUp = metadata.getHost(stAddr);
+                            if (hostUp == null) {
+                                final Host h = metadata.add(stAddr);
+                                // If hostUp is still null, it means we didn't knew about it the line before but
+                                // got beaten at adding it to the metadata by another thread. In that case, it's
+                                // fine to let the other thread win and ignore the notification here
+                                if (h == null)
+                                    return;
+
+                                // See NEW_NODE above
+                                scheduledTasksExecutor.schedule(new ExceptionCatchingRunnable() {
+                                    @Override
+                                    public void runMayThrow() throws InterruptedException, ExecutionException {
+                                        // Make sure we have up-to-date infos on that host before adding it (so we typically
+                                        // catch that an upgraded node uses a new cassandra version).
+                                        if (controlConnection.refreshNodeInfo(h)) {
+// RIGHT //                                            onAdd(h, null);
+                                        } else {
+                                            logger.debug("Not enough info for {}, ignoring host", h);
+                                        }
+                                    }
+                                }, NEW_NODE_DELAY_SECONDS, TimeUnit.SECONDS);
+                            } else {
+                                executor.submit(new ExceptionCatchingRunnable() {
+                                    @Override
+                                    public void runMayThrow() throws InterruptedException, ExecutionException {
+                                        // Make sure we have up-to-date infos on that host before adding it (so we typically
+                                        // catch that an upgraded node uses a new cassandra version).
+                                        if (controlConnection.refreshNodeInfo(hostUp)) {
+// RIGHT //                                            onUp(hostUp, null);
+                                        } else {
+                                            logger.debug("Not enough info for {}, ignoring host", hostUp);
+                                        }
+                                    }
+                                });
+                            }
+                            break;
+                        case DOWN:
+                            // Note that there is a slight risk we can receive the event late and thus
+                            // mark the host down even though we already had reconnected successfully.
+                            // But it is unlikely, and don't have too much consequence since we'll try reconnecting
+                            // right away, so we favor the detection to make the Host.isUp method more reliable.
+                            Host hostDown = metadata.getHost(stAddr);
+                            if (hostDown != null)
+                                triggerOnDown(hostDown, true);
+                            break;
+                    }
+                    break;
+                case SCHEMA_CHANGE:
+                    ProtocolEvent.SchemaChange scc = (ProtocolEvent.SchemaChange)event;
+                    switch (scc.change) {
+                        case CREATED:
+// LEFT //                            switch (scc.target) {
+// LEFT //                                case KEYSPACE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, null, null);
+// LEFT //                                    break;
+// LEFT //                                case TABLE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, scc.name, null);
+// LEFT //                                    break;
+// LEFT //                                case TYPE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, null, scc.name);
+// LEFT //                                    break;
+// LEFT //                            }
+                            break;
+                        case DROPPED:
+// LEFT //                            KeyspaceMetadata keyspace;
+// LEFT //                            switch (scc.target) {
+// LEFT //                                case KEYSPACE:
+// LEFT //                                    manager.metadata.removeKeyspace(scc.keyspace);
+// LEFT //                                    break;
+// LEFT //                                case TABLE:
+// LEFT //                                    keyspace = manager.metadata.getKeyspaceInternal(scc.keyspace);
+// LEFT //                                    if (keyspace == null)
+// LEFT //                                        logger.warn("Received a DROPPED notification for table {}.{}, but this keyspace is unknown in our metadata",
+// LEFT //                                            scc.keyspace, scc.name);
+// LEFT //                                    else
+// LEFT //                                        keyspace.removeTable(scc.name);
+// LEFT //                                    break;
+// LEFT //                                case TYPE:
+// LEFT //                                    keyspace = manager.metadata.getKeyspaceInternal(scc.keyspace);
+// LEFT //                                    if (keyspace == null)
+// LEFT //                                        logger.warn("Received a DROPPED notification for UDT {}.{}, but this keyspace is unknown in our metadata",
+// LEFT //                                            scc.keyspace, scc.name);
+// LEFT //                                    else
+// LEFT //                                        keyspace.removeUserType(scc.name);
+// LEFT //                                    break;
+                            }
+                            break;
+                        case UPDATED:
+// LEFT //                            switch (scc.target) {
+// LEFT //                                case KEYSPACE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, null, null);
+// LEFT //                                    break;
+// LEFT //                                case TABLE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, scc.name, null);
+// LEFT //                                    break;
+// LEFT //                                case TYPE:
+// LEFT //                                    submitSchemaRefresh(scc.keyspace, null, scc.name);
+// LEFT //                                    break;
+// LEFT //                            }
+                            break;
+                    }
+                    break;
+            }
+// END handle(Message.Response-Message.Response)//        }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4eb30-d5ed5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74285-82693
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4a74-ab4cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_93a2e-d5f9a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_93a2e_d5f9a\rev_rev_left_93a2e-rev_right_d5f9a\driver-core\src\test\java\com\datastax\driver\core\ReconnectionTest.java
+Different Spacing: false
+Left editions: [304, 305, 306, 307, 329]
+Right editions: [298]
+Merged body: 
+// START should_use_connection_from_reconnection_in_pool({FormalParametersInternal})//@Test(groups = "long")
+    public void should_use_connection_from_reconnection_in_pool() {
+        CCMBridge ccm = null;
+        Cluster cluster = null;
+
+        TogglabePolicy loadBalancingPolicy = new TogglabePolicy(new RoundRobinPolicy());
+
+        // Spy SocketOptions.getKeepAlive to count how many connections were instantiated.
+        SocketOptions socketOptions = spy(new SocketOptions());
+
+        try {
+            ccm = CCMBridge.create("test", 1);
+            cluster = Cluster.builder()
+                .addContactPoint(CCMBridge.ipOfNode(1))
+                .withReconnectionPolicy(new ConstantReconnectionPolicy(5000))
+                .withLoadBalancingPolicy(loadBalancingPolicy)
+                .withSocketOptions(socketOptions)
+// RIGHT //                .withProtocolVersion(TestUtils.getDesiredProtocolVersion())
+                .build();
+            // Create two sessions to have multiple pools
+            cluster.connect();
+            cluster.connect();
+
+// LEFT //            int corePoolSize = TestUtils.numberOfLocalCoreConnections(cluster);
+// LEFT //
+// LEFT //            // Right after init, 1 connection has been opened by the control connection, and the core size for each pool.
+// LEFT //            verify(socketOptions, times(1 + corePoolSize * 2)).getKeepAlive();
+
+            // Tweak the LBP so that the control connection never reconnects. This makes it easier
+            // to reason about the number of connection attempts.
+            loadBalancingPolicy.returnEmptyQueryPlan = true;
+
+            // Stop the node and cancel the reconnection attempts to it
+            ccm.stop(1);
+            ccm.waitForDown(1);
+            assertThat(cluster).host(1).goesDownWithin(20, SECONDS);
+            Host host1 = TestUtils.findHost(cluster, 1);
+            host1.getReconnectionAttemptFuture().cancel(false);
+
+            ccm.start(1);
+            ccm.waitForUp(1);
+
+            // Reset the spy and count the number of connections attempts for 1 reconnect
+            reset(socketOptions);
+            host1.tryReconnectOnce();
+            assertThat(cluster).host(1).comesUpWithin(120, SECONDS);
+            // Expect 1 connection from the reconnection attempt  3 for the pools (we need 4
+            // but the one from the reconnection attempt gets reused).
+// LEFT //            verify(socketOptions, times(corePoolSize * 2)).getKeepAlive();
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            if (ccm != null)
+                ccm.remove();
+        }
+// END should_use_connection_from_reconnection_in_pool({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19f1f-8b3d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d41a0-12f88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af402-c3ea6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3ffa8-3f1d5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_3ffa8_3f1d5\rev_rev_left_3ffa8-rev_right_3f1d5\driver-core\src\main\java\com\datastax\driver\core\HostConnectionPool.java
+Different Spacing: false
+Left editions: [598, 604, 606, 609, 610]
+Right editions: []
+Merged body: 
+// START closeAsync({FormalParametersInternal})//// LEFT //public final CloseFuture closeAsync() {
+
+        CloseFuture future = closeFuture.get();
+        if (future != null)
+            return future;
+
+// LEFT //        phase.set(Phase.CLOSING);
+
+// LEFT //        future = makeCloseFuture();
+
+        return closeFuture.compareAndSet(null, future)
+// LEFT //            ? future
+// LEFT //            : closeFuture.get(); // We raced, it's ok, return the future that was actually set
+// END closeAsync({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_3ffa8_3f1d5\rev_rev_left_3ffa8-rev_right_3f1d5\driver-core\src\test\java\com\datastax\driver\core\DataTypeIntegrationTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [155]
+Merged body: 
+// START checkGetterReturnsBoundValue(BoundStatement-BoundStatement-TestTable-TestTable)//private void checkGetterReturnsBoundValue(BoundStatement bs, TestTable table) {
+        Object getterResult = getBoundValue(bs, table.testColumnType);
+        assertThat(getterResult).isEqualTo(table.sampleValue);
+
+        // Ensure that bs.getObject() also returns the expected value.
+        assertThat(bs.getObject(0)).isEqualTo(table.sampleValue);
+// RIGHT //        assertThat(bs.getObject("v")).isEqualTo(table.sampleValue);
+// END checkGetterReturnsBoundValue(BoundStatement-BoundStatement-TestTable-TestTable)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_3ffa8_3f1d5\rev_rev_left_3ffa8-rev_right_3f1d5\driver-core\src\test\java\com\datastax\driver\core\DataTypeIntegrationTest.java
+Different Spacing: false
+Left editions: [112, 113, 134]
+Right editions: []
+Merged body: 
+// START should_insert_and_retrieve_data(StatementType-StatementType)//protected void should_insert_and_retrieve_data(StatementType statementType) {
+// LEFT //        ProtocolVersion protocolVersion = cluster.getConfiguration().getProtocolOptions().getProtocolVersionEnum();
+// LEFT //
+        for (TestTable table : tables) {
+            if (cassandraVersion.compareTo(table.minCassandraVersion) < 0)
+                continue;
+
+            switch (statementType) {
+                case RAW_STRING:
+                    session.execute(table.insertStatement.replace("?", table.testColumnType.format(table.sampleValue)));
+                    break;
+                case SIMPLE_WITH_PARAM:
+                    session.execute(table.insertStatement, table.sampleValue);
+                    break;
+                case PREPARED:
+                    PreparedStatement ps = session.prepare(table.insertStatement);
+                    BoundStatement bs = ps.bind(table.sampleValue);
+                    checkGetterReturnsBoundValue(bs, table);
+                    session.execute(bs);
+                    break;
+            }
+
+            Row row = session.execute(table.selectStatement).one();
+// LEFT //            Object queriedValue = table.testColumnType.deserialize(row.getBytesUnsafe("v"), protocolVersion);
+
+            assertThat(queriedValue)
+                .as("Test failure on %s statement with table:%n%s;%n" +
+                        "insert statement:%n%s;%n",
+                    statementType,
+                    table.createStatement,
+                    table.insertStatement)
+                .isEqualTo(table.sampleValue);
+
+            session.execute(table.truncateStatement);
+        }
+// END should_insert_and_retrieve_data(StatementType-StatementType)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_3ffa8_3f1d5\rev_rev_left_3ffa8-rev_right_3f1d5\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [283, 284]
+Right editions: []
+Merged body: 
+// START forceRenewPool(Host-Host-Connection-Connection)//ListenableFuture<Boolean> forceRenewPool(final Host host, Connection reusedConnection) {
+        final HostDistance distance = cluster.manager.loadBalancingPolicy().distance(host);
+        if (distance == HostDistance.IGNORED)
+            return Futures.immediateFuture(true);
+
+        if (isClosing)
+            return Futures.immediateFuture(false);
+
+// LEFT //        final HostConnectionPool newPool = HostConnectionPool.newInstance(host, distance, SessionManager.this,
+// LEFT //            cluster.getConfiguration().getProtocolOptions().getProtocolVersionEnum());
+        ListenableFuture<Void> poolInitFuture = newPool.initAsync(reusedConnection);
+
+        final SettableFuture<Boolean> future = SettableFuture.create();
+
+        Futures.addCallback(poolInitFuture, new FutureCallback<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                HostConnectionPool previous = pools.put(host, newPool);
+                if (previous == null) {
+                    logger.debug("Added connection pool for {}", host);
+                } else {
+                    logger.debug("Renewed connection pool for {}", host);
+                    previous.closeAsync();
+                }
+
+                // If we raced with a session shutdown, ensure that the pool will be closed.
+                if (isClosing) {
+                    newPool.closeAsync();
+                    pools.remove(host);
+                    future.set(false);
+                } else {
+                    future.set(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                logger.error("Error creating pool to " + host, t);
+                future.set(false);
+            }
+        });
+
+        return future;
+// END forceRenewPool(Host-Host-Connection-Connection)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e94df-05dca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d6cf7-dd9c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21ab5-e94df
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38890-25347
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae70b-ab408
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_ae70b_ab408\rev_rev_left_ae70b-rev_right_ab408\driver-core\src\test\java\com\datastax\driver\core\DataTypeIntegrationTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [428, 429, 430, 431]
+Merged body: 
+// START getBoundValue(BoundStatement-BoundStatement-DataType-DataType)//private Object getBoundValue(BoundStatement bs, DataType dataType) {
+        // This is kind of lame, but better than testing all getters manually
+        switch (dataType.getName()) {
+            case ASCII:
+                return bs.getString(0);
+            case BIGINT:
+                return bs.getLong(0);
+            case BLOB:
+                return bs.getBytes(0);
+            case BOOLEAN:
+                return bs.getBool(0);
+            case DECIMAL:
+                return bs.getDecimal(0);
+            case DOUBLE:
+                return bs.getDouble(0);
+            case FLOAT:
+                return bs.getFloat(0);
+            case INET:
+                return bs.getInet(0);
+// RIGHT //            case TINYINT:
+// RIGHT //                return bs.getByte(0);
+// RIGHT //            case SMALLINT:
+// RIGHT //                return bs.getShort(0);
+            case INT:
+                return bs.getInt(0);
+            case TEXT:
+            case VARCHAR:
+                return bs.getString(0);
+            case TIMESTAMP:
+                return bs.getDate(0);
+            case UUID:
+            case TIMEUUID:
+                return bs.getUUID(0);
+            case VARINT:
+                return bs.getVarint(0);
+            case LIST:
+                return bs.getList(0, dataType.getTypeArguments().get(0).asJavaClass());
+            case SET:
+                return bs.getSet(0, dataType.getTypeArguments().get(0).asJavaClass());
+            case MAP:
+                return bs.getMap(0, dataType.getTypeArguments().get(0).asJavaClass(), dataType.getTypeArguments().get(1).asJavaClass());
+            case CUSTOM:
+            case COUNTER:
+            default:
+                fail("Unexpected type in bound statement test: " + dataType);
+                return null;
+        }
+// END getBoundValue(BoundStatement-BoundStatement-DataType-DataType)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_ae70b_ab408\rev_rev_left_ae70b-rev_right_ab408\driver-core\src\test\java\com\datastax\driver\core\DataTypeIntegrationTest.java
+Different Spacing: false
+Left editions: [156]
+Right editions: []
+Merged body: 
+// START checkGetterReturnsBoundValue(BoundStatement-BoundStatement-TestTable-TestTable)//private void checkGetterReturnsBoundValue(BoundStatement bs, TestTable table) {
+        Object getterResult = getBoundValue(bs, table.testColumnType);
+        assertThat(getterResult).isEqualTo(table.sampleValue);
+
+        // Ensure that bs.getObject() also returns the expected value.
+        assertThat(bs.getObject(0)).isEqualTo(table.sampleValue);
+// LEFT //        assertThat(bs.getObject("v")).isEqualTo(table.sampleValue);
+// END checkGetterReturnsBoundValue(BoundStatement-BoundStatement-TestTable-TestTable)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1d81-11c3a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_279ba-bcdf5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa26d-4380b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1f93-2ef7a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dff88-215b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf8ee-c2ad7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b10c7-c45e8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18f6f-b78db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4a6e-23eb0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f957-d7efc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2590e-2e811
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e811-7386c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04752-f70ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f70ef-8e4f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e877-216a9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37db9-13cd2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2824e-c57a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bec78-0bef8
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1289]
+Right editions: []
+Merged body: 
+// START getConfiguration({FormalParametersInternal})//@Override
+        public Configuration getConfiguration() {
+            Policies policies = new Policies(
+                loadBalancingPolicy == null ? Policies.defaultLoadBalancingPolicy() : loadBalancingPolicy,
+                Objects.firstNonNull(reconnectionPolicy, Policies.defaultReconnectionPolicy()),
+                Objects.firstNonNull(retryPolicy, Policies.defaultRetryPolicy()),
+                Objects.firstNonNull(addressTranslater, Policies.defaultAddressTranslater()),
+// LEFT //                Objects.firstNonNull(timestampGenerator, Policies.defaultTimestampGenerator()),
+                Objects.firstNonNull(speculativeExecutionPolicy, Policies.defaultSpeculativeExecutionPolicy())
+            );
+            return new Configuration(policies,
+                                     new ProtocolOptions(port, protocolVersion, maxSchemaAgreementWaitSeconds, sslOptions, authProvider).setCompression(compression),
+                                     poolingOptions == null ? new PoolingOptions() : poolingOptions,
+                                     socketOptions == null ? new SocketOptions() : socketOptions,
+                                     metricsEnabled ? new MetricsOptions(jmxEnabled) : null,
+                                     queryOptions == null ? new QueryOptions() : queryOptions,
+                                     nettyOptions);
+// END getConfiguration({FormalParametersInternal})//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [344, 345, 346, 347, 348, 349, 350, 351, 352, 353]
+Merged body: 
+// START connect(String-String)//public Session connect(String keyspace) {
+        long timeout = getConfiguration().getSocketOptions().getConnectTimeoutMillis();
+        Session session = connect();
+        try {
+// RIGHT //            try {
+// RIGHT //                ResultSetFuture future = session.executeAsync("USE " + keyspace);
+// RIGHT //                // Note: using the connection timeout isn't perfectly correct, we should probably change that someday
+// RIGHT //                Uninterruptibles.getUninterruptibly(future, timeout, TimeUnit.MILLISECONDS);
+// RIGHT //                return session;
+// RIGHT //            } catch (TimeoutException e) {
+// RIGHT //                throw new DriverInternalError(String.format("No responses after %d milliseconds while setting current keyspace. This should not happen, unless you have setup a very low connection timeout.", timeout));
+// RIGHT //            } catch (ExecutionException e) {
+// RIGHT //                throw DefaultResultSetFuture.extractCauseFromExecutionException(e);
+// RIGHT //            }
+        } catch (RuntimeException e) {
+            session.close();
+            throw e;
+        }
+// END connect(String-String)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1570, 1571, 1572, 1573, 1575, 1576, 1577, 1578, 1579, 1580, 1583, 1584, 1587, 1588, 1589, 1590, 1591, 1592, 1593, 1594, 1595, 1596, 1597, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629]
+Right editions: [1598, 1599]
+Merged body: 
+// START init({FormalParametersInternal})//synchronized void init() {
+            checkNotClosed(this);
+            if (isInit)
+                return;
+            isInit = true;
+
+            logger.debug("Starting new cluster with contact points " + contactPoints);
+
+            this.configuration.register(this);
+
+            this.executorQueue = new LinkedBlockingQueue<Runnable>();
+            this.executor = makeExecutor(NON_BLOCKING_EXECUTOR_SIZE, "worker", executorQueue);
+            this.blockingExecutorQueue = new LinkedBlockingQueue<Runnable>();
+            this.blockingExecutor = makeExecutor(2, "blocking-task-worker", blockingExecutorQueue);
+            this.reconnectionExecutor = new ScheduledThreadPoolExecutor(2, threadFactory("reconnection"));
+            // scheduledTasksExecutor is used to process C* notifications. So having it mono-threaded ensures notifications are
+            // applied in the order received.
+            this.scheduledTasksExecutor = new ScheduledThreadPoolExecutor(1, threadFactory("scheduled-task-worker"));
+
+            this.reaper = new ConnectionReaper(this);
+            this.metadata = new Metadata(this);
+            this.connectionFactory = new Connection.Factory(this, configuration);
+            this.controlConnection = new ControlConnection(this);
+            this.metrics = configuration.getMetricsOptions() == null ? null : new Metrics(this);
+            this.preparedQueries = new MapMaker().weakValues().makeMap();
+
+            this.scheduledTasksExecutor.scheduleWithFixedDelay(new CleanupIdleConnectionsTask(), 10, 10, TimeUnit.SECONDS);
+
+
+            for (InetSocketAddress address : contactPoints) {
+                // We don't want to signal -- call onAdd() -- because nothing is ready
+                // yet (loadbalancing policy, control connection, ...). All we want is
+                // create the Host object so we can initialize the control connection.
+                metadata.add(address);
+            }
+
+// LEFT //            // At this stage, metadata.allHosts() only contains the contact points, that's what we want to pass to LBP.init().
+// LEFT //            // But the control connection will initialize first and discover more hosts, so make a copy.
+// LEFT //            Set<Host> contactPointHosts = Sets.newHashSet(metadata.allHosts());
+// LEFT //
+            try {
+// LEFT //                try {
+// LEFT //                    controlConnection.connect();
+// LEFT //                } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                    logger.debug("Cannot connect with protocol {}, trying {}", e.unsupportedVersion, e.serverVersion);
+// LEFT //
+// LEFT //                    connectionFactory.protocolVersion = e.serverVersion;
+                    try {
+                        controlConnection.connect();
+// LEFT //                    } catch (UnsupportedProtocolVersionException e1) {
+// LEFT //                        throw new DriverInternalError("Cannot connect to node with its own version, this makes no sense", e);
+                    }
+                }
+// LEFT //
+// LEFT //                // The control connection can mark hosts down if it failed to connect to them, separate them
+// LEFT //                Set<Host> downContactPointHosts = Sets.newHashSet();
+// LEFT //                for (Host host : contactPointHosts)
+// LEFT //                    if (host.state == Host.State.DOWN)
+// LEFT //                        downContactPointHosts.add(host);
+// LEFT //                contactPointHosts.removeAll(downContactPointHosts);
+// LEFT //
+// LEFT //                // Now that the control connection is ready, we have all the information we need about the nodes (datacenter,
+// LEFT //                // rack...) to initialize the load balancing policy
+// LEFT //                loadBalancingPolicy().init(Cluster.this, contactPointHosts);
+// RIGHT //                        speculativeRetryPolicy().init(Cluster.this);
+// RIGHT //
+// LEFT //                for (Host host : downContactPointHosts) {
+// LEFT //                    loadBalancingPolicy().onDown(host);
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onDown(host);
+// LEFT //                }
+// LEFT //
+// LEFT //                for (Host host : metadata.allHosts()) {
+// LEFT //                    // If the host is down at this stage, it's a contact point that the control connection failed to reach.
+// LEFT //                    // Reconnection attempts are already scheduled, and the LBP and listeners have been notified above.
+// LEFT //                    if (host.state == Host.State.DOWN) continue;
+// LEFT //
+// LEFT //                    // Otherwise, we want to do the equivalent of onAdd(). But since we know for sure that no sessions or prepared
+// LEFT //                    // statements exist at this point, we can skip some of the steps (plus this avoids scheduling concurrent pool
+// LEFT //                    // creations if a session is created right after this method returns).
+// LEFT //                    logger.info("New Cassandra host {} added", host);
+// LEFT //
+// LEFT //                    if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                        logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+// LEFT //                        return;
+// LEFT //                    }
+// LEFT //                    
+// LEFT //                    if (!contactPointHosts.contains(host))
+// LEFT //                        loadBalancingPolicy().onAdd(host);
+// LEFT //
+// LEFT //                    host.setUp();
+// LEFT //
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onAdd(host);
+// LEFT //                }
+// LEFT //                isFullyInit = true;
+            } catch (NoHostAvailableException e) {
+                close();
+                throw e;
+            }
+// END init({FormalParametersInternal})//        }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [1749, 1750]
+Merged body: 
+// START close({FormalParametersInternal})//private CloseFuture close() {
+
+            CloseFuture future = closeFuture.get();
+            if (future != null)
+                return future;
+
+            if (isInit) {
+                logger.debug("Shutting down");
+
+                // If we're shutting down, there is no point in waiting on scheduled reconnections, nor on notifications
+                // delivery or blocking tasks so we use shutdownNow
+                shutdownNow(reconnectionExecutor);
+                shutdownNow(scheduledTasksExecutor);
+                shutdownNow(blockingExecutor);
+
+                // but for the worker executor, we want to let submitted tasks finish unless the shutdown is forced.
+                executor.shutdown();
+
+                // We also close the metrics
+                if (metrics != null)
+                    metrics.shutdown();
+
+                // And the load balancing policy
+                LoadBalancingPolicy loadBalancingPolicy = loadBalancingPolicy();
+                if (loadBalancingPolicy instanceof CloseableLoadBalancingPolicy)
+                    ((CloseableLoadBalancingPolicy)loadBalancingPolicy).close();
+
+// RIGHT //                speculativeRetryPolicy().close();
+// RIGHT //
+                AddressTranslater translater = configuration.getPolicies().getAddressTranslater();
+                if (translater instanceof CloseableAddressTranslater)
+                    ((CloseableAddressTranslater)translater).close();
+
+                // Then we shutdown all connections
+                List<CloseFuture> futures = new ArrayList<CloseFuture>(sessions.size() + 1);
+                futures.add(controlConnection.closeAsync());
+                for (Session session : sessions)
+                    futures.add(session.closeAsync());
+
+                future = new ClusterCloseFuture(futures);
+                // The rest will happen asynchronously, when all connections are successfully closed
+            } else {
+                future = CloseFuture.immediateFuture();
+            }
+
+            return closeFuture.compareAndSet(null, future)
+                ? future
+                : closeFuture.get(); // We raced, it's ok, return the future that was actually set
+// END close({FormalParametersInternal})//        }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1570, 1571, 1572, 1573, 1575, 1576, 1577, 1578, 1579, 1580, 1583, 1584, 1587, 1588, 1589, 1590, 1591, 1592, 1593, 1594, 1595, 1596, 1597, 1600, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629]
+Right editions: [1598, 1599]
+Merged body: 
+// START init({FormalParametersInternal})//synchronized void init() {
+            checkNotClosed(this);
+            if (isInit)
+                return;
+            isInit = true;
+
+            logger.debug("Starting new cluster with contact points " + contactPoints);
+
+            this.configuration.register(this);
+
+            this.executorQueue = new LinkedBlockingQueue<Runnable>();
+            this.executor = makeExecutor(NON_BLOCKING_EXECUTOR_SIZE, "worker", executorQueue);
+            this.blockingExecutorQueue = new LinkedBlockingQueue<Runnable>();
+            this.blockingExecutor = makeExecutor(2, "blocking-task-worker", blockingExecutorQueue);
+            this.reconnectionExecutor = new ScheduledThreadPoolExecutor(2, threadFactory("reconnection"));
+            // scheduledTasksExecutor is used to process C* notifications. So having it mono-threaded ensures notifications are
+            // applied in the order received.
+            this.scheduledTasksExecutor = new ScheduledThreadPoolExecutor(1, threadFactory("scheduled-task-worker"));
+
+            this.reaper = new ConnectionReaper(this);
+            this.metadata = new Metadata(this);
+            this.connectionFactory = new Connection.Factory(this, configuration);
+            this.controlConnection = new ControlConnection(this);
+            this.metrics = configuration.getMetricsOptions() == null ? null : new Metrics(this);
+            this.preparedQueries = new MapMaker().weakValues().makeMap();
+
+            this.scheduledTasksExecutor.scheduleWithFixedDelay(new CleanupIdleConnectionsTask(), 10, 10, TimeUnit.SECONDS);
+
+
+            for (InetSocketAddress address : contactPoints) {
+                // We don't want to signal -- call onAdd() -- because nothing is ready
+                // yet (loadbalancing policy, control connection, ...). All we want is
+                // create the Host object so we can initialize the control connection.
+                metadata.add(address);
+            }
+
+// LEFT //            // At this stage, metadata.allHosts() only contains the contact points, that's what we want to pass to LBP.init().
+// LEFT //            // But the control connection will initialize first and discover more hosts, so make a copy.
+// LEFT //            Set<Host> contactPointHosts = Sets.newHashSet(metadata.allHosts());
+// LEFT //
+            try {
+// LEFT //                try {
+// LEFT //                    controlConnection.connect();
+// LEFT //                } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                    logger.debug("Cannot connect with protocol {}, trying {}", e.unsupportedVersion, e.serverVersion);
+// LEFT //
+// LEFT //                    connectionFactory.protocolVersion = e.serverVersion;
+                    try {
+                        controlConnection.connect();
+// LEFT //                    } catch (UnsupportedProtocolVersionException e1) {
+// LEFT //                        throw new DriverInternalError("Cannot connect to node with its own version, this makes no sense", e);
+                    }
+                }
+// LEFT //
+// LEFT //                // The control connection can mark hosts down if it failed to connect to them, separate them
+// LEFT //                Set<Host> downContactPointHosts = Sets.newHashSet();
+// LEFT //                for (Host host : contactPointHosts)
+// LEFT //                    if (host.state == Host.State.DOWN)
+// LEFT //                        downContactPointHosts.add(host);
+// LEFT //                contactPointHosts.removeAll(downContactPointHosts);
+// LEFT //
+// LEFT //                // Now that the control connection is ready, we have all the information we need about the nodes (datacenter,
+// LEFT //                // rack...) to initialize the load balancing policy
+// LEFT //                loadBalancingPolicy().init(Cluster.this, contactPointHosts);
+// RIGHT //                        speculativeRetryPolicy().init(Cluster.this);
+// RIGHT //
+// LEFT //                for (Host host : downContactPointHosts) {
+// LEFT //                    loadBalancingPolicy().onDown(host);
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onDown(host);
+// LEFT //                }
+// LEFT //
+// LEFT //                for (Host host : metadata.allHosts()) {
+// LEFT //                    // If the host is down at this stage, it's a contact point that the control connection failed to reach.
+// LEFT //                    // Reconnection attempts are already scheduled, and the LBP and listeners have been notified above.
+// LEFT //                    if (host.state == Host.State.DOWN) continue;
+// LEFT //
+// LEFT //                    // Otherwise, we want to do the equivalent of onAdd(). But since we know for sure that no sessions or prepared
+// LEFT //                    // statements exist at this point, we can skip some of the steps (plus this avoids scheduling concurrent pool
+// LEFT //                    // creations if a session is created right after this method returns).
+// LEFT //                    logger.info("New Cassandra host {} added", host);
+// LEFT //
+// LEFT //                    if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                        logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+// LEFT //                        return;
+// LEFT //                    }
+// LEFT //                    
+// LEFT //                    if (!contactPointHosts.contains(host))
+// LEFT //                        loadBalancingPolicy().onAdd(host);
+// LEFT //
+// LEFT //                    host.setUp();
+// LEFT //
+// LEFT //                    for (Host.StateListener listener : listeners)
+// LEFT //                        listener.onAdd(host);
+// LEFT //                }
+// LEFT //                isFullyInit = true;
+            } catch (NoHostAvailableException e) {
+                close();
+                throw e;
+            }
+// END init({FormalParametersInternal})//        }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bec78_0bef8\rev_rev_left_bec78-rev_right_0bef8\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [632]
+Right editions: []
+Merged body: 
+// START executeQuery(Message.Request-Message.Request-Statement-Statement)//ResultSetFuture executeQuery(Message.Request msg, Statement statement) {
+
+// LEFT //        DefaultResultSetFuture future = new DefaultResultSetFuture(this, configuration().getProtocolOptions().getProtocolVersionEnum(), msg);
+        execute(future, statement);
+        return future;
+// END executeQuery(Message.Request-Message.Request-Statement-Statement)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_602ad-048be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0bef8-b322c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc4be-d1915
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bc4be_d1915\rev_rev_left_bc4be-rev_right_d1915\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [1814, 1815, 1827, 1845]
+Right editions: [1889]
+Merged body: 
+// START onUp(Host-Host-Connection-Connection)//private void onUp(final Host host, Connection reusedConnection) throws InterruptedException, ExecutionException {
+            logger.debug("Host {} is UP", host);
+
+            if (isClosed())
+                return;
+
+// LEFT //            if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+                return;
+            }
+
+            try {
+
+                boolean locked = host.notificationsLock.tryLock(NOTIF_LOCK_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+                if (!locked) {
+                    logger.warn("Could not acquire notifications lock within {} seconds, ignoring UP notification for {}", NOTIF_LOCK_TIMEOUT_SECONDS, host);
+                    return;
+                }
+                try {
+// LEFT //                    
+                    // We don't want to use the public Host.isUp() as this would make us skip the rest for suspected hosts
+                    if (host.state == Host.State.UP)
+                        return;
+
+                    // If there is a reconnection attempt scheduled for that node, cancel it
+                    Future<?> scheduledAttempt = host.reconnectionAttempt.getAndSet(null);
+                    if (scheduledAttempt != null) {
+                        logger.debug("Cancelling reconnection attempt since node is UP");
+                        scheduledAttempt.cancel(false);
+                    }
+
+                    try {
+                        reusedConnection = prepareAllQueries(host, reusedConnection);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        // Don't propagate because we don't want to prevent other listener to run
+                    } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                        logUnsupportedVersionProtocol(host, e.unsupportedVersion);
+                        return;
+                    } catch (ClusterNameMismatchException e) {
+                        logClusterNameMismatch(host, e.expectedClusterName, e.actualClusterName);
+                        return;
+                    }
+
+                    // Session#onUp() expects the load balancing policy to have been updated first, so that
+                    // Host distances are up to date. This mean the policy could return the node before the
+                    // new pool have been created. This is harmless if there is no prior pool since RequestHandler
+                    // will ignore the node, but we do want to make sure there is no prior pool so we don't
+                    // query from a pool we will shutdown right away.
+                    for (SessionManager s : sessions)
+                        s.removePool(host);
+                    loadBalancingPolicy().onUp(host);
+                    controlConnection.onUp(host);
+
+                    logger.trace("Adding/renewing host pools for newly UP host {}", host);
+
+                    List<ListenableFuture<Boolean>> futures = Lists.newArrayListWithCapacity(sessions.size());
+                    for (SessionManager s : sessions)
+                        futures.add(s.forceRenewPool(host, reusedConnection));
+
+                    try {
+                        // Only mark the node up once all session have re-added their pool (if the load-balancing
+                        // policy says it should), so that Host.isUp() don't return true before we're reconnected
+                        // to the node.
+                        List<Boolean> poolCreationResults = Futures.allAsList(futures).get();
+
+                        // If any of the creation failed, they will have signaled a connection failure
+                        // which will trigger a reconnection to the node. So don't bother marking UP.
+                        if (Iterables.any(poolCreationResults, Predicates.equalTo(false))) {
+                            logger.debug("Connection pool cannot be created, not marking {} UP", host);
+                            return;
+                        }
+
+                        host.setUp();
+
+                        for (Host.StateListener listener : listeners)
+                            listener.onUp(host);
+
+                    } catch (ExecutionException e) {
+                        Throwable t = e.getCause();
+                        // That future is not really supposed to throw unexpected exceptions
+// RIGHT //                        if (!(t instanceof InterruptedException) && !(t instanceof CancellationException))
+                            logger.error("Unexpected error while marking node UP: while this shouldn't happen, this shouldn't be critical", t);
+                    }
+
+                    // Now, check if there isn't pools to create/remove following the addition.
+                    // We do that now only so that it's not called before we've set the node up.
+                    for (SessionManager s : sessions)
+                        s.updateCreatedPools();
+
+                } finally {
+                    host.notificationsLock.unlock();
+                }
+
+            } finally {
+                if (reusedConnection != null && !reusedConnection.hasPool())
+                    reusedConnection.closeAsync();
+            }
+// END onUp(Host-Host-Connection-Connection)//        }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_bc4be_d1915\rev_rev_left_bc4be-rev_right_d1915\driver-core\src\main\java\com\datastax\driver\core\Cluster.java
+Different Spacing: false
+Left editions: [2102, 2103, 2139]
+Right editions: [2173]
+Merged body: 
+// START onAdd(Host-Host-Connection-Connection)//private void onAdd(final Host host, Connection reusedConnection) throws InterruptedException, ExecutionException {
+            if (isClosed())
+                return;
+
+            logger.info("New Cassandra host {} added", host);
+
+// LEFT //            if (!connectionFactory.protocolVersion.isSupportedBy(host)) {
+// LEFT //                logUnsupportedVersionProtocol(host, connectionFactory.protocolVersion);
+                return;
+            }
+
+            try {
+
+                boolean locked = host.notificationsLock.tryLock(NOTIF_LOCK_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+                if (!locked) {
+                    logger.warn("Could not acquire notifications lock within {} seconds, ignoring ADD notification for {}", NOTIF_LOCK_TIMEOUT_SECONDS, host);
+                    return;
+                }
+                try {
+
+                    // Adds to the load balancing first and foremost, as doing so might change the decision
+                    // it will make for distance() on that node (not likely but we leave that possibility).
+                    // This does mean the policy may start returning that node for query plan, but as long
+                    // as no pools have been created (below) this will be ignored by RequestHandler so it's fine.
+                    loadBalancingPolicy().onAdd(host);
+
+                    // Next, if the host should be ignored, well, ignore it.
+                    if (loadBalancingPolicy().distance(host) == HostDistance.IGNORED) {
+                        // We still mark the node UP though as it should be (and notifiy the listeners).
+                        // We'll mark it down if we have  a notification anyway and we've documented that especially
+                        // for IGNORED hosts, the isUp() method was a best effort guess
+                        host.setUp();
+                        for (Host.StateListener listener : listeners)
+                            listener.onAdd(host);
+                        return;
+                    }
+
+                    try {
+                        reusedConnection = prepareAllQueries(host, reusedConnection);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        // Don't propagate because we don't want to prevent other listener to run
+                    } catch (UnsupportedProtocolVersionException e) {
+// LEFT //                        logUnsupportedVersionProtocol(host, e.unsupportedVersion);
+                        return;
+                    } catch (ClusterNameMismatchException e) {
+                        logClusterNameMismatch(host, e.expectedClusterName, e.actualClusterName);
+                        return;
+                    }
+
+                    controlConnection.onAdd(host);
+
+                    List<ListenableFuture<Boolean>> futures = Lists.newArrayListWithCapacity(sessions.size());
+                    for (SessionManager s : sessions)
+                        futures.add(s.maybeAddPool(host, reusedConnection));
+
+                    try {
+                        // Only mark the node up once all session have added their pool (if the load-balancing
+                        // policy says it should), so that Host.isUp() don't return true before we're reconnected
+                        // to the node.
+                        List<Boolean> poolCreationResults = Futures.allAsList(futures).get();
+
+                        // If any of the creation failed, they will have signaled a connection failure
+                        // which will trigger a reconnection to the node. So don't bother marking UP.
+                        if (Iterables.any(poolCreationResults, Predicates.equalTo(false))) {
+                            logger.debug("Connection pool cannot be created, not marking {} UP", host);
+                            return;
+                        }
+
+                        host.setUp();
+
+                        for (Host.StateListener listener : listeners)
+                            listener.onAdd(host);
+
+                    } catch (ExecutionException e) {
+                        Throwable t = e.getCause();
+                        // That future is not really supposed to throw unexpected exceptions
+// RIGHT //                        if (!(t instanceof InterruptedException) && !(t instanceof CancellationException))
+                            logger.error("Unexpected error while adding node: while this shouldn't happen, this shouldn't be critical", t);
+                    }
+
+                    // Now, check if there isn't pools to create/remove following the addition.
+                    // We do that now only so that it's not called before we've set the node up.
+                    for (SessionManager s : sessions)
+                        s.updateCreatedPools();
+
+                } finally {
+                    host.notificationsLock.unlock();
+                }
+
+            } finally {
+                if (reusedConnection != null && !reusedConnection.hasPool())
+                    reusedConnection.closeAsync();
+            }
+// END onAdd(Host-Host-Connection-Connection)//        }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_568d6-0a700
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe658-e0a1b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2d611-c017b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c017b-f19c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a060-9259b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9259b-00f9d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bc2c-b6757
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6757-2ed25
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9469e-1729f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1729f-aa9d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afcb4-3d055
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4007-d49b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05397-29486
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_05397_29486\rev_rev_left_05397-rev_right_29486\driver-core\src\test\java\com\datastax\driver\core\querybuilder\QueryBuilderTest.java
+Different Spacing: false
+Left editions: [82, 83, 84, 85, 110, 111, 112, 113, 114, 115, 116, 117, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 166, 173, 180, 187]
+Right editions: []
+Merged body: 
+// START selectTest({FormalParametersInternal})//@Test(groups = "unit")
+    public void selectTest() throws Exception {
+
+        String query;
+        Statement select;
+
+        query = "SELECT * FROM foo WHERE k=4 AND c>'a' AND c<='z';";
+        select = select().all().from("foo").where(eq("k", 4)).and(gt("c", "a")).and(lte("c", "z"));
+        assertEquals(select.toString(), query);
+
+        // Ensure where() and where(...) are equal
+        select = select().all().from("foo").where().and(eq("k", 4)).and(gt("c", "a")).and(lte("c", "z"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT a,b,\"C\" FROM foo WHERE a IN ('127.0.0.1','127.0.0.3') AND \"C\"='foo' ORDER BY a ASC,b DESC LIMIT 42;";
+        select = select("a", "b", quote("C")).from("foo")
+// LEFT //            .where(in("a", InetAddress.getByName("127.0.0.1"), InetAddress.getByName("127.0.0.3")))
+// LEFT //            .and(eq(quote("C"), "foo"))
+// LEFT //            .orderBy(asc("a"), desc("b"))
+// LEFT //            .limit(42);
+        assertEquals(select.toString(), query);
+
+        query = "SELECT writetime(a),ttl(a) FROM foo ALLOW FILTERING;";
+        select = select().writeTime("a").ttl("a").from("foo").allowFiltering();
+        assertEquals(select.toString(), query);
+
+        query = "SELECT DISTINCT longName AS a,ttl(longName) AS ttla FROM foo LIMIT :limit;";
+        select = select().distinct().column("longName").as("a").ttl("longName").as("ttla").from("foo").limit(bindMarker("limit"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT DISTINCT longName AS a,ttl(longName) AS ttla FROM foo WHERE k IN () LIMIT :limit;";
+        select = select().distinct().column("longName").as("a").ttl("longName").as("ttla").from("foo").where(in("k")).limit(bindMarker("limit"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM foo WHERE bar=:barmark AND baz=:bazmark LIMIT :limit;";
+        select = select().all().from("foo").where().and(eq("bar", bindMarker("barmark"))).and(eq("baz", bindMarker("bazmark"))).limit(bindMarker("limit"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT a FROM foo WHERE k IN ();";
+        select = select("a").from("foo").where(in("k"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT a FROM foo WHERE k IN ?;";
+        select = select("a").from("foo").where(in("k", bindMarker()));
+// LEFT //        assertEquals(select.toString(), query);
+// LEFT //
+// LEFT //        query = "SELECT DISTINCT a FROM foo WHERE k=1;";
+// LEFT //        select = select("a").distinct().from("foo").where(eq("k", 1));
+// LEFT //        assertEquals(select.toString(), query);
+// LEFT //
+// LEFT //        query = "SELECT DISTINCT a,b FROM foo WHERE k=1;";
+// LEFT //        select = select("a", "b").distinct().from("foo").where(eq("k", 1));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT count(*) FROM foo;";
+        select = select().countAll().from("foo");
+        assertEquals(select.toString(), query);
+
+        query = "SELECT intToBlob(b) FROM foo;";
+        select = select().fcall("intToBlob", column("b")).from("foo");
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM foo WHERE k>42 LIMIT 42;";
+        select = select().all().from("foo").where(gt("k", 42)).limit(42);
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM foo WHERE token(k)>token(42);";
+        select = select().all().from("foo").where(gt(token("k"), fcall("token", 42)));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM foo2 WHERE token(a,b)>token(42,101);";
+        select = select().all().from("foo2").where(gt(token("a", "b"), fcall("token", 42, 101)));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM words WHERE w='):,ydL ;O,D';";
+        select = select().all().from("words").where(eq("w", "):,ydL ;O,D"));
+        assertEquals(select.toString(), query);
+
+        query = "SELECT * FROM words WHERE w='WA(!:gS)r(UfW';";
+        select = select().all().from("words").where(eq("w", "WA(!:gS)r(UfW"));
+        assertEquals(select.toString(), query);
+
+// LEFT //        Date date = new Date();
+// LEFT //        date.setTime(1234325);
+// LEFT //        query = "SELECT * FROM foo WHERE d=1234325;";
+// LEFT //        select = select().all().from("foo").where(eq("d", date));
+// LEFT //        assertEquals(select.toString(), query);
+// LEFT //
+// LEFT //        query = "SELECT * FROM foo WHERE b=0xcafebabe;";
+// LEFT //        select = select().all().from("foo").where(eq("b", Bytes.fromHexString("0xCAFEBABE")));
+// LEFT //        assertEquals(select.toString(), query);
+// LEFT //
+        try {
+// LEFT //            select().countAll().from("foo").orderBy(asc("a"), desc("b")).orderBy(asc("a"), desc("b"));
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals(e.getMessage(), "An ORDER BY clause has already been provided");
+        }
+
+        try {
+// LEFT //            select().column("a").all().from("foo");
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals(e.getMessage(), "Some columns ([a]) have already been selected.");
+        }
+
+        try {
+// LEFT //            select().column("a").countAll().from("foo");
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals(e.getMessage(), "Some columns ([a]) have already been selected.");
+        }
+
+        try {
+// LEFT //            select().all().from("foo").limit(-42);
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Invalid LIMIT value, must be strictly positive");
+        }
+
+        try {
+// LEFT //            select().all().from("foo").limit(42).limit(42);
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals(e.getMessage(), "A LIMIT value has already been provided");
+        }
+// END selectTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_05397_29486\rev_rev_left_05397-rev_right_29486\driver-core\src\test\java\com\datastax\driver\core\querybuilder\QueryBuilderTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START insertTest({FormalParametersInternal})//@Test(groups = "unit")
+    @SuppressWarnings("serial")
+    public void insertTest() throws Exception {
+
+        String query;
+        Statement insert;
+
+        query = "INSERT INTO foo(a,b,\"C\",d) VALUES (123,'127.0.0.1','foo''bar',{'x':3,'y':2}) USING TIMESTAMP 42 AND TTL 24;";
+        insert = insertInto("foo")
+            .value("a", 123)
+            .value("b", InetAddress.getByName("127.0.0.1"))
+            .value(quote("C"), "foo'bar")
+            .value("d", new TreeMap<String, Integer>() {{
+                put("x", 3);
+                put("y", 2);
+            }})
+            .using(timestamp(42)).and(ttl(24));
+        assertEquals(insert.toString(), query);
+
+        query = "INSERT INTO foo(a,b) VALUES (2,null);";
+        insert = insertInto("foo")
+            .value("a", 2)
+            .value("b", null);
+        assertEquals(insert.toString(), query);
+
+        query = "INSERT INTO foo(a,b) VALUES ({2,3,4},3.4) USING TTL 24 AND TIMESTAMP 42;";
+        insert = insertInto("foo").values(new String[]{ "a", "b" }, new Object[]{ new TreeSet<Integer>() {{
+            add(2);
+            add(3);
+            add(4);
+        }}, 3.4 }).using(ttl(24)).and(timestamp(42));
+        assertEquals(insert.toString(), query);
+
+        query = "INSERT INTO foo.bar(a,b) VALUES ({2,3,4},3.4) USING TTL ? AND TIMESTAMP ?;";
+        insert = insertInto("foo", "bar")
+            .values(new String[]{ "a", "b" }, new Object[]{ new TreeSet<Integer>() {{
+                add(2);
+                add(3);
+                add(4);
+            }}, 3.4 })
+            .using(ttl(bindMarker()))
+            .and(timestamp(bindMarker()));
+        assertEquals(insert.toString(), query);
+
+        // commutative result of TIMESTAMP
+        query = "INSERT INTO foo.bar(a,b,c) VALUES ({2,3,4},3.4,123) USING TIMESTAMP 42;";
+        insert = insertInto("foo", "bar")
+            .using(timestamp(42))
+            .values(new String[]{ "a", "b" }, new Object[]{ new TreeSet<Integer>() {{
+                add(2);
+                add(3);
+                add(4);
+            }}, 3.4 })
+            .value("c", 123);
+        assertEquals(insert.toString(), query);
+
+        // commutative result of value() and values()
+        query = "INSERT INTO foo(c,a,b) VALUES (123,{2,3,4},3.4) USING TIMESTAMP 42;";
+        insert = insertInto("foo")
+            .using(timestamp(42))
+            .value("c", 123)
+            .values(new String[]{ "a", "b" }, new Object[]{ new TreeSet<Integer>() {{
+                add(2);
+                add(3);
+                add(4);
+            }}, 3.4 });
+        assertEquals(insert.toString(), query);
+
+        try {
+            insertInto("foo").values(new String[]{ "a", "b" }, new Object[]{ 1, 2, 3 });
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Got 2 names but 3 values");
+        }
+
+        // CAS test
+        query = "INSERT INTO foo(k,x) VALUES (0,1) IF NOT EXISTS;";
+        insert = insertInto("foo").value("k", 0).value("x", 1).ifNotExists();
+        assertEquals(insert.toString(), query);
+
+        query = "INSERT INTO foo(k,x) VALUES (0,(1));";
+        insert = insertInto("foo").value("k", 0).value("x", TupleType.of(cint()).newValue(1));
+        assertEquals(insert.toString(), query);
+
+        // UDT: see QueryBuilderExecutionTest
+// END insertTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_05397_29486\rev_rev_left_05397-rev_right_29486\driver-core\src\test\java\com\datastax\driver\core\querybuilder\QueryBuilderTest.java
+Different Spacing: false
+Left editions: [375, 376, 377, 378, 399, 406, 411, 415, 419, 420, 421, 422]
+Right editions: []
+Merged body: 
+// START deleteTest({FormalParametersInternal})//@Test(groups = "unit")
+    public void deleteTest() throws Exception {
+
+        String query;
+        Statement delete;
+
+        query = "DELETE a,b,c FROM foo USING TIMESTAMP 0 WHERE k=1;";
+        delete = delete("a", "b", "c").from("foo").using(timestamp(0)).where(eq("k", 1));
+        assertEquals(delete.toString(), query);
+
+        query = "DELETE a[3],b['foo'],c FROM foo WHERE k=1;";
+        delete = delete().listElt("a", 3).mapElt("b", "foo").column("c").from("foo").where(eq("k", 1));
+        assertEquals(delete.toString(), query);
+
+// LEFT //        query = "DELETE a[?],b[?],c FROM foo WHERE k=1;";
+// LEFT //        delete = delete().listElt("a", bindMarker()).mapElt("b", bindMarker()).column("c").from("foo").where(eq("k", 1));
+// LEFT //        assertEquals(delete.toString(), query);
+// LEFT //
+        // Invalid CQL, testing edge case
+        query = "DELETE a,b,c FROM foo;";
+        delete = delete("a", "b", "c").from("foo");
+        assertEquals(delete.toString(), query);
+
+        query = "DELETE FROM foo USING TIMESTAMP 1240003134 WHERE k='value';";
+        delete = delete().all().from("foo").using(timestamp(1240003134L)).where(eq("k", "value"));
+        assertEquals(delete.toString(), query);
+        delete = delete().from("foo").using(timestamp(1240003134L)).where(eq("k", "value"));
+        assertEquals(delete.toString(), query);
+
+        query = "DELETE a,b,c FROM foo.bar USING TIMESTAMP 1240003134 WHERE k=1;";
+        delete = delete("a", "b", "c").from("foo", "bar").where().and(eq("k", 1)).using(timestamp(1240003134L));
+        assertEquals(delete.toString(), query);
+
+        query = "DELETE FROM foo.bar WHERE k1='foo' AND k2=1;";
+        delete = delete().from("foo", "bar").where(eq("k1", "foo")).and(eq("k2", 1));
+        assertEquals(delete.toString(), query);
+
+        try {
+// LEFT //            delete().column("a").all().from("foo");
+            fail();
+        } catch (IllegalStateException e) {
+            assertEquals(e.getMessage(), "Some columns ([a]) have already been selected.");
+        }
+
+        try {
+// LEFT //            delete().from("foo").using(timestamp(-1240003134L));
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals(e.getMessage(), "Invalid timestamp, must be positive");
+        }
+// LEFT //
+        query = "DELETE FROM foo.bar WHERE k1='foo' IF EXISTS;";
+        delete = delete().from("foo", "bar").where(eq("k1", "foo")).ifExists();
+        assertEquals(delete.toString(), query);
+// LEFT //
+        query = "DELETE FROM foo.bar WHERE k1='foo' IF a=1 AND b=2;";
+        delete = delete().from("foo", "bar").where(eq("k1", "foo")).onlyIf(eq("a", 1)).and(eq("b", 2));
+        assertEquals(delete.toString(), query);
+// LEFT //
+// LEFT //        query = "DELETE FROM foo WHERE k=:key;";
+// LEFT //        delete = delete().from("foo").where(eq("k", bindMarker("key")));
+// LEFT //        assertEquals(delete.toString(), query);
+// END deleteTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29486-8946a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bc2b-8d711
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b25bb-77d5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74991-dbba4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f153-9e5f9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6009-19a4a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_a6009_19a4a\rev_rev_left_a6009-rev_right_19a4a\driver-core\src\test\java\com\datastax\driver\core\TimeoutStressTest.java
+Different Spacing: false
+Left editions: [194]
+Right editions: [175, 176, 177, 178, 179, 180, 184, 185, 199]
+Merged body: 
+// START host_state_should_be_maintained_with_timeouts({FormalParametersInternal})//@Test(groups = "long")
+// RIGHT //    public void host_state_should_be_maintained_with_timeouts() throws Exception {
+// RIGHT //        // Setup schema and insert records.
+// RIGHT //        Session session = cluster.connect();
+// RIGHT //        setupSchema(session);
+// RIGHT //        session.close();
+// RIGHT //
+        // Set very low timeouts.
+        cluster.getConfiguration().getSocketOptions().setConnectTimeoutMillis(CONNECTION_TIMEOUT_IN_MS);
+        cluster.getConfiguration().getSocketOptions().setReadTimeoutMillis(READ_TIMEOUT_IN_MS);
+// RIGHT //        session = cluster.connect();
+// RIGHT //        PreparedStatement statement = session.prepare("select * from " + KEYSPACE + ".record where name=? limit 1000;");
+
+        int workers = Runtime.getRuntime().availableProcessors();
+        ExecutorService workerPool = Executors.newFixedThreadPool(workers,
+                new ThreadFactoryBuilder().setNameFormat("timeout-stress-test-worker-%d").setDaemon(true).build());
+
+        AtomicBoolean stopped = new AtomicBoolean(false);
+
+        // Ensure that we never exceed MaxConnectionsPerHost * nodes + 1 control connection.
+// LEFT //        int maxConnections = TestUtils.numberOfLocalCoreConnections(cluster) * nodes.size() + 1;
+
+        try {
+            Semaphore concurrentQueries = new Semaphore(CONCURRENT_QUERIES);
+            for (int i = 0; i < workers; i++) {
+// RIGHT //                workerPool.submit(new TimeoutStressWorker(session, statement, concurrentQueries, stopped));
+            }
+
+            long startTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startTime < DURATION) {
+                Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+                channelMonitor.report();
+                // Some connections that are being closed may have had active requests which are delegated to the
+                // reaper for cleanup later.
+                Collection<SocketChannel> openChannels = channelMonitor.openChannels(nodes);
+
+                // Ensure that we don't exceed maximum connections.  Log as warning as there will be a bit of a timing
+                // factor between retrieving open connections and checking the reaper.
+                if(openChannels.size() > maxConnections) {
+                    logger.warn("{} of open channels: {} exceeds maximum expected: {}.  " +
+                                    "This could be because there are connections to be cleaned up in the reaper.",
+                            openChannels.size(), maxConnections, openChannels);
+                }
+            }
+        } finally {
+            stopped.set(true);
+
+            // Reset socket timeouts to allow pool to recover.
+            cluster.getConfiguration().getSocketOptions()
+                    .setConnectTimeoutMillis(SocketOptions.DEFAULT_CONNECT_TIMEOUT_MILLIS);
+            cluster.getConfiguration().getSocketOptions()
+                    .setReadTimeoutMillis(SocketOptions.DEFAULT_READ_TIMEOUT_MILLIS);
+
+            logger.debug("Sleeping 20 seconds to allow connection reaper to clean up connections " +
+                    "and for the pools to recover.");
+            Uninterruptibles.sleepUninterruptibly(20, TimeUnit.SECONDS);
+
+            Collection<SocketChannel> openChannels = channelMonitor.openChannels(nodes);
+            assertThat(openChannels.size())
+                    .as("Number of open connections does not meet expected: %s", openChannels)
+                    .isEqualTo(maxConnections);
+
+            session.close();
+
+            openChannels = channelMonitor.openChannels(nodes);
+            assertThat(openChannels.size())
+                    .as("Number of open connections does not meet expected: %s", openChannels)
+                    .isEqualTo(1);
+
+            workerPool.shutdown();
+        }
+// END host_state_should_be_maintained_with_timeouts({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_a6009_19a4a\rev_rev_left_a6009-rev_right_19a4a\driver-core\src\test\java\com\datastax\driver\core\TimeoutStressTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [271]
+Merged body: 
+// START setupSchema(Session-Session)//private static void setupSchema(Session session) throws InterruptedException, ExecutionException, TimeoutException {
+        logger.debug("Creating keyspace");
+        session.execute("create KEYSPACE " + KEYSPACE +
+                " WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3}");
+        session.execute("use " + KEYSPACE);
+
+        logger.debug("Creating table");
+        session.execute("create table record (\n"
+                + "  name text,\n"
+                + "  phone text,\n"
+                + "  value text,\n"
+                + "  PRIMARY KEY (name, phone)\n"
+                + ");");
+
+        int records = 30000;
+        PreparedStatement insertStmt = session.prepare("insert into record (name, phone, value) values (?, ?, ?)");
+
+        for (int i = 0; i < records; i++) {
+            if (i % 1000 == 0)
+                logger.debug("Inserting record {}.", i);
+// RIGHT //            session.execute(insertStmt.bind("0", Integer.toString(i), "test"));
+        }
+        logger.debug("Inserts complete.");
+// END setupSchema(Session-Session)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_a6009_19a4a\rev_rev_left_a6009-rev_right_19a4a\driver-core\src\test\java\com\datastax\driver\core\TimeoutStressTest.java
+Different Spacing: false
+Left editions: [194]
+Right editions: [175, 176, 177, 178, 179, 180, 184, 185, 199]
+Merged body: 
+// START host_state_should_be_maintained_with_timeouts({FormalParametersInternal})//@Test(groups = "long")
+// RIGHT //    public void host_state_should_be_maintained_with_timeouts() throws Exception {
+// RIGHT //        // Setup schema and insert records.
+// RIGHT //        Session session = cluster.connect();
+// RIGHT //        setupSchema(session);
+// RIGHT //        session.close();
+// RIGHT //
+        // Set very low timeouts.
+        cluster.getConfiguration().getSocketOptions().setConnectTimeoutMillis(CONNECTION_TIMEOUT_IN_MS);
+        cluster.getConfiguration().getSocketOptions().setReadTimeoutMillis(READ_TIMEOUT_IN_MS);
+// RIGHT //        session = cluster.connect();
+// RIGHT //        PreparedStatement statement = session.prepare("select * from " + KEYSPACE + ".record where name=? limit 1000;");
+
+        int workers = Runtime.getRuntime().availableProcessors();
+        ExecutorService workerPool = Executors.newFixedThreadPool(workers,
+                new ThreadFactoryBuilder().setNameFormat("timeout-stress-test-worker-%d").setDaemon(true).build());
+
+        AtomicBoolean stopped = new AtomicBoolean(false);
+
+        // Ensure that we never exceed MaxConnectionsPerHost * nodes + 1 control connection.
+// LEFT //        int maxConnections = TestUtils.numberOfLocalCoreConnections(cluster) * nodes.size() + 1;
+
+        try {
+            Semaphore concurrentQueries = new Semaphore(CONCURRENT_QUERIES);
+            for (int i = 0; i < workers; i++) {
+// RIGHT //                workerPool.submit(new TimeoutStressWorker(session, statement, concurrentQueries, stopped));
+            }
+
+            long startTime = System.currentTimeMillis();
+            while (System.currentTimeMillis() - startTime < DURATION) {
+                Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+                channelMonitor.report();
+                // Some connections that are being closed may have had active requests which are delegated to the
+                // reaper for cleanup later.
+                Collection<SocketChannel> openChannels = channelMonitor.openChannels(nodes);
+
+                // Ensure that we don't exceed maximum connections.  Log as warning as there will be a bit of a timing
+                // factor between retrieving open connections and checking the reaper.
+                if(openChannels.size() > maxConnections) {
+                    logger.warn("{} of open channels: {} exceeds maximum expected: {}.  " +
+                                    "This could be because there are connections to be cleaned up in the reaper.",
+                            openChannels.size(), maxConnections, openChannels);
+                }
+            }
+        } finally {
+            stopped.set(true);
+
+            // Reset socket timeouts to allow pool to recover.
+            cluster.getConfiguration().getSocketOptions()
+                    .setConnectTimeoutMillis(SocketOptions.DEFAULT_CONNECT_TIMEOUT_MILLIS);
+            cluster.getConfiguration().getSocketOptions()
+                    .setReadTimeoutMillis(SocketOptions.DEFAULT_READ_TIMEOUT_MILLIS);
+
+            logger.debug("Sleeping 20 seconds to allow connection reaper to clean up connections " +
+                    "and for the pools to recover.");
+            Uninterruptibles.sleepUninterruptibly(20, TimeUnit.SECONDS);
+
+            Collection<SocketChannel> openChannels = channelMonitor.openChannels(nodes);
+            assertThat(openChannels.size())
+                    .as("Number of open connections does not meet expected: %s", openChannels)
+                    .isEqualTo(maxConnections);
+
+            session.close();
+
+            openChannels = channelMonitor.openChannels(nodes);
+            assertThat(openChannels.size())
+                    .as("Number of open connections does not meet expected: %s", openChannels)
+                    .isEqualTo(1);
+
+            workerPool.shutdown();
+        }
+// END host_state_should_be_maintained_with_timeouts({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a48c3-3a9d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91cf5-8c3b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a890f-d6f30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15bc4-95d32
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc2e9-9f7b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95d32-82e3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54846-866a3
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\TimeoutStressTest.java
+Different Spacing: false
+Left editions: [126]
+Right editions: [118]
+Merged body: 
+// START beforeClass({FormalParametersInternal})//@BeforeClass(groups = "long")
+    public void beforeClass() throws Exception {
+// RIGHT //        ccmBridge = CCMBridge.builder("test").withNodes(3).build();
+        channelMonitor = new SocketChannelMonitor();
+        nodes = Lists.newArrayList(
+                new InetSocketAddress(CCMBridge.IP_PREFIX + '1', 9042),
+                new InetSocketAddress(CCMBridge.IP_PREFIX + '2', 9042),
+                new InetSocketAddress(CCMBridge.IP_PREFIX + '3', 9042)
+        );
+
+// LEFT //        PoolingOptions poolingOptions = new PoolingOptions().setConnectionsPerHost(HostDistance.LOCAL, 8, 8);
+
+        cluster = Cluster.builder()
+                .addContactPointsWithPorts(nodes)
+                .withPoolingOptions(poolingOptions)
+                .withNettyOptions(channelMonitor.nettyOptions())
+                .build();
+// END beforeClass({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\ClusterInitTest.java
+Different Spacing: false
+Left editions: [117, 119]
+Right editions: [80]
+Merged body: 
+// START should_wait_for_each_contact_point_at_most_once({FormalParametersInternal})//@Test(groups = "short")
+    public void should_wait_for_each_contact_point_at_most_once() {
+        CCMBridge ccm = null;
+        Cluster cluster = null;
+        List<FakeHost> fakeHosts = Lists.newArrayList();
+        try {
+            // Obtaining connect timeouts is not trivial: we create a 6-host cluster but only start one of them,
+            // then simulate the other 5.
+// RIGHT //            ccm = CCMBridge.builder("test").withNodes(6).notStarted().build();
+            ccm.start(1);
+
+            for (int i = 0; i < 5; i++) {
+                FakeHost fakeHost = new FakeHost(CCMBridge.ipOfNode(i + 2), 9042, THROWING_CONNECT_TIMEOUTS);
+                fakeHosts.add(fakeHost);
+                fakeHost.start();
+            }
+
+            // Our real instance has no rows in its system.peers table. That would cause the driver to ignore our fake
+            // hosts when the control connection refreshes the host list.
+            // So we also insert fake rows in system.peers:
+            fakePeerRowsInNode1();
+
+            logger.info("Environment is set up, starting test");
+            long start = System.nanoTime();
+
+            // We want to count how many connections were attempted. For that, we rely on the fact that SocketOptions.getKeepAlive is called in Connection.Factory.newBoostrap()
+            // each time we prepare to open a new connection. This is a bit of a hack, but this is what we have.
+            SocketOptions socketOptions = spy(new SocketOptions());
+
+            // Set an enormous delay so that reconnection attempts don't pollute our observations
+            ConstantReconnectionPolicy reconnectionPolicy = new ConstantReconnectionPolicy(3600 * 1000);
+
+            cluster = Cluster.builder().addContactPoints(
+                CCMBridge.ipOfNode(1), CCMBridge.ipOfNode(2), CCMBridge.ipOfNode(3),
+                CCMBridge.ipOfNode(4), CCMBridge.ipOfNode(5), CCMBridge.ipOfNode(6))
+                .withSocketOptions(socketOptions)
+                .withReconnectionPolicy(reconnectionPolicy)
+                .withProtocolVersion(TestUtils.getDesiredProtocolVersion())
+                .build();
+            cluster.connect();
+
+            // For information only:
+            long initTimeMs = TimeUnit.MILLISECONDS.convert(System.nanoTime() - start, TimeUnit.NANOSECONDS);
+            logger.info("Cluster and session initialized in {} ms", initTimeMs);
+
+// LEFT //            // We have one live host so 2 successful connections (1 control connection and 1 core connection in the pool).
+            // The other 5 hosts are unreachable, we should attempt to connect to each of them only once.
+// LEFT //            verify(socketOptions, times(1 + TestUtils.numberOfLocalCoreConnections(cluster) + 5)).getKeepAlive();
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            for (FakeHost fakeHost : fakeHosts)
+                fakeHost.stop();
+            if (ccm != null)
+                ccm.remove();
+        }
+// END should_wait_for_each_contact_point_at_most_once({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\SessionLeakTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START connectionLeakTest({FormalParametersInternal})//@Test(groups = "short")
+    public void connectionLeakTest() throws Exception {
+        // Checking for JAVA-342
+        CCMBridge ccmBridge;
+        ccmBridge = CCMBridge.builder("test").withNodes(1).build();
+        channelMonitor = new SocketChannelMonitor();
+        channelMonitor.reportAtFixedInterval(1, TimeUnit.SECONDS);
+        try {
+            cluster = Cluster.builder()
+                    .addContactPointsWithPorts(Collections.singletonList(
+                            new InetSocketAddress(CCMBridge.IP_PREFIX + '1', 9042)))
+                    .withNettyOptions(channelMonitor.nettyOptions()).build();
+
+            cluster.init();
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+            // Should be 1 control connection after initialization.
+            assertOpenConnections(1);
+
+            // ensure sessions.size() returns with 1 control connection + core pool size.
+            int corePoolSize = TestUtils.numberOfLocalCoreConnections(cluster);
+            Session session = cluster.connect();
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(1);
+            assertOpenConnections(1 + corePoolSize);
+
+            // ensure sessions.size() returns to 0 with only 1 active connection (the control connection)
+            session.close();
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+            assertOpenConnections(1);
+
+            // ensure bootstrapping a node does not create additional connections
+            ccmBridge.bootstrapNode(2);
+            assertThat(cluster).host(2).comesUpWithin(2, MINUTES);
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+            assertOpenConnections(1);
+
+            // ensure a new session gets registered and core connections are established
+            // there should be corePoolSize more connections to accommodate for the new host.
+            Session thisSession = cluster.connect();
+            assertThat(cluster.manager.sessions.size()).isEqualTo(1);
+            assertOpenConnections(1 + (corePoolSize * 2));
+
+            // ensure bootstrapping a node does not create additional connections that won't get cleaned up
+            thisSession.close();
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+            assertOpenConnections(1);
+        } finally {
+            if(cluster != null){
+                cluster.close();
+            }
+            if (ccmBridge != null) {
+                ccmBridge.remove();
+            }
+            // Ensure no channels remain open.
+            channelMonitor.stop();
+            channelMonitor.report();
+            assertThat(channelMonitor.openChannels(nodes).size()).isEqualTo(0);
+        }
+// END connectionLeakTest({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\SessionLeakTest.java
+Different Spacing: false
+Left editions: [152, 160]
+Right editions: [133]
+Merged body: 
+// START should_not_leak_session_when_wrong_keyspace({FormalParametersInternal})//@Test(groups = "short")
+    public void should_not_leak_session_when_wrong_keyspace() throws Exception {
+        // Checking for JAVA-806
+        CCMBridge ccmBridge;
+// RIGHT //        ccmBridge = CCMBridge.builder("test").withNodes(1).build();
+        channelMonitor = new SocketChannelMonitor();
+        channelMonitor.reportAtFixedInterval(1, TimeUnit.SECONDS);
+        try {
+            cluster = Cluster.builder()
+                .addContactPointsWithPorts(Collections.singletonList(
+                    new InetSocketAddress(CCMBridge.IP_PREFIX + '1', 9042)))
+                .withNettyOptions(channelMonitor.nettyOptions()).build();
+
+            cluster.init();
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+            // Should be 1 control connection after initialization.
+            assertOpenConnections(1);
+
+            cluster.connect("wrong_keyspace");
+
+            fail("Should not have connected to a wrong keyspace");
+
+// LEFT //        } catch (InvalidQueryException e) {
+
+            // ok
+
+        } finally {
+
+            assertThat(cluster.manager.sessions.size()).isEqualTo(0);
+
+// LEFT //            if (cluster != null) {
+                cluster.close();
+            }
+            if (ccmBridge != null) {
+                ccmBridge.remove();
+            }
+            // Ensure no channels remain open.
+            channelMonitor.stop();
+            channelMonitor.report();
+            assertThat(channelMonitor.openChannels(nodes).size()).isEqualTo(0);
+        }
+// END should_not_leak_session_when_wrong_keyspace({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\ControlConnectionTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START should_reestablish_if_control_node_decommissioned({FormalParametersInternal})//@Test(groups = "long")
+    public void should_reestablish_if_control_node_decommissioned() throws InterruptedException {
+        CCMBridge ccm = null;
+        Cluster cluster = null;
+
+        try {
+            ccm = CCMBridge.builder("test").withNodes(3).build();
+
+            cluster = Cluster.builder()
+                    .addContactPoint(CCMBridge.ipOfNode(1))
+                    .build();
+            cluster.init();
+
+            // Ensure the control connection host is that of the first node.
+            String controlHost = cluster.manager.controlConnection.connectedHost().getAddress().getHostAddress();
+            assertThat(controlHost).isEqualTo(CCMBridge.ipOfNode(1));
+
+            // Decommission the node.
+            ccm.decommissionNode(1);
+
+            // Ensure that the new control connection is not null and it's host is not equal to the decommissioned node.
+            Host newHost = cluster.manager.controlConnection.connectedHost();
+            assertThat(newHost).isNotNull();
+            assertThat(newHost.getAddress().getHostAddress()).isNotEqualTo(controlHost);
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            if (ccm != null)
+                ccm.remove();
+        }
+// END should_reestablish_if_control_node_decommissioned({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_54846_866a3\rev_rev_left_54846-rev_right_866a3\driver-core\src\test\java\com\datastax\driver\core\ReconnectionTest.java
+Different Spacing: false
+Left editions: [300, 301, 302, 303, 325]
+Right editions: [288]
+Merged body: 
+// START should_use_connection_from_reconnection_in_pool({FormalParametersInternal})//@Test(groups = "long")
+    public void should_use_connection_from_reconnection_in_pool() {
+        CCMBridge ccm = null;
+        Cluster cluster = null;
+
+        TogglabePolicy loadBalancingPolicy = new TogglabePolicy(new RoundRobinPolicy());
+
+        // Spy SocketOptions.getKeepAlive to count how many connections were instantiated.
+        SocketOptions socketOptions = spy(new SocketOptions());
+
+        try {
+// RIGHT //            ccm = CCMBridge.builder("test").withNodes(1).build();
+            cluster = Cluster.builder()
+                .addContactPoint(CCMBridge.ipOfNode(1))
+                .withReconnectionPolicy(new ConstantReconnectionPolicy(5000))
+                .withLoadBalancingPolicy(loadBalancingPolicy)
+                .withSocketOptions(socketOptions)
+                .withProtocolVersion(TestUtils.getDesiredProtocolVersion())
+                .build();
+            // Create two sessions to have multiple pools
+            cluster.connect();
+            cluster.connect();
+
+// LEFT //            int corePoolSize = TestUtils.numberOfLocalCoreConnections(cluster);
+// LEFT //
+// LEFT //            // Right after init, 1 connection has been opened by the control connection, and the core size for each pool.
+// LEFT //            verify(socketOptions, times(1 + corePoolSize * 2)).getKeepAlive();
+
+            // Tweak the LBP so that the control connection never reconnects. This makes it easier
+            // to reason about the number of connection attempts.
+            loadBalancingPolicy.returnEmptyQueryPlan = true;
+
+            // Stop the node and cancel the reconnection attempts to it
+            ccm.stop(1);
+            ccm.waitForDown(1);
+            assertThat(cluster).host(1).goesDownWithin(20, SECONDS);
+            Host host1 = TestUtils.findHost(cluster, 1);
+            host1.getReconnectionAttemptFuture().cancel(false);
+
+            ccm.start(1);
+            ccm.waitForUp(1);
+
+            // Reset the spy and count the number of connections attempts for 1 reconnect
+            reset(socketOptions);
+            host1.tryReconnectOnce();
+            assertThat(cluster).host(1).comesUpWithin(120, SECONDS);
+            // Expect 1 connection from the reconnection attempt  3 for the pools (we need 4
+            // but the one from the reconnection attempt gets reused).
+// LEFT //            verify(socketOptions, times(corePoolSize * 2)).getKeepAlive();
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            if (ccm != null)
+                ccm.remove();
+        }
+// END should_use_connection_from_reconnection_in_pool({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1380d-4b8a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c466-a1d47
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\test\java\com\datastax\driver\core\QueryLoggerErrorsTest.java
+Different Spacing: false
+Left editions: [252]
+Right editions: [262, 265, 266, 268, 269, 270]
+Merged body: 
+// START should_log_unavailable_errors({FormalParametersInternal})//@Test(groups = "short")
+    public void should_log_unavailable_errors() throws Exception {
+        // given
+        error.setLevel(DEBUG);
+// LEFT //        queryLogger = builder().build();
+        cluster.register(queryLogger);
+        String query = "SELECT foo FROM bar";
+        primingClient.prime(
+            queryBuilder()
+                .withQuery(query)
+                .withResult(unavailable)
+                .build()
+        );
+        // when
+// RIGHT //        // when
+        try {
+            session.execute(query);
+// RIGHT //            fail("Should have thrown NoHostAvailableException");
+// RIGHT //        } catch(NoHostAvailableException e) {
+            // ok
+// RIGHT //            Throwable error = e.getErrors().get(hostAddress);
+// RIGHT //            assertThat(error).isNotNull();
+// RIGHT //            assertThat(error).isInstanceOf(UnavailableException.class);
+        }
+        // then
+        String line = errorAppender.waitAndGet(5000);
+        assertThat(line)
+            .contains("Query error")
+            .contains("127.0.0.1")
+            .contains(Integer.toString(scassandra.getBinaryPort()))
+            .contains(query)
+            .contains(UnavailableException.class.getName());
+// END should_log_unavailable_errors({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\RequestHandler.java
+Different Spacing: false
+Left editions: [259, 260, 261]
+Right editions: []
+Merged body: 
+// START setFinalResult(SpeculativeExecution-SpeculativeExecution-Connection-Connection-Message.Response-Message.Response)//private void setFinalResult(SpeculativeExecution execution, Connection connection, Message.Response response) {
+        if (!isDone.compareAndSet(false, true)) {
+            if(logger.isTraceEnabled())
+                logger.trace("[{}] Got beaten to setting the result", execution.id);
+            return;
+        }
+
+        if(logger.isTraceEnabled())
+            logger.trace("[{}] Setting final result", execution.id);
+
+        cancelPendingExecutions(execution);
+
+        try {
+            if (timerContext != null)
+                timerContext.stop();
+
+            ExecutionInfo info = execution.current.defaultExecutionInfo;
+            if (triedHosts != null) {
+                triedHosts.add(execution.current);
+                info = new ExecutionInfo(triedHosts);
+            }
+            if (execution.retryConsistencyLevel != null)
+                info = info.withAchievedConsistency(execution.retryConsistencyLevel);
+// LEFT //            if (response.getCustomPayload() != null)
+// LEFT //                info = info.withIncomingPayload(response.getCustomPayload());
+// LEFT //
+            callback.onSet(connection, response, info, statement, System.nanoTime() - startTime);
+        } catch (Exception e) {
+            callback.onException(connection,
+                new DriverInternalError("Unexpected exception while setting final result from " + response, e),
+                System.nanoTime() - startTime, /*unused*/0);
+        }
+// END setFinalResult(SpeculativeExecution-SpeculativeExecution-Connection-Connection-Message.Response-Message.Response)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\RequestHandler.java
+Different Spacing: false
+Left editions: []
+Right editions: [724, 725, 726]
+Merged body: 
+// START onSet(Connection-Connection-Message.Response-Message.Response-long-long-int-int)//@Override
+        public void onSet(Connection connection, Message.Response response, long latency, int retryCount) {
+            QueryState queryState = queryStateRef.get();
+            if (!queryState.isInProgressAt(retryCount) ||
+                !queryStateRef.compareAndSet(queryState, queryState.complete())) {
+                logger.debug("onSet triggered but the response was completed by another thread, cancelling (retryCount = {}, queryState = {}, queryStateRef = {})",
+                    retryCount, queryState, queryStateRef.get());
+                return;
+            }
+
+            Host queriedHost = current;
+            Exception exceptionToReport = null;
+            try {
+                switch (response.type) {
+                    case RESULT:
+                        connection.release();
+                        setFinalResult(connection, response);
+                        break;
+                    case ERROR:
+                        Responses.Error err = (Responses.Error)response;
+                        exceptionToReport = err.asException(connection.address);
+                        RetryPolicy.RetryDecision retry = null;
+                        RetryPolicy retryPolicy = statement.getRetryPolicy() == null
+                            ? manager.configuration().getPolicies().getRetryPolicy()
+                            : statement.getRetryPolicy();
+                        switch (err.code) {
+                            case READ_TIMEOUT:
+                                connection.release();
+                                assert err.infos instanceof ReadTimeoutException;
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getReadTimeouts().inc();
+
+                                ReadTimeoutException rte = (ReadTimeoutException)err.infos;
+                                retry = retryPolicy.onReadTimeout(statement,
+                                    rte.getConsistencyLevel(),
+                                    rte.getRequiredAcknowledgements(),
+                                    rte.getReceivedAcknowledgements(),
+                                    rte.wasDataRetrieved(),
+                                    retriesByPolicy);
+
+                                if (metricsEnabled()) {
+                                    if (retry.getType() == Type.RETRY)
+                                        metrics().getErrorMetrics().getRetriesOnReadTimeout().inc();
+                                    if (retry.getType() == Type.IGNORE)
+                                        metrics().getErrorMetrics().getIgnoresOnReadTimeout().inc();
+                                }
+                                break;
+                            case WRITE_TIMEOUT:
+                                connection.release();
+                                assert err.infos instanceof WriteTimeoutException;
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getWriteTimeouts().inc();
+
+                                WriteTimeoutException wte = (WriteTimeoutException)err.infos;
+                                retry = retryPolicy.onWriteTimeout(statement,
+                                    wte.getConsistencyLevel(),
+                                    wte.getWriteType(),
+                                    wte.getRequiredAcknowledgements(),
+                                    wte.getReceivedAcknowledgements(),
+                                    retriesByPolicy);
+
+                                if (metricsEnabled()) {
+                                    if (retry.getType() == Type.RETRY)
+                                        metrics().getErrorMetrics().getRetriesOnWriteTimeout().inc();
+                                    if (retry.getType() == Type.IGNORE)
+                                        metrics().getErrorMetrics().getIgnoresOnWriteTimeout().inc();
+                                }
+                                break;
+                            case UNAVAILABLE:
+                                connection.release();
+                                assert err.infos instanceof UnavailableException;
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getUnavailables().inc();
+
+                                UnavailableException ue = (UnavailableException)err.infos;
+                                retry = retryPolicy.onUnavailable(statement,
+                                    ue.getConsistencyLevel(),
+                                    ue.getRequiredReplicas(),
+                                    ue.getAliveReplicas(),
+                                    retriesByPolicy);
+
+                                if (metricsEnabled()) {
+                                    if (retry.getType() == Type.RETRY)
+                                        metrics().getErrorMetrics().getRetriesOnUnavailable().inc();
+                                    if (retry.getType() == Type.IGNORE)
+                                        metrics().getErrorMetrics().getIgnoresOnUnavailable().inc();
+                                }
+                                break;
+                            case OVERLOADED:
+                                connection.release();
+                                // Try another node
+                                logger.warn("Host {} is overloaded, trying next host.", connection.address);
+                                DriverException overloaded = new DriverException("Host overloaded");
+                                logError(connection.address, overloaded);
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getOthers().inc();
+                                retry(false, null);
+                                return;
+                            case SERVER_ERROR:
+                                connection.release();
+                                // Defunct connection and try another node
+                                logger.warn("{} replied with server error ({}), trying next host.", connection.address, err.message);
+                                DriverException exception = new DriverException("Host replied with server error: " + err.message);
+                                logError(connection.address, exception);
+                                connection.defunct(exception);
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getOthers().inc();
+                                retry(false, null);
+                                return;
+                            case IS_BOOTSTRAPPING:
+                                connection.release();
+                                // Try another node
+                                logger.error("Query sent to {} but it is bootstrapping. This shouldn't happen but trying next host.", connection.address);
+                                DriverException bootstrapping = new DriverException("Host is bootstrapping");
+                                logError(connection.address, bootstrapping);
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getOthers().inc();
+                                retry(false, null);
+                                return;
+                            case UNPREPARED:
+                                // Do not release connection yet, because we might reuse it to send the PREPARE message (see write() call below)
+                                assert err.infos instanceof MD5Digest;
+                                MD5Digest id = (MD5Digest)err.infos;
+                                PreparedStatement toPrepare = manager.cluster.manager.preparedQueries.get(id);
+                                if (toPrepare == null) {
+                                    // This shouldn't happen
+                                    connection.release();
+                                    String msg = String.format("Tried to execute unknown prepared query %s", id);
+                                    logger.error(msg);
+                                    setFinalException(connection, new DriverInternalError(msg));
+                                    return;
+                                }
+
+                                String currentKeyspace = connection.keyspace();
+                                String prepareKeyspace = toPrepare.getQueryKeyspace();
+                                if (prepareKeyspace != null && (currentKeyspace == null || !currentKeyspace.equals(prepareKeyspace))) {
+                                    // This shouldn't happen in normal use, because a user shouldn't try to execute
+                                    // a prepared statement with the wrong keyspace set.
+                                    // Fail fast (we can't change the keyspace to reprepare, because we're using a pooled connection
+                                    // that's shared with other requests).
+                                    connection.release();
+                                    throw new IllegalStateException(String.format("Statement was prepared on keyspace %s, can't execute it on %s (%s)",
+                                        toPrepare.getQueryKeyspace(), connection.keyspace(), toPrepare.getQueryString()));
+                                }
+
+                                logger.info("Query {} is not prepared on {}, preparing before retrying executing. "
+                                        + "Seeing this message a few times is fine, but seeing it a lot may be source of performance problems",
+                                    toPrepare.getQueryString(), connection.address);
+
+                                write(connection, prepareAndRetry(toPrepare.getQueryString()));
+                                // we're done for now, the prepareAndRetry callback will handle the rest
+                                return;
+                            default:
+                                connection.release();
+                                if (metricsEnabled())
+                                    metrics().getErrorMetrics().getOthers().inc();
+                                break;
+                        }
+
+                        if (retry == null)
+                            setFinalResult(connection, response);
+                        else {
+                            switch (retry.getType()) {
+                                case RETRY:
+                                    ++retriesByPolicy;
+                                    if (logger.isDebugEnabled())
+                                        logger.debug("Doing retry {} for query {} at consistency {}", retriesByPolicy, statement, retry.getRetryConsistencyLevel());
+                                    if (metricsEnabled())
+                                        metrics().getErrorMetrics().getRetries().inc();
+// RIGHT //                                    if (!retry.isRetryCurrent())
+// RIGHT //                                        logError(connection.address, exceptionToReport);
+// RIGHT //                                    retry(retry.isRetryCurrent(), retry.getRetryConsistencyLevel());
+                                    break;
+                                case RETHROW:
+                                    setFinalResult(connection, response);
+                                    break;
+                                case IGNORE:
+                                    if (metricsEnabled())
+                                        metrics().getErrorMetrics().getIgnores().inc();
+                                    setFinalResult(connection, new Responses.Result.Void());
+                                    break;
+                            }
+                        }
+                        break;
+                    default:
+                        connection.release();
+                        setFinalResult(connection, response);
+                        break;
+                }
+            } catch (Exception e) {
+                exceptionToReport = e;
+                setFinalException(connection, e);
+            } finally {
+                if (queriedHost != null && statement != Statement.DEFAULT)
+                    manager.cluster.manager.reportLatency(queriedHost, statement, exceptionToReport, latency);
+            }
+// END onSet(Connection-Connection-Message.Response-Message.Response-long-long-int-int)//        }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\policies\Policies.java
+Different Spacing: false
+Left editions: [387]
+Right editions: [385]
+Merged body: 
+// START Policies({FormalParametersInternal})//// RIGHT //@Deprecated
+public Policies() {
+// LEFT //        this(defaultLoadBalancingPolicy(), defaultReconnectionPolicy(), defaultRetryPolicy(), defaultAddressTranslator(), defaultTimestampGenerator(), defaultSpeculativeExecutionPolicy());
+// END Policies({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\test\java\com\datastax\driver\core\ControlConnectionTest.java
+Different Spacing: false
+Left editions: [57]
+Right editions: [60]
+Merged body: 
+// START should_prevent_simultaneous_reconnection_attempts({FormalParametersInternal})//@Test(groups = "short")
+    public void should_prevent_simultaneous_reconnection_attempts() throws InterruptedException {
+        CCMBridge ccm = null;
+        Cluster cluster = null;
+
+        // Custom load balancing policy that counts the number of calls to newQueryPlan().
+        // Since we don't open any session from our Cluster, only the control connection reattempts are calling this
+        // method, therefore the invocation count is equal to the number of attempts.
+        QueryPlanCountingPolicy loadBalancingPolicy = new QueryPlanCountingPolicy(Policies.defaultLoadBalancingPolicy());
+        AtomicInteger reconnectionAttempts = loadBalancingPolicy.counter;
+
+        // Custom reconnection policy with a very large delay (longer than the test duration), to make sure we count
+        // only the first reconnection attempt of each reconnection handler.
+// LEFT //        ReconnectionPolicy reconnectionPolicy = new ConstantReconnectionPolicy(60 * 1000);
+
+        try {
+// RIGHT //            ccm = CCMBridge.builder("test").withNodes(2).build();
+            // We pass only the first host as contact point, so we know the control connection will be on this host
+            cluster = Cluster.builder()
+                .addContactPoint(CCMBridge.ipOfNode(1))
+                .withReconnectionPolicy(reconnectionPolicy)
+                .withLoadBalancingPolicy(loadBalancingPolicy)
+                .build();
+            cluster.init();
+
+            // Kill the control connection host, there should be exactly one reconnection attempt
+            ccm.stop(1);
+            TimeUnit.SECONDS.sleep(1); // Sleep for a while to make sure our final count is not the result of lucky timing
+            assertThat(reconnectionAttempts.get()).isEqualTo(1);
+
+            ccm.stop(2);
+            TimeUnit.SECONDS.sleep(1);
+            assertThat(reconnectionAttempts.get()).isEqualTo(2);
+
+        } finally {
+            if (cluster != null)
+                cluster.close();
+            if (ccm != null)
+                ccm.remove();
+        }
+// END should_prevent_simultaneous_reconnection_attempts({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\QueryTrace.java
+Different Spacing: false
+Left editions: [265]
+Right editions: [291]
+Merged body: 
+// START doFetchTrace({FormalParametersInternal})//private void doFetchTrace() {
+        int tries = 0;
+        try {
+            // We cannot guarantee the trace is complete. But we can't at least wait until we have all the information
+            // the coordinator log in the trace. Since the duration is the last thing the coordinator log, that's
+            // what we check to know if the trace is "complete" (again, it may not contain the log of replicas).
+            while (duration == Integer.MIN_VALUE && tries <= MAX_TRIES) {
+                ++tries;
+
+                ResultSetFuture sessionsFuture = session.executeQuery(new Requests.Query(String.format(SELECT_SESSIONS_FORMAT, traceId)), Statement.DEFAULT);
+                ResultSetFuture eventsFuture = session.executeQuery(new Requests.Query(String.format(SELECT_EVENTS_FORMAT, traceId)), Statement.DEFAULT);
+
+                Row sessRow = sessionsFuture.get().one();
+                if (sessRow != null && !sessRow.isNull("duration")) {
+
+                    requestType = sessRow.getString("request");
+                    coordinator = sessRow.getInet("coordinator");
+                    if (!sessRow.isNull("parameters"))
+                        parameters = Collections.unmodifiableMap(sessRow.getMap("parameters", String.class, String.class));
+// LEFT //                    startedAt = sessRow.getTimestamp("started_at").getTime();
+
+                    events = new ArrayList<Event>();
+                    for (Row evRow : eventsFuture.get()) {
+                        events.add(new Event(evRow.getString("activity"),
+                                    evRow.getUUID("event_id").timestamp(),
+                                    evRow.getInet("source"),
+                                    evRow.getInt("source_elapsed"),
+                                    evRow.getString("thread")));
+                    }
+                    events = Collections.unmodifiableList(events);
+
+                    // Set the duration last as it's our test to know if the trace is complete
+                    duration = sessRow.getInt("duration");
+                } else {
+                    // The trace is not ready. Give it a few milliseconds before trying again.
+                    // Notes: granted, sleeping uninterruptibly is bad, but  having all method propagate
+                    // InterruptedException bothers me.
+                    Uninterruptibles.sleepUninterruptibly(tries * BASE_SLEEP_BETWEEN_TRIES_IN_MS, TimeUnit.MILLISECONDS);
+                }
+            }
+        } catch (Exception e) {
+            throw new TraceRetrievalException("Unexpected exception while fetching query trace", e);
+        }
+
+        if (tries > MAX_TRIES)
+// RIGHT //            throw new TraceRetrievalException(String.format("Unable to retrieve complete query trace for id %s after %d tries", traceId, MAX_TRIES));
+// END doFetchTrace({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: []
+Right editions: [573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640]
+Merged body: 
+// START makeRequestMessage(Statement-Statement-ByteBuffer-ByteBuffer)//Message.Request makeRequestMessage(Statement statement, ByteBuffer pagingState) {
+        // We need the protocol version, which is only available once the cluster has initialized. Initialize the session to ensure this is the case.
+        // init() locks, so avoid if we know we don't need it.
+        if (!isInit)
+            init();
+        ProtocolVersion version = cluster.manager.protocolVersion();
+
+        ConsistencyLevel consistency = statement.getConsistencyLevel();
+        if (consistency == null)
+            consistency = configuration().getQueryOptions().getConsistencyLevel();
+
+        ConsistencyLevel serialConsistency = statement.getSerialConsistencyLevel();
+        if (version.compareTo(ProtocolVersion.V3) < 0 && statement instanceof BatchStatement) {
+            if (serialConsistency != null)
+                throw new UnsupportedFeatureException(version, "Serial consistency on batch statements is not supported");
+        } else if (serialConsistency == null)
+            serialConsistency = configuration().getQueryOptions().getSerialConsistencyLevel();
+
+        long defaultTimestamp = Long.MIN_VALUE;
+        if (cluster.manager.protocolVersion().compareTo(ProtocolVersion.V3) >= 0) {
+            defaultTimestamp = statement.getDefaultTimestamp();
+            if (defaultTimestamp == Long.MIN_VALUE)
+                defaultTimestamp = cluster.getConfiguration().getPolicies().getTimestampGenerator().next();
+        }
+
+// RIGHT //        int fetchSize = statement.getFetchSize();
+// RIGHT //        ByteBuffer usedPagingState = pagingState;
+// RIGHT //
+// RIGHT //        if (version == ProtocolVersion.V1) {
+// RIGHT //            assert pagingState == null;
+// RIGHT //            // We don't let the user change the fetchSize globally if the proto v1 is used, so we just need to
+// RIGHT //            // check for the case of a per-statement override
+// RIGHT //            if (fetchSize <= 0)
+// RIGHT //                fetchSize = -1;
+// RIGHT //            else if (fetchSize != Integer.MAX_VALUE)
+// RIGHT //                throw new UnsupportedFeatureException(version, "Paging is not supported");
+// RIGHT //        } else if (fetchSize <= 0) {
+// RIGHT //            fetchSize = configuration().getQueryOptions().getFetchSize();
+// RIGHT //        }
+// RIGHT //
+// RIGHT //        if (fetchSize == Integer.MAX_VALUE)
+// RIGHT //            fetchSize = -1;
+// RIGHT //
+// RIGHT //        if (pagingState == null) {
+// RIGHT //            usedPagingState = statement.getPagingState();
+// RIGHT //        }
+// RIGHT //
+// RIGHT //        if (statement instanceof StatementWrapper)
+// RIGHT //            statement = ((StatementWrapper)statement).getWrappedStatement();
+// RIGHT //
+// RIGHT //        if (statement instanceof RegularStatement) {
+// RIGHT //            RegularStatement rs = (RegularStatement)statement;
+// RIGHT //
+// RIGHT //            // It saddens me that we special case for the query builder here, but for now this is simpler.
+// RIGHT //            // We could provide a general API in RegularStatement instead at some point but it's unclear what's
+// RIGHT //            // the cleanest way to do that is right now (and it's probably not really that useful anyway).
+// RIGHT //            if (version == ProtocolVersion.V1 && rs instanceof com.datastax.driver.core.querybuilder.BuiltStatement)
+// RIGHT //                ((com.datastax.driver.core.querybuilder.BuiltStatement)rs).setForceNoValues(true);
+// RIGHT //
+// RIGHT //            ByteBuffer[] rawValues = rs.getValues(version);
+// RIGHT //
+// RIGHT //            if (version == ProtocolVersion.V1 && rawValues != null)
+// RIGHT //                throw new UnsupportedFeatureException(version, "Binary values are not supported");
+// RIGHT //
+// RIGHT //            List<ByteBuffer> values = rawValues == null ? Collections.<ByteBuffer>emptyList() : Arrays.asList(rawValues);
+// RIGHT //            String qString = rs.getQueryString();
+// RIGHT //            Requests.QueryProtocolOptions options = new Requests.QueryProtocolOptions(consistency, values, false,
+// RIGHT //                                                                                      fetchSize, usedPagingState, serialConsistency, defaultTimestamp);
+// RIGHT //            return new Requests.Query(qString, options, statement.isTracing());
+// RIGHT //        } else if (statement instanceof BoundStatement) {
+// RIGHT //            BoundStatement bs = (BoundStatement)statement;
+// RIGHT //            if (!cluster.manager.preparedQueries.containsKey(bs.statement.getPreparedId().id)) {
+// RIGHT //                throw new InvalidQueryException(String.format("Tried to execute unknown prepared query : %s. "
+// RIGHT //                    + "You may have used a PreparedStatement that was created with another Cluster instance.", bs.statement.getPreparedId().id));
+// RIGHT //            }
+// RIGHT //            bs.ensureAllSet();
+// RIGHT //            boolean skipMetadata = version != ProtocolVersion.V1 && bs.statement.getPreparedId().resultSetMetadata != null;
+// RIGHT //            Requests.QueryProtocolOptions options = new Requests.QueryProtocolOptions(consistency, Arrays.asList(bs.wrapper.values), skipMetadata,
+// RIGHT //                                                                                      fetchSize, usedPagingState, serialConsistency, defaultTimestamp);
+// RIGHT //            return new Requests.Execute(bs.statement.getPreparedId().id, options, statement.isTracing());
+// RIGHT //        } else {
+// RIGHT //            assert statement instanceof BatchStatement : statement;
+// RIGHT //            assert pagingState == null;
+// RIGHT //
+// RIGHT //            if (version == ProtocolVersion.V1)
+// RIGHT //                throw new UnsupportedFeatureException(version, "Protocol level batching is not supported");
+// RIGHT //
+// RIGHT //            BatchStatement bs = (BatchStatement)statement;
+// RIGHT //            bs.ensureAllSet();
+// RIGHT //            BatchStatement.IdAndValues idAndVals = bs.getIdAndValues(version);
+// RIGHT //            Requests.BatchProtocolOptions options = new Requests.BatchProtocolOptions(consistency, serialConsistency, defaultTimestamp);
+// RIGHT //            return new Requests.Batch(bs.batchType, idAndVals.ids, idAndVals.values, options, statement.isTracing());
+// RIGHT //        }
+// END makeRequestMessage(Statement-Statement-ByteBuffer-ByteBuffer)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [144, 145]
+Right editions: []
+Merged body: 
+// START executeAsync(Statement-Statement)//// LEFT //@Override
+// LEFT //    public ResultSetFuture executeAsync(Statement statement) {
+        return executeQuery(makeRequestMessage(statement, null), statement);
+// END executeAsync(Statement-Statement)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [694]
+Right editions: []
+Merged body: 
+// START executeQuery(Message.Request-Message.Request-Statement-Statement)//ResultSetFuture executeQuery(Message.Request msg, Statement statement) {
+
+// LEFT //        DefaultResultSetFuture future = new DefaultResultSetFuture(this, configuration().getProtocolOptions().getProtocolVersion(), msg);
+        execute(future, statement);
+        return future;
+// END executeQuery(Message.Request-Message.Request-Statement-Statement)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-core\src\main\java\com\datastax\driver\core\SessionManager.java
+Different Spacing: false
+Left editions: [144, 145]
+Right editions: []
+Merged body: 
+// START executeAsync(Statement-Statement)//// LEFT //@Override
+// LEFT //    public ResultSetFuture executeAsync(Statement statement) {
+        return executeQuery(makeRequestMessage(statement, null), statement);
+// END executeAsync(Statement-Statement)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-mapping\src\main\java\com\datastax\driver\mapping\Mapper.java
+Different Spacing: false
+Left editions: [120]
+Right editions: [123, 124, 125, 126, 127, 131, 136, 137, 138, 139]
+Merged body: 
+// START Mapper(MappingManager-MappingManager-Class<T>-Class<T>-EntityMapper<T>-EntityMapper<T>)//Mapper(MappingManager manager, Class<T> klass, EntityMapper<T> mapper) {
+        this.manager = manager;
+        this.klass = klass;
+        this.mapper = mapper;
+
+        KeyspaceMetadata keyspace = session().getCluster().getMetadata().getKeyspace(mapper.getKeyspace());
+        this.tableMetadata = keyspace == null ? null : keyspace.getTable(Metadata.quote(mapper.getTable()));
+
+// LEFT //        this.protocolVersion = manager.getSession().getCluster().getConfiguration().getProtocolOptions().getProtocolVersion();
+        this.mapOneFunction = new Function<ResultSet, T>() {
+            public T apply(ResultSet rs) {
+// RIGHT //                return Mapper.this.mapAliased(rs).one();
+// RIGHT //            }
+// RIGHT //        };
+// RIGHT //        this.mapOneFunctionWithoutAliases = new Function<ResultSet, T>() {
+// RIGHT //            public T apply(ResultSet rs) {
+                return Mapper.this.map(rs).one();
+            }
+        };
+// RIGHT //        this.mapAllFunctionWithoutAliases = new Function<ResultSet, Result<T>>() {
+            public Result<T> apply(ResultSet rs) {
+                return Mapper.this.map(rs);
+            }
+        };
+// RIGHT //
+// RIGHT //        this.defaultSaveOptions = NO_OPTIONS;
+// RIGHT //        this.defaultGetOptions = NO_OPTIONS;
+// RIGHT //        this.defaultDeleteOptions = NO_OPTIONS;
+// END Mapper(MappingManager-MappingManager-Class<T>-Class<T>-EntityMapper<T>-EntityMapper<T>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\java-driver\revisions\rev_1c466_a1d47\rev_rev_left_1c466-rev_right_a1d47\driver-mapping\src\main\java\com\datastax\driver\mapping\MethodMapper.java
+Different Spacing: false
+Left editions: [166]
+Right editions: [187, 188]
+Merged body: 
+// START invoke(Object[]-Object[])//public Object invoke(Object[] args) {
+
+        BoundStatement bs = statement.bind();
+
+// LEFT //        ProtocolVersion protocolVersion = session.getCluster().getConfiguration().getProtocolOptions().getProtocolVersion();
+        for (int i = 0; i < args.length; i++) {
+            paramMappers[i].setValue(bs, args[i], protocolVersion);
+        }
+
+        if (consistency != null)
+            bs.setConsistencyLevel(consistency);
+        if (fetchSize > 0)
+            bs.setFetchSize(fetchSize);
+        if (tracing)
+            bs.enableTracing();
+
+        if (returnStatement)
+            return bs;
+
+        if (async) {
+            ListenableFuture<ResultSet> future = session.executeAsync(bs);
+            if (returnMapper == null)
+                return future;
+
+            return mapOne
+// RIGHT //                 ? Futures.transform(future, returnMapper.mapOneFunctionWithoutAliases)
+// RIGHT //                 : Futures.transform(future, returnMapper.mapAllFunctionWithoutAliases);
+        } else {
+            ResultSet rs = session.execute(bs);
+            if (returnMapper == null)
+                return rs;
+
+            Result<?> result = returnMapper.map(rs);
+            return mapOne ? result.one() : result;
+        }
+// END invoke(Object[]-Object[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fdf66-13484
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce7db-fa5db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1d8d-0e538
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b52bd-610c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72822-1306a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4f8c-78a90
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98069-4f1b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67813-f63b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9635f-bb916
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1381d-b63fb
+#MS_XXX_MS#

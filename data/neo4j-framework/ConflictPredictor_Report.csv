@@ -1,0 +1,1144 @@
+#MS_XXX_MS#
+Merge scenario: rev_74433-db8c0
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_74433_db8c0\rev_rev_left_74433-rev_right_db8c0\runtime\src\test\java\com\graphaware\runtime\BatchGraphAwareRuntimeTest.java
+Different Spacing: false
+Left editions: [175, 186]
+Right editions: []
+Merged body: 
+// START changedModuleShouldBeReInitialized({FormalParametersInternal})//@Test
+    public void changedModuleShouldBeReInitialized() {
+// LEFT //        final BatchSupportingGraphAwareRuntimeModule mockModule = createBatchSupportingMockModule();
+
+        TransactionSimulatingBatchInserter batchInserter = new TransactionSimulatingBatchInserterImpl(BatchInserters.inserter(temporaryFolder.getRoot().getAbsolutePath()));
+        long root = batchInserter.createNode(Collections.<String, Object>singletonMap(GA_PREFIX + RUNTIME + "_" + MOCK, CONFIG + "123"), GA_ROOT);
+
+        BatchGraphAwareRuntime runtime = new BatchGraphAwareRuntime(batchInserter);
+        runtime.registerModule(mockModule);
+
+        runtime.start();
+
+        verify(mockModule).reinitialize(batchInserter);
+// LEFT //        verify(mockModule, atLeastOnce()).getConfiguration();
+        verify(mockModule, atLeastOnce()).getId();
+        verifyNoMoreInteractions(mockModule);
+
+        assertEquals(Serializer.toString(NullRuntimeModuleConfiguration.getInstance(), CONFIG), batchInserter.getNodeProperties(root).get(GA_PREFIX + RUNTIME + "_" + MOCK).toString());
+// END changedModuleShouldBeReInitialized({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_74433_db8c0\rev_rev_left_74433-rev_right_db8c0\runtime\src\test\java\com\graphaware\runtime\BatchGraphAwareRuntimeTest.java
+Different Spacing: false
+Left editions: [196, 208]
+Right editions: []
+Merged body: 
+// START forcedModuleShouldBeReInitialized({FormalParametersInternal})//@Test
+    public void forcedModuleShouldBeReInitialized() {
+// LEFT //        final BatchSupportingGraphAwareRuntimeModule mockModule = createBatchSupportingMockModule();
+
+        TransactionSimulatingBatchInserter batchInserter = new TransactionSimulatingBatchInserterImpl(BatchInserters.inserter(temporaryFolder.getRoot().getAbsolutePath()));
+        long root = batchInserter.createNode(new HashMap<String, Object>(), GA_ROOT);
+        batchInserter.setNodeProperty(root, GA_PREFIX + RUNTIME + "_" + MOCK, FORCE_INITIALIZATION + "123");
+
+        BatchGraphAwareRuntime runtime = new BatchGraphAwareRuntime(batchInserter);
+        runtime.registerModule(mockModule);
+
+        runtime.start();
+
+        verify(mockModule).reinitialize(batchInserter);
+// LEFT //        verify(mockModule, atLeastOnce()).getConfiguration();
+        verify(mockModule, atLeastOnce()).getId();
+        verifyNoMoreInteractions(mockModule);
+
+        assertEquals(Serializer.toString(NullRuntimeModuleConfiguration.getInstance(), CONFIG), batchInserter.getNodeProperties(root).get(GA_PREFIX + RUNTIME + "_" + MOCK).toString());
+// END forcedModuleShouldBeReInitialized({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_74433_db8c0\rev_rev_left_74433-rev_right_db8c0\runtime\src\test\java\com\graphaware\runtime\BatchGraphAwareRuntimeTest.java
+Different Spacing: false
+Left editions: [218, 229]
+Right editions: []
+Merged body: 
+// START moduleAlreadyRegisteredShouldBeInitializedWhenForced({FormalParametersInternal})//@Test
+    public void moduleAlreadyRegisteredShouldBeInitializedWhenForced() {
+// LEFT //        final BatchSupportingGraphAwareRuntimeModule mockModule = createBatchSupportingMockModule();
+
+        TransactionSimulatingBatchInserter batchInserter = new TransactionSimulatingBatchInserterImpl(BatchInserters.inserter(temporaryFolder.getRoot().getAbsolutePath()));
+        long root = batchInserter.createNode(Collections.<String, Object>singletonMap(GA_PREFIX + RUNTIME + "_" + MOCK, Serializer.toString(NullRuntimeModuleConfiguration.getInstance(), CONFIG)), GA_ROOT);
+
+        BatchGraphAwareRuntime runtime = new BatchGraphAwareRuntime(batchInserter);
+        runtime.registerModule(mockModule, true);
+
+        runtime.start();
+
+        verify(mockModule).reinitialize(batchInserter);
+// LEFT //        verify(mockModule, atLeastOnce()).getConfiguration();
+        verify(mockModule, atLeastOnce()).getId();
+        verifyNoMoreInteractions(mockModule);
+
+        assertEquals(Serializer.toString(NullRuntimeModuleConfiguration.getInstance(), CONFIG), batchInserter.getNodeProperties(root).get(GA_PREFIX + RUNTIME + "_" + MOCK).toString());
+// END moduleAlreadyRegisteredShouldBeInitializedWhenForced({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8829b-6429e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d05f6-a2eed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_342e7-2c472
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dce58-01043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d9cf-ee0a7
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_rev_left_5d9cf-rev_right_ee0a7\crawler\src\test\java\com\graphaware\crawler\integration\ArbitraryTest.java
+Different Spacing: false
+Left editions: [152, 153, 154]
+Right editions: [82, 83, 157, 158, 159]
+Merged body: 
+// START shouldBeAbleToCrawlAnArbitraryGraph({FormalParametersInternal})//@Test
+	public void shouldBeAbleToCrawlAnArbitraryGraph() {
+		@SuppressWarnings("serial")
+// RIGHT //		List<Pair<String, String>> folks;
+// RIGHT //                folks = new LinkedList<Pair<String, String>>() {
+			{
+				add(Pair.of("Jeff", "Chris"));
+				add(Pair.of("Jeff", "Paul"));
+				add(Pair.of("Jeff", "Matthew"));
+				add(Pair.of("Gary", "Alan"));
+				add(Pair.of("Gary", "Robbie"));
+				add(Pair.of("Gary", "Mark"));
+				add(Pair.of("Gary", "Sue"));
+				add(Pair.of("John", "Matthew"));
+				add(Pair.of("John", "Sue"));
+			}
+		};
+
+		// first, we need a graph to crawl
+		try (Transaction transaction = this.database.beginTx()) {
+			Label personLabel = DynamicLabel.label("Person");
+			DynamicRelationshipType relationshipType = DynamicRelationshipType.withName("BOSS_OF");
+
+			for (Pair<String, String> pairOfPeople : folks) {
+				Node person = findOrCreateNode(personLabel, pairOfPeople.first());
+				Node colleague = findOrCreateNode(personLabel, pairOfPeople.other());
+				person.createRelationshipTo(colleague, relationshipType);
+			}
+
+			transaction.success();
+		}
+
+		// so, now we have a graph, we can set up a crawler to find big bosses (i.e., who's got no incoming BOSS_OF relationship)
+		/*
+		 Now, how's this going to work, then?
+
+		 Pick an arbitrary start node and walk the graph, probably recursively.
+		 What-to-do-with-each-node strategy will be the code provided here, probably as a callback
+
+		 Is there even a difference between these two?
+		 	- yes, I think traversal strategy is like breadth-first/recursive and inclusion is to do with whether a certain
+		 		node or relationship should be followed
+
+		 We somehow need to tell the module what it's looking for and register what methods to invoke.
+		 I suppose this has to go via the property-driven module config in the bootstrapper, unless we include it as a new
+		 framework feature.
+
+		 For now, we can just pass dependencies as arguments.
+		 */
+
+		// this is serving the same purpose as the MATCH part of a cypher query, but is applied at each step of the graph walk
+		NodeInclusionStrategy nodeInclusionStrategy = new NodeInclusionStrategy() {
+			@Override
+			public boolean include(Node object) {
+				// for this example, I could easily say "does this node have any incoming relationships"
+				return object.hasLabel(DynamicLabel.label("Person"));
+			}
+		};
+
+		// let's just log the nodes we visit that have not incoming "BOSS_OF" relationships
+		final List<String> namesOfBigBosses = new ArrayList<>(3);
+		ThingThatGetsCalledWhenWeFindSomething findBigBossesHandler = new ThingThatGetsCalledWhenWeFindSomething() {
+
+			@Override
+			public void doSomeStuff(Context context) {
+				if (context.getCurrentNode().getDegree(Direction.INCOMING) == 0) {
+					namesOfBigBosses.add((String) context.getCurrentNode().getProperty("name"));
+				}
+			}
+		};
+
+		ProductionGraphAwareRuntime graphAwareRuntime = new ProductionGraphAwareRuntime(this.database);
+		this.database.registerKernelEventHandler(graphAwareRuntime);
+// LEFT //		RuntimeModuleConfiguration runtimeModuleConfiguration = new MinimalRuntimeModuleConfiguration()
+// LEFT //				.with(nodeInclusionStrategy);
+// LEFT //		graphAwareRuntime.registerModule(new CrawlerRuntimeModule("TestingCrawler", runtimeModuleConfiguration, findBigBossesHandler));
+		graphAwareRuntime.start();
+
+// RIGHT //		//assertFalse("The collection of names shouldn't be empty", namesOfBigBosses.isEmpty());
+// RIGHT //		//Collections.sort(namesOfBigBosses);
+// RIGHT //		//assertEquals("The resultant collection wasn't returned", Arrays.asList("Gary", "Jeff", "John"), namesOfBigBosses);
+// END shouldBeAbleToCrawlAnArbitraryGraph({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18bb0-31c8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe21f-922af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5a67-18313
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b35c1-96d8d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_96d8d-f8d38
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88deb-0d476
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b14e-0d476
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2b1a-7850c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2bdaa-28bec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0c37-c3794
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad150-acdcd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f75dc-80eae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_141b9-5054f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddd90-eb2b3
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_ddd90_eb2b3\rev_rev_left_ddd90-rev_right_eb2b3\runtime\src\main\java\com\graphaware\runtime\BaseGraphAwareRuntime.java
+Different Spacing: false
+Left editions: [286]
+Right editions: [319]
+Merged body: 
+// START initializeModules({FormalParametersInternal})//private void initializeModules() {
+        try (Transaction tx = startTransaction()) {
+            final Node root = getOrCreateRoot();
+            final Map<String, Object> moduleMetadata = getInternalProperties(root);
+            final Collection<String> unusedModules = new HashSet<>(moduleMetadata.keySet());
+
+// LEFT //            for (final RuntimeModule module : getAllModules()) {
+                final String key = moduleKey(module);
+                unusedModules.remove(key);
+
+                Serializer.register(module.getConfiguration().getClass());
+
+                if (!moduleMetadata.containsKey(key)) {
+                    LOG.info("Module " + module.getId() + " seems to have been registered for the first time, will initialize...");
+                    initializeModule(module);
+                    continue;
+
+                }
+
+                String value = (String) moduleMetadata.get(key);
+
+                if (value.startsWith(CONFIG)) {
+                    if (!value.equals(Serializer.toString(module.getConfiguration(), CONFIG))) {
+                        LOG.info("Module " + module.getId() + " seems to have changed configuration since last run, will re-initialize...");
+                        reinitializeModule(module);
+                    } else {
+                        LOG.info("Module " + module.getId() + " has not changed configuration since last run, already initialized.");
+                    }
+                    continue;
+                }
+
+                if (value.startsWith(FORCE_INITIALIZATION)) {
+                    LOG.info("Module " + module.getId() + " has been marked for re-initialization on "
+                            + new Date(Long.valueOf(value.replace(FORCE_INITIALIZATION, ""))).toString() + ". Will re-initialize...");
+                    reinitializeModule(module);
+                    continue;
+
+                }
+
+// RIGHT //                LOG.error("Corrupted module info: " + value + " is not a valid value!");
+                throw new IllegalStateException("Corrupted module info: " + value + " is not a valid value");
+            }
+
+            removeUnusedModules(unusedModules);
+
+            tx.success();
+        }
+// END initializeModules({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eefad-b86f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef4e1-bb18a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58c40-7713e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94ad8-4e412
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f94c5-3416c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8a18-13a3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9293f-36766
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8371-8b60e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0e889-c3019
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dde08-360d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7eed9-fbc1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6157-829cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e946-cac19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb566-eb1e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6bc1-865a0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5cb2f-ff7b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a68cf-b4a8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c49ae-f37e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0fb1-e559b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66d4b-12d7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30ddf-90d02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6b3f-33091
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b54c5-1a7c5
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\LazyTransactionDataComprehensiveTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [1885]
+Merged body: 
+// START createTestDatabase({FormalParametersInternal})//private void createTestDatabase() {
+        db = new TestGraphDatabaseFactory().newImpermanentDatabase();
+// RIGHT //        registerShutdownHook(db);
+
+        new TestDataBuilder(db)
+                .node(label("TestLabel"))
+                .node(label("One")).setProp(NAME, "One").setProp(COUNT, 1).setProp(TAGS, new String[]{"one", "two"})
+
+                .node().setProp(NAME, "Two").setProp("size", 2L)
+                .relationshipFrom(1, "R1").setProp(TIME, 1)
+                .relationshipFrom(2, "R2")
+
+                .node().setProp(NAME, "Three").setProp(PLACE, "London")
+                .relationshipFrom(2, "R2").setProp(TIME, 2)
+                .relationshipTo(1, "R3").setProp(TIME, 3).setProp(TAG, "cool")
+                .relationshipFrom(1, "R3")
+
+                .node().setProp(NAME, "Four")
+                .relationshipFrom(3, "R1").setProp(TIME, 1)
+                .relationshipFrom(1, "WHATEVER")
+
+                .node(label("SomeLabel")).setProp(NAME, "Five")
+                .relationshipFrom(4, R4)
+                .node(label("ToBeRemoved")).setProp(NAME, "Six")
+                .relationshipFrom(5, R4);
+// END createTestDatabase({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\LazyTransactionDataComprehensiveTest.java
+Different Spacing: false
+Left editions: [1706, 1707, 1708, 1709, 1710, 1711, 1712, 1713, 1740]
+Right editions: []
+Merged body: 
+// START verifyDegrees({FormalParametersInternal})//@Test
+    public void verifyDegrees() {
+        createTestDatabase();
+// LEFT //
+// LEFT //        final Holder<Node> deletedNode = new Holder<>();
+// LEFT //
+// LEFT //        try (Transaction tx = db.beginTx()) {
+// LEFT //            deletedNode.set(db.getNodeById(2));
+// LEFT //            tx.success();
+// LEFT //        }
+// LEFT //
+        mutateGraph(
+                new BeforeCommitCallback.RememberingAdapter() {
+                    @Override
+                    public void doBeforeCommit(ImprovedTransactionData td) {
+                        Change<Node> changed = changesToMap(td.getAllChangedNodes()).get(1L);
+
+                        Node oneCurrent = changed.getCurrent();
+                        assertEquals(3, oneCurrent.getDegree());
+                        assertEquals(2, oneCurrent.getDegree(OUTGOING));
+                        assertEquals(1, oneCurrent.getDegree(INCOMING));
+                        assertEquals(1, oneCurrent.getDegree(R3));
+                        assertEquals(1, oneCurrent.getDegree(R3, INCOMING));
+                        assertEquals(1, oneCurrent.getDegree(R1));
+                        assertEquals(0, oneCurrent.getDegree(R3, OUTGOING));
+                        assertEquals(0, oneCurrent.getDegree(R4));
+
+                        Node onePrevious = changed.getPrevious();
+                        assertEquals(4, onePrevious.getDegree());
+                        assertEquals(3, onePrevious.getDegree(OUTGOING));
+                        assertEquals(1, onePrevious.getDegree(INCOMING));
+                        assertEquals(2, onePrevious.getDegree(R3));
+                        assertEquals(1, onePrevious.getDegree(R3, INCOMING));
+                        assertEquals(1, onePrevious.getDegree(R3, OUTGOING));
+                        assertEquals(1, onePrevious.getDegree(R1, OUTGOING));
+                        assertEquals(0, onePrevious.getDegree(R1, INCOMING));
+
+// LEFT //                        Node two = td.getDeleted(deletedNode.get());
+                        assertEquals(3, two.getDegree()); //loops only count as 1
+                        assertEquals(2, two.getDegree(R2));
+                        assertEquals(1, two.getDegree(R2, INCOMING));
+                        assertEquals(2, two.getDegree(R2, OUTGOING));
+                        assertEquals(2, two.getDegree(INCOMING));
+                        assertEquals(2, two.getDegree(OUTGOING));
+                    }
+                }
+        );
+// END verifyDegrees({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\LazyTransactionDataComprehensiveTest.java
+Different Spacing: false
+Left editions: [375, 376, 377, 378, 379, 380, 381, 382, 418, 419, 420, 421, 422, 423, 424]
+Right editions: []
+Merged body: 
+// START deletedRelationshipsShouldBeCorrectlyIdentified({FormalParametersInternal})//@Test
+    public void deletedRelationshipsShouldBeCorrectlyIdentified() {
+        createTestDatabase();
+// LEFT //
+// LEFT //        final Holder<Node> deletedNode = new Holder<>();
+// LEFT //
+// LEFT //        try (Transaction tx = db.beginTx()) {
+// LEFT //            deletedNode.set(db.getNodeById(2));
+// LEFT //            tx.success();
+// LEFT //        }
+// LEFT //
+        mutateGraph(
+                new BeforeCommitCallback.RememberingAdapter() {
+                    @Override
+                    public void doBeforeCommit(ImprovedTransactionData td) {
+                        Map<Long, Relationship> deleted = toMap(td.getAllDeletedRelationships());
+                        assertEquals(4, deleted.size());
+
+                        long r1Id = toMap(td.getAllDeletedNodes()).get(2L).getSingleRelationship(R1, INCOMING).getId();
+                        Relationship r1 = deleted.get(r1Id);
+                        assertEquals(1, r1.getProperty(TIME));
+                        assertEquals(1, count(r1.getPropertyKeys()));
+
+                        long r2Id = toMap(td.getAllDeletedNodes()).get(2L).getSingleRelationship(R2, INCOMING).getId();
+                        Relationship r2 = deleted.get(r2Id);
+                        assertEquals(0, count(r2.getPropertyKeys()));
+
+                        Iterator<Relationship> relationships = toMap(td.getAllDeletedNodes()).get(2L).getRelationships(R2, OUTGOING).iterator();
+                        long r3Id = relationships.next().getId();
+                        if (r3Id == r2Id) {
+                            r3Id = relationships.next().getId();
+                        }
+                        Relationship r3 = deleted.get(r3Id);
+                        assertEquals(2, r3.getProperty(TIME));
+                        assertEquals(1, count(r3.getPropertyKeys()));
+
+                        long r4Id = changesToMap(td.getAllChangedNodes()).get(3L).getPrevious().getSingleRelationship(R3, INCOMING).getId();
+                        Relationship r4 = deleted.get(r4Id);
+                        assertEquals(0, count(r4.getPropertyKeys()));
+
+                        assertTrue(td.hasBeenDeleted(r1));
+                        assertTrue(td.hasBeenDeleted(r2));
+                        assertTrue(td.hasBeenDeleted(r3));
+                        assertTrue(td.hasBeenDeleted(r4));
+                        assertFalse(td.hasBeenDeleted(db.getNodeById(3).getSingleRelationship(R3, OUTGOING)));
+
+// LEFT //                        assertEquals(3, count(td.getDeletedRelationships(deletedNode.get())));
+// LEFT //                        assertEquals(3, count(td.getDeletedRelationships(deletedNode.get(), R2, R1)));
+// LEFT //                        assertEquals(2, count(td.getDeletedRelationships(deletedNode.get(), R2)));
+// LEFT //                        assertEquals(2, count(td.getDeletedRelationships(deletedNode.get(), OUTGOING)));
+// LEFT //                        assertEquals(2, count(td.getDeletedRelationships(deletedNode.get(), OUTGOING, R2)));
+// LEFT //                        assertEquals(1, count(td.getDeletedRelationships(deletedNode.get(), INCOMING, R2)));
+// LEFT //                        assertEquals(0, count(td.getDeletedRelationships(deletedNode.get(), R3)));
+                    }
+                }
+        );
+// END deletedRelationshipsShouldBeCorrectlyIdentified({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\FilteredLazyTransactionDataIntegrationTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [1667]
+Merged body: 
+// START createTestDatabase({FormalParametersInternal})//private void createTestDatabase() {
+        database = new TestGraphDatabaseFactory().newImpermanentDatabase();
+// RIGHT //        registerShutdownHook(database);
+
+        new TestDataBuilder(database)
+                .node() //ID=0
+                .node().setProp("name", "One").setProp("count", 1).setProp("tags", new String[]{"one", "two"})
+
+                .node().setProp("name", "Two").setProp("size", 2L)
+                .relationshipFrom(1, "R1").setProp("time", 1)
+                .relationshipFrom(2, "R2")
+
+                .node().setProp("name", "Three").setProp("place", "London")
+                .relationshipFrom(2, "R2").setProp("time", 2)
+                .relationshipTo(1, "R3").setProp("time", 3).setProp("tag", "cool")
+                .relationshipFrom(1, "R3")
+
+                .node().setProp("name", "Four")
+                .relationshipFrom(3, "R1").setProp("time", 1)
+                .relationshipFrom(1, "WHATEVER");
+// END createTestDatabase({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\FilteredLazyTransactionDataIntegrationTest.java
+Different Spacing: false
+Left editions: [525, 527, 536]
+Right editions: []
+Merged body: 
+// START startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingTraversalApi({FormalParametersInternal})//@Test
+    public void startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingTraversalApi() {
+        createTestDatabase();
+
+// LEFT //        final Holder<Relationship> deletedRelationship = new Holder<>();
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            deletedRelationship.set(database.getNodeById(1).getSingleRelationship(withName("R3"), OUTGOING));
+        }
+
+        mutateGraph(
+                new BeforeCommitCallback() {
+                    @Override
+                    public void doBeforeCommit(ImprovedTransactionData transactionData) {
+                        assertTrue(transactionData.mutationsOccurred());
+
+// LEFT //                        Relationship deletedRel = transactionData.getDeleted(deletedRelationship.get());
+
+                        TraversalDescription traversalDescription = database.traversalDescription()
+                                .relationships(withName("R1"), OUTGOING)
+                                .relationships(withName("R2"), OUTGOING)
+                                .relationships(withName("R3"), INCOMING)
+                                .depthFirst()
+                                .uniqueness(Uniqueness.NODE_GLOBAL)
+                                .evaluator(Evaluators.toDepth(3));
+
+                        assertEquals(4, count(traversalDescription.traverse(deletedRel.getStartNode()).nodes()));
+                    }
+                }
+        );
+// END startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingTraversalApi({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\FilteredLazyTransactionDataIntegrationTest.java
+Different Spacing: false
+Left editions: [418, 419, 421, 422, 457, 466, 467, 468, 469, 470, 471, 472]
+Right editions: []
+Merged body: 
+// START deletedRelationshipsShouldBeCorrectlyIdentified({FormalParametersInternal})//@Test
+    public void deletedRelationshipsShouldBeCorrectlyIdentified() {
+        createTestDatabase();
+
+// LEFT //        final Holder<Relationship> deletedRelationship = new Holder<>();
+// LEFT //        final Holder<Node> deletedNode = new Holder<>();
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            deletedRelationship.set(database.getNodeById(1).getSingleRelationship(withName("R3"), OUTGOING));
+// LEFT //            deletedNode.set(database.getNodeById(2));
+        }
+
+        mutateGraph(
+                new BeforeCommitCallback() {
+                    @Override
+                    public void doBeforeCommit(ImprovedTransactionData transactionData) {
+                        assertTrue(transactionData.mutationsOccurred());
+
+                        Map<Long, Relationship> deleted = propertyContainersToMap(transactionData.getAllDeletedRelationships());
+                        assertEquals(3, deleted.size());
+
+                        long r1Id = propertyContainersToMap(transactionData.getAllDeletedNodes()).get(2L).getSingleRelationship(withName("R1"), INCOMING).getId();
+                        Relationship r1 = deleted.get(r1Id);
+                        try {
+                            r1.getProperty("time");
+                            fail();
+                        } catch (NotFoundException e) {
+                            //ok
+                        }
+                        assertEquals(0, count(r1.getPropertyKeys()));
+
+                        long r2Id = propertyContainersToMap(transactionData.getAllDeletedNodes()).get(2L).getSingleRelationship(withName("R2"), INCOMING).getId();
+                        Relationship r2 = deleted.get(r2Id);
+                        assertEquals(0, count(r2.getPropertyKeys()));
+
+                        Iterator<Relationship> relationships = propertyContainersToMap(transactionData.getAllDeletedNodes()).get(2L).getRelationships(withName("R2"), OUTGOING).iterator();
+                        long r3Id = relationships.next().getId();
+                        if (r3Id == r2Id) {
+                            r3Id = relationships.next().getId();
+                        }
+                        Relationship r3 = deleted.get(r3Id);
+                        assertEquals("nothing", r3.getProperty("time", "nothing"));
+                        assertEquals(0, count(r3.getPropertyKeys()));
+
+// LEFT //                        Relationship r4 = transactionData.getDeleted(deletedRelationship.get());
+                        assertEquals(0, count(r4.getPropertyKeys()));
+
+                        assertTrue(transactionData.hasBeenDeleted(r1));
+                        assertTrue(transactionData.hasBeenDeleted(r2));
+                        assertTrue(transactionData.hasBeenDeleted(r3));
+                        assertTrue(transactionData.hasBeenDeleted(r4));
+                        assertFalse(transactionData.hasBeenDeleted(database.getNodeById(3).getSingleRelationship(withName("R3"), OUTGOING)));
+
+// LEFT //                        assertEquals(3, count(transactionData.getDeletedRelationships(deletedNode.get())));
+// LEFT //                        assertEquals(3, count(transactionData.getDeletedRelationships(deletedNode.get(), withName("R2"), withName("R1"))));
+// LEFT //                        assertEquals(2, count(transactionData.getDeletedRelationships(deletedNode.get(), withName("R2"))));
+// LEFT //                        assertEquals(2, count(transactionData.getDeletedRelationships(deletedNode.get(), OUTGOING)));
+// LEFT //                        assertEquals(2, count(transactionData.getDeletedRelationships(deletedNode.get(), OUTGOING, withName("R2"))));
+// LEFT //                        assertEquals(1, count(transactionData.getDeletedRelationships(deletedNode.get(), INCOMING, withName("R2"))));
+// LEFT //                        assertEquals(0, count(transactionData.getDeletedRelationships(deletedNode.get(), withName("R3"))));
+                    }
+                }
+        );
+// END deletedRelationshipsShouldBeCorrectlyIdentified({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\tx-api\src\test\java\com\graphaware\tx\event\improved\FilteredLazyTransactionDataIntegrationTest.java
+Different Spacing: false
+Left editions: [483, 485, 494]
+Right editions: []
+Merged body: 
+// START startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingNativeApi({FormalParametersInternal})//@Test
+    public void startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingNativeApi() {
+        createTestDatabase();
+
+// LEFT //        final Holder<Relationship> deletedRel = new Holder<>();
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            deletedRel.set(database.getNodeById(1).getSingleRelationship(withName("R3"), OUTGOING));
+        }
+
+        mutateGraph(
+                new BeforeCommitCallback() {
+                    @Override
+                    public void doBeforeCommit(ImprovedTransactionData transactionData) {
+                        assertTrue(transactionData.mutationsOccurred());
+
+// LEFT //                        Relationship r4 = transactionData.getDeleted(deletedRel.get());
+
+                        Relationship deletedRel = transactionData.getDeleted(r4);
+
+                        assertEquals("One", deletedRel.getStartNode().getProperty("name"));
+                        assertEquals(1, deletedRel.getStartNode().getProperty("count", 2));
+                        assertTrue(Arrays.equals(new String[]{"one", "two"}, (String[]) deletedRel.getStartNode().getProperty("tags")));
+                        assertEquals(3, count(deletedRel.getStartNode().getPropertyKeys()));
+
+                        assertEquals("Three", deletedRel.getEndNode().getProperty("name"));
+                        assertEquals("nothing", deletedRel.getEndNode().getProperty("tags", "nothing"));
+
+                        Node startNode = deletedRel.getStartNode();
+                        Relationship r5 = startNode.getSingleRelationship(withName("R1"), OUTGOING);
+                        assertEquals("Two", r5.getEndNode().getProperty("name"));
+
+                        assertEquals(2, count(startNode.getRelationships()));
+                        assertEquals(2, count(startNode.getRelationships(OUTGOING)));
+                        assertEquals(0, count(startNode.getRelationships(withName("R3"))));
+                        assertEquals(1, count(startNode.getRelationships(withName("R3"), withName("R1"))));
+                        assertEquals(0, count(startNode.getRelationships(INCOMING, withName("R3"), withName("R1"))));
+                    }
+                }
+        );
+// END startingWithDeletedRelationshipPreviousGraphVersionShouldBeTraversedUsingNativeApi({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\runtime\src\test\java\com\graphaware\runtime\bootstrap\BootstrapIntegrationTest.java
+Different Spacing: false
+Left editions: [196]
+Right editions: [201, 202]
+Merged body: 
+// START moduleShouldBeInitializedWhenAnotherModuleIsMisConfigured({FormalParametersInternal})//@Test
+    public void moduleShouldBeInitializedWhenAnotherModuleIsMisConfigured() throws InterruptedException {
+        GraphDatabaseService database = new TestGraphDatabaseFactory()
+                .newImpermanentDatabaseBuilder()
+                .setConfig(RUNTIME_ENABLED, "true")
+                .setConfig("com.graphaware.module.wrong1.enabled", "com.not.existent.Bootstrapper")
+// LEFT //                .setConfig("com.graphaware.module.wrong2.2", "com.not.existent.Bootstrapper")
+                .setConfig(TestModuleBootstrapper.MODULE_ENABLED, TestModuleBootstrapper.MODULE_ENABLED.getDefaultValue())
+                .setConfig(TestModuleBootstrapper.MODULE_CONFIG, TestModuleBootstrapper.MODULE_CONFIG.getDefaultValue())
+                .newGraphDatabase();
+
+// RIGHT //        registerShutdownHook(database);
+// RIGHT //
+        try (Transaction tx = database.beginTx()) {
+            database.createNode();
+            tx.success();
+        }
+
+        assertEquals(1, TEST_RUNTIME_MODULES.size());
+        assertTrue(TEST_RUNTIME_MODULES.get(0).isInitialized());
+        assertEquals("configValue", TEST_RUNTIME_MODULES.get(0).getConfig().get("configKey"));
+
+        database.shutdown();
+
+        assertFalse(TEST_RUNTIME_MODULES.get(0).isInitialized());
+// END moduleShouldBeInitializedWhenAnotherModuleIsMisConfigured({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53f5c-6ab00
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6cff-04582
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a6cff_04582\rev_rev_left_a6cff-rev_right_04582\tests\src\main\java\com\graphaware\test\integration\DatabaseIntegrationTest.java
+Different Spacing: false
+Left editions: [57, 58, 59, 60, 61, 62, 63]
+Right editions: []
+Merged body: 
+// START createDatabase({FormalParametersInternal})//protected GraphDatabaseService createDatabase() {
+// LEFT //        GraphDatabaseBuilder graphDatabaseBuilder = new TestGraphDatabaseFactory().newImpermanentDatabaseBuilder();
+// LEFT //
+// LEFT //        if (propertiesFile() != null) {
+// LEFT //            graphDatabaseBuilder = graphDatabaseBuilder.loadPropertiesFromFile(propertiesFile());
+// LEFT //        }
+// LEFT //
+// LEFT //        GraphDatabaseService database = graphDatabaseBuilder.newGraphDatabase();
+        registerShutdownHook(database);
+        return database;
+// END createDatabase({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a6cff_04582\rev_rev_left_a6cff-rev_right_04582\tests\src\main\java\com\graphaware\test\integration\DatabaseIntegrationTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [40]
+Merged body: 
+// START setUp({FormalParametersInternal})//@Before
+    public void setUp() throws Exception {
+        database = createDatabase();
+// RIGHT //        populateDatabase(database);
+// END setUp({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92d5a-30a33
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d2d6-625b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57221-5b09c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7db4-52182
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_572ce-56770
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0177-338ce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b206c-a3af3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8cf52-5e72e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9eccb-5f7b4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38f88-289f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2253-a3932
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\runtime\src\test\java\com\graphaware\runtime\OtherRuntimeTests.java
+Different Spacing: false
+Left editions: [107]
+Right editions: [97, 98]
+Merged body: 
+// START makeSureDeadlockDoesNotOccur({FormalParametersInternal})//@Test(timeout = 5000)
+    @RepeatRule.Repeat(times = 10)
+    public void makeSureDeadlockDoesNotOccur() throws InterruptedException {
+        GraphDatabaseService database = new TestGraphDatabaseFactory()
+                .newImpermanentDatabaseBuilder()
+// RIGHT //                .setConfig(OnlineBackupSettings.online_backup_enabled, Settings.FALSE)
+// RIGHT //                .setConfig(ShellSettings.remote_shell_enabled, FALSE)
+                .setConfig(RuntimeKernelExtension.RUNTIME_ENABLED, "true")
+                .newGraphDatabase();
+
+        registerShutdownHook(database);
+
+        Thread.sleep(random.nextInt(10));
+
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            Node node = database.createNode(Label.label("TEST"));
+            node.setProperty("test", "test");
+            tx.success();
+        }
+
+        Thread.sleep(random.nextInt(200));
+
+        database.shutdown();
+// END makeSureDeadlockDoesNotOccur({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\runtime\src\test\java\com\graphaware\runtime\OtherRuntimeTests.java
+Different Spacing: false
+Left editions: [136]
+Right editions: [123, 124]
+Merged body: 
+// START makeSureDeadlockDoesNotOccur1({FormalParametersInternal})//@Test(timeout = 5000)
+    @RepeatRule.Repeat(times = 10)
+    public void makeSureDeadlockDoesNotOccur1() throws InterruptedException {
+        GraphDatabaseService database = new TestGraphDatabaseFactory()
+                .newImpermanentDatabaseBuilder()
+// RIGHT //                .setConfig(OnlineBackupSettings.online_backup_enabled, Settings.FALSE)
+// RIGHT //                .setConfig(ShellSettings.remote_shell_enabled, FALSE)
+                .setConfig(RuntimeKernelExtension.RUNTIME_ENABLED, "true")
+                .newGraphDatabase();
+
+        registerShutdownHook(database);
+
+        Thread.sleep(random.nextInt(10));
+
+
+        try (Transaction tx = database.beginTx()) {
+            Node node1 = database.createNode();
+            node1.setProperty("name", "MB");
+// LEFT //            node1.addLabel(Label.label("Person"));
+
+            tx.success();
+        }
+
+        Thread.sleep(random.nextInt(200));
+
+        database.shutdown();
+// END makeSureDeadlockDoesNotOccur1({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\runtime\src\test\java\com\graphaware\runtime\OtherRuntimeTests.java
+Different Spacing: false
+Left editions: [203]
+Right editions: [195, 196]
+Merged body: 
+// START makeSureDeadlockDoesNotOccur4({FormalParametersInternal})//@Test(timeout = 5000)
+    @RepeatRule.Repeat(times = 10)
+    public void makeSureDeadlockDoesNotOccur4() {
+        GraphDatabaseService database = new TestGraphDatabaseFactory()
+                .newImpermanentDatabaseBuilder()
+// RIGHT //                .setConfig(OnlineBackupSettings.online_backup_enabled, Settings.FALSE)
+// RIGHT //                .setConfig(ShellSettings.remote_shell_enabled, FALSE)
+                .setConfig(RuntimeKernelExtension.RUNTIME_ENABLED, "true")
+                .newGraphDatabase();
+
+        registerShutdownHook(database);
+
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            database.createNode(Label.label("TEST"));
+            tx.success();
+        }
+
+        database.shutdown();
+// END makeSureDeadlockDoesNotOccur4({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\runtime\src\test\java\com\graphaware\runtime\OtherRuntimeTests.java
+Different Spacing: false
+Left editions: [224]
+Right editions: [216, 217]
+Merged body: 
+// START makeSureDeadlockDoesNotOccur5({FormalParametersInternal})//@Test(timeout = 5000)
+    @RepeatRule.Repeat(times = 10)
+    public void makeSureDeadlockDoesNotOccur5() {
+        GraphDatabaseService database = new GraphDatabaseFactory()
+                .newEmbeddedDatabaseBuilder(temporaryFolder.getRoot().getPath())
+// RIGHT //                .setConfig(OnlineBackupSettings.online_backup_enabled, Settings.FALSE)
+// RIGHT //                .setConfig(ShellSettings.remote_shell_enabled, FALSE)
+                .setConfig(RuntimeKernelExtension.RUNTIME_ENABLED, "true")
+                .newGraphDatabase();
+
+        registerShutdownHook(database);
+
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            Node node = database.createNode(Label.label("TEST"));
+            node.setProperty("test", "test");
+            tx.success();
+        }
+
+        database.shutdown();
+// END makeSureDeadlockDoesNotOccur5({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\runtime\src\test\java\com\graphaware\runtime\OtherRuntimeTests.java
+Different Spacing: false
+Left editions: [246]
+Right editions: [238, 239]
+Merged body: 
+// START makeSureDeadlockDoesNotOccur6({FormalParametersInternal})//@Test(timeout = 5000)
+    @RepeatRule.Repeat(times = 10)
+    public void makeSureDeadlockDoesNotOccur6() throws InterruptedException {
+        GraphDatabaseService database = new GraphDatabaseFactory()
+                .newEmbeddedDatabaseBuilder(temporaryFolder.getRoot().getPath())
+// RIGHT //                .setConfig(OnlineBackupSettings.online_backup_enabled, Settings.FALSE)
+// RIGHT //                .setConfig(ShellSettings.remote_shell_enabled, FALSE)
+                .setConfig(RuntimeKernelExtension.RUNTIME_ENABLED, "true")
+                .newGraphDatabase();
+
+        registerShutdownHook(database);
+
+        try (Transaction tx = database.beginTx()) {
+// LEFT //            Node node = database.createNode(Label.label("TEST"));
+            node.setProperty("test", "test");
+            tx.success();
+        }
+
+        Thread.sleep(random.nextInt(200));
+
+        database.shutdown();
+// END makeSureDeadlockDoesNotOccur6({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_89f74-1c295
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_840ed-66de2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03e34-08dc0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_568ad-099cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8aea9-6ca2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76c73-962cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c7f3-a8414
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fb8a-0991d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42dd8-e522b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_155b7-45745
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_002a6-c24d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf426-d185a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_36090-245e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_245e5-9e3c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a571-e146e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_892de-65d7a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_452bd-2e85f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d02f3-7f51a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8045-a4945
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a8045_a4945\rev_rev_left_a8045-rev_right_a4945\server\src\test\java\com\graphaware\server\EnterpriseTxParticipationIntegrationTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START moduleApiShouldParticipateInOpenTransaction({FormalParametersInternal})//@Test
+    @Ignore //until resttest is enabled again
+    public void moduleApiShouldParticipateInOpenTransaction() throws IOException {
+        //First transaction over Cypher transactional rest endpoint, keep open:
+        String response = httpClient.post(baseNeoUrl() + "/db/data/transaction", "{\n" +
+                "  \"statements\" : [ {\n" +
+                "    \"statement\" : \"CREATE (p:Person {props}) RETURN id(p)\",\n" +
+                "    \"parameters\" : {\n" +
+                "      \"props\" : {\n" +
+                "        \"name\" : \"Michal\"\n" +
+                "      }\n" +
+                "    }\n" +
+                "  } ]\n" +
+                "}", HttpStatus.SC_CREATED);
+
+        String commitUrl = new ObjectMapper().readTree(response).get("commit").asText();
+        String txUrl = commitUrl.substring(0, commitUrl.length() - "commit".length());
+
+        //Second transaction over Cypher transactional rest endpoint, keep open:
+        httpClient.post(txUrl, "{\n" +
+                "  \"statements\" : [ {\n" +
+                "    \"statement\" : \"CREATE (p:Person {props}) RETURN id(p)\",\n" +
+                "    \"parameters\" : {\n" +
+                "      \"props\" : {\n" +
+                "        \"name\" : \"Daniela\"\n" +
+                "      }\n" +
+                "    }\n" +
+                "  } ]\n" +
+                "}", HttpStatus.SC_OK);
+
+        //Third transaction over REST to an extension
+        httpClient.post(baseUrl() + "/link/0/1", null, Collections.singletonMap("_GA_TX_ID", "1"), HttpStatus.SC_CREATED);
+
+        //Commit transaction over transactional endpoint
+        httpClient.post(commitUrl, HttpStatus.SC_OK);
+
+        httpClient.post(baseUrl() + "/resttest/assertSameGraph", "{\"cypher\": \"CREATE (m:Person {name:'Michal'})-[:TEST]->(d:Person {name:'Daniela'})\"}", HttpStatus.SC_OK);
+// END moduleApiShouldParticipateInOpenTransaction({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\neo4j-framework\revisions\rev_a8045_a4945\rev_rev_left_a8045-rev_right_a4945\server\src\test\java\com\graphaware\server\CommunityTxParticipationIntegrationTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START moduleApiShouldParticipateInOpenTransaction({FormalParametersInternal})//@Test
+    @Ignore //until resttest is enabled again
+    public void moduleApiShouldParticipateInOpenTransaction() throws IOException {
+        //First transaction over Cypher transactional rest endpoint, keep open:
+        String response = httpClient.post(baseNeoUrl() + "/db/data/transaction", "{\n" +
+                "  \"statements\" : [ {\n" +
+                "    \"statement\" : \"CREATE (p:Person {props}) RETURN id(p)\",\n" +
+                "    \"parameters\" : {\n" +
+                "      \"props\" : {\n" +
+                "        \"name\" : \"Michal\"\n" +
+                "      }\n" +
+                "    }\n" +
+                "  } ]\n" +
+                "}", HttpStatus.SC_CREATED);
+
+        String commitUrl = new ObjectMapper().readTree(response).get("commit").asText();
+        String txUrl = commitUrl.substring(0, commitUrl.length() - "commit".length());
+
+        //Second transaction over Cypher transactional rest endpoint, keep open:
+        httpClient.post(txUrl, "{\n" +
+                "  \"statements\" : [ {\n" +
+                "    \"statement\" : \"CREATE (p:Person {props}) RETURN id(p)\",\n" +
+                "    \"parameters\" : {\n" +
+                "      \"props\" : {\n" +
+                "        \"name\" : \"Daniela\"\n" +
+                "      }\n" +
+                "    }\n" +
+                "  } ]\n" +
+                "}", HttpStatus.SC_OK);
+
+        //Third transaction over REST to an extension
+        httpClient.post(baseUrl() + "/link/0/1", null, Collections.singletonMap("_GA_TX_ID", "1"), HttpStatus.SC_CREATED);
+
+        //Commit transaction over transactional endpoint
+        httpClient.post(commitUrl, HttpStatus.SC_OK);
+
+        httpClient.post(baseUrl() + "/resttest/assertSameGraph", "{\"cypher\": \"CREATE (m:Person {name:'Michal'})-[:TEST]->(d:Person {name:'Daniela'})\"}", HttpStatus.SC_OK);
+// END moduleApiShouldParticipateInOpenTransaction({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b65e9-fb8b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7863-2e762
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64bb7-08d43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04cba-f8b7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_672d9-7f8b0
+#MS_XXX_MS#

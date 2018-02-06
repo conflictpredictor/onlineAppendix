@@ -1,0 +1,450 @@
+=========================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_224ec_d7737\rev_224ec-d7737.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_ed059_6dde8\rev_ed059-6dde8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_f1e3d_9668b\rev_f1e3d-9668b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_16498-d4c40.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721271325\fstmerge_var1_2015458532583438598
+public boolean canHandle(TTrigger trigger) {
+        try {
+            tryFindHandler(trigger);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721271325\fstmerge_base_5452652118934015274
+public Boolean canHandle(TTrigger trigger) {
+        try {
+            tryFindHandler(trigger);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+=======
+public Boolean canHandle(TTrigger trigger) {
+        return tryFindHandler(trigger) != null;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721271325\fstmerge_var2_3117980822859795360
+    }
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_rev_left_16498-rev_right_d4c40\src\main\java\com\github\oxo42\stateless4j\StateRepresentation.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721276386\fstmerge_var1_4209815221925222802
+@Override
+    public TState resultsInTransitionFrom(TState source, Object... args) {
+        return destination.call(args);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721276386\fstmerge_base_4070779421016682733
+public TState resultsInTransitionFrom(TState source, Object... args) {
+        return destination.call(args);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721276386\fstmerge_var2_4472713593912634641
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_rev_left_16498-rev_right_d4c40\src\main\java\com\github\oxo42\stateless4j\triggers\DynamicTriggerBehaviour.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721277344\fstmerge_var1_5319727401024275801
+@Override
+    public TState resultsInTransitionFrom(TState source, Object... args) {
+        throw new IllegalStateException();
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721277344\fstmerge_base_1564147808760591524
+public TState resultsInTransitionFrom(TState source, Object... args) {
+        throw new IllegalStateException();
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721277344\fstmerge_var2_1542994393202400053
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_rev_left_16498-rev_right_d4c40\src\main\java\com\github\oxo42\stateless4j\triggers\IgnoredTriggerBehaviour.java
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+public static FuncBoolean returnTrue = new FuncBoolean() {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279291\fstmerge_var1_8426758952044595244
+        public boolean call() {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279291\fstmerge_base_8635862440695824774
+        public Boolean call() {
+=======
+        @Override
+        public Boolean call() {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279291\fstmerge_var2_8917538576913101347
+            return true;
+        }
+    };
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_rev_left_16498-rev_right_d4c40\src\test\java\com\github\oxo42\stateless4j\IgnoredTriggerBehaviourTests.java
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+public static FuncBoolean returnFalse = new FuncBoolean() {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279384\fstmerge_var1_5366304554550350570
+        public boolean call() {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279384\fstmerge_base_5433162842151185168
+        public Boolean call() {
+=======
+        @Override
+        public Boolean call() {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721279384\fstmerge_var2_1406378532013697210
+            return false;
+        }
+    };
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_16498_d4c40\rev_rev_left_16498-rev_right_d4c40\src\test\java\com\github\oxo42\stateless4j\IgnoredTriggerBehaviourTests.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_c6c47_d4c40\rev_c6c47-d4c40.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_d4c40_4c788\rev_d4c40-4c788.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_7e636-6ba3b.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721348405\fstmerge_var1_8945750979445641762
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721348405\fstmerge_base_4536073940375305318
+public StateConfiguration<TState, TTrigger> ignoreIf(TTrigger trigger, Func<Boolean> guard) {
+        Enforce.argumentNotNull(guard, "guard");
+        representation.addTriggerBehaviour(new IgnoredTriggerBehaviour<TState, TTrigger>(trigger, guard));
+        return this;
+    }
+=======
+public StateConfiguration<TState, TTrigger> ignoreIf(TTrigger trigger, Func<Boolean> guard) {
+        assert guard != null : "guard is null";
+        representation.addTriggerBehaviour(new IgnoredTriggerBehaviour<TState, TTrigger>(trigger, guard));
+        return this;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721348405\fstmerge_var2_4593115833407945623
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353650\fstmerge_var1_4072598694946900521
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353650\fstmerge_base_7122042845762643529
+public StateConfiguration<TState, TTrigger> permitDynamicIf(TTrigger trigger, final Func<TState> destinationStateSelector, Func<Boolean> guard) {
+        Enforce.argumentNotNull(destinationStateSelector, "destinationStateSelector");
+        return publicPermitDynamicIf(trigger, new Func2<Object[], TState>() {
+            public TState call(Object[] arg0) {
+                return destinationStateSelector.call();
+            }
+        }, guard);
+    }
+=======
+public StateConfiguration<TState, TTrigger> permitDynamicIf(TTrigger trigger, final Func<TState> destinationStateSelector, Func<Boolean> guard) {
+        assert destinationStateSelector != null : "destinationStateSelector is null";
+        return publicPermitDynamicIf(trigger, new Func2<Object[], TState>() {
+            public TState call(Object[] arg0) {
+                return destinationStateSelector.call();
+            }
+        }, guard);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353650\fstmerge_var2_3798631940679591547
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353732\fstmerge_var1_782926481929798835
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353732\fstmerge_base_6005199254327291638
+public <TArg0> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters1<TArg0, TState, TTrigger> trigger, final Func2<TArg0, TState> destinationStateSelector, Func<Boolean> guard) {
+        Enforce.argumentNotNull(trigger, "trigger");
+        Enforce.argumentNotNull(destinationStateSelector, "destinationStateSelector");
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call((TArg0) args[0]);
+
+                    }
+                },
+                guard
+        );
+    }
+=======
+public <TArg0> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters1<TArg0, TState, TTrigger> trigger, final Func2<TArg0, TState> destinationStateSelector, Func<Boolean> guard) {
+        assert trigger != null : "trigger is null";
+        assert destinationStateSelector != null : "destinationStateSelector is null";
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call((TArg0) args[0]);
+
+                    }
+                },
+                guard
+        );
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353732\fstmerge_var2_2415836831910854963
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353817\fstmerge_var1_2875623377930570275
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353817\fstmerge_base_193835684352022617
+public <TArg0, TArg1> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters2<TArg0, TArg1, TState, TTrigger> trigger, final Func3<TArg0, TArg1, TState> destinationStateSelector, Func<Boolean> guard) {
+        Enforce.argumentNotNull(trigger, "trigger");
+        Enforce.argumentNotNull(destinationStateSelector, "destinationStateSelector");
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call(
+                                (TArg0) args[0],
+                                (TArg1) args[1]);
+                    }
+                },
+                guard
+        );
+    }
+=======
+public <TArg0, TArg1> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters2<TArg0, TArg1, TState, TTrigger> trigger, final Func3<TArg0, TArg1, TState> destinationStateSelector, Func<Boolean> guard) {
+        assert trigger != null : "trigger is null";
+        assert destinationStateSelector != null : "destinationStateSelector is null";
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call(
+                                (TArg0) args[0],
+                                (TArg1) args[1]);
+                    }
+                },
+                guard
+        );
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353817\fstmerge_var2_3008527293567760135
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353905\fstmerge_var1_8725376466577103764
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353905\fstmerge_base_4966534058063190338
+public <TArg0, TArg1, TArg2> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters3<TArg0, TArg1, TArg2, TState, TTrigger> trigger, final Func4<TArg0, TArg1, TArg2, TState> destinationStateSelector, Func<Boolean> guard) {
+        Enforce.argumentNotNull(trigger, "trigger");
+        Enforce.argumentNotNull(destinationStateSelector, "destinationStateSelector");
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call(
+                                (TArg0) args[0],
+                                (TArg1) args[1],
+                                (TArg2) args[2]
+                        );
+                    }
+                }, guard
+        );
+    }
+=======
+public <TArg0, TArg1, TArg2> StateConfiguration<TState, TTrigger> permitDynamicIf(TriggerWithParameters3<TArg0, TArg1, TArg2, TState, TTrigger> trigger, final Func4<TArg0, TArg1, TArg2, TState> destinationStateSelector, Func<Boolean> guard) {
+        assert trigger != null : "trigger is null";
+        assert destinationStateSelector != null : "destinationStateSelector is null";
+        return publicPermitDynamicIf(
+                trigger.getTrigger(), new Func2<Object[], TState>() {
+                    @SuppressWarnings("unchecked")
+
+                    public TState call(Object[] args) {
+                        return destinationStateSelector.call(
+                                (TArg0) args[0],
+                                (TArg1) args[1],
+                                (TArg2) args[2]
+                        );
+                    }
+                }, guard
+        );
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721353905\fstmerge_var2_2281482302549131507
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354473\fstmerge_var1_6712442755466568334
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354473\fstmerge_base_1961163845455925692
+StateConfiguration<TState, TTrigger> publicPermitIf(TTrigger trigger, TState destinationState, Func<Boolean> guard) {
+        Enforce.argumentNotNull(guard, "guard");
+        representation.addTriggerBehaviour(new TransitioningTriggerBehaviour<>(trigger, destinationState, guard));
+        return this;
+    }
+=======
+StateConfiguration<TState, TTrigger> publicPermitIf(TTrigger trigger, TState destinationState, Func<Boolean> guard) {
+        assert guard != null : "guard is null";
+        representation.addTriggerBehaviour(new TransitioningTriggerBehaviour<>(trigger, destinationState, guard));
+        return this;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354473\fstmerge_var2_303891058998040500
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354571\fstmerge_var1_6330472740598275233
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354571\fstmerge_base_3983050627156073730
+StateConfiguration<TState, TTrigger> publicPermitDynamicIf(TTrigger trigger, Func2<Object[], TState> destinationStateSelector, Func<Boolean> guard) {
+        Enforce.argumentNotNull(destinationStateSelector, "destinationStateSelector");
+        Enforce.argumentNotNull(guard, "guard");
+        representation.addTriggerBehaviour(new DynamicTriggerBehaviour<>(trigger, destinationStateSelector, guard));
+        return this;
+    }
+=======
+StateConfiguration<TState, TTrigger> publicPermitDynamicIf(TTrigger trigger, Func2<Object[], TState> destinationStateSelector, Func<Boolean> guard) {
+        assert destinationStateSelector != null : "destinationStateSelector is null";
+        assert guard != null : "guard is null";
+        representation.addTriggerBehaviour(new DynamicTriggerBehaviour<>(trigger, destinationStateSelector, guard));
+        return this;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721354571\fstmerge_var2_8135527576721072105
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\StateConfiguration.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721366689\fstmerge_var1_3142262040638079660
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721366689\fstmerge_base_4871204919709855351
+public DynamicTriggerBehaviour(TTrigger trigger, Func2<Object[], TState> destination, Func<Boolean> guard) {
+        super(trigger, guard);
+        this.destination = Enforce.argumentNotNull(destination, "destination");
+    }
+=======
+public DynamicTriggerBehaviour(final TTrigger trigger, final Func2<Object[], TState> destination, final Func<Boolean> guard) {
+        super(trigger, guard);
+        assert destination != null : "destination is null";
+        this.destination = destination;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513721366689\fstmerge_var2_3220415727160439391
+
+File path: C:\download\ssmerge\stateless4j\revisions\rev_7e636_6ba3b\rev_rev_left_7e636-rev_right_6ba3b\src\main\java\com\github\oxo42\stateless4j\triggers\DynamicTriggerBehaviour.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_63782_fcc09\rev_63782-fcc09.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_7ab25_8a706\rev_7ab25-8a706.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_55c2f_57554\rev_55c2f-57554.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_55c2f_baa71\rev_55c2f-baa71.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_221df_00fd1\rev_221df-00fd1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_3ed38_3c092\rev_3ed38-3c092.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_f5337_69939\rev_f5337-69939.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_f5337_1bd8c\rev_f5337-1bd8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_f670c_51043\rev_f670c-51043.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_5a167_bb3bf\rev_5a167-bb3bf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\stateless4j\revisions\rev_ec3b3_68c24\rev_ec3b3-68c24.revisions
+
+=========================================================

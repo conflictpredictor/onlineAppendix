@@ -1,0 +1,2810 @@
+#MS_XXX_MS#
+Merge scenario: rev_c355b-39893
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21a35-ab0b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8025-5e26e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e634-6aaba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54e7c-bca5b
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_54e7c_bca5b\rev_rev_left_54e7c-rev_right_bca5b\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [212, 213, 214, 215, 216, 217]
+Merged body: 
+// START readDeclaration(String-String-Context-Context)//private Object readDeclaration(String documentation, Context context) {
+    // Skip unnecessary semicolons, occasionally used after a nested message declaration.
+    if (peekChar() == ';') {
+      pos++;
+      return null;
+    }
+
+    String label = readWord();
+
+    if (label.equals("package")) {
+      if (!context.permitsPackage()) throw unexpected("package in " + context);
+      if (packageName != null) throw unexpected("too many package names");
+      packageName = readName();
+      prefix = packageName + ".";
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("import")) {
+      if (!context.permitsImport()) throw unexpected("import in " + context);
+// RIGHT //      String importString = readString();
+// RIGHT //      if ("public".equals(importString)) {
+// RIGHT //        publicDependencies.add(readString());
+// RIGHT //      } else {
+// RIGHT //        dependencies.add(importString);
+// RIGHT //      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("option")) {
+      Option result = readOption('=');
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return result;
+    } else if (label.equals("message")) {
+      return readMessage(documentation);
+    } else if (label.equals("enum")) {
+      return readEnumType(documentation);
+    } else if (label.equals("service")) {
+      return readService(documentation);
+    } else if (label.equals("extend")) {
+      return readExtend(documentation);
+    } else if (label.equals("rpc")) {
+      if (!context.permitsRpc()) throw unexpected("rpc in " + context);
+      return readRpc(documentation);
+    } else if (label.equals("required") || label.equals("optional") || label.equals("repeated")) {
+      if (!context.permitsField()) throw unexpected("fields must be nested");
+      return readField(documentation, label);
+    } else if (label.equals("extensions")) {
+      if (!context.permitsExtensions()) throw unexpected("extensions must be nested");
+      return readExtensions(documentation);
+    } else if (context == Context.ENUM) {
+      List<Option> options = new ArrayList<Option>();
+
+      if (readChar() != '=') throw unexpected("expected '='");
+      int tag = readInt();
+      if (peekChar() == '[') {
+        readChar();
+        while (true) {
+          options.add(readOption('='));
+          char c = readChar();
+          if (c == ']') {
+            break;
+          }
+          if (c != ',') {
+            throw unexpected("Expected ',' or ']");
+          }
+        }
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return new EnumType.Value(label, tag, documentation, options);
+    } else {
+      throw unexpected("unexpected label: " + label);
+    }
+// END readDeclaration(String-String-Context-Context)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_54e7c_bca5b\rev_rev_left_54e7c-rev_right_bca5b\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: [339]
+Right editions: []
+Merged body: 
+// START readService(String-String)//private Service readService(String documentation) {
+    String name = readName();
+    List<Service.Method> methods = new ArrayList<Service.Method>();
+    if (readChar() != '{') throw unexpected("expected '{'");
+    while (true) {
+      String methodDocumentation = readDocumentation();
+      if (peekChar() == '}') {
+        pos++;
+        break;
+      }
+      Object declared = readDeclaration(methodDocumentation, Context.SERVICE);
+      if (declared instanceof Service.Method) {
+        methods.add((Service.Method) declared);
+      }
+    }
+// LEFT //    return new Service(name, prefix + name, documentation, methods);
+// END readService(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_54e7c_bca5b\rev_rev_left_54e7c-rev_right_bca5b\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: [339]
+Right editions: []
+Merged body: 
+// START readService(String-String)//private Service readService(String documentation) {
+    String name = readName();
+    List<Service.Method> methods = new ArrayList<Service.Method>();
+    if (readChar() != '{') throw unexpected("expected '{'");
+    while (true) {
+      String methodDocumentation = readDocumentation();
+      if (peekChar() == '}') {
+        pos++;
+        break;
+      }
+      Object declared = readDeclaration(methodDocumentation, Context.SERVICE);
+      if (declared instanceof Service.Method) {
+        methods.add((Service.Method) declared);
+      }
+    }
+// LEFT //    return new Service(name, prefix + name, documentation, methods);
+// END readService(String-String)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_54e7c_bca5b\rev_rev_left_54e7c-rev_right_bca5b\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [212, 213, 214, 215, 216, 217]
+Merged body: 
+// START readDeclaration(String-String-Context-Context)//private Object readDeclaration(String documentation, Context context) {
+    // Skip unnecessary semicolons, occasionally used after a nested message declaration.
+    if (peekChar() == ';') {
+      pos++;
+      return null;
+    }
+
+    String label = readWord();
+
+    if (label.equals("package")) {
+      if (!context.permitsPackage()) throw unexpected("package in " + context);
+      if (packageName != null) throw unexpected("too many package names");
+      packageName = readName();
+      prefix = packageName + ".";
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("import")) {
+      if (!context.permitsImport()) throw unexpected("import in " + context);
+// RIGHT //      String importString = readString();
+// RIGHT //      if ("public".equals(importString)) {
+// RIGHT //        publicDependencies.add(readString());
+// RIGHT //      } else {
+// RIGHT //        dependencies.add(importString);
+// RIGHT //      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("option")) {
+      Option result = readOption('=');
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return result;
+    } else if (label.equals("message")) {
+      return readMessage(documentation);
+    } else if (label.equals("enum")) {
+      return readEnumType(documentation);
+    } else if (label.equals("service")) {
+      return readService(documentation);
+    } else if (label.equals("extend")) {
+      return readExtend(documentation);
+    } else if (label.equals("rpc")) {
+      if (!context.permitsRpc()) throw unexpected("rpc in " + context);
+      return readRpc(documentation);
+    } else if (label.equals("required") || label.equals("optional") || label.equals("repeated")) {
+      if (!context.permitsField()) throw unexpected("fields must be nested");
+      return readField(documentation, label);
+    } else if (label.equals("extensions")) {
+      if (!context.permitsExtensions()) throw unexpected("extensions must be nested");
+      return readExtensions(documentation);
+    } else if (context == Context.ENUM) {
+      List<Option> options = new ArrayList<Option>();
+
+      if (readChar() != '=') throw unexpected("expected '='");
+      int tag = readInt();
+      if (peekChar() == '[') {
+        readChar();
+        while (true) {
+          options.add(readOption('='));
+          char c = readChar();
+          if (c == ']') {
+            break;
+          }
+          if (c != ',') {
+            throw unexpected("Expected ',' or ']");
+          }
+        }
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return new EnumType.Value(label, tag, documentation, options);
+    } else {
+      throw unexpected("unexpected label: " + label);
+    }
+// END readDeclaration(String-String-Context-Context)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_54e7c_bca5b\rev_rev_left_54e7c-rev_right_bca5b\protoparser\src\test\java\com\squareup\protoparser\ProtoSchemaParserTest.java
+Different Spacing: false
+Left editions: [362]
+Right editions: [366, 367]
+Merged body: 
+// START service({FormalParametersInternal})//@Test public void service() throws Exception {
+    String proto = ""
+        + "service SearchService {\n"
+        + "  rpc Search (SearchRequest) returns (SearchResponse);"
+        + "  rpc Purchase (PurchaseRequest) returns (PurchaseResponse) {\n"
+        + "    option (squareup.sake.timeout) = 15; \n"
+        + "    option (squareup.a.b) = { value: [FOO, BAR] };\n"
+        + "  }\n"
+        + "}";
+// LEFT //    Service expected = new Service("SearchService", "SearchService", "", Arrays.asList(
+        new Service.Method("Search", "", "SearchRequest", "SearchResponse", map()),
+        new Service.Method("Purchase", "", "PurchaseRequest", "PurchaseResponse",
+            map("squareup.sake.timeout", "15", "squareup.a.b", map("value", list("FOO", "BAR"))))));
+// RIGHT //    ProtoFile protoFile = new ProtoFile("descriptor.proto", null, NO_STRINGS, NO_STRINGS, NO_TYPES,
+// RIGHT //        Arrays.asList(expected), map(), NO_EXTEND_DECLARATIONs);
+    assertThat(ProtoSchemaParser.parse("descriptor.proto", proto))
+        .isEqualTo(protoFile);
+// END service({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5faa5-edbe2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81031-ed240
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_81031_ed240\rev_rev_left_81031-rev_right_ed240\protoparser\src\main\java\com\squareup\protoparser\ProtoFile.java
+Different Spacing: false
+Left editions: [166, 167, 168]
+Right editions: [156, 157, 158, 159, 160]
+Merged body: 
+// START toString({FormalParametersInternal})//@Override public String toString() {
+    StringBuilder result = new StringBuilder();
+    result.append("fileName: ").append(fileName).append('\n');
+    result.append("packageName: ").append(packageName).append('\n');
+// RIGHT //    for (Option option : options) {
+// RIGHT //      result.append("option ")
+// RIGHT //          .append(option.getName())
+// RIGHT //          .append(" = ")
+// RIGHT //          .append(option.getValue())
+          .append('\n');
+    }
+    for (String dependency : dependencies) {
+      result.append("import ").append(dependency).append('\n');
+    }
+// LEFT //    for (String publicDependency : publicDependencies) {
+// LEFT //      result.append("import public ").append(publicDependency).append('\n');
+// LEFT //    }
+    for (Type type : types) {
+      result.append(type).append('\n');
+    }
+    for (Service service : services) {
+      result.append(service).append('\n');
+    }
+    for (ExtendDeclaration extendDeclaration : extendDeclarations) {
+      result.append(extendDeclaration).append('\n');
+    }
+    return result.toString();
+// END toString({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1209-fb6a9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54be7-2fae6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cc659-0961e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64bab-a73d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_feba0-bbd59
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_45c52-2e924
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9000-3ecbd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ed5f-45dd2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_556de-fe648
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21d05-29276
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86aa0-aac31
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9212-d26ba
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_e9212_d26ba\rev_rev_left_e9212-rev_right_d26ba\wire-maven-plugin\src\main\java\com\squareup\wire\mojo\WireGenerateSourcesMojo.java
+Different Spacing: false
+Left editions: [100]
+Right editions: [117, 118, 119]
+Merged body: 
+// START compileProtos({FormalParametersInternal})//private void compileProtos() throws MojoExecutionException {
+    List<String> args = Lists.newArrayList();
+    args.add("--proto_path=" + protoSourceDirectory);
+    args.add("--java_out=" + generatedSourceDirectory);
+    if (noOptions) {
+// LEFT //      args.add("--no_options");
+    }
+    if (registryClass != null) {
+      args.add("--registry_class=" + registryClass);
+    }
+    if (roots != null && roots.length > 0) {
+      args.add("--roots=" + Joiner.on(',').join(roots));
+    }
+    Collections.addAll(args, protoFiles);
+
+    getLog().info("Invoking wire compiler with arguments:");
+    getLog().info(Joiner.on('\n').join(args));
+    try {
+      // TODO(shawn) we don't have a great programatic interface to the compiler.
+      // Not all exceptions should result in MojoFailureExceptions (i.e. bugs in this plugin that
+      // invoke the compiler incorrectly).
+      WireCompiler.main(args.toArray(new String[args.size()]));
+// RIGHT //
+// RIGHT //      // Add the directory into which generated sources are placed as a compiled source root.
+// RIGHT //      project.addCompileSourceRoot(generatedSourceDirectory);
+    } catch (Exception e) {
+      throw new MojoExecutionException("Wire Plugin: Failure compiling proto sources.", e);
+    }
+// END compileProtos({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23cda-5f279
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6a54-771e3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3715c-09cd0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3720d-bf845
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd6b3-e2586
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fdc74-932d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_61a1e-60fcc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e23dc-d7aa8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78716-2a458
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60735-1da54
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_60735_1da54\rev_rev_left_60735-rev_right_1da54\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: [236]
+Right editions: [160, 168, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 205, 212, 215]
+Merged body: 
+// START readDeclaration(String-String-Context-Context)//private Object readDeclaration(String documentation, Context context) {
+    // Skip unnecessary semicolons, occasionally used after a nested message declaration.
+    if (peekChar() == ';') {
+      pos++;
+      return null;
+    }
+
+    String label = readWord();
+
+    if (label.equals("package")) {
+// RIGHT //      if (!context.permitsPackage()) throw unexpected("'package' in " + context);
+      if (packageName != null) throw unexpected("too many package names");
+      packageName = readName();
+      builder.setPackageName(packageName);
+      prefix = packageName + ".";
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("import")) {
+// RIGHT //      if (!context.permitsImport()) throw unexpected("'import' in " + context);
+      String importString = readString();
+      if ("public".equals(importString)) {
+        builder.addPublicDependency(readString());
+      } else {
+        builder.addDependency(importString);
+// RIGHT //      }
+// RIGHT //      if (readChar() != ';') throw unexpected("expected ';'");
+// RIGHT //      return null;
+// RIGHT //    } else if (label.equals("syntax")) {
+// RIGHT //      if (!context.permitsSyntax()) throw unexpected("'syntax' in " + context);
+// RIGHT //      String syntax = readQuotedString();
+// RIGHT //      switch (syntax) {
+// RIGHT //        case "proto2":
+// RIGHT //          builder.setSyntax(PROTO_2);
+// RIGHT //          break;
+// RIGHT //        case "proto3":
+// RIGHT //          builder.setSyntax(PROTO_3);
+// RIGHT //          break;
+// RIGHT //        default:
+// RIGHT //          throw unexpected("'syntax' must be 'proto2' or 'proto3'. Found: " + syntax);
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("option")) {
+      OptionElement result = readOption('=');
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return result;
+    } else if (label.equals("message")) {
+      return readMessage(documentation);
+    } else if (label.equals("enum")) {
+      return readEnumElement(documentation);
+    } else if (label.equals("service")) {
+      return readService(documentation);
+    } else if (label.equals("extend")) {
+      return readExtend(documentation);
+    } else if (label.equals("rpc")) {
+// RIGHT //      if (!context.permitsRpc()) throw unexpected("'rpc' in " + context);
+      return readRpc(documentation);
+    } else if (label.equals("required") || label.equals("optional") || label.equals("repeated")) {
+      if (!context.permitsField()) throw unexpected("fields must be nested");
+      MessageElement.Label labelEnum = MessageElement.Label.valueOf(label.toUpperCase(Locale.US));
+      return readField(documentation, labelEnum);
+    } else if (label.equals("oneof")) {
+// RIGHT //      if (!context.permitsOneOf()) throw unexpected("'oneof' must be nested in message");
+      return readOneOf(documentation);
+    } else if (label.equals("extensions")) {
+// RIGHT //      if (!context.permitsExtensions()) throw unexpected("'extensions' must be nested");
+      return readExtensions(documentation);
+    } else if (context == Context.ENUM) {
+      List<OptionElement> options = new ArrayList<>();
+
+      if (readChar() != '=') throw unexpected("expected '='");
+      int tag = readInt();
+      if (peekChar() == '[') {
+        readChar();
+        while (true) {
+          options.add(readOption('='));
+          char c = readChar();
+          if (c == ']') {
+            break;
+          }
+          if (c != ',') {
+            throw unexpected("Expected ',' or ']");
+          }
+        }
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+// LEFT //      documentation = tryAppendTrailingDocumentation(documentation);
+      return EnumConstantElement.create(label, tag, documentation, options);
+    } else {
+      throw unexpected("unexpected label: " + label);
+    }
+// END readDeclaration(String-String-Context-Context)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_60735_1da54\rev_rev_left_60735-rev_right_1da54\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: [380, 381, 383, 384]
+Right editions: []
+Merged body: 
+// START readField(String-String-MessageElement.Label-MessageElement.Label)//private FieldElement readField(String documentation, MessageElement.Label label) {
+    String type = readName();
+    String name = readName();
+    if (readChar() != '=') throw unexpected("expected '='");
+    int tag = readInt();
+    List<OptionElement> options = new ArrayList<>();
+
+    if (peekChar() == '[') {
+      pos++;
+      while (true) {
+        options.add(readOption('='));
+
+        // Check for optional ',' or closing ']'
+        char c = peekChar();
+        if (c == ']') {
+          pos++;
+          break;
+        } else if (c == ',') {
+          pos++;
+        }
+      }
+    }
+// LEFT //    if (readChar() != ';') {
+// LEFT //      throw unexpected("expected ';'");
+    }
+// LEFT //    documentation = tryAppendTrailingDocumentation(documentation);
+// LEFT //    return FieldElement.create(label, type, name, tag, documentation, options);
+// END readField(String-String-MessageElement.Label-MessageElement.Label)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_60735_1da54\rev_rev_left_60735-rev_right_1da54\protoparser\src\main\java\com\squareup\protoparser\ProtoSchemaParser.java
+Different Spacing: false
+Left editions: [236]
+Right editions: [160, 168, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 205, 212, 215]
+Merged body: 
+// START readDeclaration(String-String-Context-Context)//private Object readDeclaration(String documentation, Context context) {
+    // Skip unnecessary semicolons, occasionally used after a nested message declaration.
+    if (peekChar() == ';') {
+      pos++;
+      return null;
+    }
+
+    String label = readWord();
+
+    if (label.equals("package")) {
+// RIGHT //      if (!context.permitsPackage()) throw unexpected("'package' in " + context);
+      if (packageName != null) throw unexpected("too many package names");
+      packageName = readName();
+      builder.setPackageName(packageName);
+      prefix = packageName + ".";
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("import")) {
+// RIGHT //      if (!context.permitsImport()) throw unexpected("'import' in " + context);
+      String importString = readString();
+      if ("public".equals(importString)) {
+        builder.addPublicDependency(readString());
+      } else {
+        builder.addDependency(importString);
+// RIGHT //      }
+// RIGHT //      if (readChar() != ';') throw unexpected("expected ';'");
+// RIGHT //      return null;
+// RIGHT //    } else if (label.equals("syntax")) {
+// RIGHT //      if (!context.permitsSyntax()) throw unexpected("'syntax' in " + context);
+// RIGHT //      String syntax = readQuotedString();
+// RIGHT //      switch (syntax) {
+// RIGHT //        case "proto2":
+// RIGHT //          builder.setSyntax(PROTO_2);
+// RIGHT //          break;
+// RIGHT //        case "proto3":
+// RIGHT //          builder.setSyntax(PROTO_3);
+// RIGHT //          break;
+// RIGHT //        default:
+// RIGHT //          throw unexpected("'syntax' must be 'proto2' or 'proto3'. Found: " + syntax);
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("option")) {
+      OptionElement result = readOption('=');
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return result;
+    } else if (label.equals("message")) {
+      return readMessage(documentation);
+    } else if (label.equals("enum")) {
+      return readEnumElement(documentation);
+    } else if (label.equals("service")) {
+      return readService(documentation);
+    } else if (label.equals("extend")) {
+      return readExtend(documentation);
+    } else if (label.equals("rpc")) {
+// RIGHT //      if (!context.permitsRpc()) throw unexpected("'rpc' in " + context);
+      return readRpc(documentation);
+    } else if (label.equals("required") || label.equals("optional") || label.equals("repeated")) {
+      if (!context.permitsField()) throw unexpected("fields must be nested");
+      MessageElement.Label labelEnum = MessageElement.Label.valueOf(label.toUpperCase(Locale.US));
+      return readField(documentation, labelEnum);
+    } else if (label.equals("oneof")) {
+// RIGHT //      if (!context.permitsOneOf()) throw unexpected("'oneof' must be nested in message");
+      return readOneOf(documentation);
+    } else if (label.equals("extensions")) {
+// RIGHT //      if (!context.permitsExtensions()) throw unexpected("'extensions' must be nested");
+      return readExtensions(documentation);
+    } else if (context == Context.ENUM) {
+      List<OptionElement> options = new ArrayList<>();
+
+      if (readChar() != '=') throw unexpected("expected '='");
+      int tag = readInt();
+      if (peekChar() == '[') {
+        readChar();
+        while (true) {
+          options.add(readOption('='));
+          char c = readChar();
+          if (c == ']') {
+            break;
+          }
+          if (c != ',') {
+            throw unexpected("Expected ',' or ']");
+          }
+        }
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+// LEFT //      documentation = tryAppendTrailingDocumentation(documentation);
+      return EnumConstantElement.create(label, tag, documentation, options);
+    } else {
+      throw unexpected("unexpected label: " + label);
+    }
+// END readDeclaration(String-String-Context-Context)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b166-53f7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0e65-09bed
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_f0e65_09bed\rev_rev_left_f0e65-rev_right_09bed\protoparser\src\main\java\com\squareup\protoparser\ProtoParser.java
+Different Spacing: false
+Left editions: []
+Right editions: [438]
+Merged body: 
+// START readOption(char-char)//private OptionElement readOption(char keyValueSeparator) {
+    boolean isExtension = (peekChar() == '[');
+    boolean isParenthesized = (peekChar() == '(');
+    String name = readName(); // Option name.
+    if (isExtension) {
+      name = "[" + name + "]";
+    }
+    String subName = null;
+    char c = readChar();
+    if (c == '.') {
+      // Read nested field name. For example "baz" in "(foo.bar).baz = 12".
+      subName = readName();
+      c = readChar();
+    }
+    if (c != keyValueSeparator) {
+      throw unexpected("expected '" + keyValueSeparator + "' in option");
+    }
+    Object value = readValue();
+    Object valueOrSubOption =
+// RIGHT //        subName != null ? OptionElement.create(subName, value) : value;
+    return OptionElement.create(name, valueOrSubOption, isParenthesized);
+// END readOption(char-char)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_f0e65_09bed\rev_rev_left_f0e65-rev_right_09bed\protoparser\src\main\java\com\squareup\protoparser\ProtoParser.java
+Different Spacing: false
+Left editions: [216]
+Right editions: []
+Merged body: 
+// START readDeclaration(String-String-Context-Context)//private Object readDeclaration(String documentation, Context context) {
+    // Skip unnecessary semicolons, occasionally used after a nested message declaration.
+    if (peekChar() == ';') {
+      pos++;
+      return null;
+    }
+
+    String label = readWord();
+
+    if (label.equals("package")) {
+      if (!context.permitsPackage()) throw unexpected("'package' in " + context);
+      if (packageName != null) throw unexpected("too many package names");
+      packageName = readName();
+      fileBuilder.packageName(packageName);
+      prefix = packageName + ".";
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("import")) {
+      if (!context.permitsImport()) throw unexpected("'import' in " + context);
+      String importString = readString();
+      if ("public".equals(importString)) {
+        fileBuilder.addPublicDependency(readString());
+      } else {
+        fileBuilder.addDependency(importString);
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("syntax")) {
+      if (!context.permitsSyntax()) throw unexpected("'syntax' in " + context);
+      String syntax = readQuotedString();
+      switch (syntax) {
+        case "proto2":
+          fileBuilder.syntax(PROTO_2);
+          break;
+        case "proto3":
+          fileBuilder.syntax(PROTO_3);
+          break;
+        default:
+          throw unexpected("'syntax' must be 'proto2' or 'proto3'. Found: " + syntax);
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return null;
+    } else if (label.equals("option")) {
+      OptionElement result = readOption('=');
+      if (readChar() != ';') throw unexpected("expected ';'");
+      return result;
+    } else if (label.equals("message")) {
+      return readMessage(documentation);
+    } else if (label.equals("enum")) {
+      return readEnumElement(documentation);
+    } else if (label.equals("service")) {
+      return readService(documentation);
+    } else if (label.equals("extend")) {
+      return readExtend(documentation);
+    } else if (label.equals("rpc")) {
+      if (!context.permitsRpc()) throw unexpected("'rpc' in " + context);
+      return readRpc(documentation);
+    } else if (label.equals("required") || label.equals("optional") || label.equals("repeated")) {
+      if (!context.permitsField()) throw unexpected("fields must be nested");
+// LEFT //      FieldElement.Label labelEnum = FieldElement.Label.valueOf(label.toUpperCase(Locale.US));
+      return readField(documentation, labelEnum);
+    } else if (label.equals("oneof")) {
+      if (!context.permitsOneOf()) throw unexpected("'oneof' must be nested in message");
+      return readOneOf(documentation);
+    } else if (label.equals("extensions")) {
+      if (!context.permitsExtensions()) throw unexpected("'extensions' must be nested");
+      return readExtensions(documentation);
+    } else if (context == Context.ENUM) {
+      if (readChar() != '=') throw unexpected("expected '='");
+
+      EnumConstantElement.Builder builder = EnumConstantElement.builder()
+          .name(label)
+          .tag(readInt());
+
+      if (peekChar() == '[') {
+        readChar();
+        while (true) {
+          builder.addOption(readOption('='));
+          char c = readChar();
+          if (c == ']') {
+            break;
+          }
+          if (c != ',') {
+            throw unexpected("Expected ',' or ']");
+          }
+        }
+      }
+      if (readChar() != ';') throw unexpected("expected ';'");
+      documentation = tryAppendTrailingDocumentation(documentation);
+      return builder.documentation(documentation).build();
+    } else {
+      throw unexpected("unexpected label: " + label);
+    }
+// END readDeclaration(String-String-Context-Context)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4f890-1227a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad824-1209a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_890c6-2aaeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15c6a-3d6d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0dea-1ea13
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c8a2-88712
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17147-55727
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6680-f2e14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5cf8a-a57e7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a5df-49f23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5285e-33f9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03e92-5c0a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_02a08-51898
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48385-f00f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50637-43713
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9b87-7d2b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30fb4-46acd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_edd88-ca119
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d308e-c2e79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_415da-a5e2a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4acf4-f421c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db6a6-191fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5741-cb832
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9eb1-2bf64
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3418-0908b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_644ad-f20ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7541-91985
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d471a-6a4e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d60d8-c5bd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd003-55f54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48a16-39a92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7eb25-cb5bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78eaf-a2568
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f8dd-5be97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27eae-8439a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b159c-b7230
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab6f0-b9ecc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6074-479bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0dd2b-7d186
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_702c1-ca6d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b604-50193
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fa0e-3a580
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70779-f1565
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae150-9ca60
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccd13-29278
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_792a1-23682
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35086-17b61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_534ce-fd88c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24fae-af22a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_14949-674d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_acee8-b7f16
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48dcd-8d7b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b983-2bf79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1352c-bd828
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de8cc-63fc5
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_de8cc_63fc5\rev_rev_left_de8cc-rev_right_63fc5\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1043]
+Merged body: 
+// START sanitize(String-String)//private static String sanitize(String name) {
+// RIGHT //    return SourceVersion.isKeyword(name) ? "_" + name : name;
+// END sanitize(String-String)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_de8cc_63fc5\rev_rev_left_de8cc-rev_right_63fc5\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [794, 795, 798]
+Right editions: []
+Merged body: 
+// START builder(MessageType-MessageType-ClassName-ClassName-ClassName-ClassName)//private TypeSpec builder(MessageType type, ClassName javaType, ClassName builderType) {
+    TypeSpec.Builder result = TypeSpec.classBuilder("Builder")
+        .addModifiers(PUBLIC, STATIC, FINAL);
+
+    result.superclass(builderOf(javaType, builderType));
+
+// LEFT //    for (Field field : type.fieldsAndOneOfFields()) {
+// LEFT //      result.addField(fieldType(field), sanitize(field.name()), PUBLIC);
+    }
+
+// LEFT //    result.addMethod(builderNoArgsConstructor(type));
+    result.addMethod(builderCopyConstructor(type));
+
+    for (Field field : type.fields()) {
+      result.addMethod(setter(builderType, null, field));
+    }
+
+    for (OneOf oneOf : type.oneOfs()) {
+      for (Field field : oneOf.fields()) {
+        result.addMethod(setter(builderType, oneOf, field));
+      }
+    }
+
+    result.addMethod(builderBuild(type, javaType));
+    return result.build();
+// END builder(MessageType-MessageType-ClassName-ClassName-ClassName-ClassName)//  }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_89808-59171
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec1cd-eb166
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_ec1cd_eb166\rev_rev_left_ec1cd-rev_right_eb166\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [881, 882, 883, 885, 886, 887, 888]
+Merged body: 
+// START setter(TypeName-TypeName-OneOf-OneOf-Field-Field)//private MethodSpec setter(TypeName builderType, OneOf oneOf, Field field) {
+    TypeName javaType = fieldType(field);
+    String fieldName = sanitize(field.name());
+
+    MethodSpec.Builder result = MethodSpec.methodBuilder(fieldName)
+        .addModifiers(PUBLIC)
+        .addParameter(javaType, fieldName)
+        .returns(builderType);
+
+    if (!field.documentation().isEmpty()) {
+      result.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+    }
+
+    if (field.isDeprecated()) {
+      result.addAnnotation(Deprecated.class);
+    }
+
+    if (field.isRepeated()) {
+// RIGHT //      result.addStatement("checkElementsNotNull($L)", fieldName);
+// RIGHT //    }
+// RIGHT //    result.addStatement("this.$L = $L", fieldName, fieldName);
+
+// RIGHT //    if (oneOf != null) {
+// RIGHT //      for (Field other : oneOf.fields()) {
+// RIGHT //        if (field != other) {
+// RIGHT //          result.addStatement("this.$L = null", sanitize(other.name()));
+        }
+      }
+    }
+
+    result.addStatement("return this");
+    return result.build();
+// END setter(TypeName-TypeName-OneOf-OneOf-Field-Field)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_ec1cd_eb166\rev_rev_left_ec1cd-rev_right_eb166\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [797, 798, 801]
+Right editions: []
+Merged body: 
+// START builder(MessageType-MessageType-ClassName-ClassName-ClassName-ClassName)//private TypeSpec builder(MessageType type, ClassName javaType, ClassName builderType) {
+    TypeSpec.Builder result = TypeSpec.classBuilder("Builder")
+        .addModifiers(PUBLIC, STATIC, FINAL);
+
+    result.superclass(builderOf(javaType, builderType));
+
+// LEFT //    for (Field field : type.fieldsAndOneOfFields()) {
+// LEFT //      result.addField(fieldType(field), sanitize(field.name()), PUBLIC);
+    }
+
+// LEFT //    result.addMethod(builderNoArgsConstructor(type));
+    result.addMethod(builderCopyConstructor(type));
+
+    for (Field field : type.fields()) {
+      result.addMethod(setter(builderType, null, field));
+    }
+
+    for (OneOf oneOf : type.oneOfs()) {
+      for (Field field : oneOf.fields()) {
+        result.addMethod(setter(builderType, oneOf, field));
+      }
+    }
+
+    result.addMethod(builderBuild(type, javaType));
+    return result.build();
+// END builder(MessageType-MessageType-ClassName-ClassName-ClassName-ClassName)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_ec1cd_eb166\rev_rev_left_ec1cd-rev_right_eb166\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [1044]
+Right editions: []
+Merged body: 
+// START sanitize(String-String)//private static String sanitize(String name) {
+// LEFT //    return SourceVersion.isKeyword(name) ? "_" + name : name;
+// END sanitize(String-String)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_ec1cd_eb166\rev_rev_left_ec1cd-rev_right_eb166\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [881, 882, 883, 885, 886, 887, 888]
+Merged body: 
+// START setter(TypeName-TypeName-OneOf-OneOf-Field-Field)//private MethodSpec setter(TypeName builderType, OneOf oneOf, Field field) {
+    TypeName javaType = fieldType(field);
+    String fieldName = sanitize(field.name());
+
+    MethodSpec.Builder result = MethodSpec.methodBuilder(fieldName)
+        .addModifiers(PUBLIC)
+        .addParameter(javaType, fieldName)
+        .returns(builderType);
+
+    if (!field.documentation().isEmpty()) {
+      result.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+    }
+
+    if (field.isDeprecated()) {
+      result.addAnnotation(Deprecated.class);
+    }
+
+    if (field.isRepeated()) {
+// RIGHT //      result.addStatement("checkElementsNotNull($L)", fieldName);
+// RIGHT //    }
+// RIGHT //    result.addStatement("this.$L = $L", fieldName, fieldName);
+
+// RIGHT //    if (oneOf != null) {
+// RIGHT //      for (Field other : oneOf.fields()) {
+// RIGHT //        if (field != other) {
+// RIGHT //          result.addStatement("this.$L = null", sanitize(other.name()));
+        }
+      }
+    }
+
+    result.addStatement("return this");
+    return result.build();
+// END setter(TypeName-TypeName-OneOf-OneOf-Field-Field)//  }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dda92-f3892
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_dda92_f3892\rev_rev_left_dda92-rev_right_f3892\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [418, 419, 420, 421, 422, 423, 424, 442, 443, 446, 447, 448, 449]
+Merged body: 
+// START generateEnum(EnumType-EnumType)//public TypeSpec generateEnum(EnumType type) {
+    ClassName javaType = (ClassName) typeName(type.name());
+
+    TypeSpec.Builder builder = TypeSpec.enumBuilder(javaType.simpleName())
+        .addModifiers(PUBLIC)
+        .addSuperinterface(WireEnum.class);
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    // Output Private tag field
+    builder.addField(TypeName.INT, "value", PRIVATE, FINAL);
+
+    MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder();
+    constructorBuilder.addStatement("this.value = value");
+    constructorBuilder.addParameter(TypeName.INT, "value");
+
+    // Enum constant options, each of which requires a constructor parameter and a field.
+    Set<Field> allOptionFieldsBuilder = new LinkedHashSet<>();
+    for (EnumConstant constant : type.constants()) {
+      for (Field optionField : constant.options().map().keySet()) {
+        String fullyQualifiedName = optionField.packageName() + "." + optionField.name();
+        if (!enumOptions.contains(fullyQualifiedName)) {
+          continue;
+        }
+
+        if (allOptionFieldsBuilder.add(optionField)) {
+          TypeName optionJavaType = typeName(optionField.type());
+          builder.addField(optionJavaType, optionField.name(), PUBLIC, FINAL);
+          constructorBuilder.addParameter(optionJavaType, optionField.name());
+          constructorBuilder.addStatement("this.$L = $L", optionField.name(), optionField.name());
+        }
+      }
+    }
+    ImmutableList<Field> allOptionFields = ImmutableList.copyOf(allOptionFieldsBuilder);
+    String enumArgsFormat = "$L" + Strings.repeat(", $L", allOptionFields.size());
+    builder.addMethod(constructorBuilder.build());
+
+// RIGHT //    MethodSpec.Builder fromValueBuilder = MethodSpec.methodBuilder("fromValue")
+// RIGHT //        .addJavadoc("Return the constant for {@code value} or null.\n")
+// RIGHT //        .addModifiers(PUBLIC, STATIC)
+// RIGHT //        .returns(javaType)
+// RIGHT //        .addParameter(int.class, "value")
+// RIGHT //        .beginControlFlow("switch (value)");
+// RIGHT //
+    for (EnumConstant constant : type.constants()) {
+      Object[] enumArgs = new Object[allOptionFields.size() + 1];
+      enumArgs[0] = constant.tag();
+      for (int i = 0; i < allOptionFields.size(); i++) {
+        Field key = allOptionFields.get(i);
+        Object value = constant.options().map().get(key);
+        enumArgs[i + 1] = value != null
+            ? fieldInitializer(key.type(), value)
+            : null;
+      }
+
+      TypeSpec.Builder constantBuilder = TypeSpec.anonymousClassBuilder(enumArgsFormat, enumArgs);
+      if (!constant.documentation().isEmpty()) {
+        constantBuilder.addJavadoc("$L\n", sanitizeJavadoc(constant.documentation()));
+      }
+
+      builder.addEnumConstant(constant.name(), constantBuilder.build());
+// RIGHT //
+// RIGHT //      fromValueBuilder.addStatement("case $L: return $L", constant.tag(), constant.name());
+    }
+
+// RIGHT //    builder.addMethod(fromValueBuilder.addStatement("default: return null")
+// RIGHT //        .endControlFlow()
+// RIGHT //        .build());
+// RIGHT //
+    builder.addField(FieldSpec.builder(adapterOf(javaType), "ADAPTER")
+        .addModifiers(PUBLIC, STATIC, FINAL)
+        .initializer("$T.newEnumAdapter($T.class)", ProtoAdapter.class, javaType)
+        .build());
+
+    // Enum type options.
+    if (emitOptions) {
+      FieldSpec options = optionsField(ENUM_OPTIONS, "ENUM_OPTIONS", type.options());
+      if (options != null) {
+        builder.addField(options);
+      }
+    }
+
+    // Public Getter
+    builder.addMethod(MethodSpec.methodBuilder("getValue")
+        .addAnnotation(Override.class)
+        .addModifiers(PUBLIC)
+        .returns(TypeName.INT)
+        .addStatement("return value")
+        .build());
+
+    return builder.build();
+// END generateEnum(EnumType-EnumType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_dda92_f3892\rev_rev_left_dda92-rev_right_f3892\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 509, 514, 520, 521, 527, 528, 529, 545, 546, 557, 558, 559, 560, 561]
+Right editions: []
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+// LEFT //    // Preallocate all of the names we'll need for this type. Names are allocated in precedence
+// LEFT //    // order, so names we're stuck with (serialVersionUID etc.) occur before proto field names are
+// LEFT //    // assigned. Names we aren't stuck with (typically for locals) yield to message fields.
+// LEFT //    NameAllocator nameAllocator = new NameAllocator();
+// LEFT //    nameAllocator.newName("serialVersionUID", "serialVersionUID");
+// LEFT //    nameAllocator.newName("ADAPTER", "ADAPTER");
+// LEFT //    nameAllocator.newName("MESSAGE_OPTIONS", "MESSAGE_OPTIONS");
+// LEFT //    for (Field field : type.fieldsAndOneOfFields()) {
+// LEFT //      nameAllocator.newName(field.name(), field);
+// LEFT //    }
+// LEFT //    nameAllocator.newName("tagMap", "tagMap");
+// LEFT //    nameAllocator.newName("result", "result");
+// LEFT //    nameAllocator.newName("message", "message");
+// LEFT //    nameAllocator.newName("other", "other");
+// LEFT //    nameAllocator.newName("o", "o");
+// LEFT //
+    ClassName javaType = (ClassName) typeName(type.name());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType));
+
+// LEFT //    builder.addField(FieldSpec.builder(adapterOf(javaType), nameAllocator.get("ADAPTER"))
+        .addModifiers(PUBLIC, STATIC, FINAL)
+        .initializer("$T.newMessageAdapter($T.class)", ProtoAdapter.class, javaType)
+        .build());
+
+// LEFT //    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    if (emitOptions) {
+// LEFT //      FieldSpec messageOptions = optionsField(
+// LEFT //          MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+      if (messageOptions != null) {
+        builder.addField(messageOptions);
+      }
+
+      for (Field field : type.fieldsAndOneOfFields()) {
+// LEFT //        String fieldName = nameAllocator.get(field);
+// LEFT //        String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+// LEFT //        FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+        if (fieldOptions != null) {
+          builder.addField(fieldOptions);
+        }
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(field, fieldJavaType));
+      }
+
+// LEFT //      String fieldName = nameAllocator.get(field);
+// LEFT //      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+// LEFT //    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+// LEFT //    builder.addMethod(messageFieldsAndTagMapConstructor(nameAllocator, type));
+// LEFT //    builder.addMethod(messageEquals(nameAllocator, type));
+// LEFT //    builder.addMethod(messageHashCode(nameAllocator, type));
+// LEFT //    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5e17-d6a27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d176d-b9c75
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01e67-60b23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ea2da-af001
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e42d-2aaf0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8924c-b2fcb
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_8924c_b2fcb\rev_rev_left_8924c-rev_right_b2fcb\wire-compiler\src\main\java\com\squareup\wire\CommandLineOptions.java
+Different Spacing: false
+Left editions: []
+Right editions: [201, 202]
+Merged body: 
+// START CommandLineOptions(String-String)//CommandLineOptions(String... args) throws WireException {
+    List<String> sourceFileNames = new ArrayList<>();
+    List<String> roots = new ArrayList<>();
+    boolean emitOptions = true;
+    List<String> protoPaths = new ArrayList<>();
+    String javaOut = null;
+    String registryClass = null;
+    List<String> enumOptionsList = new ArrayList<>();
+    boolean quiet = false;
+    boolean dryRun = false;
+    boolean emitAndroid = false;
+    boolean emitFull = false;
+
+    for (String arg : args) {
+      if (arg.startsWith(PROTO_PATH_FLAG)) {
+        protoPaths.add(arg.substring(PROTO_PATH_FLAG.length()));
+      } else if (arg.startsWith(JAVA_OUT_FLAG)) {
+        javaOut = arg.substring(JAVA_OUT_FLAG.length());
+      } else if (arg.startsWith(FILES_FLAG)) {
+        File files = new File(arg.substring(FILES_FLAG.length()));
+        String[] fileNames;
+        try {
+          fileNames = new Scanner(files, "UTF-8").useDelimiter("\\A").next().split("\n");
+        } catch (FileNotFoundException ex) {
+          throw new WireException("Error processing argument " + arg, ex);
+        }
+        sourceFileNames.addAll(Arrays.asList(fileNames));
+      } else if (arg.startsWith(ROOTS_FLAG)) {
+        roots.addAll(splitArg(arg, ROOTS_FLAG.length()));
+      } else if (arg.equals(NO_OPTIONS_FLAG)) {
+        emitOptions = false;
+      } else if (arg.startsWith(ENUM_OPTIONS_FLAG)) {
+        enumOptionsList.addAll(splitArg(arg, ENUM_OPTIONS_FLAG.length()));
+      } else if (arg.equals(QUIET_FLAG)) {
+        quiet = true;
+      } else if (arg.equals(DRY_RUN_FLAG)) {
+        dryRun = true;
+      } else if (arg.equals(ANDROID)) {
+        emitAndroid = true;
+      } else if (arg.equals(FULL)) {
+        emitFull = true;
+// RIGHT //      } else if (arg.startsWith("--")) {
+// RIGHT //        throw new IllegalArgumentException("Unknown argument '" + arg + "'.");
+      } else {
+        sourceFileNames.add(arg);
+      }
+    }
+
+    this.protoPaths = protoPaths;
+    this.javaOut = javaOut;
+    this.sourceFileNames = sourceFileNames;
+    this.roots = roots;
+    this.emitOptions = emitOptions;
+    this.enumOptions = new LinkedHashSet<>(enumOptionsList);
+    this.quiet = quiet;
+    this.dryRun = dryRun;
+    this.emitAndroid = emitAndroid;
+    this.emitFull = emitFull;
+// END CommandLineOptions(String-String)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_926a8-1f9c7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80567-4510f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1951b-8afc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adf98-0a610
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_adf98_0a610\rev_rev_left_adf98-rev_right_0a610\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024]
+Right editions: []
+Merged body: 
+// START messageFieldsAndUnknownFieldsConstructor(NameAllocator-NameAllocator-MessageType-MessageType)//private MethodSpec messageFieldsAndUnknownFieldsConstructor(
+      NameAllocator nameAllocator, MessageType type) {
+    String unknownFieldsName = nameAllocator.get("unknownFields");
+    MethodSpec.Builder result = MethodSpec.constructorBuilder()
+        .addModifiers(PUBLIC)
+        .addStatement("super($N)", unknownFieldsName);
+
+// LEFT //    for (OneOf oneOf : type.oneOfs()) {
+// LEFT //      if (oneOf.fields().size() < 2) continue;
+// LEFT //      CodeBlock.Builder fieldNamesBuilder = CodeBlock.builder();
+// LEFT //      boolean first = true;
+// LEFT //      for (Field field : oneOf.fields()) {
+// LEFT //        if (!first) fieldNamesBuilder.add(", ");
+// LEFT //        fieldNamesBuilder.add("$N", nameAllocator.get(field));
+// LEFT //        first = false;
+// LEFT //      }
+// LEFT //      CodeBlock fieldNames = fieldNamesBuilder.build();
+// LEFT //      result.beginControlFlow("if (countNonNull($L) > 1)", fieldNames);
+// LEFT //      result.addStatement("throw new IllegalArgumentException($S)",
+// LEFT //          "at most one of " + fieldNames + " may be non-null");
+// LEFT //      result.endControlFlow();
+// LEFT //    }
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName javaType = fieldType(field);
+      String fieldName = nameAllocator.get(field);
+      result.addParameter(javaType, fieldName);
+      if (field.isRepeated()) {
+        result.addStatement("this.$L = immutableCopyOf($L)", fieldName, fieldName);
+      } else {
+        result.addStatement("this.$L = $L", fieldName, fieldName);
+      }
+    }
+
+    result.addParameter(BYTE_STRING, unknownFieldsName);
+
+    return result.build();
+// END messageFieldsAndUnknownFieldsConstructor(NameAllocator-NameAllocator-MessageType-MessageType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_adf98_0a610\rev_rev_left_adf98-rev_right_0a610\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [562, 563, 564]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = allocateNames(type);
+
+    ClassName javaType = (ClassName) typeName(type.name());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    builder.addField(messageAdapter(nameAllocator, type, javaType, builderJavaType));
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    if (emitOptions) {
+      FieldSpec messageOptions = optionsField(
+          MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+      if (messageOptions != null) {
+        builder.addField(messageOptions);
+      }
+
+      for (Field field : type.fieldsAndOneOfFields()) {
+        String fieldName = nameAllocator.get(field);
+        String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+        FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+        if (fieldOptions != null) {
+          builder.addField(fieldOptions);
+        }
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      if (emitCompact) {
+        fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      }
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+// RIGHT //      if (field.isExtension()) {
+// RIGHT //        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+// RIGHT //      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      builder.addMethod(MethodSpec.methodBuilder("describeContents")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .returns(int.class)
+          .addStatement("return 0")
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3966-6b9e3
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_e3966_6b9e3\rev_rev_left_e3966-rev_right_6b9e3\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [562, 563, 564]
+Right editions: [607, 609, 610, 611]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = allocateNames(type);
+
+    ClassName javaType = (ClassName) typeName(type.name());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    builder.addField(messageAdapter(nameAllocator, type, javaType, builderJavaType));
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    if (emitOptions) {
+      FieldSpec messageOptions = optionsField(
+          MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+      if (messageOptions != null) {
+        builder.addField(messageOptions);
+      }
+
+      for (Field field : type.fieldsAndOneOfFields()) {
+        String fieldName = nameAllocator.get(field);
+        String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+        FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+        if (fieldOptions != null) {
+          builder.addField(fieldOptions);
+        }
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      if (emitCompact) {
+        fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      }
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+// LEFT //      if (field.isExtension()) {
+// LEFT //        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+// LEFT //      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      builder.addMethod(MethodSpec.methodBuilder("describeContents")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .returns(int.class)
+          .addStatement("return 0")
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+// RIGHT //                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+// RIGHT //                      .nextControlFlow("catch($T e)", IOException.class)
+// RIGHT //                      .addStatement("throw new $T(e)", RuntimeException.class)
+// RIGHT //                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_e3966_6b9e3\rev_rev_left_e3966-rev_right_6b9e3\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [1014, 1015, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028]
+Right editions: []
+Merged body: 
+// START messageFieldsAndUnknownFieldsConstructor(NameAllocator-NameAllocator-MessageType-MessageType)//private MethodSpec messageFieldsAndUnknownFieldsConstructor(
+      NameAllocator nameAllocator, MessageType type) {
+    String unknownFieldsName = nameAllocator.get("unknownFields");
+    MethodSpec.Builder result = MethodSpec.constructorBuilder()
+        .addModifiers(PUBLIC)
+        .addStatement("super($N)", unknownFieldsName);
+
+// LEFT //    for (OneOf oneOf : type.oneOfs()) {
+// LEFT //      if (oneOf.fields().size() < 2) continue;
+// LEFT //      CodeBlock.Builder fieldNamesBuilder = CodeBlock.builder();
+// LEFT //      boolean first = true;
+// LEFT //      for (Field field : oneOf.fields()) {
+// LEFT //        if (!first) fieldNamesBuilder.add(", ");
+// LEFT //        fieldNamesBuilder.add("$N", nameAllocator.get(field));
+// LEFT //        first = false;
+// LEFT //      }
+// LEFT //      CodeBlock fieldNames = fieldNamesBuilder.build();
+// LEFT //      result.beginControlFlow("if (countNonNull($L) > 1)", fieldNames);
+// LEFT //      result.addStatement("throw new IllegalArgumentException($S)",
+// LEFT //          "at most one of " + fieldNames + " may be non-null");
+// LEFT //      result.endControlFlow();
+// LEFT //    }
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName javaType = fieldType(field);
+      String fieldName = nameAllocator.get(field);
+      result.addParameter(javaType, fieldName);
+      if (field.isRepeated()) {
+        result.addStatement("this.$L = immutableCopyOf($L)", fieldName, fieldName);
+      } else {
+        result.addStatement("this.$L = $L", fieldName, fieldName);
+      }
+    }
+
+    result.addParameter(BYTE_STRING, unknownFieldsName);
+
+    return result.build();
+// END messageFieldsAndUnknownFieldsConstructor(NameAllocator-NameAllocator-MessageType-MessageType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_e3966_6b9e3\rev_rev_left_e3966-rev_right_6b9e3\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: [562, 563, 564]
+Right editions: [607, 609, 610, 611]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = allocateNames(type);
+
+    ClassName javaType = (ClassName) typeName(type.name());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    builder.addField(messageAdapter(nameAllocator, type, javaType, builderJavaType));
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    if (emitOptions) {
+      FieldSpec messageOptions = optionsField(
+          MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+      if (messageOptions != null) {
+        builder.addField(messageOptions);
+      }
+
+      for (Field field : type.fieldsAndOneOfFields()) {
+        String fieldName = nameAllocator.get(field);
+        String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+        FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+        if (fieldOptions != null) {
+          builder.addField(fieldOptions);
+        }
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      if (emitCompact) {
+        fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      }
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+// LEFT //      if (field.isExtension()) {
+// LEFT //        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+// LEFT //      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      builder.addMethod(MethodSpec.methodBuilder("describeContents")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .returns(int.class)
+          .addStatement("return 0")
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+// RIGHT //                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+// RIGHT //                      .nextControlFlow("catch($T e)", IOException.class)
+// RIGHT //                      .addStatement("throw new $T(e)", RuntimeException.class)
+// RIGHT //                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_622c2-8a3b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a11c-9f05d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ae92-74418
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a97dd-68a3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_200ea-6d95d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a6ec-7dca6
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_6a6ec_7dca6\rev_rev_left_6a6ec-rev_right_7dca6\wire-compiler\src\main\java\com\squareup\wire\WireCompiler.java
+Different Spacing: false
+Left editions: [314]
+Right editions: [303]
+Merged body: 
+// START compile({FormalParametersInternal})//void compile() throws IOException {
+    SchemaLoader schemaLoader = new SchemaLoader();
+    for (String protoPath : protoPaths) {
+      schemaLoader.addSource(fs.getPath(protoPath));
+    }
+    for (String sourceFileName : sourceFileNames) {
+      schemaLoader.addProto(sourceFileName);
+    }
+    Schema schema = schemaLoader.load();
+
+// RIGHT //    if (!identifierSet.isEmpty()) {
+      log.info("Analyzing dependencies of root types.");
+      schema = schema.prune(identifierSet);
+    }
+
+    JavaGenerator javaGenerator = JavaGenerator.get(schema)
+        .withOptions(emitOptions)
+        .withAndroid(emitAndroid)
+        .withCompact(emitCompact);
+
+    for (ProtoFile protoFile : schema.protoFiles()) {
+// LEFT //      if (!sourceFileNames.isEmpty() && !sourceFileNames.contains(protoFile.location().path())) {
+        continue; // Don't emit anything for files not explicitly compiled.
+      }
+
+      for (Type type : protoFile.types()) {
+        ClassName javaTypeName = (ClassName) javaGenerator.typeName(type.name());
+        TypeSpec typeSpec = type instanceof MessageType
+            ? javaGenerator.generateMessage((MessageType) type)
+            : javaGenerator.generateEnum((EnumType) type);
+        writeJavaFile(javaTypeName, typeSpec, type.location());
+      }
+    }
+// END compile({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0335-65ef4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d39d6-f77b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2efe-2796a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57c4d-fd4ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0356-9ebd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32693-f150d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8cc4d-8d0f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7ef3-65eff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10f0f-0e3d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c4ed-75dbe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5b50-82961
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [569]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = typeToNameAllocator.getUnchecked(type);
+
+    ClassName javaType = (ClassName) typeName(type.type());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    String protoAdapterName = "ProtoAdapter_" + javaType.simpleName();
+// RIGHT //    String protoAdapterClassName = nameAllocator.newName(protoAdapterName);
+    ClassName adapterJavaType = javaType.nestedClass(protoAdapterClassName);
+    builder.addField(messageAdapterField(nameAllocator, javaType, adapterJavaType));
+    // Note: The non-compact implementation is added at the very bottom of the surrounding type.
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    FieldSpec messageOptions = optionsField(
+        MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+    if (messageOptions != null) {
+      builder.addField(messageOptions);
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      String fieldName = nameAllocator.get(field);
+      String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+      FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+      if (fieldOptions != null) {
+        builder.addField(fieldOptions);
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+      if (field.isExtension()) {
+        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      if (emitAndroid && field.isOptional()) {
+        fieldBuilder.addAnnotation(NULLABLE);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+                      .nextControlFlow("catch ($T e)", IOException.class)
+                      .addStatement("throw new $T(e)", RuntimeException.class)
+                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    if (!emitCompact) {
+      // Add the ProtoAdapter implementation at the very bottom since it's ugly serialization code.
+      builder.addType(
+           messageAdapter(nameAllocator, type, javaType, adapterJavaType, builderJavaType));
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1123, 1126, 1127, 1128, 1129, 1130]
+Merged body: 
+// START messageEquals(NameAllocator-NameAllocator-MessageType-MessageType)//private MethodSpec messageEquals(NameAllocator nameAllocator, MessageType type) {
+    String otherName = nameAllocator.get("other");
+    String oName = nameAllocator.get("o");
+
+    TypeName javaType = typeName(type.type());
+    MethodSpec.Builder result = MethodSpec.methodBuilder("equals")
+        .addAnnotation(Override.class)
+        .addModifiers(PUBLIC)
+        .returns(boolean.class)
+        .addParameter(Object.class, otherName);
+
+    List<Field> fields = type.fieldsAndOneOfFields();
+    if (fields.isEmpty()) {
+      result.addStatement("return $N instanceof $T", otherName, javaType);
+      return result.build();
+    }
+
+    result.addStatement("if ($N == this) return true", otherName);
+    result.addStatement("if (!($N instanceof $T)) return false", otherName, javaType);
+
+    result.addStatement("$T $N = ($T) $N", javaType, oName, javaType, otherName);
+// RIGHT //    result.addCode("$[return unknownFields().equals($N.unknownFields())", oName);
+    for (Field field : fields) {
+      String fieldName = nameAllocator.get(field);
+// RIGHT //      if (field.isRequired() || field.isRepeated()) {
+// RIGHT //        result.addCode("\n&& $1L.equals($2N.$1L)", fieldName, oName);
+// RIGHT //      } else {
+// RIGHT //        result.addCode("\n&& $1T.equals($2L, $3N.$2L)", Internal.class, fieldName, oName);
+// RIGHT //      }
+    }
+    result.addCode(";\n$]");
+
+    return result.build();
+// END messageEquals(NameAllocator-NameAllocator-MessageType-MessageType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [569]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = typeToNameAllocator.getUnchecked(type);
+
+    ClassName javaType = (ClassName) typeName(type.type());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    String protoAdapterName = "ProtoAdapter_" + javaType.simpleName();
+// RIGHT //    String protoAdapterClassName = nameAllocator.newName(protoAdapterName);
+    ClassName adapterJavaType = javaType.nestedClass(protoAdapterClassName);
+    builder.addField(messageAdapterField(nameAllocator, javaType, adapterJavaType));
+    // Note: The non-compact implementation is added at the very bottom of the surrounding type.
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    FieldSpec messageOptions = optionsField(
+        MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+    if (messageOptions != null) {
+      builder.addField(messageOptions);
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      String fieldName = nameAllocator.get(field);
+      String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+      FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+      if (fieldOptions != null) {
+        builder.addField(fieldOptions);
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+      if (field.isExtension()) {
+        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      if (emitAndroid && field.isOptional()) {
+        fieldBuilder.addAnnotation(NULLABLE);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+                      .nextControlFlow("catch ($T e)", IOException.class)
+                      .addStatement("throw new $T(e)", RuntimeException.class)
+                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    if (!emitCompact) {
+      // Add the ProtoAdapter implementation at the very bottom since it's ugly serialization code.
+      builder.addType(
+           messageAdapter(nameAllocator, type, javaType, adapterJavaType, builderJavaType));
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1172, 1173, 1174, 1175, 1176, 1177]
+Merged body: 
+// START messageHashCode(NameAllocator-NameAllocator-MessageType-MessageType)//private MethodSpec messageHashCode(NameAllocator nameAllocator, MessageType type) {
+    String resultName = nameAllocator.get("result");
+    MethodSpec.Builder result = MethodSpec.methodBuilder("hashCode")
+        .addAnnotation(Override.class)
+        .addModifiers(PUBLIC)
+        .returns(int.class);
+
+    List<Field> fields = type.fieldsAndOneOfFields();
+    if (fields.isEmpty()) {
+      result.addStatement("return unknownFields().hashCode()");
+      return result.build();
+    }
+
+    result.addStatement("int $N = super.hashCode", resultName);
+    result.beginControlFlow("if ($N == 0)", resultName);
+    result.addStatement("$N = unknownFields().hashCode()", resultName);
+    for (Field field : fields) {
+      String fieldName = nameAllocator.get(field);
+// RIGHT //      result.addCode("$1N = $1N * 37 + ", resultName);
+// RIGHT //      if (field.isRepeated() || field.isRequired()) {
+// RIGHT //        result.addStatement("$L.hashCode()", fieldName);
+// RIGHT //      } else {
+// RIGHT //        result.addStatement("($1L != null ? $1L.hashCode() : 0)", fieldName);
+// RIGHT //      }
+    }
+    result.addStatement("super.hashCode = $N", resultName);
+    result.endControlFlow();
+    result.addStatement("return $N", resultName);
+    return result.build();
+// END messageHashCode(NameAllocator-NameAllocator-MessageType-MessageType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [569]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = typeToNameAllocator.getUnchecked(type);
+
+    ClassName javaType = (ClassName) typeName(type.type());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    String protoAdapterName = "ProtoAdapter_" + javaType.simpleName();
+// RIGHT //    String protoAdapterClassName = nameAllocator.newName(protoAdapterName);
+    ClassName adapterJavaType = javaType.nestedClass(protoAdapterClassName);
+    builder.addField(messageAdapterField(nameAllocator, javaType, adapterJavaType));
+    // Note: The non-compact implementation is added at the very bottom of the surrounding type.
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    FieldSpec messageOptions = optionsField(
+        MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+    if (messageOptions != null) {
+      builder.addField(messageOptions);
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      String fieldName = nameAllocator.get(field);
+      String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+      FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+      if (fieldOptions != null) {
+        builder.addField(fieldOptions);
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+      if (field.isExtension()) {
+        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      if (emitAndroid && field.isOptional()) {
+        fieldBuilder.addAnnotation(NULLABLE);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+                      .nextControlFlow("catch ($T e)", IOException.class)
+                      .addStatement("throw new $T(e)", RuntimeException.class)
+                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    if (!emitCompact) {
+      // Add the ProtoAdapter implementation at the very bottom since it's ugly serialization code.
+      builder.addType(
+           messageAdapter(nameAllocator, type, javaType, adapterJavaType, builderJavaType));
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [1197, 1198, 1199, 1200, 1201, 1203, 1205, 1206]
+Merged body: 
+// START messageToString(NameAllocator-NameAllocator-MessageType-MessageType)//private MethodSpec messageToString(NameAllocator nameAllocator, MessageType type) {
+    String builderName = nameAllocator.get("builder");
+    MethodSpec.Builder result = MethodSpec.methodBuilder("toString")
+        .addAnnotation(Override.class)
+        .addModifiers(PUBLIC)
+        .returns(String.class);
+
+    result.addStatement("$1T $2N = new $1T()", StringBuilder.class, builderName);
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      String fieldName = nameAllocator.get(field);
+// RIGHT //      if (field.isRepeated()) {
+// RIGHT //        result.addCode("if (!$N.isEmpty()) ", fieldName);
+// RIGHT //      } else if (!field.isRequired()) {
+// RIGHT //        result.addCode("if ($N != null) ", fieldName);
+// RIGHT //      }
+      if (isRedacted(field)) {
+// RIGHT //        result.addStatement("$N.append(\", $N=??\")", builderName, field.name());
+      } else {
+// RIGHT //        result.addStatement("$N.append(\", $N=\").append($L)", builderName, field.name(),
+// RIGHT //            fieldName);
+      }
+    }
+
+    result.addStatement("return builder.replace(0, 2, \"$L{\").append('}').toString()",
+        type.type().simpleName());
+
+    return result.build();
+// END messageToString(NameAllocator-NameAllocator-MessageType-MessageType)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\wire\revisions\rev_b5b50_82961\rev_rev_left_b5b50-rev_right_82961\wire-java-generator\src\main\java\com\squareup\wire\java\JavaGenerator.java
+Different Spacing: false
+Left editions: []
+Right editions: [569]
+Merged body: 
+// START generateMessage(MessageType-MessageType)//public TypeSpec generateMessage(MessageType type) {
+    NameAllocator nameAllocator = typeToNameAllocator.getUnchecked(type);
+
+    ClassName javaType = (ClassName) typeName(type.type());
+    ClassName builderJavaType = javaType.nestedClass("Builder");
+
+    TypeSpec.Builder builder = TypeSpec.classBuilder(javaType.simpleName());
+    builder.addModifiers(PUBLIC, FINAL);
+
+    if (javaType.enclosingClassName() != null) {
+      builder.addModifiers(STATIC);
+    }
+
+    if (!type.documentation().isEmpty()) {
+      builder.addJavadoc("$L\n", sanitizeJavadoc(type.documentation()));
+    }
+
+    builder.superclass(messageOf(javaType, builderJavaType));
+
+    String protoAdapterName = "ProtoAdapter_" + javaType.simpleName();
+// RIGHT //    String protoAdapterClassName = nameAllocator.newName(protoAdapterName);
+    ClassName adapterJavaType = javaType.nestedClass(protoAdapterClassName);
+    builder.addField(messageAdapterField(nameAllocator, javaType, adapterJavaType));
+    // Note: The non-compact implementation is added at the very bottom of the surrounding type.
+
+    builder.addField(FieldSpec.builder(TypeName.LONG, nameAllocator.get("serialVersionUID"))
+        .addModifiers(PRIVATE, STATIC, FINAL)
+        .initializer("$LL", 0L)
+        .build());
+
+    FieldSpec messageOptions = optionsField(
+        MESSAGE_OPTIONS, nameAllocator.get("MESSAGE_OPTIONS"), type.options());
+    if (messageOptions != null) {
+      builder.addField(messageOptions);
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      String fieldName = nameAllocator.get(field);
+      String optionsFieldName = "FIELD_OPTIONS_" + fieldName.toUpperCase(Locale.US);
+      FieldSpec fieldOptions = optionsField(FIELD_OPTIONS, optionsFieldName, field.options());
+      if (fieldOptions != null) {
+        builder.addField(fieldOptions);
+      }
+    }
+
+    for (Field field : type.fieldsAndOneOfFields()) {
+      TypeName fieldJavaType = fieldType(field);
+
+      if ((field.type().isScalar() || isEnum(field.type()))
+          && !field.isRepeated()
+          && !field.isPacked()) {
+        builder.addField(defaultField(nameAllocator, field, fieldJavaType));
+      }
+
+      String fieldName = nameAllocator.get(field);
+      FieldSpec.Builder fieldBuilder = FieldSpec.builder(fieldJavaType, fieldName, PUBLIC, FINAL);
+      fieldBuilder.addAnnotation(wireFieldAnnotation(field));
+      if (!field.documentation().isEmpty()) {
+        fieldBuilder.addJavadoc("$L\n", sanitizeJavadoc(field.documentation()));
+      }
+      if (field.isExtension()) {
+        fieldBuilder.addJavadoc("Extension source: $L\n", field.location().withoutBase());
+      }
+      if (field.isDeprecated()) {
+        fieldBuilder.addAnnotation(Deprecated.class);
+      }
+      if (emitAndroid && field.isOptional()) {
+        fieldBuilder.addAnnotation(NULLABLE);
+      }
+      builder.addField(fieldBuilder.build());
+    }
+
+    builder.addMethod(messageFieldsConstructor(nameAllocator, type));
+    builder.addMethod(messageFieldsAndUnknownFieldsConstructor(nameAllocator, type));
+    builder.addMethod(newBuilder(nameAllocator, type));
+    builder.addMethod(messageEquals(nameAllocator, type));
+    builder.addMethod(messageHashCode(nameAllocator, type));
+
+    if (emitAndroid) {
+      String adapterName = nameAllocator.get("ADAPTER");
+
+      builder.addSuperinterface(PARCELABLE);
+
+      builder.addMethod(MethodSpec.methodBuilder("writeToParcel")
+          .addAnnotation(Override.class)
+          .addModifiers(PUBLIC)
+          .addParameter(PARCEL, "out")
+          .addParameter(int.class, "flags")
+          .addStatement("out.writeByteArray($N.encode(this))", adapterName)
+          .build());
+
+      TypeName creatorType = creatorOf(javaType);
+      builder.addField(
+          FieldSpec.builder(creatorType, nameAllocator.get("CREATOR"), PUBLIC, STATIC, FINAL)
+              .initializer("$L", TypeSpec.anonymousClassBuilder("")
+                  .superclass(creatorType)
+                  .addMethod(MethodSpec.methodBuilder("createFromParcel")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(javaType)
+                      .addParameter(PARCEL, "in")
+                      .beginControlFlow("try")
+                      .addStatement("return $N.decode(in.createByteArray())", adapterName)
+                      .nextControlFlow("catch ($T e)", IOException.class)
+                      .addStatement("throw new $T(e)", RuntimeException.class)
+                      .endControlFlow()
+                      .build())
+                  .addMethod(MethodSpec.methodBuilder("newArray")
+                      .addAnnotation(Override.class)
+                      .addModifiers(PUBLIC)
+                      .returns(ArrayTypeName.of(javaType))
+                      .addParameter(int.class, "size")
+                      .addStatement("return new $T[size]", javaType)
+                      .build())
+                  .build())
+              .build());
+    }
+
+    if (!emitCompact) {
+      builder.addMethod(messageToString(nameAllocator, type));
+    }
+
+    builder.addType(builder(nameAllocator, type, javaType, builderJavaType));
+
+    for (Type nestedType : type.nestedTypes()) {
+      TypeSpec typeSpec = nestedType instanceof MessageType
+          ? generateMessage((MessageType) nestedType)
+          : generateEnum((EnumType) nestedType);
+      builder.addType(typeSpec);
+    }
+
+    if (!emitCompact) {
+      // Add the ProtoAdapter implementation at the very bottom since it's ugly serialization code.
+      builder.addType(
+           messageAdapter(nameAllocator, type, javaType, adapterJavaType, builderJavaType));
+    }
+
+    return builder.build();
+// END generateMessage(MessageType-MessageType)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74225-6e4a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d97c8-cfa77
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3cb4d-f1ee6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c4e70-e29a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1337-d4a49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01c78-1d4f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac69e-60312
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3c72-aec98
+#MS_XXX_MS#

@@ -1,0 +1,247 @@
+=========================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_d10b5_56cb7\rev_d10b5-56cb7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_62077_a5d60\rev_62077-a5d60.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_d5471_54a67\rev_d5471-54a67.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_da6cc_aae9c\rev_da6cc-aae9c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_b1af9_9b637\rev_b1af9-9b637.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_43404_befef\rev_43404-befef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_9751b_aff53\rev_9751b-aff53.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_4302e_e52f6\rev_4302e-e52f6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_98185_8ce8e\rev_98185-8ce8e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_0346c_690eb\rev_0346c-690eb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_d3f97_63612\rev_d3f97-63612.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_b7577_d5ffa\rev_b7577-d5ffa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_4ac7e_cde5c\rev_4ac7e-cde5c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_ceea2_8d995\rev_ceea2-8d995.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_8a4d3_1f026\rev_8a4d3-1f026.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_5f1be_46075\rev_5f1be-46075.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_3ef5c_bed8c\rev_3ef5c-bed8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_16144_208f9\rev_16144-208f9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_44737_47645\rev_44737-47645.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_de3be_9188e\rev_de3be-9188e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_215f2_6967d\rev_215f2-6967d.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 3
+Different Spacing: 3
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 3, 0, 0
+Conflict body: 
+private StatusInfo queryStatus(Application application) {
+		LOGGER.trace("Updating status for {}", application);
+
+		try {
+			@SuppressWarnings("unchecked")
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var1_4487683614963440400
+			ResponseEntity<Map<String, String>> response = restTemplate.getForEntity(
+					application.getHealthUrl(), (Class<Map<String, String>>) (Class<?>) Map.class);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_base_4819987823269425571
+			ResponseEntity<Map<String, String>> response = restTemplate.getForEntity(application.getHealthUrl(), (Class<Map<String, String>>)(Class<?>) Map.class);
+=======
+			ResponseEntity<Map<String, Object>> response = restTemplate.getForEntity(application.getHealthUrl(), (Class<Map<String, Object>>)(Class<?>) Map.class);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var2_2036273247017119632
+			LOGGER.debug("/health for {} responded with {}", application, response);
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var1_4487683614963440400
+			if (response.hasBody() && response.getBody().get("status") != null) {
+				return StatusInfo.valueOf(response.getBody().get("status"));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_base_4819987823269425571
+			if (response.hasBody() && response.getBody().get("status") != null ) {
+				return StatusInfo.valueOf(response.getBody().get("status"));
+=======
+			if (response.hasBody() && response.getBody().get("status") instanceof String) {
+				return StatusInfo.valueOf((String) response.getBody().get("status"));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var2_2036273247017119632
+			} else if (response.getStatusCode().is2xxSuccessful()) {
+				return StatusInfo.ofUp();
+			} else {
+				return StatusInfo.ofDown();
+			}
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var1_4487683614963440400
+		} catch (RestClientException ex) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_base_4819987823269425571
+		} catch (RestClientException ex){
+=======
+		} catch (Exception ex){
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513607976517\fstmerge_var2_2036273247017119632
+			LOGGER.warn("Couldn't retrieve status for {}", application, ex);
+			return StatusInfo.ofOffline();
+		}
+	}
+
+File path: C:\download\ssmerge\spring-boot-admin\revisions\rev_215f2_6967d\rev_rev_left_215f2-rev_right_6967d\spring-boot-admin-server\src\main\java\de\codecentric\boot\admin\registry\StatusUpdater.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_25b3e_d8343\rev_25b3e-d8343.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_c40cd_ee3a9\rev_c40cd-ee3a9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_e1aad_80cf4\rev_e1aad-80cf4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_9c142_73d1d\rev_9c142-73d1d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_78610_2bb88\rev_78610-2bb88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_6ecb9_6b55c\rev_6ecb9-6b55c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_778ca_e1eeb\rev_778ca-e1eeb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_1de7d_6aac1\rev_1de7d-6aac1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_931ab_534f7\rev_931ab-534f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_dbb5b_c9226\rev_dbb5b-c9226.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_e8d11_99111\rev_e8d11-99111.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_40403_2ed43\rev_40403-2ed43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_c2397_5a610\rev_c2397-5a610.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_9086e_f95f7\rev_9086e-f95f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_5400c_de678\rev_5400c-de678.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_91820_c6e45\rev_91820-c6e45.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_be6d1_ba760\rev_be6d1-ba760.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_b0330_b7346\rev_b0330-b7346.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_69dec_ed45e\rev_69dec-ed45e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_c1ff8-91e79.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513608849901\fstmerge_var1_1195828351621560780
+@Test
+	public void testSsl() throws Exception {
+		load("server.ssl.key-store=somefile.jks", "server.ssl.key-store-password=password",
+				"local.server.port=8080");
+		AdminClientProperties clientProperties = new AdminClientProperties();
+		context.getAutowireCapableBeanFactory().autowireBean(clientProperties);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("https://" + getHostname() + ":8080"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("https://" + getHostname() + ":8080/health"));
+		assertThat(clientProperties.getServiceUrl(), is("https://" + getHostname() + ":8080"));
+	}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513608849901\fstmerge_base_1993710632240914321
+@Test
+	public void testSsl() {
+		load("server.ssl.key-store=somefile.jks", "server.ssl.key-store-password=password",
+				"local.server.port=8080");
+		AdminClientProperties clientProperties = new AdminClientProperties();
+		context.getAutowireCapableBeanFactory().autowireBean(clientProperties);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("https://" + getHostname() + ":8080"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("https://" + getHostname() + ":8080/health"));
+		assertThat(clientProperties.getServiceUrl(), is("https://" + getHostname() + ":8080"));
+	}
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513608849901\fstmerge_var2_7471901039422047748
+
+File path: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_c2810_d6c97\rev_c2810-d6c97.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_fcf2a_dca3e\rev_fcf2a-dca3e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_fd1b6_0909a\rev_fd1b6-0909a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_41808_813aa\rev_41808-813aa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_5a85a_ebd94\rev_5a85a-ebd94.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_28a80_30d76\rev_28a80-30d76.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_a99a8_79eb9\rev_a99a8-79eb9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_2a260_f7af1\rev_2a260-f7af1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\spring-boot-admin\revisions\rev_77767_93e9a\rev_77767-93e9a.revisions
+
+=========================================================

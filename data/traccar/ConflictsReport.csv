@@ -1,0 +1,682 @@
+=========================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f80d5_47e2a\rev_f80d5-47e2a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_42eaa_ee087\rev_42eaa-ee087.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d8f95_ae56b\rev_d8f95-ae56b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d76d9_46ab7\rev_d76d9-46ab7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_8e8da_0a6fa\rev_8e8da-0a6fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_6bfaa_ff640\rev_6bfaa-ff640.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_23785_326b6\rev_23785-326b6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_a7a79_6f477\rev_a7a79-6f477.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_a70f4_a4a40\rev_a70f4-a4a40.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_afaed_21ed9\rev_afaed-21ed9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c8332_d71a4\rev_c8332-d71a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_7de3f_9c46d\rev_7de3f-9c46d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_8a1fc_2c0fc\rev_8a1fc-2c0fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_69418_b4eea\rev_69418-b4eea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f5a26_76237\rev_f5a26-76237.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513626338073\fstmerge_var1_6721590029814573284
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513626338073\fstmerge_base_8967504328737547051
+public static <T extends Factory> T objectFromJson(JsonObject json, T prototype) {
+        T object = (T) prototype.create();
+
+        Method[] methods = object.getClass().getMethods();
+
+        for (final Method method : methods) {
+            if (method.getName().startsWith("set") && method.getParameterTypes().length == 1) {
+
+                final String name = Introspector.decapitalize(method.getName().substring(3));
+                Class<?> parameterType = method.getParameterTypes()[0];
+
+                if (json.containsKey(name)) {
+                    try {
+                        if (parameterType.equals(boolean.class)) {
+                            method.invoke(object, json.getBoolean(name));
+                        } else if (parameterType.equals(int.class)) {
+                            method.invoke(object, json.getJsonNumber(name).intValue());
+                        } else if (parameterType.equals(long.class)) {
+                            if (json.get(name).getValueType() == JsonValue.ValueType.NUMBER) {
+                                method.invoke(object, json.getJsonNumber(name).longValue());
+                            }
+                        } else if (parameterType.equals(double.class)) {
+                            method.invoke(object, json.getJsonNumber(name).doubleValue());
+                        } else if (parameterType.equals(String.class)) {
+                            method.invoke(object, json.getString(name));
+                        } else if (parameterType.equals(Date.class)) {
+                            method.invoke(object, DATE_FORMAT.parseDateTime(json.getString(name)).toDate());
+                        } else if (parameterType.equals(Map.class)) {
+                            method.invoke(object, MiscFormatter.fromJson(json.getJsonObject(name)));
+                        }
+                    } catch (IllegalAccessException | InvocationTargetException error) {
+                        Log.warning(error);
+                    }
+                }
+            }
+        }
+
+        return object;
+    }
+=======
+public static <T extends Factory> T objectFromJson(JsonObject json, T prototype) {
+        T object = (T) prototype.create();
+
+        Method[] methods = object.getClass().getMethods();
+
+        for (final Method method : methods) {
+            if (method.getName().startsWith("set") && method.getParameterTypes().length == 1) {
+
+                final String name = Introspector.decapitalize(method.getName().substring(3));
+                Class<?> parameterType = method.getParameterTypes()[0];
+
+                if (json.containsKey(name) && !json.isNull(name)) {
+                    try {
+                        if (parameterType.equals(boolean.class)) {
+                            method.invoke(object, json.getBoolean(name));
+                        } else if (parameterType.equals(int.class)) {
+                            method.invoke(object, json.getJsonNumber(name).intValue());
+                        } else if (parameterType.equals(long.class)) {
+                            if (json.get(name).getValueType() == JsonValue.ValueType.NUMBER) {
+                                method.invoke(object, json.getJsonNumber(name).longValue());
+                            }
+                        } else if (parameterType.equals(double.class)) {
+                            method.invoke(object, json.getJsonNumber(name).doubleValue());
+                        } else if (parameterType.equals(String.class)) {
+                            method.invoke(object, json.getString(name));
+                        } else if (parameterType.equals(Date.class)) {
+                            method.invoke(object, DATE_FORMAT.parseDateTime(json.getString(name)).toDate());
+                        } else if (parameterType.equals(Map.class)) {
+                            method.invoke(object, MiscFormatter.fromJson(json.getJsonObject(name)));
+                        }
+                    } catch (IllegalAccessException | InvocationTargetException error) {
+                        Log.warning(error);
+                    }
+                }
+            }
+        }
+
+        return object;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513626338073\fstmerge_var2_1832792492231054774
+
+File path: C:\download\ssmerge\traccar\revisions\rev_f5a26_76237\rev_rev_left_f5a26-rev_right_76237\src\org\traccar\web\JsonConverter.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c6692_1a257\rev_c6692-1a257.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_31da2_8b176\rev_31da2-8b176.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_0aaf7_de22e\rev_0aaf7-de22e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_5bf82_59f46\rev_5bf82-59f46.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_92c30_e816b\rev_92c30-e816b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_cce42_41c46\rev_cce42-41c46.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_5df7c_d2c85\rev_5df7c-d2c85.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d801c_82a78\rev_d801c-82a78.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_25e32_52e70\rev_25e32-52e70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_a44f3_36ec2\rev_a44f3-36ec2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c8735_dc8db\rev_c8735-dc8db.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_21a8f_f8f21\rev_21a8f-f8f21.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_9d44d_77aa7\rev_9d44d-77aa7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_40076_5acf3\rev_40076-5acf3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_b0825_894fc\rev_b0825-894fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_96e69_c9a49\rev_96e69-c9a49.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_81736_0bda0\rev_81736-0bda0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_3901c_312cc\rev_3901c-312cc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d154c_7ce8c\rev_d154c-7ce8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_6fefd_d7121\rev_6fefd-d7121.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_40547_53b5d\rev_40547-53b5d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_93437_1a0ea\rev_93437-1a0ea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_5d9c7_37d28\rev_5d9c7-37d28.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_866c3_b4841\rev_866c3-b4841.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_2c480_0c1c9\rev_2c480-0c1c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c2851_6f32f\rev_c2851-6f32f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_e26d8_dea76\rev_e26d8-dea76.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_ecf3e_e316a\rev_ecf3e-e316a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_78f8d_ee5af\rev_78f8d-ee5af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d9777_6c860\rev_d9777-6c860.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_db484_c40a6\rev_db484-c40a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_516d1_d2e89\rev_516d1-d2e89.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_9a13d_7b29a\rev_9a13d-7b29a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_be87d_557c4\rev_be87d-557c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c5e57_d8166\rev_c5e57-d8166.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_9bbb7_91cc8\rev_9bbb7-91cc8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_19b17_9cc86\rev_19b17-9cc86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_aff99_ad2f5\rev_aff99-ad2f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_137fe_8ff8e\rev_137fe-8ff8e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_18499_ad070\rev_18499-ad070.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_5451e_7ee34\rev_5451e-7ee34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_bb754_b488c\rev_bb754-b488c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_e7a54_1937a\rev_e7a54-1937a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f6484_45302\rev_f6484-45302.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_0d347_4f735\rev_0d347-4f735.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_607d7_55ec2\rev_607d7-55ec2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_2114a_94464\rev_2114a-94464.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_57b83_ae0a8\rev_57b83-ae0a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_1ff7c_2e3f8\rev_1ff7c-2e3f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f0488_f35da\rev_f0488-f35da.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_a0246_e42ac\rev_a0246-e42ac.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_1861e_cd121\rev_1861e-cd121.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_2e2ec_5f867\rev_2e2ec-5f867.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_15d54_a1ad3\rev_15d54-a1ad3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_04f33_03fb1\rev_04f33-03fb1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_ebe64_0bbf8\rev_ebe64-0bbf8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f1038_c3f39\rev_f1038-c3f39.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_34645_ff4e5\rev_34645-ff4e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f1b58_f9331\rev_f1b58-f9331.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_137ad_d5ec7\rev_137ad-d5ec7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_eb137_49bca\rev_eb137-49bca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_09a1c_95c64\rev_09a1c-95c64.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_caaf1_68d1f\rev_caaf1-68d1f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_a9260_effcd\rev_a9260-effcd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_75460_ae261\rev_75460-ae261.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_47357_d139c\rev_47357-d139c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_8af8f_50ca7\rev_8af8f-50ca7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_c337d_29b07\rev_c337d-29b07.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_69595-edcfd.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private Position decodeObd(Position position, String sentence) {
+        Parser parser = new Parser(PATTERN_OBD, sentence);
+        if (!parser.matches()) {
+            return null;
+        }
+
+        getLastLocation(position, null);
+
+        position.set(Position.KEY_BATTERY, parser.nextDouble());
+        position.set(Position.KEY_RPM, parser.nextInt());
+        position.set(Position.KEY_OBD_SPEED, parser.nextInt());
+        position.set(Position.KEY_THROTTLE, parser.nextDouble());
+        position.set(Position.KEY_OBD_ENGINE_LOAD, parser.nextDouble());
+        position.set(Position.PREFIX_TEMP + 1, parser.nextInt());
+        position.set(Position.KEY_FUEL_CONSUMPTION, parser.nextDouble());
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823896\fstmerge_var1_4125032629076313904
+        position.set(Position.KEY_OBD_AVERAGE_FUEL, parser.nextDouble());
+        position.set(Position.KEY_OBD_DRIVING_RANGE, parser.nextDouble());
+        position.set(Position.KEY_ODOMETER, parser.nextDouble());
+        position.set(Position.KEY_OBD_SINGLE_FUEL_CONSUMPTION, parser.nextDouble());
+        position.set(Position.KEY_OBD_TOTAL_FUEL_CONSUMPTION, parser.nextDouble());
+        position.set(Position.KEY_OBD_CURRENT_ERROR, parser.nextInt());
+        position.set(Position.KEY_OBD_HARSH_ACCELERATION, parser.nextInt());
+        position.set(Position.KEY_OBD_HARSH_BREAK, parser.nextInt());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823896\fstmerge_base_9053092399813540933
+        position.set("drivingRange", parser.nextDouble() * 1000);
+        position.set(Position.KEY_ODOMETER, parser.nextDouble() * 1000);
+        position.set("singleFuelConsumption", parser.nextDouble());
+        position.set("totalFuelConsumption", parser.nextDouble());
+
+=======
+        position.set("averageFuelConsumition", parser.nextDouble());
+        position.set("drivingRange", parser.nextDouble());
+        position.set(Position.KEY_ODOMETER, parser.nextDouble());
+        position.set("singleFuelConsumption", parser.nextDouble());
+        position.set("totalFuelConsumption", parser.nextDouble());
+        position.set("currentError", parser.nextInt());
+        position.set("harshAcelerationNo", parser.nextInt());
+       position.set("harshBreakerNo", parser.nextInt());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823896\fstmerge_var2_2314224244022014726
+        return position;
+    }
+
+File path: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_rev_left_69595-rev_right_edcfd\src\org\traccar\protocol\MeiligaoProtocolDecoder.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: copiedMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823996\fstmerge_var1_4146550998139672412
+private Position decodeObdA(Position position, String sentence) {
+        Parser parser = new Parser(PATTERN_OBDA, sentence);
+        if (!parser.matches()) {
+            return null;
+        }
+
+        getLastLocation(position, null);
+
+        position.set(Position.KEY_OBD_TOTAL_IGNITION, parser.nextInt());
+        position.set(Position.KEY_OBD_TOTAL_DRIVING_TIME, parser.nextDouble());
+        position.set(Position.KEY_OBD_TOTAL_IDLING_TIME, parser.nextDouble());
+        position.set(Position.KEY_OBD_AVERAGE_HOT_START, parser.nextInt());
+        position.set(Position.KEY_OBD_AVERAGE_SPEED, parser.nextInt());
+        position.set(Position.KEY_OBD_HISTORY_HIGHT_SPEED, parser.nextInt());
+        position.set(Position.KEY_OBD_HISTORY_HIGHT_RPM, parser.nextInt());
+        position.set(Position.KEY_OBD_TOTAL_HARSH_ACCELERATION, parser.nextInt());
+        position.set(Position.KEY_OBD_TOTAL_HARSH_BRAKE, parser.nextInt());
+        return position;
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823996\fstmerge_base_631309835869062786
+=======
+private Position decodeObdA(Position position, String sentence) {
+            Parser parser = new Parser(PATTERN_OBDA, sentence);
+        if (!parser.matches()) {
+            return null;
+        }
+
+        getLastLocation(position, null);
+
+         position.set("totalIgnitionNo", parser.nextInt());
+        position.set("totalDrivingTime", parser.nextDouble());
+        position.set("totalIdlingTime", parser.nextDouble());
+        position.set("averageHotStartTime", parser.nextInt());
+        position.set("averageSpeed", parser.nextInt());
+        position.set("historyHightestSpeed", parser.nextInt());
+        position.set("historyHightestRPM", parser.nextInt());
+        position.set("totalHarshAccerleration", parser.nextInt());
+        position.set("totalHarsshBrake", parser.nextInt());
+        return position;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628823996\fstmerge_var2_1663892197349415269
+
+File path: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_rev_left_69595-rev_right_edcfd\src\org\traccar\protocol\MeiligaoProtocolDecoder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+    public void testDecode() throws Exception {
+
+        MeiligaoProtocolDecoder decoder = new MeiligaoProtocolDecoder(new MeiligaoProtocol());
+
+        verifyPosition(decoder, binary(
+                "242400706573402852404799553130313932372e3030302c412c313732362e38323739332c4e2c30373832382e31393637312c452c312e382c362e342c3137313131362c2c2a32427c312e36387c3534342e327c313030307c303030302c303030307c3030303032383638373a1a0d0a"));
+
+        verifyPosition(decoder, binary(
+                "2424007d0000000000000099553231303333302e3030302c562c343533342e333832342c532c30373230332e303630302c572c302e30302c302c3231313031362c2c2a31327c302e307c3332397c323030307c303030452c303030437c303244413030303145413634393541417c31307c30303030303030306e540d0a"));
+
+        verifyAttributes(decoder, binary(
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628825528\fstmerge_var1_5408289182279434926
+                "2424005066104020094432990131302E312C302C3135362C302E30302C31392E36312C2D33342C33342E32362C32312E38332C372E39312C313033332C322E36392C362E35352C302C302C309DBF0D0A"));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628825528\fstmerge_base_8429354862422434923
+                "4040005066104020094432990131302E312C302C3135362C302E30302C31392E36312C2D33342C33342E32362C32312E38332C372E39312C313033332C322E36392C362E35352C302C302C309DBF0D0A"));
+=======
+                "242400736610402421174399553130353033342e3937382c412c333933352e333638392c4e2c30303233382e313638342c452c303034382c3034322c3038313231362c2c2a31437c31312e357c3139347c313030317c303341362c303030307c30303130343030307c3030303030303cd00d0a2424004e66104024211743990131342e312c323638372c39302c32312e35372c342e37312c38352c372e31302c382e31362c342e32372c3130342c302e33342c392e33342c302c312c30b7160d0a2424003266104024211743990232352c322e34302c302e37392c32322c34332c3131392c333735362c37352c3132e4c90d0a"));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513628825528\fstmerge_var2_7300011875107780904
+
+        verifyPosition(decoder, binary(
+                "242400746251103044ffff99553033353033392e3939392c412c323832332e373632312c4e2c31303635322e303730342c572c3030302e302c3030302e302c3136303631362c2c2c412a37357c302e397c323038332e327c303030307c303030302c303030307c31303034333736333265780d0a"));
+
+        verifyPosition(decoder, binary(
+                "24240072190820157fffff99553039343335342e3030302c412c313930372e303631392c4e2c30373235312e333235312c452c3031302e312c3138382e352c3234303231362c2c2c412a36427c302e387c36352e327c303830307c303030302c303030307c303336343838373532c73f0d0a"));
+
+        verifyPosition(decoder, binary(
+                "242400680790209818ffff99553038333235382e3030302c412c303131352e393338302c532c30333634382e313430392c452c302e30302c3331352e35352c3132303131367c302e37347c313930322e337c303430307c303030302c303030307c302e30f41b0d0a"));
+
+        verifyNothing(decoder, binary(
+                "24240011671440258855405000b24d0d0a"));
+
+        verifyPosition(decoder, binary(
+                "242400706796502079108999553131333131382e3030302c412c313033372e393637382c4e2c30363132312e353637392c572c302e35342c322e34322c3330303931352c2c2c412a37307c302e37377c392e397c303030307c303030302c303161327c3030313138373132374cae0d0a"),
+                position("2015-09-30 11:31:18.000", true, 10.63280, -61.35947));
+
+        verifyPosition(decoder, binary(
+                "24240074630700194707719966009E1F7F00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007C3132303334302C3238303630362C323430302E303030302C4E2C31323130302E303030302C458F7E0D0A"),
+                position("2006-06-28 12:03:40.000", true, 24.00000, 121.00000));
+
+        verifyPosition(decoder, binary(
+                "24240076220720151fffff99660012b3ab00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007c3135303634382c3233303731352c313931352e37323835362c4e2c30373235322e35333034342c456dd00d0a"));
+
+        verifyNothing(decoder, binary(
+                "24240000123456FFFFFFFF50008B9B0D0A"));
+
+        verifyNothing(decoder, binary(
+                "24240011300600000046090002849a0d0a"));
+        
+        verifyPosition(decoder, binary(
+                "242400722015032700004299553134313131352e3030302c412c353031312e343335342c4e2c30303834332e373039322c452c3030302e302c3034342e362c3134303431352c2c2c412a36437c322e317c39392e347c303030307c303030302c303030307c3030303032343730350e480d0a"));
+        
+        verifyPosition(decoder, binary(
+                "2424006e241120141fffff99553039333931302e30302c412c313931342e37373736352c4e2c30373235302e36383037322c452c302e3035312c2c3230313231342c2c2c442a37357c302e38327c322e387c303030307c303030302c303030307c3031303833373433311d170d0a"));
+
+        verifyPosition(decoder, binary(
+                "24240000123456FFFFFFFF99553033353634342E3030302C412C323233322E363038332C4E2C31313430342E383133372C452C302E30302C2C3031303830392C2C2A31437C31312E357C3139347C303030307C303030302C3030303069620D0A"));
+
+        verifyPosition(decoder, binary(
+                "242400003358019703581F99553133343335312E3030302C412C303932352E353032352C4E2C30363931342E383130372C572C302E30302C32332C3330313031322C2C2A32437C302E387C3138367C323030307C303132362C303046467C303244453030303244384344423431357C30367C303046443642373995820D0A"));
+
+        verifyPosition(decoder, binary(
+                "242400001691000484124F99553134303630332E3030302C412C303933342E323535342C4E2C30363931332E303936362C572C302E30302C2C3330313031322C2C2A30327C302E387C3230377C30303030FA420D0A"));
+
+        verifyPosition(decoder, binary(
+                "2424000045124220306FFF9999143135353432322E3030302C562C323233302E373632332C4E2C31313430332E343231382C452C302E30302C302C3036303231312C2C2A31417C302E307C32367C303030307C303030302C303030307C303030303030303030303030303030307C36337C3030303030303030BAC10D0A"));
+
+        verifyPosition(decoder, binary(
+                "242400008621700142458F9999503139323935382E3030302C412C333632372E313639392C4E2C30313034332E353632372C452C302E30302C3233392C3039313231322C2C2A30467C312E307C377C303030307C303141392C303139377C303235443030303230303541383639467C31327C3030303333424233E2480D0A"));
+
+        verifyPosition(decoder, binary(
+                "24240000123456789FFFFF99553032303630302E3933302C412C323330392E323035312C4E2C31313331382E383434392C452C302E30302C302E30302C3039303731302C2C2C412A36417C322E367C39362E377C303030307C303030302C334646467C303030303030303030C4520D0A"));
+        
+        verifyPosition(decoder, binary(
+                "242400005977203744058499553032303131372E3030302C412C343131372E393231322C4E2C30383133302E323039362C572C302E30302C3330332E38352C3236303231337C312E367C30307C303030307C303030302C3030303071CD0D0A"));
+
+        verifyPosition(decoder, binary(
+                "242400003511111111111199553133343734332e3030332c412c303634382e393836362c532c31303730372e353739352c452c3030302e302c3030302e302c323630333133f3150d0a"));
+
+        verifyPosition(decoder, binary(
+                "242400000091800369764199553038353133302e3030302c412c333035332e313634352c4e2c30373535352e373437362c452c302e30302c32372c3136303431332c2c2a33467c302e387c3234357c323030307c303346372c303030302c303030302c303031422c303030302c303030302c303030302c303030307c303139343030303230314343363237437c31417c3031313630383439e6a70d0a"));
+        
+        verifyPosition(decoder, binary(
+                "2424000026016100901fff99553136353835332c412c343130392e36303231322c4e2c3833382e35393131392c572c332e3838332c31322e30302c3034303731332c2c2a34467c322e357c3131307c000600007c0000010f7c303242302c3042333697740d0a"));
+
+        verifyNothing(decoder, binary(
+                "2424000067622010053562aa0000010001ae4f00000007800000003039353135362e3030302c412c323632332e383936362c4e2c30353030352e303638302c452c32342e352c3234312e302c323231303133599c0d0a"));
+
+        verifyPosition(decoder, binary(
+                "242400001007ffffffffff99553136323330392e3035342c562c303933312e393136332c4e2c30363931312e383233332c572c2c2c3235313131332c2c2c4e2a36437c7c3135387c303030309cc60d0a"));
+
+        verifyAttributes(decoder, binary(
+                "242400003563070435652099553035323034322e3030302c412c343435382e333536352c4e2c30343130342e343831332c452c302e30302c302e30302c3139303131342c2c2a39437c302e3730303030307c2d3835393131373337367c303130307c307c7c7c4f2a0d0a"));
+        
+        verifyPosition(decoder, binary(
+                "2424005035784251ffffff99553030303033362e3938312c562c303933312e333437312c4e2c30363931312e383431322c572c2c2c3238303131342c2c2c4e2a36357c7c3136387c323030305e420d0a"));
+
+        verifyPosition(decoder, binary(
+                "2424007811223344ffffff99553031303735372e3030302c412c323935392e313337342c4e2c30393534302e333238342c572c3030302e302c3038382e372c3234303631342c2c2c412a37397c312e347c33352e317c303030307c303030312c303030307c3030303030333732337c3030303030e39f0d0a"));
+
+        verifyPosition(decoder, binary(
+                "2424007f3568960306760199553131303932342e3030302c412c343533342e323538352c4e2c30313933382e363531342c452c302e30302c2c3237303731342c2c2c412a37317c312e377c3130307c383030307c303737422c303030302c303030302c303030302c303030302c303030302c303030302c303030305dfc0d0a"));
+        
+        verifyPosition(decoder, binary(
+                "2424007f2015603256ffff99553230303230392e30302c412c313734342e36393434382c4e2c30383331392e30353537302c452c31302e3236322c3234382e35352c3236303631352c2c2c442a35437c302e39397c33312e397c303830317c303030302c303030637c3030303933303131367c3030376165313035d5550d0a"));
+
+    }
+
+File path: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_rev_left_69595-rev_right_edcfd\test\org\traccar\protocol\MeiligaoProtocolDecoderTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_fa90c_fe5f1\rev_fa90c-fe5f1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f76c7_ef914\rev_f76c7-ef914.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_41164_a7942\rev_41164-a7942.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_f8280_d9e0b\rev_f8280-d9e0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_7ff14_444d7\rev_7ff14-444d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_da094_40b74\rev_da094-40b74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_48f83_c70c0\rev_48f83-c70c0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_6d75b_c5d0f\rev_6d75b-c5d0f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_cffbc_00caa\rev_cffbc-00caa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_09a5c_68abc\rev_09a5c-68abc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_d1d87_d8e06\rev_d1d87-d8e06.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_36c48_483ed\rev_36c48-483ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_3155b_e4009\rev_3155b-e4009.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_6608d_2c446\rev_6608d-2c446.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_72612_65204\rev_72612-65204.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_7929d_0d789\rev_7929d-0d789.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_2c036_f778d\rev_2c036-f778d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_35f00_49bfc\rev_35f00-49bfc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_38249-24498.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+private static final Pattern PATTERN = new PatternBuilder()
+            .text("$")
+            .expression("(...),")                // type
+            .expression("[LH],")                 // history
+            .number("(d+),")                     // imei
+            .number("(dd)(dd)(dddd),")           // date
+            .number("(dd)(dd)(dd),")             // time
+            .number("(d),")                      // status
+            .number("(dd)(dd.d+),")              // latitude
+            .expression("([NS]),")
+            .number("(ddd)(dd.d+),")             // longitude
+            .expression("([EW]),")
+            .number("(d+.?d*),")                 // speed
+            .number("(d+.?d*),")                 // course
+            .number("(-?d+.?d*),")               // altitude
+            .number("(d+.d+),")                  // hdop
+            .number("(d+),")                     // satellites
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513629495360\fstmerge_var1_366857491467412188
+            .number("(d+),")                     // visible satellites
+            .number("([^,]*),")                  // operator
+            .number("(d+),")                     // rssi
+            .number("x+,")                       // cid
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513629495360\fstmerge_base_7392037263743183698
+            .number("d+,")                       // visible satellites
+            .number("[^,]*,")                    // operator
+            .number("d+,")                       // rssi
+            .number("x+,")                       // cid
+=======
+            .number("d+,")                       // visible satellites
+            .number("[^,]*,")                    // operator
+            .number("d+,")                       // rssi
+            .number("[^,]*,")                       // cid
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513629495360\fstmerge_var2_6057351946363431747
+            .expression("([01]),")               // ignition
+            .number("(d+.?d*),")                 // battery
+            .number("(d+.?d*),")                 // power
+            .expression("([01]+),")              // input
+            .expression("([01]+),")              // output
+            .expression("[01]+,")                // temper status
+            .any()
+            .compile();
+
+File path: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_rev_left_38249-rev_right_24498\src\org\traccar\protocol\TmgProtocolDecoder.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\traccar\revisions\rev_6ad0e_888c3\rev_6ad0e-888c3.revisions
+
+=========================================================

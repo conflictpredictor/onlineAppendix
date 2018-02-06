@@ -1,0 +1,1712 @@
+=========================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_34931_474dc\rev_34931-474dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9c92d_c13cf\rev_9c92d-c13cf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_cee0f_396d5\rev_cee0f-396d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_52f6c_5dfdb\rev_52f6c-5dfdb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a10ce_096b5\rev_a10ce-096b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_270e8_d0adb\rev_270e8-d0adb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_cce86_9afe3\rev_cce86-9afe3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9afe3_c1929\rev_9afe3-c1929.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e62bf_827b6\rev_e62bf-827b6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_dd331_e2fba\rev_dd331-e2fba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e4dbe_fa829\rev_e4dbe-fa829.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4c904_f9aea\rev_4c904-f9aea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3e22d_92967\rev_3e22d-92967.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_44244_962be\rev_44244-962be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f3f89_b804b\rev_f3f89-b804b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bba61_46efd\rev_bba61-46efd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8dc6a_76208\rev_8dc6a-76208.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_01a85_9c0dc\rev_01a85-9c0dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_67828_66a55\rev_67828-66a55.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_01a85_105a7\rev_01a85-105a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_975de_2752e\rev_975de-2752e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2752e_8bffc\rev_2752e-8bffc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2b64c_e375f\rev_2b64c-e375f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6a2a0_72f21\rev_6a2a0-72f21.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_72f21_bef34\rev_72f21-bef34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bef34_7c7d2\rev_bef34-7c7d2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_46d0f_77a61\rev_46d0f-77a61.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b6d83_f6751\rev_b6d83-f6751.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_22944_81d54\rev_22944-81d54.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+  public String toString() {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513728943390\fstmerge_var1_2645393095013517650
+    return "KrakenDepth [asks=" + asks.toString() + ", bids=" + bids.toString() + "]";
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513728943390\fstmerge_base_5762265526271013162
+
+    return "KrakenDepth [asks=" + asks.toString() + ", bids=" + bids.toString() + "]";
+=======
+    List<String> asksStrings = new ArrayList<String>(asks.size());
+    List<String> bidsStrings = new ArrayList<String>(bids.size());
+    for(BigDecimal[] order : asks) {
+      asksStrings.add(Arrays.toString(order));
+    }
+    for(BigDecimal[] order : bids) {
+      bidsStrings.add(Arrays.toString(order));
+    }
+    return "KrakenDepth [asks=" + asksStrings  + ", bids=" + bidsStrings + "]";
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513728943390\fstmerge_var2_5300013567219457180
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_22944_81d54\rev_rev_left_22944-rev_right_81d54\xchange-kraken\src\main\java\org\xchange\kraken\dto\marketdata\KrakenDepth.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bc992_6b46c\rev_bc992-6b46c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_06868_6ca46\rev_06868-6ca46.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7414e_43663\rev_7414e-43663.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c81e6_08d4e\rev_c81e6-08d4e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3aa01_2e0e3\rev_3aa01-2e0e3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_592d3_cc834\rev_592d3-cc834.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2e0e3_cc834\rev_2e0e3-cc834.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_60200_3ee20\rev_60200-3ee20.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fe82b_74f88\rev_fe82b-74f88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_74f88_a3d88\rev_74f88-a3d88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6407b_9edc8\rev_6407b-9edc8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7b46f_b925e\rev_7b46f-b925e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c0411_2e81a\rev_c0411-2e81a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b925e_7b46f\rev_b925e-7b46f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_60f4d_92003\rev_60f4d-92003.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ed7b6_a59eb\rev_ed7b6-a59eb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a59eb_5a083\rev_a59eb-5a083.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_412b1_18120\rev_412b1-18120.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_18120_93b7d\rev_18120-93b7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0d9a0_696c7\rev_0d9a0-696c7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5d506_fd485\rev_5d506-fd485.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_696c7_14592\rev_696c7-14592.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7f20f_73c2b\rev_7f20f-73c2b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ba8af_66e5a\rev_ba8af-66e5a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8af35_8b632\rev_8af35-8b632.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_75906_6b736\rev_75906-6b736.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_cd021_c18f9\rev_cd021-c18f9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2e965_91977\rev_2e965-91977.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e801f_5498f\rev_e801f-5498f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6d661_989b7\rev_6d661-989b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3f84f_47c57\rev_3f84f-47c57.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_975cf_278c2\rev_975cf-278c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e1cb1_324cd\rev_e1cb1-324cd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d7cac_655f9\rev_d7cac-655f9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_121fc_759de\rev_121fc-759de.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_73a8a_bae57\rev_73a8a-bae57.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5498f_5eacd\rev_5498f-5eacd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5e9d9_78ca8\rev_5e9d9-78ca8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4ebc8_9e553\rev_4ebc8-9e553.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0207b_4bb5b\rev_0207b-4bb5b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a1999_e67e0\rev_a1999-e67e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_88aa6_c20a4\rev_88aa6-c20a4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_180c1_df42f\rev_180c1-df42f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5f953_f9bb3\rev_5f953-f9bb3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_25e22_17679\rev_25e22-17679.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1b29e_2d37a\rev_1b29e-2d37a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6ac03_3351d\rev_6ac03-3351d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3b3a4_7a3ef\rev_3b3a4-7a3ef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_32201_acc31\rev_32201-acc31.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3dfe2_727a8\rev_3dfe2-727a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2e965_dd275\rev_2e965-dd275.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_60c65_c4117\rev_60c65-c4117.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9f330_49bf7\rev_9f330-49bf7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9e2da_2b57b\rev_9e2da-2b57b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2b57b_5be88\rev_2b57b-5be88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5a8b7_321b9\rev_5a8b7-321b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_cf00c_4b3de\rev_cf00c-4b3de.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_57544_d7c8f\rev_57544-d7c8f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_66b24_bb970\rev_66b24-bb970.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bb970_c9660\rev_bb970-c9660.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b40fe_61d52\rev_b40fe-61d52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ae7a5_1bdf3\rev_ae7a5-1bdf3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1bdf3_a5416\rev_1bdf3-a5416.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_18850_563d9\rev_18850-563d9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_18850_f99b8\rev_18850-f99b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_48787_5ec12\rev_48787-5ec12.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a2acf_c46d7\rev_a2acf-c46d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c46d7_a2acf\rev_c46d7-a2acf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_785e8_26933\rev_785e8-26933.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1b3e5_529d3\rev_1b3e5-529d3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_39963_89bdb\rev_39963-89bdb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_448f9_2268b\rev_448f9-2268b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2268b_22c70\rev_2268b-22c70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_01ebe_c7ddb\rev_01ebe-c7ddb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c7ddb_f8eea\rev_c7ddb-f8eea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fb893_20ecc\rev_fb893-20ecc.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static Trades adaptTrades(List<KrakenPublicTrade> krakenTrades, String currency, String tradableIdentifier, long last) {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741771277\fstmerge_var1_4361294444258157434
+    List<Trade> trades = new LinkedList<Trade>();
+    for (KrakenPublicTrade krakenTrade : krakenTrades) {
+      OrderType type = krakenTrade.getType().equalsIgnoreCase("s") ? OrderType.ASK : OrderType.BID;
+      BigDecimal tradableAmount = krakenTrade.getVolume();
+      BigMoney price = BigMoney.of(CurrencyUnit.of(currency), krakenTrade.getPrice());
+      Date timestamp = new Date((long) krakenTrade.getTime() * 1000L);
+      
+      trades.add(new Trade(type, tradableAmount, tradableIdentifier, currency, price, timestamp, "0", null));
+
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741771277\fstmerge_base_4266880902120027068
+    List<Trade> trades = new LinkedList<Trade>();
+    for (KrakenPublicTrade krakenTrade : krakenTrades) {
+      OrderType type = krakenTrade.getType().equalsIgnoreCase("s") ? OrderType.ASK : OrderType.BID;
+      BigDecimal tradableAmount = krakenTrade.getVolume();
+      BigMoney price = BigMoney.of(CurrencyUnit.of(currency), krakenTrade.getPrice());
+      Date timestamp = new Date((long) krakenTrade.getTime() * 1000L);
+
+      trades.add(new Trade(type, tradableAmount, tradableIdentifier, currency, price, timestamp, 0));
+
+    }
+=======
+    List<Trade> trades = new ArrayList<Trade>();
+    for (KrakenPublicTrade krakenTrade : krakenTrades)
+      trades.add(adaptTrade(krakenTrade, currency, tradableIdentifier));
+
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741771277\fstmerge_var2_6222815646714872957
+    return new Trades(trades, last);
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_fb893_20ecc\rev_rev_left_fb893-rev_right_20ecc\xchange-kraken\src\main\java\com\xeiam\xchange\kraken\KrakenAdapters.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741774578\fstmerge_var1_2610893742140394285
+public static Trades adaptKrakenTrades(Map<String, KrakenTrade> krakenTrades) {
+
+    List<Trade> trades = new ArrayList<Trade>();
+    for (Entry<String, KrakenTrade> krakenTradeEntry : krakenTrades.entrySet()) {
+      
+      KrakenTrade krakenTrade = krakenTradeEntry.getValue();
+      
+      OrderType orderType = krakenTrade.getType().equals(KrakenType.BUY) ? OrderType.BID : OrderType.ASK;
+      BigDecimal tradableAmount = krakenTrade.getVolume();
+      String tradableIdentifier = KrakenUtils.getStandardCurrencyCode(krakenTrade.getAssetPair().substring(0, 4));
+      String transactionCurrency = KrakenUtils.getStandardCurrencyCode(krakenTrade.getAssetPair().substring(4));
+      Date timestamp = new Date((long) (krakenTrade.getUnixTimestamp() * 1000L));
+      BigMoney price = BigMoney.of(CurrencyUnit.of(transactionCurrency), krakenTrade.getPrice());
+
+      final String orderTxId = krakenTrade.getOrderTxId();
+      Trade trade = new Trade(orderType, tradableAmount, tradableIdentifier, transactionCurrency, price, timestamp, krakenTradeEntry.getKey(), orderTxId);
+      trades.add(trade);
+    }
+    return new Trades(trades);
+  }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741774578\fstmerge_base_155136555417822855
+public static Trades adaptKrakenTrades(Map<String, KrakenTrade> krakenTrades) {
+
+    List<Trade> trades = new ArrayList<Trade>();
+    for (Entry<String, KrakenTrade> krakenTradeEntry : krakenTrades.entrySet()) {
+      
+      KrakenTrade krakenTrade = krakenTradeEntry.getValue();
+      
+      OrderType orderType = krakenTrade.getType().equals(KrakenType.BUY) ? OrderType.BID : OrderType.ASK;
+      BigDecimal tradableAmount = krakenTrade.getVolume();
+      String tradableIdentifier = KrakenUtils.getStandardCurrencyCode(krakenTrade.getAssetPair().substring(0, 3));
+      String transactionCurrency = KrakenUtils.getStandardCurrencyCode(krakenTrade.getAssetPair().substring(3));
+      Date timestamp = new Date((long) (krakenTrade.getUnixTimestamp() * 1000L));
+      BigMoney price = BigMoney.of(CurrencyUnit.of(transactionCurrency), krakenTrade.getPrice());
+
+      Trade trade = new Trade(orderType, tradableAmount, tradableIdentifier, transactionCurrency, price, timestamp, 0);
+      trades.add(trade);
+    }
+    return new Trades(trades);
+  }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513741774578\fstmerge_var2_3380721447304101374
+
+File path: C:\download\ssmerge\XChange\revisions\rev_fb893_20ecc\rev_rev_left_fb893-rev_right_20ecc\xchange-kraken\src\main\java\com\xeiam\xchange\kraken\KrakenAdapters.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e1a7e_e521a\rev_e1a7e-e521a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a02a3_8e680\rev_a02a3-8e680.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8e680_2db2c\rev_8e680-2db2c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a5139_fbb70\rev_a5139-fbb70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fbb70_561f3\rev_fbb70-561f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bf4f6_5c711\rev_bf4f6-5c711.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_daf75_a4e0c\rev_daf75-a4e0c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b4eff_f8ba3\rev_b4eff-f8ba3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_18f4b_b4eff\rev_18f4b-b4eff.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513744112703\fstmerge_var1_1434273212722677013
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513744112703\fstmerge_base_7283249746688063829
+protected final BTCE btce;
+=======
+private final BTCE btce;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513744112703\fstmerge_var2_1426330942126284319
+
+File path: C:\download\ssmerge\XChange\revisions\rev_18f4b_b4eff\rev_rev_left_18f4b-rev_right_b4eff\xchange-btce\src\main\java\com\xeiam\xchange\btce\v3\service\polling\BTCEMarketDataService.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5c564_04db5\rev_5c564-04db5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_04db5_b3b5e\rev_04db5-b3b5e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c5ceb_b8ba1\rev_c5ceb-b8ba1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b8ba1_bd215\rev_b8ba1-bd215.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a9b3d_0eae9\rev_a9b3d-0eae9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9dfe6_7db77\rev_9dfe6-7db77.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3c76b_25e46\rev_3c76b-25e46.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b2be8_724ad\rev_b2be8-724ad.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d0692_88360\rev_d0692-88360.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0c7ab_457b5\rev_0c7ab-457b5.revisions
+Conflict type: ExtendsList
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745014794\fstmerge_var1_4572507589942066637
+extends CoinbaseBaseService<Coinbase>
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745014794\fstmerge_base_8170250751501058892
+extends BasePollingExchangeService
+=======
+extends CoinbaseBaseService
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745014794\fstmerge_var2_1460081528403888121
+
+File path: C:\download\ssmerge\XChange\revisions\rev_0c7ab_457b5\rev_rev_left_0c7ab-rev_right_457b5\xchange-coinbase\src\main\java\com\xeiam\xchange\coinbase\service\polling\CoinbaseMarketDataServiceRaw.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e31cc_457b5\rev_e31cc-457b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_457b5_0a747\rev_457b5-0a747.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_249c6_18a54\rev_249c6-18a54.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+  public int compareTo(Trade trade) {
+
+    // NOTE: see https://github.com/timmolter/XChange/issues/219
+    // NOTE: see https://github.com/timmolter/XChange/issues/225
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745553923\fstmerge_var1_2098731837075635736
+    // NOTE: see https://github.com/timmolter/XChange/issues/316
+    return getId().compareTo(trade.getId());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745553923\fstmerge_base_7933973560828810692
+    return getId().compareTo(trade.getId());
+=======
+    
+	  if(timestamp != null && trade.getTimestamp() != null && timestamp.compareTo(trade.getTimestamp()) != 0 ) {
+		  return  timestamp.compareTo(trade.getTimestamp());
+	  }
+	  return getId().compareTo(trade.getId());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513745553923\fstmerge_var2_5920906011515058107
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_249c6_18a54\rev_rev_left_249c6-rev_right_18a54\xchange-core\src\main\java\com\xeiam\xchange\dto\marketdata\Trade.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_633be_bb354\rev_633be-bb354.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bb354_aa055\rev_bb354-aa055.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1ac7f_75ad6\rev_1ac7f-75ad6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3df49_79617\rev_3df49-79617.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_eb683_ebeee\rev_eb683-ebeee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_10894_23f07\rev_10894-23f07.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_23f07_e7024\rev_23f07-e7024.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f84d6_a56d9\rev_f84d6-a56d9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4299b_cb263\rev_4299b-cb263.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1940c_63828\rev_1940c-63828.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b8876_63828\rev_b8876-63828.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7e255_7237d\rev_7e255-7237d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7237d_c5325\rev_7237d-c5325.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f30a6_e4150\rev_f30a6-e4150.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_025d4_7c216\rev_025d4-7c216.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_81768_045b2\rev_81768-045b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_045b2_f15cc\rev_045b2-f15cc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fe91f_8ace1\rev_fe91f-8ace1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_47d3a_faa00\rev_47d3a-faa00.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6fe57_9ea22\rev_6fe57-9ea22.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b06de_129ee\rev_b06de-129ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3329d_9eefb\rev_3329d-9eefb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a352c_8d712\rev_a352c-8d712.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1a1b3_2be02\rev_1a1b3-2be02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1eb72_bab47\rev_1eb72-bab47.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2ce4e_f1f22\rev_2ce4e-f1f22.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4c538_1b29a\rev_4c538-1b29a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a2eb2_40b06\rev_a2eb2-40b06.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public BTERDepth getBTEROrderBook(String tradeableIdentifier, String currency) throws IOException {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513747105602\fstmerge_var1_3277227228869258910
+    BTERDepth bterDepth = bter.getFullDepth(tradableIdentifier.toLowerCase(), currency.toLowerCase());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513747105602\fstmerge_base_6554385670454097764
+    BTERDepth btceDepth = bter.getFullDepth(tradableIdentifier.toLowerCase(), currency.toLowerCase());
+=======
+    BTERDepth btceDepth = bter.getFullDepth(tradeableIdentifier, currency);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513747105602\fstmerge_var2_391877525225366541
+
+    return bterDepth;
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_a2eb2_40b06\rev_rev_left_a2eb2-rev_right_40b06\xchange-bter\src\main\java\com\xeiam\xchange\bter\service\polling\BTERPollingMarketDataServiceRaw.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_40b06_ab031\rev_40b06-ab031.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fa854_ada49\rev_fa854-ada49.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5c2e9_5ddf7\rev_5c2e9-5ddf7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a5367_103f2\rev_a5367-103f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_103f2_fe2cb\rev_103f2-fe2cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_dcf53_2693a\rev_dcf53-2693a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a5641_ad816\rev_a5641-ad816.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5ddf7_cb838\rev_5ddf7-cb838.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_cb838_cde30\rev_cb838-cde30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8909e_2f7fe\rev_8909e-2f7fe.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Map<String, KrakenTicker> getKrakenTicker(CurrencyPair... currencyPairs) throws IOException {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748145260\fstmerge_var1_1066417634347850956
+    String krakenCurrencyPair = createKrakenCurrencyPair(currencyPair);
+    KrakenTickerResult tickerResult = krakenAuthenticated.getTicker(krakenCurrencyPair);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748145260\fstmerge_base_5288514180608960119
+    String krakenCurrencyPair = KrakenUtils.createKrakenCurrencyPair(currencyPair.baseCurrency, currencyPair.counterCurrency);
+    KrakenTickerResult tickerResult = kraken.getTicker(krakenCurrencyPair);
+=======
+    KrakenTickerResult tickerResult = kraken.getTicker(delimitAssetPairs(currencyPairs));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748145260\fstmerge_var2_5505128566793095577
+
+    return checkResult(tickerResult);
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_8909e_2f7fe\rev_rev_left_8909e-rev_right_2f7fe\xchange-kraken\src\main\java\com\xeiam\xchange\kraken\service\polling\KrakenMarketDataServiceRaw.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2f7fe_7e3a3\rev_2f7fe-7e3a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2eb9a_c9e15\rev_2eb9a-c9e15.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c9e15_b4e66\rev_c9e15-b4e66.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ad6cd_3c3e6\rev_ad6cd-3c3e6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3c3e6_f765b\rev_3c3e6-f765b.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Map<String, KrakenTicker> getKrakenTicker(CurrencyPair... currencyPairs) throws IOException {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748496298\fstmerge_var1_3602646743788898996
+    String krakenCurrencyPair = createKrakenCurrencyPair(currencyPair);
+    KrakenTickerResult tickerResult = kraken.getTicker(krakenCurrencyPair);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748496298\fstmerge_base_999114911107036331
+    String krakenCurrencyPair = KrakenUtils.createKrakenCurrencyPair(currencyPair.baseCurrency, currencyPair.counterCurrency);
+    KrakenTickerResult tickerResult = kraken.getTicker(krakenCurrencyPair);
+=======
+    KrakenTickerResult tickerResult = kraken.getTicker(delimitAssetPairs(currencyPairs));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748496298\fstmerge_var2_6932225855623821303
+
+    return checkResult(tickerResult);
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_3c3e6_f765b\rev_rev_left_3c3e6-rev_right_f765b\xchange-kraken\src\main\java\com\xeiam\xchange\kraken\service\polling\KrakenMarketDataServiceRaw.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_56684_eb935\rev_56684-eb935.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5613a_a2252\rev_5613a-a2252.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717189\fstmerge_var1_9151013486935051231
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717189\fstmerge_base_1568356859498670485
+@POST
+  @Path("tradeshistory")
+  CryptoTradeTrades getTradeHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate, 
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @FormParam("pair") String currencyPair, @HeaderParam("AuthKey") String apiKey, @HeaderParam("AuthSign") ParamsDigest signer, @FormParam("nonce") int nonce);
+=======
+@POST
+  @Path("tradeshistory")
+  CryptoTradeTrades getTradeHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate,
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @FormParam("pair") String currencyPair, @HeaderParam("AuthKey") String apiKey,
+      @HeaderParam("AuthSign") ParamsDigest signer, @FormParam("nonce") int nonce);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717189\fstmerge_var2_6316576194748025954
+
+File path: C:\download\ssmerge\XChange\revisions\rev_5613a_a2252\rev_rev_left_5613a-rev_right_a2252\xchange-cryptotrade\src\main\java\com\xeiam\xchange\cryptotrade\CryptoTradeAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717267\fstmerge_var1_6412118657133023977
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717267\fstmerge_base_1159230693118203978
+@POST
+  @Path("ordershistory")
+  CryptoTradeOrders getOrderHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate, 
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @FormParam("pair") String currencyPair, @HeaderParam("AuthKey") String apiKey, @HeaderParam("AuthSign") ParamsDigest signer, @FormParam("nonce") int nonce);
+=======
+@POST
+  @Path("ordershistory")
+  CryptoTradeOrders getOrderHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate,
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @FormParam("pair") String currencyPair, @HeaderParam("AuthKey") String apiKey,
+      @HeaderParam("AuthSign") ParamsDigest signer, @FormParam("nonce") int nonce);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717267\fstmerge_var2_6694369684961371979
+
+File path: C:\download\ssmerge\XChange\revisions\rev_5613a_a2252\rev_rev_left_5613a-rev_right_a2252\xchange-cryptotrade\src\main\java\com\xeiam\xchange\cryptotrade\CryptoTradeAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717346\fstmerge_var1_639908217613004543
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717346\fstmerge_base_3655586613337795537
+@POST
+  @Path("transactions")
+  CryptoTradeTransactions getTransactionHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate, 
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @HeaderParam("AuthKey") String apiKey, @HeaderParam("AuthSign") ParamsDigest signer, @FormParam("nonce") int nonce);
+=======
+@POST
+  @Path("transactions")
+  CryptoTradeTransactions getTransactionHistory(@FormParam("start_id") Long startId, @FormParam("end_id") Long endId, @FormParam("start_date") Long startDate, @FormParam("end_date") Long endDate,
+      @FormParam("count") int count, @FormParam("order") CryptoTradeOrdering ordering, @HeaderParam("AuthKey") String apiKey, @HeaderParam("AuthSign") ParamsDigest signer,
+      @FormParam("nonce") int nonce);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513748717346\fstmerge_var2_7296328938553717695
+
+File path: C:\download\ssmerge\XChange\revisions\rev_5613a_a2252\rev_rev_left_5613a-rev_right_a2252\xchange-cryptotrade\src\main\java\com\xeiam\xchange\cryptotrade\CryptoTradeAuthenticated.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a2252_f2be9\rev_a2252-f2be9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_22512_74033\rev_22512-74033.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4fb25_18db2\rev_4fb25-18db2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bd3f8_9c51e\rev_bd3f8-9c51e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9c51e_0683b\rev_9c51e-0683b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ffeaa_bc6a3\rev_ffeaa-bc6a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6d679_7829a\rev_6d679-7829a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_76faa_87a4a\rev_76faa-87a4a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8c5e7_a746c\rev_8c5e7-a746c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_2b57b_f99b8\rev_2b57b-f99b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7727a_a9cf7\rev_7727a-a9cf7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5abf4_00c59\rev_5abf4-00c59.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_aeccd_04c52\rev_aeccd-04c52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_666e6_4a531\rev_666e6-4a531.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f6fba_7ac02\rev_f6fba-7ac02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_452cd_c4f87\rev_452cd-c4f87.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_40c5e_7c674\rev_40c5e-7c674.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9a6d2_af011\rev_9a6d2-af011.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_af011_bde57\rev_af011-bde57.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e8c08_1ac56\rev_e8c08-1ac56.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0c3e8_1ac56\rev_0c3e8-1ac56.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1ac56_154fb\rev_1ac56-154fb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_77a09_9de1d\rev_77a09-9de1d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4b977_b0838\rev_4b977-b0838.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_83cf1_f4c8c\rev_83cf1-f4c8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5a833_54149\rev_5a833-54149.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fb240_6a519\rev_fb240-6a519.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5358c_585ba\rev_5358c-585ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f80a0_c0cfe\rev_f80a0-c0cfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_41774_53ba2\rev_41774-53ba2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_53ba2_4d8e5\rev_53ba2-4d8e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_477c3_6bc3c\rev_477c3-6bc3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_70baf_6d05a\rev_70baf-6d05a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_330b7_e603e\rev_330b7-e603e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7137a_f0747\rev_7137a-f0747.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fa049_7bcfb\rev_fa049-7bcfb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_be63a_f53ae\rev_be63a-f53ae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_759a7_44b02\rev_759a7-44b02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d8b3a_c6b91\rev_d8b3a-c6b91.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1c404_578cb\rev_1c404-578cb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d0bb4_8c13a\rev_d0bb4-8c13a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a4536_a283b\rev_a4536-a283b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_fd621_e0b56\rev_fd621-e0b56.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a82ad_5d848\rev_a82ad-5d848.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9e72a_dfea5\rev_9e72a-dfea5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_dfea5_02943\rev_dfea5-02943.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5b3ef_4ac5f\rev_5b3ef-4ac5f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3137c_f55ae\rev_3137c-f55ae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_15b96_5a179\rev_15b96-5a179.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4ac5f_61586\rev_4ac5f-61586.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_525fa_61586\rev_525fa-61586.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bc618_20b16\rev_bc618-20b16.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ec6aa_1ae02\rev_ec6aa-1ae02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1ae02_c76e9\rev_1ae02-c76e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_70aa9_ef3ef\rev_70aa9-ef3ef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ef3ef_e5400\rev_ef3ef-e5400.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4ca9e_b4436\rev_4ca9e-b4436.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_26083_b776f\rev_26083-b776f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ea514_d1969\rev_ea514-d1969.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_9b9d0-4adc4.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754338965\fstmerge_var1_1004221423547838715
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754338965\fstmerge_base_4642649518970763240
+@Override
+  public ExchangeInfo getExchangeInfo() throws IOException {
+
+    throw new NotAvailableFromExchangeException();
+  }
+=======
+@Override
+  public ExchangeInfo getExchangeInfo() throws IOException {
+
+    return new ExchangeInfo(BitfinexAdapters.adaptCurrencyPairs(super.getBitfinexSymbols()));
+  }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754338965\fstmerge_var2_7600760914716635780
+
+File path: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-bitfinex\src\main\java\com\xeiam\xchange\bitfinex\v1\service\polling\BitfinexMarketDataService.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754365754\fstmerge_var1_2356302177990291331
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754365754\fstmerge_base_857767391957511211
+@Override
+  public ExchangeInfo getExchangeInfo() throws IOException, ExchangeException {
+    List<CurrencyPair> currencyPairs = new ArrayList<CurrencyPair>();
+    currencyPairs.addAll( getExchangeSymbols() );
+    return new ExchangeInfo( currencyPairs );
+  }
+=======
+@Override
+  public ExchangeInfo getExchangeInfo() throws IOException, ExchangeException {
+
+    List<CurrencyPair> currencyPairs = new ArrayList<CurrencyPair>();
+    currencyPairs.addAll(getExchangeSymbols());
+    return new ExchangeInfo(currencyPairs);
+  }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754365754\fstmerge_var2_2457816956745691924
+
+File path: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-cryptsy\src\main\java\com\xeiam\xchange\cryptsy\service\polling\CryptsyMarketDataService.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754382808\fstmerge_var1_2812202311185408546
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754382808\fstmerge_base_2718636365552824719
+public static ExchangeInfo adaptExchangeInfo(HitbtcSymbols hitbtcSymbols) {
+
+    List<CurrencyPair> currencyPairList = new ArrayList<CurrencyPair>();
+
+    for (HitbtcSymbol hitbtcSymbol : hitbtcSymbols.getHitbtcSymbols()) {
+      String base = hitbtcSymbol.getSymbol().substring(0, 3);
+      String counterSymbol = hitbtcSymbol.getSymbol().substring(3);
+      CurrencyPair currencyPair = new CurrencyPair(base, counterSymbol);
+
+      currencyPairList.add(currencyPair);
+    }
+
+    return new ExchangeInfo(currencyPairList);
+  }
+=======
+public static ExchangeInfo adaptExchangeInfo(HitbtcSymbols hitbtcSymbols) {
+
+    return new ExchangeInfo(adaptCurrencyPairs(hitbtcSymbols));
+  }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513754382808\fstmerge_var2_1398598230163186026
+
+File path: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-hitbtc\src\main\java\com\xeiam\xchange\hitbtc\HitbtcAdapters.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_422d9_5ed0c\rev_422d9-5ed0c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_74757_db919\rev_74757-db919.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0c552_60ab1\rev_0c552-60ab1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e5400_e0eff\rev_e5400-e0eff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f3b2f_a9005\rev_f3b2f-a9005.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e0eff_ad88b\rev_e0eff-ad88b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f8820_396f5\rev_f8820-396f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ae232_31cf6\rev_ae232-31cf6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_19733_440c5\rev_19733-440c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d75a5_dddf7\rev_d75a5-dddf7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e4669_77a9e\rev_e4669-77a9e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_83a6e_c8a9c\rev_83a6e-c8a9c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f444d_c76f4\rev_f444d-c76f4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_225ac_b5eef\rev_225ac-b5eef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b5eef_46470\rev_b5eef-46470.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_09668_d0499\rev_09668-d0499.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b9e11_55137\rev_b9e11-55137.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_45cb7_dd2a7\rev_45cb7-dd2a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_dd2a7_b9e11\rev_dd2a7-b9e11.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0473a_9b03d\rev_0473a-9b03d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9b03d_21adc\rev_9b03d-21adc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8419d_8eb92\rev_8419d-8eb92.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_422a2_dcfeb\rev_422a2-dcfeb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_66681_41473\rev_66681-41473.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_64cc3_11411\rev_64cc3-11411.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f8187_ff4b0\rev_f8187-ff4b0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_23ad9_3b8de\rev_23ad9-3b8de.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_63cf1_520f0\rev_63cf1-520f0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6596e_3f021\rev_6596e-3f021.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6596e_0ffa1\rev_6596e-0ffa1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_80c63_6596e\rev_80c63-6596e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3f021_e7d53\rev_3f021-e7d53.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ef5c9_bb15a\rev_ef5c9-bb15a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1ce0a_0398b\rev_1ce0a-0398b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_92668_42503\rev_92668-42503.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c58e1_73a47\rev_c58e1-73a47.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_42503_15f8a\rev_42503-15f8a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_86d79_87bb2\rev_86d79-87bb2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_161a3_0e5ba\rev_161a3-0e5ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_00d40_38ad1\rev_00d40-38ad1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d991a_cfd61\rev_d991a-cfd61.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8a679_78118\rev_8a679-78118.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ebc3e_a2dfb\rev_ebc3e-a2dfb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bee80_fe92a\rev_bee80-fe92a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7b894_b4e1a\rev_7b894-b4e1a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_eda20_d19fc\rev_eda20-d19fc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_31fcc_b07b3\rev_31fcc-b07b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_7e9de_b7c11\rev_7e9de-b7c11.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6c89e_b7c11\rev_6c89e-b7c11.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+  public String digestParams(RestInvocation restInvocation) {
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757678267\fstmerge_var1_7410577917193277127
+    String tonce = restInvocation.getAllHttpHeaders().get("Json-Rpc-Tonce");
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757678267\fstmerge_base_7323485511945969557
+    String tonce = restInvocation.getHttpHeaders().get("Json-Rpc-Tonce");
+=======
+    String tonce = restInvocation.getHttpHeadersFromParams().get("Json-Rpc-Tonce");
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757678267\fstmerge_var2_8662806105439461656
+    String requestJson = restInvocation.getRequestBody();
+
+    String id = "", method = "", params = "";
+    try {
+      Matcher regexMatcher = responsePattern.matcher(requestJson);
+      if (regexMatcher.find()) {
+        id = regexMatcher.group(1);
+        method = regexMatcher.group(2);
+        params = regexMatcher.group(3);
+      }
+    } catch (PatternSyntaxException ex) {
+      // Syntax error in the regular expression
+    }
+
+    String signature = String.format("tonce=%s&accesskey=%s&requestmethod=%s&id=%s&method=%s&params=%s", tonce, exchangeAccessKey, "post", id, method, params);
+    Mac mac = getMac();
+    byte[] hash = mac.doFinal(signature.getBytes());
+
+    BasicAuthCredentials auth = new BasicAuthCredentials(exchangeAccessKey, BTCChinaUtils.bytesToHex(hash));
+
+    return auth.digestParams(restInvocation);
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6c89e_b7c11\rev_rev_left_6c89e-rev_right_b7c11\xchange-btcchina\src\main\java\com\xeiam\xchange\btcchina\service\BTCChinaDigest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+  public String digestParams(RestInvocation restInvocation) {
+
+    MessageDigest md;
+    try {
+      md = MessageDigest.getInstance("SHA-256");
+    } catch (NoSuchAlgorithmException e) {
+      throw new RuntimeException("Illegal algorithm for post body digest. Check the implementation.");
+    }
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757687837\fstmerge_var1_5720877097049700045
+    Map<String, String> httpHeaders = restInvocation.getAllHttpHeaders();
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757687837\fstmerge_base_8785399045025099758
+    Map<String, String> httpHeaders = restInvocation.getHttpHeaders();
+=======
+    Map<String, String> httpHeaders = restInvocation.getHttpHeadersFromParams();
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513757687837\fstmerge_var2_2398228411495314416
+    String currentNonce = httpHeaders.get("X-Auth-Nonce");
+    String currentTimestamp = httpHeaders.get("X-Auth-Timestamp");
+
+    // only POST requests will have a non-null request body.
+    String requestBody = restInvocation.getRequestBody();
+    if (requestBody == null) {
+      requestBody = "";
+    }
+    else {
+      requestBody = requestBody.replace("\"", "\\\"");
+    }
+
+    String verb = restInvocation.getHttpMethod().trim();
+    String invocationUrl = restInvocation.getInvocationUrl().trim();
+    String message =
+        new StringBuilder("[\"").append(verb).append(FIELD_SEPARATOR).append(invocationUrl).append(FIELD_SEPARATOR).append(requestBody).append(FIELD_SEPARATOR).append(currentNonce).append(
+            FIELD_SEPARATOR).append(currentTimestamp).append("\"]").toString();
+
+    md.update((currentNonce + message).getBytes());
+    BigInteger hash = new BigInteger(md.digest());
+
+    Mac mac512 = getMac();
+    mac512.update(invocationUrl.getBytes());
+    mac512.update(hash.toByteArray());
+
+    return apiKey + ":" + Base64.encodeBytes((new BigInteger(mac512.doFinal())).toByteArray());
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6c89e_b7c11\rev_rev_left_6c89e-rev_right_b7c11\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\service\ItBitHmacPostBodyDigest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_b7c11_6ccb3\rev_b7c11-6ccb3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3b205_dd60a\rev_3b205-dd60a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9d98e_914d1\rev_9d98e-914d1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f766b_79b0b\rev_f766b-79b0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4ffdb_787b3\rev_4ffdb-787b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_84b85_a2b7b\rev_84b85-a2b7b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_68b67_52043\rev_68b67-52043.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_eb13e_c99dd\rev_eb13e-c99dd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5c43c_e893c\rev_5c43c-e893c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_21b12_e177d\rev_21b12-e177d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0b421_1fdf2\rev_0b421-1fdf2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c71d1_8dc2e\rev_c71d1-8dc2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_99832_036ed\rev_99832-036ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0e3b0_ec964\rev_0e3b0-ec964.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8b941_18ca9\rev_8b941-18ca9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_00a82_bd665\rev_00a82-bd665.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_067b8_6309b\rev_067b8-6309b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_028cb_82fe5\rev_028cb-82fe5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_8d3cf_fbf1b\rev_8d3cf-fbf1b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_75401_86c1e\rev_75401-86c1e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_14988_cf84a\rev_14988-cf84a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_63862_de640\rev_63862-de640.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1b032_b0a0e\rev_1b032-b0a0e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_9c382_55eeb\rev_9c382-55eeb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_1d7ed_bd4d4\rev_1d7ed-bd4d4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_5a371_596ab\rev_5a371-596ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_596ab_857a7\rev_596ab-857a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_195ce_46c46\rev_195ce-46c46.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0b09c_7a059\rev_0b09c-7a059.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3c3ca_1edd4\rev_3c3ca-1edd4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e4d20_d17ba\rev_e4d20-d17ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d17ba_da058\rev_d17ba-da058.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_76148_3f758\rev_76148-3f758.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3f758_065b3\rev_3f758-065b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_522e4_3772b\rev_522e4-3772b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_3772b_19af8\rev_3772b-19af8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ef2fd_6a49e\rev_ef2fd-6a49e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_af4f8_0c141\rev_af4f8-0c141.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_a13b4_f1b23\rev_a13b4-f1b23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_75044_58021\rev_75044-58021.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_58021_5577b\rev_58021-5577b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_54fec_a876c\rev_54fec-a876c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_f0690_17186\rev_f0690-17186.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_0e7a7_78b35\rev_0e7a7-78b35.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_6421a-e5a46.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167495\fstmerge_var1_5149054110112705129
+@GET
+  @Path("wallets?userId={userId}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitAccountInfoReturn[] getInfo(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("userId") String userId) throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167495\fstmerge_base_4819842365430868442
+@GET
+  @Path("?userId={userId}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitAccountInfoReturn[] getInfo(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("userId") String userId) throws IOException;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167495\fstmerge_var2_2271049058557021507
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_rev_left_6421a-rev_right_e5a46\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\ItBitAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167573\fstmerge_var1_7328756283753382530
+@GET
+  @Path("wallets/{walletId}/orders")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder[] getOrders(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @QueryParam("instrument") String instrument, @QueryParam("page") String page, @QueryParam("perPage") String perPage, @QueryParam("status") String status, @PathParam("walletId") String walletId)
+      throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167573\fstmerge_base_710414672339025251
+@GET
+  @Path("/{walletId}/orders")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder[] getOrders(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @QueryParam("instrument") String instrument, @QueryParam("page") String page, @QueryParam("perPage") String perPage, @QueryParam("status") String status, @PathParam("walletId") String walletId)
+      throws IOException;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167573\fstmerge_var2_4289267858909327361
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_rev_left_6421a-rev_right_e5a46\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\ItBitAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167651\fstmerge_var1_4759044431525570260
+@POST
+  @Path("wallets/{walletId}/orders")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder postOrder(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, ItBitPlaceOrderRequest request) throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167651\fstmerge_base_1103552773779296109
+@POST
+  @Path("/{walletId}/orders")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder postOrder(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, ItBitPlaceOrderRequest request) throws IOException;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167651\fstmerge_var2_2935473589687561184
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_rev_left_6421a-rev_right_e5a46\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\ItBitAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167729\fstmerge_var1_8554530161683845790
+@DELETE
+  @Path("wallets/{walletId}/orders/{orderId}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  Object cancelOrder(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, @PathParam("orderId") String orderId) throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167729\fstmerge_base_5864903240560041200
+@DELETE
+  @Path("/{walletId}/orders/{orderId}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  Object cancelOrder(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, @PathParam("orderId") String orderId) throws IOException;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167729\fstmerge_var2_5417069113099467366
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_rev_left_6421a-rev_right_e5a46\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\ItBitAuthenticated.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167807\fstmerge_var1_7316892449781861704
+@POST
+  @Path("wallets/{walletId}/cryptocurrency_withdrawals")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder requestWithdrawal(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, ItBitPlaceOrderRequest request) throws IOException;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167807\fstmerge_base_7853784063225801316
+@POST
+  @Path("/{walletId}/cryptocurrency_withdrawals")
+  @Consumes(MediaType.APPLICATION_JSON)
+  ItBitOrder requestWithdrawal(@HeaderParam("Authorization") ParamsDigest signer, @HeaderParam("X-Auth-Timestamp") long timestamp, @HeaderParam("X-Auth-Nonce") int nonce,
+      @PathParam("walletId") String walletId, ItBitPlaceOrderRequest request) throws IOException;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513766167807\fstmerge_var2_1572470714635072264
+
+File path: C:\download\ssmerge\XChange\revisions\rev_6421a_e5a46\rev_rev_left_6421a-rev_right_e5a46\xchange-itbit\src\main\java\com\xeiam\xchange\itbit\v1\ItBitAuthenticated.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_e5a46_b20fb\rev_e5a46-b20fb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_74e28_217f5\rev_74e28-217f5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_42ded_222fe\rev_42ded-222fe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c7b68_3b0d1\rev_c7b68-3b0d1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_59f95_533e5\rev_59f95-533e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_d27ee_c6e92\rev_d27ee-c6e92.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+  public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
+
+    final String market = BTCChinaAdapters.adaptMarket(currencyPair);
+    final Number since = args.length > 0 ? (Number) args[0] : null;
+    final Number limit = args.length > 1 ? (Number) args[1] : null;
+    final String sinceType = args.length > 2 ? (String) args[2] : null;
+
+    log.debug("market: {}, since: {}, limit: {}, sinceType: {}", market, since, limit, sinceType);
+
+    final BTCChinaTrade[] btcChinaTrades;
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768055468\fstmerge_var1_16638801163990703
+    if (since != null && limit != null) {
+      btcChinaTrades = getBTCChinaHistoryData(market, since.longValue(), limit.intValue());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768055468\fstmerge_base_7527635486081673546
+    if (since != null && limit != null) {
+      btcChinaTrades = getBTCChinaTrades(market, since.longValue(), limit.intValue());
+=======
+    if (since != null && limit != null && sinceType != null) {
+      btcChinaTrades = getBTCChinaTrades(market, since.longValue(), limit.intValue(), sinceType);
+    }
+    else if (since != null && limit != null) {
+      btcChinaTrades = getBTCChinaTrades(market, since.longValue(), limit.intValue());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768055468\fstmerge_var2_8795944398212310221
+    }
+    else if (since != null) {
+      btcChinaTrades = getBTCChinaHistoryData(market, since.longValue());
+    }
+    else if (limit != null) {
+      btcChinaTrades = getBTCChinaHistoryData(market, limit.intValue());
+    }
+    else {
+      btcChinaTrades = getBTCChinaHistoryData(market);
+    }
+
+    // Adapt to XChange DTOs
+    return BTCChinaAdapters.adaptTrades(btcChinaTrades, currencyPair);
+  }
+
+File path: C:\download\ssmerge\XChange\revisions\rev_d27ee_c6e92\rev_rev_left_d27ee-rev_right_c6e92\xchange-btcchina\src\main\java\com\xeiam\xchange\btcchina\service\polling\BTCChinaMarketDataService.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_c6e92_d41d5\rev_c6e92-d41d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_bd948_daddb\rev_bd948-daddb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_daddb_7c04d\rev_daddb-7c04d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_4adbe_07bc2\rev_4adbe-07bc2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_17109_5cb4f\rev_17109-5cb4f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\XChange\revisions\rev_ae380_d9208\rev_ae380-d9208.revisions
+
+=========================================================

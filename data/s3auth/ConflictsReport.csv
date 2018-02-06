@@ -1,0 +1,115 @@
+=========================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_98516_0bd37\rev_98516-0bd37.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_255dc_c398a\rev_255dc-c398a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_203ee_0fce7\rev_203ee-0fce7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_b854d_20ff9\rev_b854d-20ff9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_d7857_ef96d\rev_d7857-ef96d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_d357d_4d8fa\rev_d357d-4d8fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_b2d3a_11e26\rev_b2d3a-11e26.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_e876c_7507c\rev_e876c-7507c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_b5e0b_a618e\rev_b5e0b-a618e.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768658742\fstmerge_var1_1263265766211324039
+private static final int THREADS = Math.min(
+        3 * Tv.HUNDRED,
+        Runtime.getRuntime().availableProcessors() * Tv.HUNDRED
+    );
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768658742\fstmerge_base_6969332668638418917
+private static final int THREADS =
+        Runtime.getRuntime().availableProcessors() * Tv.TWENTY;
+=======
+private static final int THREADS = Math.min(
+        Runtime.getRuntime().availableProcessors() * Tv.TWENTY,
+        Tv.HUNDRED
+    );
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768658742\fstmerge_var2_6669771330783182172
+
+File path: C:\download\ssmerge\s3auth\revisions\rev_b5e0b_a618e\rev_rev_left_b5e0b-rev_right_a618e\s3auth-relay\src\main\java\com\s3auth\relay\HttpFacade.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_7eb88_7b8df\rev_7eb88-7b8df.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_a4daf_59cfe\rev_a4daf-59cfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_3fac0_2b3ca\rev_3fac0-2b3ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_ae0c5_73a75\rev_ae0c5-73a75.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_944b9_c4482\rev_944b9-c4482.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_23c1f_3ed0e\rev_23c1f-3ed0e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_2afbc_40aa5\rev_2afbc-40aa5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_80717_ae3d4\rev_80717-ae3d4.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public Collection<String> headers() throws IOException {
+        final ImmutableSet.Builder<String> headers = ImmutableSet.builder();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768735958\fstmerge_var1_1234077473919367536
+        headers.add(header(HttpHeaders.CONTENT_TYPE, this.contentType()));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768735958\fstmerge_base_7747856731370236544
+        headers.add(header(HttpHeaders.CONTENT_TYPE, "text/xml"));
+=======
+        headers.add(header(HttpHeaders.CONTENT_TYPE, "application/xhtml+xml"));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513768735958\fstmerge_var2_1445259193966794791
+        headers.add(
+            header(
+                HttpHeaders.CONTENT_LENGTH,
+                String.valueOf(this.content.length)
+            )
+        );
+        return headers.build();
+    }
+
+File path: C:\download\ssmerge\s3auth\revisions\rev_80717_ae3d4\rev_rev_left_80717-rev_right_ae3d4\s3auth-hosts\src\main\java\com\s3auth\hosts\ObjectVersionListing.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_ae3d4_8297c\rev_ae3d4-8297c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_09b36_7dc6c\rev_09b36-7dc6c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\s3auth\revisions\rev_79f22_2621a\rev_79f22-2621a.revisions
+
+=========================================================

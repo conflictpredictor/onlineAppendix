@@ -1,0 +1,1321 @@
+#MS_XXX_MS#
+Merge scenario: rev_34931-474dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c92d-c13cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cee0f-396d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_52f6c-5dfdb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a10ce-096b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_270e8-d0adb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cce86-9afe3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9afe3-c1929
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e62bf-827b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd331-e2fba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4dbe-fa829
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c904-f9aea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3e22d-92967
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44244-962be
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3f89-b804b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bba61-46efd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8dc6a-76208
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01a85-9c0dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67828-66a55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01a85-105a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_975de-2752e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2752e-8bffc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b64c-e375f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a2a0-72f21
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_6a2a0_72f21\rev_rev_left_6a2a0-rev_right_72f21\xchange-core\src\main\java\com\xeiam\xchange\dto\marketdata\OrderBook.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START update(LimitOrder-LimitOrder)//public void update(LimitOrder limitOrder) {
+
+    if (limitOrder.getType().equals(OrderType.ASK)) {
+
+      Iterator<LimitOrder> it = asks.iterator();
+      while (it.hasNext()) {
+        LimitOrder order = it.next();
+        if (order.getLimitPrice().compareTo(limitOrder.getLimitPrice()) == 0) { // they
+                                                                                // are
+                                                                                // equal.
+                                                                                // found
+                                                                                // it!
+          it.remove();
+          break;
+        }
+      }
+      asks.add(limitOrder); // just add it
+      Collections.sort(asks); // finally sort
+
+    }
+    else {
+
+      Iterator<LimitOrder> it = bids.iterator();
+      while (it.hasNext()) {
+        LimitOrder order = it.next();
+        if (order.getLimitPrice().compareTo(limitOrder.getLimitPrice()) == 0) { // they
+                                                                                // are
+                                                                                // equal.
+                                                                                // found
+                                                                                // it!
+          it.remove();
+          break;
+        }
+      }
+      bids.add(limitOrder); // just add it
+      Collections.sort(bids); // finally sort
+    }
+    if(limitOrder.getTimestamp()!=null&&(timeStamp==null||limitOrder.getTimestamp().after(timeStamp))){
+        this.timeStamp=limitOrder.getTimestamp();
+    }
+// END update(LimitOrder-LimitOrder)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72f21-bef34
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bef34-7c7d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46d0f-77a61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6d83-f6751
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22944-81d54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc992-6b46c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06868-6ca46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7414e-43663
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c81e6-08d4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3aa01-2e0e3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_592d3-cc834
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e0e3-cc834
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60200-3ee20
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe82b-74f88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74f88-a3d88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6407b-9edc8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b46f-b925e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0411-2e81a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b925e-7b46f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60f4d-92003
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed7b6-a59eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a59eb-5a083
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_412b1-18120
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18120-93b7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d9a0-696c7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d506-fd485
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_696c7-14592
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7f20f-73c2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ba8af-66e5a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8af35-8b632
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75906-6b736
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd021-c18f9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_cd021_c18f9\rev_rev_left_cd021-rev_right_c18f9\xchange-examples\src\main\java\com\xeiam\xchange\examples\bitcoincharts\BitcoinChartsRawDataDemo.java
+Different Spacing: false
+Left editions: [45]
+Right editions: [52, 53, 54, 55, 56]
+Merged body: 
+// START main(String[]-String[])//// LEFT //public static void main(String[] args) throws IOException {
+
+    BitcoinCharts bitcoinCharts = BitcoinChartsFactory.createInstance();
+    BitcoinChartsTicker[] marketData = bitcoinCharts.getMarketData();
+    for (BitcoinChartsTicker data : marketData) {
+      System.out.println(data.getSymbol() + ": " + data);
+    }
+// RIGHT //
+// RIGHT //    ChartData[] chartData = BitcoinChartsAdapters.adaptChartData(bitcoinCharts.getChartData("mtgox", 7));
+// RIGHT //    for (ChartData cd : chartData) {
+// RIGHT //      System.out.println(cd.toString());
+// RIGHT //    }
+// END main(String[]-String[])//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e965-91977
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e801f-5498f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d661-989b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3f84f-47c57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_975cf-278c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1cb1-324cd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7cac-655f9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_121fc-759de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73a8a-bae57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5498f-5eacd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e9d9-78ca8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ebc8-9e553
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0207b-4bb5b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a1999-e67e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88aa6-c20a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_180c1-df42f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5f953-f9bb3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25e22-17679
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b29e-2d37a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6ac03-3351d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b3a4-7a3ef
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_3b3a4_7a3ef\rev_rev_left_3b3a4-rev_right_7a3ef\xchange-bitfinex\src\main\java\com\xeiam\xchange\bitfinex\v1\BitfinexAdapters.java
+Different Spacing: false
+Left editions: [207, 208, 210, 212]
+Right editions: [205]
+Merged body: 
+// START adaptTradeHistory(BitfinexTradeResponse[]-BitfinexTradeResponse[]-String-String)//public static Trades adaptTradeHistory(BitfinexTradeResponse[] trades, String symbol) {
+		List<Trade> pastTrades = new ArrayList<Trade>(trades.length);
+
+		String tradableIdentifier = symbol.substring(0, 3)
+				.toUpperCase();
+		String transactionCurrency = symbol.substring(3)
+				.toUpperCase();
+
+		for(BitfinexTradeResponse trade : trades) {
+// RIGHT //			OrderType orderType = trade.getType().equalsIgnoreCase("buy") ? OrderType.BID
+					: OrderType.ASK;
+// LEFT //			
+// LEFT //			long id = trade.hashCode();
+			pastTrades.add(new Trade(orderType, trade.getAmount(), tradableIdentifier, transactionCurrency,
+// LEFT //					BigMoney.of(CurrencyUnit.USD, trade.getPrice()), new Date((long)(trade.getTimestamp() * 1000L)), id));
+		}
+// LEFT //		
+		return new Trades(pastTrades);
+// END adaptTradeHistory(BitfinexTradeResponse[]-BitfinexTradeResponse[]-String-String)//	}
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32201-acc31
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3dfe2-727a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e965-dd275
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60c65-c4117
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f330-49bf7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e2da-2b57b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b57b-5be88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a8b7-321b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf00c-4b3de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57544-d7c8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66b24-bb970
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb970-c9660
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b40fe-61d52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae7a5-1bdf3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1bdf3-a5416
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18850-563d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18850-f99b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48787-5ec12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2acf-c46d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c46d7-a2acf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_785e8-26933
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b3e5-529d3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39963-89bdb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_448f9-2268b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2268b-22c70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01ebe-c7ddb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7ddb-f8eea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fb893-20ecc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1a7e-e521a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a02a3-8e680
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e680-2db2c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5139-fbb70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fbb70-561f3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bf4f6-5c711
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_daf75-a4e0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4eff-f8ba3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18f4b-b4eff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c564-04db5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04db5-b3b5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5ceb-b8ba1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8ba1-bd215
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9b3d-0eae9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9dfe6-7db77
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c76b-25e46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b2be8-724ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d0692-88360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c7ab-457b5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_0c7ab_457b5\rev_rev_left_0c7ab-rev_right_457b5\xchange-coinbase\src\main\java\com\xeiam\xchange\coinbase\dto\marketdata\CoinbasePrice.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START CoinbasePrice(BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney)//private CoinbasePrice(final BigMoney coinbaseFee, final BigMoney bankFee, final BigMoney total, final BigMoney subTotal) {
+    
+    this.coinbaseFee = coinbaseFee;
+    this.bankFee = bankFee;
+    this.total = total;
+    this.subTotal = subTotal;
+// END CoinbasePrice(BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney-BigMoney)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e31cc-457b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_457b5-0a747
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_249c6-18a54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_633be-bb354
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb354-aa055
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ac7f-75ad6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3df49-79617
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb683-ebeee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10894-23f07
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23f07-e7024
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f84d6-a56d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4299b-cb263
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1940c-63828
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8876-63828
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e255-7237d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7237d-c5325
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f30a6-e4150
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_025d4-7c216
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81768-045b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_045b2-f15cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe91f-8ace1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47d3a-faa00
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6fe57-9ea22
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b06de-129ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3329d-9eefb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a352c-8d712
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a1b3-2be02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1eb72-bab47
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ce4e-f1f22
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c538-1b29a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2eb2-40b06
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40b06-ab031
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa854-ada49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c2e9-5ddf7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5367-103f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_103f2-fe2cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcf53-2693a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5641-ad816
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5ddf7-cb838
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb838-cde30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8909e-2f7fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f7fe-7e3a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2eb9a-c9e15
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9e15-b4e66
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad6cd-3c3e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c3e6-f765b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56684-eb935
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5613a-a2252
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_5613a_a2252\rev_rev_left_5613a-rev_right_a2252\xchange-examples\src\main\java\com\xeiam\xchange\examples\cryptotrade\marketdata\CryptoTradeMarketDataDemo.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START main(String[]-String[])//public static void main(String[] args) throws Exception {
+    
+    CertHelper.trustAllCerts();
+    
+    Exchange coinbaseExchange = ExchangeFactory.INSTANCE.createExchange(CryptoTradeExchange.class.getName());
+    PollingMarketDataService marketDataService = coinbaseExchange.getPollingMarketDataService();
+
+    generic(marketDataService);
+    raw((CryptoTradeMarketDataServiceRaw) marketDataService);
+// END main(String[]-String[])//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2252-f2be9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22512-74033
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4fb25-18db2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd3f8-9c51e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c51e-0683b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ffeaa-bc6a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d679-7829a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76faa-87a4a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c5e7-a746c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b57b-f99b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7727a-a9cf7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5abf4-00c59
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aeccd-04c52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_666e6-4a531
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6fba-7ac02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_452cd-c4f87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40c5e-7c674
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a6d2-af011
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af011-bde57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8c08-1ac56
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c3e8-1ac56
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ac56-154fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77a09-9de1d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b977-b0838
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83cf1-f4c8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a833-54149
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fb240-6a519
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5358c-585ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f80a0-c0cfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41774-53ba2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53ba2-4d8e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_477c3-6bc3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70baf-6d05a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_330b7-e603e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7137a-f0747
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa049-7bcfb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be63a-f53ae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_759a7-44b02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8b3a-c6b91
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c404-578cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d0bb4-8c13a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a4536-a283b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fd621-e0b56
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a82ad-5d848
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e72a-dfea5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dfea5-02943
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b3ef-4ac5f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3137c-f55ae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15b96-5a179
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ac5f-61586
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_525fa-61586
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc618-20b16
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec6aa-1ae02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ae02-c76e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70aa9-ef3ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef3ef-e5400
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ca9e-b4436
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_26083-b776f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ea514-d1969
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b9d0-4adc4
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-cryptsy\src\main\java\com\xeiam\xchange\cryptsy\service\polling\CryptsyMarketDataService.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getOrderBook(CurrencyPair-CurrencyPair-Object-Object)//@Override
+  public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException, ExchangeException {
+
+    verify(currencyPair);
+
+    CryptsyOrderBookReturn orderBookReturnData = super.getCryptsyOrderBook(CryptsyCurrencyUtils.convertToMarketId(currencyPair));
+
+    return CryptsyAdapters.adaptOrderBook(orderBookReturnData, currencyPair);
+// END getOrderBook(CurrencyPair-CurrencyPair-Object-Object)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-cryptsy\src\main\java\com\xeiam\xchange\cryptsy\service\polling\CryptsyMarketDataService.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getTrades(CurrencyPair-CurrencyPair-Object-Object)//@Override
+  public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException, ExchangeException {
+
+    verify(currencyPair);
+
+    CryptsyMarketTradesReturn tradesReturnData = super.getCryptsyTrades(CryptsyCurrencyUtils.convertToMarketId(currencyPair));
+
+    return CryptsyAdapters.adaptTrades(tradesReturnData, currencyPair);
+// END getTrades(CurrencyPair-CurrencyPair-Object-Object)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-examples\src\main\java\com\xeiam\xchange\examples\cryptsy\CryptsyDemo.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START generic(PollingAccountService-PollingAccountService-PollingMarketDataService-PollingMarketDataService-PollingTradeService-PollingTradeService)//private static void generic(PollingAccountService accountService, PollingMarketDataService marketDataService, PollingTradeService tradeService) throws ExchangeException,
+      NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException, InterruptedException {
+
+    System.out.println("\nOpenOrders:\n" + tradeService.getOpenOrders());
+    Thread.sleep(500);
+
+    System.out.println("\nAccountInfo:\n" + accountService.getAccountInfo());
+    Thread.sleep(500);
+
+    // System.out.println("\nrequestDepositAddress:\n" + accountService.requestDepositAddress("BTC"));
+    // Thread.sleep(500);
+
+    System.out.println("\ngetOrderBook:\n" + marketDataService.getOrderBook(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+    System.out.println("\ngetTicker:\n" + marketDataService.getTicker(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+    System.out.println("\ngetTrades:\n" + marketDataService.getTrades(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+    String orderID = tradeService.placeLimitOrder(new LimitOrder(OrderType.BID, new BigDecimal("50.000000"), new CurrencyPair("NET", "BTC"), null, null, new BigDecimal("0.00000001")));
+    System.out.println("\nPlaceOrder:\n" + orderID);
+    Thread.sleep(500);
+
+    System.out.println("\nOpenOrders:\n" + tradeService.getOpenOrders());
+    Thread.sleep(500);
+
+    System.out.println("\nCancelOrder:\n" + tradeService.cancelOrder(orderID));
+    Thread.sleep(500);
+
+    System.out.println("\nOpenOrders:\n" + tradeService.getOpenOrders());
+    Thread.sleep(500);
+
+    System.out.println("\nTradeHistory:\n" + tradeService.getTradeHistory());
+    Thread.sleep(500);
+
+// END generic(PollingAccountService-PollingAccountService-PollingMarketDataService-PollingMarketDataService-PollingTradeService-PollingTradeService)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_9b9d0_4adc4\rev_rev_left_9b9d0-rev_right_4adc4\xchange-examples\src\main\java\com\xeiam\xchange\examples\cryptsy\CryptsyDemo.java
+Different Spacing: false
+Left editions: [264, 265, 266, 267, 268, 269, 270, 271, 274, 275, 276, 277, 278, 279, 280, 281]
+Right editions: [262, 272]
+Merged body: 
+// START publicAPI(CryptsyExchange-CryptsyExchange)//private static void publicAPI(CryptsyExchange cryptsyExchange) throws ExchangeException, IOException, InterruptedException {
+
+    CryptsyPublicMarketDataService publicMarketDataService = cryptsyExchange.getPublicPollingMarketDataService();
+    final int DOGE_LTC_MARKET_ID = 135;
+// RIGHT //    Map<Integer, CryptsyPublicMarketData> singleMarketData = publicMarketDataService.getCryptsyMarketData(DOGE_LTC_MARKET_ID);
+    System.out.println(singleMarketData);
+// LEFT //
+// LEFT //    /*
+// LEFT //     * Map<String, CryptsyPublicMarketData> allMarketData = publicMarketDataService.getAllCryptsyMarketData();
+// LEFT //     * for (CryptsyPublicMarketData marketData : allMarketData.values()) {
+// LEFT //     * System.out.println(marketData);
+// LEFT //     * }
+// LEFT //     */
+// LEFT //
+// RIGHT //    Map<Integer, CryptsyPublicOrderbook> singleOrderBook = publicMarketDataService.getCryptsyOrderBook(DOGE_LTC_MARKET_ID);
+    System.out.println(singleOrderBook);
+// LEFT //
+// LEFT //    /*
+// LEFT //     * Map<String, CryptsyPublicOrderbook> allOrderBooks = publicMarketDataService.getAllCryptsyOrderBooks();
+// LEFT //     * for (Entry<String, CryptsyPublicOrderbook> orderbook : allOrderBooks.entrySet()) {
+// LEFT //     * System.out.println(orderbook.getKey() + ": " + orderbook.getValue());
+// LEFT //     * }
+// LEFT //     */
+// LEFT //
+    System.out.println("\ngetOrderBook:\n" + publicMarketDataService.getOrderBook(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+    System.out.println("\ngetTicker:\n" + publicMarketDataService.getTicker(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+    System.out.println("\ngetTrades:\n" + publicMarketDataService.getTrades(new CurrencyPair("NET", "BTC")));
+    Thread.sleep(500);
+
+// END publicAPI(CryptsyExchange-CryptsyExchange)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_422d9-5ed0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74757-db919
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c552-60ab1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5400-e0eff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3b2f-a9005
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0eff-ad88b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8820-396f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae232-31cf6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19733-440c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d75a5-dddf7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4669-77a9e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83a6e-c8a9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f444d-c76f4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_225ac-b5eef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5eef-46470
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09668-d0499
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9e11-55137
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_45cb7-dd2a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd2a7-b9e11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0473a-9b03d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b03d-21adc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8419d-8eb92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_422a2-dcfeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66681-41473
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64cc3-11411
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8187-ff4b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23ad9-3b8de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63cf1-520f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6596e-3f021
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_6596e_3f021\rev_rev_left_6596e-rev_right_3f021\xchange-btcchina\src\main\java\com\xeiam\xchange\btcchina\service\polling\BTCChinaAccountServiceRaw.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START BTCChinaAccountServiceRaw(ExchangeSpecification-ExchangeSpecification)//public BTCChinaAccountServiceRaw(ExchangeSpecification exchangeSpecification) {
+
+    
+    super(BTCChina.class, exchangeSpecification);
+// END BTCChinaAccountServiceRaw(ExchangeSpecification-ExchangeSpecification)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6596e-0ffa1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80c63-6596e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3f021-e7d53
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef5c9-bb15a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ce0a-0398b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92668-42503
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c58e1-73a47
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42503-15f8a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86d79-87bb2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_161a3-0e5ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00d40-38ad1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d991a-cfd61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a679-78118
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ebc3e-a2dfb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bee80-fe92a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b894-b4e1a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eda20-d19fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31fcc-b07b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e9de-b7c11
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\XChange\revisions\rev_7e9de_b7c11\rev_rev_left_7e9de-rev_right_b7c11\xchange-bitstamp\src\main\java\com\xeiam\xchange\bitstamp\BitstampAdapters.java
+Different Spacing: false
+Left editions: [233]
+Right editions: [228, 235, 236, 237, 238, 246]
+Merged body: 
+// START adaptTradeHistory(BitstampUserTransaction[]-BitstampUserTransaction[])//public static Trades adaptTradeHistory(BitstampUserTransaction[] bitstampUserTransactions) {
+
+    List<Trade> trades = new ArrayList<Trade>();
+// RIGHT //    long lastTradeId = 0;
+    for (BitstampUserTransaction bitstampUserTransaction : bitstampUserTransactions) {
+      if (bitstampUserTransaction.getType().equals(BitstampUserTransaction.TransactionType.trade)) { // skip account deposits and withdrawals.
+        OrderType orderType = bitstampUserTransaction.getUsd().doubleValue() > 0.0 ? OrderType.ASK : OrderType.BID;
+        BigDecimal tradableAmount = bitstampUserTransaction.getBtc();
+// LEFT //        BigDecimal price = bitstampUserTransaction.getPrice().abs();
+        Date timestamp = BitstampUtils.parseDate(bitstampUserTransaction.getDatetime());
+// RIGHT //        long transactionId = bitstampUserTransaction.getId();
+// RIGHT //        if (transactionId > lastTradeId)
+// RIGHT //          lastTradeId = transactionId;
+// RIGHT //        final String tradeId = String.valueOf(transactionId);
+        final String orderId = String.valueOf(bitstampUserTransaction.getOrderId());
+
+        Trade trade = new Trade(orderType, tradableAmount, CurrencyPair.BTC_USD, price, timestamp, tradeId, orderId);
+        trades.add(trade);
+      }
+    }
+
+// RIGHT //    return new Trades(trades, lastTradeId, TradeSortType.SortByID);
+// END adaptTradeHistory(BitstampUserTransaction[]-BitstampUserTransaction[])//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c89e-b7c11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7c11-6ccb3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b205-dd60a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9d98e-914d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f766b-79b0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ffdb-787b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84b85-a2b7b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68b67-52043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb13e-c99dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c43c-e893c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21b12-e177d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b421-1fdf2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c71d1-8dc2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99832-036ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0e3b0-ec964
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8b941-18ca9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00a82-bd665
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_067b8-6309b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_028cb-82fe5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8d3cf-fbf1b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75401-86c1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_14988-cf84a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63862-de640
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b032-b0a0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c382-55eeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d7ed-bd4d4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a371-596ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_596ab-857a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_195ce-46c46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b09c-7a059
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c3ca-1edd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4d20-d17ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d17ba-da058
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76148-3f758
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3f758-065b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_522e4-3772b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3772b-19af8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef2fd-6a49e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af4f8-0c141
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a13b4-f1b23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75044-58021
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58021-5577b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54fec-a876c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0690-17186
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0e7a7-78b35
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6421a-e5a46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5a46-b20fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74e28-217f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42ded-222fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7b68-3b0d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59f95-533e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d27ee-c6e92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6e92-d41d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd948-daddb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_daddb-7c04d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4adbe-07bc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17109-5cb4f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae380-d9208
+#MS_XXX_MS#

@@ -1,0 +1,9 @@
+parent1SHA;parent1BuildId;parent1BuildStatus;parent2SHA;parent2BuildId;parent2BuildStatus;mergeCommitSHA;mergeCommitBuildId;mergeCommitBuildStatus;repMergeCommitSHA;repMergeCommitBuildId;repMergeCommitBuildStatus
+da5c0268;3;errored;b4510a50;unknown;unknown;1bca94af9ec625f21d1b58ff10efb5be71ab87a6;2;errored;unknown;unknown;unknown
+1bca94af;5;errored;d415ba83;unknown;unknown;ccd4ddd3eeb6f219ed2e7a184fceeb4e11df7f80;4;errored;unknown;unknown;unknown
+42eeb21c;unknown;unknown;1321d385;unknown;unknown;dfad68a3a66c0b160951ff34921dc310d9166950;6;passed;unknown;unknown;unknown
+ca0464d6;8;failed;e125d509;unknown;unknown;c399b46551342d41592688e01b6de694c5e154ea;7;failed;unknown;unknown;unknown
+d61b9c52;10;failed;02917415;unknown;unknown;f9d4f0dc3c409b8a0b5582a67e4a115078f2b61e;9;failed;unknown;unknown;unknown
+4a5ffcdd;12;failed;743dc09d;unknown;unknown;65e23b102a99b81a177ed4d6e3001abb0b67dd71;11;failed;unknown;unknown;unknown
+bbe692e1;14;failed;e4b91287;unknown;unknown;fc1aea96096a4c270b4c1da000e6c2f047500bde;13;failed;unknown;unknown;unknown
+ed2cce6e;16;failed;953b0be0;unknown;unknown;e6ece36c3276edd036003c9f21c5ed54179b00f7;15;failed;unknown;unknown;unknown

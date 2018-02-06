@@ -1,0 +1,2326 @@
+#MS_XXX_MS#
+Merge scenario: rev_7a9c1-b8edb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad556-3f953
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a1959-12ddc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c906-5823c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_720fe-f0946
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3625f-0a7fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_580fa-b0db4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f857e-089f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c65a0-d89bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_993d4-8ecb6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ff09-33987
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8718f-a0dee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_228af-095d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90019-1ecd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_895fb-d569d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5faec-2c0c3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5366-109d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2498-804a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7600-96bfb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d0b75-7b877
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef4a9-ffe3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_efa79-a8824
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_631e1-e1286
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_631e1_e1286\rev_rev_left_631e1-rev_right_e1286\src\main\java\spark\webserver\MatcherFilter.java
+Different Spacing: false
+Left editions: [261, 263]
+Right editions: [126, 127, 128, 129, 130]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+// RIGHT //        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+// RIGHT //        if (method == null) {
+// RIGHT //            method = httpRequest.getMethod();
+// RIGHT //        }
+// RIGHT //        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getRequestURI(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        String bodyContent = null;
+
+        RequestWrapper req = new RequestWrapper();
+        ResponseWrapper res = new ResponseWrapper();
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                    Response response = RequestResponseFactory.create(httpResponse);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    req.setDelegate(request);
+                    res.setDelegate(response);
+
+                    filter.handle(req, res);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    String result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+                        Request request = RequestResponseFactory.create(match, httpRequest);
+                        Response response = RequestResponseFactory.create(httpResponse);
+
+                        req.setDelegate(request);
+                        res.setDelegate(response);
+
+                        Object element = route.handle(req, res);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                    Response response = RequestResponseFactory.create(httpResponse);
+
+                    req.setDelegate(request);
+                    res.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(req, res);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, req, res);
+                String bodyAfterFilter = Access.getBody(res.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && res.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+// LEFT //            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+// LEFT //            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+                httpResponse.getOutputStream().write(bodyContent.getBytes("utf-8"));
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f578-25d3a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e12ed-c052b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37b9d-8bb92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e988c-31005
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1bf5-f27bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5a4e-8dcf2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7543-7163b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_383b6-03057
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75397-79b70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_999b8-521f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b2ac-b397f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e428-b6213
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d46ce-f762b
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_d46ce_f762b\rev_rev_left_d46ce-rev_right_f762b\src\main\java\spark\webserver\MatcherFilter.java
+Different Spacing: false
+Left editions: [134]
+Right editions: [137, 185, 285]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+// LEFT //        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+// RIGHT //        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+// RIGHT //                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            throw new NotConsumedException();
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+// RIGHT //                serializerChain.process(httpResponse.getOutputStream(), bodyContent);
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9299d-75c2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a2bd-63736
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63736-bcc05
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b71eb-625fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_faa41-4a16e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_faa41-a12f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20d05-69bec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_931cc-f10a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04cb6-61098
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_607f3-abad0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77c93-755df
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da1d1-f9ac1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99c46-fc9d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_acf84-cc8f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6dcf-5359a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6dcf-2886a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0eb01-2dc82
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0eb38-9b6c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54745-eec48
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_54745_eec48\rev_rev_left_54745-rev_right_eec48\src\test\java\spark\examples\filter\FilterExampleAttributes.java
+Different Spacing: false
+Left editions: [53]
+Right editions: [58]
+Merged body: 
+// START main(String[]-String[])//public static void main(String[] args) {
+        get("/hi", (request, response) -> {
+            request.attribute("foo", "bar");
+            return null;
+        });
+
+        after("/hi", (request, response) -> {
+            for (String attr : request.attributes()) {
+// LEFT //                LOGGER.info("attr: " + attr);
+            }
+        });
+
+        after("/hi", (request, response) -> {
+// RIGHT //            String foo = request.attribute("foo");
+            response.body(asXml("foo", foo));
+        });
+// END main(String[]-String[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35eda-2a6b3
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_35eda_2a6b3\rev_rev_left_35eda-rev_right_2a6b3\src\test\java\spark\GenericIntegrationTest.java
+Different Spacing: false
+Left editions: [222]
+Right editions: [114]
+Merged body: 
+// START setup({FormalParametersInternal})//@BeforeClass
+    public static void setup() throws IOException {
+        testUtil = new SparkTestUtil(4567);
+
+        tmpExternalFile = new File(System.getProperty("java.io.tmpdir"), "externalFile.html");
+
+        FileWriter writer = new FileWriter(tmpExternalFile);
+        writer.write("Content of external file");
+        writer.flush();
+        writer.close();
+
+        staticFileLocation("/public");
+        externalStaticFileLocation(System.getProperty("java.io.tmpdir"));
+// RIGHT //        webSocket("/ws", WebSocketTestHandler.class);
+
+        before("/secretcontent/*", (request, response) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/xml", (request, response) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/json", (request, response) -> {
+            halt(401, "{\"message\": \"Go Away!\"}");
+        });
+
+        get("/hi", "application/json", (request, response) -> {
+            return "{\"message\": \"Hello World\"}";
+        });
+
+        get("/hi", (request, response) -> {
+            return "Hello World!";
+        });
+
+        get("/binaryhi", (request, response) -> {
+            return "Hello World!".getBytes();
+        });
+
+        get("/bytebufferhi", (request, response) -> {
+            return ByteBuffer.wrap("Hello World!".getBytes());
+        });
+
+        get("/inputstreamhi", (request, response) -> {
+            return new ByteArrayInputStream("Hello World!".getBytes("utf-8"));
+        });
+
+        get("/param/:param", (request, response) -> {
+            return "echo: " + request.params(":param");
+        });
+
+        get("/paramandwild/:param/stuff/*", (request, response) -> {
+            return "paramandwild: " + request.params(":param") + request.splat()[0];
+        });
+
+        get("/paramwithmaj/:paramWithMaj", (request, response) -> {
+            return "echo: " + request.params(":paramWithMaj");
+        });
+
+        get("/templateView", (request, response) -> {
+            return new ModelAndView("Hello", "my view");
+        }, new TemplateEngine() {
+            public String render(ModelAndView modelAndView) {
+                return modelAndView.getModel() + " from " + modelAndView.getViewName();
+            }
+        });
+
+        get("/", (request, response) -> {
+            return "Hello Root!";
+        });
+
+        post("/poster", (request, response) -> {
+            String body = request.body();
+            response.status(201); // created
+            return "Body was: " + body;
+        });
+
+        post("/post_via_get", (request, response) -> {
+            response.status(201); // created
+            return "Method Override Worked";
+        });
+
+        get("/post_via_get", (request, response) -> {
+            return "Method Override Did Not Work";
+        });
+
+        patch("/patcher", (request, response) -> {
+            String body = request.body();
+            response.status(200);
+            return "Body was: " + body;
+        });
+
+        after("/hi", (request, response) -> {
+            response.header("after", "foobar");
+        });
+
+        get("/throwexception", (request, response) -> {
+            throw new UnsupportedOperationException();
+        });
+
+        get("/throwsubclassofbaseexception", (request, response) -> {
+            throw new SubclassOfBaseException();
+        });
+
+        get("/thrownotfound", (request, response) -> {
+            throw new NotFoundException();
+        });
+
+        exception(UnsupportedOperationException.class, (exception, request, response) -> {
+            response.body("Exception handled");
+        });
+
+        exception(BaseException.class, (exception, request, response) -> {
+            response.body("Exception handled");
+        });
+
+        exception(NotFoundException.class, (exception, request, response) -> {
+            response.status(404);
+            response.body(NOT_FOUND_BRO);
+        });
+
+// LEFT //        Spark.awaitInitialization();
+// END setup({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a6b3-5af5a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cbfbe-fe0ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6bb93-4f64c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6bb93-95d3d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83f98-24963
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ded78-67ec8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc40b-5b071
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6530f-b75ae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd990-0f3bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0eed9-2f17e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4558b-10291
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2c7a-1853c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e13ef-71775
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2eb83-e7b30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_212fc-2c5cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5f4d-5c7b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ea3b-666e8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-983c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-c20f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-bd5f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-89a0f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_cb790_89a0f\rev_rev_left_cb790-rev_right_89a0f\src\main\java\spark\webserver\MatcherFilter.java
+Different Spacing: false
+Left editions: [311, 314, 316, 317]
+Right editions: [146]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, // NOSONAR
+                         FilterChain chain) throws IOException, ServletException { // NOSONAR
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest; // NOSONAR
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        // handle static resources
+        boolean consumedByStaticFile = StaticFiles.consume(httpRequest, httpResponse);
+
+        if (consumedByStaticFile) {
+// RIGHT //            // TODO: GzipUtils.checkAndWrap?
+            return;
+        }
+
+        String method = httpRequest.getHeader(HTTP_METHOD_OVERRIDE_HEADER);
+        if (method == null) {
+            method = httpRequest.getMethod();
+        }
+        String httpMethodStr = method.toLowerCase(); // NOSONAR
+        String uri = httpRequest.getPathInfo(); // NOSONAR
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Object bodyContent = null;
+
+        RequestWrapper requestWrapper = new RequestWrapper();
+        ResponseWrapper responseWrapper = new ResponseWrapper();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        LOG.debug("httpMethod:" + httpMethodStr + ", uri: " + uri);
+        try {
+            // BEFORE filters
+            List<RouteMatch> matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.before, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+                    Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+
+                    requestWrapper.setDelegate(request);
+                    responseWrapper.setDelegate(response);
+
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // BEFORE filters, END
+
+            HttpMethod httpMethod = HttpMethod.valueOf(httpMethodStr);
+
+            RouteMatch match = null;
+            match = routeMatcher.findTargetForRequestedRoute(httpMethod, uri, acceptType);
+
+            Object target = null;
+            if (match != null) {
+                target = match.getTarget();
+            } else if (httpMethod == HttpMethod.head && bodyContent == null) {
+                // See if get is mapped to provide default head mapping
+                bodyContent =
+                        routeMatcher.findTargetForRequestedRoute(HttpMethod.get, uri, acceptType) != null ? "" : null;
+            }
+
+            if (target != null) {
+                try {
+                    Object result = null;
+                    if (target instanceof RouteImpl) {
+                        RouteImpl route = ((RouteImpl) target);
+
+                        if (requestWrapper.getDelegate() == null) {
+                            Request request = RequestResponseFactory.create(match, httpRequest);
+                            requestWrapper.setDelegate(request);
+                        } else {
+                            requestWrapper.changeMatch(match);
+                        }
+
+                        responseWrapper.setDelegate(response);
+
+                        Object element = route.handle(requestWrapper, responseWrapper);
+
+                        result = route.render(element);
+                        // result = element.toString(); // TODO: Remove later when render fixed
+                    }
+                    if (result != null) {
+                        bodyContent = result;
+                    }
+                } catch (HaltException hEx) { // NOSONAR
+                    throw hEx; // NOSONAR
+                }
+            }
+
+            // AFTER filters
+            matchSet = routeMatcher.findTargetsForRequestedRoute(HttpMethod.after, uri, acceptType);
+
+            for (RouteMatch filterMatch : matchSet) {
+                Object filterTarget = filterMatch.getTarget();
+                if (filterTarget instanceof FilterImpl) {
+
+                    if (requestWrapper.getDelegate() == null) {
+                        Request request = RequestResponseFactory.create(filterMatch, httpRequest);
+                        requestWrapper.setDelegate(request);
+                    } else {
+                        requestWrapper.changeMatch(filterMatch);
+                    }
+
+                    responseWrapper.setDelegate(response);
+
+                    FilterImpl filter = (FilterImpl) filterTarget;
+                    filter.handle(requestWrapper, responseWrapper);
+
+                    String bodyAfterFilter = Access.getBody(response);
+                    if (bodyAfterFilter != null) {
+                        bodyContent = bodyAfterFilter;
+                    }
+                }
+            }
+            // AFTER filters, END
+
+        } catch (HaltException hEx) {
+            LOG.debug("halt performed");
+            httpResponse.setStatus(hEx.getStatusCode());
+            if (hEx.getBody() != null) {
+                bodyContent = hEx.getBody();
+            } else {
+                bodyContent = "";
+            }
+        } catch (Exception e) {
+            ExceptionHandlerImpl handler = ExceptionMapper.getInstance().getHandler(e);
+            if (handler != null) {
+                handler.handle(e, requestWrapper, responseWrapper);
+                String bodyAfterFilter = Access.getBody(responseWrapper.getDelegate());
+                if (bodyAfterFilter != null) {
+                    bodyContent = bodyAfterFilter;
+                }
+            } else {
+                LOG.error("", e);
+                httpResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                bodyContent = INTERNAL_ERROR;
+            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (bodyContent == null && responseWrapper.isRedirected()) {
+            bodyContent = "";
+        }
+
+        boolean consumed = bodyContent != null;
+
+        if (!consumed && hasOtherHandlers) {
+            if (servletRequest instanceof HttpRequestWrapper) {
+                ((HttpRequestWrapper) servletRequest).notConsumed(true);
+                return;
+            }
+        }
+
+        if (!consumed && !isServletContext) {
+            LOG.info("The requested route [" + uri + "] has not been mapped in Spark");
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            bodyContent = String.format(NOT_FOUND);
+            consumed = true;
+        }
+
+        if (consumed) {
+            // Write body content
+            if (!httpResponse.isCommitted()) {
+                if (httpResponse.getContentType() == null) {
+                    httpResponse.setContentType("text/html; charset=utf-8");
+                }
+
+                // Check if gzip is wanted/accepted and in that case handle that
+// LEFT //                OutputStream responseStream = GzipUtils.checkAndWrap(httpRequest, httpResponse, true);
+
+                // serialize the body to output stream
+// LEFT //                serializerChain.process(responseStream, bodyContent);
+
+// LEFT //                responseStream.flush(); // needed for GZIP stream. NOt sure where the HTTP response actually gets cleaned up
+// LEFT //                responseStream.close(); // needed for GZIP
+            }
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-7f9cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb790-8f5f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_45e82-d92c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75157-b481c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09436-565a5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_daeba-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2b0a-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bdcbb-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10541-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2bc50-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b507-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c248d-43fc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67f66-647f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_335f5-45558
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95a19-9cca2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_418f1-81236
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_418f1-62d2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_418f1-13618
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e1c3-384d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_144fe-b887a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_144fe-679ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1c24-110ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1c24-318dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5be20-bae48
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5be20-68034
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1db55-bb1e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1db55-ff430
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07ba5-82be0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07ba5-c7e52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec084-9be7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66bba-3a35e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a35e-ae07a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9155-ccd09
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9afe-e213a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e213a-11c60
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff0ca-f88bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f413-3d9bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3cfff-ea8b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c4c40-df588
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c015-e4af6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_981e5-f9b6b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f47f5-e4759
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b195f-8ee25
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c22b-b0178
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0178-98de7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43b7a-9b7f9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f41bf-1b843
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f34e7-1b7ac
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf70a-e158f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c41e-33a13
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33a13-bd967
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99b09-18556
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_52df5-97140
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_52df5_97140\rev_rev_left_52df5-rev_right_97140\src\main\java\spark\http\matching\AfterFilters.java
+Different Spacing: false
+Left editions: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67]
+Right editions: [52, 53, 54, 55]
+Merged body: 
+// START execute(RouteContext-RouteContext)//// LEFT //static void execute(RouteContext context) throws Exception {
+// LEFT //
+// LEFT //        Object content = context.body().get();
+// LEFT //
+// LEFT //        List<RouteMatch> matchSet = context.routeMatcher().findMultiple(HttpMethod.after,
+// LEFT //                                                                        context.uri(),
+// LEFT //                                                                        context.acceptType());
+// LEFT //
+// LEFT //        for (RouteMatch filterMatch : matchSet) {
+// LEFT //            Object filterTarget = filterMatch.getTarget();
+// LEFT //
+// LEFT //            if (filterTarget instanceof FilterImpl) {
+// LEFT //
+// LEFT //                if (context.requestWrapper().getDelegate() == null) {
+// LEFT //                    Request request = RequestResponseFactory.create(filterMatch, context.httpRequest());
+// LEFT //                    context.requestWrapper().setDelegate(request);
+// LEFT //                } else {
+// LEFT //                    context.requestWrapper().changeMatch(filterMatch);
+// LEFT //                }
+// LEFT //
+// LEFT //                context.responseWrapper().setDelegate(context.response());
+// LEFT //
+// RIGHT //                if ( content instanceof String ){
+// RIGHT //                    context.responseWrapper().body((String) content);
+// RIGHT //                }
+// RIGHT //
+// LEFT //                FilterImpl filter = (FilterImpl) filterTarget;
+// LEFT //                filter.handle(context.requestWrapper(), context.responseWrapper());
+// LEFT //
+// LEFT //                String bodyAfterFilter = context.response().body();
+// LEFT //
+// LEFT //                if (bodyAfterFilter != null) {
+// LEFT //                    content = bodyAfterFilter;
+// LEFT //                }
+// LEFT //            }
+// LEFT //        }
+// LEFT //
+// LEFT //        context.body().set(content);
+// END execute(RouteContext-RouteContext)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_52df5-b5968
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_424fc-aff7e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0ccf-8819a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88f93-e175f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e175f-6b4ff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e175f-24e7b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_114d2-2702c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bfab-d7057
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f944-b5d9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51756-a4e25
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a66f-36f1b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3230-87cb3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4db08-19da5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a38c7-7fce0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68281-f8069
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_02b25-1b005
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f68a2-e0d89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57d14-b2439
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0801-6add2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12774-f8359
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12774-ae306
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8221f-0e7d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b48fe-d8d29
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc862-0c889
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0be1d-5a21d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3fec1-11a78
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f29d-70d58
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a6a3-ad53c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22261-b52b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19f4d-6f1ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a3e0-aaf43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fceb3-6ab3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe2ba-d1e43
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_fe2ba_d1e43\rev_rev_left_fe2ba-rev_right_d1e43\src\main\java\spark\http\matching\MatcherFilter.java
+Different Spacing: false
+Left editions: [140]
+Right editions: [192, 193]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//@Override
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        // handle static resources
+        boolean consumedByStaticFile = staticFiles.consume(httpRequest, httpResponse);
+
+        if (consumedByStaticFile) {
+            return;
+        }
+
+        String method = getHttpMethodFrom(httpRequest);
+
+        String httpMethodStr = method.toLowerCase();
+// LEFT //        String uri = httpRequest.getRequestURI();
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Body body = Body.create();
+
+        RequestWrapper requestWrapper = RequestWrapper.create();
+        ResponseWrapper responseWrapper = ResponseWrapper.create();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        HttpMethod httpMethod = HttpMethod.get(httpMethodStr);
+
+        RouteContext context = RouteContext.create()
+                .withMatcher(routeMatcher)
+                .withHttpRequest(httpRequest)
+                .withUri(uri)
+                .withAcceptType(acceptType)
+                .withBody(body)
+                .withRequestWrapper(requestWrapper)
+                .withResponseWrapper(responseWrapper)
+                .withResponse(response)
+                .withHttpMethod(httpMethod);
+
+        try {
+
+            BeforeFilters.execute(context);
+            Routes.execute(context);
+            AfterFilters.execute(context);
+
+        } catch (HaltException halt) {
+
+            Halt.modify(httpResponse, body, halt);
+
+        } catch (Exception generalException) {
+
+            GeneralError.modify(httpResponse, body, requestWrapper, responseWrapper, generalException);
+
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (body.notSet() && responseWrapper.isRedirected()) {
+            body.set("");
+        }
+
+        if (body.notSet() && hasOtherHandlers) {
+            if (servletRequest instanceof HttpRequestWrapper) {
+                ((HttpRequestWrapper) servletRequest).notConsumed(true);
+                return;
+            }
+        }
+
+        if (body.notSet() && !externalContainer) {
+// RIGHT //            LOG.info("The requested route [{}] has not been mapped in Spark for {}: [{}]",
+// RIGHT //                uri, ACCEPT_TYPE_REQUEST_MIME_HEADER, acceptType);
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            body.set(String.format(NOT_FOUND));
+        }
+
+        if (body.isSet()) {
+            body.serializeTo(httpResponse, serializerChain, httpRequest);
+
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce46d-0a7ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21006-64a11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c57e5-afeee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74deb-83dca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb2f6-16f51
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_bb2f6_16f51\rev_rev_left_bb2f6-rev_right_16f51\src\main\java\spark\resource\ClassPathResourceHandler.java
+Different Spacing: false
+Left editions: [92, 96]
+Right editions: [101, 102, 103, 104, 105, 106, 107, 108, 109]
+Merged body: 
+// START getResource(String-String)//@Override
+    protected AbstractFileResolvingResource getResource(String path) throws MalformedURLException {
+        if (path == null || !path.startsWith("/")) {
+            throw new MalformedURLException(path);
+        }
+
+        try {
+            path = UriPath.canonical(path);
+
+            final String addedPath = addPaths(baseResource, path);
+
+            ClassPathResource resource = new ClassPathResource(addedPath);
+
+// LEFT //            if (resource.exists() && path.endsWith("/")) {
+                if (welcomeFile != null) {
+                    resource = new ClassPathResource(addPaths(resource.getPath(), welcomeFile));
+                } else {
+// LEFT //                    // No welcome file configured, serve nothing since it's a directory
+                    resource = null;
+                }
+            }
+
+// RIGHT //            if (resource != null && resource.exists()) {
+// RIGHT //                DirectoryTraversal.protectAgainstInClassPath(resource.getPath());
+// RIGHT //                return resource;
+// RIGHT //            } else {
+// RIGHT //                return null;
+// RIGHT //            }
+// RIGHT //
+// RIGHT //        } catch (DirectoryTraversal.DirectoryTraversalDetection directoryTraversalDetection) {
+// RIGHT //            throw directoryTraversalDetection;
+        } catch (Exception e) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug(e.getClass().getSimpleName() + " when trying to get resource. " + e.getMessage());
+            }
+        }
+        return null;
+// END getResource(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_16f51-216e3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a42d2-1d006
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bcecb-c9a55
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_bcecb_c9a55\rev_rev_left_bcecb-rev_right_c9a55\src\main\java\spark\http\matching\MatcherFilter.java
+Different Spacing: false
+Left editions: [177, 178, 179, 180, 181, 182]
+Right editions: [140, 198, 199]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//@Override
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        // handle static resources
+        boolean consumedByStaticFile = staticFiles.consume(httpRequest, httpResponse);
+
+        if (consumedByStaticFile) {
+            return;
+        }
+
+        String method = getHttpMethodFrom(httpRequest);
+
+        String httpMethodStr = method.toLowerCase();
+// RIGHT //        String uri = httpRequest.getRequestURI();
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Body body = Body.create();
+
+        RequestWrapper requestWrapper = RequestWrapper.create();
+        ResponseWrapper responseWrapper = ResponseWrapper.create();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        HttpMethod httpMethod = HttpMethod.get(httpMethodStr);
+
+        RouteContext context = RouteContext.create()
+                .withMatcher(routeMatcher)
+                .withHttpRequest(httpRequest)
+                .withUri(uri)
+                .withAcceptType(acceptType)
+                .withBody(body)
+                .withRequestWrapper(requestWrapper)
+                .withResponseWrapper(responseWrapper)
+                .withResponse(response)
+                .withHttpMethod(httpMethod);
+
+        try {
+
+            BeforeFilters.execute(context);
+            Routes.execute(context);
+            AfterFilters.execute(context);
+
+        } catch (HaltException halt) {
+
+            Halt.modify(httpResponse, body, halt);
+
+        } catch (Exception generalException) {
+
+            GeneralError.modify(httpResponse, body, requestWrapper, responseWrapper, generalException);
+
+// LEFT //        } finally {
+// LEFT //            try {
+// LEFT //                DoneFilters.execute(context);
+// LEFT //            } catch (Exception generalException) {
+// LEFT //                GeneralError.modify(httpResponse, body, requestWrapper, responseWrapper, generalException);
+// LEFT //            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (body.notSet() && responseWrapper.isRedirected()) {
+            body.set("");
+        }
+
+        if (body.notSet() && hasOtherHandlers) {
+            if (servletRequest instanceof HttpRequestWrapper) {
+                ((HttpRequestWrapper) servletRequest).notConsumed(true);
+                return;
+            }
+        }
+
+        if (body.notSet() && !externalContainer) {
+// RIGHT //            LOG.info("The requested route [{}] has not been mapped in Spark for {}: [{}]",
+// RIGHT //                uri, ACCEPT_TYPE_REQUEST_MIME_HEADER, acceptType);
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            body.set(String.format(NOT_FOUND));
+        }
+
+        if (body.isSet()) {
+            body.serializeTo(httpResponse, serializerChain, httpRequest);
+
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_bcecb_c9a55\rev_rev_left_bcecb-rev_right_c9a55\src\test\java\spark\GenericIntegrationTest.java
+Different Spacing: false
+Left editions: [185, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279]
+Right editions: [163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173]
+Merged body: 
+// START setup({FormalParametersInternal})//@BeforeClass
+    public static void setup() throws IOException {
+        testUtil = new SparkTestUtil(4567);
+
+        tmpExternalFile = new File(System.getProperty("java.io.tmpdir"), "externalFile.html");
+
+        FileWriter writer = new FileWriter(tmpExternalFile);
+        writer.write("Content of external file");
+        writer.flush();
+        writer.close();
+
+        staticFileLocation("/public");
+        externalStaticFileLocation(System.getProperty("java.io.tmpdir"));
+        webSocket("/ws", WebSocketTestHandler.class);
+
+        before("/secretcontent/*", (q, a) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/xml", (q, a) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/json", (q, a) -> {
+            halt(401, "{\"message\": \"Go Away!\"}");
+        });
+
+        get("/hi", "application/json", (q, a) -> {
+            return "{\"message\": \"Hello World\"}";
+        });
+
+        get("/hi", (q, a) -> {
+            return "Hello World!";
+        });
+
+        get("/binaryhi", (q, a) -> {
+            return "Hello World!".getBytes();
+        });
+
+        get("/bytebufferhi", (q, a) -> {
+            return ByteBuffer.wrap("Hello World!".getBytes());
+        });
+
+        get("/inputstreamhi", (q, a) -> {
+            return new ByteArrayInputStream("Hello World!".getBytes("utf-8"));
+        });
+
+        get("/param/:param", (q, a) -> {
+            return "echo: " + q.params(":param");
+        });
+
+// RIGHT //        path("/firstPath", () -> {
+// RIGHT //            before("/*", (q, a) -> a.header("before-filter-ran", "true"));
+// RIGHT //            get("/test", (q, a) -> "Single path-prefix works");
+// RIGHT //            path("/secondPath", () -> {
+// RIGHT //                get("/test", (q, a) -> "Nested path-prefix works");
+// RIGHT //                path("/thirdPath", () -> {
+// RIGHT //                    get("/test", (q, a) -> "Very nested path-prefix works");
+// RIGHT //                });
+// RIGHT //            });
+// RIGHT //        });
+// RIGHT //
+        get("/paramandwild/:param/stuff/*", (q, a) -> {
+            return "paramandwild: " + q.params(":param") + q.splat()[0];
+        });
+
+        get("/paramwithmaj/:paramWithMaj", (q, a) -> {
+            return "echo: " + q.params(":paramWithMaj");
+        });
+
+        get("/templateView", (q, a) -> {
+            return new ModelAndView("Hello", "my view");
+        }, new TemplateEngine() {
+// LEFT //            @Override
+            public String render(ModelAndView modelAndView) {
+                return modelAndView.getModel() + " from " + modelAndView.getViewName();
+            }
+        });
+
+        get("/", (q, a) -> {
+            return "Hello Root!";
+        });
+
+        post("/poster", (q, a) -> {
+            String body = q.body();
+            a.status(201); // created
+            return "Body was: " + body;
+        });
+
+        post("/post_via_get", (q, a) -> {
+            a.status(201); // created
+            return "Method Override Worked";
+        });
+
+        get("/post_via_get", (q, a) -> {
+            return "Method Override Did Not Work";
+        });
+
+        patch("/patcher", (q, a) -> {
+            String body = q.body();
+            a.status(200);
+            return "Body was: " + body;
+        });
+
+        get("/session_reset", (q, a) -> {
+            String key = "session_reset";
+            Session session = q.session();
+            session.attribute(key, "11111");
+            session.invalidate();
+            session = q.session();
+            session.attribute(key, "22222");
+            return session.attribute(key);
+        });
+
+        after("/hi", (q, a) -> {
+
+            if (q.requestMethod().equalsIgnoreCase("get")) {
+                Assert.assertNotNull(a.body());
+            }
+
+            a.header("after", "foobar");
+        });
+
+        get("/throwexception", (q, a) -> {
+            throw new UnsupportedOperationException();
+        });
+
+        get("/throwsubclassofbaseexception", (q, a) -> {
+            throw new SubclassOfBaseException();
+        });
+
+        get("/thrownotfound", (q, a) -> {
+            throw new NotFoundException();
+        });
+
+        exception(UnsupportedOperationException.class, (exception, q, a) -> {
+            a.body("Exception handled");
+        });
+
+        exception(BaseException.class, (exception, q, a) -> {
+            a.body("Exception handled");
+        });
+
+        exception(NotFoundException.class, (exception, q, a) -> {
+            a.status(404);
+            a.body(NOT_FOUND_BRO);
+        });
+
+// LEFT //        get("/exception", (request, response) -> {
+// LEFT //            throw new RuntimeException();
+// LEFT //        });
+// LEFT //
+// LEFT //        done("/exception", (request, response) -> {
+// LEFT //            response.body("done executed for exception");
+// LEFT //        });
+// LEFT //
+// LEFT //        post("/nice", (request, response) -> {
+// LEFT //            return "nice response";
+// LEFT //        });
+// LEFT //
+// LEFT //        done("/nice", (request, response) -> {
+// LEFT //            response.header("post-process", "nice done response");
+// LEFT //        });
+// LEFT //
+// LEFT //        done((request, response) -> {
+// LEFT //            response.header("post-process-all", "nice done response after all");
+// LEFT //        });
+// LEFT //
+        Spark.awaitInitialization();
+// END setup({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9a55-d8f63
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de44c-b1388
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ba5c3-86599
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5d84-86599
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_e5d84_86599\rev_rev_left_e5d84-rev_right_86599\src\main\java\spark\http\matching\MatcherFilter.java
+Different Spacing: false
+Left editions: [186, 187, 188, 189, 190, 191]
+Right editions: [178, 179, 180, 181, 182, 183, 184, 210, 211, 212, 213, 214, 215, 216, 217]
+Merged body: 
+// START doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//@Override
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain chain) throws IOException, ServletException {
+
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
+        HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
+
+        // handle static resources
+        boolean consumedByStaticFile = staticFiles.consume(httpRequest, httpResponse);
+
+        if (consumedByStaticFile) {
+            return;
+        }
+
+        String method = getHttpMethodFrom(httpRequest);
+
+        String httpMethodStr = method.toLowerCase();
+        String uri = httpRequest.getRequestURI();
+        String acceptType = httpRequest.getHeader(ACCEPT_TYPE_REQUEST_MIME_HEADER);
+
+        Body body = Body.create();
+
+        RequestWrapper requestWrapper = RequestWrapper.create();
+        ResponseWrapper responseWrapper = ResponseWrapper.create();
+
+        Response response = RequestResponseFactory.create(httpResponse);
+
+        HttpMethod httpMethod = HttpMethod.get(httpMethodStr);
+
+        RouteContext context = RouteContext.create()
+                .withMatcher(routeMatcher)
+                .withHttpRequest(httpRequest)
+                .withUri(uri)
+                .withAcceptType(acceptType)
+                .withBody(body)
+                .withRequestWrapper(requestWrapper)
+                .withResponseWrapper(responseWrapper)
+                .withResponse(response)
+                .withHttpMethod(httpMethod);
+
+        try {
+
+            BeforeFilters.execute(context);
+            Routes.execute(context);
+            AfterFilters.execute(context);
+
+        } catch (HaltException halt) {
+
+            Halt.modify(httpResponse, body, halt);
+
+        } catch (Exception generalException) {
+
+// RIGHT //            GeneralError.modify(
+// RIGHT //                    httpRequest,
+// RIGHT //                    httpResponse,
+// RIGHT //                    body,
+// RIGHT //                    requestWrapper,
+// RIGHT //                    responseWrapper,
+// RIGHT //                    generalException);
+
+// LEFT //        } finally {
+// LEFT //            try {
+// LEFT //                DoneFilters.execute(context);
+// LEFT //            } catch (Exception generalException) {
+// LEFT //                GeneralError.modify(httpResponse, body, requestWrapper, responseWrapper, generalException);
+// LEFT //            }
+        }
+
+        // If redirected and content is null set to empty string to not throw NotConsumedException
+        if (body.notSet() && responseWrapper.isRedirected()) {
+            body.set("");
+        }
+
+        if (body.notSet() && hasOtherHandlers) {
+            if (servletRequest instanceof HttpRequestWrapper) {
+                ((HttpRequestWrapper) servletRequest).notConsumed(true);
+                return;
+            }
+        }
+
+        if (body.notSet() && !externalContainer) {
+            LOG.info("The requested route [{}] has not been mapped in Spark for {}: [{}]",
+                uri, ACCEPT_TYPE_REQUEST_MIME_HEADER, acceptType);
+            httpResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+// RIGHT //
+// RIGHT //            if (CustomErrorPages.existsFor(404)) {
+// RIGHT //                requestWrapper.setDelegate(RequestResponseFactory.create(httpRequest));
+// RIGHT //                responseWrapper.setDelegate(RequestResponseFactory.create(httpResponse));
+// RIGHT //                body.set(CustomErrorPages.getFor(404, requestWrapper, responseWrapper));
+// RIGHT //            } else {
+// RIGHT //                body.set(String.format(CustomErrorPages.NOT_FOUND));
+// RIGHT //            }
+        }
+
+        if (body.isSet()) {
+            body.serializeTo(httpResponse, serializerChain, httpRequest);
+
+        } else if (chain != null) {
+            chain.doFilter(httpRequest, httpResponse);
+        }
+// END doFilter(ServletRequest-ServletRequest-ServletResponse-ServletResponse-FilterChain-FilterChain)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86599-c1620
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8ed2-14ac2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d424-14ac2
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_6d424_14ac2\rev_rev_left_6d424-rev_right_14ac2\src\main\java\spark\CustomErrorPages.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getFor(int-int-Request-Request-Response-Response)//public static Object getFor(int status, Request request, Response response) {
+
+        Object customRenderer = CustomErrorPages.getInstance().customPages.get(status);
+        Object customPage;
+
+        customPage = status == 404 ? NOT_FOUND : INTERNAL_ERROR;
+
+        if (customRenderer instanceof String) {
+            customPage = customRenderer;
+        } else if (customRenderer instanceof Route) {
+            try {
+                customPage = ((Route) customRenderer).handle(request, response);
+            } catch (Exception e) {
+                // customPage is already set to default error so nothing needed here
+            }
+        }
+
+        return customPage;
+// END getFor(int-int-Request-Request-Response-Response)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_14ac2-e7713
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d369-22d10
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a287f-d29b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a578-9e180
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7f283-6e6bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e518-9b027
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f28df-7c98d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_433dc-77c85
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_433dc_77c85\rev_rev_left_433dc-rev_right_77c85\src\test\java\spark\GenericIntegrationTest.java
+Different Spacing: false
+Left editions: [139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 157, 158, 166, 172, 185, 202, 203, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256]
+Right editions: [161, 162, 163, 164]
+Merged body: 
+// START setup({FormalParametersInternal})//@BeforeClass
+    public static void setup() throws IOException {
+        testUtil = new SparkTestUtil(4567);
+
+        tmpExternalFile = new File(System.getProperty("java.io.tmpdir"), "externalFile.html");
+
+        FileWriter writer = new FileWriter(tmpExternalFile);
+        writer.write("Content of external file");
+        writer.flush();
+        writer.close();
+
+        staticFileLocation("/public");
+        externalStaticFileLocation(System.getProperty("java.io.tmpdir"));
+        webSocket("/ws", WebSocketTestHandler.class);
+
+        before("/secretcontent/*", (q, a) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/xml", (q, a) -> {
+            halt(401, "Go Away!");
+        });
+
+        before("/protected/*", "application/json", (q, a) -> {
+            halt(401, "{\"message\": \"Go Away!\"}");
+        });
+
+// LEFT //        get("/hi", "application/json", (q, a) -> "{\"message\": \"Hello World\"}");
+// LEFT //        get("/hi", (q, a) -> "Hello World!");
+// LEFT //        get("/binaryhi", (q, a) -> "Hello World!".getBytes());
+// LEFT //        get("/bytebufferhi", (q, a) -> ByteBuffer.wrap("Hello World!".getBytes()));
+// LEFT //        get("/inputstreamhi", (q, a) -> new ByteArrayInputStream("Hello World!".getBytes("utf-8")));
+// LEFT //        get("/param/:param", (q, a) -> "echo: " + q.params(":param"));
+// LEFT //
+// LEFT //        path("/firstPath", () -> {
+// LEFT //            before("/*", (q, a) -> a.header("before-filter-ran", "true"));
+// LEFT //            get("/test", (q, a) -> "Single path-prefix works");
+// LEFT //            path("/secondPath", () -> {
+// LEFT //                get("/test", (q, a) -> "Nested path-prefix works");
+// LEFT //                path("/thirdPath", () -> {
+// LEFT //                    get("/test", (q, a) -> "Very nested path-prefix works");
+// LEFT //                });
+// LEFT //            });
+        });
+
+// LEFT //        get("/paramandwild/:param/stuff/*", (q, a) -> "paramandwild: " + q.params(":param") + q.splat()[0]);
+// LEFT //        get("/paramwithmaj/:paramWithMaj", (q, a) -> "echo: " + q.params(":paramWithMaj"));
+
+        get("/templateView", (q, a) -> {
+// RIGHT //            return new ModelAndView(new HashMap<String, Object>() {
+// RIGHT //                {
+// RIGHT //                    put("hello", "Hello");
+// RIGHT //                }}, "my view");
+        }, new TemplateEngine() {
+// LEFT //            @Override
+            public String render(ModelAndView modelAndView) {
+                return modelAndView.getModel() + " from " + modelAndView.getViewName();
+            }
+        });
+
+// LEFT //        get("/", (q, a) -> "Hello Root!");
+
+        post("/poster", (q, a) -> {
+            String body = q.body();
+            a.status(201); // created
+            return "Body was: " + body;
+        });
+
+        post("/post_via_get", (q, a) -> {
+            a.status(201); // created
+            return "Method Override Worked";
+        });
+
+// LEFT //        get("/post_via_get", (q, a) -> "Method Override Did Not Work");
+
+        patch("/patcher", (q, a) -> {
+            String body = q.body();
+            a.status(200);
+            return "Body was: " + body;
+        });
+
+        get("/session_reset", (q, a) -> {
+            String key = "session_reset";
+            Session session = q.session();
+            session.attribute(key, "11111");
+            session.invalidate();
+            session = q.session();
+            session.attribute(key, "22222");
+            return session.attribute(key);
+        });
+// LEFT //
+// LEFT //        get("/ip", (request, response) -> request.ip());
+
+        after("/hi", (q, a) -> {
+
+            if (q.requestMethod().equalsIgnoreCase("get")) {
+                Assert.assertNotNull(a.body());
+            }
+
+            a.header("after", "foobar");
+        });
+
+        get("/throwexception", (q, a) -> {
+            throw new UnsupportedOperationException();
+        });
+
+        get("/throwsubclassofbaseexception", (q, a) -> {
+            throw new SubclassOfBaseException();
+        });
+
+        get("/thrownotfound", (q, a) -> {
+            throw new NotFoundException();
+        });
+
+        exception(UnsupportedOperationException.class, (exception, q, a) -> {
+            a.body("Exception handled");
+        });
+
+        exception(BaseException.class, (exception, q, a) -> {
+            a.body("Exception handled");
+        });
+
+        exception(NotFoundException.class, (exception, q, a) -> {
+            a.status(404);
+            a.body(NOT_FOUND_BRO);
+        });
+
+// LEFT //        get("/exception", (request, response) -> {
+// LEFT //            throw new RuntimeException();
+// LEFT //        });
+// LEFT //
+// LEFT //        afterAfter("/exception", (request, response) -> {
+// LEFT //            response.body("done executed for exception");
+// LEFT //        });
+// LEFT //
+// LEFT //        post("/nice", (request, response) -> "nice response");
+// LEFT //
+// LEFT //        afterAfter("/nice", (request, response) -> {
+// LEFT //            response.header("post-process", "nice done response");
+// LEFT //        });
+// LEFT //
+// LEFT //        afterAfter((request, response) -> {
+// LEFT //            response.header("post-process-all", "nice done response after all");
+// LEFT //        });
+// LEFT //
+        Spark.awaitInitialization();
+// END setup({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_433dc_77c85\rev_rev_left_433dc-rev_right_77c85\src\main\java\spark\ModelAndView.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getModel({FormalParametersInternal})//public Map<String, Object> getModel() {
+        return model;
+// END getModel({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9756-c6e1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf088-edc38
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8ba49-25482
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7dfd2-d9c87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9618b-ad135
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_152e4-49ce2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_152e4-c72b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59eef-3b2b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59eef-a3685
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_996a3-abe3f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7399-465b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33162-a06d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7f6bd-cd8c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3b0a-fa5ed
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_c3b0a_fa5ed\rev_rev_left_c3b0a-rev_right_fa5ed\src\main\java\spark\ModelAndView.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getModel({FormalParametersInternal})//public Map<String, Object> getModel() {
+        return model;
+// END getModel({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa5ed-46b87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ee84-1aad1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86a92-34074
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\spark\revisions\rev_86a92_34074\rev_rev_left_86a92-rev_right_34074\src\main\java\spark\staticfiles\MimeType.java
+Different Spacing: false
+Left editions: [65]
+Right editions: [45, 46, 47, 48]
+Merged body: 
+// START mappings//// RIGHT //private static Map<String, String> mappings = new HashMap<String, String>() {
+// RIGHT //		private static final long serialVersionUID = 1L;
+// RIGHT //
+// RIGHT //	{
+        put("au", "audio/basic");
+        put("avi", "video/msvideo,video/avi,video/x-msvideo");
+        put("bmp", "image/bmp");
+        put("bz2", "application/x-bzip2");
+        put("css", "text/css");
+        put("dtd", "application/xml-dtd");
+        put("doc", "application/msword");
+        put("docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        put("dotx", "application/vnd.openxmlformats-officedocument.wordprocessingml.template");
+        put("eot", "application/vnd.ms-fontobject");
+        put("es", "application/ecmascript");
+        put("exe", "application/octet-stream");
+        put("gif", "image/gif");
+        put("gz", "application/x-gzip");
+        put("ico", "image/x-icon");
+        put("hqx", "application/mac-binhex40");
+// LEFT //        put("htm", "text/html");
+        put("html", "text/html");
+        put("jar", "application/java-archive");
+        put("jpg", "image/jpeg");
+        put("js", "application/javascript");
+        put("json", "application/json");
+        put("midi", "audio/x-midi");
+        put("mp3", "audio/mpeg");
+        put("mpeg", "video/mpeg");
+        put("ogg", "audio/vorbis,application/ogg");
+        put("otf", "application/font-otf");
+        put("pdf", "application/pdf");
+        put("pl", "application/x-perl");
+        put("png", "image/png");
+        put("potx", "application/vnd.openxmlformats-officedocument.presentationml.template");
+        put("ppsx", "application/vnd.openxmlformats-officedocument.presentationml.slideshow");
+        put("ppt", "application/vnd.ms-powerpointtd");
+        put("pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation");
+        put("ps", "application/postscript");
+        put("qt", "video/quicktime");
+        put("ra", "audio/x-pn-realaudio,audio/vnd.rn-realaudio");
+        put("rar", "application/x-rar-compressed");
+        put("ram", "audio/x-pn-realaudio,audio/vnd.rn-realaudio");
+        put("rdf", "application/rdf,application/rdf+xml");
+        put("rtf", "application/rtf");
+        put("sgml", "text/sgml");
+        put("sit", "application/x-stuffit");
+        put("sldx", "application/vnd.openxmlformats-officedocument.presentationml.slide");
+        put("svg", "image/svg+xml");
+        put("swf", "application/x-shockwave-flash");
+        put("tgz", "application/x-tar");
+        put("tiff", "image/tiff");
+        put("tsv", "text/tab-separated-values");
+        put("ttf", "application/font-ttf");
+        put("txt", "text/plain");
+        put("wav", "audio/wav,audio/x-wav");
+        put("woff", "application/font-woff");
+        put("woff2", "application/font-woff2");
+        put("xlam", "application/vnd.ms-excel.addin.macroEnabled.12");
+        put("xls", "application/vnd.ms-excel");
+        put("xlsb", "application/vnd.ms-excel.sheet.binary.macroEnabled.12");
+        put("xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        put("xltx", "application/vnd.openxmlformats-officedocument.spreadsheetml.template");
+        put("xml", "application/xml");
+        put("zip", "application/zip,application/x-compressed-zip");
+// END mappings//    }};
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8768-57425
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9bad-52389
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8782a-3f062
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_321f9-a43b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21ef2-92db5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_21ef2_92db5\rev_rev_left_21ef2-rev_right_92db5\src\main\java\spark\embeddedserver\jetty\EmbeddedJettyServer.java
+Different Spacing: false
+Left editions: [117, 123, 124, 168, 169, 171]
+Right editions: [135]
+Merged body: 
+// START ignite(String-String-int-int-SslStores-SslStores-int-int-int-int-int-int)//@Override
+// LEFT //
+    public int ignite(String host,
+                      int port,
+                      SslStores sslStores,
+                      int maxThreads,
+                      int minThreads,
+// LEFT //                      int threadIdleTimeoutMillis) throws Exception {
+// LEFT //
+
+        if (port == 0) {
+            try (ServerSocket s = new ServerSocket(0)) {
+                port = s.getLocalPort();
+            } catch (IOException e) {
+                logger.error("Could not get first available port (port set to 0), using default: {}", SPARK_DEFAULT_PORT);
+                port = SPARK_DEFAULT_PORT;
+            }
+        }
+
+// RIGHT //        server = serverFactory.create(maxThreads, minThreads, threadIdleTimeoutMillis);
+
+        ServerConnector connector;
+
+        if (sslStores == null) {
+            connector = SocketConnectorFactory.createSocketConnector(server, host, port);
+        } else {
+            connector = SocketConnectorFactory.createSecureSocketConnector(server, host, port, sslStores);
+        }
+
+        server = connector.getServer();
+        server.setConnectors(new Connector[] {connector});
+
+        ServletContextHandler webSocketServletContextHandler =
+            WebSocketServletContextHandlerFactory.create(webSocketHandlers, webSocketIdleTimeoutMillis);
+
+        // Handle web socket routes
+        if (webSocketServletContextHandler == null) {
+            server.setHandler(handler);
+        } else {
+            List<Handler> handlersInList = new ArrayList<>();
+            handlersInList.add(handler);
+
+            // WebSocket handler must be the last one
+            if (webSocketServletContextHandler != null) {
+                handlersInList.add(webSocketServletContextHandler);
+            }
+
+            HandlerList handlers = new HandlerList();
+            handlers.setHandlers(handlersInList.toArray(new Handler[handlersInList.size()]));
+            server.setHandler(handlers);
+        }
+
+// LEFT //        logger.info("== {} has ignited ...", NAME);
+// LEFT //        logger.info(">> Listening on {}:{}", host, port);
+
+// LEFT //        server.start();
+        return port;
+// END ignite(String-String-int-int-SslStores-SslStores-int-int-int-int-int-int)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af5df-a0f88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bcd29-ada4a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_bcd29_ada4a\rev_rev_left_bcd29-rev_right_ada4a\src\main\java\spark\ModelAndView.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getModel({FormalParametersInternal})//public Map<String, Object> getModel() {
+        return model;
+// END getModel({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spark\revisions\rev_bcd29_ada4a\rev_rev_left_bcd29-rev_right_ada4a\src\main\java\spark\CustomErrorPages.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START CustomErrorPages({FormalParametersInternal})//private CustomErrorPages() {
+        customPages = new HashMap<>();
+        defaultPages = new HashMap<>();
+        defaultPages.put(404, NOT_FOUND);
+        defaultPages.put(500, INTERNAL_ERROR);
+// END CustomErrorPages({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ada4a-81549
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddda7-3c253
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8949-f01ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20109-45204
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2c97-5755c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_deb60-1080c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c146-37c98
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5becf-01cb4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4f681-7da00
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8706b-e61dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e20e-2ce4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ce4e-4ceff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2295-cd579
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73586-98a56
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ff5e1-04929
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e08f4-266ba
+#MS_XXX_MS#

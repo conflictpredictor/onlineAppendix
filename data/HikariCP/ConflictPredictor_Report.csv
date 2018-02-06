@@ -1,0 +1,2095 @@
+#MS_XXX_MS#
+Merge scenario: rev_76441-1cb3c
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_76441_1cb3c\rev_rev_left_76441-rev_right_1cb3c\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: false
+Left editions: [118, 126, 127, 128, 129, 130, 131, 132, 133, 140, 141, 145, 147, 150]
+Right editions: [122, 123, 124]
+Merged body: 
+// START HikariPool(HikariConfig-HikariConfig)//HikariPool(HikariConfig configuration)
+    {
+        configuration.validate();
+
+        this.configuration = configuration;
+        this.totalConnections = new AtomicInteger();
+        this.idleConnectionCount = new AtomicInteger();
+        this.idleConnections = new LinkedTransferQueue<IHikariConnectionProxy>();
+
+        this.jdbc4ConnectionTest = configuration.isJdbc4ConnectionTest();
+// LEFT //        this.leakDetectionThreshold = configuration.getLeakDetectionThreshold();
+
+        try
+        {
+// RIGHT //            HikariClassLoader loader = new HikariClassLoader(configuration.getDataSourceClassName());
+// RIGHT //            Class<?> clazz = loader.loadClass(configuration.getDataSourceClassName());
+// RIGHT //            // Class<?> clazz = ClassLoaderUtils.loadClass(configuration.getDataSourceClassName());
+            this.dataSource = (DataSource) clazz.newInstance();
+// LEFT //            PropertyBeanSetter.setTargetFromProperties(dataSource, configuration.getDataSourceProperties());
+// LEFT //
+// LEFT //            HikariInstrumentationAgent instrumentationAgent = new HikariInstrumentationAgent(dataSource);
+// LEFT //            delegationProxies = !instrumentationAgent.loadTransformerAgent(); 
+// LEFT //            if (delegationProxies)
+// LEFT //            {
+// LEFT //                LOGGER.info("Falling back to Javassist delegate-based proxies.");
+// LEFT //            }
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Could not create datasource class: " + configuration.getDataSourceClassName(), e);
+        }
+
+// LEFT //        registerMBean();
+// LEFT //
+        houseKeepingTimer = new Timer("Hikari Housekeeping Timer", true);
+
+        long idleTimeout = configuration.getIdleTimeout();
+// LEFT //        if (idleTimeout > 0 || configuration.getMaxLifetime() > 0)
+        {
+// LEFT //            houseKeepingTimer.scheduleAtFixedRate(new HouseKeeper(), TimeUnit.SECONDS.toMillis(30), TimeUnit.SECONDS.toMillis(30));
+        }
+
+// LEFT //        fillPool();            
+// END HikariPool(HikariConfig-HikariConfig)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83fce-63d67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_560f6-7b4d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_718b6-84798
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_65844-fbb3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_89653-9e74d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_923f7-a326b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a7a9-8589d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af64c-0ed00
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2488-58485
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e938a-8842a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ea579-506b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f1e33-6d8e3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7a60-6b3c7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9db51-d0a77
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_279f5-519c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_613c5-95d3f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21106-b5660
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55d7a-d7cba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2433-1f0b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca526-431b4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3a3a-4bf14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5bed7-b81c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ad78-d041c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6e75-a4b97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bb57-22f4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da5c0-b4510
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [688, 689, 690, 691, 692, 693]
+Right editions: []
+Merged body: 
+// START validate({FormalParametersInternal})//public void validate()
+    {
+        Logger logger = LoggerFactory.getLogger(getClass());
+
+        if (connectionCustomizerClassName != null && connectionCustomizer == null)
+        {
+            try
+            {
+                Class<?> customizerClass = getClass().getClassLoader().loadClass(connectionCustomizerClassName);
+                connectionCustomizer = (IConnectionCustomizer) customizerClass.newInstance();
+            }
+            catch (Exception e)
+            {
+                logger.warn("connectionCustomizationClass specified class '" + connectionCustomizerClassName + "' could not be loaded", e);
+                connectionCustomizerClassName = null;
+            }
+        }
+
+        if (connectionTimeout == Integer.MAX_VALUE)
+        {
+            logger.warn("No connection wait timeout is set, this might cause an infinite wait.");
+        }
+        else if (connectionTimeout < 100)
+        {
+            logger.warn("connectionTimeout is less than 100ms, did you specify the wrong time unit?  Using default instead.");
+        	connectionTimeout = CONNECTION_TIMEOUT;
+        }
+
+// LEFT //        if (jdbcUrl != null)
+// LEFT //        {
+// LEFT //            logger.info("Really, a JDBC URL?  It's time to party like it's 1999!");
+// LEFT //            dataSource = new DriverDataSource(jdbcUrl, dataSourceProperties);
+// LEFT //        }
+// LEFT //        else if (dataSource == null && dataSourceClassName == null)
+        {
+            logger.error("one of either dataSource or dataSourceClassName must be specified");
+            throw new IllegalStateException("one of either dataSource or dataSourceClassName must be specified");
+        }
+        else if (dataSource != null && dataSourceClassName != null)
+        {
+            logger.warn("both dataSource and dataSourceClassName are specified, ignoring dataSourceClassName");
+        }
+
+        if (idleTimeout < 0)
+        {
+            logger.error("idleTimeout cannot be negative.");
+            throw new IllegalStateException("idleTimeout cannot be negative.");
+        }
+        else if (idleTimeout < 30000 && idleTimeout != 0)
+        {
+            logger.warn("idleTimeout is less than 30000ms, did you specify the wrong time unit?  Using default instead.");
+            idleTimeout = IDLE_TIMEOUT;
+        }
+
+        if (!isJdbc4connectionTest && connectionTestQuery == null)
+        {
+            logger.error("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified.");
+            throw new IllegalStateException("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified.");
+        }
+
+        if (leakDetectionThreshold != 0 && leakDetectionThreshold < 10000)
+        {
+            logger.warn("leakDetectionThreshold is less than 10000ms, did you specify the wrong time unit?  Disabling leak detection.");
+            leakDetectionThreshold = 0;
+        }
+
+        if (maxPoolSize < minPoolSize)
+        {
+            logger.warn("maxPoolSize is less than minPoolSize, forcing them equal.");
+            maxPoolSize = minPoolSize;
+        }
+
+        if (maxLifetime < 0)
+        {
+            logger.error("maxLifetime cannot be negative.");
+            throw new IllegalStateException("maxLifetime cannot be negative.");
+        }
+        else if (maxLifetime < 120000 && maxLifetime != 0)
+        {
+            logger.warn("maxLifetime is less than 120000ms, did you specify the wrong time unit?  Using default instead.");
+            maxLifetime = MAX_LIFETIME;
+        }
+
+        if (transactionIsolationName != null)
+        {
+            try
+            {
+                Field field = Connection.class.getField(transactionIsolationName);
+                int level = field.getInt(null);
+                this.transactionIsolation = level;
+            }
+            catch (Exception e)
+            {
+                throw new IllegalArgumentException("Invalid transaction isolation value: " + transactionIsolationName);
+            }
+        }
+// END validate({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START HikariPool(HikariConfig-HikariConfig)//HikariPool(HikariConfig configuration)
+    {
+        configuration.validate();
+
+        this.configuration = configuration;
+        this.totalConnections = new AtomicInteger();
+        this.idleConnectionBag = new ConcurrentBag<IHikariConnectionProxy>();
+        this.idleConnectionBag.addBagStateListener(this);
+        this.debug = LOGGER.isDebugEnabled();
+
+        this.catalog = configuration.getCatalog();
+        this.connectionCustomizer = configuration.getConnectionCustomizer();
+        this.isAutoCommit = configuration.isAutoCommit();
+        this.isIsolateInternalQueries = configuration.isIsolateInternalQueries();
+        this.isReadOnly = configuration.isReadOnly();
+        this.isRegisteredMbeans = configuration.isRegisterMbeans();
+        this.jdbc4ConnectionTest = configuration.isJdbc4ConnectionTest();
+        this.leakDetectionThreshold = configuration.getLeakDetectionThreshold();
+        this.transactionIsolation = configuration.getTransactionIsolation();
+
+        if (configuration.getDataSource() == null)
+        {
+            String dsClassName = configuration.getDataSourceClassName();
+            try
+            {
+                Class<?> clazz = this.getClass().getClassLoader().loadClass(dsClassName);
+                this.dataSource = (DataSource) clazz.newInstance();
+                PropertyBeanSetter.setTargetFromProperties(dataSource, configuration.getDataSourceProperties());
+            }
+            catch (Exception e)
+            {
+                throw new RuntimeException("Could not create datasource instance: " + dsClassName, e);
+            }
+        }
+        else
+        {
+            this.dataSource = configuration.getDataSource();
+        }
+
+        if (isRegisteredMbeans)
+        {
+            HikariMBeanElf.registerMBeans(configuration, this);
+        }
+
+        houseKeepingTimer = new Timer("Hikari Housekeeping Timer", true);
+        
+        fillPool();            
+
+        long idleTimeout = configuration.getIdleTimeout();
+        if (idleTimeout > 0 || configuration.getMaxLifetime() > 0)
+        {
+            long delayPeriod = Long.getLong("com.zaxxer.hikari.housekeeping.period", TimeUnit.SECONDS.toMillis(30));
+            houseKeepingTimer.scheduleAtFixedRate(new HouseKeeper(), delayPeriod, delayPeriod);
+        }
+// END HikariPool(HikariConfig-HikariConfig)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getConnection({FormalParametersInternal})//Connection getConnection() throws SQLException
+    {
+        if (shutdown)
+        {
+            throw new SQLException("Pool has been shutdown");
+        }
+
+        try
+        {
+            long timeout = configuration.getConnectionTimeout();
+            final long start = System.currentTimeMillis();
+            do
+            {
+                IHikariConnectionProxy connectionProxy = idleConnectionBag.borrow(timeout, TimeUnit.MILLISECONDS);
+                if (connectionProxy == null)
+                {
+                    // We timed out... break and throw exception
+                	break;
+                }
+
+                connectionProxy.unclose();
+
+                if (System.currentTimeMillis() - connectionProxy.getLastAccess() > 1000 && !isConnectionAlive(connectionProxy, timeout))
+                {
+                    // Throw away the dead connection, try again
+                    closeConnection(connectionProxy);
+                    timeout -= (System.currentTimeMillis() - start);
+                    continue;
+                }
+    
+                if (leakDetectionThreshold > 0)
+                {
+                    connectionProxy.captureStack(leakDetectionThreshold, houseKeepingTimer);
+                }
+
+                return connectionProxy;
+
+            } while (timeout > 0);
+
+            logPoolState();
+
+        	String msg = String.format("Timeout of %dms encountered waiting for connection.", configuration.getConnectionTimeout());
+            LOGGER.warn(msg);
+            logPoolState("Timeout failure ");
+
+            throw new SQLException(msg);
+        }
+        catch (InterruptedException e)
+        {
+            return null;
+        }
+// END getConnection({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: false
+Left editions: [418, 427, 428, 434, 436]
+Right editions: [401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 424]
+Merged body: 
+// START addConnection({FormalParametersInternal})//private void addConnection()
+    {
+// RIGHT //        final int acquisitionTimeout = (int) configuration.getConnectionTimeout();
+// RIGHT //        int retries = configuration.getAcquireRetries();
+// RIGHT //        int loginTimeout = 2000;
+// RIGHT //        if (retries == 0)
+// RIGHT //        {
+// RIGHT //            loginTimeout = (acquisitionTimeout == 0 ? Integer.MAX_VALUE : acquisitionTimeout);
+// RIGHT //        }
+// RIGHT //        else if (acquisitionTimeout > 0)
+// RIGHT //        {
+// RIGHT //            loginTimeout = (acquisitionTimeout / (retries + 1));
+// RIGHT //        }
+// RIGHT //
+        while (!shutdown)
+        {
+            try
+            {
+                // Speculative increment of totalConnections with expectation of success
+// LEFT //                if (retries == 0 && totalConnections.incrementAndGet() > configuration.getMaximumPoolSize())
+                {
+                    totalConnections.decrementAndGet();
+                    break;
+                }
+
+// RIGHT //                dataSource.setLoginTimeout(loginTimeout);
+                Connection connection = dataSource.getConnection();
+
+// LEFT //                transactionIsolation =  (transactionIsolation < 0 ? connection.getTransactionIsolation() : transactionIsolation); 
+// LEFT //                
+                if (connectionCustomizer != null)
+                {
+                    connectionCustomizer.customize(connection);
+                }
+
+// LEFT //                executeInitSql(connection);
+
+// LEFT //                IHikariConnectionProxy proxyConnection = ProxyFactory.getProxyConnection(this, connection, transactionIsolation, isAutoCommit, isReadOnly, catalog);
+            	proxyConnection.resetConnectionState();
+                idleConnectionBag.add(proxyConnection);
+                break;
+            }
+            catch (Exception e)
+            {
+                if (retries++ > configuration.getAcquireRetries())
+                {
+                    if (debug)
+                    {
+                        LOGGER.error("Maximum connection creation retries exceeded: {}", e.getMessage(), e);
+                    }
+                    else
+                    {
+                        LOGGER.error("Maximum connection creation retries exceeded: {}", e.getMessage());
+                    }
+                    totalConnections.decrementAndGet();
+                    break;
+                }
+
+                try
+                {
+                    Thread.sleep(configuration.getAcquireRetryDelay());
+                }
+                catch (InterruptedException e1)
+                {
+                    totalConnections.decrementAndGet();
+                    break;
+                }
+            }
+        }
+// END addConnection({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: false
+Left editions: []
+Right editions: [381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392]
+Merged body: 
+// START addConnections(AddConnectionStrategy-AddConnectionStrategy)//private void addConnections(AddConnectionStrategy strategy)
+    {
+        switch (strategy)
+// RIGHT //        {
+// RIGHT //        case ONLY_IF_EMPTY:
+// RIGHT //            addConnection();
+// RIGHT //            break;
+// RIGHT //        case MAINTAIN_MINIMUM:
+// RIGHT //            final int min = configuration.getMinimumPoolSize();
+// RIGHT //            for (int maxIterations = 0; maxIterations < min && totalConnections.get() < min; maxIterations++)
+// RIGHT //            {
+// RIGHT //                addConnection();
+// RIGHT //            }
+// RIGHT //            break;
+// RIGHT //        }
+// END addConnections(AddConnectionStrategy-AddConnectionStrategy)//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_da5c0_b4510\rev_rev_left_da5c0-rev_right_b4510\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START isConnectionAlive(IHikariConnectionProxy-IHikariConnectionProxy-long-long)//private boolean isConnectionAlive(final IHikariConnectionProxy connection, long timeoutMs)
+    {
+        try
+        {
+            if (timeoutMs < 1000)
+            {
+                timeoutMs = 1000;
+            }
+
+            if (jdbc4ConnectionTest)
+            {
+                connection.isValid((int) TimeUnit.MILLISECONDS.toSeconds(timeoutMs));
+            }
+            else
+            {
+                Statement statement = connection.createStatement();
+                try
+                {
+                    statement.setQueryTimeout((int) TimeUnit.MILLISECONDS.toSeconds(timeoutMs));
+                    statement.executeQuery(configuration.getConnectionTestQuery());
+                }
+                finally
+                {
+                	statement.close();
+                }
+            }
+
+            if (isIsolateInternalQueries && !isAutoCommit)
+            {
+                connection.rollback();
+            }
+
+            return true;
+        }
+        catch (SQLException e)
+        {
+            LOGGER.warn("Exception during keep alive check, that means the connection must be dead.", e);
+            return false;
+        }
+// END isConnectionAlive(IHikariConnectionProxy-IHikariConnectionProxy-long-long)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1bca9-d415b
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_rev_left_1bca9-rev_right_d415b\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [229]
+Right editions: [226]
+Merged body: 
+// START getAcquireIncrement({FormalParametersInternal})//// RIGHT //@Override
+public int getAcquireIncrement()
+    {
+// LEFT //        return 0;
+// END getAcquireIncrement({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_rev_left_1bca9-rev_right_d415b\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [236]
+Right editions: [233]
+Merged body: 
+// START setAcquireIncrement(int-int)//// RIGHT //@Override
+public void setAcquireIncrement(int acquireIncrement)
+    {
+// LEFT //        LOGGER.warn("The acquireIncrement property has been retired, remove it from your pool configuration to avoid this warning.");
+// END setAcquireIncrement(int-int)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_rev_left_1bca9-rev_right_d415b\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [263]
+Right editions: [260]
+Merged body: 
+// START getAcquireRetryDelay({FormalParametersInternal})//// RIGHT //@Override
+public long getAcquireRetryDelay()
+    {
+// LEFT //        return 0;
+// END getAcquireRetryDelay({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_rev_left_1bca9-rev_right_d415b\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [270]
+Right editions: [267]
+Merged body: 
+// START setAcquireRetryDelay(long-long)//// RIGHT //@Override
+public void setAcquireRetryDelay(long acquireRetryDelayMs)
+    {
+// LEFT //        LOGGER.warn("The acquireRetryDelay property has been retired, remove it from your pool configuration to avoid this warning.");
+// END setAcquireRetryDelay(long-long)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_1bca9_d415b\rev_rev_left_1bca9-rev_right_d415b\src\main\java\com\zaxxer\hikari\HikariPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+        public void run()
+        {
+            debug = LOGGER.isDebugEnabled();
+            houseKeepingTimer.purge();
+
+            logPoolState("Before pool cleanup ");
+
+            final long now = System.currentTimeMillis();
+            final long idleTimeout = configuration.getIdleTimeout();
+            final long maxLifetime = configuration.getMaxLifetime();
+
+            for (IHikariConnectionProxy connectionProxy : idleConnectionBag.values(ConcurrentBag.STATE_NOT_IN_USE))
+            {
+                if (!idleConnectionBag.reserve(connectionProxy))
+                {
+                    continue;
+                }
+
+                if ((idleTimeout > 0 && now > connectionProxy.getLastAccess() + idleTimeout)
+                    ||
+                    (maxLifetime > 0 && now > connectionProxy.getCreationTime() + maxLifetime))
+                {
+                    closeConnection(connectionProxy);
+                }
+                else
+                {
+                    idleConnectionBag.unreserve(connectionProxy);
+                }
+            }
+
+            addConnections(AddConnectionStrategy.MAINTAIN_MINIMUM);
+
+            logPoolState("After pool cleanup ");
+// END run({FormalParametersInternal})//        }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b599-b699c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c058-ec373
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01bca-41179
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afeba-624c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1548c-6494e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7cd73-fde04
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_973b4-a9d62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dbe76-483cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9b19-03c12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a1e2-275ae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ab0b-14bf8
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_9ab0b_14bf8\rev_rev_left_9ab0b-rev_right_14bf8\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [197, 223, 224]
+Right editions: [209]
+Merged body: 
+// START HikariPool(HikariConfig-HikariConfig-String-String-String-String)//public HikariPool(HikariConfig configuration, String username, String password)
+    {
+        this.configuration = configuration;
+        this.username = username;
+        this.password = password;
+
+        this.totalConnections = new AtomicInteger();
+        this.connectionBag = new ConcurrentBag<IHikariConnectionProxy>();
+        this.connectionBag.addBagStateListener(this);
+        this.lastConnectionFailure = new AtomicReference<Throwable>();
+// LEFT //        this.connectionTimeout = configuration.getConnectionTimeout();
+
+        this.catalog = configuration.getCatalog();
+        this.connectionCustomizer = initializeCustomizer();
+        this.isAutoCommit = configuration.isAutoCommit();
+        this.isIsolateInternalQueries = configuration.isIsolateInternalQueries();
+        this.isReadOnly = configuration.isReadOnly();
+        this.isRegisteredMbeans = configuration.isRegisterMbeans();
+        this.isJdbc4ConnectionTest = configuration.isJdbc4ConnectionTest();
+        this.leakDetectionThreshold = configuration.getLeakDetectionThreshold();
+        this.transactionIsolation = configuration.getTransactionIsolation();
+        this.isRecordMetrics = configuration.isRecordMetrics();
+// RIGHT //        this.metricsTracker = MetricsFactory.createMetricsTracker((isRecordMetrics ? configuration.getMetricsTrackerClassName() : "com.zaxxer.hikari.metrics.MetricsTracker"), configuration.getPoolName());
+
+        this.dataSource = initializeDataSource();
+
+        if (isRegisteredMbeans)
+        {
+            HikariMBeanElf.registerMBeans(configuration, this);
+        }
+
+        addConnectionExecutor = createThreadPoolExecutor(configuration.getMaximumPoolSize(), "HikariCP connection filler");
+
+        fillPool();
+        
+        houseKeepingTimer = new Timer("Hikari Housekeeping Timer (pool " + configuration.getPoolName() + ")", true);
+// LEFT //        long delayPeriod = Long.getLong("com.zaxxer.hikari.housekeeping.period", TimeUnit.SECONDS.toMillis(30));
+// LEFT //        houseKeepingTimer.scheduleAtFixedRate(new HouseKeeper(), delayPeriod, delayPeriod);
+// END HikariPool(HikariConfig-HikariConfig-String-String-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_884a5-4c238
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8534a-3e1ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42eeb-1321d
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: []
+Right editions: [951, 952, 953, 954]
+Merged body: 
+// START logConfiguration({FormalParametersInternal})//private void logConfiguration()
+   {
+      LOGGER.debug("HikariCP pool {} configuration:", poolName);
+      Set<String> propertyNames = new TreeSet<String>(PropertyBeanSetter.getPropertyNames(HikariConfig.class));
+      for (String prop : propertyNames) {
+         try {
+            Object value = PropertyBeanSetter.getProperty(prop, this);
+            prop = (prop + "................................................").substring(0, 32);
+// RIGHT //            if (!prop.contains("password"))
+// RIGHT //            {
+// RIGHT //                LOGGER.debug(prop + (value != null ? value : ""));
+// RIGHT //            }
+         }
+         catch (Exception e) {
+            continue;
+         }
+      }
+// END logConfiguration({FormalParametersInternal})//   }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp-java6\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [859, 860, 861, 862]
+Right editions: []
+Merged body: 
+// START validate({FormalParametersInternal})//public void validate()
+   {
+      Logger logger = LoggerFactory.getLogger(getClass());
+
+      validateNumerics();
+
+      if (connectionCustomizerClassName != null) {
+         try {
+            getClass().getClassLoader().loadClass(connectionCustomizerClassName);
+         }
+         catch (Exception e) {
+            logger.warn("connectionCustomizationClass specified class '" + connectionCustomizerClassName + "' could not be loaded", e);
+            connectionCustomizerClassName = null;
+         }
+      }
+
+      if (driverClassName != null && jdbcUrl == null) {
+         logger.error("when specifying driverClassName, jdbcUrl must also be specified");
+         throw new IllegalStateException("when specifying driverClassName, jdbcUrl must also be specified");
+      }
+      else if (jdbcUrl != null && driverClassName == null) {
+         logger.error("when specifying jdbcUrl, driverClassName must also be specified");
+         throw new IllegalStateException("when specifying jdbcUrl, driverClassName must also be specified");
+      }
+// LEFT //      else if (driverClassName != null && dataSourceClassName != null) {
+// LEFT //         logger.error("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //         throw new IllegalStateException("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //      }
+      else if (driverClassName != null && jdbcUrl != null) {
+         // OK
+      }
+      else if (dataSource == null && dataSourceClassName == null) {
+         logger.error("one of either dataSource, dataSourceClassName, or jdbcUrl and driverClassName must be specified");
+         throw new IllegalArgumentException("one of either dataSource or dataSourceClassName must be specified");
+      }
+      else if (dataSource != null && dataSourceClassName != null) {
+         logger.warn("both dataSource and dataSourceClassName are specified, ignoring dataSourceClassName");
+      }
+
+      if (connectionTestQuery != null) {
+         isJdbc4connectionTest = false;
+      }
+      else if (!isJdbc4connectionTest) {
+         logger.error("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+         throw new IllegalStateException("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+      }
+
+      if (transactionIsolationName != null) {
+         try {
+            Field field = Connection.class.getField(transactionIsolationName);
+            int level = field.getInt(null);
+            this.transactionIsolation = level;
+         }
+         catch (Exception e) {
+            throw new IllegalArgumentException("Invalid transaction isolation value: " + transactionIsolationName);
+         }
+      }
+
+      if (poolName == null) {
+          poolName = "HikariPool-" + poolNumber++;
+      }
+
+      logConfiguration();
+// END validate({FormalParametersInternal})//   }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [859, 860, 861, 862]
+Right editions: []
+Merged body: 
+// START validate({FormalParametersInternal})//public void validate()
+   {
+      Logger logger = LoggerFactory.getLogger(getClass());
+
+      validateNumerics();
+
+      if (connectionCustomizerClassName != null) {
+         try {
+            getClass().getClassLoader().loadClass(connectionCustomizerClassName);
+         }
+         catch (Exception e) {
+            logger.warn("connectionCustomizationClass specified class '" + connectionCustomizerClassName + "' could not be loaded", e);
+            connectionCustomizerClassName = null;
+         }
+      }
+
+      if (driverClassName != null && jdbcUrl == null) {
+         logger.error("when specifying driverClassName, jdbcUrl must also be specified");
+         throw new IllegalStateException("when specifying driverClassName, jdbcUrl must also be specified");
+      }
+      else if (jdbcUrl != null && driverClassName == null) {
+         logger.error("when specifying jdbcUrl, driverClassName must also be specified");
+         throw new IllegalStateException("when specifying jdbcUrl, driverClassName must also be specified");
+      }
+// LEFT //      else if (driverClassName != null && dataSourceClassName != null) {
+// LEFT //         logger.error("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //         throw new IllegalStateException("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //      }
+      else if (driverClassName != null && jdbcUrl != null) {
+         // OK
+      }
+      else if (dataSource == null && dataSourceClassName == null) {
+         logger.error("one of either dataSource, dataSourceClassName, or jdbcUrl and driverClassName must be specified");
+         throw new IllegalArgumentException("one of either dataSource or dataSourceClassName must be specified");
+      }
+      else if (dataSource != null && dataSourceClassName != null) {
+         logger.warn("both dataSource and dataSourceClassName are specified, ignoring dataSourceClassName");
+      }
+
+      if (connectionTestQuery != null) {
+         isJdbc4connectionTest = false;
+      }
+      else if (!isJdbc4connectionTest) {
+         logger.error("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+         throw new IllegalStateException("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+      }
+
+      if (transactionIsolationName != null) {
+         try {
+            Field field = Connection.class.getField(transactionIsolationName);
+            int level = field.getInt(null);
+            this.transactionIsolation = level;
+         }
+         catch (Exception e) {
+            throw new IllegalArgumentException("Invalid transaction isolation value: " + transactionIsolationName);
+         }
+      }
+
+      if (poolName == null) {
+         poolName = "HikariPool-" + poolNumber++;
+      }
+
+      logConfiguration();
+// END validate({FormalParametersInternal})//   }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp-java6\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: []
+Right editions: [951, 952, 953, 954]
+Merged body: 
+// START logConfiguration({FormalParametersInternal})//private void logConfiguration()
+   {
+      LOGGER.debug("HikariCP pool {} configuration:", poolName);
+      Set<String> propertyNames = new TreeSet<String>(PropertyBeanSetter.getPropertyNames(HikariConfig.class));
+      for (String prop : propertyNames) {
+         try {
+            Object value = PropertyBeanSetter.getProperty(prop, this);
+            prop = (prop + "................................................").substring(0, 32);
+// RIGHT //            if (!prop.contains("password"))
+// RIGHT //            {
+// RIGHT //                LOGGER.debug(prop + (value != null ? value : ""));
+// RIGHT //            }
+         }
+         catch (Exception e) {
+            continue;
+         }
+      }
+// END logConfiguration({FormalParametersInternal})//   }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp-java6\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [859, 860, 861, 862]
+Right editions: []
+Merged body: 
+// START validate({FormalParametersInternal})//public void validate()
+   {
+      Logger logger = LoggerFactory.getLogger(getClass());
+
+      validateNumerics();
+
+      if (connectionCustomizerClassName != null) {
+         try {
+            getClass().getClassLoader().loadClass(connectionCustomizerClassName);
+         }
+         catch (Exception e) {
+            logger.warn("connectionCustomizationClass specified class '" + connectionCustomizerClassName + "' could not be loaded", e);
+            connectionCustomizerClassName = null;
+         }
+      }
+
+      if (driverClassName != null && jdbcUrl == null) {
+         logger.error("when specifying driverClassName, jdbcUrl must also be specified");
+         throw new IllegalStateException("when specifying driverClassName, jdbcUrl must also be specified");
+      }
+      else if (jdbcUrl != null && driverClassName == null) {
+         logger.error("when specifying jdbcUrl, driverClassName must also be specified");
+         throw new IllegalStateException("when specifying jdbcUrl, driverClassName must also be specified");
+      }
+// LEFT //      else if (driverClassName != null && dataSourceClassName != null) {
+// LEFT //         logger.error("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //         throw new IllegalStateException("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //      }
+      else if (driverClassName != null && jdbcUrl != null) {
+         // OK
+      }
+      else if (dataSource == null && dataSourceClassName == null) {
+         logger.error("one of either dataSource, dataSourceClassName, or jdbcUrl and driverClassName must be specified");
+         throw new IllegalArgumentException("one of either dataSource or dataSourceClassName must be specified");
+      }
+      else if (dataSource != null && dataSourceClassName != null) {
+         logger.warn("both dataSource and dataSourceClassName are specified, ignoring dataSourceClassName");
+      }
+
+      if (connectionTestQuery != null) {
+         isJdbc4connectionTest = false;
+      }
+      else if (!isJdbc4connectionTest) {
+         logger.error("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+         throw new IllegalStateException("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+      }
+
+      if (transactionIsolationName != null) {
+         try {
+            Field field = Connection.class.getField(transactionIsolationName);
+            int level = field.getInt(null);
+            this.transactionIsolation = level;
+         }
+         catch (Exception e) {
+            throw new IllegalArgumentException("Invalid transaction isolation value: " + transactionIsolationName);
+         }
+      }
+
+      if (poolName == null) {
+          poolName = "HikariPool-" + poolNumber++;
+      }
+
+      logConfiguration();
+// END validate({FormalParametersInternal})//   }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_42eeb_1321d\rev_rev_left_42eeb-rev_right_1321d\hikaricp\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: false
+Left editions: [859, 860, 861, 862]
+Right editions: []
+Merged body: 
+// START validate({FormalParametersInternal})//public void validate()
+   {
+      Logger logger = LoggerFactory.getLogger(getClass());
+
+      validateNumerics();
+
+      if (connectionCustomizerClassName != null) {
+         try {
+            getClass().getClassLoader().loadClass(connectionCustomizerClassName);
+         }
+         catch (Exception e) {
+            logger.warn("connectionCustomizationClass specified class '" + connectionCustomizerClassName + "' could not be loaded", e);
+            connectionCustomizerClassName = null;
+         }
+      }
+
+      if (driverClassName != null && jdbcUrl == null) {
+         logger.error("when specifying driverClassName, jdbcUrl must also be specified");
+         throw new IllegalStateException("when specifying driverClassName, jdbcUrl must also be specified");
+      }
+      else if (jdbcUrl != null && driverClassName == null) {
+         logger.error("when specifying jdbcUrl, driverClassName must also be specified");
+         throw new IllegalStateException("when specifying jdbcUrl, driverClassName must also be specified");
+      }
+// LEFT //      else if (driverClassName != null && dataSourceClassName != null) {
+// LEFT //         logger.error("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //         throw new IllegalStateException("both driverClassName and dataSourceClassName are specified, one or the other should be used");
+// LEFT //      }
+      else if (driverClassName != null && jdbcUrl != null) {
+         // OK
+      }
+      else if (dataSource == null && dataSourceClassName == null) {
+         logger.error("one of either dataSource, dataSourceClassName, or jdbcUrl and driverClassName must be specified");
+         throw new IllegalArgumentException("one of either dataSource or dataSourceClassName must be specified");
+      }
+      else if (dataSource != null && dataSourceClassName != null) {
+         logger.warn("both dataSource and dataSourceClassName are specified, ignoring dataSourceClassName");
+      }
+
+      if (connectionTestQuery != null) {
+         isJdbc4connectionTest = false;
+      }
+      else if (!isJdbc4connectionTest) {
+         logger.error("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+         throw new IllegalStateException("Either jdbc4ConnectionTest must be enabled or a connectionTestQuery must be specified");
+      }
+
+      if (transactionIsolationName != null) {
+         try {
+            Field field = Connection.class.getField(transactionIsolationName);
+            int level = field.getInt(null);
+            this.transactionIsolation = level;
+         }
+         catch (Exception e) {
+            throw new IllegalArgumentException("Invalid transaction isolation value: " + transactionIsolationName);
+         }
+      }
+
+      if (poolName == null) {
+         poolName = "HikariPool-" + poolNumber++;
+      }
+
+      logConfiguration();
+// END validate({FormalParametersInternal})//   }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5cb10-636a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2bca5-70c0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9dd2a-97511
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da07a-7c24f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35a9e-c6770
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_201c2-4f0f9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9119c-a6053
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07bb4-04e48
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_327b7-a7a84
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df982-db023
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29629-aa7aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d806-e8d5f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_28438-ec2b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9a6f-2e24d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8b4e-956e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7da72-a310d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9804b-a310d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53854-338d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_877e4-c457c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4427-4e7a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3f13-c94a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ccf3-6d8bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e682b-1cb7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd457-bd0ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c063e-92762
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_003b5-f56fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24e6a-d10e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_154fd-400d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03ad7-16e5b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d538f-d781d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0e95-04a22
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56016-43910
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_120b2-ace24
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_120b2_ace24\rev_rev_left_120b2-rev_right_ace24\src\main\java\com\zaxxer\hikari\util\ConcurrentBag.java
+Different Spacing: false
+Left editions: [142, 155, 156, 157, 158]
+Right editions: [164]
+Merged body: 
+// START borrow(long-long-TimeUnit-TimeUnit)//@SuppressWarnings("unchecked")
+   public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
+   {
+      // Try the thread-local list first
+      final ArrayList<WeakReference<IConcurrentBagEntry>> list = threadList.get();
+      if (list == null) {
+         threadList.set(new ArrayList<WeakReference<IConcurrentBagEntry>>(16));
+      }
+      else {
+         for (int i = list.size() - 1; i >= 0; i--) {
+            final IConcurrentBagEntry bagEntry = list.remove(i).get();
+            if (bagEntry != null && bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+               return (T) bagEntry;
+            }
+         }
+      }
+
+      // Otherwise, scan the shared list ... for maximum of timeout
+      timeout = timeUnit.toNanos(timeout);
+// LEFT //      Future<Boolean> addItemFuture = null;
+      final long startScan = System.nanoTime();
+      final long originTimeout = timeout;
+      do {
+         long startSeq;
+         do {
+            startSeq = sequence.get();
+            for (final T bagEntry : sharedList) {
+               if (bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                  return bagEntry;
+               }
+            }
+         } while (startSeq < sequence.get());
+// LEFT //
+// LEFT //         if (addItemFuture == null || addItemFuture.isDone()) {
+// LEFT //            addItemFuture = listener.addBagItem();
+// LEFT //         }
+
+         if (!synchronizer.tryAcquireSharedNanos(startSeq, timeout)) {
+            return null;
+         }
+
+// RIGHT //         final long elapsed = elapsedTimeNano(startScan);
+         timeout = originTimeout - Math.max(elapsed, 100L);  // don't trust the nanoTime() impl. not to go backwards due to NTP adjustments
+      }
+      while (timeout > 1000L);  // 1000ns is the minimum resolution on many systems
+
+      return null;
+// END borrow(long-long-TimeUnit-TimeUnit)//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8954-2f5ea
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d8954_2f5ea\rev_rev_left_d8954-rev_right_2f5ea\src\main\java\com\zaxxer\hikari\util\ConcurrentBag.java
+Different Spacing: false
+Left editions: [144, 158, 159, 160, 161]
+Right editions: [126, 127, 139, 153]
+Merged body: 
+// START borrow(long-long-TimeUnit-TimeUnit)//@SuppressWarnings("unchecked")
+   public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
+   {
+// RIGHT //      // Try the thread-local list first if nobody is queued
+// RIGHT //      if (!synchronizer.hasQueuedThreads()) {
+      final ArrayList<WeakReference<IConcurrentBagEntry>> list = threadList.get();
+      if (list == null) {
+         threadList.set(new ArrayList<WeakReference<IConcurrentBagEntry>>(16));
+      }
+      else {
+         for (int i = list.size() - 1; i >= 0; i--) {
+            final IConcurrentBagEntry bagEntry = list.remove(i).get();
+            if (bagEntry != null && bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+               return (T) bagEntry;
+            }
+         }
+// RIGHT //      }
+      }
+
+      // Otherwise, scan the shared list ... for maximum of timeout
+      timeout = timeUnit.toNanos(timeout);
+// LEFT //      Future<Boolean> addItemFuture = null;
+      final long startScan = System.nanoTime();
+      final long originTimeout = timeout;
+      do {
+         long startSeq;
+         do {
+            startSeq = sequence.get();
+            for (final T bagEntry : sharedList) {
+               if (bagEntry.state().compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+// RIGHT //                  // LOGGER.debug("{} got bag item {}", Thread.currentThread(), startSeq);
+                  return bagEntry;
+               }
+            }
+         } while (startSeq < sequence.get());
+// LEFT //
+// LEFT //         if (addItemFuture == null || addItemFuture.isDone()) {
+// LEFT //            addItemFuture = listener.addBagItem();
+// LEFT //         }
+
+         if (!synchronizer.tryAcquireSharedNanos(startSeq, timeout)) {
+            return null;
+         }
+
+         final long elapsed = (System.nanoTime() - startScan);
+         timeout = originTimeout - Math.max(elapsed, 100L);  // don't trust the nanoTime() impl. not to go backwards due to NTP adjustments
+      }
+      while (timeout > 1000L);  // 1000ns is the minimum resolution on many systems
+
+      return null;
+// END borrow(long-long-TimeUnit-TimeUnit)//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef438-ea52a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0aa8d-6988d
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_0aa8d_6988d\rev_rev_left_0aa8d-rev_right_6988d\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [224, 251]
+Right editions: [246]
+Merged body: 
+// START HikariPool(HikariConfig-HikariConfig)//public HikariPool(HikariConfig config)
+    {
+      this.configuration = config;
+      this.username = config.getUsername();
+      this.password = config.getPassword();
+
+      this.poolUtils = new PoolUtilities(config);
+      this.dataSource = poolUtils.initializeDataSource(config.getDataSourceClassName(), config.getDataSource(), config.getDataSourceProperties(), config.getDriverClassName(), config.getJdbcUrl(), username, password);
+
+      this.connectionBag = new ConcurrentBag<PoolBagEntry>(this);
+      this.totalConnections = new AtomicInteger();
+// LEFT //      this.connectionTimeoutNanos = TimeUnit.MILLISECONDS.toNanos(config.getConnectionTimeout());
+      this.validationTimeout = config.getValidationTimeout();
+      this.lastConnectionFailure = new AtomicReference<Throwable>();
+
+      this.isReadOnly = config.isReadOnly();
+      this.isAutoCommit = config.isAutoCommit();
+
+      this.suspendResumeLock = config.isAllowPoolSuspension() ? new GlobalPoolLock(true) : GlobalPoolLock.FAUX_LOCK;
+
+      this.catalog = config.getCatalog();
+      this.transactionIsolation = getTransactionIsolation(config.getTransactionIsolation());
+      this.isIsolateInternalQueries = config.isIsolateInternalQueries();
+      this.isUseJdbc4Validation = config.getConnectionTestQuery() == null;
+      
+      setMetricRegistry(config.getMetricRegistry());
+      setHealthCheckRegistry(config.getHealthCheckRegistry());
+
+      this.addConnectionExecutor = createThreadPoolExecutor(config.getMaximumPoolSize(), "HikariCP connection filler (pool " + config.getPoolName() + ")", config.getThreadFactory(), new ThreadPoolExecutor.DiscardPolicy());
+      this.closeConnectionExecutor = createThreadPoolExecutor(4, "HikariCP connection closer (pool " + config.getPoolName() + ")", config.getThreadFactory(), new ThreadPoolExecutor.CallerRunsPolicy());
+
+      ThreadFactory threadFactory = config.getThreadFactory() != null ? config.getThreadFactory() : new DefaultThreadFactory("Hikari Housekeeping Timer (pool " + config.getPoolName() + ")", true);
+      this.houseKeepingExecutorService = new ScheduledThreadPoolExecutor(1, threadFactory, new ThreadPoolExecutor.DiscardPolicy());
+// RIGHT //      this.houseKeepingExecutorService.scheduleAtFixedRate(new HouseKeeper(), HOUSEKEEPING_PERIOD_MS, HOUSEKEEPING_PERIOD_MS, TimeUnit.MILLISECONDS);
+      this.houseKeepingExecutorService.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);
+      this.houseKeepingExecutorService.setRemoveOnCancelPolicy(true);
+      this.leakTask = (config.getLeakDetectionThreshold() == 0) ? LeakTask.NO_LEAK : new LeakTask(config.getLeakDetectionThreshold(), houseKeepingExecutorService);
+
+// LEFT //      poolUtils.setLoginTimeout(dataSource, config.getConnectionTimeout());
+      registerMBeans(config, this);
+      initializeConnections();
+// END HikariPool(HikariConfig-HikariConfig)//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb37a-641b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53fe3-eadf8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_230c0-e52cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab5f9-ef667
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cda1d-bd828
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_086ee-fe65d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2072e-2a256
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_82536-cdfd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a31c2-9136e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1ee0-53e74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_697f7-05a41
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43260-7efb9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc010-e789d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9dcb6-6cee9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d183-2a90f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01a9a-7ad2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78842-78034
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19afc-e369f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a25d6-891b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4db2d-caa4b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7cfb6-8df62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2763-dbeb5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3cf6a-cc3f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca046-e125d
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ca046_e125d\rev_rev_left_ca046-rev_right_e125d\src\main\java\com\zaxxer\hikari\util\ConcurrentBag.java
+Different Spacing: false
+Left editions: [212, 213]
+Right editions: []
+Merged body: 
+// START borrow(long-long-TimeUnit-TimeUnit)//@SuppressWarnings("unchecked")
+   public T borrow(long timeout, final TimeUnit timeUnit) throws InterruptedException
+   {
+      // Try the thread-local list first, if there are no blocked threads waiting already
+         List<?> list = threadList.get();
+         if (weakThreadLocals && list == null) {
+            list = new ArrayList<>(16);
+            threadList.set(list);
+         }
+
+         for (int i = list.size() - 1; i >= 0; i--) {
+            final T bagEntry = (T) (weakThreadLocals ? ((WeakReference) list.remove(i)).get() : list.remove(i));
+            if (bagEntry != null && bagEntry.compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+               return bagEntry;
+            }
+         }
+
+      // Otherwise, scan the shared list ... for maximum of timeout
+      timeout = timeUnit.toNanos(timeout);
+      Future<Boolean> addItemFuture = null;
+      final long startScan = System.nanoTime();
+      final long originTimeout = timeout;
+      long startSeq;
+      do {
+         do {
+            startSeq = synchronizer.currentSequence();
+            for (final T bagEntry : sharedList) {
+               if (bagEntry.compareAndSet(STATE_NOT_IN_USE, STATE_IN_USE)) {
+                  return bagEntry;
+               }
+            }
+         } while (startSeq < synchronizer.currentSequence());
+
+         if (addItemFuture == null || addItemFuture.isDone()) {
+            addItemFuture = listener.addBagItem();
+         }
+
+// LEFT //         timeout = originTimeout - Math.abs(System.nanoTime() - startScan);
+// LEFT //      } while (timeout > 100_00L && synchronizer.waitUntilSequenceExceeded(startSeq, timeout));
+
+      return null;
+// END borrow(long-long-TimeUnit-TimeUnit)//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31447-2362a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03aad-c37a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5553f-1c2f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_716dd-49be2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e1aa-678b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcd8f-e7463
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e7463-dcd8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_87fa3-ba4b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce71a-32181
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c399b-514d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d61b9-02917
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_d61b9_02917\rev_rev_left_d61b9-rev_right_02917\src\main\java\com\zaxxer\hikari\pool\PoolBase.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START resetConnectionState(Connection-Connection-ProxyConnection-ProxyConnection-int-int)//void resetConnectionState(final Connection connection, final ProxyConnection proxyConnection, final int dirtyBits) throws SQLException
+   {
+      int resetBits = 0;
+
+      if ((dirtyBits & DIRTY_BIT_READONLY) != 0 && proxyConnection.getReadOnlyState() != isReadOnly) {
+         connection.setReadOnly(isReadOnly);
+         resetBits |= DIRTY_BIT_READONLY;
+      }
+
+      if ((dirtyBits & DIRTY_BIT_AUTOCOMMIT) != 0 && proxyConnection.getAutoCommitState() != isAutoCommit) {
+         connection.setAutoCommit(isAutoCommit);
+         resetBits |= DIRTY_BIT_AUTOCOMMIT;
+      }
+
+      if ((dirtyBits & DIRTY_BIT_ISOLATION) != 0 && proxyConnection.getTransactionIsolationState() != transactionIsolation) {
+         connection.setTransactionIsolation(transactionIsolation);
+         resetBits |= DIRTY_BIT_ISOLATION;
+      }
+
+      if ((dirtyBits & DIRTY_BIT_CATALOG) != 0 && catalog != null && !catalog.equals(proxyConnection.getCatalogState())) {
+         connection.setCatalog(catalog);
+         resetBits |= DIRTY_BIT_CATALOG;
+      }
+
+      if ((dirtyBits & DIRTY_BIT_NETTIMEOUT) != 0 && proxyConnection.getNetworkTimeoutState() != networkTimeout) {
+         setNetworkTimeout(connection, networkTimeout);
+         resetBits |= DIRTY_BIT_NETTIMEOUT;
+      }
+      
+      if (LOGGER.isDebugEnabled()) {
+         LOGGER.debug("{} - Reset ({}) on connection {}", poolName, resetBits != 0 ? stringFromResetBits(resetBits) : "nothing", connection);
+      }
+// END resetConnectionState(Connection-Connection-ProxyConnection-ProxyConnection-int-int)//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b3d16-76b2c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8db5-37b96
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be790-b8017
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9965-e00e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9661-1ab30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2efeb-7027f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5cd2-5c39c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f499-b78fd
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: []
+Right editions: [522, 524]
+Merged body: 
+// START closeConnection(PoolEntry-PoolEntry-String-String)//final void closeConnection(final PoolEntry poolEntry, final String closureReason)
+   {
+      if (connectionBag.remove(poolEntry)) {
+         final int tc = totalConnections.decrementAndGet();
+         if (tc < 0) {
+// RIGHT //            LOGGER.warn("{} - Unexpected value of totalConnections={}", poolName, tc, new Exception());
+         }
+// RIGHT //         final Connection connection = poolEntry.close();
+         closeConnectionExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+               quietlyCloseConnection(connection, closureReason);
+            }
+         });
+      }
+// END closeConnection(PoolEntry-PoolEntry-String-String)//   }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [272]
+Right editions: []
+Merged body: 
+// START getConnection(long-long)//public final Connection getConnection(final long hardTimeout) throws SQLException
+   {
+      suspendResumeLock.acquire();
+      final long startTime = clockSource.currentTime();
+
+      try {
+         long timeout = hardTimeout;
+         do {
+            final PoolEntry poolEntry = connectionBag.borrow(timeout, TimeUnit.MILLISECONDS);
+            if (poolEntry == null) {
+               break; // We timed out... break and throw exception
+            }
+
+            final long now = clockSource.currentTime();
+            if (poolEntry.isMarkedEvicted() || (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > ALIVE_BYPASS_WINDOW_MS && !isConnectionAlive(poolEntry.connection))) {
+               closeConnection(poolEntry, "(connection is evicted or dead)"); // Throw away the dead connection and try again
+               timeout = hardTimeout - clockSource.elapsedMillis(startTime);
+            }
+            else {
+               metricsTracker.recordBorrowStats(poolEntry, startTime);
+               return poolEntry.createProxyConnection(leakTask.start(poolEntry), now);
+            }
+         } while (timeout > 0L);
+      }
+      catch (InterruptedException e) {
+         throw new SQLException(poolName + " - Interrupted during connection acquisition", e);
+      }
+      finally {
+         suspendResumeLock.release();
+      }
+
+// LEFT //      logPoolState("Timeout failure ");
+
+      String sqlState = null;
+      final Throwable originalException = getLastConnectionFailure();
+      if (originalException instanceof SQLException) {
+         sqlState = ((SQLException) originalException).getSQLState();
+      }
+      final SQLException connectionException = new SQLTransientConnectionException(poolName + " - Connection is not available, request timed out after " + clockSource.elapsedMillis(startTime) + "ms.", sqlState, originalException);
+      if (originalException instanceof SQLException) {
+         connectionException.setNextException((SQLException) originalException);
+      }
+      throw connectionException;
+// END getConnection(long-long)//   }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [707, 708, 709, 710, 716, 717, 718, 719, 723, 728, 729, 730, 740, 744]
+Right editions: [705]
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+      public void run()
+      {
+         // refresh timeouts in case they changed via MBean
+         connectionTimeout = config.getConnectionTimeout();
+         validationTimeout = config.getValidationTimeout();
+         leakTask.updateLeakDetectionThreshold(config.getLeakDetectionThreshold());
+
+         final long idleTimeout = config.getIdleTimeout();
+// RIGHT //         final long now = clockSource.currentTime();
+
+// LEFT //         // Detect retrograde time, allowing +128ms as per NTP spec.
+// LEFT //         if (clockSource.plusMillis(now, 128) < clockSource.plusMillis(previous, HOUSEKEEPING_PERIOD_MS)) {
+// LEFT //            LOGGER.warn("{} - Retrograde clock change detected (housekeeper delta={}), soft-evicting connections from pool.", 
+// LEFT //                        clockSource.elapsedDisplayString(previous, now), poolName);
+            previous = now;
+            softEvictConnections();
+            fillPool();
+            return;
+         }
+// LEFT //         else if (now > clockSource.plusMillis(previous, (3 * HOUSEKEEPING_PERIOD_MS) / 2)) {
+// LEFT //            // No point evicting for forward clock motion, this merely accelerates connection retirement anyway
+// LEFT //            LOGGER.warn("{} - Thread starvation or clock leap detected (housekeeper delta={}).", clockSource.elapsedDisplayString(previous, now), poolName);
+// LEFT //         }
+
+         previous = now;
+
+// LEFT //         String afterPrefix = "Pool ";
+         if (idleTimeout > 0L) {
+            final List<PoolEntry> idleList = connectionBag.values(STATE_NOT_IN_USE);
+            int removable = idleList.size() - config.getMinimumIdle();
+            if (removable > 0) {
+// LEFT //               logPoolState("Before cleanup ");
+// LEFT //               afterPrefix = "After cleanup  "; 
+// LEFT //               
+               // Sort pool entries on lastAccessed
+               Collections.sort(idleList, LASTACCESS_COMPARABLE);
+               for (PoolEntry poolEntry : idleList) {
+                  if (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > idleTimeout && connectionBag.reserve(poolEntry)) {
+                     closeConnection(poolEntry, "(connection has passed idleTimeout)");
+                     if (--removable == 0) {
+                        break; // keep min idle cons
+                     };
+                  }
+// LEFT //               }               
+            }
+         }
+
+// LEFT //         logPoolState(afterPrefix);
+
+         fillPool(); // Try to maintain minimum connections
+// END run({FormalParametersInternal})//      }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [578, 579, 588]
+Right editions: []
+Merged body: 
+// START fillPool({FormalParametersInternal})//private void fillPool()
+   {
+// LEFT //      final int connectionsToAdd = Math.min(config.getMaximumPoolSize() - totalConnections.get(), config.getMinimumIdle() - getIdleConnections())
+// LEFT //                                   - addConnectionExecutor.getQueue().size();
+      for (int i = 0; i < connectionsToAdd; i++) {
+         addBagItem();
+      }
+
+      if (connectionsToAdd > 0 && LOGGER.isDebugEnabled()) {
+         addConnectionExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+// LEFT //               logPoolState("After adding ");
+            }
+         });
+      }
+// END fillPool({FormalParametersInternal})//   }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [707, 708, 709, 710, 716, 717, 718, 719, 723, 728, 729, 730, 740, 744]
+Right editions: [705]
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+      public void run()
+      {
+         // refresh timeouts in case they changed via MBean
+         connectionTimeout = config.getConnectionTimeout();
+         validationTimeout = config.getValidationTimeout();
+         leakTask.updateLeakDetectionThreshold(config.getLeakDetectionThreshold());
+
+         final long idleTimeout = config.getIdleTimeout();
+// RIGHT //         final long now = clockSource.currentTime();
+
+// LEFT //         // Detect retrograde time, allowing +128ms as per NTP spec.
+// LEFT //         if (clockSource.plusMillis(now, 128) < clockSource.plusMillis(previous, HOUSEKEEPING_PERIOD_MS)) {
+// LEFT //            LOGGER.warn("{} - Retrograde clock change detected (housekeeper delta={}), soft-evicting connections from pool.", 
+// LEFT //                        clockSource.elapsedDisplayString(previous, now), poolName);
+            previous = now;
+            softEvictConnections();
+            fillPool();
+            return;
+         }
+// LEFT //         else if (now > clockSource.plusMillis(previous, (3 * HOUSEKEEPING_PERIOD_MS) / 2)) {
+// LEFT //            // No point evicting for forward clock motion, this merely accelerates connection retirement anyway
+// LEFT //            LOGGER.warn("{} - Thread starvation or clock leap detected (housekeeper delta={}).", clockSource.elapsedDisplayString(previous, now), poolName);
+// LEFT //         }
+
+         previous = now;
+
+// LEFT //         String afterPrefix = "Pool ";
+         if (idleTimeout > 0L) {
+            final List<PoolEntry> idleList = connectionBag.values(STATE_NOT_IN_USE);
+            int removable = idleList.size() - config.getMinimumIdle();
+            if (removable > 0) {
+// LEFT //               logPoolState("Before cleanup ");
+// LEFT //               afterPrefix = "After cleanup  "; 
+// LEFT //               
+               // Sort pool entries on lastAccessed
+               Collections.sort(idleList, LASTACCESS_COMPARABLE);
+               for (PoolEntry poolEntry : idleList) {
+                  if (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > idleTimeout && connectionBag.reserve(poolEntry)) {
+                     closeConnection(poolEntry, "(connection has passed idleTimeout)");
+                     if (--removable == 0) {
+                        break; // keep min idle cons
+                     };
+                  }
+// LEFT //               }               
+            }
+         }
+
+// LEFT //         logPoolState(afterPrefix);
+
+         fillPool(); // Try to maintain minimum connections
+// END run({FormalParametersInternal})//      }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_6f499_b78fd\rev_rev_left_6f499-rev_right_b78fd\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [707, 708, 709, 710, 716, 717, 718, 719, 723, 728, 729, 730, 740, 744]
+Right editions: [705]
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+      public void run()
+      {
+         // refresh timeouts in case they changed via MBean
+         connectionTimeout = config.getConnectionTimeout();
+         validationTimeout = config.getValidationTimeout();
+         leakTask.updateLeakDetectionThreshold(config.getLeakDetectionThreshold());
+
+         final long idleTimeout = config.getIdleTimeout();
+// RIGHT //         final long now = clockSource.currentTime();
+
+// LEFT //         // Detect retrograde time, allowing +128ms as per NTP spec.
+// LEFT //         if (clockSource.plusMillis(now, 128) < clockSource.plusMillis(previous, HOUSEKEEPING_PERIOD_MS)) {
+// LEFT //            LOGGER.warn("{} - Retrograde clock change detected (housekeeper delta={}), soft-evicting connections from pool.", 
+// LEFT //                        clockSource.elapsedDisplayString(previous, now), poolName);
+            previous = now;
+            softEvictConnections();
+            fillPool();
+            return;
+         }
+// LEFT //         else if (now > clockSource.plusMillis(previous, (3 * HOUSEKEEPING_PERIOD_MS) / 2)) {
+// LEFT //            // No point evicting for forward clock motion, this merely accelerates connection retirement anyway
+// LEFT //            LOGGER.warn("{} - Thread starvation or clock leap detected (housekeeper delta={}).", clockSource.elapsedDisplayString(previous, now), poolName);
+// LEFT //         }
+
+         previous = now;
+
+// LEFT //         String afterPrefix = "Pool ";
+         if (idleTimeout > 0L) {
+            final List<PoolEntry> idleList = connectionBag.values(STATE_NOT_IN_USE);
+            int removable = idleList.size() - config.getMinimumIdle();
+            if (removable > 0) {
+// LEFT //               logPoolState("Before cleanup ");
+// LEFT //               afterPrefix = "After cleanup  "; 
+// LEFT //               
+               // Sort pool entries on lastAccessed
+               Collections.sort(idleList, LASTACCESS_COMPARABLE);
+               for (PoolEntry poolEntry : idleList) {
+                  if (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > idleTimeout && connectionBag.reserve(poolEntry)) {
+                     closeConnection(poolEntry, "(connection has passed idleTimeout)");
+                     if (--removable == 0) {
+                        break; // keep min idle cons
+                     };
+                  }
+// LEFT //               }               
+            }
+         }
+
+// LEFT //         logPoolState(afterPrefix);
+
+         fillPool(); // Try to maintain minimum connections
+// END run({FormalParametersInternal})//      }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68a52-8adf3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a5ff-743dc
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_4a5ff_743dc\rev_rev_left_4a5ff-rev_right_743dc\src\main\java\com\zaxxer\hikari\pool\PoolEntry.java
+Different Spacing: false
+Left editions: [225, 232, 234, 235]
+Right editions: [227, 228]
+Merged body: 
+// START close({FormalParametersInternal})//// LEFT //Connection close()
+   {
+// RIGHT //      ScheduledFuture<?> eol = endOfLife;
+// RIGHT //      if (eol != null && !eol.isDone() && !eol.cancel(false)) {
+         LOGGER.warn("{} - maxLifeTime expiration task cancellation unexpectedly returned false for connection {}", getPoolName(), connection);
+      }
+
+// LEFT //      Connection con = connection;
+      connection = null;
+// LEFT //      endOfLife = null;
+// LEFT //      return con;
+// END close({FormalParametersInternal})//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_501f2-e7da3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_62fdb-e4603
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aaea7-bf83c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bbe69-e4b91
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_bbe69_e4b91\rev_rev_left_bbe69-rev_right_e4b91\src\test\java\com\zaxxer\hikari\pool\MiscTest.java
+Different Spacing: false
+Left editions: [123]
+Right editions: [111, 112]
+Merged body: 
+// START testLeakDetection({FormalParametersInternal})//@Test
+   public void testLeakDetection() throws Exception
+   {
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      PrintStream ps = new PrintStream(baos, true);
+// RIGHT //      TestElf.setSlf4jTargetStream(Class.forName("com.zaxxer.hikari.pool.LeakTask"), ps);
+// RIGHT //      TestElf.setConfigUnitTest(true);
+
+      HikariConfig config = new HikariConfig();
+      config.setMinimumIdle(0);
+      config.setMaximumPoolSize(4);
+      config.setPoolName("test");
+      config.setThreadFactory(Executors.defaultThreadFactory());
+      config.setMetricRegistry(null);
+      config.setLeakDetectionThreshold(TimeUnit.SECONDS.toMillis(1));
+      config.setDataSourceClassName("com.zaxxer.hikari.mocks.StubDataSource");
+
+// LEFT //      try (HikariDataSource ds = new HikariDataSource(config)) {
+         TestElf.setSlf4jLogLevel(HikariPool.class, Level.DEBUG);
+         TestElf.getPool(ds).logPoolState();
+
+         Connection connection = ds.getConnection();
+         UtilityElf.quietlySleep(TimeUnit.SECONDS.toMillis(4));
+         connection.close();
+         UtilityElf.quietlySleep(TimeUnit.SECONDS.toMillis(1));
+         ps.close();
+         String s = new String(baos.toByteArray());
+         Assert.assertNotNull("Exception string was null", s);
+         Assert.assertTrue("Expected exception to contain 'Connection leak detection' but contains *" + s + "*", s.contains("Connection leak detection"));
+      }
+      finally
+      {
+         TestElf.setConfigUnitTest(false);
+      }
+// END testLeakDetection({FormalParametersInternal})//   }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_bbe69_e4b91\rev_rev_left_bbe69-rev_right_e4b91\src\main\java\com\zaxxer\hikari\HikariConfig.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateNumerics({FormalParametersInternal})//private void validateNumerics()
+   {
+      if (maxLifetime != 0 && maxLifetime < SECONDS.toMillis(30)) {
+         LOGGER.warn("{} - maxLifetime is less than 30000ms, setting to default {}ms.", poolName, MAX_LIFETIME);
+         maxLifetime = MAX_LIFETIME;
+      }
+
+      if (idleTimeout + SECONDS.toMillis(1) > maxLifetime && maxLifetime > 0) {
+          LOGGER.warn("{} - idleTimeout is close to or more than maxLifetime, disabling it.", poolName);
+          idleTimeout = 0;
+       }
+
+      if (idleTimeout != 0 && idleTimeout < SECONDS.toMillis(10)) {
+         LOGGER.warn("{} - idleTimeout is less than 10000ms, setting to default {}ms.", poolName, IDLE_TIMEOUT);
+         idleTimeout = IDLE_TIMEOUT;
+      }
+
+      if (maxLifetime == 0 && idleTimeout == 0) {
+         LOGGER.warn("{} - setting idleTimeout to {}ms.", poolName, IDLE_TIMEOUT);
+         idleTimeout = IDLE_TIMEOUT;
+      }
+
+      if (leakDetectionThreshold > 0 && !unitTest) {
+         if (leakDetectionThreshold < SECONDS.toMillis(2) || (leakDetectionThreshold > maxLifetime && maxLifetime > 0)) {        
+            LOGGER.warn("{} - leakDetectionThreshold is less than 2000ms or more than maxLifetime, disabling it.", poolName);
+            leakDetectionThreshold = 0;
+         }
+      }
+
+      if (connectionTimeout != Integer.MAX_VALUE) {
+         if (connectionTimeout < 250) {
+            LOGGER.warn("{} - connectionTimeout is less than 250ms, setting to {}ms.", poolName, CONNECTION_TIMEOUT);
+            connectionTimeout = CONNECTION_TIMEOUT;
+         }
+
+         if (maxLifetime > 0 && connectionTimeout > maxLifetime) {
+            LOGGER.warn("{} - connectionTimeout is more than maxLifetime, setting connectionTimeout to maxLifetime.", poolName);
+            connectionTimeout = maxLifetime;
+         }
+      }
+
+      if (validationTimeout < 250) {
+         LOGGER.warn("{} - validationTimeout is less than 250ms, setting to {}ms.", poolName, VALIDATION_TIMEOUT);
+         validationTimeout = VALIDATION_TIMEOUT;
+      }
+      else if (validationTimeout > connectionTimeout) {
+         LOGGER.warn("{} - validationTimeout is more than connectionTimeout, setting validationTimeout to connectionTimeout.", poolName);
+         validationTimeout = connectionTimeout;
+      }
+
+      if (maxPoolSize < 0) {
+         if (minIdle < 0) {
+            minIdle = 10;
+         }
+         maxPoolSize = minIdle;
+      }
+      else if (minIdle < 0 || minIdle > maxPoolSize) {
+         minIdle = maxPoolSize;
+      }
+// END validateNumerics({FormalParametersInternal})//   }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_bbe69_e4b91\rev_rev_left_bbe69-rev_right_e4b91\src\main\java\com\zaxxer\hikari\pool\ProxyConnection.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START markCommitStateDirty({FormalParametersInternal})//final void markCommitStateDirty()
+   {
+      if (isAutoCommit || isReadOnly) {
+         lastAccess = clockSource.currentTime();
+      }
+      else {
+         isCommitStateDirty = true;
+      }
+// END markCommitStateDirty({FormalParametersInternal})//   }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d75c6-6ed3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_610ea-d5977
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66831-db989
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed2cc-953b0
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\HikariCP\revisions\rev_ed2cc_953b0\rev_rev_left_ed2cc-rev_right_953b0\src\main\java\com\zaxxer\hikari\pool\HikariPool.java
+Different Spacing: false
+Left editions: [725, 728, 740, 742, 744, 752, 765, 767]
+Right editions: [732]
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+      public void run()
+      {
+         try {
+            // refresh timeouts in case they changed via MBean
+            connectionTimeout = config.getConnectionTimeout();
+            validationTimeout = config.getValidationTimeout();
+            leakTask.updateLeakDetectionThreshold(config.getLeakDetectionThreshold());
+// LEFT //
+            final long idleTimeout = config.getIdleTimeout();
+            final long now = clockSource.currentTime();
+// LEFT //
+            // Detect retrograde time, allowing +128ms as per NTP spec.
+            if (clockSource.plusMillis(now, 128) < clockSource.plusMillis(previous, HOUSEKEEPING_PERIOD_MS)) {
+               LOGGER.warn("{} - Retrograde clock change detected (housekeeper delta={}), soft-evicting connections from pool.",
+// RIGHT //                           poolName, clockSource.elapsedDisplayString(previous, now));
+               previous = now;
+               softEvictConnections();
+               fillPool();
+               return;
+            }
+            else if (now > clockSource.plusMillis(previous, (3 * HOUSEKEEPING_PERIOD_MS) / 2)) {
+               // No point evicting for forward clock motion, this merely accelerates connection retirement anyway
+// LEFT //               LOGGER.warn("{} - Thread starvation or clock leap detected (housekeeper delta={}).", poolName, clockSource.elapsedDisplayString(previous, now));
+            }
+// LEFT //
+            previous = now;
+// LEFT //
+            String afterPrefix = "Pool ";
+            if (idleTimeout > 0L) {
+               final List<PoolEntry> idleList = connectionBag.values(STATE_NOT_IN_USE);
+               int removable = idleList.size() - config.getMinimumIdle();
+               if (removable > 0) {
+                  logPoolState("Before cleanup ");
+                  afterPrefix = "After cleanup  ";
+// LEFT //
+                  // Sort pool entries on lastAccessed
+                  Collections.sort(idleList, LASTACCESS_COMPARABLE);
+                  for (PoolEntry poolEntry : idleList) {
+                     if (clockSource.elapsedMillis(poolEntry.lastAccessed, now) > idleTimeout && connectionBag.reserve(poolEntry)) {
+                        closeConnection(poolEntry, "(connection has passed idleTimeout)");
+                        if (--removable == 0) {
+                           break; // keep min idle cons
+                        }
+                     }
+                  }
+               }
+            }
+// LEFT //
+            logPoolState(afterPrefix);
+// LEFT //
+            fillPool(); // Try to maintain minimum connections
+         }
+         catch (Exception e) {
+            LOGGER.error("Unexpected exception in housekeeping task", e);
+         }
+// END run({FormalParametersInternal})//      }
+
+#CP_===_CP#
+#MS_XXX_MS#

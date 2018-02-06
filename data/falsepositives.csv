@@ -1,0 +1,21 @@
+type,project,merge_scenario,predictor_cause
+editSameAndEditDiff,javapoet,rev_ea2ef-34bde,nao tem interferencia. enquanto left altera um pouco a lógica de um bloco de comandos acima, right muda um comando abaixo de immutableset pra collections
+editSameAndEditDiff,OpenGrok,rev_26e88-195c2, pode ter interferencia right altera a lógica de um boolean que é passado como parametro em um comando alterado por left, só que left altera outro parâmetro
+editSameAndEditDiff,jackson-databind,rev_282cf-ba20f,pode ter interferencia em vez de dar new em uma instancia, left chama um método estatico de uma classe e right edita um comentário e right altera a logica de um operador ternário
+editSameAndEditDiff,CorfuDB,rev_790db-56490,pode ser que tenha interferencia. enquanto left altera a inicialização de uma variável, right modifica a chamada de um método dela
+editSameWithoutEditDiff,swagger-core,rev_a04ec-15435, não há interferencia pois nao mexem nas mesmas variáveis
+editSameWithoutEditDiff,wire,rev_6a6ec-7dca6,pode ser que tenha interferencia, left altera a lógica de um if que setta uma variável, utilizadas na lógica de um for que itera nessa mesma variável
+editSameWithoutEditDiff,jackson-databind,rev_f6850-23328,pode ter interfarencia já que em instancias diferentes ele chama o mesmo método passando o mesmo método estático de uma classe
+editSameWithoutEditDiff,okhttp,rev_37769-15c81,não tem interferencia porque o right faz um refactor numa variavel de controle de um for, enquanto o left remove um if que pode levantar uma exceção
+editSameWithoutEditDiff,restheart,rev_90c8b-8bd30,não tem interferencia por o right remove um ; a mais em um comando
+editSameAndEditDiff,webmagic,rev_b1650-c146e,pode ter interferencia já que left remove um codigo dentro de um if que usa uma variavel na condição que tem a logica alterada por right
+editdiffwithouteditsame,okhttp,rev_90021-219f2, pode ter interferencia já que um desenvolvedor adiciona lógica relacionada a chamada do método que o outro desenvolvedor altera
+editdiffwithouteditsame,jackson-databind,rev_fefcf-4312a, no interference. one developer renamed a local variable
+editdiffwithouteditsame,cloudify,rev_cedd7-fb655,there might be an interference. One developer changes the if condition where the method edited by the other developer is called, and the other developer adds a new reutrn command
+editdiffwithouteditsame,jackson-databind,rev_b7030-5aece,no interference. One developer only edits comments.
+editdiffwithouteditsame,wire,rev_ec1cd-eb166,there might be an interference both contributions edit the semantics related to the same variable 
+editdiffwithouteditsame,truth,rev_d6e0b-d11c0,no interference, one contribution performs a refactor
+editdiffwithouteditsame,moshi,rev_b714a-39dc3,no interference, one contribution performs a refactor
+editdiffwithouteditsame,javaparser,rev_409ba-9f2e2,no interference, one contribution performs a refactor
+editdiffwithouteditsame,retrofit,rev_f78b8-7ea39,no interference, the changes made by one contribution does not altrer program semantics
+editdiffwithouteditsame,Singularity,rev_f9726-6076b, no interference, one contribution removed an extra pair of parenthesis without changing program semantics

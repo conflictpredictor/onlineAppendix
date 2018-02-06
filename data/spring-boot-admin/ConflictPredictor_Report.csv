@@ -1,0 +1,446 @@
+#MS_XXX_MS#
+Merge scenario: rev_d10b5-56cb7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_62077-a5d60
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5471-54a67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da6cc-aae9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1af9-9b637
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43404-befef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9751b-aff53
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4302e-e52f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98185-8ce8e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0346c-690eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3f97-63612
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7577-d5ffa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ac7e-cde5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ceea2-8d995
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a4d3-1f026
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5f1be-46075
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3ef5c-bed8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_16144-208f9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44737-47645
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de3be-9188e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_215f2-6967d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25b3e-d8343
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c40cd-ee3a9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1aad-80cf4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c142-73d1d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78610-2bb88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6ecb9-6b55c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_778ca-e1eeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1de7d-6aac1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_931ab-534f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dbb5b-c9226
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8d11-99111
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40403-2ed43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2397-5a610
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9086e-f95f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5400c-de678
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91820-c6e45
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be6d1-ba760
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0330-b7346
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69dec-ed45e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1ff8-91e79
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\SpringBootAdminClientAutoConfigurationTest.java
+Different Spacing: false
+Left editions: [71]
+Right editions: [73, 74]
+Merged body: 
+// START load(String-String)//private void load(String... environment) {
+		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+		applicationContext.register(ServerPropertiesAutoConfiguration.class);
+// LEFT //		applicationContext.register(RestTemplateConfiguration.class);
+		applicationContext.register(ManagementServerPropertiesAutoConfiguration.class);
+// RIGHT //		applicationContext.register(EndpointAutoConfiguration.class);
+// RIGHT //		applicationContext.register(EndpointWebMvcManagementContextConfiguration.class);
+		applicationContext.register(SpringBootAdminClientAutoConfiguration.class);
+		EnvironmentTestUtils.addEnvironment(applicationContext, environment);
+		applicationContext.refresh();
+		this.context = applicationContext;
+// END load(String-String)//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [61]
+Right editions: [64]
+Merged body: 
+// START test_mgmtPortPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_mgmtPortPath() throws Exception {
+		load("management.contextPath=/admin", "endpoints.health.id=alive", "local.server.port=8080",
+				"local.management.port=8081");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8081/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8081/admin/alive"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080"));
+// END test_mgmtPortPath({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [77]
+Right editions: [79]
+Merged body: 
+// START test_contextPath_mgmtPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPath_mgmtPath() throws Exception {
+		load("server.context-path=app", "management.context-path=/admin", "local.server.port=8080");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8080/app/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8080/app/admin/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080/app"));
+// END test_contextPath_mgmtPath({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [92]
+Right editions: [95]
+Merged body: 
+// START test_contextPatht_mgmtPortPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPatht_mgmtPortPath() throws Exception {
+		load("server.context-path=app", "management.context-path=/admin", "local.server.port=8080",
+				"local.management.port=8081");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8081/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8081/admin/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080/app"));
+// END test_contextPatht_mgmtPortPath({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [108]
+Right editions: [110]
+Merged body: 
+// START test_contextPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPath() throws Exception {
+		load("server.context-path=app", "local.server.port=80");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("http://" + getHostname() + ":80/app"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":80/app/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":80/app"));
+// END test_contextPath({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [122]
+Right editions: [124]
+Merged body: 
+// START test_servletPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_servletPath() throws Exception {
+		load("server.servlet-path=app", "server.context-path=srv", "local.server.port=80");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":80/srv/app"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":80/srv/app/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":80/srv"));
+// END test_servletPath({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [137]
+Right editions: [139]
+Merged body: 
+// START test_default({FormalParametersInternal})//@Test
+// LEFT //	public void test_default() throws Exception {
+		load("local.server.port=8080");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("http://" + getHostname() + ":8080"));
+		assertThat(clientProperties.getHealthUrl(), is("http://" + getHostname() + ":8080/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080"));
+// END test_default({FormalParametersInternal})//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [274]
+Right editions: []
+Merged body: 
+// START getHostname({FormalParametersInternal})//// LEFT //private String getHostname() throws Exception {
+			return InetAddress.getLocalHost().getCanonicalHostName();
+// END getHostname({FormalParametersInternal})//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [108]
+Right editions: [110]
+Merged body: 
+// START test_contextPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPath() throws Exception {
+		load("server.context-path=app", "local.server.port=80");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("http://" + getHostname() + ":80/app"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":80/app/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":80/app"));
+// END test_contextPath({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [92]
+Right editions: [95]
+Merged body: 
+// START test_contextPatht_mgmtPortPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPatht_mgmtPortPath() throws Exception {
+		load("server.context-path=app", "management.context-path=/admin", "local.server.port=8080",
+				"local.management.port=8081");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8081/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8081/admin/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080/app"));
+// END test_contextPatht_mgmtPortPath({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [122]
+Right editions: [124]
+Merged body: 
+// START test_servletPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_servletPath() throws Exception {
+		load("server.servlet-path=app", "server.context-path=srv", "local.server.port=80");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":80/srv/app"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":80/srv/app/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":80/srv"));
+// END test_servletPath({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [61]
+Right editions: [64]
+Merged body: 
+// START test_mgmtPortPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_mgmtPortPath() throws Exception {
+		load("management.contextPath=/admin", "endpoints.health.id=alive", "local.server.port=8080",
+				"local.management.port=8081");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8081/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8081/admin/alive"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080"));
+// END test_mgmtPortPath({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [137]
+Right editions: [139]
+Merged body: 
+// START test_default({FormalParametersInternal})//@Test
+// LEFT //	public void test_default() throws Exception {
+		load("local.server.port=8080");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(), is("http://" + getHostname() + ":8080"));
+		assertThat(clientProperties.getHealthUrl(), is("http://" + getHostname() + ":8080/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080"));
+// END test_default({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\spring-boot-admin\revisions\rev_c1ff8_91e79\rev_rev_left_c1ff8-rev_right_91e79\spring-boot-admin-starter-client\src\test\java\de\codecentric\boot\admin\config\AdminClientPropertiesTest.java
+Different Spacing: false
+Left editions: [77]
+Right editions: [79]
+Merged body: 
+// START test_contextPath_mgmtPath({FormalParametersInternal})//@Test
+// LEFT //	public void test_contextPath_mgmtPath() throws Exception {
+		load("server.context-path=app", "management.context-path=/admin", "local.server.port=8080");
+// RIGHT //		AdminClientProperties clientProperties = context.getBean(AdminClientProperties.class);
+
+		publishApplicationReadyEvent(clientProperties);
+
+		assertThat(clientProperties.getManagementUrl(),
+				is("http://" + getHostname() + ":8080/app/admin"));
+		assertThat(clientProperties.getHealthUrl(),
+				is("http://" + getHostname() + ":8080/app/admin/health"));
+		assertThat(clientProperties.getServiceUrl(), is("http://" + getHostname() + ":8080/app"));
+// END test_contextPath_mgmtPath({FormalParametersInternal})//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2810-d6c97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fcf2a-dca3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fd1b6-0909a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41808-813aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a85a-ebd94
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_28a80-30d76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a99a8-79eb9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a260-f7af1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77767-93e9a
+#MS_XXX_MS#

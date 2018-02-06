@@ -1,0 +1,851 @@
+#MS_XXX_MS#
+Merge scenario: rev_4f642-bc4ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc4ee-9f459
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c207-13650
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13650-2f2ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3e35e-44965
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27ec9-5699a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06066-a4f73
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9831-dcf4d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c29c6-fa4bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d991-1bda8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1bda8-8878e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_01996-d74a9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d74a9-9f517
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dac9e-4d208
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c2c9-5c664
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46a3c-73d4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53f58-59993
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_335e8-bdb75
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c8c5-16b97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56fb2-a22a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b59e-3e80c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19f6f-7e15e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19f6f-e7dc7
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jjwt\revisions\rev_19f6f_e7dc7\rev_rev_left_19f6f-rev_right_e7dc7\src\main\java\io\jsonwebtoken\impl\DefaultJwtParser.java
+Different Spacing: false
+Left editions: [287, 288, 298, 299, 303, 304, 305, 306, 307, 308, 309]
+Right editions: [438, 439]
+Merged body: 
+// START parse(String-String)//@Override
+    public Jwt parse(String jwt) throws ExpiredJwtException, MalformedJwtException, SignatureException {
+
+        Assert.hasText(jwt, "JWT String argument cannot be null or empty.");
+
+        String base64UrlEncodedHeader = null;
+        String base64UrlEncodedPayload = null;
+        String base64UrlEncodedDigest = null;
+
+        int delimiterCount = 0;
+
+        StringBuilder sb = new StringBuilder(128);
+
+        for (char c : jwt.toCharArray()) {
+
+            if (c == SEPARATOR_CHAR) {
+
+                String token = Strings.clean(sb.toString());
+
+                if (delimiterCount == 0) {
+                    base64UrlEncodedHeader = token;
+                } else if (delimiterCount == 1) {
+                    base64UrlEncodedPayload = token;
+                }
+
+                delimiterCount++;
+                sb = new StringBuilder(128);
+            } else {
+                sb.append(c);
+            }
+        }
+
+        if (delimiterCount != 2) {
+            String msg = "JWT strings must contain exactly 2 period characters. Found: " + delimiterCount;
+            throw new MalformedJwtException(msg);
+        }
+        if (sb.length() > 0) {
+            base64UrlEncodedDigest = sb.toString();
+        }
+
+        if (base64UrlEncodedPayload == null) {
+            throw new MalformedJwtException("JWT string '" + jwt + "' is missing a body/payload.");
+        }
+
+        // =============== Header =================
+        Header header = null;
+
+// LEFT //        CompressionCodec compressionCodec = null;
+// LEFT //
+        if (base64UrlEncodedHeader != null) {
+            String origValue = TextCodec.BASE64URL.decodeToString(base64UrlEncodedHeader);
+            Map<String, Object> m = readValue(origValue);
+
+            if (base64UrlEncodedDigest != null) {
+                header = new DefaultJwsHeader(m);
+            } else {
+                header = new DefaultHeader(m);
+            }
+// LEFT //
+// LEFT //            compressionCodec = compressionCodecResolver.resolveCompressionCodec(header);
+        }
+
+        // =============== Body =================
+// LEFT //        String payload;
+// LEFT //        if (compressionCodec != null) {
+// LEFT //            byte[] decompressed = compressionCodec.decompress(TextCodec.BASE64URL.decode(base64UrlEncodedPayload));
+// LEFT //            payload = new String(decompressed, Strings.UTF_8);
+// LEFT //        } else {
+// LEFT //            payload = TextCodec.BASE64URL.decodeToString(base64UrlEncodedPayload);
+// LEFT //        }
+
+        Claims claims = null;
+
+        if (payload.charAt(0) == '{' && payload.charAt(payload.length() - 1) == '}') { //likely to be json, parse it:
+            Map<String, Object> claimsMap = readValue(payload);
+            claims = new DefaultClaims(claimsMap);
+        }
+
+        // =============== Signature =================
+        if (base64UrlEncodedDigest != null) { //it is signed - validate the signature
+
+            JwsHeader jwsHeader = (JwsHeader) header;
+
+            SignatureAlgorithm algorithm = null;
+
+            if (header != null) {
+                String alg = jwsHeader.getAlgorithm();
+                if (Strings.hasText(alg)) {
+                    algorithm = SignatureAlgorithm.forName(alg);
+                }
+            }
+
+            if (algorithm == null || algorithm == SignatureAlgorithm.NONE) {
+                //it is plaintext, but it has a signature.  This is invalid:
+                String msg = "JWT string has a digest/signature, but the header does not reference a valid signature " +
+                             "algorithm.";
+                throw new MalformedJwtException(msg);
+            }
+
+            if (key != null && keyBytes != null) {
+                throw new IllegalStateException("A key object and key bytes cannot both be specified. Choose either.");
+            } else if ((key != null || keyBytes != null) && signingKeyResolver != null) {
+                String object = key != null ? "a key object" : "key bytes";
+                throw new IllegalStateException("A signing key resolver and " + object + " cannot both be specified. Choose either.");
+            }
+
+            //digitally signed, let's assert the signature:
+            Key key = this.key;
+
+            if (key == null) { //fall back to keyBytes
+
+                byte[] keyBytes = this.keyBytes;
+
+                if (Objects.isEmpty(keyBytes) && signingKeyResolver != null) { //use the signingKeyResolver
+                    if (claims != null) {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, claims);
+                    } else {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, payload);
+                    }
+                }
+
+                if (!Objects.isEmpty(keyBytes)) {
+
+                    Assert.isTrue(!algorithm.isRsa(),
+                                  "Key bytes cannot be specified for RSA signatures.  Please specify a PublicKey or PrivateKey instance.");
+
+                    key = new SecretKeySpec(keyBytes, algorithm.getJcaName());
+                }
+            }
+
+            Assert.notNull(key, "A signing key must be specified if the specified JWT is digitally signed.");
+
+            //re-create the jwt part without the signature.  This is what needs to be signed for verification:
+            String jwtWithoutSignature = base64UrlEncodedHeader + SEPARATOR_CHAR + base64UrlEncodedPayload;
+
+            JwtSignatureValidator validator;
+            try {
+                validator = createSignatureValidator(algorithm, key);
+            } catch (IllegalArgumentException e) {
+                String algName = algorithm.getValue();
+                String msg = "The parsed JWT indicates it was signed with the " +  algName + " signature " +
+                             "algorithm, but the specified signing key of type " + key.getClass().getName() +
+                             " may not be used to validate " + algName + " signatures.  Because the specified " +
+                             "signing key reflects a specific and expected algorithm, and the JWT does not reflect " +
+                             "this algorithm, it is likely that the JWT was not expected and therefore should not be " +
+                             "trusted.  Another possibility is that the parser was configured with the incorrect " +
+                             "signing key, but this cannot be assumed for security reasons.";
+                throw new UnsupportedJwtException(msg, e);
+            }
+
+            if (!validator.isValid(jwtWithoutSignature, base64UrlEncodedDigest)) {
+                String msg = "JWT signature does not match locally computed signature. JWT validity cannot be " +
+                             "asserted and should not be trusted.";
+                throw new SignatureException(msg);
+            }
+        }
+
+        //since 0.3:
+        if (claims != null) {
+
+            Date now = null;
+            SimpleDateFormat sdf;
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
+            //token MUST NOT be accepted on or after any specified exp time:
+            Date exp = claims.getExpiration();
+            if (exp != null) {
+
+                now = new Date();
+
+                if (now.equals(exp) || now.after(exp)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String expVal = sdf.format(exp);
+                    String nowVal = sdf.format(now);
+
+                    String msg = "JWT expired at " + expVal + ". Current time: " + nowVal;
+                    throw new ExpiredJwtException(header, claims, msg);
+                }
+            }
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
+            //token MUST NOT be accepted before any specified nbf time:
+            Date nbf = claims.getNotBefore();
+            if (nbf != null) {
+
+                if (now == null) {
+                    now = new Date();
+                }
+
+                if (now.before(nbf)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String nbfVal = sdf.format(nbf);
+                    String nowVal = sdf.format(now);
+
+                    String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal;
+                    throw new PrematureJwtException(header, claims, msg);
+                }
+            }
+// RIGHT //
+// RIGHT //            validateExpectedClaims(header, claims);
+        }
+
+        Object body = claims != null ? claims : payload;
+
+        if (base64UrlEncodedDigest != null) {
+            return new DefaultJws<Object>((JwsHeader) header, body, base64UrlEncodedDigest);
+        } else {
+            return new DefaultJwt<Object>(header, body);
+        }
+// END parse(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_257bd-20e80
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e7dc7-fef55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44b65-78431
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b63a6-35954
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de817-638d8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_638d8-cbf9f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31276-a5fe1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5fe1-76b12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d747f-1cb85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7686d-42f89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05341-a20c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05341-72e0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29f98-c3e5f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ceac0-7a280
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09c96-26a14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07534-82f4b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e6e1-707f7
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jjwt\revisions\rev_8e6e1_707f7\rev_rev_left_8e6e1-rev_right_707f7\src\main\java\io\jsonwebtoken\impl\DefaultJwtParser.java
+Different Spacing: false
+Left editions: [431, 432]
+Right editions: [393, 394]
+Merged body: 
+// START parse(String-String)//@Override
+    public Jwt parse(String jwt) throws ExpiredJwtException, MalformedJwtException, SignatureException {
+
+        Assert.hasText(jwt, "JWT String argument cannot be null or empty.");
+
+        String base64UrlEncodedHeader = null;
+        String base64UrlEncodedPayload = null;
+        String base64UrlEncodedDigest = null;
+
+        int delimiterCount = 0;
+
+        StringBuilder sb = new StringBuilder(128);
+
+        for (char c : jwt.toCharArray()) {
+
+            if (c == SEPARATOR_CHAR) {
+
+                String token = Strings.clean(sb.toString());
+
+                if (delimiterCount == 0) {
+                    base64UrlEncodedHeader = token;
+                } else if (delimiterCount == 1) {
+                    base64UrlEncodedPayload = token;
+                }
+
+                delimiterCount++;
+                sb = new StringBuilder(128);
+            } else {
+                sb.append(c);
+            }
+        }
+
+        if (delimiterCount != 2) {
+            String msg = "JWT strings must contain exactly 2 period characters. Found: " + delimiterCount;
+            throw new MalformedJwtException(msg);
+        }
+        if (sb.length() > 0) {
+            base64UrlEncodedDigest = sb.toString();
+        }
+
+        if (base64UrlEncodedPayload == null) {
+            throw new MalformedJwtException("JWT string '" + jwt + "' is missing a body/payload.");
+        }
+
+        // =============== Header =================
+        Header header = null;
+
+        CompressionCodec compressionCodec = null;
+
+        if (base64UrlEncodedHeader != null) {
+            String origValue = TextCodec.BASE64URL.decodeToString(base64UrlEncodedHeader);
+            Map<String, Object> m = readValue(origValue);
+
+            if (base64UrlEncodedDigest != null) {
+                header = new DefaultJwsHeader(m);
+            } else {
+                header = new DefaultHeader(m);
+            }
+
+            compressionCodec = compressionCodecResolver.resolveCompressionCodec(header);
+        }
+
+        // =============== Body =================
+        String payload;
+        if (compressionCodec != null) {
+            byte[] decompressed = compressionCodec.decompress(TextCodec.BASE64URL.decode(base64UrlEncodedPayload));
+            payload = new String(decompressed, Strings.UTF_8);
+        } else {
+            payload = TextCodec.BASE64URL.decodeToString(base64UrlEncodedPayload);
+        }
+
+        Claims claims = null;
+
+        if (payload.charAt(0) == '{' && payload.charAt(payload.length() - 1) == '}') { //likely to be json, parse it:
+            Map<String, Object> claimsMap = readValue(payload);
+            claims = new DefaultClaims(claimsMap);
+        }
+
+        // =============== Signature =================
+        if (base64UrlEncodedDigest != null) { //it is signed - validate the signature
+
+            JwsHeader jwsHeader = (JwsHeader) header;
+
+            SignatureAlgorithm algorithm = null;
+
+            if (header != null) {
+                String alg = jwsHeader.getAlgorithm();
+                if (Strings.hasText(alg)) {
+                    algorithm = SignatureAlgorithm.forName(alg);
+                }
+            }
+
+            if (algorithm == null || algorithm == SignatureAlgorithm.NONE) {
+                //it is plaintext, but it has a signature.  This is invalid:
+                String msg = "JWT string has a digest/signature, but the header does not reference a valid signature " +
+                             "algorithm.";
+                throw new MalformedJwtException(msg);
+            }
+
+            if (key != null && keyBytes != null) {
+                throw new IllegalStateException("A key object and key bytes cannot both be specified. Choose either.");
+            } else if ((key != null || keyBytes != null) && signingKeyResolver != null) {
+                String object = key != null ? "a key object" : "key bytes";
+                throw new IllegalStateException("A signing key resolver and " + object + " cannot both be specified. Choose either.");
+            }
+
+            //digitally signed, let's assert the signature:
+            Key key = this.key;
+
+            if (key == null) { //fall back to keyBytes
+
+                byte[] keyBytes = this.keyBytes;
+
+                if (Objects.isEmpty(keyBytes) && signingKeyResolver != null) { //use the signingKeyResolver
+                    if (claims != null) {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, claims);
+                    } else {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, payload);
+                    }
+                }
+
+                if (!Objects.isEmpty(keyBytes)) {
+
+// RIGHT //                    Assert.isTrue(algorithm.isHmac(),
+// RIGHT //                                  "Key bytes can only be specified for HMAC signatures. Please specify a PublicKey or PrivateKey instance.");
+
+                    key = new SecretKeySpec(keyBytes, algorithm.getJcaName());
+                }
+            }
+
+            Assert.notNull(key, "A signing key must be specified if the specified JWT is digitally signed.");
+
+            //re-create the jwt part without the signature.  This is what needs to be signed for verification:
+            String jwtWithoutSignature = base64UrlEncodedHeader + SEPARATOR_CHAR + base64UrlEncodedPayload;
+
+            JwtSignatureValidator validator;
+            try {
+                validator = createSignatureValidator(algorithm, key);
+            } catch (IllegalArgumentException e) {
+                String algName = algorithm.getValue();
+                String msg = "The parsed JWT indicates it was signed with the " +  algName + " signature " +
+                             "algorithm, but the specified signing key of type " + key.getClass().getName() +
+                             " may not be used to validate " + algName + " signatures.  Because the specified " +
+                             "signing key reflects a specific and expected algorithm, and the JWT does not reflect " +
+                             "this algorithm, it is likely that the JWT was not expected and therefore should not be " +
+                             "trusted.  Another possibility is that the parser was configured with the incorrect " +
+                             "signing key, but this cannot be assumed for security reasons.";
+                throw new UnsupportedJwtException(msg, e);
+            }
+
+            if (!validator.isValid(jwtWithoutSignature, base64UrlEncodedDigest)) {
+                String msg = "JWT signature does not match locally computed signature. JWT validity cannot be " +
+                             "asserted and should not be trusted.";
+                throw new SignatureException(msg);
+            }
+        }
+
+        //since 0.3:
+        if (claims != null) {
+
+            SimpleDateFormat sdf;
+// LEFT //
+// LEFT //            final Date now = this.clock.now();
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
+            //token MUST NOT be accepted on or after any specified exp time:
+            Date exp = claims.getExpiration();
+            if (exp != null) {
+
+                if (now.equals(exp) || now.after(exp)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String expVal = sdf.format(exp);
+                    String nowVal = sdf.format(now);
+
+                    String msg = "JWT expired at " + expVal + ". Current time: " + nowVal;
+                    throw new ExpiredJwtException(header, claims, msg);
+                }
+            }
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
+            //token MUST NOT be accepted before any specified nbf time:
+            Date nbf = claims.getNotBefore();
+            if (nbf != null) {
+
+                if (now.before(nbf)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String nbfVal = sdf.format(nbf);
+                    String nowVal = sdf.format(now);
+
+                    String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal;
+                    throw new PrematureJwtException(header, claims, msg);
+                }
+            }
+
+            validateExpectedClaims(header, claims);
+        }
+
+        Object body = claims != null ? claims : payload;
+
+        if (base64UrlEncodedDigest != null) {
+            return new DefaultJws<Object>((JwsHeader) header, body, base64UrlEncodedDigest);
+        } else {
+            return new DefaultJwt<Object>(header, body);
+        }
+// END parse(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42f89-3bd42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3bd42-c5ae6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04083-d13d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e26b-9735d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f522a-77dcd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55fcf-79e95
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0fb8f-f0838
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0f63e-19740
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af01c-3fb79
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jjwt\revisions\rev_af01c_3fb79\rev_rev_left_af01c-rev_right_3fb79\src\main\java\io\jsonwebtoken\impl\DefaultJwtParser.java
+Different Spacing: false
+Left editions: [313, 314, 323]
+Right editions: [457, 467, 468, 473, 474, 484, 485, 490, 491]
+Merged body: 
+// START parse(String-String)//@Override
+    public Jwt parse(String jwt) throws ExpiredJwtException, MalformedJwtException, SignatureException {
+
+        Assert.hasText(jwt, "JWT String argument cannot be null or empty.");
+
+        String base64UrlEncodedHeader = null;
+        String base64UrlEncodedPayload = null;
+        String base64UrlEncodedDigest = null;
+
+        int delimiterCount = 0;
+
+        StringBuilder sb = new StringBuilder(128);
+
+        for (char c : jwt.toCharArray()) {
+
+            if (c == SEPARATOR_CHAR) {
+
+// LEFT //                CharSequence tokenSeq = Strings.clean(sb);
+// LEFT //                String token = tokenSeq!=null?tokenSeq.toString():null;
+
+                if (delimiterCount == 0) {
+                    base64UrlEncodedHeader = token;
+                } else if (delimiterCount == 1) {
+                    base64UrlEncodedPayload = token;
+                }
+
+                delimiterCount++;
+// LEFT //                sb.setLength(0);
+            } else {
+                sb.append(c);
+            }
+        }
+
+        if (delimiterCount != 2) {
+            String msg = "JWT strings must contain exactly 2 period characters. Found: " + delimiterCount;
+            throw new MalformedJwtException(msg);
+        }
+        if (sb.length() > 0) {
+            base64UrlEncodedDigest = sb.toString();
+        }
+
+        if (base64UrlEncodedPayload == null) {
+            throw new MalformedJwtException("JWT string '" + jwt + "' is missing a body/payload.");
+        }
+
+        // =============== Header =================
+        Header header = null;
+
+        CompressionCodec compressionCodec = null;
+
+        if (base64UrlEncodedHeader != null) {
+            String origValue = TextCodec.BASE64URL.decodeToString(base64UrlEncodedHeader);
+            Map<String, Object> m = readValue(origValue);
+
+            if (base64UrlEncodedDigest != null) {
+                header = new DefaultJwsHeader(m);
+            } else {
+                header = new DefaultHeader(m);
+            }
+
+            compressionCodec = compressionCodecResolver.resolveCompressionCodec(header);
+        }
+
+        // =============== Body =================
+        String payload;
+        if (compressionCodec != null) {
+            byte[] decompressed = compressionCodec.decompress(TextCodec.BASE64URL.decode(base64UrlEncodedPayload));
+            payload = new String(decompressed, Strings.UTF_8);
+        } else {
+            payload = TextCodec.BASE64URL.decodeToString(base64UrlEncodedPayload);
+        }
+
+        Claims claims = null;
+
+        if (payload.charAt(0) == '{' && payload.charAt(payload.length() - 1) == '}') { //likely to be json, parse it:
+            Map<String, Object> claimsMap = readValue(payload);
+            claims = new DefaultClaims(claimsMap);
+        }
+
+        // =============== Signature =================
+        if (base64UrlEncodedDigest != null) { //it is signed - validate the signature
+
+            JwsHeader jwsHeader = (JwsHeader) header;
+
+            SignatureAlgorithm algorithm = null;
+
+            if (header != null) {
+                String alg = jwsHeader.getAlgorithm();
+                if (Strings.hasText(alg)) {
+                    algorithm = SignatureAlgorithm.forName(alg);
+                }
+            }
+
+            if (algorithm == null || algorithm == SignatureAlgorithm.NONE) {
+                //it is plaintext, but it has a signature.  This is invalid:
+                String msg = "JWT string has a digest/signature, but the header does not reference a valid signature " +
+                             "algorithm.";
+                throw new MalformedJwtException(msg);
+            }
+
+            if (key != null && keyBytes != null) {
+                throw new IllegalStateException("A key object and key bytes cannot both be specified. Choose either.");
+            } else if ((key != null || keyBytes != null) && signingKeyResolver != null) {
+                String object = key != null ? "a key object" : "key bytes";
+                throw new IllegalStateException("A signing key resolver and " + object + " cannot both be specified. Choose either.");
+            }
+
+            //digitally signed, let's assert the signature:
+            Key key = this.key;
+
+            if (key == null) { //fall back to keyBytes
+
+                byte[] keyBytes = this.keyBytes;
+
+                if (Objects.isEmpty(keyBytes) && signingKeyResolver != null) { //use the signingKeyResolver
+                    if (claims != null) {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, claims);
+                    } else {
+                        key = signingKeyResolver.resolveSigningKey(jwsHeader, payload);
+                    }
+                }
+
+                if (!Objects.isEmpty(keyBytes)) {
+
+                    Assert.isTrue(algorithm.isHmac(),
+                                  "Key bytes can only be specified for HMAC signatures. Please specify a PublicKey or PrivateKey instance.");
+
+                    key = new SecretKeySpec(keyBytes, algorithm.getJcaName());
+                }
+            }
+
+            Assert.notNull(key, "A signing key must be specified if the specified JWT is digitally signed.");
+
+            //re-create the jwt part without the signature.  This is what needs to be signed for verification:
+            String jwtWithoutSignature = base64UrlEncodedHeader + SEPARATOR_CHAR + base64UrlEncodedPayload;
+
+            JwtSignatureValidator validator;
+            try {
+                validator = createSignatureValidator(algorithm, key);
+            } catch (IllegalArgumentException e) {
+                String algName = algorithm.getValue();
+                String msg = "The parsed JWT indicates it was signed with the " +  algName + " signature " +
+                             "algorithm, but the specified signing key of type " + key.getClass().getName() +
+                             " may not be used to validate " + algName + " signatures.  Because the specified " +
+                             "signing key reflects a specific and expected algorithm, and the JWT does not reflect " +
+                             "this algorithm, it is likely that the JWT was not expected and therefore should not be " +
+                             "trusted.  Another possibility is that the parser was configured with the incorrect " +
+                             "signing key, but this cannot be assumed for security reasons.";
+                throw new UnsupportedJwtException(msg, e);
+            }
+
+            if (!validator.isValid(jwtWithoutSignature, base64UrlEncodedDigest)) {
+                String msg = "JWT signature does not match locally computed signature. JWT validity cannot be " +
+                             "asserted and should not be trusted.";
+                throw new SignatureException(msg);
+            }
+        }
+
+        //since 0.3:
+        if (claims != null) {
+
+// RIGHT //            long allowedClockSkewInMilliseconds = (long) allowedClockSkewInSeconds * MILLISECONDS_PER_SECOND;
+            SimpleDateFormat sdf;
+
+            final Date now = this.clock.now();
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
+            //token MUST NOT be accepted on or after any specified exp time:
+            Date exp = claims.getExpiration();
+            if (exp != null) {
+
+// RIGHT //                Date nowWithAllowedClockSkew = new Date(now.getTime() - allowedClockSkewInMilliseconds);
+// RIGHT //                if (nowWithAllowedClockSkew.equals(exp) || nowWithAllowedClockSkew.after(exp)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String expVal = sdf.format(exp);
+                    String nowVal = sdf.format(now);
+
+// RIGHT //                    String msg = "JWT expired at " + expVal + ". Current time: " + nowVal +
+// RIGHT //                                 ". Allowed clock skew: " + allowedClockSkewInSeconds + " second(s).";
+                    throw new ExpiredJwtException(header, claims, msg);
+                }
+            }
+
+            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
+            //token MUST NOT be accepted before any specified nbf time:
+            Date nbf = claims.getNotBefore();
+            if (nbf != null) {
+
+// RIGHT //                Date nowWithAllowedClockSkew = new Date(now.getTime() + allowedClockSkewInMilliseconds);
+// RIGHT //                if (nowWithAllowedClockSkew.before(nbf)) {
+                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                    String nbfVal = sdf.format(nbf);
+                    String nowVal = sdf.format(now);
+
+// RIGHT //                    String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal +
+// RIGHT //                                 ". Allowed clock skew: " + allowedClockSkewInSeconds + " second(s).";
+                    throw new PrematureJwtException(header, claims, msg);
+                }
+            }
+
+            validateExpectedClaims(header, claims);
+        }
+
+        Object body = claims != null ? claims : payload;
+
+        if (base64UrlEncodedDigest != null) {
+            return new DefaultJws<Object>((JwsHeader) header, body, base64UrlEncodedDigest);
+        } else {
+            return new DefaultJwt<Object>(header, body);
+        }
+// END parse(String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af01c-ff932
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af01c-6c4b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1365-cfeeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8966c-ab76c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eee5f-13906
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48dae-6ce87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c0cf-65463
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_879ed-9b944
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb5a9-2d623
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb9e2-b250a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a6f5-2b8ad
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc9e9-6563e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac73b-d2989
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8797f-15ac6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fda4d-0bedf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39512-d2296
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9376-e9ea7
+#MS_XXX_MS#

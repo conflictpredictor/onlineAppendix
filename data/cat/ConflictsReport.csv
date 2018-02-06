@@ -1,0 +1,447 @@
+=========================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_48573_a0dff\rev_48573-a0dff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_a0dff_94c1e\rev_a0dff-94c1e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_fe10a_c9305\rev_fe10a-c9305.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_c9305_3467e\rev_c9305-3467e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_30ae9_8a7a6\rev_30ae9-8a7a6.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 1
+Intersection: 1
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private MetricDisplay buildProductLineMetrics(String product,
+			Payload payload, boolean isDashboard) {
+		long date = payload.getDate();
+		String abtestID = payload.getTest();
+		int timeRange = payload.getTimeRange();
+		Date startTime = new Date(date - (timeRange - 1) * TimeUtil.ONE_HOUR);
+		List<String> domains = m_productLineConfigManager
+				.queryProductLineDomains(product);
+		List<MetricItemConfig> metricConfigs = m_configManager
+				.queryMetricItemConfigs(new HashSet<String>(domains));
+		MetricDisplay display = new MetricDisplay(product, abtestID, startTime,
+				isDashboard, timeRange);
+
+		display.initializeLineCharts(metricConfigs);
+
+		display.setBaselineService(m_baselineService).setReportService(m_reportService).setService(m_service);
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513681639664\fstmerge_var1_6781932130484680868
+		display.generateAllCharts();
+		
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513681639664\fstmerge_base_1650229491144455042
+		displayMerger.setAbtestService(m_abtestService);
+		display.setBaselineService(m_baselineService);
+		display.setDisplayMerger(displayMerger);
+
+		for (int index = 0; index < timeRange; index++) {
+			ModelPeriod period = ModelPeriod.getByTime(time);
+			MetricReport report = getReport(period, product, time);
+
+			if (report != null) {
+				displayMerger.visitMetricReport(index, report);
+			}
+			time = time + TimeUtil.ONE_HOUR;
+		}
+
+		display.generateLineCharts();
+		if (abtestID.equals("-1")) {
+			display.generateBaselineChart();
+		}
+=======
+		displayMerger.setAbtestService(m_abtestService);
+		display.setBaselineService(m_baselineService);
+		display.setDisplayMerger(displayMerger);
+
+		for (int index = 0; index < timeRange; index++) {
+			ModelPeriod period = ModelPeriod.getByTime(time);
+			MetricReport report = getReport(period, product, time);
+
+			if (report != null) {
+				displayMerger.visitMetricReport(index, report);
+			}
+			time = time + TimeUtil.ONE_HOUR;
+		}
+		display.generateLineCharts();
+		if (abtestID.equals("-1")) {
+			display.generateBaselineChart();
+		}
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513681639664\fstmerge_var2_72216263106138430
+		return display;
+	}
+
+File path: C:\download\ssmerge\cat\revisions\rev_30ae9_8a7a6\rev_rev_left_30ae9-rev_right_8a7a6\cat-home\src\main\java\com\dianping\cat\report\page\metric\Handler.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_8a7a6_ab9b8\rev_8a7a6-ab9b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_3e7dc_cca45\rev_3e7dc-cca45.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_7e1c9_da328\rev_7e1c9-da328.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9002e_58271\rev_9002e-58271.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_7772d_f8041\rev_7772d-f8041.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_23e96_48b27\rev_23e96-48b27.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_d7db3_eb395\rev_d7db3-eb395.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_0ecdc_3d49a\rev_0ecdc-3d49a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_1859b_b823a\rev_1859b-b823a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_1793a_14716\rev_1793a-14716.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_c6c79_4a0b2\rev_c6c79-4a0b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_4a0b2_1ddb9\rev_4a0b2-1ddb9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f610b_8a318\rev_f610b-8a318.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_8a318_b3970\rev_8a318-b3970.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_4f21e_6446e\rev_4f21e-6446e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_6446e_8a9e8\rev_6446e-8a9e8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_0a51d_2c464\rev_0a51d-2c464.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_454b6_3777a\rev_454b6-3777a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_97415_cd349\rev_97415-cd349.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_59eb4_3facb\rev_59eb4-3facb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_2c464_454b6\rev_2c464-454b6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9004a_a59ff\rev_9004a-a59ff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_27fdb_bd448\rev_27fdb-bd448.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_03227_23aed\rev_03227-23aed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_08f84_17631\rev_08f84-17631.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_d1ad6_ddce2\rev_d1ad6-ddce2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_ba4b2_14942\rev_ba4b2-14942.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_86fec_5d6ba\rev_86fec-5d6ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_a59ff_ba4b2\rev_a59ff-ba4b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_3a91d_65210\rev_3a91d-65210.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_6be3d_bcf71\rev_6be3d-bcf71.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_b1cce_66f34\rev_b1cce-66f34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9a0d5_d299b\rev_9a0d5-d299b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_a3473_dc3ee\rev_a3473-dc3ee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_b9b1f_212bc\rev_b9b1f-212bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9e8c5_14b7f\rev_9e8c5-14b7f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_044ed_ba18e\rev_044ed-ba18e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_14b7f_ba18e\rev_14b7f-ba18e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_57386_0b1c3\rev_57386-0b1c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_03887_ef206\rev_03887-ef206.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5eb2e_59655\rev_5eb2e-59655.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_13bb6_10362\rev_13bb6-10362.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_10362_6411a\rev_10362-6411a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_59655_6411a\rev_59655-6411a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_6411a_7dcb1\rev_6411a-7dcb1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_430fb_2c464\rev_430fb-2c464.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_bc069_744a6\rev_bc069-744a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_dbe49_15ab5\rev_dbe49-15ab5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_744a6_15ab5\rev_744a6-15ab5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_b486b_86891\rev_b486b-86891.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_86891_a94be\rev_86891-a94be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f7b67_f6c6e\rev_f7b67-f6c6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_7e650_f6c6e\rev_7e650-f6c6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f6c6e_e51ab\rev_f6c6e-e51ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_b8888_40276\rev_b8888-40276.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_40276_0359d\rev_40276-0359d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_d1c44_eb16c\rev_d1c44-eb16c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_da54b_eb16c\rev_da54b-eb16c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_dd4f0_c575a\rev_dd4f0-c575a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_eb16c_34cef\rev_eb16c-34cef.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_478e5_4d13c\rev_478e5-4d13c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_e10cb_3b454\rev_e10cb-3b454.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_ede84_d82ba\rev_ede84-d82ba.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f10f2_7971f\rev_f10f2-7971f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_8b388_942ed\rev_8b388-942ed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_d82ba_7971f\rev_d82ba-7971f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f2726_05dd9\rev_f2726-05dd9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_c16b1_e008b\rev_c16b1-e008b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_706d8_f6119\rev_706d8-f6119.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_e008b_706d8\rev_e008b-706d8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5be9f_803e2\rev_5be9f-803e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_51508_803e2\rev_51508-803e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_f8abc_1594d\rev_f8abc-1594d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_1594d_d15f9\rev_1594d-d15f9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_3881c_f8abc\rev_3881c-f8abc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_3c42f_4e1c8\rev_3c42f-4e1c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_2c763_885f2\rev_2c763-885f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_025e6_cca10\rev_025e6-cca10.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_b045c_4e1c8\rev_b045c-4e1c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_cca10_025e6\rev_cca10-025e6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_3fab2_5d86d\rev_3fab2-5d86d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5d86d_3b430\rev_5d86d-3b430.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_44ad6_83c81\rev_44ad6-83c81.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9cc0f_7277a\rev_9cc0f-7277a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5c5a1_6c347\rev_5c5a1-6c347.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_dc0dd_9cc0f\rev_dc0dd-9cc0f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_885f2_022d1\rev_885f2-022d1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+	public List<Component> defineComponents() {
+		List<Component> all = new ArrayList<Component>();
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001295\fstmerge_var1_3614280734382735830
+      defineSimpleTableProviderComponents(all, "cat", com.dianping.cat.home.dal.report._INDEX.getEntityClasses());
+      defineDaoComponents(all, com.dianping.cat.home.dal.report._INDEX.getDaoClasses());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001295\fstmerge_base_8722378917316211801
+      all.add(defineJdbcDataSourceComponent("cat", "com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/cat", "root", "password", "<![CDATA[useUnicode=true&autoReconnect=true]]>"));
+
+      defineSimpleTableProviderComponents(all, "cat", com.dianping.cat.home.dal.report._INDEX.getEntityClasses());
+      defineDaoComponents(all, com.dianping.cat.home.dal.report._INDEX.getDaoClasses());
+=======
+		all.add(defineJdbcDataSourceComponent("cat", "com.mysql.jdbc.Driver", "jdbc:mysql://127.0.0.1:3306/cat", "root",
+		      "password", "<![CDATA[useUnicode=true&autoReconnect=true]]>"));
+
+		defineSimpleTableProviderComponents(all, "cat", com.dianping.cat.home.dal.report._INDEX.getEntityClasses());
+		defineDaoComponents(all, com.dianping.cat.home.dal.report._INDEX.getDaoClasses());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001295\fstmerge_var2_6932735259948463820
+
+		defineSimpleTableProviderComponents(all, "cat", com.dianping.cat.home.dal.alarm._INDEX.getEntityClasses());
+		defineDaoComponents(all, com.dianping.cat.home.dal.alarm._INDEX.getDaoClasses());
+
+		defineSimpleTableProviderComponents(all, "cat", com.dianping.cat.home.dal.abtest._INDEX.getEntityClasses());
+		defineDaoComponents(all, com.dianping.cat.home.dal.abtest._INDEX.getDaoClasses());
+
+		return all;
+	}
+
+File path: C:\download\ssmerge\cat\revisions\rev_885f2_022d1\rev_rev_left_885f2-rev_right_022d1\cat-home\src\main\java\com\dianping\cat\build\CatDatabaseConfigurator.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+	public List<Component> defineComponents() {
+		List<Component> all = new ArrayList<Component>();
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001891\fstmerge_var1_1743527228174807541
+      defineSimpleTableProviderComponents(all, "user", com.dianping.cat.home.dal.user._INDEX.getEntityClasses());
+      defineDaoComponents(all, com.dianping.cat.home.dal.user._INDEX.getDaoClasses());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001891\fstmerge_base_6545420219727846777
+      all.add(defineJdbcDataSourceComponent("user", "com.mysql.jdbc.Driver", "jdbc:mysql://192.168.8.44:3306/hawk", "hawk", "hawk", "<![CDATA[useUnicode=true&autoReconnect=true]]>"));
+
+      defineSimpleTableProviderComponents(all, "user", com.dianping.cat.home.dal.user._INDEX.getEntityClasses());
+      defineDaoComponents(all, com.dianping.cat.home.dal.user._INDEX.getDaoClasses());
+=======
+		all.add(defineJdbcDataSourceComponent("user", "com.mysql.jdbc.Driver", "jdbc:mysql://192.168.8.44:3306/hawk",
+		      "hawk", "hawk", "<![CDATA[useUnicode=true&autoReconnect=true]]>"));
+
+		defineSimpleTableProviderComponents(all, "user", com.dianping.cat.home.dal.user._INDEX.getEntityClasses());
+		defineDaoComponents(all, com.dianping.cat.home.dal.user._INDEX.getDaoClasses());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513689001891\fstmerge_var2_1297235443817860486
+
+		return all;
+	}
+
+File path: C:\download\ssmerge\cat\revisions\rev_885f2_022d1\rev_rev_left_885f2-rev_right_022d1\cat-home\src\main\java\com\dianping\cat\build\UserDatabaseConfigurator.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5319b_7780c\rev_5319b-7780c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_5d0ff_ae991\rev_5d0ff-ae991.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_ec508_fd00b\rev_ec508-fd00b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_df744_fd00b\rev_df744-fd00b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_6cc48_a4323\rev_6cc48-a4323.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_9bcee_df803\rev_9bcee-df803.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_53f0f_0c9d9\rev_53f0f-0c9d9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_45825_84bf8\rev_45825-84bf8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cat\revisions\rev_90a13_7c8ad\rev_90a13-7c8ad.revisions
+
+=========================================================

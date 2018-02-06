@@ -1,0 +1,1044 @@
+#MS_XXX_MS#
+Merge scenario: rev_f80d5-47e2a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42eaa-ee087
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8f95-ae56b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d76d9-46ab7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e8da-0a6fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6bfaa-ff640
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23785-326b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7a79-6f477
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a70f4-a4a40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afaed-21ed9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8332-d71a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7de3f-9c46d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a1fc-2c0fc
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_8a1fc_2c0fc\rev_rev_left_8a1fc-rev_right_2c0fc\src\org\traccar\Context.java
+Different Spacing: false
+Left editions: [170, 172, 183, 184, 188, 189, 190]
+Right editions: [191, 192, 193]
+Merged body: 
+// START init(String[]-String[])//public static void init(String[] arguments) throws Exception {
+
+        config = new Config();
+        if (arguments.length > 0) {
+            config.load(arguments[0]);
+        }
+
+        loggerEnabled = config.getBoolean("logger.enable");
+        if (loggerEnabled) {
+            Log.setupLogger(config);
+        }
+
+        if (config.hasKey("database.url")) {
+            dataManager = new DataManager(config);
+        }
+        identityManager = dataManager;
+
+        if (config.getBoolean("geocoder.enable")) {
+            String type = config.getString("geocoder.type", "google");
+            String url = config.getString("geocoder.url");
+// LEFT //	    String key = config.getString("geocoder.key");
+            
+// LEFT //            int cacheSize = config.getInteger("geocoder.cacheSize");
+            switch (type) {
+                case "google":
+                    reverseGeocoder = new GoogleReverseGeocoder(cacheSize);
+                    break;
+                case "nominatim":
+                    reverseGeocoder = new NominatimReverseGeocoder(url, cacheSize);
+                    break;
+                case "gisgraphy":
+                    reverseGeocoder = new GisgraphyReverseGeocoder(url, cacheSize);
+                    break;
+// LEFT //                case "mapquest":
+// LEFT //                    reverseGeocoder = new MapQuestReverseGeocoder(url, key, cacheSize);
+		case "mapquest":
+		    reverseGeocoder = new MapQuestReverseGeocoder(url, key, cacheSize);
+		    break;
+// LEFT //                case "opencage":
+// LEFT //                    reverseGeocoder = new OpenCageReverseGeocoder(url, key, cacheSize);
+// LEFT //                    break;
+// RIGHT //                case "opencage":
+// RIGHT //                    reverseGeocoder = new OpenCageReverseGeocoder(url, key, cacheSize);
+// RIGHT //                    break;
+            }
+        }
+
+        if (config.getBoolean("web.enable")) {
+            if (config.getString("web.type", "new").equals("new") || config.getString("web.type", "new").equals("api")) {
+                permissionsManager = new PermissionsManager(dataManager);
+            }
+            webServer = new WebServer(config, dataManager.getDataSource());
+        }
+
+        connectionManager = new ConnectionManager(dataManager);
+
+        serverManager = new ServerManager();
+// END init(String[]-String[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69418-b4eea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f5a26-76237
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6692-1a257
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31da2-8b176
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0aaf7-de22e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5bf82-59f46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92c30-e816b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cce42-41c46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5df7c-d2c85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d801c-82a78
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25e32-52e70
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a44f3-36ec2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8735-dc8db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_21a8f-f8f21
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9d44d-77aa7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40076-5acf3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0825-894fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_96e69-c9a49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81736-0bda0
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_81736_0bda0\rev_rev_left_81736-rev_right_0bda0\src\org\traccar\database\GeofenceManager.java
+Different Spacing: false
+Left editions: [253, 254]
+Right editions: [234, 235, 237, 238, 239, 240, 241, 242]
+Merged body: 
+// START refresh({FormalParametersInternal})//public final void refresh() {
+        if (dataManager != null) {
+            try {
+                groupGeofencesLock.writeLock().lock();
+                deviceGeofencesLock.writeLock().lock();
+                try {
+                    groupGeofences.clear();
+                    for (GroupGeofence groupGeofence : dataManager.getGroupGeofences()) {
+                        getGroupGeofences(groupGeofence.getGroupId()).add(groupGeofence.getGeofenceId());
+                    }
+
+                    deviceGeofences.clear();
+                    deviceGeofencesWithGroups.clear();
+
+                    for (DeviceGeofence deviceGeofence : dataManager.getDeviceGeofences()) {
+                        getDeviceGeofences(deviceGeofences, deviceGeofence.getDeviceId())
+                            .add(deviceGeofence.getGeofenceId());
+                        getDeviceGeofences(deviceGeofencesWithGroups, deviceGeofence.getDeviceId())
+                            .add(deviceGeofence.getGeofenceId());
+                    }
+
+                    for (Device device : dataManager.getAllDevicesCached()) {
+// RIGHT //                        long groupId = device.getGroupId();
+// RIGHT //                        while (groupId != 0) {
+                            getDeviceGeofences(deviceGeofencesWithGroups,
+// RIGHT //                                    device.getId()).addAll(getGroupGeofences(groupId));
+// RIGHT //                            if (dataManager.getGroupById(groupId) != null) {
+// RIGHT //                                groupId = dataManager.getGroupById(groupId).getGroupId();
+// RIGHT //                            } else {
+// RIGHT //                                groupId = 0;
+// RIGHT //                            }
+                        }
+                        List<Long> deviceGeofenceIds = device.getGeofenceIds();
+                        if (deviceGeofenceIds == null) {
+                            deviceGeofenceIds = new ArrayList<>();
+                        } else {
+                            deviceGeofenceIds.clear();
+                        }
+                        Position lastPosition = Context.getConnectionManager().getLastPosition(device.getId());
+                        if (lastPosition != null && deviceGeofencesWithGroups.containsKey(device.getId())) {
+                            for (Long geofenceId : deviceGeofencesWithGroups.get(device.getId())) {
+// LEFT //                                Geofence geofence = getGeofence(geofenceId);
+// LEFT //                                if (geofence != null && geofence.getGeometry()
+                                        .containsPoint(lastPosition.getLatitude(), lastPosition.getLongitude())) {
+                                    deviceGeofenceIds.add(geofenceId);
+                                }
+                            }
+                        }
+                        device.setGeofenceIds(deviceGeofenceIds);
+                    }
+
+                } finally {
+                    groupGeofencesLock.writeLock().unlock();
+                    deviceGeofencesLock.writeLock().unlock();
+                }
+
+            } catch (SQLException error) {
+                Log.warning(error);
+            }
+        }
+// END refresh({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3901c-312cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d154c-7ce8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6fefd-d7121
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40547-53b5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_93437-1a0ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d9c7-37d28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_866c3-b4841
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2c480-0c1c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2851-6f32f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e26d8-dea76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ecf3e-e316a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78f8d-ee5af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9777-6c860
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db484-c40a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_516d1-d2e89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a13d-7b29a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be87d-557c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5e57-d8166
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bbb7-91cc8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19b17-9cc86
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aff99-ad2f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_137fe-8ff8e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_137fe_8ff8e\rev_rev_left_137fe-rev_right_8ff8e\src\org\traccar\Context.java
+Different Spacing: false
+Left editions: [328, 329]
+Right editions: [230, 231, 234, 235]
+Merged body: 
+// START init(String[]-String[])//public static void init(String[] arguments) throws Exception {
+
+        config = new Config();
+// RIGHT //        if (arguments.length <= 0) {
+// RIGHT //            throw new RuntimeException("Configuration file is not provided");
+        }
+
+// RIGHT //        config.load(arguments[0]);
+// RIGHT //
+        loggerEnabled = config.getBoolean("logger.enable");
+        if (loggerEnabled) {
+            Log.setupLogger(config);
+        }
+
+        if (config.hasKey("database.url")) {
+            dataManager = new DataManager(config);
+        }
+
+        if (dataManager != null) {
+            deviceManager = new DeviceManager(dataManager);
+        }
+
+        identityManager = deviceManager;
+
+        if (config.getBoolean("geocoder.enable")) {
+            String type = config.getString("geocoder.type", "google");
+            String url = config.getString("geocoder.url");
+            String key = config.getString("geocoder.key");
+
+            int cacheSize = config.getInteger("geocoder.cacheSize");
+            switch (type) {
+                case "nominatim":
+                    reverseGeocoder = new NominatimReverseGeocoder(url, cacheSize);
+                    break;
+                case "gisgraphy":
+                    reverseGeocoder = new GisgraphyReverseGeocoder(url, cacheSize);
+                    break;
+                case "mapquest":
+                    reverseGeocoder = new MapQuestReverseGeocoder(url, key, cacheSize);
+                    break;
+                case "opencage":
+                    reverseGeocoder = new OpenCageReverseGeocoder(url, key, cacheSize);
+                    break;
+                case "bingmaps":
+                    reverseGeocoder = new BingMapsReverseGeocoder(url, key, cacheSize);
+                    break;
+                case "factual":
+                    reverseGeocoder = new FactualReverseGeocoder(url, key, cacheSize);
+                    break;
+                case "geocodefarm":
+                    if (key != null) {
+                        reverseGeocoder = new GeocodeFarmReverseGeocoder(key, cacheSize);
+                    } else {
+                        reverseGeocoder = new GeocodeFarmReverseGeocoder(cacheSize);
+                    }
+                default:
+                    if (key != null) {
+                        reverseGeocoder = new GoogleReverseGeocoder(key, cacheSize);
+                    } else {
+                        reverseGeocoder = new GoogleReverseGeocoder(cacheSize);
+                    }
+                    break;
+            }
+        }
+
+        if (config.getBoolean("location.enable")) {
+            String type = config.getString("location.type", "opencellid");
+            String key = config.getString("location.key");
+
+            switch (type) {
+                case "mozilla":
+                    locationProvider = new MozillaLocationProvider();
+                    break;
+                default:
+                    locationProvider = new OpenCellIdLocationProvider(key);
+                    break;
+            }
+        }
+
+        if (config.getBoolean("web.enable")) {
+            webServer = new WebServer(config, dataManager.getDataSource());
+        }
+
+        permissionsManager = new PermissionsManager(dataManager);
+
+        connectionManager = new ConnectionManager();
+
+        if (config.getBoolean("event.geofenceHandler")) {
+            geofenceManager = new GeofenceManager(dataManager);
+        }
+
+        if (config.getBoolean("event.enable")) {
+            notificationManager = new NotificationManager(dataManager);
+        }
+
+        serverManager = new ServerManager();
+
+        if (config.getBoolean("event.forward.enable")) {
+            eventForwarder = new EventForwarder();
+        }
+
+// LEFT //        aliasesManager = new AliasesManager(dataManager);
+// LEFT //
+// END init(String[]-String[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18499-ad070
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5451e-7ee34
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb754-b488c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e7a54-1937a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6484-45302
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d347-4f735
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_607d7-55ec2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2114a-94464
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57b83-ae0a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ff7c-2e3f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0488-f35da
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a0246-e42ac
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1861e-cd121
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e2ec-5f867
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15d54-a1ad3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04f33-03fb1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ebe64-0bbf8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f1038-c3f39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34645-ff4e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f1b58-f9331
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_137ad-d5ec7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb137-49bca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09a1c-95c64
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_caaf1-68d1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9260-effcd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75460-ae261
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47357-d139c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8af8f-50ca7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c337d-29b07
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69595-edcfd
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_rev_left_69595-rev_right_edcfd\src\org\traccar\protocol\MeiligaoProtocolDecoder.java
+Different Spacing: false
+Left editions: [109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123]
+Right editions: []
+Merged body: 
+// START PATTERN_OBD//private static final Pattern PATTERN_OBD = new PatternBuilder()
+// LEFT //            .number("(d+.d+),") // battery
+// LEFT //            .number("(d+),") // rpm
+// LEFT //            .number("(d+),") // speed
+// LEFT //            .number("(d+.d+),") // throttle
+// LEFT //            .number("(d+.d+),") // engine load
+// LEFT //            .number("(-?d+),") // coolant temp
+// LEFT //            .number("(d+.d+),") // instantaneous fuel
+// LEFT //            .number("(d+.d+),") // average fuel
+// LEFT //            .number("(d+.d+),") // driving range
+// LEFT //            .number("(d+.?d*),") // odometer
+// LEFT //            .number("(d+.d+),") // Single Fuel Consumption
+// LEFT //            .number("(d+.d+),") // Total Fuel Consumption
+// LEFT //            .number("(d+),") // error code count
+// LEFT //            .number("(d+),") // harsh acceleration count
+// LEFT //            .number("(d+)") // harsh break count
+// END PATTERN_OBD//            .compile();
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_69595_edcfd\rev_rev_left_69595-rev_right_edcfd\src\org\traccar\protocol\MeiligaoProtocolDecoder.java
+Different Spacing: false
+Left editions: [448, 452, 496, 497]
+Right editions: []
+Merged body: 
+// START decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//@Override
+    protected Object decode(
+            Channel channel, SocketAddress remoteAddress, Object msg) throws Exception {
+
+        ChannelBuffer buf = (ChannelBuffer) msg;
+        buf.skipBytes(2); // header
+        buf.readShort(); // length
+        ChannelBuffer id = buf.readBytes(7);
+        int command = buf.readUnsignedShort();
+        ChannelBuffer response;
+
+        if (channel != null) {
+            if (command == MSG_LOGIN) {
+// LEFT //                response = ChannelBuffers.wrappedBuffer(new byte[]{0x01});
+                sendResponse(channel, remoteAddress, id, MSG_LOGIN_RESPONSE, response);
+                return null;
+            } else if (command == MSG_HEARTBEAT) {
+// LEFT //                response = ChannelBuffers.wrappedBuffer(new byte[]{0x01});
+                sendResponse(channel, remoteAddress, id, MSG_HEARTBEAT, response);
+                return null;
+            } else if (command == MSG_SERVER) {
+                response = ChannelBuffers.copiedBuffer(getServer(channel), StandardCharsets.US_ASCII);
+                sendResponse(channel, remoteAddress, id, MSG_SERVER, response);
+                return null;
+            }
+        }
+
+        Position position = new Position();
+        position.setProtocol(getProtocolName());
+
+        if (command == MSG_ALARM) {
+            position.set(Position.KEY_ALARM, decodeAlarm(buf.readUnsignedByte()));
+        } else if (command == MSG_POSITION_LOGGED) {
+            buf.skipBytes(6);
+        }
+
+        DeviceSession deviceSession = identify(id, channel, remoteAddress);
+        if (deviceSession == null) {
+            return null;
+        }
+        position.setDeviceId(deviceSession.getDeviceId());
+
+        if (command == MSG_RFID) {
+            for (int i = 0; i < 15; i++) {
+                long rfid = buf.readUnsignedInt();
+                if (rfid != 0) {
+                    String card = String.format("%010d", rfid);
+                    position.set("card" + (i + 1), card);
+                    position.set(Position.KEY_RFID, card);
+                }
+            }
+        }
+
+        String sentence = buf.toString(buf.readerIndex(), buf.readableBytes() - 4, StandardCharsets.US_ASCII);
+
+        if (command == MSG_POSITION || command == MSG_POSITION_LOGGED || command == MSG_ALARM) {
+            return decodeRegular(position, sentence);
+        } else if (command == MSG_RFID) {
+            return decodeRfid(position, sentence);
+        } else if (command == MSG_OBD_RT) {
+            return decodeObd(position, sentence);
+// LEFT //        } else if (command == MSG_OBD_RTA) {
+// LEFT //            return decodeObdA(position, sentence);
+        }
+
+        return null;
+// END decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa90c-fe5f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f76c7-ef914
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41164-a7942
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8280-d9e0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ff14-444d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da094-40b74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48f83-c70c0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d75b-c5d0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cffbc-00caa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09a5c-68abc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1d87-d8e06
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_36c48-483ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3155b-e4009
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6608d-2c446
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_72612-65204
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7929d-0d789
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2c036-f778d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35f00-49bfc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38249-24498
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_rev_left_38249-rev_right_24498\src\org\traccar\protocol\At2000ProtocolDecoder.java
+Different Spacing: false
+Left editions: [185]
+Right editions: [144, 145, 146, 147]
+Merged body: 
+// START decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//@Override
+    protected Object decode(
+            Channel channel, SocketAddress remoteAddress, Object msg) throws Exception {
+
+        ChannelBuffer buf = (ChannelBuffer) msg;
+
+        if (buf.getUnsignedByte(buf.readerIndex()) == 0x01) {
+            buf.readUnsignedByte(); // codec id
+        }
+
+        int type = buf.readUnsignedByte();
+        buf.readUnsignedMedium(); // length
+        buf.skipBytes(BLOCK_LENGTH - 1 - 3);
+
+        if (type == MSG_DEVICE_ID) {
+
+            String imei = buf.readBytes(15).toString(StandardCharsets.US_ASCII);
+            if (getDeviceSession(channel, remoteAddress, imei) != null) {
+
+                byte[] iv = new byte[BLOCK_LENGTH];
+                buf.readBytes(iv);
+                IvParameterSpec ivSpec = new IvParameterSpec(iv);
+
+                SecretKeySpec keySpec = new SecretKeySpec(
+                        DatatypeConverter.parseHexBinary("000102030405060708090a0b0c0d0e0f"), "AES");
+
+                cipher = Cipher.getInstance("AES/CBC/NoPadding");
+                cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+
+                byte[] data = new byte[BLOCK_LENGTH];
+                buf.readBytes(data);
+                cipher.update(data);
+
+            }
+
+        } else if (type == MSG_TRACK_RESPONSE) {
+
+            DeviceSession deviceSession = getDeviceSession(channel, remoteAddress);
+            if (deviceSession == null) {
+                return null;
+            }
+
+// RIGHT //            if (buf.capacity() <= BLOCK_LENGTH) {
+// RIGHT //                return null; // empty message
+// RIGHT //            }
+// RIGHT //
+            byte[] data = new byte[buf.capacity() - BLOCK_LENGTH];
+            buf.readBytes(data);
+            buf = ChannelBuffers.wrappedBuffer(ByteOrder.LITTLE_ENDIAN, cipher.update(data));
+
+            List<Position> positions = new LinkedList<>();
+
+            while (buf.readableBytes() >= 63) {
+
+                Position position = new Position();
+                position.setProtocol(getProtocolName());
+                position.setDeviceId(deviceSession.getDeviceId());
+
+                buf.readUnsignedShort(); // index
+                buf.readUnsignedShort(); // reserved
+
+                position.setValid(true);
+
+                position.setTime(new Date(buf.readLong() * 1000));
+
+                position.setLatitude(buf.readFloat());
+                position.setLongitude(buf.readFloat());
+                position.setAltitude(buf.readFloat());
+                position.setSpeed(UnitsConverter.knotsFromKph(buf.readFloat()));
+                position.setCourse(buf.readFloat());
+
+                buf.readUnsignedInt(); // geozone event
+                buf.readUnsignedInt(); // io events
+                buf.readUnsignedInt(); // geozone value
+                buf.readUnsignedInt(); // io values
+                buf.readUnsignedShort(); // operator
+
+                position.set(Position.PREFIX_ADC + 1, buf.readUnsignedShort());
+                position.set(Position.PREFIX_ADC + 1, buf.readUnsignedShort());
+
+                position.set(Position.KEY_POWER, buf.readUnsignedShort() + "mV");
+
+                buf.readUnsignedShort(); // cid
+// LEFT //                position.set(Position.KEY_RSSI, buf.readUnsignedByte());
+                buf.readUnsignedByte(); // current profile
+
+                position.set(Position.KEY_BATTERY, buf.readUnsignedByte());
+                position.set(Position.PREFIX_TEMP + 1, buf.readUnsignedByte());
+                position.set(Position.KEY_SATELLITES, buf.readUnsignedByte());
+
+                positions.add(position);
+
+            }
+
+            return positions;
+
+        }
+
+        if (type == MSG_DEVICE_ID) {
+            sendRequest(channel);
+        }
+
+        return null;
+// END decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_rev_left_38249-rev_right_24498\src\org\traccar\protocol\TeltonikaProtocolDecoder.java
+Different Spacing: false
+Left editions: []
+Right editions: [108, 109, 110, 111, 112, 113, 123, 124, 125]
+Merged body: 
+// START decodeParameter(Position-Position-int-int-ChannelBuffer-ChannelBuffer-int-int)//private void decodeParameter(Position position, int id, ChannelBuffer buf, int length) {
+        switch (id) {
+// RIGHT //            case 1:
+// RIGHT //            case 2:
+// RIGHT //            case 3:
+// RIGHT //            case 4:
+// RIGHT //                position.set("di" + id, buf.readUnsignedByte());
+// RIGHT //                break;
+            case 9:
+                position.set(Position.PREFIX_ADC + 1, buf.readUnsignedShort());
+                break;
+            case 66:
+                position.set(Position.KEY_POWER, buf.readUnsignedShort() + "mV");
+                break;
+            case 67:
+                position.set(Position.KEY_BATTERY, buf.readUnsignedShort() + "mV");
+                break;
+// RIGHT //            case 70:
+// RIGHT //                position.set("pcbTemp", (length == 4 ? buf.readInt() : buf.readShort()) * 0.1);
+// RIGHT //                break;
+            case 72:
+                position.set(Position.PREFIX_TEMP + 1, buf.readInt() * 0.1);
+                break;
+            case 73:
+                position.set(Position.PREFIX_TEMP + 2, buf.readInt() * 0.1);
+                break;
+            case 74:
+                position.set(Position.PREFIX_TEMP + 3, buf.readInt() * 0.1);
+                break;
+            case 78:
+                position.set(Position.KEY_RFID, buf.readLong());
+                break;
+            case 182:
+                position.set(Position.KEY_HDOP, buf.readUnsignedShort() * 0.1);
+                break;
+            default:
+                switch (length) {
+                    case 1:
+                        position.set(Position.PREFIX_IO + id, buf.readUnsignedByte());
+                        break;
+                    case 2:
+                        position.set(Position.PREFIX_IO + id, buf.readUnsignedShort());
+                        break;
+                    case 4:
+                        position.set(Position.PREFIX_IO + id, buf.readUnsignedInt());
+                        break;
+                    case 8:
+                    default:
+                        position.set(Position.PREFIX_IO + id, buf.readLong());
+                        break;
+                }
+                break;
+        }
+// END decodeParameter(Position-Position-int-int-ChannelBuffer-ChannelBuffer-int-int)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_rev_left_38249-rev_right_24498\src\org\traccar\protocol\TeltonikaProtocolDecoder.java
+Different Spacing: false
+Left editions: [207]
+Right editions: []
+Merged body: 
+// START decodeLocation(Position-Position-ChannelBuffer-ChannelBuffer-int-int)//private void decodeLocation(Position position, ChannelBuffer buf, int codec) {
+
+        int globalMask = 0x0f;
+
+        if (codec == CODEC_GH3000) {
+
+            long time = buf.readUnsignedInt() & 0x3fffffff;
+            time += 1167609600; // 2007-01-01 00:00:00
+
+            globalMask = buf.readUnsignedByte();
+            if (BitUtil.check(globalMask, 0)) {
+
+                position.setTime(new Date(time * 1000));
+
+                int locationMask = buf.readUnsignedByte();
+
+                if (BitUtil.check(locationMask, 0)) {
+                    position.setLatitude(buf.readFloat());
+                    position.setLongitude(buf.readFloat());
+                }
+
+                if (BitUtil.check(locationMask, 1)) {
+                    position.setAltitude(buf.readUnsignedShort());
+                }
+
+                if (BitUtil.check(locationMask, 2)) {
+                    position.setCourse(buf.readUnsignedByte() * 360.0 / 256);
+                }
+
+                if (BitUtil.check(locationMask, 3)) {
+                    position.setSpeed(UnitsConverter.knotsFromKph(buf.readUnsignedByte()));
+                }
+
+                if (BitUtil.check(locationMask, 4)) {
+                    int satellites = buf.readUnsignedByte();
+                    position.set(Position.KEY_SATELLITES, satellites);
+                    position.setValid(satellites >= 3);
+                }
+
+                if (BitUtil.check(locationMask, 5)) {
+                    position.setNetwork(new Network(
+                            CellTower.fromLacCid(buf.readUnsignedShort(), buf.readUnsignedShort())));
+                }
+
+                if (BitUtil.check(locationMask, 6)) {
+// LEFT //                    position.set(Position.KEY_RSSI, buf.readUnsignedByte());
+                }
+
+                if (BitUtil.check(locationMask, 7)) {
+                    position.set("operator", buf.readUnsignedInt());
+                }
+
+            } else {
+
+                getLastLocation(position, new Date(time * 1000));
+
+            }
+
+        } else {
+
+            position.setTime(new Date(buf.readLong()));
+
+            position.set("priority", buf.readUnsignedByte());
+
+            position.setLongitude(buf.readInt() / 10000000.0);
+            position.setLatitude(buf.readInt() / 10000000.0);
+            position.setAltitude(buf.readShort());
+            position.setCourse(buf.readUnsignedShort());
+
+            int satellites = buf.readUnsignedByte();
+            position.set(Position.KEY_SATELLITES, satellites);
+
+            position.setValid(satellites != 0);
+
+            position.setSpeed(UnitsConverter.knotsFromKph(buf.readUnsignedShort()));
+
+            position.set(Position.KEY_EVENT, buf.readUnsignedByte());
+
+            buf.readUnsignedByte(); // total IO data records
+
+        }
+
+        // Read 1 byte data
+        if (BitUtil.check(globalMask, 1)) {
+            int cnt = buf.readUnsignedByte();
+            for (int j = 0; j < cnt; j++) {
+                decodeParameter(position, buf.readUnsignedByte(), buf, 1);
+            }
+        }
+
+        // Read 2 byte data
+        if (BitUtil.check(globalMask, 2)) {
+            int cnt = buf.readUnsignedByte();
+            for (int j = 0; j < cnt; j++) {
+                decodeParameter(position, buf.readUnsignedByte(), buf, 2);
+            }
+        }
+
+        // Read 4 byte data
+        if (BitUtil.check(globalMask, 3)) {
+            int cnt = buf.readUnsignedByte();
+            for (int j = 0; j < cnt; j++) {
+                decodeParameter(position, buf.readUnsignedByte(), buf, 4);
+            }
+        }
+
+        // Read 8 byte data
+        if (codec == CODEC_FM4X00) {
+            int cnt = buf.readUnsignedByte();
+            for (int j = 0; j < cnt; j++) {
+                decodeParameter(position, buf.readUnsignedByte(), buf, 8);
+            }
+        }
+
+// END decodeLocation(Position-Position-ChannelBuffer-ChannelBuffer-int-int)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\traccar\revisions\rev_38249_24498\rev_rev_left_38249-rev_right_24498\src\org\traccar\protocol\TmgProtocolDecoder.java
+Different Spacing: false
+Left editions: [155, 156, 157]
+Right editions: [105, 106, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140]
+Merged body: 
+// START decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//@Override
+    protected Object decode(
+            Channel channel, SocketAddress remoteAddress, Object msg) throws Exception {
+
+        Parser parser = new Parser(PATTERN, (String) msg);
+        if (!parser.matches()) {
+            return null;
+        }
+
+// RIGHT //        String type = parser.next();
+// RIGHT //
+        DeviceSession deviceSession = getDeviceSession(channel, remoteAddress, parser.next());
+        if (deviceSession == null) {
+            return null;
+        }
+
+        Position position = new Position();
+        position.setProtocol(getProtocolName());
+        position.setDeviceId(deviceSession.getDeviceId());
+
+// RIGHT //        switch (type) {
+// RIGHT //            case "rmv":
+// RIGHT //                position.set(Position.KEY_ALARM, Position.ALARM_POWER_CUT);
+// RIGHT //                break;
+// RIGHT //            case "ebl":
+// RIGHT //                position.set(Position.KEY_ALARM, Position.ALARM_LOW_POWER);
+// RIGHT //                break;
+// RIGHT //            case "ibl":
+// RIGHT //                position.set(Position.KEY_ALARM, Position.ALARM_LOW_BATTERY);
+// RIGHT //                break;
+// RIGHT //            case "tmp":
+// RIGHT //            case "smt":
+// RIGHT //            case "btt":
+// RIGHT //                position.set(Position.KEY_ALARM, Position.ALARM_TAMPERING);
+// RIGHT //                break;
+// RIGHT //            case "ion":
+// RIGHT //                position.set(Position.KEY_IGNITION, true);
+// RIGHT //                break;
+// RIGHT //            case "iof":
+// RIGHT //                position.set(Position.KEY_IGNITION, false);
+// RIGHT //                break;
+// RIGHT //            default:
+// RIGHT //                break;
+// RIGHT //        }
+// RIGHT //
+        DateBuilder dateBuilder = new DateBuilder()
+                .setDateReverse(parser.nextInt(), parser.nextInt(), parser.nextInt())
+                .setTime(parser.nextInt(), parser.nextInt(), parser.nextInt());
+        position.setTime(dateBuilder.getDate());
+
+        position.setValid(parser.nextInt() > 0);
+        position.setLatitude(parser.nextCoordinate());
+        position.setLongitude(parser.nextCoordinate());
+        position.setSpeed(UnitsConverter.knotsFromKph(parser.nextDouble()));
+        position.setCourse(parser.nextDouble());
+        position.setAltitude(parser.nextDouble());
+
+        position.set(Position.KEY_HDOP, parser.nextDouble());
+        position.set(Position.KEY_SATELLITES, parser.nextInt());
+// LEFT //        position.set(Position.KEY_SATELLITES_VISIBLE, parser.nextInt());
+// LEFT //        position.set("operator", parser.next());
+// LEFT //        position.set(Position.KEY_RSSI, parser.nextInt());
+        position.set(Position.KEY_IGNITION, parser.nextInt() == 1);
+        position.set(Position.KEY_BATTERY, parser.nextDouble());
+        position.set(Position.KEY_POWER, parser.nextDouble());
+        position.set(Position.KEY_INPUT, parser.nextInt(2));
+        position.set(Position.KEY_OUTPUT, parser.nextInt(2));
+
+        return position;
+// END decode(Channel-Channel-SocketAddress-SocketAddress-Object-Object)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6ad0e-888c3
+#MS_XXX_MS#

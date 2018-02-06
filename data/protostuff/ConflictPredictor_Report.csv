@@ -1,0 +1,1679 @@
+#MS_XXX_MS#
+Merge scenario: rev_76e88-8e429
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2ace-4b0a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2920d-be344
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b712e-34cc3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30395-944d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4146d-039c6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6540f-a029b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc07b-79318
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5348e-39c9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd4c4-2c6ff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d332e-9083e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [226]
+Right editions: [223]
+Merged body: 
+// START readDouble({FormalParametersInternal})//// RIGHT //@Override
+public double readDouble() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Double.longBitsToDouble(readRawLittleEndian64());
+// END readDouble({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [237]
+Right editions: [234]
+Merged body: 
+// START readFloat({FormalParametersInternal})//// RIGHT //@Override
+public float readFloat() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Float.intBitsToFloat(readRawLittleEndian32());
+// END readFloat({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [248]
+Right editions: [245]
+Merged body: 
+// START readUInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readUInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readUInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [259]
+Right editions: [256]
+Merged body: 
+// START readInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [270]
+Right editions: [267]
+Merged body: 
+// START readInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [281]
+Right editions: [278]
+Merged body: 
+// START readFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [292]
+Right editions: [289]
+Merged body: 
+// START readFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [303]
+Right editions: [300]
+Merged body: 
+// START readBool({FormalParametersInternal})//// RIGHT //@Override
+public boolean readBool() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32() != 0;
+// END readBool({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [434]
+Right editions: [431]
+Merged body: 
+// START readUInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readUInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readUInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [446]
+Right editions: [443]
+Merged body: 
+// START readEnum({FormalParametersInternal})//// RIGHT //@Override
+public int readEnum() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readEnum({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [457]
+Right editions: [454]
+Merged body: 
+// START readSFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readSFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readSFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [468]
+Right editions: [465]
+Merged body: 
+// START readSFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readSFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readSFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [479]
+Right editions: [476]
+Merged body: 
+// START readSInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readSInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return decodeZigZag32(readRawVarint32());
+// END readSInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [490]
+Right editions: [487]
+Merged body: 
+// START readSInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readSInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return decodeZigZag64(readRawVarint64());
+// END readSInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\CodedInput.java
+Different Spacing: false
+Left editions: [1250, 1251, 1252, 1253, 1254, 1255, 1256, 1257, 1258, 1259, 1260]
+Right editions: [1241]
+Merged body: 
+// START readFieldNumber(Schema<T>-Schema<T>)//// RIGHT //@Override
+public <T> int readFieldNumber(Schema<T> schema) throws IOException
+    {
+        if (isAtEnd())
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+// LEFT //        // are we reading packed field?
+// LEFT //        if (isCurrentFieldPacked())
+// LEFT //        {
+// LEFT //            if (packedLimit < getTotalBytesRead())
+// LEFT //                throw ProtobufException.misreportedSize();
+// LEFT //
+// LEFT //            // Return field number while reading packed field
+// LEFT //            return lastTag >>> TAG_TYPE_BITS;
+// LEFT //        }
+// LEFT //
+// LEFT //        packedLimit = 0;
+        final int tag = readRawVarint32();
+        final int fieldNumber = tag >>> TAG_TYPE_BITS;
+        if (fieldNumber == 0)
+        {
+            if (decodeNestedMessageAsGroup && WIRETYPE_TAIL_DELIMITER == (tag & TAG_TYPE_MASK))
+            {
+                // protostuff's tail delimiter for streaming
+                // 2 options: length-delimited or tail-delimited.
+                lastTag = 0;
+                return 0;
+            }
+            // If we actually read zero, that's not a valid tag.
+            throw ProtobufException.invalidTag();
+        }
+        if (decodeNestedMessageAsGroup && WIRETYPE_END_GROUP == (tag & TAG_TYPE_MASK))
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+        lastTag = tag;
+        return fieldNumber;
+// END readFieldNumber(Schema<T>-Schema<T>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275]
+Right editions: [256]
+Merged body: 
+// START readFieldNumber(Schema<T>-Schema<T>)//// RIGHT //@Override
+public <T> int readFieldNumber(Schema<T> schema) throws IOException
+    {
+        if (offset == limit)
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+// LEFT //        // are we reading packed field?
+// LEFT //        if (isCurrentFieldPacked())
+// LEFT //        {
+// LEFT //            if (packedLimit < offset)
+// LEFT //                throw ProtobufException.misreportedSize();
+// LEFT //
+// LEFT //            // Return field number while reading packed field
+// LEFT //            return lastTag >>> TAG_TYPE_BITS;
+// LEFT //        }
+// LEFT //
+// LEFT //        packedLimit = 0;
+        final int tag = readRawVarint32();
+        final int fieldNumber = tag >>> TAG_TYPE_BITS;
+        if (fieldNumber == 0)
+        {
+            if (decodeNestedMessageAsGroup &&
+                    WIRETYPE_TAIL_DELIMITER == (tag & TAG_TYPE_MASK))
+            {
+                // protostuff's tail delimiter for streaming
+                // 2 options: length-delimited or tail-delimited.
+                lastTag = 0;
+                return 0;
+            }
+            // If we actually read zero, that's not a valid tag.
+            throw ProtobufException.invalidTag();
+        }
+        if (decodeNestedMessageAsGroup && WIRETYPE_END_GROUP == (tag & TAG_TYPE_MASK))
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+        lastTag = tag;
+        return fieldNumber;
+// END readFieldNumber(Schema<T>-Schema<T>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [308]
+Right editions: [305]
+Merged body: 
+// START readDouble({FormalParametersInternal})//// RIGHT //@Override
+public double readDouble() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Double.longBitsToDouble(readRawLittleEndian64());
+// END readDouble({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [319]
+Right editions: [316]
+Merged body: 
+// START readFloat({FormalParametersInternal})//// RIGHT //@Override
+public float readFloat() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Float.intBitsToFloat(readRawLittleEndian32());
+// END readFloat({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [330]
+Right editions: [327]
+Merged body: 
+// START readUInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readUInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readUInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [341]
+Right editions: [338]
+Merged body: 
+// START readInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [352]
+Right editions: [349]
+Merged body: 
+// START readInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [363]
+Right editions: [360]
+Merged body: 
+// START readFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [374]
+Right editions: [371]
+Merged body: 
+// START readFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [385]
+Right editions: [382]
+Merged body: 
+// START readBool({FormalParametersInternal})//// RIGHT //@Override
+public boolean readBool() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return buffer[offset++] != 0;
+// END readBool({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [396]
+Right editions: [393]
+Merged body: 
+// START readUInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readUInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readUInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [408]
+Right editions: [405]
+Merged body: 
+// START readEnum({FormalParametersInternal})//// RIGHT //@Override
+public int readEnum() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readEnum({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [419]
+Right editions: [416]
+Merged body: 
+// START readSFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readSFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readSFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [430]
+Right editions: [427]
+Merged body: 
+// START readSFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readSFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readSFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [441]
+Right editions: [438]
+Merged body: 
+// START readSInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readSInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        final int n = readRawVarint32();
+        return (n >>> 1) ^ -(n & 1);
+// END readSInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteArrayInput.java
+Different Spacing: false
+Left editions: [453]
+Right editions: [450]
+Merged body: 
+// START readSInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readSInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        final long n = readRawVarint64();
+        return (n >>> 1) ^ -(n & 1);
+// END readSInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261]
+Right editions: [242]
+Merged body: 
+// START readFieldNumber(Schema<T>-Schema<T>)//// RIGHT //@Override
+public <T> int readFieldNumber(Schema<T> schema) throws IOException
+    {
+        if (!buffer.hasRemaining())
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+// LEFT //        // are we reading packed field?
+// LEFT //        if (isCurrentFieldPacked())
+// LEFT //        {
+// LEFT //            if (packedLimit < buffer.position())
+// LEFT //                throw ProtobufException.misreportedSize();
+// LEFT //
+// LEFT //            // Return field number while reading packed field
+// LEFT //            return lastTag >>> TAG_TYPE_BITS;
+// LEFT //        }
+// LEFT //
+// LEFT //        packedLimit = 0;
+        final int tag = readRawVarint32();
+        final int fieldNumber = tag >>> TAG_TYPE_BITS;
+        if (fieldNumber == 0)
+        {
+            if (decodeNestedMessageAsGroup &&
+                    WIRETYPE_TAIL_DELIMITER == (tag & TAG_TYPE_MASK))
+            {
+                // protostuff's tail delimiter for streaming
+                // 2 options: length-delimited or tail-delimited.
+                lastTag = 0;
+                return 0;
+            }
+            // If we actually read zero, that's not a valid tag.
+            throw ProtobufException.invalidTag();
+        }
+        if (decodeNestedMessageAsGroup && WIRETYPE_END_GROUP == (tag & TAG_TYPE_MASK))
+        {
+            lastTag = 0;
+            return 0;
+        }
+
+        lastTag = tag;
+        return fieldNumber;
+// END readFieldNumber(Schema<T>-Schema<T>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [294]
+Right editions: [291]
+Merged body: 
+// START readDouble({FormalParametersInternal})//// RIGHT //@Override
+public double readDouble() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Double.longBitsToDouble(readRawLittleEndian64());
+// END readDouble({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [305]
+Right editions: [302]
+Merged body: 
+// START readFloat({FormalParametersInternal})//// RIGHT //@Override
+public float readFloat() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return Float.intBitsToFloat(readRawLittleEndian32());
+// END readFloat({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [316]
+Right editions: [313]
+Merged body: 
+// START readUInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readUInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readUInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [327]
+Right editions: [324]
+Merged body: 
+// START readInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint64();
+// END readInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [338]
+Right editions: [335]
+Merged body: 
+// START readInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [349]
+Right editions: [346]
+Merged body: 
+// START readFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [360]
+Right editions: [357]
+Merged body: 
+// START readFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [371]
+Right editions: [368]
+Merged body: 
+// START readBool({FormalParametersInternal})//// RIGHT //@Override
+public boolean readBool() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return buffer.get() != 0;
+// END readBool({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [382]
+Right editions: [379]
+Merged body: 
+// START readUInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readUInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readUInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [394]
+Right editions: [391]
+Merged body: 
+// START readEnum({FormalParametersInternal})//// RIGHT //@Override
+public int readEnum() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawVarint32();
+// END readEnum({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [405]
+Right editions: [402]
+Merged body: 
+// START readSFixed32({FormalParametersInternal})//// RIGHT //@Override
+public int readSFixed32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian32();
+// END readSFixed32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [416]
+Right editions: [413]
+Merged body: 
+// START readSFixed64({FormalParametersInternal})//// RIGHT //@Override
+public long readSFixed64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        return readRawLittleEndian64();
+// END readSFixed64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [427]
+Right editions: [424]
+Merged body: 
+// START readSInt32({FormalParametersInternal})//// RIGHT //@Override
+public int readSInt32() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        final int n = readRawVarint32();
+        return (n >>> 1) ^ -(n & 1);
+// END readSInt32({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_d332e_9083e\rev_rev_left_d332e-rev_right_9083e\protostuff-core\src\main\java\io\protostuff\ByteBufferInput.java
+Different Spacing: false
+Left editions: [439]
+Right editions: [436]
+Merged body: 
+// START readSInt64({FormalParametersInternal})//// RIGHT //@Override
+public long readSInt64() throws IOException
+    {
+// LEFT //        checkIfPackedField();
+        final long n = readRawVarint64();
+        return (n >>> 1) ^ -(n & 1);
+// END readSInt64({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1a77-40805
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-maven-plugin\src\main\java\io\protostuff\mojo\IncludeProjectDependenciesComponentConfigurator.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START buildURLs(List<String>-List<String>)//private URL[] buildURLs(List<String> runtimeClasspathElements) throws ComponentConfigurationException
+    {
+        // Add the projects classes and dependencies
+        List<URL> urls = new ArrayList<>(runtimeClasspathElements.size());
+        for (String element : runtimeClasspathElements)
+        {
+            try
+            {
+                final URL url = new File(element).toURI().toURL();
+                urls.add(url);
+            }
+            catch (MalformedURLException e)
+            {
+                throw new ComponentConfigurationException("Unable to access project dependency: " + element, e);
+            }
+        }
+
+        // Add the plugin's dependencies (so Trove stuff works if Trove isn't on
+        return urls.toArray(new URL[urls.size()]);
+// END buildURLs(List<String>-List<String>)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-runtime\src\main\java\io\protostuff\runtime\RuntimeSchema.java
+Different Spacing: false
+Left editions: []
+Right editions: [234, 301]
+Merged body: 
+// START createFrom(Class<T>-Class<T>-Set<String>-Set<String>-IdStrategy-IdStrategy)//public static <T> RuntimeSchema<T> createFrom(Class<T> typeClass,
+            Set<String> exclusions, IdStrategy strategy)
+    {
+        if (typeClass.isInterface()
+                || Modifier.isAbstract(typeClass.getModifiers()))
+        {
+            throw new RuntimeException(
+                    "The root object can neither be an abstract "
+                            + "class nor interface: \"" + typeClass.getName());
+        }
+
+        final Map<String, java.lang.reflect.Field> fieldMap = findInstanceFields(typeClass);
+// RIGHT //        final ArrayList<Field<T>> fields = new ArrayList<>(
+                fieldMap.size());
+        int i = 0;
+        int maxFieldMapping = 0;
+        boolean annotated = false;
+        for (java.lang.reflect.Field f : fieldMap.values())
+        {
+            if (!exclusions.contains(f.getName()))
+            {
+                if (f.getAnnotation(Deprecated.class) != null)
+                {
+                    // this field should be ignored by ProtoStuff.
+                    // preserve its field number for backward-forward compat
+                    i++;
+                    continue;
+                }
+
+                final Tag tag = f.getAnnotation(Tag.class);
+                final int fieldMapping;
+                final String name;
+                if (tag == null)
+                {
+                    // Fields gets assigned mapping tags according to their
+                    // definition order
+                    if (annotated)
+                    {
+                        throw new RuntimeException(
+                                "When using annotation-based mapping, "
+                                        + "all fields must be annotated with @"
+                                        + Tag.class.getSimpleName());
+                    }
+                    fieldMapping = ++i;
+
+                    name = f.getName();
+                }
+                else
+                {
+                    // Fields gets assigned mapping tags according to their
+                    // annotation
+                    if (!annotated && !fields.isEmpty())
+                    {
+                        throw new RuntimeException(
+                                "When using annotation-based mapping, "
+                                        + "all fields must be annotated with @"
+                                        + Tag.class.getSimpleName());
+                    }
+                    annotated = true;
+                    fieldMapping = tag.value();
+
+                    if (fieldMapping < 1)
+                    {
+                        throw new RuntimeException("Invalid field number: "
+                                + fieldMapping + " on " + typeClass);
+                    }
+
+                    name = tag.alias().isEmpty() ? f.getName() : tag.alias();
+                }
+
+                final Field<T> field = RuntimeFieldFactory.getFieldFactory(
+                        f.getType(), strategy).create(fieldMapping, name, f,
+                        strategy);
+                fields.add(field);
+
+                maxFieldMapping = Math.max(maxFieldMapping, fieldMapping);
+            }
+        }
+
+// RIGHT //        return new RuntimeSchema<>(typeClass, fields, maxFieldMapping,
+                RuntimeEnv.newInstantiator(typeClass));
+// END createFrom(Class<T>-Class<T>-Set<String>-Set<String>-IdStrategy-IdStrategy)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\Club.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addStudent(Student-Student)//public void addStudent(Student student)
+    {
+        if (this.student == null)
+            this.student = new ArrayList<>();
+        this.student.add(student);
+// END addStudent(Student-Student)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\Club.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addPartnerClub(Club-Club)//public void addPartnerClub(Club partnerClub)
+    {
+        if (this.partnerClub == null)
+            this.partnerClub = new ArrayList<>();
+        this.partnerClub.add(partnerClub);
+// END addPartnerClub(Club-Club)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\Club.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START SCHEMA//static final Schema<Club> SCHEMA = new Schema<Club>()
+    {
+        // schema methods
+
+        @Override
+        public Club newMessage()
+        {
+            return new Club();
+        }
+
+        @Override
+        public Class<Club> typeClass()
+        {
+            return Club.class;
+        }
+
+        @Override
+        public String messageName()
+        {
+            return Club.class.getSimpleName();
+        }
+
+        @Override
+        public String messageFullName()
+        {
+            return Club.class.getName();
+        }
+
+        @Override
+        public boolean isInitialized(Club message)
+        {
+            return true;
+        }
+
+        @Override
+        public void mergeFrom(Input input, Club message) throws IOException
+        {
+            for (int number = input.readFieldNumber(this);; number = input.readFieldNumber(this))
+            {
+                switch (number)
+                {
+                    case 0:
+                        return;
+                    case 1:
+                        message.name = input.readString();
+                        break;
+                    case 2:
+                        if (message.student == null)
+                            message.student = new ArrayList<>();
+                        message.student.add(input.mergeObject(null, Student.getSchema()));
+                        break;
+
+                    case 3:
+                        if (message.partnerClub == null)
+                            message.partnerClub = new ArrayList<>();
+                        message.partnerClub.add(input.mergeObject(null, Club.getSchema()));
+                        break;
+
+                    default:
+                        input.handleUnknownField(number, this);
+                }
+            }
+        }
+
+        @Override
+        public void writeTo(Output output, Club message) throws IOException
+        {
+            if (message.name != null)
+                output.writeString(1, message.name, false);
+
+            if (message.student != null)
+            {
+                for (Student student : message.student)
+                {
+                    if (student != null)
+                        output.writeObject(2, student, Student.getSchema(), true);
+                }
+            }
+
+            if (message.partnerClub != null)
+            {
+                for (Club partnerClub : message.partnerClub)
+                {
+                    if (partnerClub != null)
+                        output.writeObject(3, partnerClub, Club.getSchema(), true);
+                }
+            }
+
+        }
+
+        @Override
+        public String getFieldName(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return "name";
+                case 2:
+                    return "student";
+                case 3:
+                    return "partnerClub";
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getFieldNumber(String name)
+        {
+            final Integer number = fieldMap.get(name);
+            return number == null ? 0 : number.intValue();
+        }
+
+        final java.util.HashMap<String, Integer> fieldMap = new java.util.HashMap<>();
+
+        {
+            fieldMap.put("name", 1);
+            fieldMap.put("student", 2);
+            fieldMap.put("partnerClub", 3);
+        }
+// END SCHEMA//    };
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-runtime\src\test\java\io\protostuff\runtime\InheritanceTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testInheritance({FormalParametersInternal})//public void testInheritance() throws IOException
+    {
+        if (skipTests)
+        {
+            System.err
+                    .println("RuntimeSchema.MORPH_NON_FINAL_POJOS was not enabled.");
+            return;
+        }
+        System.err.println("executing inheritance test for protostuff ... ");
+
+        Schema<InputSystem> schema = RuntimeSchema.getSchema(InputSystem.class);
+        InputSystem sys = new InputSystem();
+        KeyBoard kb = new KeyBoard();
+        Mouse ms = new Mouse();
+        kb.setName("Test");
+        kb.setNumberOfKeys(10);
+        ms.setName("Test1");
+        ms.setNumberOfButtons(2);
+        List<InputDevice> devices = new ArrayList<>();
+        devices.add(ms);
+        devices.add(kb);
+        sys.setInputDevices(devices);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ProtostuffIOUtil.writeTo(out, sys, schema, buf());
+        byte[] listData = out.toByteArray();
+        InputSystem deserSystem = new InputSystem();
+        ByteArrayInputStream in = new ByteArrayInputStream(listData);
+        ProtostuffIOUtil.mergeFrom(in, deserSystem, schema, buf());
+
+        assertEquals(sys, deserSystem);
+// END testInheritance({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-runtime\src\test\java\io\protostuff\runtime\InheritanceTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testInheritanceProtobuf({FormalParametersInternal})//public void testInheritanceProtobuf() throws IOException
+    {
+        if (skipTests)
+        {
+            System.err
+                    .println("RuntimeSchema.MORPH_NON_FINAL_POJOS was not enabled.");
+            return;
+        }
+        System.err.println("executing inheritance test for protobuf ... ");
+
+        Schema<InputSystem> schema = RuntimeSchema.getSchema(InputSystem.class);
+        InputSystem sys = new InputSystem();
+        KeyBoard kb = new KeyBoard();
+        Mouse ms = new Mouse();
+        kb.setName("Test");
+        kb.setNumberOfKeys(10);
+        ms.setName("Test1");
+        ms.setNumberOfButtons(2);
+        List<InputDevice> devices = new ArrayList<>();
+        devices.add(ms);
+        devices.add(kb);
+        sys.setInputDevices(devices);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ProtobufIOUtil.writeTo(out, sys, schema, buf());
+        byte[] listData = out.toByteArray();
+        InputSystem deserSystem = new InputSystem();
+        ByteArrayInputStream in = new ByteArrayInputStream(listData);
+        ProtobufIOUtil.mergeFrom(in, deserSystem, schema, buf());
+
+        assertEquals(sys, deserSystem);
+// END testInheritanceProtobuf({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-kvp\src\test\java\io\protostuff\KvpByteArrayTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START SCHEMA//static final Schema<PojoWithBiggerByteArray> SCHEMA = new Schema<PojoWithBiggerByteArray>()
+    {
+
+        final HashMap<String, Integer> fieldMap = new HashMap<>();
+
+        {
+            fieldMap.put("id", 1);
+            fieldMap.put("b", 2);
+            fieldMap.put("ts", 3);
+        }
+
+        @Override
+        public String getFieldName(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return "id";
+                case 2:
+                    return "b";
+                case 3:
+                    return "ts";
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getFieldNumber(String name)
+        {
+            final Integer f = fieldMap.get(name);
+            return f == null ? 0 : f.intValue();
+        }
+
+        @Override
+        public boolean isInitialized(PojoWithBiggerByteArray message)
+        {
+            return true;
+        }
+
+        @Override
+        public String messageFullName()
+        {
+            return PojoWithBiggerByteArray.class.getName();
+        }
+
+        @Override
+        public String messageName()
+        {
+            return PojoWithBiggerByteArray.class.getSimpleName();
+        }
+
+        @Override
+        public PojoWithBiggerByteArray newMessage()
+        {
+            return new PojoWithBiggerByteArray();
+        }
+
+        @Override
+        public Class<? super PojoWithBiggerByteArray> typeClass()
+        {
+            return PojoWithBiggerByteArray.class;
+        }
+
+        @Override
+        public void mergeFrom(Input input, PojoWithBiggerByteArray message) throws IOException
+        {
+            for (int number = input.readFieldNumber(this);; number = input.readFieldNumber(this))
+            {
+                switch (number)
+                {
+                    case 0:
+                        return;
+                    case 1:
+                        message.id = input.readInt32();
+                        break;
+                    case 2:
+                        message.b = input.readByteArray();
+                        break;
+                    case 3:
+                        message.ts = input.readInt64();
+                        break;
+                    default:
+                        input.handleUnknownField(number, this);
+                }
+            }
+        }
+
+        @Override
+        public void writeTo(Output output, PojoWithBiggerByteArray message) throws IOException
+        {
+            output.writeInt32(1, message.id, false);
+            output.writeByteArray(2, message.b, false);
+            output.writeInt64(3, message.ts, false);
+        }
+
+// END SCHEMA//    };
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-runtime\src\main\java\io\protostuff\runtime\MappedSchema.java
+Different Spacing: false
+Left editions: []
+Right editions: [104, 131]
+Merged body: 
+// START MappedSchema(Class<T>-Class<T>-Collection<Field<T>>-Collection<Field<T>>-int-int)//@SuppressWarnings("unchecked")
+    public MappedSchema(Class<T> typeClass, Collection<Field<T>> fields,
+            int lastFieldNumber)
+    {
+        this.typeClass = typeClass;
+// RIGHT //        fieldsByName = new HashMap<>();
+        fieldsByNumber = (Field<T>[]) new Field<?>[lastFieldNumber + 1];
+        for (Field<T> f : fields)
+        {
+            Field<T> last = this.fieldsByName.put(f.name, f);
+            if (last != null)
+            {
+                throw new IllegalStateException(last + " and " + f
+                        + " cannot have the same name.");
+            }
+            if (fieldsByNumber[f.number] != null)
+            {
+                throw new IllegalStateException(fieldsByNumber[f.number]
+                        + " and " + f + " cannot have the same number.");
+            }
+
+            fieldsByNumber[f.number] = f;
+            // f.owner = this;
+        }
+
+        this.fields = (Field<T>[]) new Field<?>[fields.size()];
+        for (int i = 1, j = 0; i < fieldsByNumber.length; i++)
+        {
+            if (fieldsByNumber[i] != null)
+                this.fields[j++] = fieldsByNumber[i];
+        }
+
+// RIGHT //        pipeSchema = new RuntimePipeSchema<>(this, fieldsByNumber);
+// END MappedSchema(Class<T>-Class<T>-Collection<Field<T>>-Collection<Field<T>>-int-int)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-runtime\src\main\java\io\protostuff\runtime\MappedSchema.java
+Different Spacing: false
+Left editions: []
+Right editions: [163]
+Merged body: 
+// START MappedSchema(Class<T>-Class<T>-Map<String,Field<T>>-Map<String,Field<T>>-int-int)//@SuppressWarnings("unchecked")
+    public MappedSchema(Class<T> typeClass, Map<String, Field<T>> fieldsByName,
+            int lastFieldNumber)
+    {
+        this.typeClass = typeClass;
+        this.fieldsByName = fieldsByName;
+        Collection<Field<T>> fields = fieldsByName.values();
+        fieldsByNumber = (Field<T>[]) new Field<?>[lastFieldNumber + 1];
+
+        for (Field<T> f : fields)
+        {
+            if (fieldsByNumber[f.number] != null)
+            {
+                throw new IllegalStateException(fieldsByNumber[f.number]
+                        + " and " + f + " cannot have the same number.");
+            }
+
+            fieldsByNumber[f.number] = f;
+            // f.owner = this;
+        }
+
+        this.fields = (Field<T>[]) new Field<?>[fields.size()];
+        for (int i = 1, j = 0; i < fieldsByNumber.length; i++)
+        {
+            if (fieldsByNumber[i] != null)
+                this.fields[j++] = fieldsByNumber[i];
+        }
+
+// RIGHT //        pipeSchema = new RuntimePipeSchema<>(this, fieldsByNumber);
+// END MappedSchema(Class<T>-Class<T>-Map<String,Field<T>>-Map<String,Field<T>>-int-int)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\ClubFounder.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START SCHEMA//static final Schema<ClubFounder> SCHEMA = new Schema<ClubFounder>()
+    {
+        // schema methods
+
+        @Override
+        public ClubFounder newMessage()
+        {
+            return new ClubFounder();
+        }
+
+        @Override
+        public Class<ClubFounder> typeClass()
+        {
+            return ClubFounder.class;
+        }
+
+        @Override
+        public String messageName()
+        {
+            return ClubFounder.class.getSimpleName();
+        }
+
+        @Override
+        public String messageFullName()
+        {
+            return ClubFounder.class.getName();
+        }
+
+        @Override
+        public boolean isInitialized(ClubFounder message)
+        {
+            return true;
+        }
+
+        @Override
+        public void mergeFrom(Input input, ClubFounder message) throws IOException
+        {
+            for (int number = input.readFieldNumber(this);; number = input.readFieldNumber(this))
+            {
+                switch (number)
+                {
+                    case 0:
+                        return;
+                    case 1:
+                        message.name = input.readString();
+                        break;
+                    case 2:
+                        message.club = input.mergeObject(message.club, Club.getSchema());
+                        break;
+
+                    default:
+                        input.handleUnknownField(number, this);
+                }
+            }
+        }
+
+        @Override
+        public void writeTo(Output output, ClubFounder message) throws IOException
+        {
+            if (message.name != null)
+                output.writeString(1, message.name, false);
+
+            if (message.club != null)
+                output.writeObject(2, message.club, Club.getSchema(), false);
+
+        }
+
+        @Override
+        public String getFieldName(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return "name";
+                case 2:
+                    return "club";
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getFieldNumber(String name)
+        {
+            final Integer number = fieldMap.get(name);
+            return number == null ? 0 : number.intValue();
+        }
+
+        final java.util.HashMap<String, Integer> fieldMap = new java.util.HashMap<>();
+
+        {
+            fieldMap.put("name", 1);
+            fieldMap.put("club", 2);
+        }
+// END SCHEMA//    };
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\Student.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START addClub(Club-Club)//public void addClub(Club club)
+    {
+        if (this.club == null)
+            this.club = new ArrayList<>();
+        this.club.add(club);
+// END addClub(Club-Club)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameFD
+File: C:\download\ssmerge\protostuff\revisions\rev_b1a77_40805\rev_rev_left_b1a77-rev_right_40805\protostuff-core\src\test\java\io\protostuff\Student.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START SCHEMA//static final Schema<Student> SCHEMA = new Schema<Student>()
+    {
+        // schema methods
+
+        @Override
+        public Student newMessage()
+        {
+            return new Student();
+        }
+
+        @Override
+        public Class<Student> typeClass()
+        {
+            return Student.class;
+        }
+
+        @Override
+        public String messageName()
+        {
+            return Student.class.getSimpleName();
+        }
+
+        @Override
+        public String messageFullName()
+        {
+            return Student.class.getName();
+        }
+
+        @Override
+        public boolean isInitialized(Student message)
+        {
+            return true;
+        }
+
+        @Override
+        public void mergeFrom(Input input, Student message) throws IOException
+        {
+            for (int number = input.readFieldNumber(this);; number = input.readFieldNumber(this))
+            {
+                switch (number)
+                {
+                    case 0:
+                        return;
+                    case 1:
+                        message.name = input.readString();
+                        break;
+                    case 2:
+                        if (message.club == null)
+                            message.club = new ArrayList<>();
+                        message.club.add(input.mergeObject(null, Club.getSchema()));
+                        break;
+
+                    default:
+                        input.handleUnknownField(number, this);
+                }
+            }
+        }
+
+        @Override
+        public void writeTo(Output output, Student message) throws IOException
+        {
+            if (message.name != null)
+                output.writeString(1, message.name, false);
+
+            if (message.club != null)
+            {
+                for (Club club : message.club)
+                {
+                    if (club != null)
+                        output.writeObject(2, club, Club.getSchema(), true);
+                }
+            }
+
+        }
+
+        @Override
+        public String getFieldName(int number)
+        {
+            switch (number)
+            {
+                case 1:
+                    return "name";
+                case 2:
+                    return "club";
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getFieldNumber(String name)
+        {
+            final Integer number = fieldMap.get(name);
+            return number == null ? 0 : number.intValue();
+        }
+
+        final java.util.HashMap<String, Integer> fieldMap = new java.util.HashMap<>();
+
+        {
+            fieldMap.put("name", 1);
+            fieldMap.put("club", 2);
+        }
+// END SCHEMA//    };
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc799-c3b6c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4d270-0d321
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5775-37e62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48879-b2382
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90db8-cd5ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68d6a-cd74a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7dc2d-f8e0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47e95-8d135
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9f47-c8ef9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c01f-c8437
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d024-58e92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccc1f-ad498
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b856-eecc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc572-34026
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8316-6f40a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d6fa-08823
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4262a-a4b23
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_277ad-9d09f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2429-14c65
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6398d-23218
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_405bb-8b090
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09422-c5da2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_93527-0a736
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a3e6-843d2
+#MS_XXX_MS#

@@ -1,0 +1,7 @@
+parent1SHA;parent1BuildId;parent1BuildStatus;parent2SHA;parent2BuildId;parent2BuildStatus;mergeCommitSHA;mergeCommitBuildId;mergeCommitBuildStatus;repMergeCommitSHA;repMergeCommitBuildId;repMergeCommitBuildStatus
+6c68624a;3;failed;74b527d6;unknown;unknown;0e25cf65fb7058c69ecab9771e49e3a916a06057;1;failed;unknown;unknown;unknown
+a4f975db;5;failed;f931a4fc;unknown;unknown;bb9bc1cbe157b8d64c016120b66cb56ac453b7fc;4;failed;unknown;unknown;unknown
+f7995a77;7;failed;a8891cb0;unknown;unknown;1873d55c2c0bb6b15a8d9f71ef2455d86a3e6978;6;failed;unknown;unknown;unknown
+8432013a;9;failed;63b9d4ed;unknown;unknown;773331ebc3f0557af95e36e6b39d18dad37e22d2;8;failed;unknown;unknown;unknown
+3937fbba;11;failed;5efc8c5e;unknown;unknown;588facbd3855a36ac470ce0486eaad4be8426158;10;failed;unknown;unknown;unknown
+4a9b82a4;13;failed;18308d1d;unknown;unknown;d58495127d3ac0c3ff8075815d52fedff0c90083;12;failed;unknown;unknown;unknown

@@ -1,0 +1,3101 @@
+#MS_XXX_MS#
+Merge scenario: rev_07470-19680
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b0db7-3d003
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a112d-186d5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9d1e-9b21e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9de1b-d8830
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b48bb-1d41c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1b30-16edb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2741e-78d8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8f44-9ccbc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adf08-2486c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6076b-f09b6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9726-6076b
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_f9726_6076b\rev_rev_left_f9726-rev_right_6076b\SingularityLogWatcher\src\main\java\com\hubspot\singularity\logwatcher\tailer\SingularityLogWatcherTailer.java
+Different Spacing: false
+Left editions: [180]
+Right editions: []
+Merged body: 
+// START checkRead(boolean-boolean)//private void checkRead(boolean readAllBytes) throws IOException {
+    checkPosition();
+
+    int bytesRead = 0;
+    int bytesLeft = 0;
+
+    while ((bytesRead = read()) > 0) {
+      bytesLeft = processByteBufferAndReturnRemainingBytes();
+
+      LOG.trace("{} read {} bytes ({} left)", logfile, bytesRead, bytesLeft);
+
+      if (bytesLeft != bytesRead) {
+        updatePosition(bytesLeft);
+      }
+    }
+
+// LEFT //    if (readAllBytes && (bytesLeft > 0)) {
+      String string = new String(byteBuffer.array(), byteBuffer.position() - bytesLeft, byteBuffer.position(), JavaUtils.CHARSET_UTF8);
+      logForwarder.forwardMessage(tailMetadata, string);
+    }
+// END checkRead(boolean-boolean)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_f9726_6076b\rev_rev_left_f9726-rev_right_6076b\SingularityLogWatcher\src\main\java\com\hubspot\singularity\logwatcher\tailer\SingularityLogWatcherTailer.java
+Different Spacing: false
+Left editions: []
+Right editions: [137, 138]
+Merged body: 
+// START watch({FormalParametersInternal})//// RIGHT //@Override
+// RIGHT //  public void watch() throws IOException, InterruptedException {
+    LOG.info("Watching file {} at position {} with a {} byte buffer", logfile, byteChannel.position(), byteBuffer.capacity());
+
+    checkRead(tailMetadata.isFinished());
+
+    if (!tailMetadata.isFinished()) {
+      super.watch();
+    }
+// END watch({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7c5d4-c0e9e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_7c5d4_c0e9e\rev_rev_left_7c5d4-rev_right_c0e9e\SingularityS3Uploader\src\main\java\com\hubspot\singularity\s3uploader\SingularityS3Uploader.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START uploadSingle(int-int-Path-Path)//private void uploadSingle(int sequence, Path file) throws Exception {
+    final long start = System.currentTimeMillis();
+
+    final String key = SingularityS3FormatHelper.getKey(uploadMetadata.getS3KeyFormat(), sequence, Files.getLastModifiedTime(file).toMillis(), file.getFileName().toString());
+
+    LOG.info("{} Uploading {} to {}/{} (size {})", logIdentifier, file, s3Bucket.getName(), key, Files.size(file));
+
+    S3Object object = new S3Object(s3Bucket, file.toFile());
+    object.setKey(key);
+
+    s3Service.putObject(s3Bucket, object);
+    
+    LOG.info("{} Uploaded {} in {}", logIdentifier, key, JavaUtils.duration(start));
+// END uploadSingle(int-int-Path-Path)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10933-c0e9e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_052e8-42d31
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed07f-f4d92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eaf6b-43812
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad0cc-39716
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_ad0cc_39716\rev_rev_left_ad0cc-rev_right_39716\SingularityService\src\main\java\com\hubspot\singularity\data\TaskManager.java
+Different Spacing: false
+Left editions: [628]
+Right editions: [621]
+Merged body: 
+// START createTaskAndDeletePendingTaskPrivate(SingularityTask-SingularityTask)//private void createTaskAndDeletePendingTaskPrivate(SingularityTask task) throws Exception {
+// RIGHT //    final String scheduledPath = getPendingPath(task.getTaskRequest().getPendingTask().getPendingTaskId());
+    final String activePath = getActivePath(task.getTaskId().getId());
+
+    curator.delete().forPath(scheduledPath);
+
+    final byte[] data = taskTranscoder.toBytes(task);
+
+// LEFT //    // TODO - right now, for consistency, we double write this. should review this and check for what happens in failure cases
+
+    curator.create().creatingParentsIfNeeded().forPath(getTaskPath(task.getTaskId()), data);
+    curator.create().creatingParentsIfNeeded().forPath(activePath, data);
+// END createTaskAndDeletePendingTaskPrivate(SingularityTask-SingularityTask)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39716-22211
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcb19-465a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_505b8-e327c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_785c9-3f2ec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11e16-894fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53e37-d69b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c84aa-35535
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9af1e-1c6c8
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_9af1e_1c6c8\rev_rev_left_9af1e-rev_right_1c6c8\SingularityLogWatcher\src\main\java\com\hubspot\singularity\logwatcher\tailer\SingularityLogWatcherTailer.java
+Different Spacing: false
+Left editions: []
+Right editions: [243]
+Merged body: 
+// START processByteBufferAndReturnRemainingBytes({FormalParametersInternal})//private int processByteBufferAndReturnRemainingBytes() {
+    String string = new String(byteBuffer.array(), 0, byteBuffer.position(), JavaUtils.CHARSET_UTF8);
+
+    LOG.trace("{} had a string with size {}", logfile, string.length());
+
+    int lastNewLineIndex = 0;
+    int nextNewLineIndex = string.indexOf(END_OF_LINE_CHAR);
+
+    while (nextNewLineIndex >= 0) {
+      logForwarder.forwardMessage(tailMetadata, string.substring(lastNewLineIndex, nextNewLineIndex));
+
+      lastNewLineIndex = nextNewLineIndex + 1;
+      nextNewLineIndex = string.indexOf(END_OF_LINE_CHAR, lastNewLineIndex);
+    }
+
+// RIGHT //    int remainingBytes = string.substring(lastNewLineIndex).getBytes(StandardCharsets.UTF_8).length;
+
+    return remainingBytes;
+// END processByteBufferAndReturnRemainingBytes({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_9af1e_1c6c8\rev_rev_left_9af1e-rev_right_1c6c8\SingularityLogWatcher\src\main\java\com\hubspot\singularity\logwatcher\tailer\SingularityLogWatcherTailer.java
+Different Spacing: false
+Left editions: [183]
+Right editions: []
+Merged body: 
+// START checkRead(boolean-boolean)//private void checkRead(boolean readAllBytes) throws IOException {
+    checkPosition();
+
+    int bytesRead = 0;
+    int bytesLeft = 0;
+
+    while ((bytesRead = read()) > 0) {
+      bytesLeft = processByteBufferAndReturnRemainingBytes();
+
+      LOG.trace("{} read {} bytes ({} left)", logfile, bytesRead, bytesLeft);
+
+      if (bytesLeft != bytesRead) {
+        updatePosition(bytesLeft);
+      }
+    }
+
+// LEFT //    if (readAllBytes && (bytesLeft > 0)) {
+      String string = new String(byteBuffer.array(), byteBuffer.position() - bytesLeft, byteBuffer.position(), JavaUtils.CHARSET_UTF8);
+      logForwarder.forwardMessage(tailMetadata, string);
+    }
+// END checkRead(boolean-boolean)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_9af1e_1c6c8\rev_rev_left_9af1e-rev_right_1c6c8\SingularityService\src\main\java\com\hubspot\singularity\scheduler\SingularityDeployChecker.java
+Different Spacing: false
+Left editions: [199, 211]
+Right editions: [203]
+Merged body: 
+// START checkDeploy(SingularityPendingDeploy-SingularityPendingDeploy-List<SingularityDeployMarker>-List<SingularityDeployMarker>-Map<SingularityPendingDeploy,SingularityDeployKey>-Map<SingularityPendingDeploy,SingularityDeployKey>-Map<SingularityDeployKey,SingularityDeploy>-Map<SingularityDeployKey,SingularityDeploy>)//private void checkDeploy(final SingularityPendingDeploy pendingDeploy, final List<SingularityDeployMarker> cancelDeploys, final Map<SingularityPendingDeploy, SingularityDeployKey> pendingDeployToKey, final Map<SingularityDeployKey, SingularityDeploy> deployKeyToDeploy) {
+    final SingularityDeployKey deployKey = pendingDeployToKey.get(pendingDeploy);
+    final Optional<SingularityDeploy> deploy = Optional.fromNullable(deployKeyToDeploy.get(deployKey));
+
+    Optional<SingularityRequestWithState> maybeRequestWithState = requestManager.getRequest(pendingDeploy.getDeployMarker().getRequestId());
+
+    if (!SingularityRequestWithState.isActive(maybeRequestWithState)) {
+      LOG.warn("Deploy {} request was {}, removing deploy", SingularityRequestWithState.getRequestState(maybeRequestWithState), pendingDeploy);
+
+      if (shouldCancelLoadBalancer(pendingDeploy)) {
+        cancelLoadBalancer(pendingDeploy);
+      }
+
+      removePendingDeploy(pendingDeploy);
+      return;
+    }
+
+    final SingularityDeployMarker pendingDeployMarker = pendingDeploy.getDeployMarker();
+
+    final Optional<SingularityDeployMarker> cancelRequest = findCancel(cancelDeploys, pendingDeployMarker);
+
+    final SingularityRequest request = maybeRequestWithState.get().getRequest();
+
+    final List<SingularityTaskId> requestTasks = taskManager.getTaskIdsForRequest(request.getId());
+    final List<SingularityTaskId> activeTasks = taskManager.filterActiveTaskIds(requestTasks);
+
+    final List<SingularityTaskId> inactiveDeployMatchingTasks = SingularityTaskId.matchingAndNotIn(requestTasks, pendingDeployMarker.getRequestId(), pendingDeployMarker.getDeployId(), activeTasks);
+    final List<SingularityTaskId> deployMatchingTasks = Lists.newArrayList(Iterables.filter(activeTasks, SingularityTaskId.matchingDeploy(pendingDeployMarker.getDeployId())));
+    final List<SingularityTaskId> allOtherMatchingTasks = Lists.newArrayList(Iterables.filter(activeTasks, Predicates.not(SingularityTaskId.matchingDeploy(pendingDeployMarker.getDeployId()))));
+
+    SingularityDeployResult deployResult = getDeployResult(request, cancelRequest, pendingDeploy, deployKey, deploy, deployMatchingTasks, allOtherMatchingTasks, inactiveDeployMatchingTasks);
+
+    LOG.info("Deploy {} had result {} after {}", pendingDeployMarker, deployResult, JavaUtils.durationFromMillis(System.currentTimeMillis() - pendingDeployMarker.getTimestamp()));
+
+    if (deployResult.getDeployState() == DeployState.SUCCEEDED) {
+      if (saveNewDeployState(pendingDeployMarker, Optional.of(pendingDeployMarker))) {
+        if (request.isLoadBalanced()) {
+          updateLoadBalancerStateForTasks(deployMatchingTasks, LoadBalancerRequestType.ADD, deployResult.getLbUpdate().get());
+          updateLoadBalancerStateForTasks(allOtherMatchingTasks, LoadBalancerRequestType.REMOVE, deployResult.getLbUpdate().get());
+        }
+
+        deleteObsoletePendingTasks(pendingDeploy);
+// LEFT //        finishDeploy(request, deploy, pendingDeploy, allOtherMatchingTasks, deployResult);
+        return;
+      } else {
+        LOG.warn("Failing deploy {} because it failed to save deploy state", pendingDeployMarker);
+// RIGHT //        deployResult = new SingularityDeployResult(DeployState.FAILED_INTERNAL_STATE, Optional.of(String.format("Deploy had state %s but failed to persist it correctly", deployResult.getDeployState())), deployResult.getLbUpdate(), deployResult.getTimestamp());
+      }
+    } else if (!deployResult.getDeployState().isDeployFinished()) {
+      return;
+    }
+
+    // success case is handled, handle failure cases:
+    saveNewDeployState(pendingDeployMarker, Optional.<SingularityDeployMarker> absent());
+// LEFT //    finishDeploy(request, deploy, pendingDeploy, deployMatchingTasks, deployResult);
+// END checkDeploy(SingularityPendingDeploy-SingularityPendingDeploy-List<SingularityDeployMarker>-List<SingularityDeployMarker>-Map<SingularityPendingDeploy,SingularityDeployKey>-Map<SingularityPendingDeploy,SingularityDeployKey>-Map<SingularityDeployKey,SingularityDeploy>-Map<SingularityDeployKey,SingularityDeploy>)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_9af1e_1c6c8\rev_rev_left_9af1e-rev_right_1c6c8\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityStartup.java
+Different Spacing: false
+Left editions: []
+Right editions: [168, 169, 170]
+Merged body: 
+// START enqueueHealthAndNewTaskchecks({FormalParametersInternal})//private void enqueueHealthAndNewTaskchecks() {
+    final long start = System.currentTimeMillis();
+
+    final List<SingularityTask> activeTasks = taskManager.getActiveTasks();
+    final Map<SingularityTaskId, SingularityTask> activeTaskMap = Maps.uniqueIndex(activeTasks, taskTranscoder);
+
+    final Map<SingularityTaskId, List<SingularityTaskHistoryUpdate>> taskUpdates = taskManager.getTaskHistoryUpdates(activeTaskMap.keySet());
+
+    final Map<SingularityDeployKey, SingularityPendingDeploy> pendingDeploys = Maps.uniqueIndex(deployManager.getPendingDeploys(), SingularityDeployKey.fromPendingDeployToDeployKey);
+
+    int enqueuedNewTaskChecks = 0;
+    int enqueuedHealthchecks = 0;
+
+// RIGHT //    for (Map.Entry<SingularityTaskId, SingularityTask> entry: activeTaskMap.entrySet()) {
+// RIGHT //      SingularityTaskId taskId = entry.getKey();
+// RIGHT //      SingularityTask task = entry.getValue();
+      SimplifiedTaskState simplifiedTaskState = SingularityTaskHistoryUpdate.getCurrentState(taskUpdates.get(taskId));
+
+      if (simplifiedTaskState != SimplifiedTaskState.DONE) {
+        SingularityDeployKey deployKey = new SingularityDeployKey(taskId.getRequestId(), taskId.getDeployId());
+        Optional<SingularityPendingDeploy> pendingDeploy = Optional.fromNullable(pendingDeploys.get(deployKey));
+
+        if (!pendingDeploy.isPresent()) {
+          newTaskChecker.enqueueNewTaskCheck(task);
+          enqueuedNewTaskChecks++;
+        }
+        if (simplifiedTaskState == SimplifiedTaskState.RUNNING) {
+          if (healthchecker.enqueueHealthcheck(task, pendingDeploy)) {
+            enqueuedHealthchecks++;
+          }
+        }
+      }
+    }
+
+    LOG.info("Enqueued {} health checks and {} new task checks (out of {} active tasks) in {}", enqueuedHealthchecks, enqueuedNewTaskChecks, activeTasks.size(), JavaUtils.duration(start));
+// END enqueueHealthAndNewTaskchecks({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_9af1e_1c6c8\rev_rev_left_9af1e-rev_right_1c6c8\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityStartup.java
+Different Spacing: false
+Left editions: [149, 150]
+Right editions: []
+Merged body: 
+// START startup(MasterInfo-MasterInfo-boolean-boolean)//public void startup(MasterInfo masterInfo, boolean registered) {
+    final long start = System.currentTimeMillis();
+
+    final String uri = mesosClient.getMasterUri(masterInfo);
+
+    LOG.info("Starting up... fetching state data from: " + uri);
+
+    try {
+      MesosMasterStateObject state = mesosClient.getMasterState(uri);
+
+      rackManager.loadRacksFromMaster(state);
+
+      // two things need to happen:
+      // 1- we need to look for active tasks that are no longer active (assume that there is no such thing as a missing active task.)
+      // 2- we need to reschedule the world.
+
+      checkForMissingActiveTasks(state, registered);
+      enqueueHealthAndNewTaskchecks();
+
+    } catch (Exception e) {
+      throw Throwables.propagate(e);
+    }
+
+// LEFT //    startStartables();
+// LEFT //
+    LOG.info("Finished startup after {}", JavaUtils.duration(start));
+// END startup(MasterInfo-MasterInfo-boolean-boolean)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc019-1c6c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c6c8-0dd64
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0f988-9d387
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f7a6-31c18
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_415f7-d1daa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b892e-6fbd3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31c18-3b080
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b080-fcef8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a7ca-8fa10
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84290-a1322
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43859-29bd7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_309e7-29bd7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29bd7-0c325
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17cf3-fe829
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe829-a48e2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b3c72-e2169
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_32b9a-9cace
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ae037-b1db4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0b31a-4f3f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4f3f6-aeed0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b3c72-77e1c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd2bd-cc760
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f238-52151
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95986-d5ded
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c2ae-c121e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b7c5c-67741
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59eb8-e77d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b51f-e77d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e77d9-60c0e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_affa8-ca71e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6394d-064da
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf47d-064da
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c860-cda87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e780-cda87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04285-32a85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a95c-32a85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cda87-d3150
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8a91-9c3de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c40a4-115a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73e62-5fd59
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9b09-56c6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a29d0-26d79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b511b-352b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be3bb-a6db3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b1b6-26efb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58975-869fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53e0f-eff57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b17a-388b2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43c40-e7b62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b314-33577
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_115a2-a20ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34cde-a4ac9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9f0dc-dfdd7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88fbc-ce05e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_205df-79fbb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce05e-b2f5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8b9e3-21301
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a231c-8295d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7a024-006a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15099-f877f
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_15099_f877f\rev_rev_left_15099-rev_right_f877f\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityMesosScheduler.java
+Different Spacing: false
+Left editions: [309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 322]
+Right editions: [287, 291]
+Merged body: 
+// START statusUpdate(SchedulerDriver-SchedulerDriver-Protos.TaskStatus-Protos.TaskStatus)//@Override
+  public void statusUpdate(SchedulerDriver driver, Protos.TaskStatus status) {
+    final String taskId = status.getTaskId().getValue();
+
+    long timestamp = System.currentTimeMillis();
+
+    if (status.hasTimestamp()) {
+      timestamp = (long) status.getTimestamp() * 1000;
+    }
+
+    LOG.debug("Task {} is now {} ({}) at {} ", taskId, status.getState(), status.getMessage(), timestamp);
+
+    final SingularityTaskId taskIdObj = SingularityTaskId.fromString(taskId);
+    final Optional<SingularityTask> maybeActiveTask = taskManager.getActiveTask(taskId);
+// RIGHT //    final ExtendedTaskState taskState = ExtendedTaskState.fromTaskState(status.getState());
+
+    Optional<SingularityPendingDeploy> pendingDeploy = null;
+
+// RIGHT //    if (maybeActiveTask.isPresent() && status.getState() == TaskState.TASK_RUNNING) {
+      pendingDeploy = deployManager.getPendingDeploy(taskIdObj.getRequestId());
+
+      healthchecker.enqueueHealthcheck(maybeActiveTask.get(), pendingDeploy);
+    }
+
+    final SingularityTaskHistoryUpdate taskUpdate = new SingularityTaskHistoryUpdate(taskIdObj, timestamp, taskState, status.hasMessage() ? Optional.of(status.getMessage()) : Optional.<String> absent());
+    final SingularityCreateResult taskHistoryUpdateCreateResult = taskManager.saveTaskHistoryUpdate(taskUpdate);
+
+    logSupport.checkDirectory(taskIdObj);
+
+    if (taskState.isDone()) {
+      healthchecker.cancelHealthcheck(taskId);
+      newTaskChecker.cancelNewTaskCheck(taskId);
+
+      taskManager.deleteKilledRecord(taskIdObj);
+
+      scheduler.handleCompletedTask(maybeActiveTask, taskIdObj, timestamp, taskState, taskHistoryUpdateCreateResult, stateCacheProvider.get());
+// LEFT //
+// LEFT //      taskManager.deleteLastActiveTaskStatus(taskIdObj);
+// LEFT //    } else {
+// LEFT //      if (maybeActiveTask.isPresent()) {
+// LEFT //        if (pendingDeploy == null) {
+// LEFT //          pendingDeploy = deployManager.getPendingDeploy(taskIdObj.getRequestId());
+// LEFT //        }
+// LEFT //
+// LEFT //        if (!pendingDeploy.isPresent() || !pendingDeploy.get().getDeployMarker().getDeployId().equals(taskIdObj.getDeployId())) {
+// LEFT //          newTaskChecker.enqueueNewTaskCheck(maybeActiveTask.get());
+// LEFT //        }
+      }
+
+// LEFT //      taskManager.saveLastActiveTaskStatus(taskIdObj, status);
+    }
+// END statusUpdate(SchedulerDriver-SchedulerDriver-Protos.TaskStatus-Protos.TaskStatus)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_15099_f877f\rev_rev_left_15099-rev_right_f877f\SingularityBase\src\main\java\com\hubspot\singularity\ExtendedTaskState.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START fromTaskState(TaskState-TaskState)//public static ExtendedTaskState fromTaskState(TaskState taskState) {
+    switch (taskState) {
+      case TASK_FAILED:
+        return TASK_FAILED;
+      case TASK_FINISHED:
+        return TASK_FINISHED;
+      case TASK_KILLED:
+        return TASK_KILLED;
+      case TASK_STARTING:
+        return TASK_STARTING;
+      case TASK_STAGING:
+        return TASK_STAGING;
+      case TASK_LOST:
+        return TASK_LOST;
+      case TASK_RUNNING:
+        return TASK_RUNNING;
+    }
+
+    throw new IllegalStateException(String.format("TaskState: %s not found", taskState));
+// END fromTaskState(TaskState-TaskState)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f877f-e2f10
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7290-1a043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3912b-98374
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8295d-d00b1
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_8295d_d00b1\rev_rev_left_8295d-rev_right_d00b1\SingularityService\src\main\java\com\hubspot\singularity\scheduler\SingularityNewTaskChecker.java
+Different Spacing: false
+Left editions: [117, 118, 120]
+Right editions: [111, 112]
+Merged body: 
+// START SingularityNewTaskChecker(SingularityConfiguration-SingularityConfiguration-LoadBalancerClient-LoadBalancerClient-TaskManager-TaskManager-SingularityCloser-SingularityCloser-SingularityExceptionNotifier-SingularityExceptionNotifier)//@Inject
+  public SingularityNewTaskChecker(SingularityConfiguration configuration, LoadBalancerClient lbClient, TaskManager taskManager, SingularityCloser closer, SingularityExceptionNotifier exceptionNotifier) {
+// RIGHT //    super(closer);
+// RIGHT //
+    this.configuration = configuration;
+    this.taskManager = taskManager;
+    this.lbClient = lbClient;
+
+// LEFT //    taskIdToCheck = Maps.newConcurrentMap();
+// LEFT //    killAfterUnhealthyMillis = TimeUnit.SECONDS.toMillis(configuration.getKillAfterTasksDoNotRunDefaultSeconds());
+
+// LEFT //    executorService = Executors.newScheduledThreadPool(configuration.getCheckNewTasksScheduledThreads(), new ThreadFactoryBuilder().setNameFormat("SingularityNewTaskChecker-%d").build());
+
+    this.exceptionNotifier = exceptionNotifier;
+// END SingularityNewTaskChecker(SingularityConfiguration-SingularityConfiguration-LoadBalancerClient-LoadBalancerClient-TaskManager-TaskManager-SingularityCloser-SingularityCloser-SingularityExceptionNotifier-SingularityExceptionNotifier)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_8295d_d00b1\rev_rev_left_8295d-rev_right_d00b1\SingularityService\src\main\java\com\hubspot\singularity\SingularityService.java
+Different Spacing: false
+Left editions: [49]
+Right editions: []
+Merged body: 
+// START initialize(Bootstrap<SingularityConfiguration>-Bootstrap<SingularityConfiguration>)//@Override
+  public void initialize(Bootstrap<SingularityConfiguration> bootstrap) {
+    GuiceBundle<SingularityConfiguration> guiceBundle = GuiceBundle.<SingularityConfiguration>newBuilder()
+        .addModule(new SingularityServiceModule())
+// LEFT //        .addModule(new SingularityMesosClientModule())
+        .enableAutoConfig(getClass().getPackage().getName())
+        .setConfigClass(SingularityConfiguration.class)
+        .build(Stage.DEVELOPMENT);
+    bootstrap.addBundle(guiceBundle);
+
+    bootstrap.addBundle(new ViewBundle());
+    bootstrap.addBundle(new AssetsBundle("/static/static/", "/static/"));
+    bootstrap.addBundle(new MigrationsBundle<SingularityConfiguration>() {
+      @Override
+      public DataSourceFactory getDataSourceFactory(SingularityConfiguration configuration) {
+        return configuration.getDatabaseConfiguration().get();
+      }
+    });
+
+    bootstrap.getObjectMapper().registerModule(new ProtobufModule());
+    bootstrap.getObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    bootstrap.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+// END initialize(Bootstrap<SingularityConfiguration>-Bootstrap<SingularityConfiguration>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57273-4b630
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d85f7-22a2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cbf2b-c0e27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f14af-651bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64826-3cb58
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_64826_3cb58\rev_rev_left_64826-rev_right_3cb58\SingularityService\src\main\java\com\hubspot\singularity\scheduler\SingularityDeployChecker.java
+Different Spacing: false
+Left editions: [437, 475, 483, 484, 485, 486, 487, 488, 489, 490]
+Right editions: [463, 464, 465, 466, 467, 468, 469, 476, 477, 478, 479, 480, 481, 482]
+Merged body: 
+// START getDeployResult(SingularityRequest-SingularityRequest-Optional<SingularityDeployMarker>-Optional<SingularityDeployMarker>-SingularityPendingDeploy-SingularityPendingDeploy-SingularityDeployKey-SingularityDeployKey-Optional<SingularityDeploy>-Optional<SingularityDeploy>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>)//private SingularityDeployResult getDeployResult(final SingularityRequest request, final Optional<SingularityDeployMarker> cancelRequest, final SingularityPendingDeploy pendingDeploy, final SingularityDeployKey deployKey,
+      final Optional<SingularityDeploy> deploy, final Collection<SingularityTaskId> deployActiveTasks, final Collection<SingularityTaskId> otherActiveTasks, final Collection<SingularityTaskId> inactiveDeployMatchingTasks) {
+    if (!request.isDeployable()) {
+      LOG.info("Succeeding a deploy {} because the request {} was not deployable", pendingDeploy, request);
+
+      return new SingularityDeployResult(DeployState.SUCCEEDED, "Request not deployable");
+    }
+
+    if (!inactiveDeployMatchingTasks.isEmpty()) {
+      if (request.isLoadBalanced() && shouldCancelLoadBalancer(pendingDeploy)) {
+        LOG.info("Attempting to cancel pending load balancer request, failing deploy {} regardless", pendingDeploy);
+        sendCancelToLoadBalancer(pendingDeploy);
+      }
+
+      return new SingularityDeployResult(DeployState.FAILED, String.format("Task(s) %s for this deploy failed", inactiveDeployMatchingTasks));
+    }
+
+    if (shouldCheckLbState(pendingDeploy)) {
+      final SingularityLoadBalancerUpdate lbUpdate = lbClient.getState(getLoadBalancerRequestId(pendingDeploy.getDeployMarker()));
+
+      DeployState deployState = interpretLoadBalancerState(lbUpdate, pendingDeploy.getCurrentDeployState());
+
+// LEFT //      updatePendingDeploy(pendingDeploy, lbUpdate, deployState);
+
+      if (deployState != DeployState.WAITING) {
+        return fromLbState(deployState, lbUpdate);
+      }
+    }
+
+    final boolean isCancelRequestPresent = cancelRequest.isPresent();
+    final boolean isDeployOverdue = isDeployOverdue(pendingDeploy, deploy);
+
+    if (isCancelRequestPresent || isDeployOverdue) {
+      if (request.isLoadBalanced() && shouldCancelLoadBalancer(pendingDeploy)) {
+        return cancelLoadBalancer(pendingDeploy);
+      }
+
+      if (isCancelRequestPresent) {
+        LOG.info("Canceling a deploy {} due to cancel request {}", pendingDeploy, cancelRequest.get());
+        return new SingularityDeployResult(DeployState.CANCELED, String.format("Canceled due to request by %s at %s", cancelRequest.get().getUser(), cancelRequest.get().getTimestamp()));
+      }
+    }
+
+    if (pendingDeploy.getLastLoadBalancerUpdate().isPresent()) {
+      return new SingularityDeployResult(DeployState.WAITING, Optional.of("Waiting on load balancer API"), pendingDeploy.getLastLoadBalancerUpdate(), System.currentTimeMillis());
+    }
+
+    if ((deployActiveTasks.size() < request.getInstancesSafe()) || !deploy.isPresent()) {
+// RIGHT //      String message = null;
+// RIGHT //
+// RIGHT //      if (deploy.isPresent()) {
+// RIGHT //        message = String.format("Deploy was only able to launch %s out of a required %s tasks in %s: it is likely not enough resources or slaves are available and eligible", deployActiveTasks.size(), request.getInstancesSafe(), JavaUtils.durationFromMillis(getAllowedMillis(deploy.get())));
+// RIGHT //      }
+// RIGHT //
+// RIGHT //      return checkOverdue(deploy, isDeployOverdue, message);
+    }
+
+    final DeployHealth deployHealth = deployHealthHelper.getDeployHealth(deploy, deployActiveTasks, true);
+
+    switch (deployHealth) {
+// LEFT //      case WAITING:
+// RIGHT //      String message = null;
+// RIGHT //
+// RIGHT //      if (deploy.isPresent()) {
+// RIGHT //        message = String.format("Deploy was able to launch %s tasks, but not all of them became healthy within %s", deployActiveTasks.size(), JavaUtils.durationFromMillis(getAllowedMillis(deploy.get())));
+// RIGHT //      }
+// RIGHT //
+// RIGHT //      return checkOverdue(deploy, isDeployOverdue, message);
+// LEFT //      case HEALTHY:
+// LEFT //        if (request.isLoadBalanced()) {
+// LEFT //          // don't check overdue here because we want to give it a chance to enqueue the load balancer request. the next check will determine its fate.
+// LEFT //          return enqueueSwitchLoadBalancer(request, deploy.get(), pendingDeploy, deployActiveTasks, otherActiveTasks);
+// LEFT //        } else {
+// LEFT //          return new SingularityDeployResult(DeployState.SUCCEEDED);
+// LEFT //        }
+// LEFT //      case UNHEALTHY:
+    }
+
+    return new SingularityDeployResult(DeployState.FAILED, "At least one task for this deploy failed");
+// END getDeployResult(SingularityRequest-SingularityRequest-Optional<SingularityDeployMarker>-Optional<SingularityDeployMarker>-SingularityPendingDeploy-SingularityPendingDeploy-SingularityDeployKey-SingularityDeployKey-Optional<SingularityDeploy>-Optional<SingularityDeploy>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>-Collection<SingularityTaskId>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d6fc-ceffd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ceffd-9bb61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa164-219c9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_aa164_219c9\rev_rev_left_aa164-rev_right_219c9\SingularityService\src\main\java\com\hubspot\singularity\smtp\SingularityMailer.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START sendTaskCompletedMail(SingularityTaskId-SingularityTaskId-SingularityRequest-SingularityRequest-ExtendedTaskState-ExtendedTaskState)//public void sendTaskCompletedMail(SingularityTaskId taskId, SingularityRequest request, ExtendedTaskState taskState) {
+    if (!maybeSmtpConfiguration.isPresent()) {
+      LOG.debug("Not sending task completed mail - no SMTP configuration is present");
+      return;
+    }
+
+    final Collection<SingularityTaskHistoryUpdate> taskHistory = taskManager.getTaskHistoryUpdates(taskId);
+    final Collection<EmailDestination> emailDestination = getEmailDestination(taskState, request, taskHistory);
+
+    if (emailDestination.isEmpty()) {
+      LOG.debug("Not configured to send task completed mail for {}", taskState);
+      return;
+    }
+
+    final Builder<String, Object> templateProperties = ImmutableMap.<String, Object> builder();
+    populateRequestEmailProperties(templateProperties, request);
+    populateTaskEmailProperties(templateProperties, taskId, taskHistory, taskState);
+
+    final String subject = getSubjectForTaskHistory(taskId, taskState, taskHistory);
+
+    final String adminEmails = adminJoiner.join(maybeSmtpConfiguration.get().getAdmins());
+    templateProperties.put("adminEmails", adminEmails);
+
+    final String body = Jade4J.render(taskCompletedTemplate, templateProperties.build());
+
+    queueMail(emailDestination, Optional.of(request), subject, body);
+// END sendTaskCompletedMail(SingularityTaskId-SingularityTaskId-SingularityRequest-SingularityRequest-ExtendedTaskState-ExtendedTaskState)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_aa164_219c9\rev_rev_left_aa164-rev_right_219c9\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityStartup.java
+Different Spacing: false
+Left editions: [117]
+Right editions: [114, 129]
+Merged body: 
+// START startup(MasterInfo-MasterInfo-SchedulerDriver-SchedulerDriver)//// RIGHT //public void startup(MasterInfo masterInfo, SchedulerDriver driver) throws Exception {
+    final long start = System.currentTimeMillis();
+
+// LEFT //    final String uri = mesosClient.getMasterUri(MesosUtils.getMasterHostAndPort(masterInfo));
+
+    LOG.info("Starting up... fetching state data from: " + uri);
+
+      zkDataMigrationRunner.checkMigrations();
+
+      MesosMasterStateObject state = mesosClient.getMasterState(uri);
+
+      slaveAndRackManager.loadSlavesAndRacksFromMaster(state);
+
+      enqueueHealthAndNewTaskchecks();
+
+// RIGHT //    taskReconciliation.startReconciliation();
+
+    LOG.info("Finished startup after {}", JavaUtils.duration(start));
+// END startup(MasterInfo-MasterInfo-SchedulerDriver-SchedulerDriver)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_aa164_219c9\rev_rev_left_aa164-rev_right_219c9\SingularityService\src\test\java\com\hubspot\singularity\data\BlendedHistoryTest.java
+Different Spacing: false
+Left editions: [27, 28]
+Right editions: [29]
+Merged body: 
+// START mockRequestHistory(HistoryManager-HistoryManager-List<SingularityRequestHistory>-List<SingularityRequestHistory>)//// LEFT //@SuppressWarnings("unchecked")
+// LEFT //  private void mockRequestHistory(HistoryManager hm, List<SingularityRequestHistory> returnValue) {
+// RIGHT //    when(hm.getRequestHistory(Matchers.anyString(), Matchers.<Optional<OrderDirection>>any(), Matchers.anyInt(), Matchers.anyInt())).thenReturn(returnValue);
+// END mockRequestHistory(HistoryManager-HistoryManager-List<SingularityRequestHistory>-List<SingularityRequestHistory>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cfda2-e9beb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23e89-90e14
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_23e89_90e14\rev_rev_left_23e89-rev_right_90e14\SingularityBase\src\main\java\com\hubspot\deploy\ExecutorDataBuilder.java
+Different Spacing: false
+Left editions: [224]
+Right editions: [212]
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+  public String toString() {
+// RIGHT //    return MoreObjects.toStringHelper(this)
+        .add("cmd", cmd)
+        .add("embeddedArtifacts", embeddedArtifacts)
+        .add("externalArtifacts", externalArtifacts)
+        .add("s3Artifacts", s3Artifacts)
+        .add("user", user)
+        .add("successfulExitCodes", successfulExitCodes)
+        .add("runningSentinel", runningSentinel)
+        .add("extraCmdLineArgs", extraCmdLineArgs)
+        .add("loggingTag", loggingTag)
+        .add("loggingExtraFields", loggingExtraFields)
+        .add("sigKillProcessesAfterMillis", sigKillProcessesAfterMillis)
+// LEFT //        .add("maxTaskThreads", maxTaskThreads)
+        .toString();
+// END toString({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_23e89_90e14\rev_rev_left_23e89-rev_right_90e14\SingularityBase\src\main\java\com\hubspot\deploy\ExecutorData.java
+Different Spacing: false
+Left editions: [149]
+Right editions: [137]
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+  public String toString() {
+// RIGHT //    return MoreObjects.toStringHelper(this)
+        .add("cmd", cmd)
+        .add("embeddedArtifacts", embeddedArtifacts)
+        .add("externalArtifacts", externalArtifacts)
+        .add("s3Artifacts", s3Artifacts)
+        .add("user", user)
+        .add("successfulExitCodes", successfulExitCodes)
+        .add("runningSentinel", runningSentinel)
+        .add("extraCmdLineArgs", extraCmdLineArgs)
+        .add("loggingTag", loggingTag)
+        .add("loggingExtraFields", loggingExtraFields)
+        .add("sigKillProcessesAfterMillis", sigKillProcessesAfterMillis)
+// LEFT //        .add("maxTaskThreads", maxTaskThreads)
+        .toString();
+// END toString({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_23e89_90e14\rev_rev_left_23e89-rev_right_90e14\SingularityService\src\main\java\com\hubspot\singularity\SingularityMainModule.java
+Different Spacing: false
+Left editions: []
+Right editions: [151, 152, 183, 184, 185, 186, 187, 189, 190, 191, 192, 193, 194]
+Merged body: 
+// START configure(Binder-Binder)//@Override
+  public void configure(Binder binder) {
+// RIGHT //    binder.bind(HostAndPort.class).annotatedWith(named(HTTP_HOST_AND_PORT)).toProvider(SingularityHostAndPortProvider.class).in(Scopes.SINGLETON);
+// RIGHT //
+    binder.bind(LeaderLatch.class).to(SingularityLeaderLatch.class).in(Scopes.SINGLETON);
+    binder.bind(CuratorFramework.class).toProvider(SingularityCuratorProvider.class).in(Scopes.SINGLETON);
+
+    Multibinder<ConnectionStateListener> connectionStateListeners = Multibinder.newSetBinder(binder, ConnectionStateListener.class);
+    connectionStateListeners.addBinding().to(SingularityAbort.class).in(Scopes.SINGLETON);
+
+    Multibinder<LeaderLatchListener> leaderLatchListeners = Multibinder.newSetBinder(binder, LeaderLatchListener.class);
+    leaderLatchListeners.addBinding().to(SingularityLeaderController.class).in(Scopes.SINGLETON);
+
+    binder.bind(SingularityDriverManager.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityLeaderController.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityMailer.class).in(Scopes.SINGLETON);
+    binder.bind(SingularitySmtpSender.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityExceptionNotifier.class).in(Scopes.SINGLETON);
+    binder.bind(LoadBalancerClient.class).to(LoadBalancerClientImpl.class).in(Scopes.SINGLETON);
+
+    binder.bind(SingularityWebhookPoller.class).in(Scopes.SINGLETON);
+
+    binder.bind(MesosClient.class).in(Scopes.SINGLETON);
+
+    binder.bind(SingularityAbort.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityLeaderController.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityMailer.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityExceptionNotifierManaged.class).in(Scopes.SINGLETON);
+    binder.bind(SingularityWebhookSender.class).in(Scopes.SINGLETON);
+
+    binder.bind(NotifyingExceptionMapper.class).in(Scopes.SINGLETON);
+
+    binder.bind(ObjectMapper.class).toProvider(DropwizardObjectMapperProvider.class).in(Scopes.SINGLETON);
+
+// RIGHT //    binder.bind(AsyncHttpClient.class).to(SingularityHttpClient.class).in(Scopes.SINGLETON);
+// RIGHT //
+// RIGHT //    binder.bind(ServerProvider.class).in(Scopes.SINGLETON);
+// RIGHT //
+// RIGHT //    binder.bind(SingularityDropwizardHealthcheck.class).in(Scopes.SINGLETON);
+    binder.bindConstant().annotatedWith(Names.named(SERVER_ID_PROPERTY)).to(UUID.randomUUID().toString());
+// RIGHT //
+// RIGHT //    try {
+// RIGHT //      binder.bindConstant().annotatedWith(Names.named(HOST_ADDRESS_PROPERTY)).to(JavaUtils.getHostAddress());
+// RIGHT //    } catch (SocketException e) {
+// RIGHT //      throw Throwables.propagate(e);
+// RIGHT //    }
+// END configure(Binder-Binder)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_23e89_90e14\rev_rev_left_23e89-rev_right_90e14\SingularityService\src\main\java\com\hubspot\singularity\guice\GuiceBundle.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START configure(Binder-Binder)//@Override
+    public void configure(final Binder binder) {
+      binder.bindListener(Matchers.any(), new TypeListener() {
+        @Override
+        public <T> void hear(TypeLiteral<T> type, TypeEncounter<T> encounter) {
+          encounter.register(new InjectionListener<T>() {
+            @Override
+            public void afterInjection(T obj) {
+              if (obj instanceof Managed) {
+                managedBuilder.add((Managed) obj);
+              }
+
+              if (obj instanceof Task) {
+                taskBuilder.add((Task) obj);
+              }
+
+              if (obj instanceof HealthCheck) {
+                healthcheckBuilder.add((HealthCheck) obj);
+              }
+
+              if (obj instanceof ServerLifecycleListener) {
+                serverLifecycleListenerBuilder.add((ServerLifecycleListener) obj);
+              }
+            }
+          });
+        }
+      });
+// END configure(Binder-Binder)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_712d5-1710f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_909a9-dc5bf
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_909a9_dc5bf\rev_rev_left_909a9-rev_right_dc5bf\SingularityService\src\main\java\com\hubspot\singularity\smtp\SingularityMailer.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START sendTaskCompletedMail(SingularityTaskId-SingularityTaskId-SingularityRequest-SingularityRequest-ExtendedTaskState-ExtendedTaskState)//public void sendTaskCompletedMail(SingularityTaskId taskId, SingularityRequest request, ExtendedTaskState taskState) {
+    if (!maybeSmtpConfiguration.isPresent()) {
+      LOG.debug("Not sending task completed mail - no SMTP configuration is present");
+      return;
+    }
+
+    final Collection<SingularityTaskHistoryUpdate> taskHistory = taskManager.getTaskHistoryUpdates(taskId);
+    final Collection<EmailDestination> emailDestination = getEmailDestination(taskState, request, taskHistory);
+
+    if (emailDestination.isEmpty()) {
+      LOG.debug("Not configured to send task completed mail for {}", taskState);
+      return;
+    }
+
+    final Builder<String, Object> templateProperties = ImmutableMap.<String, Object> builder();
+    populateRequestEmailProperties(templateProperties, request);
+    populateTaskEmailProperties(templateProperties, taskId, taskHistory, taskState);
+
+    final String subject = getSubjectForTaskHistory(taskId, taskState, taskHistory);
+
+    final String adminEmails = adminJoiner.join(maybeSmtpConfiguration.get().getAdmins());
+    templateProperties.put("adminEmails", adminEmails);
+
+    final String body = Jade4J.render(taskCompletedTemplate, templateProperties.build());
+
+    queueMail(emailDestination, Optional.of(request), subject, body);
+// END sendTaskCompletedMail(SingularityTaskId-SingularityTaskId-SingularityRequest-SingularityRequest-ExtendedTaskState-ExtendedTaskState)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_712d5-d7d71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad0db-82071
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_313f2-1331d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c6d8-9e019
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fded6-1543d
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: []
+Right editions: [293, 294]
+Merged body: 
+// START getHost({FormalParametersInternal})//private String getHost() {
+// RIGHT //    final List<String> hosts = hostsProvider.get();
+// RIGHT //    return hosts.get(random.nextInt(hosts.size()));
+// END getHost({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [537]
+Right editions: []
+Merged body: 
+// START getActiveTasks({FormalParametersInternal})//public Collection<SingularityTask> getActiveTasks() {
+    final String requestUri = String.format(TASKS_GET_ACTIVE_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "active tasks", TASKS_COLLECTION);
+// END getActiveTasks({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [558]
+Right editions: []
+Merged body: 
+// START getScheduledTasks({FormalParametersInternal})//public Collection<SingularityTaskRequest> getScheduledTasks() {
+    final String requestUri = String.format(TASKS_GET_SCHEDULED_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "scheduled tasks", TASKS_REQUEST_COLLECTION);
+// END getScheduledTasks({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [506]
+Right editions: []
+Merged body: 
+// START getPendingSingularityRequests({FormalParametersInternal})//public Collection<SingularityPendingRequest> getPendingSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_GET_PENDING_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "pending requests", PENDING_REQUESTS_COLLECTION);
+// END getPendingSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [493]
+Right editions: []
+Merged body: 
+// START getCoolDownSingularityRequests({FormalParametersInternal})//public Collection<SingularityRequest> getCoolDownSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_GET_COOLDOWN_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "COOLDOWN requests", REQUESTS_COLLECTION);
+// END getCoolDownSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [680]
+Right editions: []
+Merged body: 
+// START getHistoryForRequestDeploy(String-String-String-String)//public Optional<SingularityDeployHistory> getHistoryForRequestDeploy(String requestId, String deployId) {
+    final String requestUri = String.format(REQUEST_DEPLOY_HISTORY_FORMAT, getHost(), contextPath, requestId, deployId);
+
+// LEFT //    return getSingle(requestUri, "deploy history", new SingularityDeployKey(requestId, deployId).getId(), SingularityDeployHistory.class);
+// END getHistoryForRequestDeploy(String-String-String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [544]
+Right editions: []
+Merged body: 
+// START getActiveTasks(String-String)//public Collection<SingularityTask> getActiveTasks(final String host) {
+    final String requestUri = String.format(TASKS_GET_ACTIVE_PER_HOST_FORMAT, getHost(), contextPath, host);
+
+// LEFT //    return getCollection(requestUri, String.format("active tasks on %s", host), TASKS_COLLECTION);
+// END getActiveTasks(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [655]
+Right editions: []
+Merged body: 
+// START getHistoryForTask(String-String)//public Optional<SingularityTaskHistory> getHistoryForTask(String taskId) {
+    final String requestUri = String.format(TASK_HISTORY_FORMAT, getHost(), contextPath, taskId);
+
+// LEFT //    return getSingle(requestUri, "task history", taskId, SingularityTaskHistory.class);
+// END getHistoryForTask(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [522]
+Right editions: []
+Merged body: 
+// START getCleanupSingularityRequests({FormalParametersInternal})//public Collection<SingularityRequestCleanup> getCleanupSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_GET_CLEANUP_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "cleaning requests", CLEANUP_REQUESTS_COLLECTION);
+// END getCleanupSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [441]
+Right editions: []
+Merged body: 
+// START getSingularityRequests({FormalParametersInternal})//public Collection<SingularityRequest> getSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "[ACTIVE, PAUSED, COOLDOWN] requests", REQUESTS_COLLECTION);
+// END getSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [662, 664]
+Right editions: []
+Merged body: 
+// START getActiveTaskHistoryForRequest(String-String)//public Collection<SingularityTaskIdHistory> getActiveTaskHistoryForRequest(String requestId) {
+    final String requestUri = String.format(REQUEST_ACTIVE_TASKS_HISTORY_FORMAT, getHost(), contextPath, requestId);
+
+// LEFT //    final String type = String.format("active task history for %s", requestId);
+
+// LEFT //    return getCollection(requestUri, type, TASKID_HISTORY_COLLECTION);
+// END getActiveTaskHistoryForRequest(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [329]
+Right editions: []
+Merged body: 
+// START getSingularityRequest(String-String)//public Optional<SingularityRequestParent> getSingularityRequest(String requestId) {
+    final String singularityApiRequestUri = String.format(REQUEST_GET_FORMAT, getHost(), contextPath, requestId);
+
+// LEFT //    return getSingle(singularityApiRequestUri, "request", requestId, SingularityRequestParent.class);
+// END getSingularityRequest(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [474]
+Right editions: []
+Merged body: 
+// START getPausedSingularityRequests({FormalParametersInternal})//public Collection<SingularityRequest> getPausedSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_GET_PAUSED_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "PAUSED requests", REQUESTS_COLLECTION);
+// END getPausedSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [454]
+Right editions: []
+Merged body: 
+// START getActiveSingularityRequests({FormalParametersInternal})//public Collection<SingularityRequest> getActiveSingularityRequests() {
+    final String requestUri = String.format(REQUESTS_GET_ACTIVE_FORMAT, getHost(), contextPath);
+
+// LEFT //    return getCollection(requestUri, "ACTIVE requests", REQUESTS_COLLECTION);
+// END getActiveSingularityRequests({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClient.java
+Different Spacing: false
+Left editions: [671, 673]
+Right editions: []
+Merged body: 
+// START getInactiveTaskHistoryForRequest(String-String)//public Collection<SingularityTaskIdHistory> getInactiveTaskHistoryForRequest(String requestId) {
+    final String requestUri = String.format(REQUEST_INACTIVE_TASKS_HISTORY_FORMAT, getHost(), contextPath, requestId);
+
+// LEFT //    final String type = String.format("inactive (failed, killed, lost) task history for request %s", requestId);
+
+// LEFT //    return getCollection(requestUri, type, TASKID_HISTORY_COLLECTION);
+// END getInactiveTaskHistoryForRequest(String-String)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fded6_1543d\rev_rev_left_fded6-rev_right_1543d\SingularityClient\src\main\java\com\hubspot\singularity\client\SingularityClientProvider.java
+Different Spacing: false
+Left editions: [93]
+Right editions: [91]
+Merged body: 
+// START buildClient(String-String-String-String)//// RIGHT //@Deprecated
+public SingularityClient buildClient(String contextPath, String hosts) {
+// LEFT //    return new SingularityClient(contextPath, httpClient, hosts);
+// END buildClient(String-String-String-String)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e019-fded6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fded6-2fcea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a9cc-39d51
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3850f-8b6ce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b2cee-3fe5b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e6cd-3dc98
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a052-7d772
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1644-79981
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79981-3be8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a58dd-bab1e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bab1e-b1644
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db749-6096e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83423-d29a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ee781-316a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63b5d-8a7e1
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_63b5d_8a7e1\rev_rev_left_63b5d-rev_right_8a7e1\SingularityService\src\main\java\com\hubspot\singularity\resources\SandboxResource.java
+Different Spacing: false
+Left editions: [197]
+Right editions: [192]
+Merged body: 
+// START read(String-String-String-String-Optional<String>-Optional<String>-Optional<Long>-Optional<Long>-Optional<Long>-Optional<Long>)//@GET
+  @Path("/{taskId}/read")
+// RIGHT //  public MesosFileChunkObject read(@PathParam("taskId") String taskId, @QueryParam("path") String path, @QueryParam("grep") Optional<String> grep, @QueryParam("offset") Optional<Long> offset,
+      @QueryParam("length") Optional<Long> length) {
+    final SingularityTaskHistory history = checkHistory(taskId);
+
+    final String slaveHostname = history.getTask().getOffer().getHostname();
+// LEFT //    final String fullPath = new File(history.getDirectory().get(), qPath).toString();
+
+    try {
+      final Optional<MesosFileChunkObject> maybeChunk = sandboxManager.read(slaveHostname, fullPath, offset, length);
+
+      if (!maybeChunk.isPresent()) {
+        throw WebExceptions.notFound("File %s does not exist for task ID %s", fullPath, taskId);
+      }
+
+      if (grep.isPresent()) {
+        final Pattern grepPattern = Pattern.compile(grep.get());
+        final StringBuilder strBuilder = new StringBuilder(maybeChunk.get().getData().length());
+
+        for (String line : Splitter.on("\n").split(maybeChunk.get().getData())) {
+          if (grepPattern.matcher(line).find()) {
+            strBuilder.append(line);
+            strBuilder.append("\n");
+          }
+        }
+
+        return new MesosFileChunkObject(strBuilder.toString(), maybeChunk.get().getOffset());
+      }
+
+      return maybeChunk.get();
+    } catch (SlaveNotFoundException snfe) {
+      throw WebExceptions.notFound("Slave @ %s was not found, it is probably offline", slaveHostname);
+    }
+// END read(String-String-String-String-Optional<String>-Optional<String>-Optional<Long>-Optional<Long>-Optional<Long>-Optional<Long>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8ded-423ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0eb42-19232
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7740-d4601
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb852-c5259
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58042-e4313
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53ba6-e4313
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90ba1-c5259
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fda0a-c7f2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17b08-42c57
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f736a-32c35
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_726ad-80332
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49cd9-84b3a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58c1d-3a87d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a600c-c0612
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c68c0-78b14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cca97-18007
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18007-70603
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40593-8baeb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_976d2-87861
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa2fe-a721d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46e77-aa2fe
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_46e77_aa2fe\rev_rev_left_46e77-rev_right_aa2fe\SingularityService\src\main\java\com\hubspot\singularity\SingularityService.java
+Different Spacing: false
+Left editions: [57]
+Right editions: [53]
+Merged body: 
+// START initialize(Bootstrap<SingularityConfiguration>-Bootstrap<SingularityConfiguration>)//@Override
+  public void initialize(final Bootstrap<SingularityConfiguration> bootstrap) {
+    final GuiceBundle<SingularityConfiguration> guiceBundle = GuiceBundle.defaultBuilder(SingularityConfiguration.class)
+        .modules(new SingularityServiceModule())
+        .build();
+    bootstrap.addBundle(guiceBundle);
+
+// RIGHT //    bootstrap.addBundle(new AcceptLanguageFilterBundle());
+    bootstrap.addBundle(new CorsBundle());
+    bootstrap.addBundle(new ViewBundle());
+    bootstrap.addBundle(new AssetsBundle("/static/static/", "/static/"));
+// LEFT //    bootstrap.addBundle(new AssetsBundle("/static/api-docs/", "/api-docs/", "index.html", "api-docs"));
+    bootstrap.addBundle(new MigrationsBundle<SingularityConfiguration>() {
+      @Override
+      public DataSourceFactory getDataSourceFactory(final SingularityConfiguration configuration) {
+        return configuration.getDatabaseConfiguration().get();
+      }
+    });
+
+    bootstrap.getObjectMapper().registerModule(new ProtobufModule());
+    bootstrap.getObjectMapper().registerModule(new GuavaModule());
+    bootstrap.getObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    bootstrap.getObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+// END initialize(Bootstrap<SingularityConfiguration>-Bootstrap<SingularityConfiguration>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1106b-31ae8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55999-457ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1a595-5902c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8ac5-819a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6a95-c638d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7a8d7-f789a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78459-f789a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e15b-75db4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f789a-bc635
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24a08-f3016
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66e8b-79f38
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f35c6-089a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9d43-d0a8a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ba427-c1098
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1098-1eebb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e601-3099c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3099c-62438
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23827-7707c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7eb8-43b5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ff41-cac3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8bf0d-089a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e84cd-63e80
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb9ff-819a2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_553df-d0a8a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d198d-eff6b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d067e-f8f27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eeacb-eb5dc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a292f-4c960
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e4a9-b3fb4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79abf-dea84
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7715-25e39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51665-55b86
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8f27-c63a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b32a0-22b9d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ebd8-3c843
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77740-f07b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6a93-1e7ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c072-d6610
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e97fd-033f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3f95-e8205
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_f3f95_e8205\rev_rev_left_f3f95-rev_right_e8205\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityMesosScheduler.java
+Different Spacing: false
+Left editions: [335, 336, 337, 362, 363]
+Right editions: [347, 349, 350, 351, 353, 354, 355, 356, 357, 358, 359, 374]
+Merged body: 
+// START statusUpdate(SchedulerDriver-SchedulerDriver-Protos.TaskStatus-Protos.TaskStatus)//@Override
+  public void statusUpdate(SchedulerDriver driver, Protos.TaskStatus status) {
+    final String taskId = status.getTaskId().getValue();
+
+    long timestamp = System.currentTimeMillis();
+
+    if (status.hasTimestamp()) {
+      timestamp = (long) (status.getTimestamp() * 1000);
+    }
+
+    LOG.debug("Task {} is now {} ({}) at {} ", taskId, status.getState(), status.getMessage(), timestamp);
+
+// LEFT //    final SingularityTaskId taskIdObj = taskIdTranscoder.fromString(taskId);
+// LEFT //
+// LEFT //    final SingularityTaskStatusHolder newTaskStatusHolder = new SingularityTaskStatusHolder(taskIdObj, Optional.of(status), System.currentTimeMillis(), serverId, Optional.<String>absent());
+    final Optional<SingularityTaskStatusHolder> previousTaskStatusHolder = taskManager.getLastActiveTaskStatus(taskIdObj);
+    final ExtendedTaskState taskState = ExtendedTaskState.fromTaskState(status.getState());
+
+    if (isDuplicateOrIgnorableStatusUpdate(previousTaskStatusHolder, newTaskStatusHolder)) {
+      LOG.trace("Ignoring status update {} to {}", taskState, taskIdObj);
+      saveNewTaskStatusHolder(taskIdObj, newTaskStatusHolder, taskState);
+      return;
+    }
+
+// RIGHT //    final boolean isActiveTask = taskManager.isActiveTask(taskId);
+
+// RIGHT //    if (isActiveTask && !taskState.isDone()) {
+// RIGHT //     final SingularityTask task = taskManager.getTask(taskIdObj).get();
+// RIGHT //     final Optional<SingularityPendingDeploy> pendingDeploy = deployManager.getPendingDeploy(taskIdObj.getRequestId());
+
+// RIGHT //     if (taskState == ExtendedTaskState.TASK_RUNNING) {
+// RIGHT //       healthchecker.enqueueHealthcheck(task, pendingDeploy);
+// RIGHT //     }
+// RIGHT //
+// RIGHT //     if (!pendingDeploy.isPresent() || !pendingDeploy.get().getDeployMarker().getDeployId().equals(taskIdObj.getDeployId())) {
+// RIGHT //       newTaskChecker.enqueueNewTaskCheck(task);
+// RIGHT //     }
+    }
+
+// LEFT //    final SingularityTaskHistoryUpdate taskUpdate =
+// LEFT //        new SingularityTaskHistoryUpdate(taskIdObj, timestamp, taskState, status.hasMessage() ? Optional.of(status.getMessage()) : Optional.<String>absent());
+    final SingularityCreateResult taskHistoryUpdateCreateResult = taskManager.saveTaskHistoryUpdate(taskUpdate);
+
+    logSupport.checkDirectory(taskIdObj);
+
+    if (taskState.isDone()) {
+      healthchecker.cancelHealthcheck(taskId);
+      newTaskChecker.cancelNewTaskCheck(taskId);
+
+      taskManager.deleteKilledRecord(taskIdObj);
+
+// RIGHT //      scheduler.handleCompletedTask(taskIdObj, isActiveTask, timestamp, taskState, taskHistoryUpdateCreateResult, stateCacheProvider.get());
+    }
+
+    saveNewTaskStatusHolder(taskIdObj, newTaskStatusHolder, taskState);
+// END statusUpdate(SchedulerDriver-SchedulerDriver-Protos.TaskStatus-Protos.TaskStatus)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_f3f95_e8205\rev_rev_left_f3f95-rev_right_e8205\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityStartup.java
+Different Spacing: false
+Left editions: [226]
+Right editions: []
+Merged body: 
+// START enqueueHealthAndNewTaskChecks({FormalParametersInternal})//private void enqueueHealthAndNewTaskChecks() {
+    final long start = System.currentTimeMillis();
+
+    final List<SingularityTask> activeTasks = taskManager.getActiveTasks();
+// LEFT //    final Map<SingularityTaskId, SingularityTask> activeTaskMap = Maps.uniqueIndex(activeTasks, SingularityTaskIdHolder.getTaskIdFunction());
+
+    final Map<SingularityTaskId, List<SingularityTaskHistoryUpdate>> taskUpdates = taskManager.getTaskHistoryUpdates(activeTaskMap.keySet());
+
+    final Map<SingularityDeployKey, SingularityPendingDeploy> pendingDeploys = Maps.uniqueIndex(deployManager.getPendingDeploys(), SingularityDeployKey.FROM_PENDING_TO_DEPLOY_KEY);
+
+    int enqueuedNewTaskChecks = 0;
+    int enqueuedHealthchecks = 0;
+
+    for (Map.Entry<SingularityTaskId, SingularityTask> entry: activeTaskMap.entrySet()) {
+      SingularityTaskId taskId = entry.getKey();
+      SingularityTask task = entry.getValue();
+      SimplifiedTaskState simplifiedTaskState = SingularityTaskHistoryUpdate.getCurrentState(taskUpdates.get(taskId));
+
+      if (simplifiedTaskState != SimplifiedTaskState.DONE) {
+        SingularityDeployKey deployKey = new SingularityDeployKey(taskId.getRequestId(), taskId.getDeployId());
+        Optional<SingularityPendingDeploy> pendingDeploy = Optional.fromNullable(pendingDeploys.get(deployKey));
+
+        if (!pendingDeploy.isPresent()) {
+          newTaskChecker.enqueueNewTaskCheck(task);
+          enqueuedNewTaskChecks++;
+        }
+        if (simplifiedTaskState == SimplifiedTaskState.RUNNING) {
+          if (healthchecker.enqueueHealthcheck(task, pendingDeploy)) {
+            enqueuedHealthchecks++;
+          }
+        }
+      }
+    }
+
+    LOG.info("Enqueued {} health checks and {} new task checks (out of {} active tasks) in {}", enqueuedHealthchecks, enqueuedNewTaskChecks, activeTasks.size(), JavaUtils.duration(start));
+// END enqueueHealthAndNewTaskChecks({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_f3f95_e8205\rev_rev_left_f3f95-rev_right_e8205\SingularityService\src\main\java\com\hubspot\singularity\mesos\SingularityStartup.java
+Different Spacing: false
+Left editions: []
+Right editions: [139, 140]
+Merged body: 
+// START startup(MasterInfo-MasterInfo-SchedulerDriver-SchedulerDriver)//public void startup(MasterInfo masterInfo, SchedulerDriver driver) throws Exception {
+    final long start = System.currentTimeMillis();
+
+    final String uri = mesosClient.getMasterUri(MesosUtils.getMasterHostAndPort(masterInfo));
+
+    LOG.info("Starting up... fetching state data from: " + uri);
+
+    zkDataMigrationRunner.checkMigrations();
+
+    MesosMasterStateObject state = mesosClient.getMasterState(uri);
+
+    slaveAndRackManager.loadSlavesAndRacksFromMaster(state);
+
+// RIGHT //    checkSchedulerForInconsistentState();
+// RIGHT //
+    enqueueHealthAndNewTaskChecks();
+
+    taskReconciliation.startReconciliation();
+
+    LOG.info("Finished startup after {}", JavaUtils.duration(start));
+// END startup(MasterInfo-MasterInfo-SchedulerDriver-SchedulerDriver)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13033-75975
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_033f6-3200f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4248-16d64
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1e650-033f6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4584c-66364
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_4584c_66364\rev_rev_left_4584c-rev_right_66364\SingularityBase\src\main\java\com\hubspot\singularity\SingularityRequest.java
+Different Spacing: false
+Left editions: [103]
+Right editions: [114, 115]
+Merged body: 
+// START toBuilder({FormalParametersInternal})//public SingularityRequestBuilder toBuilder() {
+// LEFT //    return new SingularityRequestBuilder(id, requestType)
+    .setLoadBalanced(loadBalanced)
+    .setInstances(instances)
+    .setNumRetriesOnFailure(numRetriesOnFailure)
+    .setOwners(copyOfList(owners))
+    .setRackSensitive(rackSensitive)
+    .setSchedule(schedule)
+    .setKillOldNonLongRunningTasksAfterMillis(killOldNonLongRunningTasksAfterMillis)
+    .setScheduleType(scheduleType)
+    .setQuartzSchedule(quartzSchedule)
+    .setRackAffinity(copyOfList(rackAffinity))
+// RIGHT //    .setSlavePlacement(slavePlacement)
+// RIGHT //    .setScheduledExpectedRuntimeMillis(scheduledExpectedRuntimeMillis);
+// END toBuilder({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_4584c_66364\rev_rev_left_4584c-rev_right_66364\SingularityService\src\test\java\com\hubspot\singularity\scheduler\SingularitySchedulerTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testSchedulerPriority({FormalParametersInternal})//@Test
+  public void testSchedulerPriority() {
+    SingularityRequest request1 = buildRequest("request1");
+    SingularityRequest request2 = buildRequest("request2");
+    SingularityRequest request3 = buildRequest("request3");
+
+    SingularityDeploy deploy1 = initDeploy(request1, "r1d1");
+    SingularityDeploy deploy2 = initDeploy(request2, "r2d2");
+    SingularityDeploy deploy3 = initDeploy(request3, "r3d3");
+
+    launchTask(request1, deploy1, 2, 1, TaskState.TASK_RUNNING);
+    launchTask(request2, deploy2, 1, 1, TaskState.TASK_RUNNING);
+    launchTask(request2, deploy2, 10, 1, TaskState.TASK_RUNNING);
+
+    // r3 should have priority (never launched)
+    // r1 last launch at 2
+    // r2 last launch at 10
+
+    List<SingularityTaskRequest> requests = Arrays.asList(buildTaskRequest(request1, deploy1, 100), buildTaskRequest(request2, deploy2, 101), buildTaskRequest(request3, deploy3, 95));
+    schedulerPriority.sortTaskRequestsInPriorityOrder(requests);
+
+    Assert.assertTrue(requests.get(0).getRequest().getId().equals(request3.getId()));
+    Assert.assertTrue(requests.get(1).getRequest().getId().equals(request1.getId()));
+    Assert.assertTrue(requests.get(2).getRequest().getId().equals(request2.getId()));
+
+    schedulerPriority.notifyTaskLaunched(new SingularityTaskId(request3.getId(), deploy3.getId(), 500, 1, "host", "rack"));
+
+    requests = Arrays.asList(buildTaskRequest(request1, deploy1, 100), buildTaskRequest(request2, deploy2, 101), buildTaskRequest(request3, deploy3, 95));
+    schedulerPriority.sortTaskRequestsInPriorityOrder(requests);
+
+    Assert.assertTrue(requests.get(0).getRequest().getId().equals(request1.getId()));
+    Assert.assertTrue(requests.get(1).getRequest().getId().equals(request2.getId()));
+    Assert.assertTrue(requests.get(2).getRequest().getId().equals(request3.getId()));
+// END testSchedulerPriority({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_4584c_66364\rev_rev_left_4584c-rev_right_66364\SingularityService\src\main\java\com\hubspot\singularity\resources\RequestResource.java
+Different Spacing: false
+Left editions: [270]
+Right editions: [275, 276, 277, 278, 279, 280]
+Merged body: 
+// START bounce(String-String-Optional<String>-Optional<String>)//@POST
+  @Path("/request/{requestId}/bounce")
+  @ApiOperation(value="Bounce a specific Singularity request. A bounce launches replacement task(s), and then kills the original task(s) if the replacement(s) are healthy.",
+  response=SingularityRequestParent.class)
+  public SingularityRequestParent bounce(@ApiParam("The request ID to bounce") @PathParam("requestId") String requestId,
+      @ApiParam("Username of the person requesting the bounce") @QueryParam("user") Optional<String> user) {
+    SingularityRequestWithState requestWithState = fetchRequestWithState(requestId);
+
+    if (!requestWithState.getRequest().isLongRunning()) {
+// LEFT //      throw WebExceptions.badRequest("Can not bounce a %s request (%s)", requestWithState.getRequest().getRequestType(), requestWithState);
+    }
+
+    checkRequestStateNotPaused(requestWithState, "bounce");
+
+// RIGHT //    SingularityCreateResult createResult = requestManager.createCleanupRequest(
+// RIGHT //        new SingularityRequestCleanup(user, RequestCleanupType.BOUNCE, System.currentTimeMillis(), Optional.<Boolean> absent(), requestId, Optional.of(getAndCheckDeployId(requestId))));
+// RIGHT //
+// RIGHT //    if (createResult == SingularityCreateResult.EXISTED) {
+// RIGHT //      throw WebExceptions.conflict("%s is already bouncing", requestId);
+// RIGHT //    }
+
+    return fillEntireRequest(requestWithState);
+// END bounce(String-String-Optional<String>-Optional<String>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c538-ec3e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_27663-2ae89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30a24-8ba4b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b636b-ef4ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b027d-efc19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8e38-916d3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e2b2-9fd49
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_722a5-8bf2f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a49df-653f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4177c-27e76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6249d-5c50c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4bfce-41c5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41c5c-17e0a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec1dc-55d31
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d2f6-116ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_18c08-5bb42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5bb42-39819
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_218f4-ee3a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddfed-01b51
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2de85-101f3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4fa9-ad415
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f4e4-91d67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9d34-c248d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_101f3-521aa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_511b2-99027
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37e37-ae602
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb8d0-d9e33
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb8d0-049b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_36397-92b39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1c861-27e5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88c49-c96e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f6474-8cff7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a599c-f8a23
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_a599c_f8a23\rev_rev_left_a599c-rev_right_f8a23\SingularityService\src\test\java\com\hubspot\singularity\mesos\SingularityMesosTaskBuilderTest.java
+Different Spacing: false
+Left editions: [168]
+Right editions: [172, 188]
+Merged body: 
+// START testDockerTask({FormalParametersInternal})//@Test
+  public void testDockerTask() {
+    resources = new Resources(1, 1, 1);
+
+    final Protos.Resource portsResource = Protos.Resource.newBuilder()
+        .setName("ports")
+        .setType(Protos.Value.Type.RANGES)
+        .setRanges(Protos.Value.Ranges.newBuilder()
+            .addRange(Protos.Value.Range.newBuilder()
+                .setBegin(31000)
+                .setEnd(31000).build()).build()).build();
+
+    final SingularityDockerPortMapping literalMapping = new SingularityDockerPortMapping(Optional.<SingularityPortMappingType>absent(), 80, Optional.of(SingularityPortMappingType.LITERAL), 8080, Optional.<String>absent());
+    final SingularityDockerPortMapping offerMapping = new SingularityDockerPortMapping(Optional.<SingularityPortMappingType>absent(), 81, Optional.of(SingularityPortMappingType.FROM_OFFER), 0, Optional.of("udp"));
+
+// LEFT //    final SingularityRequest request = new SingularityRequestBuilder("test", RequestType.WORKER).build();
+    final SingularityContainerInfo containerInfo = new SingularityContainerInfo(
+        Type.DOCKER,
+        Optional.of(Collections.singletonList(new SingularityVolume("/container", Optional.of("/host"), Mode.RW))),
+// RIGHT //        Optional.of(new SingularityDockerInfo("docker-image", true, Optional.of(Protos.ContainerInfo.DockerInfo.Network.BRIDGE), Optional.of(Arrays.asList(literalMapping, offerMapping)))));
+    final SingularityDeploy deploy = new SingularityDeployBuilder("test", "1")
+    .setContainerInfo(Optional.of(containerInfo))
+    .setCommand(Optional.of("/bin/echo"))
+    .setArguments(Optional.of(Collections.singletonList("wat")))
+    .build();
+    final SingularityTaskRequest taskRequest = new SingularityTaskRequest(request, deploy, pendingTask);
+    final SingularityTask task = builder.buildTask(offer, Collections.singletonList(portsResource), taskRequest, resources);
+
+    assertEquals("/bin/echo", task.getMesosTask().getCommand().getValue());
+    assertEquals(1, task.getMesosTask().getCommand().getArgumentsCount());
+    assertEquals("wat", task.getMesosTask().getCommand().getArguments(0));
+    assertFalse(task.getMesosTask().getCommand().getShell());
+
+    assertEquals(Type.DOCKER, task.getMesosTask().getContainer().getType());
+    assertEquals("docker-image", task.getMesosTask().getContainer().getDocker().getImage());
+// RIGHT //    assertTrue(task.getMesosTask().getContainer().getDocker().getPrivileged());
+    assertEquals("/container", task.getMesosTask().getContainer().getVolumes(0).getContainerPath());
+    assertEquals("/host", task.getMesosTask().getContainer().getVolumes(0).getHostPath());
+    assertEquals(Mode.RW, task.getMesosTask().getContainer().getVolumes(0).getMode());
+
+    assertEquals(80, task.getMesosTask().getContainer().getDocker().getPortMappings(0).getContainerPort());
+    assertEquals(8080, task.getMesosTask().getContainer().getDocker().getPortMappings(0).getHostPort());
+    assertEquals("tcp", task.getMesosTask().getContainer().getDocker().getPortMappings(0).getProtocol());
+
+    assertEquals(81, task.getMesosTask().getContainer().getDocker().getPortMappings(1).getContainerPort());
+    assertEquals(31000, task.getMesosTask().getContainer().getDocker().getPortMappings(1).getHostPort());
+    assertEquals("udp", task.getMesosTask().getContainer().getDocker().getPortMappings(1).getProtocol());
+
+    assertEquals(Protos.ContainerInfo.DockerInfo.Network.BRIDGE, task.getMesosTask().getContainer().getDocker().getNetwork());
+// END testDockerTask({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4cc3-a76a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f987d-b7f28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a76a3-4b9ff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f8a23-c96e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39454-ad415
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92d8a-4f627
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09e48-92510
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_09e48_92510\rev_rev_left_09e48-rev_right_92510\SingularityExecutor\src\main\java\com\hubspot\singularity\executor\config\SingularityExecutorConfigurationLoader.java
+Different Spacing: false
+Left editions: [138, 139, 162, 163]
+Right editions: []
+Merged body: 
+// START bindDefaults(Properties-Properties)//@Override
+  protected void bindDefaults(Properties properties) {
+    properties.put(TASK_APP_DIRECTORY, "app");
+    properties.put(TASK_EXECUTOR_BASH_LOG_PATH, "executor.bash.log");
+    properties.put(TASK_EXECUTOR_JAVA_LOG_PATH, "executor.java.log");
+    properties.put(TASK_SERVICE_LOG_PATH, "service.log");
+    properties.put(HARD_KILL_AFTER_MILLIS, Long.toString(TimeUnit.MINUTES.toMillis(3)));
+    properties.put(NUM_CORE_KILL_THREADS, "1");
+// LEFT //    properties.put(NUM_CORE_THREAD_CHECK_THREADS, "1");
+// LEFT //    properties.put(CHECK_THREADS_EVERY_MILLIS, Long.toString(TimeUnit.SECONDS.toMillis(5)));
+    properties.put(MAX_TASK_MESSAGE_LENGTH, "80");
+    properties.put(SHUTDOWN_TIMEOUT_MILLIS, Long.toString(TimeUnit.MINUTES.toMillis(5)));
+    properties.put(IDLE_EXECUTOR_SHUTDOWN_AFTER_MILLIS, Long.toString(TimeUnit.SECONDS.toMillis(30)));
+    properties.put(SHUTDOWN_STOP_DRIVER_AFTER_MILLIS, Long.toString(TimeUnit.SECONDS.toMillis(5)));
+
+    properties.put(TAIL_LOG_LINES_TO_SAVE, "500");
+    properties.put(TAIL_LOG_FILENAME, "tail_of_finished_service.log");
+
+    properties.put(GLOBAL_TASK_DEFINITION_SUFFIX, ".task.json");
+
+    properties.put(LOGROTATE_COMMAND, "logrotate");
+    properties.put(LOGROTATE_DIRECTORY, "logs");
+    properties.put(LOGROTATE_MAXAGE_DAYS, "7");
+    properties.put(LOGROTATE_COUNT, "20");
+    properties.put(LOGROTATE_DATEFORMAT, "-%Y%m%d%s");
+    properties.put(LOGROTATE_CONFIG_DIRECTORY, "/etc/logrotate.d");
+    properties.put(LOGROTATE_STATE_FILE, "logrotate.status");
+    properties.put(LOGROTATE_EXTRAS_FILES, "");
+    properties.put(LOGROTATE_EXTRAS_DATEFORMAT, "-%Y%m%d");
+
+    properties.put(USE_LOCAL_DOWNLOAD_SERVICE, Boolean.toString(false));
+    properties.put(LOCAL_DOWNLOAD_SERVICE_TIMEOUT_MILLIS, Long.toString(TimeUnit.MINUTES.toMillis(3)));
+// LEFT //
+// LEFT //    properties.put(MAX_TASK_THREADS, "");
+// END bindDefaults(Properties-Properties)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_09e48_92510\rev_rev_left_09e48-rev_right_92510\SingularityBase\src\main\java\com\hubspot\singularity\SingularityS3FormatHelper.java
+Different Spacing: false
+Left editions: []
+Right editions: [161, 186, 189, 190, 191, 192, 193, 194, 212, 215]
+Merged body: 
+// START getS3KeyPrefixes(String-String-List<String>-List<String>-long-long-long-long)//// RIGHT //private static Collection<String> getS3KeyPrefixes(String s3KeyFormat, List<String> disallowedKeys, long start, long end) {
+    String trimKeyFormat = trimKeyFormat(s3KeyFormat, disallowedKeys);
+
+    int indexOfY = trimKeyFormat.indexOf("%Y");
+    int indexOfM = trimKeyFormat.indexOf("%m");
+    int indexOfD = trimKeyFormat.indexOf("%d");
+
+    if (indexOfY == -1 && indexOfM == -1 && indexOfD == -1) {
+      return Collections.singleton(trimKeyFormat);
+    }
+
+    if (indexOfY > -1) {
+      trimKeyFormat = trimKeyFormat.replace("%Y", "YYYY");
+      if (indexOfM > -1) {
+        indexOfM += 2;
+      }
+      if (indexOfD > -1) {
+        indexOfD += 2;
+      }
+    }
+
+    StringBuilder keyBuilder = new StringBuilder(trimKeyFormat);
+
+    Set<String> keyPrefixes = Sets.newHashSet();
+
+// RIGHT //    Calendar calendar = GregorianCalendar.getInstance();
+    calendar.setTimeInMillis(start);
+
+// RIGHT //    calendar.set(Calendar.SECOND, 0);
+// RIGHT //    calendar.set(Calendar.MILLISECOND, 0);
+// RIGHT //    calendar.set(Calendar.MINUTE, 0);
+// RIGHT //    calendar.set(Calendar.HOUR_OF_DAY, 0);
+// RIGHT //
+// RIGHT //    while (calendar.getTimeInMillis() < end) {
+      if (indexOfY > -1) {
+        keyBuilder.replace(indexOfY, indexOfY + 4, getYear(calendar.get(Calendar.YEAR)));
+      }
+
+      if (indexOfM > -1) {
+        keyBuilder.replace(indexOfM, indexOfM + 2, getDayOrMonth(getMonth(calendar)));
+      }
+
+      if (indexOfD > -1) {
+        keyBuilder.replace(indexOfD, indexOfD + 2, getDayOrMonth(calendar.get(Calendar.DAY_OF_MONTH)));
+      }
+
+      keyPrefixes.add(keyBuilder.toString());
+
+      if (indexOfD > -1) {
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+      } else if (indexOfM > -1) {
+// RIGHT //        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.add(Calendar.MONTH, 1);
+      } else {
+// RIGHT //        calendar.set(Calendar.MONTH, 0);
+        calendar.add(Calendar.YEAR, 1);
+      }
+    }
+
+    return keyPrefixes;
+// END getS3KeyPrefixes(String-String-List<String>-List<String>-long-long-long-long)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_09e48_92510\rev_rev_left_09e48-rev_right_92510\SingularityBase\src\main\java\com\hubspot\singularity\SingularityDeploy.java
+Different Spacing: false
+Left editions: [122, 124, 134, 135, 136, 137, 138, 139]
+Right editions: []
+Merged body: 
+// START toBuilder({FormalParametersInternal})//public SingularityDeployBuilder toBuilder() {
+    return new SingularityDeployBuilder(requestId, id)
+    .setCommand(command)
+// LEFT //    .setArguments(copyOfList(arguments))
+    .setResources(resources)
+// LEFT //    .setContainerInfo(containerInfo)
+    .setCustomExecutorCmd(customExecutorCmd)
+    .setCustomExecutorId(customExecutorId)
+    .setCustomExecutorSource(customExecutorSource)
+
+    .setHealthcheckUri(healthcheckUri)
+    .setHealthcheckIntervalSeconds(healthcheckIntervalSeconds)
+    .setHealthcheckTimeoutSeconds(healthcheckTimeoutSeconds)
+    .setSkipHealthchecksOnDeploy(skipHealthchecksOnDeploy)
+
+// LEFT //    .setConsiderHealthyAfterRunningForSeconds(considerHealthyAfterRunningForSeconds)
+// LEFT //    .setDeployHealthTimeoutSeconds(deployHealthTimeoutSeconds)
+// LEFT //    .setServiceBasePath(serviceBasePath)
+// LEFT //    .setLoadBalancerGroups(copyOfList(loadBalancerGroups))
+// LEFT //    .setLoadBalancerOptions(copyOfMap(loadBalancerOptions))
+// LEFT //
+    .setMetadata(copyOfMap(metadata))
+    .setVersion(version)
+    .setTimestamp(timestamp)
+    .setEnv(copyOfMap(env))
+    .setUris(copyOfList(uris))
+    .setExecutorData(executorData);
+// END toBuilder({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92510-8dd0f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_947ed-cb11e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3cd5-ffa2f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b3c6c-97bd7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09e48-da323
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da323-d74bb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b9ff-9d010
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c22b8-7632d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6640-09244
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc2a5-09244
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09244-6d45c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b82e-d12c2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7632d-549cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11da5-9f7a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d391e-ee080
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_d391e_ee080\rev_rev_left_d391e-rev_right_ee080\SingularityService\src\main\java\com\hubspot\singularity\data\StateManager.java
+Different Spacing: false
+Left editions: [250]
+Right editions: [277, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 344, 346]
+Merged body: 
+// START generateState(boolean-boolean)//public SingularityState generateState(boolean includeRequestIds) {
+    final int activeTasks = taskManager.getNumActiveTasks();
+    final int scheduledTasks = taskManager.getNumScheduledTasks();
+    final int cleaningTasks = taskManager.getNumCleanupTasks();
+    final int lbCleanupTasks = taskManager.getNumLbCleanupTasks();
+
+    final SingularityScheduledTasksInfo scheduledTasksInfo = SingularityScheduledTasksInfo.getInfo(taskManager.getPendingTasks(), singularityConfiguration.getDeltaAfterWhichTasksAreLateMillis());
+
+    final List<String> overProvisionedRequestIds = new ArrayList<>();
+    final List<String> possiblyUnderProvisionedRequestIds = new ArrayList<>();
+
+    final List<SingularityRequestWithState> requests = requestManager.getRequests();
+
+    final Map<String, Long> numInstances = getNumTasks(requests);
+
+    int numActiveRequests = 0;
+    int numPausedRequests = 0;
+    int cooldownRequests = 0;
+    int numFinishedRequests = 0;
+
+    for (SingularityRequestWithState requestWithState : requests) {
+      switch (requestWithState.getState()) {
+        case DEPLOYING_TO_UNPAUSE:
+        case ACTIVE:
+          numActiveRequests++;
+          break;
+        case FINISHED:
+          numFinishedRequests++;
+          break;
+        case PAUSED:
+          numPausedRequests++;
+          break;
+        case SYSTEM_COOLDOWN:
+          cooldownRequests++;
+          break;
+        case DELETED:
+          break;
+      }
+
+// LEFT //      if (requestWithState.getState().isRunnable() && !requestWithState.getRequest().isAlwaysRunning()) {
+        final int instances = requestWithState.getRequest().getInstancesSafe();
+
+        final Long numActualInstances = numInstances.get(requestWithState.getRequest().getId());
+
+        if (numActualInstances == null || numActualInstances.longValue() < instances) {
+          possiblyUnderProvisionedRequestIds.add(requestWithState.getRequest().getId());
+        } else if (numActualInstances.longValue() > instances) {
+          overProvisionedRequestIds.add(requestWithState.getRequest().getId());
+        }
+      }
+    }
+
+    final List<String> underProvisionedRequestIds = new ArrayList<>(possiblyUnderProvisionedRequestIds.size());
+    if (!possiblyUnderProvisionedRequestIds.isEmpty()) {
+      Map<String, SingularityRequestDeployState> deployStates = deployManager.getRequestDeployStatesByRequestIds(possiblyUnderProvisionedRequestIds);
+
+      for (SingularityRequestDeployState deployState : deployStates.values()) {
+        if (deployState.getActiveDeploy().isPresent() || deployState.getPendingDeploy().isPresent()) {
+          underProvisionedRequestIds.add(deployState.getRequestId());
+        }
+      }
+    }
+
+    final int pendingRequests = requestManager.getSizeOfPendingQueue();
+    final int cleaningRequests = requestManager.getSizeOfCleanupQueue();
+
+// RIGHT //    List<SingularityRack> racks = rackManager.getObjects();
+
+// RIGHT //    int activeRacks = 0;
+// RIGHT //    int deadRacks = 0;
+// RIGHT //    int decommissioningRacks = 0;
+// RIGHT //    int unknownRacks = 0;
+// RIGHT //
+// RIGHT //    for (SingularityRack rack : racks) {
+// RIGHT //      switch (rack.getCurrentState().getState()) {
+// RIGHT //        case ACTIVE:
+// RIGHT //          activeRacks++;
+// RIGHT //          break;
+// RIGHT //        case DEAD:
+// RIGHT //          deadRacks++;
+// RIGHT //          break;
+// RIGHT //        case MISSING_ON_STARTUP:
+// RIGHT //          unknownRacks++;
+// RIGHT //          break;
+// RIGHT //        case DECOMMISSIONED:
+// RIGHT //        case STARTING_DECOMMISSION:
+// RIGHT //        case DECOMMISSIONING:
+// RIGHT //          decommissioningRacks++;
+// RIGHT //          break;
+// RIGHT //      }
+// RIGHT //    }
+// RIGHT //
+// RIGHT //    List<SingularitySlave> slaves = slaveManager.getObjects();
+// RIGHT //
+// RIGHT //    int activeSlaves = 0;
+// RIGHT //    int deadSlaves = 0;
+// RIGHT //    int decommissioningSlaves = 0;
+// RIGHT //    int unknownSlaves = 0;
+// RIGHT //
+// RIGHT //    for (SingularitySlave slave : slaves) {
+// RIGHT //      switch (slave.getCurrentState().getState()) {
+// RIGHT //        case ACTIVE:
+// RIGHT //          activeSlaves++;
+// RIGHT //          break;
+// RIGHT //        case DEAD:
+// RIGHT //          deadSlaves++;
+// RIGHT //          break;
+// RIGHT //        case MISSING_ON_STARTUP:
+// RIGHT //          unknownSlaves++;
+// RIGHT //          break;
+// RIGHT //        case DECOMMISSIONED:
+// RIGHT //        case STARTING_DECOMMISSION:
+// RIGHT //        case DECOMMISSIONING:
+// RIGHT //          decommissioningSlaves++;
+// RIGHT //          break;
+// RIGHT //      }
+// RIGHT //    }
+
+    final List<SingularityHostState> states = getHostStates();
+
+    int numDeploys = 0;
+    long oldestDeploy = 0;
+    final long now = System.currentTimeMillis();
+
+    for (SingularityPendingDeploy pendingDeploy : deployManager.getPendingDeploys()) {
+      long delta = now - pendingDeploy.getDeployMarker().getTimestamp();
+      if (delta > oldestDeploy) {
+        oldestDeploy = delta;
+      }
+      numDeploys++;
+    }
+
+    return new SingularityState(activeTasks, numActiveRequests, cooldownRequests, numPausedRequests, scheduledTasks, pendingRequests, lbCleanupTasks, cleaningRequests, activeSlaves,
+// RIGHT //        deadSlaves, decommissioningSlaves, activeRacks, deadRacks, decommissioningRacks, cleaningTasks, states, oldestDeploy, numDeploys, scheduledTasksInfo.getNumLateTasks(),
+        scheduledTasksInfo.getNumFutureTasks(), scheduledTasksInfo.getMaxTaskLag(), System.currentTimeMillis(), includeRequestIds ? overProvisionedRequestIds : null,
+// RIGHT //            includeRequestIds ? underProvisionedRequestIds : null, overProvisionedRequestIds.size(), underProvisionedRequestIds.size(), numFinishedRequests, unknownRacks, unknownSlaves);
+// END generateState(boolean-boolean)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e017-d9eae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_549cf-94cf5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c23b2-3bc67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24059-78cc8
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_24059_78cc8\rev_rev_left_24059-rev_right_78cc8\SingularityService\src\main\java\com\hubspot\singularity\data\StateManager.java
+Different Spacing: false
+Left editions: [277, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 344, 346]
+Right editions: [250]
+Merged body: 
+// START generateState(boolean-boolean)//public SingularityState generateState(boolean includeRequestIds) {
+    final int activeTasks = taskManager.getNumActiveTasks();
+    final int scheduledTasks = taskManager.getNumScheduledTasks();
+    final int cleaningTasks = taskManager.getNumCleanupTasks();
+    final int lbCleanupTasks = taskManager.getNumLbCleanupTasks();
+
+    final SingularityScheduledTasksInfo scheduledTasksInfo = SingularityScheduledTasksInfo.getInfo(taskManager.getPendingTasks(), singularityConfiguration.getDeltaAfterWhichTasksAreLateMillis());
+
+    final List<String> overProvisionedRequestIds = new ArrayList<>();
+    final List<String> possiblyUnderProvisionedRequestIds = new ArrayList<>();
+
+    final List<SingularityRequestWithState> requests = requestManager.getRequests();
+
+    final Map<String, Long> numInstances = getNumTasks(requests);
+
+    int numActiveRequests = 0;
+    int numPausedRequests = 0;
+    int cooldownRequests = 0;
+    int numFinishedRequests = 0;
+
+    for (SingularityRequestWithState requestWithState : requests) {
+      switch (requestWithState.getState()) {
+        case DEPLOYING_TO_UNPAUSE:
+        case ACTIVE:
+          numActiveRequests++;
+          break;
+        case FINISHED:
+          numFinishedRequests++;
+          break;
+        case PAUSED:
+          numPausedRequests++;
+          break;
+        case SYSTEM_COOLDOWN:
+          cooldownRequests++;
+          break;
+        case DELETED:
+          break;
+      }
+
+// RIGHT //      if (requestWithState.getState().isRunnable() && requestWithState.getRequest().isAlwaysRunning()) {
+        final int instances = requestWithState.getRequest().getInstancesSafe();
+
+        final Long numActualInstances = numInstances.get(requestWithState.getRequest().getId());
+
+        if (numActualInstances == null || numActualInstances.longValue() < instances) {
+          possiblyUnderProvisionedRequestIds.add(requestWithState.getRequest().getId());
+        } else if (numActualInstances.longValue() > instances) {
+          overProvisionedRequestIds.add(requestWithState.getRequest().getId());
+        }
+      }
+    }
+
+    final List<String> underProvisionedRequestIds = new ArrayList<>(possiblyUnderProvisionedRequestIds.size());
+    if (!possiblyUnderProvisionedRequestIds.isEmpty()) {
+      Map<String, SingularityRequestDeployState> deployStates = deployManager.getRequestDeployStatesByRequestIds(possiblyUnderProvisionedRequestIds);
+
+      for (SingularityRequestDeployState deployState : deployStates.values()) {
+        if (deployState.getActiveDeploy().isPresent() || deployState.getPendingDeploy().isPresent()) {
+          underProvisionedRequestIds.add(deployState.getRequestId());
+        }
+      }
+    }
+
+    final int pendingRequests = requestManager.getSizeOfPendingQueue();
+    final int cleaningRequests = requestManager.getSizeOfCleanupQueue();
+
+// LEFT //    List<SingularityRack> racks = rackManager.getObjects();
+
+// LEFT //    int activeRacks = 0;
+// LEFT //    int deadRacks = 0;
+// LEFT //    int decommissioningRacks = 0;
+// LEFT //    int unknownRacks = 0;
+// LEFT //
+// LEFT //    for (SingularityRack rack : racks) {
+// LEFT //      switch (rack.getCurrentState().getState()) {
+// LEFT //        case ACTIVE:
+// LEFT //          activeRacks++;
+// LEFT //          break;
+// LEFT //        case DEAD:
+// LEFT //          deadRacks++;
+// LEFT //          break;
+// LEFT //        case MISSING_ON_STARTUP:
+// LEFT //          unknownRacks++;
+// LEFT //          break;
+// LEFT //        case DECOMMISSIONED:
+// LEFT //        case STARTING_DECOMMISSION:
+// LEFT //        case DECOMMISSIONING:
+// LEFT //          decommissioningRacks++;
+// LEFT //          break;
+// LEFT //      }
+// LEFT //    }
+// LEFT //
+// LEFT //    List<SingularitySlave> slaves = slaveManager.getObjects();
+// LEFT //
+// LEFT //    int activeSlaves = 0;
+// LEFT //    int deadSlaves = 0;
+// LEFT //    int decommissioningSlaves = 0;
+// LEFT //    int unknownSlaves = 0;
+// LEFT //
+// LEFT //    for (SingularitySlave slave : slaves) {
+// LEFT //      switch (slave.getCurrentState().getState()) {
+// LEFT //        case ACTIVE:
+// LEFT //          activeSlaves++;
+// LEFT //          break;
+// LEFT //        case DEAD:
+// LEFT //          deadSlaves++;
+// LEFT //          break;
+// LEFT //        case MISSING_ON_STARTUP:
+// LEFT //          unknownSlaves++;
+// LEFT //          break;
+// LEFT //        case DECOMMISSIONED:
+// LEFT //        case STARTING_DECOMMISSION:
+// LEFT //        case DECOMMISSIONING:
+// LEFT //          decommissioningSlaves++;
+// LEFT //          break;
+// LEFT //      }
+// LEFT //    }
+
+    final List<SingularityHostState> states = getHostStates();
+
+    int numDeploys = 0;
+    long oldestDeploy = 0;
+    final long now = System.currentTimeMillis();
+
+    for (SingularityPendingDeploy pendingDeploy : deployManager.getPendingDeploys()) {
+      long delta = now - pendingDeploy.getDeployMarker().getTimestamp();
+      if (delta > oldestDeploy) {
+        oldestDeploy = delta;
+      }
+      numDeploys++;
+    }
+
+    return new SingularityState(activeTasks, numActiveRequests, cooldownRequests, numPausedRequests, scheduledTasks, pendingRequests, lbCleanupTasks, cleaningRequests, activeSlaves,
+// LEFT //        deadSlaves, decommissioningSlaves, activeRacks, deadRacks, decommissioningRacks, cleaningTasks, states, oldestDeploy, numDeploys, scheduledTasksInfo.getNumLateTasks(),
+        scheduledTasksInfo.getNumFutureTasks(), scheduledTasksInfo.getMaxTaskLag(), System.currentTimeMillis(), includeRequestIds ? overProvisionedRequestIds : null,
+// LEFT //            includeRequestIds ? underProvisionedRequestIds : null, overProvisionedRequestIds.size(), underProvisionedRequestIds.size(), numFinishedRequests, unknownRacks, unknownSlaves);
+// END generateState(boolean-boolean)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08dd9-d9eae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fdbad-9fb37
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fdbad_9fb37\rev_rev_left_fdbad-rev_right_9fb37\SingularityService\src\main\java\com\hubspot\singularity\data\transcoders\SingularityTranscoderModule.java
+Different Spacing: false
+Left editions: [101]
+Right editions: [89]
+Merged body: 
+// START configure(Binder-Binder)//@Override
+  public void configure(final Binder binder) {
+    bindTranscoder(binder).asSingularityId(SingularityDeployKey.class);
+    bindTranscoder(binder).asSingularityId(SingularityPendingTaskId.class);
+    bindTranscoder(binder).asSingularityId(SingularityTaskId.class);
+
+    bindTranscoder(binder).asJson(SingularityDeployMarker.class);
+    bindTranscoder(binder).asJson(SingularityDeployResult.class);
+    bindTranscoder(binder).asJson(SingularityDeployStatistics.class);
+    bindTranscoder(binder).asJson(SingularityKilledTaskIdRecord.class);
+    bindTranscoder(binder).asJson(SingularityLoadBalancerUpdate.class);
+    bindTranscoder(binder).asJson(SingularityPendingDeploy.class);
+// RIGHT //    bindTranscoder(binder).asJson(SingularityPendingTask.class);
+    bindTranscoder(binder).asJson(SingularityPendingRequest.class);
+    bindTranscoder(binder).asJson(SingularityHostState.class);
+    bindTranscoder(binder).asJson(SingularityRack.class);
+    bindTranscoder(binder).asJson(SingularityRequest.class);
+    bindTranscoder(binder).asJson(SingularityRequestCleanup.class);
+    bindTranscoder(binder).asJson(SingularityRequestDeployState.class);
+    bindTranscoder(binder).asJson(SingularityRequestWithState.class);
+    bindTranscoder(binder).asJson(SingularitySlave.class);
+    bindTranscoder(binder).asJson(SingularityTaskCleanup.class);
+    bindTranscoder(binder).asJson(SingularityTaskHistoryUpdate.class);
+    bindTranscoder(binder).asJson(SingularityWebhook.class);
+// LEFT //    bindTranscoder(binder).asJson(SingularityMachineStateHistoryUpdate.class);
+
+    bindTranscoder(binder).asCompressedJson(SingularityDeployHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityDeploy.class);
+    bindTranscoder(binder).asCompressedJson(SingularityDeployWebhook.class);
+    bindTranscoder(binder).asCompressedJson(SingularityRequestHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityState.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskHealthcheckResult.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskStatusHolder.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTask.class);
+// END configure(Binder-Binder)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fdbad_9fb37\rev_rev_left_fdbad-rev_right_9fb37\SingularityService\src\test\java\com\hubspot\singularity\SingularitySchedulerTestBase.java
+Different Spacing: false
+Left editions: [249]
+Right editions: []
+Merged body: 
+// START createOffer(double-double-double-double)//protected Offer createOffer(double cpus, double memory) {
+// LEFT //    return createOffer(cpus, memory, "slave1", "host1", Optional.<String> absent());
+// END createOffer(double-double-double-double)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_fdbad_9fb37\rev_rev_left_fdbad-rev_right_9fb37\SingularityService\src\test\java\com\hubspot\singularity\SingularitySchedulerTestBase.java
+Different Spacing: false
+Left editions: []
+Right editions: [288]
+Merged body: 
+// START prepTask(SingularityRequest-SingularityRequest-SingularityDeploy-SingularityDeploy-long-long-int-int)//protected SingularityTask prepTask(SingularityRequest request, SingularityDeploy deploy, long launchTime, int instanceNo) {
+    SingularityTaskId taskId = new SingularityTaskId(request.getId(), deploy.getId(), launchTime, instanceNo, "host", "rack");
+    SingularityPendingTask pendingTask = buildPendingTask(request, deploy, launchTime, instanceNo);
+    SingularityTaskRequest taskRequest = new SingularityTaskRequest(request, deploy, pendingTask);
+
+    TaskID taskIdProto = TaskID.newBuilder().setValue(taskId.toString()).build();
+
+    Offer offer = createOffer(125, 1024);
+    TaskInfo taskInfo = TaskInfo.newBuilder()
+        .setSlaveId(offer.getSlaveId())
+        .setTaskId(taskIdProto)
+        .setName("name")
+        .build();
+
+    SingularityTask task = new SingularityTask(taskRequest, taskId, offer, taskInfo);
+
+// RIGHT //    taskManager.savePendingTask(pendingTask);
+
+    return task;
+// END prepTask(SingularityRequest-SingularityRequest-SingularityDeploy-SingularityDeploy-long-long-int-int)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71a0b-5aee5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08dd9-5aee5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68c99-15e56
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15e56-83271
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb4a7-b8ad9
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_cb4a7_b8ad9\rev_rev_left_cb4a7-rev_right_b8ad9\SingularityService\src\main\java\com\hubspot\singularity\resources\RequestResource.java
+Different Spacing: false
+Left editions: [434]
+Right editions: [423]
+Merged body: 
+// START unpause(String-String-Optional<String>-Optional<String>)//@POST
+  @Path("/request/{requestId}/unpause")
+  @ApiOperation(value="Unpause a Singularity Request, scheduling new tasks immediately", response=SingularityRequestParent.class)
+  @ApiResponses({
+    @ApiResponse(code=409, message="Request is not paused"),
+  })
+  public SingularityRequestParent unpause(@ApiParam("The request ID to unpause") @PathParam("requestId") String requestId,
+      @ApiParam("Username of the person requesting the unpause") @QueryParam("user") Optional<String> user) {
+    SingularityRequestWithState requestWithState = fetchRequestWithState(requestId);
+
+// RIGHT //    checkConflict(requestWithState.getState() == RequestState.PAUSED, "Request %s is not in PAUSED state, it is in %s", requestId, requestWithState.getState());
+
+    mailer.sendRequestUnpausedMail(requestWithState.getRequest(), user);
+
+    Optional<String> maybeDeployId = deployManager.getInUseDeployId(requestId);
+
+    final long now = System.currentTimeMillis();
+
+    requestManager.unpause(requestWithState.getRequest(), now, user);
+
+    if (maybeDeployId.isPresent() && !requestWithState.getRequest().isOneOff()) {
+// LEFT //      requestManager.addToPendingQueue(new SingularityPendingRequest(requestId, maybeDeployId.get(), now, user, PendingType.UNPAUSED, Collections.<String> emptyList()));
+    }
+
+    return fillEntireRequest(new SingularityRequestWithState(requestWithState.getRequest(), RequestState.ACTIVE, now));
+// END unpause(String-String-Optional<String>-Optional<String>)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\Singularity\revisions\rev_cb4a7_b8ad9\rev_rev_left_cb4a7-rev_right_b8ad9\SingularityService\src\main\java\com\hubspot\singularity\resources\TaskResource.java
+Different Spacing: false
+Left editions: []
+Right editions: [140]
+Merged body: 
+// START getPendingTaskIdFromStr(String-String)//private SingularityPendingTaskId getPendingTaskIdFromStr(String pendingTaskIdStr) {
+    try {
+      return SingularityPendingTaskId.valueOf(pendingTaskIdStr);
+    } catch (InvalidSingularityTaskIdException e) {
+// RIGHT //      throw badRequest("%s is not a valid pendingTaskId: %s", pendingTaskIdStr, e.getMessage());
+    }
+// END getPendingTaskIdFromStr(String-String)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_cb4a7_b8ad9\rev_rev_left_cb4a7-rev_right_b8ad9\SingularityService\src\main\java\com\hubspot\singularity\resources\TaskResource.java
+Different Spacing: false
+Left editions: [159, 161, 162, 163, 164, 165]
+Right editions: [167]
+Merged body: 
+// START getPendingTask(String-String)//@GET
+  @PropertyFiltering
+  @Path("/scheduled/task/{pendingTaskId}")
+  @ApiOperation("Retrieve information about a pending task.")
+  public SingularityTaskRequest getPendingTask(@PathParam("pendingTaskId") String pendingTaskIdStr) {
+// LEFT //    Optional<SingularityPendingTask> pendingTask = taskManager.getPendingTask(getPendingTaskIdFromStr(pendingTaskIdStr));
+
+// LEFT //    if (!pendingTask.isPresent()) {
+// LEFT //      throw new NotFoundException("Couldn't find: " + pendingTaskIdStr);
+// LEFT //    }
+// LEFT //
+// LEFT //    List<SingularityTaskRequest> taskRequestList = taskRequestManager.getTaskRequests(Collections.singletonList(pendingTask.get()));
+
+// RIGHT //    checkNotFound(!taskRequestList.isEmpty(), "Couldn't find: " + pendingTaskIdStr);
+
+    return Iterables.getFirst(taskRequestList, null);
+// END getPendingTask(String-String)//  }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_cb4a7_b8ad9\rev_rev_left_cb4a7-rev_right_b8ad9\SingularityService\src\main\java\com\hubspot\singularity\resources\TaskResource.java
+Different Spacing: false
+Left editions: [159, 161, 162, 163, 164, 165]
+Right editions: [167]
+Merged body: 
+// START getPendingTask(String-String)//@GET
+  @PropertyFiltering
+  @Path("/scheduled/task/{pendingTaskId}")
+  @ApiOperation("Retrieve information about a pending task.")
+  public SingularityTaskRequest getPendingTask(@PathParam("pendingTaskId") String pendingTaskIdStr) {
+// LEFT //    Optional<SingularityPendingTask> pendingTask = taskManager.getPendingTask(getPendingTaskIdFromStr(pendingTaskIdStr));
+
+// LEFT //    if (!pendingTask.isPresent()) {
+// LEFT //      throw new NotFoundException("Couldn't find: " + pendingTaskIdStr);
+// LEFT //    }
+// LEFT //
+// LEFT //    List<SingularityTaskRequest> taskRequestList = taskRequestManager.getTaskRequests(Collections.singletonList(pendingTask.get()));
+
+// RIGHT //    checkNotFound(!taskRequestList.isEmpty(), "Couldn't find: " + pendingTaskIdStr);
+
+    return Iterables.getFirst(taskRequestList, null);
+// END getPendingTask(String-String)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_cb4a7_b8ad9\rev_rev_left_cb4a7-rev_right_b8ad9\SingularityService\src\main\java\com\hubspot\singularity\resources\TaskResource.java
+Different Spacing: false
+Left editions: [189]
+Right editions: [191]
+Merged body: 
+// START getTasksForSlave(String-String)//@GET
+  @Path("/active/slave/{slaveId}")
+  @ApiOperation("Retrieve list of active tasks on a specific slave.")
+  public List<SingularityTask> getTasksForSlave(@PathParam("slaveId") String slaveId) {
+// LEFT //    Optional<SingularitySlave> maybeSlave = slaveManager.getObject(slaveId);
+
+// RIGHT //    checkNotFound(maybeSlave.isPresent(), "Couldn't find a slave in any state with id %s", slaveId);
+
+    return taskManager.getTasksOnSlave(taskManager.getActiveTaskIds(), maybeSlave.get());
+// END getTasksForSlave(String-String)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8ad9-a19d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78cc8-3c1fd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e766-e9c84
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b8ad9-701f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9c84-a52e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3ff8d-c9566
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05a3c-d3453
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4ce7f-87e43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a061a-c9566
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_a061a_c9566\rev_rev_left_a061a-rev_right_c9566\SingularityService\src\test\java\com\hubspot\singularity\mesos\SingularityMesosTaskBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [171, 175, 191]
+Merged body: 
+// START testDockerTask({FormalParametersInternal})//@Test
+  public void testDockerTask() {
+    resources = new Resources(1, 1, 1);
+
+    final Protos.Resource portsResource = Protos.Resource.newBuilder()
+        .setName("ports")
+        .setType(Protos.Value.Type.RANGES)
+        .setRanges(Protos.Value.Ranges.newBuilder()
+            .addRange(Protos.Value.Range.newBuilder()
+                .setBegin(31000)
+                .setEnd(31000).build()).build()).build();
+
+    final SingularityDockerPortMapping literalMapping = new SingularityDockerPortMapping(Optional.<SingularityPortMappingType>absent(), 80, Optional.of(SingularityPortMappingType.LITERAL), 8080, Optional.<String>absent());
+    final SingularityDockerPortMapping offerMapping = new SingularityDockerPortMapping(Optional.<SingularityPortMappingType>absent(), 81, Optional.of(SingularityPortMappingType.FROM_OFFER), 0, Optional.of("udp"));
+
+// RIGHT //    final SingularityRequest request = new SingularityRequestBuilder("test", RequestType.WORKER).build();
+    final SingularityContainerInfo containerInfo = new SingularityContainerInfo(
+        Type.DOCKER,
+        Optional.of(Collections.singletonList(new SingularityVolume("/container", Optional.of("/host"), Mode.RW))),
+// RIGHT //        Optional.of(new SingularityDockerInfo("docker-image", true, Optional.of(Protos.ContainerInfo.DockerInfo.Network.BRIDGE), Optional.of(Arrays.asList(literalMapping, offerMapping)))));
+    final SingularityDeploy deploy = new SingularityDeployBuilder("test", "1")
+    .setContainerInfo(Optional.of(containerInfo))
+    .setCommand(Optional.of("/bin/echo"))
+    .setArguments(Optional.of(Collections.singletonList("wat")))
+    .build();
+    final SingularityTaskRequest taskRequest = new SingularityTaskRequest(request, deploy, pendingTask);
+    final SingularityTask task = builder.buildTask(offer, Collections.singletonList(portsResource), taskRequest, resources);
+
+    assertEquals("/bin/echo", task.getMesosTask().getCommand().getValue());
+    assertEquals(1, task.getMesosTask().getCommand().getArgumentsCount());
+    assertEquals("wat", task.getMesosTask().getCommand().getArguments(0));
+    assertFalse(task.getMesosTask().getCommand().getShell());
+
+    assertEquals(Type.DOCKER, task.getMesosTask().getContainer().getType());
+    assertEquals("docker-image", task.getMesosTask().getContainer().getDocker().getImage());
+// RIGHT //    assertTrue(task.getMesosTask().getContainer().getDocker().getPrivileged());
+    assertEquals("/container", task.getMesosTask().getContainer().getVolumes(0).getContainerPath());
+    assertEquals("/host", task.getMesosTask().getContainer().getVolumes(0).getHostPath());
+    assertEquals(Mode.RW, task.getMesosTask().getContainer().getVolumes(0).getMode());
+
+    assertEquals(80, task.getMesosTask().getContainer().getDocker().getPortMappings(0).getContainerPort());
+    assertEquals(8080, task.getMesosTask().getContainer().getDocker().getPortMappings(0).getHostPort());
+    assertEquals("tcp", task.getMesosTask().getContainer().getDocker().getPortMappings(0).getProtocol());
+
+    assertEquals(81, task.getMesosTask().getContainer().getDocker().getPortMappings(1).getContainerPort());
+    assertEquals(31000, task.getMesosTask().getContainer().getDocker().getPortMappings(1).getHostPort());
+    assertEquals("udp", task.getMesosTask().getContainer().getDocker().getPortMappings(1).getProtocol());
+
+    assertEquals(Protos.ContainerInfo.DockerInfo.Network.BRIDGE, task.getMesosTask().getContainer().getDocker().getNetwork());
+// END testDockerTask({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a68e0-85057
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_85057-27e81
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e646f-37637
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37637-c80f8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7317c-fc363
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33510-99fb6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50034-4a8a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be7d2-e8605
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8605-7d7d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8af74-27ed5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4e31-b2deb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1f1d5-a6c2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80a82-bbe6f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_740b1-2de90
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2876f-fba95
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_2876f_fba95\rev_rev_left_2876f-rev_right_fba95\SingularityService\src\main\java\com\hubspot\singularity\SingularityServiceModule.java
+Different Spacing: false
+Left editions: [40]
+Right editions: [47, 48]
+Merged body: 
+// START configure(Binder-Binder-SingularityConfiguration-SingularityConfiguration)//@Override
+  protected void configure(Binder binder, SingularityConfiguration configuration) {
+    binder.install(new SingularityMainModule());
+    binder.install(new SingularityDataModule());
+    binder.install(new SingularitySchedulerModule());
+// LEFT //    binder.install(new SingularityResourceModule(configuration.getUiConfiguration()));
+    binder.install(new SingularityTranscoderModule());
+    binder.install(new SingularityHistoryModule(configuration));
+    binder.install(new SingularityMesosModule());
+    binder.install(new SingularityZkMigrationsModule());
+    binder.install(new SingularityMesosClientModule());
+    binder.install(new SingularityJerseyModule());
+// RIGHT //
+// RIGHT //    binder.install(new SingularityEventModule(configuration));
+// END configure(Binder-Binder-SingularityConfiguration-SingularityConfiguration)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ed12-fed56
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_0ed12_fed56\rev_rev_left_0ed12-rev_right_fed56\SingularityService\src\main\java\com\hubspot\singularity\data\transcoders\SingularityTranscoderModule.java
+Different Spacing: false
+Left editions: [89, 101]
+Right editions: [105]
+Merged body: 
+// START configure(Binder-Binder)//@Override
+  public void configure(final Binder binder) {
+    bindTranscoder(binder).asSingularityId(SingularityDeployKey.class);
+    bindTranscoder(binder).asSingularityId(SingularityPendingTaskId.class);
+    bindTranscoder(binder).asSingularityId(SingularityTaskId.class);
+
+    bindTranscoder(binder).asJson(SingularityDeployMarker.class);
+    bindTranscoder(binder).asJson(SingularityDeployResult.class);
+    bindTranscoder(binder).asJson(SingularityDeployStatistics.class);
+    bindTranscoder(binder).asJson(SingularityKilledTaskIdRecord.class);
+    bindTranscoder(binder).asJson(SingularityLoadBalancerUpdate.class);
+    bindTranscoder(binder).asJson(SingularityPendingDeploy.class);
+// LEFT //    bindTranscoder(binder).asJson(SingularityPendingTask.class);
+    bindTranscoder(binder).asJson(SingularityPendingRequest.class);
+    bindTranscoder(binder).asJson(SingularityHostState.class);
+    bindTranscoder(binder).asJson(SingularityRack.class);
+    bindTranscoder(binder).asJson(SingularityRequest.class);
+    bindTranscoder(binder).asJson(SingularityRequestCleanup.class);
+    bindTranscoder(binder).asJson(SingularityRequestDeployState.class);
+    bindTranscoder(binder).asJson(SingularityRequestWithState.class);
+    bindTranscoder(binder).asJson(SingularitySlave.class);
+    bindTranscoder(binder).asJson(SingularityTaskCleanup.class);
+    bindTranscoder(binder).asJson(SingularityTaskHistoryUpdate.class);
+    bindTranscoder(binder).asJson(SingularityWebhook.class);
+// LEFT //    bindTranscoder(binder).asJson(SingularityMachineStateHistoryUpdate.class);
+
+    bindTranscoder(binder).asCompressedJson(SingularityDeployHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityDeploy.class);
+// RIGHT //    bindTranscoder(binder).asCompressedJson(SingularityDeployUpdate.class);
+    bindTranscoder(binder).asCompressedJson(SingularityRequestHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityState.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskHealthcheckResult.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskHistory.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTaskStatusHolder.class);
+    bindTranscoder(binder).asCompressedJson(SingularityTask.class);
+// END configure(Binder-Binder)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\Singularity\revisions\rev_0ed12_fed56\rev_rev_left_0ed12-rev_right_fed56\SingularityService\src\test\java\com\hubspot\singularity\scheduler\SingularityTestModule.java
+Different Spacing: false
+Left editions: [249, 250]
+Right editions: [181, 182, 245]
+Merged body: 
+// START configure(Binder-Binder)//@Override
+  public void configure(Binder mainBinder) {
+
+    mainBinder.install(new GuiceBundle.GuiceEnforcerModule());
+
+    mainBinder.bind(TestingServer.class).toInstance(ts);
+// RIGHT //    final SingularityConfiguration configuration = getSingularityConfigurationForTestingServer(ts);
+// RIGHT //    mainBinder.bind(SingularityConfiguration.class).toInstance(configuration);
+
+    mainBinder.install(Modules.override(new SingularityMainModule())
+        .with(new Module() {
+
+          @Override
+          public void configure(Binder binder) {
+            binder.bind(SingularityExceptionNotifier.class).toInstance(mock(SingularityExceptionNotifier.class));
+
+            SingularityAbort abort = mock(SingularityAbort.class);
+            SingularityMailer mailer = mock(SingularityMailer.class);
+
+            binder.bind(SingularityMailer.class).toInstance(mailer);
+            binder.bind(SingularityAbort.class).toInstance(abort);
+
+            TestingLoadBalancerClient tlbc = new TestingLoadBalancerClient();
+            binder.bind(LoadBalancerClient.class).toInstance(tlbc);
+            binder.bind(TestingLoadBalancerClient.class).toInstance(tlbc);
+
+            binder.bind(ObjectMapper.class).toInstance(Jackson.newObjectMapper()
+                .setSerializationInclusion(Include.NON_NULL)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .registerModule(new ProtobufModule()));
+
+            binder.bind(HostAndPort.class).annotatedWith(named(HTTP_HOST_AND_PORT)).toInstance(HostAndPort.fromString("localhost:8080"));
+
+            binder.bind(new TypeLiteral<Optional<Raven>>() {}).toInstance(Optional.<Raven> absent());
+            binder.bind(new TypeLiteral<Optional<SentryConfiguration>>() {}).toInstance(Optional.<SentryConfiguration> absent());
+          }
+        }));
+
+    mainBinder.install(Modules.override(new SingularityMesosModule())
+        .with(new Module() {
+
+          @Override
+          public void configure(Binder binder) {
+            SingularityLogSupport logSupport = mock(SingularityLogSupport.class);
+            binder.bind(SingularityLogSupport.class).toInstance(logSupport);
+
+            SingularityDriver mock = mock(SingularityDriver.class);
+            when(mock.kill((SingularityTaskId) Matchers.any())).thenReturn(Status.DRIVER_RUNNING);
+            when(mock.getMaster()).thenReturn(Optional.<MasterInfo> absent());
+            when(mock.start()).thenReturn(Status.DRIVER_RUNNING);
+            when(mock.getLastOfferTimestamp()).thenReturn(Optional.<Long>absent());
+            binder.bind(SingularityDriver.class).toInstance(mock);
+
+            SchedulerDriver driver = mock(SchedulerDriver.class);
+
+            when(driver.killTask(null)).thenReturn(Status.DRIVER_RUNNING);
+
+            SchedulerDriverSupplier driverSupplier = new SchedulerDriverSupplier();
+            driverSupplier.setSchedulerDriver(driver);
+
+            binder.bind(SchedulerDriverSupplier.class).toInstance(driverSupplier);
+          }
+        }));
+
+    mainBinder.install(new SingularityDataModule());
+    mainBinder.install(new SingularitySchedulerModule());
+    mainBinder.install(new SingularityTranscoderModule());
+    mainBinder.install(new SingularityHistoryModule());
+    mainBinder.install(new SingularityZkMigrationsModule());
+    mainBinder.install(new SingularityMesosClientModule());
+// RIGHT //    mainBinder.install(new SingularityEventModule(configuration));
+
+    mainBinder.bind(DeployResource.class);
+    mainBinder.bind(RequestResource.class);
+// LEFT //    mainBinder.bind(SlaveResource.class);
+// LEFT //    mainBinder.bind(RackResource.class);
+// END configure(Binder-Binder)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#

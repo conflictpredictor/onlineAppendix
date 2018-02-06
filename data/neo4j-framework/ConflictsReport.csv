@@ -1,0 +1,1034 @@
+=========================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_74433_db8c0\rev_74433-db8c0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_8829b_6429e\rev_8829b-6429e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_d05f6_a2eed\rev_d05f6-a2eed.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_342e7_2c472\rev_342e7-2c472.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_dce58_01043\rev_dce58-01043.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_5d9cf-ee0a7.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+	public GraphAwareRuntimeModule bootstrapModule(String moduleId, Map<String, String> config, GraphDatabaseService database) {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185811786\fstmerge_var1_7402762241904882191
+		RuntimeModuleConfiguration moduleConfiguration = new MinimalRuntimeModuleConfiguration()
+				.with(IncludeAllNodes.getInstance())
+				.with(IncludeAllRelationships.getInstance());
+
+		return new CrawlerRuntimeModule(moduleId, moduleConfiguration, new ThingThatGetsCalledWhenWeFindSomething() {
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185811786\fstmerge_base_5784893107426439683
+		return new CrawlerRuntimeModule(moduleId, IncludeAllNodes.getInstance(), new ThingThatGetsCalledWhenWeFindSomething() {
+=======
+		return new CrawlerRuntimeModule(moduleId, 
+                                                IncludeAllNodes.getInstance(),  
+                                                IncludeAllRelationships.getInstance(), 
+                                                new ThingThatGetsCalledWhenWeFindSomething() {
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185811786\fstmerge_var2_5600522152887473613
+			@Override
+			public void doSomeStuff(Context context) {
+				throw new UnsupportedOperationException("atg hasn't written this method yet");
+			}
+		});
+	}
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_rev_left_5d9cf-rev_right_ee0a7\crawler\src\main\java\com\graphaware\crawler\bootstrap\CrawlerModuleBootstrapper.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: copiedMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808303\fstmerge_var1_5601642086808281295
+@Deprecated
+	public CrawlerRuntimeModule(String moduleId, InclusionStrategy<Node> nodeInclusionStrategy,
+			InclusionStrategy<Relationship> relationshipInclusionStrategy, ThingThatGetsCalledWhenWeFindSomething inclusionHandler) {
+		super(moduleId);
+		this.nodeInclusionStrategy = nodeInclusionStrategy;
+		this.relationshipInclusionStrategy = relationshipInclusionStrategy;
+		this.inclusionHandler = inclusionHandler;
+	}
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808303\fstmerge_base_3283973943078005756
+=======
+public CrawlerRuntimeModule(String moduleId, InclusionStrategy<Node> nodeInclusionStrategy, InclusionStrategy<Relationship> relInclusionStrategy,
+			ThingThatGetsCalledWhenWeFindSomething inclusionHandler) {
+		super(moduleId);
+		this.nodeInclusionStrategy = nodeInclusionStrategy;
+                this.relInclusionStrategy = relInclusionStrategy;
+		this.inclusionHandler = inclusionHandler;
+	}
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808303\fstmerge_var2_7525090168185564968
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_rev_left_5d9cf-rev_right_ee0a7\crawler\src\main\java\com\graphaware\crawler\CrawlerRuntimeModule.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808725\fstmerge_var1_831826816002144048
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808725\fstmerge_base_721077665203628461
+public CrawlerRuntimeModule(String moduleId, InclusionStrategy<Node> nodeInclusionStrategy,
+			ThingThatGetsCalledWhenWeFindSomething inclusionHandler) {
+		super(moduleId);
+		this.nodeInclusionStrategy = nodeInclusionStrategy;
+		this.inclusionHandler = inclusionHandler;
+	}
+=======
+public CrawlerRuntimeModule(String moduleId, InclusionStrategy<Node> nodeInclusionStrategy, ThingThatGetsCalledWhenWeFindSomething inclusionHandler) {
+		super(moduleId);
+		this.nodeInclusionStrategy = nodeInclusionStrategy;
+                this.relInclusionStrategy = IncludeAllRelationships.getInstance();
+                this.inclusionHandler = inclusionHandler;
+	}
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185808725\fstmerge_var2_1509549283731742511
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_rev_left_5d9cf-rev_right_ee0a7\crawler\src\main\java\com\graphaware\crawler\CrawlerRuntimeModule.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+	public void initialize(GraphDatabaseService database) {
+		/*
+		 * Here, I reckon we will have to set up the thread to crawl the database and allow the consumer of the framework to
+		 * choose a NodeSelectionStrategy.  In fact, should it be InclusionStrategy?
+		 *
+		 * We also need to decide on the throttling here and set that up along with the iterative algorithm for crawling the
+		 * graph.  This graph crawling implementation is different from the one used to select the nodes, although the node
+		 * inclusion strategy will probably be utilised by the crawler.
+		 *
+		 * Actually, are these inclusion strategies even necessary?  Couldn't we just have the handler decide if it's interested
+		 * or not?  I know there's a separation of concerns here but is it over-engineering?
+		 */
+		PerpetualGraphCrawler crawler = new NeoRankCrawler();// new SimpleRecursiveGraphCrawler();
+		crawler.setNodeInclusionStrategy(this.nodeInclusionStrategy);
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185809069\fstmerge_var1_1696077453627300133
+		crawler.setRelationshipInclusionStrategy(this.relationshipInclusionStrategy);
+		crawler.addInclusionHandler(this.inclusionHandler);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185809069\fstmerge_base_5634702767199450422
+		crawler.addInclusionHandler(this.inclusionHandler);
+=======
+		crawler.setRelationshipInclusionStrategy(this.relInclusionStrategy);
+                crawler.addInclusionHandler(this.inclusionHandler);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513185809069\fstmerge_var2_1800568666643467527
+		crawler.startCrawling(database);
+	}
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_5d9cf_ee0a7\rev_rev_left_5d9cf-rev_right_ee0a7\crawler\src\main\java\com\graphaware\crawler\CrawlerRuntimeModule.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_18bb0_31c8f\rev_18bb0-31c8f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_fe21f_922af\rev_fe21f-922af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_d5a67_18313\rev_d5a67-18313.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_b35c1_96d8d\rev_b35c1-96d8d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_96d8d_f8d38\rev_96d8d-f8d38.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_88deb_0d476\rev_88deb-0d476.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_3b14e_0d476\rev_3b14e-0d476.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c2b1a_7850c\rev_c2b1a-7850c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_2bdaa_28bec\rev_2bdaa-28bec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f0c37_c3794\rev_f0c37-c3794.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_ad150_acdcd\rev_ad150-acdcd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f75dc_80eae\rev_f75dc-80eae.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_141b9_5054f\rev_141b9-5054f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_ddd90_eb2b3\rev_ddd90-eb2b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_eefad_b86f0\rev_eefad-b86f0.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187157224\fstmerge_var1_2166956027942069442
+private void initializeModules() {
+        try (Transaction tx = startTransaction()) {
+            final Node root = getOrCreateRoot();
+            final Map<String, Object> moduleMetadata = getInternalProperties(root);
+            final Collection<String> unusedModules = new HashSet<>(moduleMetadata.keySet());
+
+            for (final RuntimeModule module : getAllModules()) {
+                final String key = moduleKey(module);
+                unusedModules.remove(key);
+
+                Serializer.register(module.getConfiguration().getClass());
+
+                if (!moduleMetadata.containsKey(key)) {
+                    LOG.info("Module " + module.getId() + " seems to have been registered for the first time, will initialize...");
+                    initializeModule(module);
+                    continue;
+
+                }
+
+                String value = (String) moduleMetadata.get(key);
+
+                if (value.startsWith(CONFIG)) {
+                    if (!value.equals(Serializer.toString(module.getConfiguration(), CONFIG))) {
+                        LOG.info("Module " + module.getId() + " seems to have changed configuration since last run, will re-initialize...");
+                        reinitializeModule(module);
+                    } else {
+                        LOG.info("Module " + module.getId() + " has not changed configuration since last run, already initialized.");
+                    }
+                    continue;
+                }
+
+                if (value.startsWith(FORCE_INITIALIZATION)) {
+                    LOG.info("Module " + module.getId() + " has been marked for re-initialization on "
+                            + new Date(Long.valueOf(value.replace(FORCE_INITIALIZATION, ""))).toString() + ". Will re-initialize...");
+                    reinitializeModule(module);
+                    continue;
+
+                }
+
+                LOG.error("Corrupted module info: " + value + " is not a valid value!");
+                throw new IllegalStateException("Corrupted module info: " + value + " is not a valid value");
+            }
+
+            removeUnusedModules(unusedModules);
+
+            tx.success();
+        }
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187157224\fstmerge_base_4038996802604480316
+private void initializeModules() {
+        try (Transaction tx = startTransaction()) {
+            final Node root = getOrCreateRoot();
+            final Map<String, Object> moduleMetadata = getInternalProperties(root);
+            final Collection<String> unusedModules = new HashSet<>(moduleMetadata.keySet());
+
+            for (final RuntimeModule module : getAllModules()) {
+                final String key = moduleKey(module);
+                unusedModules.remove(key);
+
+                Serializer.register(module.getConfiguration().getClass());
+
+                if (!moduleMetadata.containsKey(key)) {
+                    LOG.info("Module " + module.getId() + " seems to have been registered for the first time, will initialize...");
+                    initializeModule(module);
+                    continue;
+
+                }
+
+                String value = (String) moduleMetadata.get(key);
+
+                if (value.startsWith(CONFIG)) {
+                    if (!value.equals(Serializer.toString(module.getConfiguration(), CONFIG))) {
+                        LOG.info("Module " + module.getId() + " seems to have changed configuration since last run, will re-initialize...");
+                        reinitializeModule(module);
+                    } else {
+                        LOG.info("Module " + module.getId() + " has not changed configuration since last run, already initialized.");
+                    }
+                    continue;
+                }
+
+                if (value.startsWith(FORCE_INITIALIZATION)) {
+                    LOG.info("Module " + module.getId() + " has been marked for re-initialization on "
+                            + new Date(Long.valueOf(value.replace(FORCE_INITIALIZATION, ""))).toString() + ". Will re-initialize...");
+                    reinitializeModule(module);
+                    continue;
+
+                }
+
+                LOG.fatal("Corrupted module info: " + value + " is not a valid value!");
+                throw new IllegalStateException("Corrupted module info: " + value + " is not a valid value");
+            }
+
+            removeUnusedModules(unusedModules);
+
+            tx.success();
+        }
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187157224\fstmerge_var2_6580775278176200644
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_eefad_b86f0\rev_rev_left_eefad-rev_right_b86f0\runtime\src\main\java\com\graphaware\runtime\BaseGraphAwareRuntime.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_ef4e1_bb18a\rev_ef4e1-bb18a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_58c40_7713e\rev_58c40-7713e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_94ad8_4e412\rev_94ad8-4e412.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f94c5_3416c\rev_f94c5-3416c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f8a18_13a3b\rev_f8a18-13a3b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_9293f_36766\rev_9293f-36766.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c8371_8b60e\rev_c8371-8b60e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_0e889_c3019\rev_0e889-c3019.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_dde08_360d6\rev_dde08-360d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_7eed9_fbc1f\rev_7eed9-fbc1f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c6157_829cf\rev_c6157-829cf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_8e946_cac19\rev_8e946-cac19.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_cb566_eb1e2\rev_cb566-eb1e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c6bc1_865a0\rev_c6bc1-865a0.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187802836\fstmerge_var1_6094556152366715064
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187802836\fstmerge_base_5765189703395081462
+@Test
+    public void allRegisteredInterestedModulesShouldBeDelegatedToWhenRuntimeIsNotExplicitlyStarted() {
+        T mockModule1 = mockTxModule(MOCK + "1");
+        T mockModule2 = mockTxModule(MOCK + "2");
+        T mockModule3 = mockTxModule(MOCK + "3", new MinimalTxDrivenModuleConfiguration(InclusionStrategies.none()));
+
+        GraphAwareRuntime runtime = createRuntime();
+        runtime.registerModule(mockModule1);
+        runtime.registerModule(mockModule2);
+        runtime.registerModule(mockModule3);
+
+        //no explicit runtime start!
+        try (Transaction tx = getTransaction()) {
+            createNode();
+            tx.success();
+        }
+
+        verifyInitialization(mockModule1);
+        verifyInitialization(mockModule2);
+        verifyInitialization(mockModule3);
+
+        verifyStart(mockModule1);
+        verifyStart(mockModule2);
+        verifyStart(mockModule3);
+
+        verify(mockModule1, atLeastOnce()).getConfiguration();
+        verify(mockModule2, atLeastOnce()).getConfiguration();
+        verify(mockModule3, atLeastOnce()).getConfiguration();
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+
+        verify(mockModule1).beforeCommit(any(ImprovedTransactionData.class));
+        verify(mockModule1).afterCommit("TEST_" + MOCK + "1");
+        verify(mockModule2).beforeCommit(any(ImprovedTransactionData.class));
+        verify(mockModule2).afterCommit("TEST_" + MOCK + "2");
+        verify(mockModule1, atLeastOnce()).getConfiguration();
+        verify(mockModule2, atLeastOnce()).getConfiguration();
+        verify(mockModule3, atLeastOnce()).getConfiguration();
+
+        //no interaction with module3, it is not interested!
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+    }
+=======
+@Test
+    public void allRegisteredInterestedModulesShouldBeDelegatedToWhenRuntimeIsNotExplicitlyStarted() {
+        T mockModule1 = mockTxModule(MOCK + "1");
+        T mockModule2 = mockTxModule(MOCK + "2");
+        T mockModule3 = mockTxModule(MOCK + "3", new MinimalTxDrivenModuleConfiguration(InclusionStrategies.none()));
+
+        GraphAwareRuntime runtime = createRuntime();
+        runtime.registerModule(mockModule1);
+        runtime.registerModule(mockModule2);
+        runtime.registerModule(mockModule3);
+
+        //no testing runtime start!
+        try (Transaction tx = getTransaction()) {
+            createNode();
+            tx.success();
+        }
+
+        verifyInitialization(mockModule1);
+        verifyInitialization(mockModule2);
+        verifyInitialization(mockModule3);
+
+        verifyStart(mockModule1);
+        verifyStart(mockModule2);
+        verifyStart(mockModule3);
+
+        verify(mockModule1, atLeastOnce()).getConfiguration();
+        verify(mockModule2, atLeastOnce()).getConfiguration();
+        verify(mockModule3, atLeastOnce()).getConfiguration();
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+
+        verify(mockModule1).beforeCommit(any(ImprovedTransactionData.class));
+        verify(mockModule1).afterCommit("TEST_" + MOCK + "1");
+        verify(mockModule2).beforeCommit(any(ImprovedTransactionData.class));
+        verify(mockModule2).afterCommit("TEST_" + MOCK + "2");
+        verify(mockModule1, atLeastOnce()).getConfiguration();
+        verify(mockModule2, atLeastOnce()).getConfiguration();
+        verify(mockModule3, atLeastOnce()).getConfiguration();
+
+        //no interaction with module3, it is not interested!
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187802836\fstmerge_var2_5518299923844619589
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_c6bc1_865a0\rev_rev_left_c6bc1-rev_right_865a0\runtime\src\test\java\com\graphaware\runtime\GraphAwareRuntimeTest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187806046\fstmerge_var1_4618145334949977952
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187806046\fstmerge_base_6103654412919764912
+@Test
+    public void allRegisteredInterestedTimerModulesShouldBeDelegatedToWhenRuntimeNotExplicitlyStarted() throws InterruptedException {
+        TimerDrivenModule mockModule1 = mockTimerModule(MOCK + "1");
+        TimerDrivenModule mockModule2 = mockTimerModule(MOCK + "2");
+        TimerDrivenModule mockModule3 = mockTimerModule(MOCK + "3");
+
+        GraphAwareRuntime runtime = createRuntime();
+        runtime.registerModule(mockModule1);
+        runtime.registerModule(mockModule2);
+        runtime.registerModule(mockModule3);
+
+        //no explicit runtime start!
+        try (Transaction tx = getTransaction()) {
+            createNode();
+            tx.success();
+        }
+
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+        verify(mockModule1).createInitialContext(database);
+        verify(mockModule2).createInitialContext(database);
+        verify(mockModule3).createInitialContext(database);
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+
+        Thread.sleep(INITIAL_TIMER_DELAY + 5 * TIMER_DELAY - 100);
+
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+        verify(mockModule1, times(2)).doSomeWork(null, database);
+        verify(mockModule2, times(2)).doSomeWork(null, database);
+        verify(mockModule3).doSomeWork(null, database);
+
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+    }
+=======
+@Test
+    public void allRegisteredInterestedTimerModulesShouldBeDelegatedToWhenRuntimeNotExplicitlyStarted() throws InterruptedException {
+        TimerDrivenModule mockModule1 = mockTimerModule(MOCK + "1");
+        TimerDrivenModule mockModule2 = mockTimerModule(MOCK + "2");
+        TimerDrivenModule mockModule3 = mockTimerModule(MOCK + "3");
+
+        GraphAwareRuntime runtime = createRuntime();
+        runtime.registerModule(mockModule1);
+        runtime.registerModule(mockModule2);
+        runtime.registerModule(mockModule3);
+
+        //no testing runtime start!
+        try (Transaction tx = getTransaction()) {
+            createNode();
+            tx.success();
+        }
+
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+        verify(mockModule1).createInitialContext(database);
+        verify(mockModule2).createInitialContext(database);
+        verify(mockModule3).createInitialContext(database);
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+
+        Thread.sleep(INITIAL_TIMER_DELAY + 5 * TIMER_DELAY - 100);
+
+        verify(mockModule1, atLeastOnce()).getId();
+        verify(mockModule2, atLeastOnce()).getId();
+        verify(mockModule3, atLeastOnce()).getId();
+        verify(mockModule1, times(2)).doSomeWork(null, database);
+        verify(mockModule2, times(2)).doSomeWork(null, database);
+        verify(mockModule3).doSomeWork(null, database);
+
+        verifyNoMoreInteractions(mockModule1, mockModule2, mockModule3);
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513187806046\fstmerge_var2_4290773302791318054
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_c6bc1_865a0\rev_rev_left_c6bc1-rev_right_865a0\runtime\src\test\java\com\graphaware\runtime\RealDatabaseProductionRuntimeTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_5cb2f_ff7b6\rev_5cb2f-ff7b6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_a68cf_b4a8f\rev_a68cf-b4a8f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c49ae_f37e2\rev_c49ae-f37e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f0fb1_e559b\rev_f0fb1-e559b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_66d4b_12d7d\rev_66d4b-12d7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_30ddf_90d02\rev_30ddf-90d02.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_f6b3f_33091\rev_f6b3f-33091.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_b54c5-1a7c5.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188358389\fstmerge_var1_6151636631293794148
+public static final String VERSION = "2.2.0.19";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188358389\fstmerge_base_8078984615404630423
+public static final String VERSION = "2.1.4.18";
+=======
+public static final String VERSION = "2.1.6.26";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188358389\fstmerge_var2_5871237497807627316
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188557161\fstmerge_var1_5038256033911771971
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188557161\fstmerge_base_3016275127409117570
+@Bean(destroyMethod = "shutdown")
+        public GraphDatabaseService graphDatabaseService() {
+            GraphDatabaseService database = new GraphDatabaseFactory()
+                    .newEmbeddedDatabaseBuilder("/tmp/test")
+                    .loadPropertiesFromURL(
+                            Config.class.getClassLoader().getResource("com/graphaware/runtime/spring/neo4j.properties"))
+                    .newGraphDatabase();
+
+            ProductionRuntime.getRuntime(database).waitUntilStarted();
+
+            return database;
+        }
+=======
+@Bean(destroyMethod = "shutdown")
+        public GraphDatabaseService graphDatabaseService() {
+            GraphDatabaseService database = new GraphDatabaseFactory()
+                    .newEmbeddedDatabaseBuilder("/tmp/test")
+                    .loadPropertiesFromURL(
+                            Config.class.getClassLoader().getResource("com/graphaware/runtime/spring/neo4j.properties"))
+                    .newGraphDatabase();
+
+            registerShutdownHook(database);
+
+            RuntimeRegistry.getRuntime(database).waitUntilStarted();
+
+            return database;
+        }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188557161\fstmerge_var2_731095846230359796
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\runtime\src\test\java\com\graphaware\runtime\spring\Config.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public String greet() {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565169\fstmerge_var1_7381136967727901355
+        try (Transaction tx = database.beginTx()) {
+            return "Hello World! There are " + IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes()) + " nodes in the database.";
+        }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565169\fstmerge_base_3377373734703133276
+        return "Hello World! There are " + IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes()) + " nodes in the database.";
+=======
+        long count;
+
+        try (Transaction tx = database.beginTx()) {
+            count = IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes());
+            tx.success();
+        }
+
+        return "Hello World! There are " + count + " nodes in the database.";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565169\fstmerge_var2_3446819663166814202
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\server\server-community\src\test\java\com\graphaware\server\HelloWorldService.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public String greet() {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565989\fstmerge_var1_7682402712225462031
+        try (Transaction tx = database.beginTx()) {
+            return "Hello World! There are " + IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes()) + " nodes in the database.";
+        }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565989\fstmerge_base_3176746709165942778
+        return "Hello World! There are " + IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes()) + " nodes in the database.";
+=======
+        long count;
+
+        try (Transaction tx = database.beginTx()) {
+            count = IterableUtils.count(GlobalGraphOperations.at(database).getAllNodes());
+            tx.success();
+        }
+
+        return "Hello World! There are " + count + " nodes in the database.";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188565989\fstmerge_var2_6265585861693193648
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_b54c5_1a7c5\rev_rev_left_b54c5-rev_right_1a7c5\server\server-enterprise\src\test\java\com\graphaware\server\HelloWorldService.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_53f5c_6ab00\rev_53f5c-6ab00.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_a6cff_04582\rev_a6cff-04582.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188711454\fstmerge_var1_1479673266004301238
+public static final String VERSION = "2.2.0.19";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188711454\fstmerge_base_1041318922311418226
+public static final String VERSION = "2.1.6.26";
+=======
+public static final String VERSION = "2.1.7.28";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513188711454\fstmerge_var2_5516053282779439262
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_a6cff_04582\rev_rev_left_a6cff-rev_right_04582\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_92d5a_30a33\rev_92d5a-30a33.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_3d2d6_625b9\rev_3d2d6-625b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_57221_5b09c\rev_57221-5b09c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c7db4_52182\rev_c7db4-52182.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_572ce_56770\rev_572ce-56770.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_c0177_338ce\rev_c0177-338ce.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_b206c_a3af3\rev_b206c-a3af3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_8cf52_5e72e\rev_8cf52-5e72e.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189270530\fstmerge_var1_8115963627989950511
+public static final String VERSION = "2.3.0.35";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189270530\fstmerge_base_3979173431493014724
+public static final String VERSION = "2.2.5.34";
+=======
+public static final String VERSION = "2.2.6.35";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189270530\fstmerge_var2_7286932589616818063
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_8cf52_5e72e\rev_rev_left_8cf52-rev_right_5e72e\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_9eccb_5f7b4\rev_9eccb-5f7b4.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private long nextId(GraphDatabaseService database) {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189463220\fstmerge_var1_2427515493309370529
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStores.class).getNodeStore().getHighestPossibleIdInUse();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189463220\fstmerge_base_5482233073037425782
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStoreSupplier.class).get().getNodeStore().getHighestPossibleIdInUse();
+=======
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStoresSupplier.class).get().getNodeStore().getHighestPossibleIdInUse();
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189463220\fstmerge_var2_2902518065383609049
+        long nextId = lastId.incrementAndGet();
+
+        if (nextId > highestId) {
+            lastId.set(-1);
+            nextId = lastId.incrementAndGet();
+        }
+        return nextId;
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_9eccb_5f7b4\rev_rev_left_9eccb-rev_right_5f7b4\runtime\src\main\java\com\graphaware\runtime\walk\ContinuousNodeSelector.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private Node randomNodeO1(GraphDatabaseService database) {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189464401\fstmerge_var1_1872800888970158675
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStores.class).getNodeStore().getHighestPossibleIdInUse();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189464401\fstmerge_base_5192784364346221860
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStoreSupplier.class).get().getNodeStore().getHighestPossibleIdInUse();
+=======
+        long highestId = ((GraphDatabaseAPI) database).getDependencyResolver().resolveDependency(NeoStoresSupplier.class).get().getNodeStore().getHighestPossibleIdInUse();
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189464401\fstmerge_var2_1438009948752986640
+
+        if (highestId <= 0) {
+            return null;
+        }
+
+        for (int i = 0; i < MAX_EFFICIENT_ATTEMPTS; i++) {
+            long randomId = random.nextLong(0, highestId);
+            try {
+                Node node = database.getNodeById(randomId);
+                if (inclusionPolicy.include(node)) {
+                    return node;
+                }
+            } catch (NotFoundException e) {
+                //ok, try again
+            }
+        }
+
+        return null;
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_9eccb_5f7b4\rev_rev_left_9eccb-rev_right_5f7b4\runtime\src\main\java\com\graphaware\runtime\walk\RandomNodeSelector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_38f88_289f7\rev_38f88-289f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_a2253-a3932.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189957755\fstmerge_var1_5150187482961840441
+String VERSION = "3.0.0.36";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189957755\fstmerge_base_215734047733112082
+String VERSION = "2.3.1.36";
+=======
+String VERSION = "2.3.2.37";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513189957755\fstmerge_var2_6700606103471252098
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+private File serverConfigToConfDir() throws IOException {
+        String serverConfigContents = IOUtils.toString(new ClassPathResource(neo4jServerConfigFile).getInputStream());
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_var1_8263954974936434395
+        serverConfigContents = serverConfigContents.replaceAll("=config/", "=" + temporaryFolder.getRoot().getAbsolutePath() + "/config/");
+        serverConfigContents = serverConfigContents.replaceAll("=data/", "=" + temporaryFolder.getRoot().getAbsolutePath() + "/data/");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_base_9009074453188013808
+        serverConfigContents = serverConfigContents.replaceAll("=conf/", "=" + temporaryFolder.getRoot().getAbsolutePath() + "/conf/");
+        serverConfigContents = serverConfigContents.replaceAll("=data/", "=" + temporaryFolder.getRoot().getAbsolutePath() + "/data/");
+=======
+        serverConfigContents = serverConfigContents.replaceAll("=conf" + File.separator, "=" + temporaryFolder.getRoot().getAbsolutePath() + File.separator + "conf" + File.separator);
+        serverConfigContents = serverConfigContents.replaceAll("=data" + File.separator, "=" + temporaryFolder.getRoot().getAbsolutePath() + File.separator + "data" + File.separator);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_var2_3886686499117243290
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_var1_8263954974936434395
+        File serverConfig = temporaryFolder.newFile("config/neo4j-server.properties");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_base_9009074453188013808
+        File serverConfig = temporaryFolder.newFile("conf/neo4j-server.properties");
+=======
+        File serverConfig = temporaryFolder.newFile("conf" + File.separator + "neo4j-server.properties");
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624577\fstmerge_var2_3886686499117243290
+        IOUtils.copy(IOUtils.toInputStream(serverConfigContents), new FileOutputStream(serverConfig));
+        System.setProperty(ServerSettings.SERVER_CONFIG_FILE_KEY, serverConfig.getAbsolutePath());
+        return serverConfig;
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\tests\src\main\java\com\graphaware\test\integration\NeoTestServer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+protected File copyToConfDir(String classPathResource, String newName) throws IOException {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624717\fstmerge_var1_4103747832073436694
+        File result = temporaryFolder.newFile("config/" + newName);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624717\fstmerge_base_3968114107301731933
+        File result = temporaryFolder.newFile("conf/" + newName);
+=======
+        File result = temporaryFolder.newFile("conf" + File.separator + newName);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513190624717\fstmerge_var2_9177883020510676223
+        IOUtils.copy(new ClassPathResource(classPathResource).getInputStream(), new FileOutputStream(result));
+        return result;
+    }
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_a2253_a3932\rev_rev_left_a2253-rev_right_a3932\tests\src\main\java\com\graphaware\test\integration\NeoTestServer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_89f74_1c295\rev_89f74-1c295.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_840ed_66de2\rev_840ed-66de2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_03e34_08dc0\rev_03e34-08dc0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_568ad_099cc\rev_568ad-099cc.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513191601812\fstmerge_var1_293692275964744042
+String VERSION = "3.0.0.37";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513191601812\fstmerge_base_2495526510303675570
+String VERSION = "2.3.2.37";
+=======
+String VERSION = "2.3.3.37";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513191601812\fstmerge_var2_722795228822509633
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_568ad_099cc\rev_rev_left_568ad-rev_right_099cc\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_8aea9_6ca2e\rev_8aea9-6ca2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_76c73_962cf\rev_76c73-962cf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_9c7f3_a8414\rev_9c7f3-a8414.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_9fb8a_0991d\rev_9fb8a-0991d.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192523032\fstmerge_var1_8849496275491940880
+String VERSION = "3.1.0.40";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192523032\fstmerge_base_4307559009716179786
+String VERSION = "3.0.1.38";
+=======
+String VERSION = "3.1.0.38";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192523032\fstmerge_var2_3153711811006282876
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_9fb8a_0991d\rev_rev_left_9fb8a-rev_right_0991d\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_42dd8_e522b\rev_42dd8-e522b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_155b7_45745\rev_155b7-45745.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192797564\fstmerge_var1_6265938628696812720
+String VERSION = "3.1.0.40";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192797564\fstmerge_base_8316902655555948188
+String VERSION = "3.0.3.39";
+=======
+String VERSION = "3.0.4.43";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192797564\fstmerge_var2_1046008381570461057
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_155b7_45745\rev_rev_left_155b7-rev_right_45745\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_002a6_c24d7\rev_002a6-c24d7.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192877777\fstmerge_var1_3957550985405661286
+String VERSION = "3.1.0.44";
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192877777\fstmerge_base_4709281277093124505
+String VERSION = "3.0.4.43";
+=======
+String VERSION = "3.0.6.43";
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513192877777\fstmerge_var2_5497169560167414765
+
+File path: C:\download\ssmerge\neo4j-framework\revisions\rev_002a6_c24d7\rev_rev_left_002a6-rev_right_c24d7\common\src\main\java\com\graphaware\common\ping\StatsCollector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_bf426_d185a\rev_bf426-d185a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_36090_245e5\rev_36090-245e5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_245e5_9e3c8\rev_245e5-9e3c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_8a571_e146e\rev_8a571-e146e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_892de_65d7a\rev_892de-65d7a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_452bd_2e85f\rev_452bd-2e85f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_d02f3_7f51a\rev_d02f3-7f51a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_a8045_a4945\rev_a8045-a4945.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_b65e9_fb8b3\rev_b65e9-fb8b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_d7863_2e762\rev_d7863-2e762.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_64bb7_08d43\rev_64bb7-08d43.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_04cba_f8b7d\rev_04cba-f8b7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\neo4j-framework\revisions\rev_672d9_7f8b0\rev_672d9-7f8b0.revisions
+
+=========================================================

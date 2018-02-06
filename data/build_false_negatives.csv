@@ -1,0 +1,24 @@
+project,merge_scenario,build_conflict_cause
+blueprints,rev_6a496-ee120,left removes method that right add a call
+blueprints,rev_f3e8d-38c85,left and right copied the same method but with spacing differences, the normal merge reported a conflict and the integrator copied and pasted the same method twice
+cloud-slang,rev_3da6b-014af,after merging, some files did not have the required license header
+CorfuDB,rev_1f78b-9da6e,left adds a call to a method that is removed by right
+jackson-databind,rev_50a3d-fa6f2,right calls a method that no longer exists
+java-driver,rev_21521-f77b0,after merging, some files did not have the required license header
+java-driver,rev_e6630-f624f,after merging, some files did not have the required license header
+java-driver,rev_b0c30-3a602,after merging, some files did not have the required license header
+java-driver,rev_2d611-c017b,after merging, some files did not have the required license header
+java-driver,rev_9bc2c-b6757,after merging, some files did not have the required license header
+javapoet,rev_1d7e4-e8c12, left tries to call a method that had its signature changed by right
+neo4j-reco,rev_7f2cd-bff45,Left mudou o local do arquivo enquanto Right adicionou uma chamada a uma classe que fazia parte previamente do mesmo pacote. Resultado, a build quebra
+netty-zmtp,rev_2c676-b5532,Left mudou o local do arquivo enquanto Right adicionou uma chamada a uma classe que fazia parte previamente do mesmo pacote. Resultado, a build quebra
+okio,rev_755bd-7a9dd,variavel referenciada foi movida ou deletada
+ontop,rev_6ee32-79cae,right calls a method that no longer exists
+OpenGrok,rev_3dc37-34360, left reference classes that no longer exists or was moved
+protostuff,rev_30395-944d2,left reference classes that no longer exists or was moved
+querydsl,rev_9c093-12909,left references classes, variables or methods that no longer exists or were moved
+scribejava,rev_43ea4-fa96f,mandei pra leuson
+spring-boot-admin,rev_2a260-f7af1,references classes, variables or methods that no longer exists or were moved
+truth,rev_a9381-5dda4,references classes, variables or methods that no longer exists or were moved
+vavr,rev_cd64e-f6b41,references classes, variables or methods that no longer exists or were moved
+wire,rev_c4e70-e29a8,references classes, variables or methods that no longer exists or were moved

@@ -1,0 +1,3294 @@
+=========================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_b31d2_9d265\rev_b31d2-9d265.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_1bdee_360d6\rev_1bdee-360d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_66e11_0c0c9\rev_66e11-0c0c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_a8b7b-01d40.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162220\fstmerge_var1_2297817275647533823
+public boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count() == 0;
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162220\fstmerge_base_388269633751991945
+public boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count(DOCUMENTS_QUERY) == 0;
+=======
+boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count(DOCUMENTS_QUERY) == 0;
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162220\fstmerge_var2_1326223280990035299
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162627\fstmerge_var1_5160696728100909560
+public long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162627\fstmerge_base_8224867430201090164
+public long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject(DOCUMENTS_QUERY);
+=======
+long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject(DOCUMENTS_QUERY);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699162627\fstmerge_var2_5659921511484880867
+
+        if (filters != null) {
+            try {
+                filters.stream().forEach(f -> {
+                    query.putAll((BSONObject) JSON.parse(f));  // this can throw JSONParseException for invalid filter parameters
+                });
+            } catch (JSONParseException jpe) {
+                LOGGER.warn("****** error parsing filter expression {}", filters, jpe);
+            }
+        }
+
+        return coll.count(query);
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699163848\fstmerge_var1_7049098142152532506
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699163848\fstmerge_base_7243656276882781642
+public ArrayList<DBObject> getCollectionData(DBCollection coll, int page, int pagesize, Deque<String> sortBy, Deque<String> filters, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        DBCursor cursor;
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, toskip, 0), eager);
+        }
+
+        int alreadySkipped;
+
+        // in case there is not cursor in the pool to reuse
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters);
+            alreadySkipped = 0;
+        } else {
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+        }
+
+        if (toskip - alreadySkipped > 0) {
+            cursor.skip(toskip - alreadySkipped);
+        }
+
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+        }
+
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId _etag = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(_etag.getTimestamp()).toString());
+            }
+        }
+        );
+
+        return ret;
+    }
+=======
+ArrayList<DBObject> getCollectionData(
+            DBCollection coll,
+            int page,
+            int pagesize,
+            Deque<String> sortBy,
+            Deque<String> filters,
+            DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        DBCursor cursor;
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, toskip, 0), eager);
+        }
+
+        int alreadySkipped;
+
+        // in case there is not cursor in the pool to reuse
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters);
+            alreadySkipped = 0;
+        } else {
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+        }
+
+        if (toskip - alreadySkipped > 0) {
+            cursor.skip(toskip - alreadySkipped);
+        }
+
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+        }
+
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId _etag = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(_etag.getTimestamp()).toString());
+            }
+        }
+        );
+
+        return ret;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699163848\fstmerge_var2_8373428373484130505
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699164160\fstmerge_var1_3496327757025551682
+public DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection propsColl = getCollection(dbName, "_properties");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699164160\fstmerge_base_8472998634105290454
+public DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection coll = getCollection(dbName, collName);
+=======
+DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection coll = getCollection(dbName, collName);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699164160\fstmerge_var2_991390573127226023
+
+        DBObject properties = propsColl.findOne(new BasicDBObject("_id", "_properties.".concat(collName)));
+
+        if (properties != null) {
+            properties.put("_id", collName);
+
+            Object etag = properties.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                properties.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return properties;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public int upsertDB(String dbName, DBObject content, ObjectId etag, boolean patching) {
+        DB db = client.getDB(dbName);
+
+        boolean existing = db.getCollectionNames().size() > 0;
+
+        if (patching && !existing) {
+            return HttpStatus.SC_NOT_FOUND;
+        }
+
+        DBCollection coll = db.getCollection("_properties");
+
+        // check the etag
+        if (db.collectionExists("_properties")) {
+            if (etag == null) {
+                return HttpStatus.SC_CONFLICT;
+            }
+
+            BasicDBObject idAndEtagQuery = new BasicDBObject("_id", "_properties");
+            idAndEtagQuery.append("_etag", etag);
+
+            if (coll.count(idAndEtagQuery) < 1) {
+                return HttpStatus.SC_PRECONDITION_FAILED;
+            }
+        }
+
+        // apply new values
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.removeField("_created_on"); // make sure we don't change this field
+        content.removeField("_id"); // make sure we don't change this field
+
+        if (patching) {
+            coll.update(PROPS_QUERY, new BasicDBObject("$set", content), true, false);
+
+            return HttpStatus.SC_OK;
+        } else {
+            // we use findAndModify to get the @created_on field value from the existing document
+            // we need to put this field back using a second update 
+            // it is not possible in a single update even using $setOnInsert update operator
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177430\fstmerge_var1_7966062388245543488
+            // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(PROPS_QUERY, fieldsToReturn, null, false, content, false, true);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177430\fstmerge_base_1180515156837511759
+            // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(METADATA_QUERY, fieldsToReturn, null, false, content, false, true);
+=======
+            // in this case we need to provide the other data using $set operator 
+            // and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(METADATA_QUERY, fieldsToReturn, null, false, content, false, true);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177430\fstmerge_var2_6671690826095472504
+
+            if (old != null) {
+                Object oldTimestamp = old.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of collection {} had no @created_on field. set to now", coll.getFullName());
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+                createdContent.markAsPartialObject();
+                coll.update(PROPS_QUERY, new BasicDBObject("$set", createdContent), true, false);
+
+                return HttpStatus.SC_OK;
+            } else {
+                // need to readd the @created_on field 
+                BasicDBObject createdContent = new BasicDBObject("_created_on", now.toString());
+                createdContent.markAsPartialObject();
+                coll.update(PROPS_QUERY, new BasicDBObject("$set", createdContent), true, false);
+
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177930\fstmerge_var1_1698544208315626366
+public List<String> getDbCollections(DB db) {
+        List<String> _colls = new ArrayList(db.getCollectionNames());
+        
+        // filter out reserved dbs
+        return _colls.stream().filter(coll -> !RequestContext.isReservedResourceCollection(coll)).sorted().collect(Collectors.toList());
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177930\fstmerge_base_7544813580424349554
+public List<String> getDbCollections(DB db) {
+        List<String> _colls = new ArrayList(db.getCollectionNames());
+        Collections.sort(_colls);
+        return _colls;
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699177930\fstmerge_var2_2439183640615003792
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699178290\fstmerge_var1_7637609652507951801
+public DBObject getDbProps(String dbName) {
+        if (!doesDbExists(dbName)) {
+            // this check is important, otherwise the db would get created if not existing after the query
+            return null;
+        }
+
+        final CollectionDAO collectionDAO = new CollectionDAO();
+        DBCollection propsColl = collectionDAO.getCollection(dbName, "_properties");
+
+        DBObject row = propsColl.findOne(PROPS_QUERY);
+
+        if (row != null) {
+            row.put("_id", dbName);
+
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return row;
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699178290\fstmerge_base_356692050596118693
+public DBObject getDbProps(String dbName) {
+        if (!doesDbExists(dbName)) {
+            // this check is important, otherwise the db would get created if not existing after the query
+            return null;
+        }
+
+        final CollectionDAO collectionDAO = new CollectionDAO();
+        DBCollection propscoll = collectionDAO.getCollection(dbName, "_properties");
+
+        DBObject row = propscoll.findOne(METADATA_QUERY);
+
+        if (row != null) {
+            row.put("_id", dbName);
+
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return row;
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699178290\fstmerge_var2_5051296333065531193
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181085\fstmerge_var1_1079480948636664278
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181085\fstmerge_base_6590785038174805370
+@Override
+    public int upsertDocument(String dbName, String collName, String documentId, DBObject content, ObjectId requestEtag, boolean patching) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        if (patching) {
+            content.removeField("_created_on"); // make sure we don't change this field
+
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, new BasicDBObject("$set", content), false, false);
+
+            if (oldDocument == null) {
+                return HttpStatus.SC_NOT_FOUND;
+            } else {
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            }
+        } else {
+            content.put("_created_on", now.toString()); // let's assume this is an insert. in case we'll set it back with a second update
+
+            // we use findAndModify to get the @created_on field value from the existing document
+            // in case this is an update well need to upsertDocument it back using a second update 
+            // it is not possible to do it with a single update
+            // (even using $setOnInsert update because we'll need to use the $set operator for other data and this would make it a partial update (patch semantic) 
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+            if (oldDocument != null) { // upsertDocument
+                Object oldTimestamp = oldDocument.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                            dbName, collName, documentId);
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject created = new BasicDBObject("_created_on", "" + oldTimestamp);
+                created.markAsPartialObject();
+                coll.update(idQuery, new BasicDBObject("$set", created), true, false);
+
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            } else {  // insert
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+=======
+@Override
+    public int upsertDocument(String dbName, String collName, String documentId, DBObject content, ObjectId requestEtag, boolean patching) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        if (patching) {
+            content.removeField("_created_on"); // make sure we don't change this field
+
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, new BasicDBObject("$set", content), false, false);
+
+            if (oldDocument == null) {
+                return HttpStatus.SC_NOT_FOUND;
+            } else {
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            }
+        } else {
+            content.put("_created_on", now.toString()); // let's assume this is an insert. in case we'll set it back with a second update
+
+            // we use findAndModify to get the @created_on field value from the existing document
+            // in case this is an update well need to upsertDocument it back using a second update 
+            // it is not possible to do it with a single update
+            // (even using $setOnInsert update because we'll need to use the $set operator for other data and this would make it a partial update (patch semantic) 
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+            if (oldDocument != null) { // upsertDocument
+                Object oldTimestamp = oldDocument.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                            dbName, collName, documentId);
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject created = new BasicDBObject("_created_on", "" + oldTimestamp);
+                created.markAsPartialObject();
+                coll.update(idQuery, new BasicDBObject("$set", created), true, false);
+
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            } else {  // insert
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181085\fstmerge_var2_1346933944934352636
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181304\fstmerge_var1_2781395984055526081
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181304\fstmerge_base_7529234724402670147
+@Override
+    public int upsertDocumentPost(HttpServerExchange exchange, String dbName, String collName, DBObject content, ObjectId requestEtag) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.put("_created_on", now.toString()); // make sure we don't change this field
+
+        Object _id = content.get("_id");
+        content.removeField("_id");
+
+        if (_id == null) {
+            ObjectId id = new ObjectId();
+            content.put("_id", id);
+
+            coll.insert(content);
+
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), id.toString()).toString());
+
+            return HttpStatus.SC_CREATED;
+        } else {
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), _id.toString()).toString());
+        }
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId("" + _id));
+
+        // we use findAndModify to get the @created_on field value from the existing document
+        // we need to upsertDocument this field back using a second update 
+        // it is not possible in a single update even using $setOnInsert update operator
+        // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+        if (oldDocument != null) {  // upsertDocument
+            Object oldTimestamp = oldDocument.get("_created_on");
+
+            if (oldTimestamp == null) {
+                oldTimestamp = now.toString();
+                LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                        dbName, collName, _id.toString());
+            }
+
+            // need to readd the @created_on field 
+            BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+            createdContent.markAsPartialObject();
+            coll.update(idQuery, new BasicDBObject("$set", createdContent), true, false);
+
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+        } else { // insert
+            return HttpStatus.SC_CREATED;
+        }
+    }
+=======
+@Override
+    public int upsertDocumentPost(HttpServerExchange exchange, String dbName, String collName, DBObject content, ObjectId requestEtag) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.put("_created_on", now.toString()); // make sure we don't change this field
+
+        Object _id = content.get("_id");
+        content.removeField("_id");
+
+        if (_id == null) {
+            ObjectId id = new ObjectId();
+            content.put("_id", id);
+
+            coll.insert(content);
+
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), id.toString()).toString());
+
+            return HttpStatus.SC_CREATED;
+        } else {
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), _id.toString()).toString());
+        }
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId("" + _id));
+
+        // we use findAndModify to get the @created_on field value from the existing document
+        // we need to upsertDocument this field back using a second update 
+        // it is not possible in a single update even using $setOnInsert update operator
+        // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+        if (oldDocument != null) {  // upsertDocument
+            Object oldTimestamp = oldDocument.get("_created_on");
+
+            if (oldTimestamp == null) {
+                oldTimestamp = now.toString();
+                LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                        dbName, collName, _id.toString());
+            }
+
+            // need to readd the @created_on field 
+            BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+            createdContent.markAsPartialObject();
+            coll.update(idQuery, new BasicDBObject("$set", createdContent), true, false);
+
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+        } else { // insert
+            return HttpStatus.SC_CREATED;
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181304\fstmerge_var2_4907590577523847002
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181601\fstmerge_var1_2714804833427412145
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181601\fstmerge_base_7542064576387448875
+@Override
+    public int deleteDocument(String dbName, String collName, String documentId, ObjectId requestEtag) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, true, null, false, false);
+
+        if (oldDocument == null) {
+            return HttpStatus.SC_NOT_FOUND;
+        } else {
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_NO_CONTENT);
+        }
+    }
+=======
+@Override
+    public int deleteDocument(String dbName, String collName, String documentId, ObjectId requestEtag) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, true, null, false, false);
+
+        if (oldDocument == null) {
+            return HttpStatus.SC_NOT_FOUND;
+        } else {
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_NO_CONTENT);
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699181601\fstmerge_var2_486546092140958899
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public boolean addCollectionProps(String dbName, String collName) throws MongoException {
+        
+        DBObject dbmd = dbsDAO.getDatabaseProperties(dbName);
+
+        if (dbmd == null) {
+            // db must exists with properties
+            return false;
+        }
+
+        DBObject md = dbsDAO.getCollectionProperties(dbName, collName);
+
+        if (md != null) // properties exists
+        {
+            return false;
+        }
+
+        // check if collection has data
+        DB db = dbsDAO.getDB(dbName);
+
+        if (!db.collectionExists(collName)) {
+            return false;
+        }
+
+        // ok, create the properties
+        DBObject properties = new BasicDBObject();
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        properties.put("_id", "_properties.".concat(collName));
+        properties.put("_created_on", now.toString());
+        properties.put("_etag", timestamp);
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699193036\fstmerge_var1_405499379957191238
+        DBCollection propsColl = collectionDAO.getCollection(dbName, "_properties");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699193036\fstmerge_base_7414104339767607631
+        DBCollection coll = collectionDAO.getCollection(dbName, collName);
+=======
+        DBCollection coll = dbsDAO.getCollection(dbName, collName);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699193036\fstmerge_var2_6837928177095767419
+
+        propsColl.insert(properties);
+
+        LOGGER.info("properties added to {}/{}", dbName, collName);
+        return true;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\PropsFixer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void handleRequest(HttpServerExchange exchange, RequestContext context) throws Exception {
+        DBCollection coll = this.dbsDAO.getCollection(context.getDBName(), context.getCollectionName());
+        long size = -1;
+
+        if (context.isCount()) {
+            size = this.dbsDAO.getCollectionSize(coll, exchange.getQueryParameters().get("filter"));
+        }
+
+        // ***** get data
+        ArrayList<DBObject> data = null;
+
+        try {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699242236\fstmerge_var1_6712263937206958257
+            data = collectionDAO.getCollectionData(coll, context.getPage(), context.getPagesize(), context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy(), context.isDetectObjectIds());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699242236\fstmerge_base_5588802308171497073
+            data = collectionDAO.getCollectionData(coll, context.getPage(), context.getPagesize(), context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy());
+=======
+            data = this.dbsDAO.getCollectionData(coll, context.getPage(), context.getPagesize(),
+                    context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699242236\fstmerge_var2_1883309903225175908
+        } catch (JSONParseException jpe) {
+            // the filter expression is not a valid json string
+            LOGGER.error("invalid filter expression {}", context.getFilter(), jpe);
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, "wrong request, filter expression is invalid", jpe);
+            return;
+        } catch (MongoException me) {
+            if (me.getMessage().matches(".*Can't canonicalize query.*")) {
+                // error with the filter expression during query execution
+                LOGGER.error("invalid filter expression {}", context.getFilter(), me);
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, "wrong request, filter expression is invalid", me);
+                return;
+            } else {
+                throw me;
+            }
+        }
+
+        if (exchange.isComplete()) {
+            // if an error occured getting data, the exchange is already closed
+            return;
+        }
+
+        // ***** return NOT_FOUND from here if collection is not existing 
+        // (this is to avoid to check existance via the slow CollectionDAO.checkCollectionExists)
+        if (data.isEmpty() && (context.getCollectionProps() == null || context.getCollectionProps().keySet().isEmpty())) {
+            ResponseHelper.endExchange(exchange, HttpStatus.SC_NOT_FOUND);
+            return;
+        }
+
+        try {
+            exchange.setResponseCode(HttpStatus.SC_OK);
+            new CollectionRepresentationFactory().sendHal(exchange, context, data, size);
+            exchange.endExchange();
+        } catch (IllegalQueryParamenterException ex) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, ex.getMessage(), ex);
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\collection\GetCollectionHandler.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void handleRequest(HttpServerExchange exchange, RequestContext context) throws Exception {
+        DBObject content = context.getContent();
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        // cannot POST an array
+        if (content instanceof BasicDBList) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "data cannot be an array");
+            return;
+        }
+
+        ObjectId etag = RequestHelper.getWriteEtag(exchange);
+
+        if (content.get("_id") != null && content.get("_id") instanceof String && RequestContext.isReservedResourceDocument((String) content.get("_id"))) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_FORBIDDEN, "reserved resource");
+            return;
+        }
+        
+        Object docId;
+
+        if (content.get("_id") == null) {
+            if (context.getDocIdType() == URLUtils.DOC_ID_TYPE.OBJECTID || context.getDocIdType() == URLUtils.DOC_ID_TYPE.STRING_OBJECTID) {
+                docId = new ObjectId();
+            } else {
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "_id in content body is mandatory for document id type " + context.getDocIdType().name());
+                return;
+            }
+            
+        } else {
+            try {
+                docId = URLUtils.getId(content.get("_id"), context.getDocIdType());
+            } catch(IllegalDocumentIdException idide) {
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "_id in content body is not of type " + context.getDocIdType().name());
+                return;
+            }
+        }
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699246826\fstmerge_var1_8108742249324052455
+        int httpCode = new DocumentDAO()
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), docId, content, etag);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699246826\fstmerge_base_6006428091986097337
+        int httpCode = new DocumentDAO()
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), content, etag);
+=======
+        int httpCode = this.documentDAO
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), content, etag);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699246826\fstmerge_var2_117569636447996486
+
+        // send the warnings if any (and in case no_content change the return code to ok
+        if (context.getWarnings() != null && !context.getWarnings().isEmpty()) {
+            sendWarnings(httpCode, exchange, context);
+        } else {
+            exchange.setResponseCode(httpCode);
+        }
+
+        exchange.endExchange();
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\collection\PostCollectionHandler.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699276670\fstmerge_var1_591870850872802309
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699276670\fstmerge_base_4594479451767012440
+private static TreeMap<String, String> getRelationshipsLinks(RequestContext context, DBObject data) {
+        TreeMap<String, String> links = new TreeMap<>();
+
+        List<Relationship> rels = null;
+
+        try {
+            rels = Relationship.getFromJson((DBObject) context.getCollectionProps());
+        } catch (InvalidMetadataException ex) {
+            context.addWarning("collection " + context.getDBName() + "/" + context.getCollectionName() + " has invalid relationships definition");
+        }
+
+        if (rels == null) {
+            return links;
+        }
+
+        for (Relationship rel : rels) {
+            try {
+                String link = rel.getRelationshipLink(context, context.getDBName(), context.getCollectionName(), data);
+
+                if (link != null) {
+                    links.put(rel.getRel(), link);
+                }
+            } catch (IllegalArgumentException ex) {
+                context.addWarning(ex.getMessage());
+                logger.warn(ex.getMessage(), ex);
+            }
+        }
+
+        return links;
+    }
+=======
+private static TreeMap<String, String> getRelationshipsLinks(RequestContext context, DBObject data) {
+        TreeMap<String, String> links = new TreeMap<>();
+
+        List<Relationship> rels = null;
+
+        try {
+            rels = Relationship.getFromJson((DBObject) context.getCollectionProps());
+        } catch (InvalidMetadataException ex) {
+            context.addWarning("collection " + context.getDBName() 
+                    + "/" + context.getCollectionName()
+                    + " has invalid relationships definition");
+        }
+
+        if (rels == null) {
+            return links;
+        }
+
+        for (Relationship rel : rels) {
+            try {
+                String link = rel.getRelationshipLink(context, context.getDBName(), context.getCollectionName(), data);
+
+                if (link != null) {
+                    links.put(rel.getRel(), link);
+                }
+            } catch (IllegalArgumentException ex) {
+                context.addWarning(ex.getMessage());
+                logger.warn(ex.getMessage(), ex);
+            }
+        }
+
+        return links;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699276670\fstmerge_var2_6114771679466020136
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\document\DocumentRepresentationFactory.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 1
+Intersection: 1
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+static public void sendHal(HttpServerExchange exchange, RequestContext context, List<DBObject> embeddedData, long size)
+            throws IllegalQueryParamenterException {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699297633\fstmerge_var1_3491326532770312566
+        String requestPath = URLUtils.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() ? "" : "?" + URLUtils.decodeQueryString(exchange.getQueryString());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699297633\fstmerge_base_75316753155271209
+        String requestPath = URLUtilis.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() ? "" : "?" + URLUtilis.decodeQueryString(exchange.getQueryString());
+=======
+        String requestPath = URLUtilis.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() 
+                ? "" 
+                : "?" + URLUtilis.decodeQueryString(exchange.getQueryString());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699297633\fstmerge_var2_8271576431957815853
+
+        Representation rep = new Representation(requestPath + queryString);
+
+        rep.addProperty("_type", context.getType().name());
+
+        if (size >= 0) {
+            rep.addProperty("_size", size);
+        }
+
+        if (embeddedData != null) {
+            long count = embeddedData.stream()
+                    .filter((props) -> props.keySet().stream()
+                            .anyMatch((k) -> k.equals("id") || k.equals("_id")))
+                    .count();
+
+            rep.addProperty("_returned", count);
+
+            if (!embeddedData.isEmpty()) {
+                embeddedDocuments(embeddedData, requestPath, rep);
+            }
+        }
+
+        // link templates and curies
+        if (context.isParentAccessible()) {
+            // this can happen due to mongo-mounts mapped URL
+            rep.addLink(new Link("rh:coll", URLUtils.getParentPath(requestPath)));
+        }
+        rep.addLink(new Link("rh", "curies", Configuration.RESTHEART_ONLINE_DOC_URL 
+                + "/#api-indexes-{rel}", false), true);
+
+        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, HAL_JSON_MEDIA_TYPE);
+        exchange.getResponseSender().send(rep.toString());
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\indexes\IndexesRepresentationFactory.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void dbdirect() {
+        final Database dbsDAO = new DbsDAO();
+        DBCollection dbcoll = dbsDAO.getCollection(db, coll);
+
+        Deque<String> _filter;
+
+        if (filter == null) {
+            _filter = null;
+        } else {
+            _filter = new ArrayDeque<>();
+            _filter.add(filter);
+        }
+
+        ArrayList<DBObject> data;
+        
+        try {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699374045\fstmerge_var1_2287153995430955940
+            data = collectionDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE, true);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699374045\fstmerge_base_8402675765475258551
+            data = collectionDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE);
+=======
+            data = dbsDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513699374045\fstmerge_var2_4458746464140215786
+        } catch(Exception e) {
+            System.out.println("error: " + e.getMessage());
+            return;
+        }
+        
+        assertNotNull(data);
+        assertFalse(data.isEmpty());
+
+        if (printData) {
+            System.out.println(data);
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\test\java\org\restheart\test\performance\LoadGetPT.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_c96bc_9ce4e\rev_c96bc-9ce4e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_6ce44_89c22\rev_6ce44-89c22.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_e5135_a8a75\rev_e5135-a8a75.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_2e9a8_40697\rev_2e9a8-40697.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_dcff0_47433\rev_dcff0-47433.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_ef43a_7f21b\rev_ef43a-7f21b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_22db0_7b303\rev_22db0-7b303.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_e8678_3d605\rev_e8678-3d605.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+ArrayList<DBObject> getCollectionData(
+            final DBCollection coll,
+            final int page,
+            final int pagesize,
+            final Deque<String> sortBy,
+            final Deque<String> filters,
+            final Deque<String> keys, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, keys, toskip, 0), eager);
+        }
+
+        // in case there is not cursor in the pool to reuse
+        DBCursor cursor;
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters, keys);
+            cursor.skip(toskip);
+            
+            while (pagesize > 0 && cursor.hasNext()) {
+                ret.add(cursor.next());
+                pagesize--;
+            }
+        } else {
+            int alreadySkipped;
+
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+
+            while (toskip > alreadySkipped && cursor.hasNext()) {
+                cursor.next();
+                alreadySkipped++;
+            }
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700125438\fstmerge_var1_3319527587769731632
+            while (pagesize > 0 && cursor.hasNext()) {
+                ret.add(cursor.next());
+                pagesize--;
+            }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700125438\fstmerge_base_2852590947326306058
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+=======
+        int _pagesize = pagesize;
+        while (_pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            _pagesize--;
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700125438\fstmerge_var2_6322373139386065979
+        }
+
+        // add the _lastupdated_on and _created_on
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (row.get("_lastupdated_on") == null && etag != null && etag instanceof ObjectId) {
+                row.put("_lastupdated_on", Instant.ofEpochSecond(((ObjectId) etag).getTimestamp()).toString());
+            }
+
+            Object id = row.get("_id");
+
+            // generate the _created_on timestamp from the _id if this is an instance of ObjectId
+            if (row.get("_created_on") == null && id != null && id instanceof ObjectId) {
+                row.put("_created_on", Instant.ofEpochSecond(((ObjectId) id).getTimestamp()).toString());
+            }
+        }
+        );
+
+        DBCursorPool.getInstance().populateCache(new DBCursorPoolEntryKey(coll, sortBy, filters, keys, toskip, 0), eager);
+
+        return ret;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_e8678_3d605\rev_rev_left_e8678-rev_right_3d605\src\main\java\org\restheart\db\CollectionDAO.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_1bdee_360d6\rev_1bdee-360d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_66e11_0c0c9\rev_66e11-0c0c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_a8b7b-01d40.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778183\fstmerge_var1_5618978702337214374
+public boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count() == 0;
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778183\fstmerge_base_7099094491442196595
+public boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count(DOCUMENTS_QUERY) == 0;
+=======
+boolean isCollectionEmpty(DBCollection coll) {
+        return coll.count(DOCUMENTS_QUERY) == 0;
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778183\fstmerge_var2_4974920303193270188
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778449\fstmerge_var1_1087098990608102993
+public long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject();
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778449\fstmerge_base_1733072279321045060
+public long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject(DOCUMENTS_QUERY);
+=======
+long getCollectionSize(DBCollection coll, Deque<String> filters) {
+        final BasicDBObject query = new BasicDBObject(DOCUMENTS_QUERY);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700778449\fstmerge_var2_9037866376782713819
+
+        if (filters != null) {
+            try {
+                filters.stream().forEach(f -> {
+                    query.putAll((BSONObject) JSON.parse(f));  // this can throw JSONParseException for invalid filter parameters
+                });
+            } catch (JSONParseException jpe) {
+                LOGGER.warn("****** error parsing filter expression {}", filters, jpe);
+            }
+        }
+
+        return coll.count(query);
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700779699\fstmerge_var1_6659600152227277696
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700779699\fstmerge_base_6393171299549674810
+public ArrayList<DBObject> getCollectionData(DBCollection coll, int page, int pagesize, Deque<String> sortBy, Deque<String> filters, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        DBCursor cursor;
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, toskip, 0), eager);
+        }
+
+        int alreadySkipped;
+
+        // in case there is not cursor in the pool to reuse
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters);
+            alreadySkipped = 0;
+        } else {
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+        }
+
+        if (toskip - alreadySkipped > 0) {
+            cursor.skip(toskip - alreadySkipped);
+        }
+
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+        }
+
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId _etag = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(_etag.getTimestamp()).toString());
+            }
+        }
+        );
+
+        return ret;
+    }
+=======
+ArrayList<DBObject> getCollectionData(
+            DBCollection coll,
+            int page,
+            int pagesize,
+            Deque<String> sortBy,
+            Deque<String> filters,
+            DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        DBCursor cursor;
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, toskip, 0), eager);
+        }
+
+        int alreadySkipped;
+
+        // in case there is not cursor in the pool to reuse
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters);
+            alreadySkipped = 0;
+        } else {
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+        }
+
+        if (toskip - alreadySkipped > 0) {
+            cursor.skip(toskip - alreadySkipped);
+        }
+
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+        }
+
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId _etag = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(_etag.getTimestamp()).toString());
+            }
+        }
+        );
+
+        return ret;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700779699\fstmerge_var2_6433823747219899599
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700780027\fstmerge_var1_7217734088040593133
+public DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection propsColl = getCollection(dbName, "_properties");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700780027\fstmerge_base_4659114602649935063
+public DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection coll = getCollection(dbName, collName);
+=======
+DBObject getCollectionProps(String dbName, String collName) {
+        DBCollection coll = getCollection(dbName, collName);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700780027\fstmerge_var2_2013438259001918206
+
+        DBObject properties = propsColl.findOne(new BasicDBObject("_id", "_properties.".concat(collName)));
+
+        if (properties != null) {
+            properties.put("_id", collName);
+
+            Object etag = properties.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                properties.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return properties;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\CollectionDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public int upsertDB(String dbName, DBObject content, ObjectId etag, boolean patching) {
+        DB db = client.getDB(dbName);
+
+        boolean existing = db.getCollectionNames().size() > 0;
+
+        if (patching && !existing) {
+            return HttpStatus.SC_NOT_FOUND;
+        }
+
+        DBCollection coll = db.getCollection("_properties");
+
+        // check the etag
+        if (db.collectionExists("_properties")) {
+            if (etag == null) {
+                return HttpStatus.SC_CONFLICT;
+            }
+
+            BasicDBObject idAndEtagQuery = new BasicDBObject("_id", "_properties");
+            idAndEtagQuery.append("_etag", etag);
+
+            if (coll.count(idAndEtagQuery) < 1) {
+                return HttpStatus.SC_PRECONDITION_FAILED;
+            }
+        }
+
+        // apply new values
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.removeField("_created_on"); // make sure we don't change this field
+        content.removeField("_id"); // make sure we don't change this field
+
+        if (patching) {
+            coll.update(PROPS_QUERY, new BasicDBObject("$set", content), true, false);
+
+            return HttpStatus.SC_OK;
+        } else {
+            // we use findAndModify to get the @created_on field value from the existing document
+            // we need to put this field back using a second update 
+            // it is not possible in a single update even using $setOnInsert update operator
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790135\fstmerge_var1_1790410976446894950
+            // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(PROPS_QUERY, fieldsToReturn, null, false, content, false, true);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790135\fstmerge_base_3936378615081108295
+            // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(METADATA_QUERY, fieldsToReturn, null, false, content, false, true);
+=======
+            // in this case we need to provide the other data using $set operator 
+            // and this makes it a partial update (patch semantic) 
+            DBObject old = coll.findAndModify(METADATA_QUERY, fieldsToReturn, null, false, content, false, true);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790135\fstmerge_var2_1055107835971057753
+
+            if (old != null) {
+                Object oldTimestamp = old.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of collection {} had no @created_on field. set to now", coll.getFullName());
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+                createdContent.markAsPartialObject();
+                coll.update(PROPS_QUERY, new BasicDBObject("$set", createdContent), true, false);
+
+                return HttpStatus.SC_OK;
+            } else {
+                // need to readd the @created_on field 
+                BasicDBObject createdContent = new BasicDBObject("_created_on", now.toString());
+                createdContent.markAsPartialObject();
+                coll.update(PROPS_QUERY, new BasicDBObject("$set", createdContent), true, false);
+
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790496\fstmerge_var1_3981326932822057299
+public List<String> getDbCollections(DB db) {
+        List<String> _colls = new ArrayList(db.getCollectionNames());
+        
+        // filter out reserved dbs
+        return _colls.stream().filter(coll -> !RequestContext.isReservedResourceCollection(coll)).sorted().collect(Collectors.toList());
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790496\fstmerge_base_7163580506635768018
+public List<String> getDbCollections(DB db) {
+        List<String> _colls = new ArrayList(db.getCollectionNames());
+        Collections.sort(_colls);
+        return _colls;
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790496\fstmerge_var2_3456543936557382008
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790934\fstmerge_var1_6233287349176165976
+public DBObject getDbProps(String dbName) {
+        if (!doesDbExists(dbName)) {
+            // this check is important, otherwise the db would get created if not existing after the query
+            return null;
+        }
+
+        final CollectionDAO collectionDAO = new CollectionDAO();
+        DBCollection propsColl = collectionDAO.getCollection(dbName, "_properties");
+
+        DBObject row = propsColl.findOne(PROPS_QUERY);
+
+        if (row != null) {
+            row.put("_id", dbName);
+
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return row;
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790934\fstmerge_base_5045216966997561409
+public DBObject getDbProps(String dbName) {
+        if (!doesDbExists(dbName)) {
+            // this check is important, otherwise the db would get created if not existing after the query
+            return null;
+        }
+
+        final CollectionDAO collectionDAO = new CollectionDAO();
+        DBCollection propscoll = collectionDAO.getCollection(dbName, "_properties");
+
+        DBObject row = propscoll.findOne(METADATA_QUERY);
+
+        if (row != null) {
+            row.put("_id", dbName);
+
+            Object etag = row.get("_etag");
+
+            if (etag != null && ObjectId.isValid("" + etag)) {
+                ObjectId oid = new ObjectId("" + etag);
+
+                row.put("_lastupdated_on", Instant.ofEpochSecond(oid.getTimestamp()).toString());
+            }
+        }
+
+        return row;
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700790934\fstmerge_var2_2213217826648167445
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DbsDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793116\fstmerge_var1_3431990275861446253
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793116\fstmerge_base_7439081492622199740
+@Override
+    public int upsertDocument(String dbName, String collName, String documentId, DBObject content, ObjectId requestEtag, boolean patching) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        if (patching) {
+            content.removeField("_created_on"); // make sure we don't change this field
+
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, new BasicDBObject("$set", content), false, false);
+
+            if (oldDocument == null) {
+                return HttpStatus.SC_NOT_FOUND;
+            } else {
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            }
+        } else {
+            content.put("_created_on", now.toString()); // let's assume this is an insert. in case we'll set it back with a second update
+
+            // we use findAndModify to get the @created_on field value from the existing document
+            // in case this is an update well need to upsertDocument it back using a second update 
+            // it is not possible to do it with a single update
+            // (even using $setOnInsert update because we'll need to use the $set operator for other data and this would make it a partial update (patch semantic) 
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+            if (oldDocument != null) { // upsertDocument
+                Object oldTimestamp = oldDocument.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                            dbName, collName, documentId);
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject created = new BasicDBObject("_created_on", "" + oldTimestamp);
+                created.markAsPartialObject();
+                coll.update(idQuery, new BasicDBObject("$set", created), true, false);
+
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            } else {  // insert
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+=======
+@Override
+    public int upsertDocument(String dbName, String collName, String documentId, DBObject content, ObjectId requestEtag, boolean patching) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        if (patching) {
+            content.removeField("_created_on"); // make sure we don't change this field
+
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, new BasicDBObject("$set", content), false, false);
+
+            if (oldDocument == null) {
+                return HttpStatus.SC_NOT_FOUND;
+            } else {
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            }
+        } else {
+            content.put("_created_on", now.toString()); // let's assume this is an insert. in case we'll set it back with a second update
+
+            // we use findAndModify to get the @created_on field value from the existing document
+            // in case this is an update well need to upsertDocument it back using a second update 
+            // it is not possible to do it with a single update
+            // (even using $setOnInsert update because we'll need to use the $set operator for other data and this would make it a partial update (patch semantic) 
+            DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+            if (oldDocument != null) { // upsertDocument
+                Object oldTimestamp = oldDocument.get("_created_on");
+
+                if (oldTimestamp == null) {
+                    oldTimestamp = now.toString();
+                    LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                            dbName, collName, documentId);
+                }
+
+                // need to readd the @created_on field 
+                BasicDBObject created = new BasicDBObject("_created_on", "" + oldTimestamp);
+                created.markAsPartialObject();
+                coll.update(idQuery, new BasicDBObject("$set", created), true, false);
+
+                // check the old etag (in case restore the old document version)
+                return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+            } else {  // insert
+                return HttpStatus.SC_CREATED;
+            }
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793116\fstmerge_var2_3211821420450047331
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793413\fstmerge_var1_8980631121667673964
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793413\fstmerge_base_343264415711825080
+@Override
+    public int upsertDocumentPost(HttpServerExchange exchange, String dbName, String collName, DBObject content, ObjectId requestEtag) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.put("_created_on", now.toString()); // make sure we don't change this field
+
+        Object _id = content.get("_id");
+        content.removeField("_id");
+
+        if (_id == null) {
+            ObjectId id = new ObjectId();
+            content.put("_id", id);
+
+            coll.insert(content);
+
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), id.toString()).toString());
+
+            return HttpStatus.SC_CREATED;
+        } else {
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), _id.toString()).toString());
+        }
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId("" + _id));
+
+        // we use findAndModify to get the @created_on field value from the existing document
+        // we need to upsertDocument this field back using a second update 
+        // it is not possible in a single update even using $setOnInsert update operator
+        // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+        if (oldDocument != null) {  // upsertDocument
+            Object oldTimestamp = oldDocument.get("_created_on");
+
+            if (oldTimestamp == null) {
+                oldTimestamp = now.toString();
+                LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                        dbName, collName, _id.toString());
+            }
+
+            // need to readd the @created_on field 
+            BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+            createdContent.markAsPartialObject();
+            coll.update(idQuery, new BasicDBObject("$set", createdContent), true, false);
+
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+        } else { // insert
+            return HttpStatus.SC_CREATED;
+        }
+    }
+=======
+@Override
+    public int upsertDocumentPost(HttpServerExchange exchange, String dbName, String collName, DBObject content, ObjectId requestEtag) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        content.put("_etag", timestamp);
+        content.put("_created_on", now.toString()); // make sure we don't change this field
+
+        Object _id = content.get("_id");
+        content.removeField("_id");
+
+        if (_id == null) {
+            ObjectId id = new ObjectId();
+            content.put("_id", id);
+
+            coll.insert(content);
+
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), id.toString()).toString());
+
+            return HttpStatus.SC_CREATED;
+        } else {
+            exchange.getResponseHeaders()
+                    .add(HttpString.tryFromString("Location"),
+                            getReferenceLink(exchange.getRequestURL(), _id.toString()).toString());
+        }
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId("" + _id));
+
+        // we use findAndModify to get the @created_on field value from the existing document
+        // we need to upsertDocument this field back using a second update 
+        // it is not possible in a single update even using $setOnInsert update operator
+        // in this case we need to provide the other data using $set operator and this makes it a partial update (patch semantic) 
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, false, content, false, true);
+
+        if (oldDocument != null) {  // upsertDocument
+            Object oldTimestamp = oldDocument.get("_created_on");
+
+            if (oldTimestamp == null) {
+                oldTimestamp = now.toString();
+                LOGGER.warn("properties of document /{}/{}/{} had no @created_on field. set to now",
+                        dbName, collName, _id.toString());
+            }
+
+            // need to readd the @created_on field 
+            BasicDBObject createdContent = new BasicDBObject("_created_on", "" + oldTimestamp);
+            createdContent.markAsPartialObject();
+            coll.update(idQuery, new BasicDBObject("$set", createdContent), true, false);
+
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_OK);
+        } else { // insert
+            return HttpStatus.SC_CREATED;
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793413\fstmerge_var2_3662031132665247209
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793773\fstmerge_var1_852071164843179350
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793773\fstmerge_base_692284557895571164
+@Override
+    public int deleteDocument(String dbName, String collName, String documentId, ObjectId requestEtag) {
+        final DbsDAO dbsDAO = new DbsDAO();
+        DB db = dbsDAO.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, true, null, false, false);
+
+        if (oldDocument == null) {
+            return HttpStatus.SC_NOT_FOUND;
+        } else {
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_NO_CONTENT);
+        }
+    }
+=======
+@Override
+    public int deleteDocument(String dbName, String collName, String documentId, ObjectId requestEtag) {
+        DB db = client.getDB(dbName);
+
+        DBCollection coll = db.getCollection(collName);
+
+        BasicDBObject idQuery = new BasicDBObject("_id", getId(documentId));
+
+        DBObject oldDocument = coll.findAndModify(idQuery, null, null, true, null, false, false);
+
+        if (oldDocument == null) {
+            return HttpStatus.SC_NOT_FOUND;
+        } else {
+            // check the old etag (in case restore the old document version)
+            return optimisticCheckEtag(coll, oldDocument, requestEtag, HttpStatus.SC_NO_CONTENT);
+        }
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700793773\fstmerge_var2_6146954627959174720
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\DocumentDAO.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public boolean addCollectionProps(String dbName, String collName) throws MongoException {
+        
+        DBObject dbmd = dbsDAO.getDatabaseProperties(dbName);
+
+        if (dbmd == null) {
+            // db must exists with properties
+            return false;
+        }
+
+        DBObject md = dbsDAO.getCollectionProperties(dbName, collName);
+
+        if (md != null) // properties exists
+        {
+            return false;
+        }
+
+        // check if collection has data
+        DB db = dbsDAO.getDB(dbName);
+
+        if (!db.collectionExists(collName)) {
+            return false;
+        }
+
+        // ok, create the properties
+        DBObject properties = new BasicDBObject();
+
+        ObjectId timestamp = new ObjectId();
+        Instant now = Instant.ofEpochSecond(timestamp.getTimestamp());
+
+        properties.put("_id", "_properties.".concat(collName));
+        properties.put("_created_on", now.toString());
+        properties.put("_etag", timestamp);
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700800706\fstmerge_var1_6925286606242591588
+        DBCollection propsColl = collectionDAO.getCollection(dbName, "_properties");
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700800706\fstmerge_base_4791342326153202794
+        DBCollection coll = collectionDAO.getCollection(dbName, collName);
+=======
+        DBCollection coll = dbsDAO.getCollection(dbName, collName);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700800706\fstmerge_var2_3219283782869385313
+
+        propsColl.insert(properties);
+
+        LOGGER.info("properties added to {}/{}", dbName, collName);
+        return true;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\db\PropsFixer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void handleRequest(HttpServerExchange exchange, RequestContext context) throws Exception {
+        DBCollection coll = this.dbsDAO.getCollection(context.getDBName(), context.getCollectionName());
+        long size = -1;
+
+        if (context.isCount()) {
+            size = this.dbsDAO.getCollectionSize(coll, exchange.getQueryParameters().get("filter"));
+        }
+
+        // ***** get data
+        ArrayList<DBObject> data = null;
+
+        try {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700841819\fstmerge_var1_8003746744695291650
+            data = collectionDAO.getCollectionData(coll, context.getPage(), context.getPagesize(), context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy(), context.isDetectObjectIds());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700841819\fstmerge_base_8416562923333140160
+            data = collectionDAO.getCollectionData(coll, context.getPage(), context.getPagesize(), context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy());
+=======
+            data = this.dbsDAO.getCollectionData(coll, context.getPage(), context.getPagesize(),
+                    context.getSortBy(), context.getFilter(), context.getCursorAllocationPolicy());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700841819\fstmerge_var2_2962779903988772878
+        } catch (JSONParseException jpe) {
+            // the filter expression is not a valid json string
+            LOGGER.error("invalid filter expression {}", context.getFilter(), jpe);
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, "wrong request, filter expression is invalid", jpe);
+            return;
+        } catch (MongoException me) {
+            if (me.getMessage().matches(".*Can't canonicalize query.*")) {
+                // error with the filter expression during query execution
+                LOGGER.error("invalid filter expression {}", context.getFilter(), me);
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, "wrong request, filter expression is invalid", me);
+                return;
+            } else {
+                throw me;
+            }
+        }
+
+        if (exchange.isComplete()) {
+            // if an error occured getting data, the exchange is already closed
+            return;
+        }
+
+        // ***** return NOT_FOUND from here if collection is not existing 
+        // (this is to avoid to check existance via the slow CollectionDAO.checkCollectionExists)
+        if (data.isEmpty() && (context.getCollectionProps() == null || context.getCollectionProps().keySet().isEmpty())) {
+            ResponseHelper.endExchange(exchange, HttpStatus.SC_NOT_FOUND);
+            return;
+        }
+
+        try {
+            exchange.setResponseCode(HttpStatus.SC_OK);
+            new CollectionRepresentationFactory().sendHal(exchange, context, data, size);
+            exchange.endExchange();
+        } catch (IllegalQueryParamenterException ex) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_BAD_REQUEST, ex.getMessage(), ex);
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\collection\GetCollectionHandler.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void handleRequest(HttpServerExchange exchange, RequestContext context) throws Exception {
+        DBObject content = context.getContent();
+
+        if (content == null) {
+            content = new BasicDBObject();
+        }
+
+        // cannot POST an array
+        if (content instanceof BasicDBList) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "data cannot be an array");
+            return;
+        }
+
+        ObjectId etag = RequestHelper.getWriteEtag(exchange);
+
+        if (content.get("_id") != null && content.get("_id") instanceof String && RequestContext.isReservedResourceDocument((String) content.get("_id"))) {
+            ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_FORBIDDEN, "reserved resource");
+            return;
+        }
+        
+        Object docId;
+
+        if (content.get("_id") == null) {
+            if (context.getDocIdType() == URLUtils.DOC_ID_TYPE.OBJECTID || context.getDocIdType() == URLUtils.DOC_ID_TYPE.STRING_OBJECTID) {
+                docId = new ObjectId();
+            } else {
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "_id in content body is mandatory for document id type " + context.getDocIdType().name());
+                return;
+            }
+            
+        } else {
+            try {
+                docId = URLUtils.getId(content.get("_id"), context.getDocIdType());
+            } catch(IllegalDocumentIdException idide) {
+                ResponseHelper.endExchangeWithMessage(exchange, HttpStatus.SC_NOT_ACCEPTABLE, "_id in content body is not of type " + context.getDocIdType().name());
+                return;
+            }
+        }
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700845790\fstmerge_var1_5121263152426567424
+        int httpCode = new DocumentDAO()
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), docId, content, etag);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700845790\fstmerge_base_2122776143953787458
+        int httpCode = new DocumentDAO()
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), content, etag);
+=======
+        int httpCode = this.documentDAO
+                .upsertDocumentPost(exchange, context.getDBName(), context.getCollectionName(), content, etag);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700845790\fstmerge_var2_5381801872865937126
+
+        // send the warnings if any (and in case no_content change the return code to ok
+        if (context.getWarnings() != null && !context.getWarnings().isEmpty()) {
+            sendWarnings(httpCode, exchange, context);
+        } else {
+            exchange.setResponseCode(httpCode);
+        }
+
+        exchange.endExchange();
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\collection\PostCollectionHandler.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700865086\fstmerge_var1_4883359694749204098
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700865086\fstmerge_base_4481107209910916682
+private static TreeMap<String, String> getRelationshipsLinks(RequestContext context, DBObject data) {
+        TreeMap<String, String> links = new TreeMap<>();
+
+        List<Relationship> rels = null;
+
+        try {
+            rels = Relationship.getFromJson((DBObject) context.getCollectionProps());
+        } catch (InvalidMetadataException ex) {
+            context.addWarning("collection " + context.getDBName() + "/" + context.getCollectionName() + " has invalid relationships definition");
+        }
+
+        if (rels == null) {
+            return links;
+        }
+
+        for (Relationship rel : rels) {
+            try {
+                String link = rel.getRelationshipLink(context, context.getDBName(), context.getCollectionName(), data);
+
+                if (link != null) {
+                    links.put(rel.getRel(), link);
+                }
+            } catch (IllegalArgumentException ex) {
+                context.addWarning(ex.getMessage());
+                logger.warn(ex.getMessage(), ex);
+            }
+        }
+
+        return links;
+    }
+=======
+private static TreeMap<String, String> getRelationshipsLinks(RequestContext context, DBObject data) {
+        TreeMap<String, String> links = new TreeMap<>();
+
+        List<Relationship> rels = null;
+
+        try {
+            rels = Relationship.getFromJson((DBObject) context.getCollectionProps());
+        } catch (InvalidMetadataException ex) {
+            context.addWarning("collection " + context.getDBName() 
+                    + "/" + context.getCollectionName()
+                    + " has invalid relationships definition");
+        }
+
+        if (rels == null) {
+            return links;
+        }
+
+        for (Relationship rel : rels) {
+            try {
+                String link = rel.getRelationshipLink(context, context.getDBName(), context.getCollectionName(), data);
+
+                if (link != null) {
+                    links.put(rel.getRel(), link);
+                }
+            } catch (IllegalArgumentException ex) {
+                context.addWarning(ex.getMessage());
+                logger.warn(ex.getMessage(), ex);
+            }
+        }
+
+        return links;
+    }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700865086\fstmerge_var2_1921899998375157165
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\document\DocumentRepresentationFactory.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 1
+Intersection: 1
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+static public void sendHal(HttpServerExchange exchange, RequestContext context, List<DBObject> embeddedData, long size)
+            throws IllegalQueryParamenterException {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700880164\fstmerge_var1_5244279166141520624
+        String requestPath = URLUtils.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() ? "" : "?" + URLUtils.decodeQueryString(exchange.getQueryString());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700880164\fstmerge_base_7398669072965211170
+        String requestPath = URLUtilis.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() ? "" : "?" + URLUtilis.decodeQueryString(exchange.getQueryString());
+=======
+        String requestPath = URLUtilis.removeTrailingSlashes(context.getMappedRequestUri());
+        String queryString = exchange.getQueryString() == null || exchange.getQueryString().isEmpty() 
+                ? "" 
+                : "?" + URLUtilis.decodeQueryString(exchange.getQueryString());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700880164\fstmerge_var2_4232476327356638588
+
+        Representation rep = new Representation(requestPath + queryString);
+
+        rep.addProperty("_type", context.getType().name());
+
+        if (size >= 0) {
+            rep.addProperty("_size", size);
+        }
+
+        if (embeddedData != null) {
+            long count = embeddedData.stream()
+                    .filter((props) -> props.keySet().stream()
+                            .anyMatch((k) -> k.equals("id") || k.equals("_id")))
+                    .count();
+
+            rep.addProperty("_returned", count);
+
+            if (!embeddedData.isEmpty()) {
+                embeddedDocuments(embeddedData, requestPath, rep);
+            }
+        }
+
+        // link templates and curies
+        if (context.isParentAccessible()) {
+            // this can happen due to mongo-mounts mapped URL
+            rep.addLink(new Link("rh:coll", URLUtils.getParentPath(requestPath)));
+        }
+        rep.addLink(new Link("rh", "curies", Configuration.RESTHEART_ONLINE_DOC_URL 
+                + "/#api-indexes-{rel}", false), true);
+
+        exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, HAL_JSON_MEDIA_TYPE);
+        exchange.getResponseSender().send(rep.toString());
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\main\java\org\restheart\handlers\indexes\IndexesRepresentationFactory.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void dbdirect() {
+        final Database dbsDAO = new DbsDAO();
+        DBCollection dbcoll = dbsDAO.getCollection(db, coll);
+
+        Deque<String> _filter;
+
+        if (filter == null) {
+            _filter = null;
+        } else {
+            _filter = new ArrayDeque<>();
+            _filter.add(filter);
+        }
+
+        ArrayList<DBObject> data;
+        
+        try {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700931857\fstmerge_var1_1399124743212691515
+            data = collectionDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE, true);
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700931857\fstmerge_base_5819487554260356853
+            data = collectionDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE);
+=======
+            data = dbsDAO.getCollectionData(dbcoll, page, pagesize, null, _filter, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE);
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513700931857\fstmerge_var2_4703511605497654414
+        } catch(Exception e) {
+            System.out.println("error: " + e.getMessage());
+            return;
+        }
+        
+        assertNotNull(data);
+        assertFalse(data.isEmpty());
+
+        if (printData) {
+            System.out.println(data);
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_a8b7b_01d40\rev_rev_left_a8b7b-rev_right_01d40\src\test\java\org\restheart\test\performance\LoadGetPT.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_c96bc_9ce4e\rev_c96bc-9ce4e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_6ce44_89c22\rev_6ce44-89c22.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_e5135_a8a75\rev_e5135-a8a75.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_2e9a8_40697\rev_2e9a8-40697.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_dcff0_47433\rev_dcff0-47433.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_ef43a_7f21b\rev_ef43a-7f21b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_22db0_7b303\rev_22db0-7b303.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_e8678_3d605\rev_e8678-3d605.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+ArrayList<DBObject> getCollectionData(
+            final DBCollection coll,
+            final int page,
+            final int pagesize,
+            final Deque<String> sortBy,
+            final Deque<String> filters,
+            final Deque<String> keys, DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY eager) throws JSONParseException {
+        
+        ArrayList<DBObject> ret = new ArrayList<>();
+
+        int toskip = pagesize * (page - 1);
+
+        SkippedDBCursor _cursor = null;
+
+        if (eager != DBCursorPool.EAGER_CURSOR_ALLOCATION_POLICY.NONE) {
+
+            _cursor = DBCursorPool.getInstance().get(new DBCursorPoolEntryKey(coll, sortBy, filters, keys, toskip, 0), eager);
+        }
+
+        // in case there is not cursor in the pool to reuse
+        DBCursor cursor;
+        if (_cursor == null) {
+            cursor = getCollectionDBCursor(coll, sortBy, filters, keys);
+            cursor.skip(toskip);
+            
+            while (pagesize > 0 && cursor.hasNext()) {
+                ret.add(cursor.next());
+                pagesize--;
+            }
+        } else {
+            int alreadySkipped;
+
+            cursor = _cursor.getCursor();
+            alreadySkipped = _cursor.getAlreadySkipped();
+
+            while (toskip > alreadySkipped && cursor.hasNext()) {
+                cursor.next();
+                alreadySkipped++;
+            }
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513701648896\fstmerge_var1_8415684511141168310
+            while (pagesize > 0 && cursor.hasNext()) {
+                ret.add(cursor.next());
+                pagesize--;
+            }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513701648896\fstmerge_base_8554893650755773728
+        while (pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            pagesize--;
+=======
+        int _pagesize = pagesize;
+        while (_pagesize > 0 && cursor.hasNext()) {
+            ret.add(cursor.next());
+            _pagesize--;
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513701648896\fstmerge_var2_2642679959972449898
+        }
+
+        // add the _lastupdated_on and _created_on
+        ret.forEach(row -> {
+            Object etag = row.get("_etag");
+
+            if (row.get("_lastupdated_on") == null && etag != null && etag instanceof ObjectId) {
+                row.put("_lastupdated_on", Instant.ofEpochSecond(((ObjectId) etag).getTimestamp()).toString());
+            }
+
+            Object id = row.get("_id");
+
+            // generate the _created_on timestamp from the _id if this is an instance of ObjectId
+            if (row.get("_created_on") == null && id != null && id instanceof ObjectId) {
+                row.put("_created_on", Instant.ofEpochSecond(((ObjectId) id).getTimestamp()).toString());
+            }
+        }
+        );
+
+        DBCursorPool.getInstance().populateCache(new DBCursorPoolEntryKey(coll, sortBy, filters, keys, toskip, 0), eager);
+
+        return ret;
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_e8678_3d605\rev_rev_left_e8678-rev_right_3d605\src\main\java\org\restheart\db\CollectionDAO.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_eb887_908e3\rev_eb887-908e3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_01e6f_160b5\rev_01e6f-160b5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_7d8bb_54bd9\rev_7d8bb-54bd9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_08c6f_d25eb\rev_08c6f-d25eb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_0b0ee_6568d\rev_0b0ee-6568d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_69dc6_5b6fa\rev_69dc6-5b6fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_2433a_2fd96\rev_2433a-2fd96.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_6e219_64538\rev_6e219-64538.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_e936b_b73a6\rev_e936b-b73a6.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static void main(final String[] args) {
+        CONF_FILE_PATH = FileUtils.getConfigurationFilePath(args);
+
+        try {
+            // read configuration silently, to avoid logging before initializing the logger
+            configuration = FileUtils.getConfiguration(args, true);
+        } catch (ConfigurationException ex) {
+            String instanceName = null;
+            if(configuration != null) {
+                instanceName = configuration.getInstanceName();
+            }
+            LOGGER.info("Starting "
+                    + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                    + " instance "
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513702665001\fstmerge_var1_4805427077945890555
+                    + ansi().fg(RED).bold().a("undefined").reset().toString());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513702665001\fstmerge_base_1938396834161665840
+                    + ansi().fg(RED).bold().a(configuration.getInstanceName()).reset().toString());
+=======
+                    + ansi().fg(RED).bold().a(instanceName).reset().toString());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513702665001\fstmerge_var2_3472814242715369032
+
+            if (RESTHEART_VERSION != null) {
+                LOGGER.info("version {}", RESTHEART_VERSION);
+            }
+
+            logErrorAndExit(ex.getMessage() + ", exiting...", ex, false, -1);
+        }
+
+        if (!hasForkOption(args)) {
+            initLogging(args, null);
+            startServer(false);
+        } else {
+            if (OSChecker.isWindows()) {
+                String instanceName = configuration == null
+                        ? "undefined"
+                        : configuration.getInstanceName() == null
+                                ? "undefined"
+                                : configuration.getInstanceName();
+
+                LOGGER.info("Starting "
+                        + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                        + " instance "
+                        + ansi().fg(RED).bold().a(instanceName).reset().toString());
+
+                if (RESTHEART_VERSION != null) {
+                    LOGGER.info("version {}", RESTHEART_VERSION);
+                }
+
+                LOGGER.error("Fork is not supported on Windows");
+
+                LOGGER.info(ansi().fg(GREEN).bold().a("RESTHeart stopped").reset().toString());
+
+                System.exit(-1);
+            }
+
+            // RHDaemon only works on POSIX OSes
+            final boolean isPosix = FileSystems.getDefault()
+                    .supportedFileAttributeViews().contains("posix");
+
+            if (!isPosix) {
+                logErrorAndExit("Unable to fork process, this is only supported on POSIX compliant OSes", null, false, -1);
+            }
+
+            RHDaemon d = new RHDaemon();
+
+            if (d.isDaemonized()) {
+                try {
+                    d.init();
+                    LOGGER.info("Forked process: {}", LIBC.getpid());
+                    initLogging(args, d);
+                } catch (Throwable t) {
+                    logErrorAndExit("Error staring forked process", t, false, false, -1);
+                }
+
+                startServer(true);
+            } else {
+                initLogging(args, d);
+
+                try {
+                    String instanceName = configuration == null
+                            ? "undefined"
+                            : configuration.getInstanceName() == null
+                                    ? "undefined"
+                                    : configuration.getInstanceName();
+
+                    LOGGER.info("Starting "
+                            + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                            + " instance "
+                            + ansi().fg(RED).bold().a(instanceName).reset().toString());
+
+                    if (RESTHEART_VERSION != null) {
+                        LOGGER.info("version {}", RESTHEART_VERSION);
+                    }
+
+                    logLoggingConfiguration(true);
+
+                    d.daemonize();
+                } catch (Throwable t) {
+                    logErrorAndExit("Error forking", t, false, false, -1);
+                }
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_e936b_b73a6\rev_rev_left_e936b-rev_right_b73a6\src\main\java\org\restheart\Bootstrapper.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_3c07e_4d4b3\rev_3c07e-4d4b3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_89b6d_b71c5\rev_89b6d-b71c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_aa663_3d0a7\rev_aa663-3d0a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_90c8b_8bd30\rev_90c8b-8bd30.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_d5aee-38fcf.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static void main(final String[] args) {
+        CONF_FILE_PATH = FileUtils.getConfigurationFilePath(args);
+
+        try {
+            // read configuration silently, to avoid logging before initializing the logger
+            configuration = FileUtils.getConfiguration(args, true);
+        } catch (ConfigurationException ex) {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703464355\fstmerge_var1_7753554460092438417
+            LOGGER.info(STARTING
+                    + ansi().fg(RED).bold().a(RESTHEART).reset().toString()
+                    + INSTANCE
+                    + ansi().fg(RED).bold().a(UNDEFINED).reset().toString());
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703464355\fstmerge_base_1687074533485302726
+            LOGGER.info("Starting "
+                    + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                    + " instance "
+                    + ansi().fg(RED).bold().a("undefined").reset().toString());
+=======
+            LOGGER.info("Starting (Modified) "
+                    + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                    + " instance "
+                    + ansi().fg(RED).bold().a("undefined").reset().toString());
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703464355\fstmerge_var2_1016520010928733758
+
+            if (RESTHEART_VERSION != null) {
+                LOGGER.info(VERSION, RESTHEART_VERSION);
+            }
+
+            logErrorAndExit(ex.getMessage() + EXITING, ex, false, -1);
+        }
+
+        if (!hasForkOption(args)) {
+            initLogging(args, null);
+            startServer(false);
+        } else {
+            if (OSChecker.isWindows()) {
+                String instanceName = getInstanceName();
+
+                LOGGER.info(STARTING
+                        + ansi().fg(RED).bold().a(RESTHEART).reset().toString()
+                        + INSTANCE
+                        + ansi().fg(RED).bold().a(instanceName).reset().toString());
+
+                if (RESTHEART_VERSION != null) {
+                    LOGGER.info(VERSION, RESTHEART_VERSION);
+                }
+
+                LOGGER.error("Fork is not supported on Windows");
+
+                LOGGER.info(ansi().fg(GREEN).bold().a("RESTHeart stopped").reset().toString());
+
+                System.exit(-1);
+            }
+
+            // RHDaemon only works on POSIX OSes
+            final boolean isPosix = FileSystems.getDefault()
+                    .supportedFileAttributeViews().contains("posix");
+
+            if (!isPosix) {
+                logErrorAndExit("Unable to fork process, this is only supported on POSIX compliant OSes", null, false, -1);
+            }
+
+            RHDaemon d = new RHDaemon();
+
+            if (d.isDaemonized()) {
+                try {
+                    d.init();
+                    LOGGER.info("Forked process: {}", LIBC.getpid());
+                    initLogging(args, d);
+                } catch (Exception t) {
+                    logErrorAndExit("Error staring forked process", t, false, false, -1);
+                }
+
+                startServer(true);
+            } else {
+                initLogging(args, d);
+
+                try {
+                    String instanceName = getInstanceName();
+
+                    LOGGER.info(STARTING
+                            + ansi().fg(RED).bold().a(RESTHEART).reset().toString()
+                            + INSTANCE
+                            + ansi().fg(RED).bold().a(instanceName).reset().toString());
+
+                    if (RESTHEART_VERSION != null) {
+                        LOGGER.info(VERSION, RESTHEART_VERSION);
+                    }
+
+                    logLoggingConfiguration(true);
+
+                    d.daemonize();
+                } catch (Throwable t) {
+                    logErrorAndExit("Error forking", t, false, false, -1);
+                }
+            }
+        }
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_rev_left_d5aee-rev_right_38fcf\src\main\java\org\restheart\Bootstrapper.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private static void startServer(boolean fork) {
+        String instanceName = getInstanceName();
+
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703467671\fstmerge_var1_3147099821378123102
+        LOGGER.info(STARTING
+                + ansi().fg(RED).bold().a(RESTHEART).reset().toString()
+                + INSTANCE
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703467671\fstmerge_base_1145156409184934297
+        LOGGER.info("Starting "
+                + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                + " instance "
+=======
+        LOGGER.info("Starting  (Modified) "
+                + ansi().fg(RED).bold().a("RESTHeart").reset().toString()
+                + " instance "
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703467671\fstmerge_var2_671599080418617841
+                + ansi().fg(RED).bold().a(instanceName).reset().toString());
+
+        if (RESTHEART_VERSION != null) {
+            LOGGER.info(VERSION, RESTHEART_VERSION);
+        }
+
+        Path pidFilePath = FileUtils.getPidFilePath(
+                FileUtils.getFileAbsoultePathHash(CONF_FILE_PATH));
+
+        boolean pidFileAlreadyExists = false;
+
+        if (!OSChecker.isWindows() && pidFilePath != null) {
+            pidFileAlreadyExists = checkPidFile(CONF_FILE_PATH);
+        }
+
+        logLoggingConfiguration(fork);
+
+        LOGGER.debug("Initializing MongoDB connection pool to {} with options {}", configuration.getMongoUri().getHosts(), configuration.getMongoUri().getOptions());
+
+        try {
+            MongoDBClientSingleton.init(configuration);
+            //force setup
+            MongoDBClientSingleton.getInstance();
+            LOGGER.info("MongoDB connection pool initialized");
+            LOGGER.info("MongoDB version {}", MongoDBClientSingleton.getServerVersion());
+        } catch (Throwable t) {
+            logErrorAndExit("Error connecting to MongoDB. exiting..", t, false, !pidFileAlreadyExists, -1);
+        }
+
+        try {
+            startCoreSystem();
+        } catch (Throwable t) {
+            logErrorAndExit("Error starting RESTHeart. Exiting...", t, false, !pidFileAlreadyExists, -2);
+        }
+
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                stopServer(false);
+            }
+        });
+
+        // create pid file on supported OSes
+        if (!OSChecker.isWindows() && pidFilePath != null) {
+            FileUtils.createPidFile(pidFilePath);
+        }
+
+        // log pid file path on supported OSes
+        if (!OSChecker.isWindows() && pidFilePath != null) {
+            LOGGER.info("Pid file {}", pidFilePath);
+        }
+
+        LOGGER.info(ansi().fg(GREEN).bold().a("RESTHeart started").reset().toString());
+    }
+
+File path: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_rev_left_d5aee-rev_right_38fcf\src\main\java\org\restheart\Bootstrapper.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471293\fstmerge_var1_2902391472601290216
+private static GracefulShutdownHandler getHandlersPipe(
+            final IdentityManager identityManager,
+            final AccessManager accessManager) {
+        PipedHttpHandler coreHandlerChain
+                = new AccountInjectorHandler(
+                        new DbPropsInjectorHandler(
+                                new CollectionPropsInjectorHandler(
+                                        new RequestDispacherHandler()
+                                )));
+
+        PathHandler paths = path();
+
+        configuration.getMongoMounts().stream().forEach(m -> {
+            String url = (String) m.get(Configuration.MONGO_MOUNT_WHERE_KEY);
+            String db = (String) m.get(Configuration.MONGO_MOUNT_WHAT_KEY);
+
+            paths.addPrefixPath(url,
+                    new RequestLoggerHandler(
+                            new CORSHandler(
+                                    new RequestContextInjectorHandler(url, db,
+                                            new OptionsHandler(
+                                                    new BodyInjectorHandler(
+                                                            new SecurityHandlerDispacher(
+                                                                    coreHandlerChain,
+                                                                    identityManager,
+                                                                    accessManager))))
+                            )));
+
+            LOGGER.info("URL {} bound to MongoDB resource {}", url, db);
+        });
+
+        pipeStaticResourcesHandlers(configuration, paths, identityManager, accessManager);
+
+        pipeApplicationLogicHandlers(configuration, paths, identityManager, accessManager);
+
+        // pipe the auth tokens invalidation handler
+        paths.addPrefixPath("/_authtokens",
+                new RequestLoggerHandler(
+                        new CORSHandler(
+                                new SecurityHandlerDispacher(
+                                        new AuthTokenHandler(),
+                                        identityManager,
+                                        new FullAccessManager()))));
+
+        return buildGracefulShutdownHandler(paths);
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471293\fstmerge_base_3523059623499583075
+private static GracefulShutdownHandler getHandlersPipe(final IdentityManager identityManager, final AccessManager accessManager) {
+        PipedHttpHandler coreHandlerChain
+                = new AccountInjectorHandler(
+                        new DbPropsInjectorHandler(
+                                new CollectionPropsInjectorHandler(
+                                        new RequestDispacherHandler()
+                                )));
+
+        PathHandler paths = path();
+
+        configuration.getMongoMounts().stream().forEach(m -> {
+            String url = (String) m.get(Configuration.MONGO_MOUNT_WHERE_KEY);
+            String db = (String) m.get(Configuration.MONGO_MOUNT_WHAT_KEY);
+
+            paths.addPrefixPath(url,
+                    new RequestLoggerHandler(
+                            new CORSHandler(
+                                    new RequestContextInjectorHandler(url, db,
+                                            new OptionsHandler(
+                                                    new BodyInjectorHandler(
+                                                            new SecurityHandlerDispacher(
+                                                                    coreHandlerChain,
+                                                                    identityManager,
+                                                                    accessManager))))
+                            )));
+
+            LOGGER.info("URL {} bound to MongoDB resource {}", url, db);
+        });
+
+        pipeStaticResourcesHandlers(configuration, paths, identityManager, accessManager);
+
+        pipeApplicationLogicHandlers(configuration, paths, identityManager, accessManager);
+
+        // pipe the auth tokens invalidation handler
+        paths.addPrefixPath("/_authtokens",
+                new RequestLoggerHandler(
+                        new CORSHandler(
+                                new SecurityHandlerDispacher(
+                                        new AuthTokenHandler(),
+                                        identityManager,
+                                        new FullAccessManager()))));
+
+        return buildGracefulShutdownHandler(paths);
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471293\fstmerge_var2_8866663754545634921
+
+File path: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_rev_left_d5aee-rev_right_38fcf\src\main\java\org\restheart\Bootstrapper.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471637\fstmerge_var1_7765859029687122903
+private static void pipeStaticResourcesHandlers(
+            final Configuration conf,
+            final PathHandler paths,
+            final IdentityManager identityManager,
+            final AccessManager accessManager) {
+        if (conf.getStaticResourcesMounts() != null) {
+            conf.getStaticResourcesMounts().stream().forEach(sr -> {
+                try {
+                    String path = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHAT_KEY);
+                    String where = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHERE_KEY);
+                    String welcomeFile = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WELCOME_FILE_KEY);
+
+                    Boolean embedded = (Boolean) sr.get(Configuration.STATIC_RESOURCES_MOUNT_EMBEDDED_KEY);
+                    if (embedded == null) {
+                        embedded = false;
+                    }
+
+                    Boolean secured = (Boolean) sr.get(Configuration.STATIC_RESOURCES_MOUNT_SECURED_KEY);
+                    if (secured == null) {
+                        secured = false;
+                    }
+
+                    if (where == null || !where.startsWith("/")) {
+                        LOGGER.error("Cannot bind static resources to {}. parameter 'where' must start with /", where);
+                        return;
+                    }
+
+                    if (welcomeFile == null) {
+                        welcomeFile = "index.html";
+                    }
+
+                    File file;
+
+                    if (embedded) {
+                        if (path.startsWith("/")) {
+                            LOGGER.error("Cannot bind embedded static resources to {}. parameter 'where'"
+                                    + "cannot start with /. the path is relative to the jar root dir or classpath directory", where);
+                            return;
+                        }
+
+                        try {
+                            file = ResourcesExtractor.extract(path);
+
+                            if (ResourcesExtractor.isResourceInJar(path)) {
+                                TMP_EXTRACTED_FILES.put(path, file);
+                                LOGGER.info("Embedded static resources {} extracted in {}", path, file.toString());
+                            }
+                        } catch (URISyntaxException | IOException ex) {
+                            LOGGER.error("Error extracting embedded static resource {}", path, ex);
+                            return;
+                        } catch (IllegalStateException ex) {
+                            LOGGER.error("Error extracting embedded static resource {}", path, ex);
+
+                            if ("browser".equals(path)) {
+                                LOGGER.error("**** Have you downloaded the HAL Browser submodule before building?");
+                                LOGGER.error("**** To fix this, run: $ git submodule update --init --recursive");
+                            }
+                            return;
+
+                        }
+                    } else if (!path.startsWith("/")) {
+                        // this is to allow specifying the configuration file path relative
+                        // to the jar (also working when running from classes)
+                        URL location = Bootstrapper.class
+                                .getProtectionDomain()
+                                .getCodeSource()
+                                .getLocation();
+
+                        File locationFile = new File(location.getPath());
+
+                        Path _path = Paths.get(
+                                locationFile.getParent()
+                                        .concat(File.separator)
+                                        .concat(path));
+
+                        // normalize addresses https://issues.jboss.org/browse/UNDERTOW-742
+                        file = _path.normalize().toFile();
+                    } else {
+                        file = new File(path);
+                    }
+
+                    if (file.exists()) {
+                        ResourceHandler handler = resource(new FileResourceManager(file, 3))
+                                .addWelcomeFiles(welcomeFile)
+                                .setDirectoryListingEnabled(false);
+
+                        PipedHttpHandler ph;
+
+                        if (secured) {
+                            ph = new RequestLoggerHandler(
+                                    new SecurityHandlerDispacher(
+                                            new PipedWrappingHandler(null, handler),
+                                            identityManager,
+                                            accessManager));
+                        } else {
+                            ph = new RequestLoggerHandler(handler);
+                        }
+
+                        paths.addPrefixPath(where, ph);
+
+                        LOGGER.info("URL {} bound to static resources {}. Access Manager: {}", where, file.getAbsolutePath(), secured);
+                    } else {
+                        LOGGER.error("Failed to bind URL {} to static resources {}. Directory does not exist.", where, path);
+                    }
+
+                } catch (Throwable t) {
+                    LOGGER.error("Cannot bind static resources to {}", sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHERE_KEY), t);
+                }
+            });
+        }
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471637\fstmerge_base_6674332995118287176
+private static void pipeStaticResourcesHandlers(
+            final Configuration conf,
+            final PathHandler paths,
+            final IdentityManager identityManager,
+            final AccessManager accessManager) {
+        if (conf.getStaticResourcesMounts() != null) {
+            conf.getStaticResourcesMounts().stream().forEach(sr -> {
+                try {
+                    String path = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHAT_KEY);
+                    String where = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHERE_KEY);
+                    String welcomeFile = (String) sr.get(Configuration.STATIC_RESOURCES_MOUNT_WELCOME_FILE_KEY);
+
+                    Boolean embedded = (Boolean) sr.get(Configuration.STATIC_RESOURCES_MOUNT_EMBEDDED_KEY);
+                    embedded = embedded == null ? false : embedded; // makes embedded optional with default to false
+
+                    Boolean secured = (Boolean) sr.get(Configuration.STATIC_RESOURCES_MOUNT_SECURED_KEY);
+                    secured = secured == null ? false : secured; // makes secured optional with default to false
+
+                    if (where == null || !where.startsWith("/")) {
+                        LOGGER.error("Cannot bind static resources to {}. parameter 'where' must start with /", where);
+                        return;
+                    }
+
+                    if (welcomeFile == null) {
+                        welcomeFile = "index.html";
+                    }
+
+                    File file;
+
+                    if (embedded) {
+                        if (path.startsWith("/")) {
+                            LOGGER.error("Cannot bind embedded static resources to {}. parameter 'where'"
+                                    + "cannot start with /. the path is relative to the jar root dir or classpath directory", where);
+                            return;
+                        }
+
+                        try {
+                            file = ResourcesExtractor.extract(path);
+
+                            if (ResourcesExtractor.isResourceInJar(path)) {
+                                TMP_EXTRACTED_FILES.put(path, file);
+                                LOGGER.info("Embedded static resources {} extracted in {}", path, file.toString());
+                            }
+                        } catch (URISyntaxException | IOException ex) {
+                            LOGGER.error("Error extracting embedded static resource {}", path, ex);
+                            return;
+                        } catch (IllegalStateException ex) {
+                            LOGGER.error("Error extracting embedded static resource {}", path, ex);
+
+                            if ("browser".equals(path)) {
+                                LOGGER.error("**** Have you downloaded the HAL Browser submodule before building?");
+                                LOGGER.error("**** To fix this, run: $ git submodule update --init --recursive");
+                            }
+                            return;
+
+                        }
+                    } else if (!path.startsWith("/")) {
+                        // this is to allow specifying the configuration file path relative
+                        // to the jar (also working when running from classes)
+                        URL location = Bootstrapper.class
+                                .getProtectionDomain()
+                                .getCodeSource()
+                                .getLocation();
+
+                        File locationFile = new File(location.getPath());
+
+                        Path _path = Paths.get(
+                                locationFile.getParent()
+                                        .concat(File.separator)
+                                        .concat(path));
+
+                        // normalize addresses https://issues.jboss.org/browse/UNDERTOW-742
+                        file = _path.normalize().toFile();
+                    } else {
+                        file = new File(path);
+                    }
+
+                    if (file.exists()) {
+                        ResourceHandler handler = resource(new FileResourceManager(file, 3))
+                                .addWelcomeFiles(welcomeFile)
+                                .setDirectoryListingEnabled(false);
+
+                        PipedHttpHandler ph;
+
+                        if (secured) {
+                            ph = new RequestLoggerHandler(
+                                    new SecurityHandlerDispacher(
+                                            new PipedWrappingHandler(null, handler),
+                                            identityManager,
+                                            accessManager));
+                        } else {
+                            ph = new RequestLoggerHandler(handler);
+                        }
+
+                        paths.addPrefixPath(where, ph);
+
+                        LOGGER.info("URL {} bound to static resources {}. Access Manager: {}", where, file.getAbsolutePath(), secured);
+                    } else {
+                        LOGGER.error("Failed to bind URL {} to static resources {}. Directory does not exist.", where, path);
+                    }
+
+                } catch (Throwable t) {
+                    LOGGER.error("Cannot bind static resources to {}", sr.get(Configuration.STATIC_RESOURCES_MOUNT_WHERE_KEY), t);
+                }
+            });
+        }
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703471637\fstmerge_var2_2834384282895762402
+
+File path: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_rev_left_d5aee-rev_right_38fcf\src\main\java\org\restheart\Bootstrapper.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703472137\fstmerge_var1_441977217833975853
+private static void pipeApplicationLogicHandlers(
+            final Configuration conf,
+            final PathHandler paths,
+            final IdentityManager identityManager,
+            final AccessManager accessManager) {
+        if (conf.getApplicationLogicMounts() != null) {
+            conf.getApplicationLogicMounts().stream().forEach((Map<String, Object> al) -> {
+                try {
+                    String alClazz = (String) al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHAT_KEY);
+                    String alWhere = (String) al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHERE_KEY);
+                    boolean alSecured = (Boolean) al.get(Configuration.APPLICATION_LOGIC_MOUNT_SECURED_KEY);
+                    Object alArgs = al.get(Configuration.APPLICATION_LOGIC_MOUNT_ARGS_KEY);
+
+                    if (alWhere == null || !alWhere.startsWith("/")) {
+                        LOGGER.error("Cannot pipe application logic handler {}. Parameter 'where' must start with /", alWhere);
+                        return;
+                    }
+
+                    if (alArgs != null && !(alArgs instanceof Map)) {
+                        LOGGER.error("Cannot pipe application logic handler {}."
+                                + "Args are not defined as a map. It is a ", alWhere, alWhere.getClass());
+                        return;
+
+                    }
+
+                    Object o = Class.forName(alClazz)
+                            .getConstructor(PipedHttpHandler.class, Map.class)
+                            .newInstance(null, (Map) alArgs);
+
+                    if (o instanceof ApplicationLogicHandler) {
+                        ApplicationLogicHandler alHandler = (ApplicationLogicHandler) o;
+
+                        PipedHttpHandler handler
+                                = new RequestContextInjectorHandler(
+                                        "/_logic",
+                                        "*",
+                                        new BodyInjectorHandler(alHandler));
+
+                        if (alSecured) {
+                            paths.addPrefixPath("/_logic" + alWhere, new RequestLoggerHandler(
+                                    new CORSHandler(
+                                            new SecurityHandlerDispacher(
+                                                    handler,
+                                                    identityManager,
+                                                    accessManager))));
+                        } else {
+                            paths.addPrefixPath("/_logic" + alWhere,
+                                    new RequestLoggerHandler(
+                                            new CORSHandler(
+                                                    new SecurityHandlerDispacher(
+                                                            handler,
+                                                            identityManager,
+                                                            new FullAccessManager()))));
+                        }
+
+                        LOGGER.info("URL {} bound to application logic handler {}."
+                                + " Access manager: {}", "/_logic" + alWhere, alClazz, alSecured);
+                    } else {
+                        LOGGER.error("Cannot pipe application logic handler {}."
+                                + " Class {} does not extend ApplicationLogicHandler", alWhere, alClazz);
+                    }
+
+                } catch (ClassNotFoundException
+                        | IllegalAccessException
+                        | IllegalArgumentException
+                        | InstantiationException
+                        | NoSuchMethodException
+                        | SecurityException
+                        | InvocationTargetException t) {
+                    LOGGER.error("Cannot pipe application logic handler {}",
+                            al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHERE_KEY), t);
+                }
+            }
+            );
+        }
+    }
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703472137\fstmerge_base_9137601070614097846
+private static void pipeApplicationLogicHandlers(
+            final Configuration conf,
+            final PathHandler paths,
+            final IdentityManager identityManager,
+            final AccessManager accessManager) {
+        if (conf.getApplicationLogicMounts() != null) {
+            conf.getApplicationLogicMounts().stream().forEach(al -> {
+                try {
+                    String alClazz = (String) al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHAT_KEY);
+                    String alWhere = (String) al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHERE_KEY);
+                    boolean alSecured = (Boolean) al.get(Configuration.APPLICATION_LOGIC_MOUNT_SECURED_KEY);
+                    Object alArgs = al.get(Configuration.APPLICATION_LOGIC_MOUNT_ARGS_KEY);
+
+                    if (alWhere == null || !alWhere.startsWith("/")) {
+                        LOGGER.error("Cannot pipe application logic handler {}. Parameter 'where' must start with /", alWhere);
+                        return;
+                    }
+
+                    if (alArgs != null && !(alArgs instanceof Map)) {
+                        LOGGER.error("Cannot pipe application logic handler {}."
+                                + "Args are not defined as a map. It is a ", alWhere, alWhere.getClass());
+                        return;
+
+                    }
+
+                    Object o = Class.forName(alClazz)
+                            .getConstructor(PipedHttpHandler.class, Map.class)
+                            .newInstance(null, (Map) alArgs);
+
+                    if (o instanceof ApplicationLogicHandler) {
+                        ApplicationLogicHandler alHandler = (ApplicationLogicHandler) o;
+
+                        PipedHttpHandler handler
+                                = new RequestContextInjectorHandler(
+                                        "/_logic",
+                                        "*",
+                                        new BodyInjectorHandler(alHandler));
+
+                        if (alSecured) {
+                            paths.addPrefixPath("/_logic" + alWhere, new RequestLoggerHandler(
+                                    new CORSHandler(
+                                            new SecurityHandlerDispacher(
+                                                    handler,
+                                                    identityManager,
+                                                    accessManager))));
+                        } else {
+                            paths.addPrefixPath("/_logic" + alWhere,
+                                    new RequestLoggerHandler(
+                                            new CORSHandler(
+                                                    new SecurityHandlerDispacher(
+                                                            handler,
+                                                            identityManager,
+                                                            new FullAccessManager()))));
+                        }
+
+                        LOGGER.info("URL {} bound to application logic handler {}."
+                                + " Access manager: {}", "/_logic" + alWhere, alClazz, alSecured);
+                    } else {
+                        LOGGER.error("Cannot pipe application logic handler {}."
+                                + " Class {} does not extend ApplicationLogicHandler", alWhere, alClazz);
+                    }
+
+                } catch (Throwable t) {
+                    LOGGER.error("Cannot pipe application logic handler {}",
+                            al.get(Configuration.APPLICATION_LOGIC_MOUNT_WHERE_KEY), t);
+                }
+            }
+            );
+        }
+    }
+=======
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513703472137\fstmerge_var2_5885394056019090666
+
+File path: C:\download\ssmerge\restheart\revisions\rev_d5aee_38fcf\rev_rev_left_d5aee-rev_right_38fcf\src\main\java\org\restheart\Bootstrapper.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_020be_c37d7\rev_020be-c37d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_9455e_5a470\rev_9455e-5a470.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_c37d7_e90d0\rev_c37d7-e90d0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\restheart\revisions\rev_78c64_b86b8\rev_78c64-b86b8.revisions
+
+=========================================================

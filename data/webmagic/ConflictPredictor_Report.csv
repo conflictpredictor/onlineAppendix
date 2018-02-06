@@ -1,0 +1,668 @@
+#MS_XXX_MS#
+Merge scenario: rev_9338e-21eca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ad66d-ce988
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bba0-3084a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b9eeb-aefd0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac4cd-4d023
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef4cf-bf8e4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a4b5-fb693
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_4a4b5_fb693\rev_rev_left_4a4b5-rev_right_fb693\webmagic-core\src\main\java\us\codecraft\webmagic\Spider.java
+Different Spacing: false
+Left editions: [391, 392, 393, 394, 395, 396]
+Right editions: []
+Merged body: 
+// START processRequest(Request-Request)//protected void processRequest(Request request) {
+        Page page = downloader.download(request, this);
+        if (page == null) {
+            sleep(site.getSleepTime());
+            return;
+        }
+// LEFT //        //for cycle retry
+// LEFT //        if (page.getHtml()==null){
+// LEFT //            addRequest(page);
+// LEFT //            sleep(site.getSleepTime());
+// LEFT //            return;
+// LEFT //        }
+        pageProcessor.process(page);
+        addRequest(page);
+        if (!page.getResultItems().isSkip()) {
+            for (Pipeline pipeline : pipelines) {
+                pipeline.process(page.getResultItems(), this);
+            }
+        }
+        sleep(site.getSleepTime());
+// END processRequest(Request-Request)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\webmagic\revisions\rev_4a4b5_fb693\rev_rev_left_4a4b5-rev_right_fb693\webmagic-core\src\main\java\us\codecraft\webmagic\Spider.java
+Different Spacing: false
+Left editions: []
+Right editions: [292, 293, 301, 304, 306, 313]
+Merged body: 
+// START run({FormalParametersInternal})//@Override
+    public void run() {
+// RIGHT //        if (!stat.compareAndSet(STAT_INIT, STAT_RUNNING)
+// RIGHT //                && !stat.compareAndSet(STAT_STOPPED, STAT_RUNNING)) {
+            throw new IllegalStateException("Spider is already running!");
+        }
+        checkComponent();
+        if (startUrls != null) {
+            for (String startUrl : startUrls) {
+                scheduler.push(new Request(startUrl), this);
+            }
+// RIGHT //            startUrls.clear();
+        }
+        Request request = scheduler.poll(this);
+// RIGHT //        //single thread
+        if (executorService == null) {
+// RIGHT //            while (request != null && stat.compareAndSet(STAT_RUNNING, STAT_RUNNING)) {
+                processRequest(request);
+                request = scheduler.poll(this);
+            }
+        } else {
+            //multi thread
+            final AtomicInteger threadAlive = new AtomicInteger(0);
+// RIGHT //            while (true && stat.compareAndSet(STAT_RUNNING, STAT_RUNNING)) {
+                if (request == null) {
+                    //when no request found but some thread is alive, sleep a while.
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                    }
+                } else {
+                    final Request requestFinal = request;
+                    threadAlive.incrementAndGet();
+                    executorService.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            processRequest(requestFinal);
+                            threadAlive.decrementAndGet();
+                        }
+                    });
+                }
+                request = scheduler.poll(this);
+                if (threadAlive.get() == 0) {
+                    request = scheduler.poll(this);
+                    if (request == null) {
+                        break;
+                    }
+                }
+            }
+            executorService.shutdown();
+        }
+        stat.compareAndSet(STAT_RUNNING, STAT_STOPPED);
+        //release some resources
+        destroy();
+// END run({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd1e2-4acbc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_372cc-ba052
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46e10-0b4fa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35068-e7083
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb842-9a524
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_07bcb-4f53b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_057b3-ac516
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c3ff-91ed6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9a15-1bdff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9a15-2b46b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d9fd-a5a9b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09082-a722f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31ff4-6cade
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af809-7e8a5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0e981-4fc89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5a97-af072
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c3ff-757cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_98e2b-1bdff
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c383e-2801d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44293-762a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22c39-3efa7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8fe96-38a12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_474f7-b043a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c143f-159ee
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c1e72-93380
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2873-7cb4e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7950-32ba1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da2f0-99e12
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a03f6-4abdf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8014-16377
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1fbfc-93c4a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74fdd-42a26
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04ade-c07b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3abb9-66692
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a08d8-66692
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5f34-dbebc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_feb60-81e6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a0e9-5f6f4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7fbe1-259f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_928f9-5883e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1650-c146e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_b1650_c146e\rev_rev_left_b1650-rev_right_c146e\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Different Spacing: false
+Left editions: []
+Right editions: [131, 135, 136, 153]
+Merged body: 
+// START download(Request-Request-Task-Task)//@Override
+    public Page download(Request request, Task task) {
+        Site site = null;
+        if (task != null) {
+            site = task.getSite();
+        }
+        Set<Integer> acceptStatCode;
+        String charset = null;
+        Map<String, String> headers = null;
+        if (site != null) {
+            acceptStatCode = site.getAcceptStatCode();
+            charset = site.getCharset();
+            headers = site.getHeaders();
+        } else {
+            acceptStatCode = Sets.newHashSet(200);
+        }
+        logger.info("downloading page {}", request.getUrl());
+        CloseableHttpResponse httpResponse = null;
+// RIGHT //        int statusCode=0;
+        try {
+            HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers);
+            httpResponse = getHttpClient(site).execute(httpUriRequest);
+// RIGHT //            statusCode = httpResponse.getStatusLine().getStatusCode();
+// RIGHT //            request.putExtra(Request.STATUS_CODE, statusCode);
+            if (statusAccept(acceptStatCode, statusCode)) {
+                Page page = handleResponse(request, charset, httpResponse, task);
+                onSuccess(request);
+                return page;
+            } else {
+                logger.warn("code error " + statusCode + "\t" + request.getUrl());
+                return null;
+            }
+        } catch (IOException e) {
+            logger.warn("download page " + request.getUrl() + " error", e);
+            if (site.getCycleRetryTimes() > 0) {
+                return addToCycleRetry(request, site);
+            }
+            onError(request);
+            return null;
+        } finally {
+// RIGHT //        	request.putExtra(Request.STATUS_CODE, statusCode);
+            try {
+                if (httpResponse != null) {
+                    //ensure the connection is released back to pool
+                    EntityUtils.consume(httpResponse.getEntity());
+                }
+            } catch (IOException e) {
+                logger.warn("close response fail", e);
+            }
+        }
+// END download(Request-Request-Task-Task)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\webmagic\revisions\rev_b1650_c146e\rev_rev_left_b1650-rev_right_c146e\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Different Spacing: false
+Left editions: [231]
+Right editions: []
+Merged body: 
+// START handleResponse(Request-Request-String-String-HttpResponse-HttpResponse-Task-Task)//protected Page handleResponse(Request request, String charset, HttpResponse httpResponse, Task task) throws IOException {
+// LEFT //        String content = getContent(charset, httpResponse);
+        Page page = new Page();
+        page.setRawText(content);
+        page.setUrl(new PlainText(request.getUrl()));
+        page.setRequest(request);
+        page.setStatusCode(httpResponse.getStatusLine().getStatusCode());
+        return page;
+// END handleResponse(Request-Request-String-String-HttpResponse-HttpResponse-Task-Task)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_b1650_c146e\rev_rev_left_b1650-rev_right_c146e\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Different Spacing: false
+Left editions: []
+Right editions: [131, 135, 136, 153]
+Merged body: 
+// START download(Request-Request-Task-Task)//@Override
+    public Page download(Request request, Task task) {
+        Site site = null;
+        if (task != null) {
+            site = task.getSite();
+        }
+        Set<Integer> acceptStatCode;
+        String charset = null;
+        Map<String, String> headers = null;
+        if (site != null) {
+            acceptStatCode = site.getAcceptStatCode();
+            charset = site.getCharset();
+            headers = site.getHeaders();
+        } else {
+            acceptStatCode = Sets.newHashSet(200);
+        }
+        logger.info("downloading page {}", request.getUrl());
+        CloseableHttpResponse httpResponse = null;
+// RIGHT //        int statusCode=0;
+        try {
+            HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers);
+            httpResponse = getHttpClient(site).execute(httpUriRequest);
+// RIGHT //            statusCode = httpResponse.getStatusLine().getStatusCode();
+// RIGHT //            request.putExtra(Request.STATUS_CODE, statusCode);
+            if (statusAccept(acceptStatCode, statusCode)) {
+                Page page = handleResponse(request, charset, httpResponse, task);
+                onSuccess(request);
+                return page;
+            } else {
+                logger.warn("code error " + statusCode + "\t" + request.getUrl());
+                return null;
+            }
+        } catch (IOException e) {
+            logger.warn("download page " + request.getUrl() + " error", e);
+            if (site.getCycleRetryTimes() > 0) {
+                return addToCycleRetry(request, site);
+            }
+            onError(request);
+            return null;
+        } finally {
+// RIGHT //        	request.putExtra(Request.STATUS_CODE, statusCode);
+            try {
+                if (httpResponse != null) {
+                    //ensure the connection is released back to pool
+                    EntityUtils.consume(httpResponse.getEntity());
+                }
+            } catch (IOException e) {
+                logger.warn("close response fail", e);
+            }
+        }
+// END download(Request-Request-Task-Task)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b21e2-db019
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_baeb9-eb89d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb89d-2f89c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb89d-074d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_14740-1db94
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42a30-bc666
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a9c1-eb3c7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8ffc1-49786
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b9d2-74962
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05a1f-59056
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_56e0c-afd16
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d7eb-90e14
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5f9e1-165e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cfde3-15521
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84b04-5d365
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ce549-2a8e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca072-83c27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5413-19474
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5413-61c28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8f97-89c6e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8f97-b7f3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2400f-7628d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37cb4-6b179
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_37cb4_6b179\rev_rev_left_37cb4-rev_right_6b179\webmagic-core\src\main\java\us\codecraft\webmagic\downloader\HttpClientDownloader.java
+Different Spacing: false
+Left editions: [119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129]
+Right editions: [149, 150, 151, 152]
+Merged body: 
+// START download(Request-Request-Task-Task)//@Override
+    public Page download(Request request, Task task) {
+        Site site = null;
+        if (task != null) {
+            site = task.getSite();
+        }
+        Set<Integer> acceptStatCode;
+        String charset = null;
+        Map<String, String> headers = null;
+        if (site != null) {
+            acceptStatCode = site.getAcceptStatCode();
+            charset = site.getCharset();
+            headers = site.getHeaders();
+        } else {
+            acceptStatCode = Sets.newHashSet(200);
+        }
+        logger.info("downloading page {}", request.getUrl());
+        CloseableHttpResponse httpResponse = null;
+        int statusCode=0;
+        try {
+// LEFT //            HttpHost proxyHost = null;
+// LEFT //            Proxy proxy = null; //TODO
+// LEFT //            if (site.getHttpProxyPool() != null && site.getHttpProxyPool().isEnable()) {
+// LEFT //                proxy = site.getHttpProxyFromPool();
+// LEFT //                proxyHost = proxy.getHttpHost();
+// LEFT //            } else if(site.getHttpProxy()!= null){
+// LEFT //                proxyHost = site.getHttpProxy();
+// LEFT //            }
+// LEFT //            
+// LEFT //            HttpUriRequest httpUriRequest = getHttpUriRequest(request, site, headers, proxyHost);//?????????????
+// LEFT //            httpResponse = getHttpClient(site, proxy).execute(httpUriRequest);//getHttpClient??????????????
+            statusCode = httpResponse.getStatusLine().getStatusCode();
+            request.putExtra(Request.STATUS_CODE, statusCode);
+            if (statusAccept(acceptStatCode, statusCode)) {
+                Page page = handleResponse(request, charset, httpResponse, task);
+                onSuccess(request);
+                return page;
+            } else {
+                logger.warn("code error " + statusCode + "\t" + request.getUrl());
+                return null;
+            }
+        } catch (IOException e) {
+            logger.warn("download page " + request.getUrl() + " error", e);
+            if (site.getCycleRetryTimes() > 0) {
+                return addToCycleRetry(request, site);
+            }
+            onError(request);
+            return null;
+        } finally {
+        	request.putExtra(Request.STATUS_CODE, statusCode);
+// RIGHT //            if (site.getHttpProxyPool()!=null && site.getHttpProxyPool().isEnable()) {
+// RIGHT //                site.returnHttpProxyToPool((HttpHost) request.getExtra(Request.PROXY), (Integer) request
+// RIGHT //                        .getExtra(Request.STATUS_CODE));
+// RIGHT //            }
+            try {
+                if (httpResponse != null) {
+                    //ensure the connection is released back to pool
+                    EntityUtils.consume(httpResponse.getEntity());
+                }
+            } catch (IOException e) {
+                logger.warn("close response fail", e);
+            }
+        }
+// END download(Request-Request-Task-Task)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37cb4-8730e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_448e5-f89a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50755-70089
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_22891-e56b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2189a-14910
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fdf39-ebc61
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_65fe2-862ce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ebc61-1987c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b886-e3131
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ca4e-c2362
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e919b-e4af0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4f76d-0dc26
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_93e70-6d78d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2362-76076
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11904-e6455
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef325-50247
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c175e-79152
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa01e-65046
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_65046-e9341
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9341-79522
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76729-221c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_221c1-c93a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74110-39539
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_74110_39539\rev_rev_left_74110-rev_right_39539\webmagic-core\src\main\java\us\codecraft\webmagic\Page.java
+Different Spacing: false
+Left editions: [321, 323]
+Right editions: [325]
+Merged body: 
+// START toString({FormalParametersInternal})//@Override
+    public String toString() {
+        return "Page{" +
+                "request=" + request +
+                ", resultItems=" + resultItems +
+                ", rawText='" + rawText + '\'' +
+                ", url=" + url +
+// LEFT //                ", headers=" + headers +
+                ", statusCode=" + statusCode +
+// LEFT //                ", needCycleRetry=" + needCycleRetry +
+                ", targetRequests=" + targetRequests +
+// RIGHT //                ", headers=" + headers+
+                '}';
+// END toString({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_25df6-0f4d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a2c0-5f34a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3183-0c359
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39c3c-c80f2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec7c5-bc828
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a932-9903f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f02f4-9e1b7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f5b9-a7e30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5db5-26608
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c701f-adf54
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\webmagic\revisions\rev_c701f_adf54\rev_rev_left_c701f-rev_right_adf54\webmagic-extension\src\main\java\us\codecraft\webmagic\scheduler\RedisScheduler.java
+Different Spacing: false
+Left editions: [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]
+Right editions: []
+Merged body: 
+// START pushWhenNoDuplicate(Request-Request-Task-Task)//// LEFT //@Override
+// LEFT //    protected void pushWhenNoDuplicate(Request request, Task task) {
+// LEFT //        Jedis jedis = pool.getResource();
+// LEFT //        try {
+// LEFT //            jedis.rpush(getQueueKey(task), request.getUrl());
+// LEFT //            if (checkForAdditionalInfo(request)) {
+// LEFT //                String field = DigestUtils.shaHex(request.getUrl());
+// LEFT //                String value = JSON.toJSONString(request);
+// LEFT //                jedis.hset((ITEM_PREFIX + task.getUUID()), field, value);
+// LEFT //            }
+// LEFT //        } finally {
+// LEFT //            jedis.close();
+// LEFT //        }
+// END pushWhenNoDuplicate(Request-Request-Task-Task)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7d1e-00375
+#MS_XXX_MS#

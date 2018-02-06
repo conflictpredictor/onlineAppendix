@@ -1,0 +1,11 @@
+project,merge_scenario,integration_conflict_cause
+cloud-slang,rev_3d79c-db6af,integrator added method call to a method that had its signature changed
+hdiv,rev_5facf-be22e,some files did not have the required license header
+jackson-core,rev_e887c-9bdda, has predictor (problema de renaming) teve conflito de merge e o integrador ao tentar resolver, repetiu a declaração de um método ou variável
+java-driver,rev_82027-d7a6a,some files did not have the required license header
+java-driver,rev_64079-1f65a,integrator added a call to a method without the right argument
+java-driver,rev_2590e-2e811,some files did not have the required license header
+java-driver,rev_04752-f70ef,some files did not have the required license header
+java-driver,rev_9469e-1729f,some files did not have the required license header
+pac4j,rev_9dadc-1d4af, integrator references a deleted or renamed element
+XChange,rev_66b24-bb970,integrator references a deleted or renamed element

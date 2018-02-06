@@ -1,0 +1,197 @@
+=========================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_b796c_cae6e\rev_b796c-cae6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_07daf_1096e\rev_07daf-1096e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public static void main(final String[] args) throws Exception {
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170153201\fstmerge_var1_8358065864346409763
+        // final List<Instance> instances = readMobo();
+        final List<Instance> instances = readDiabetes();
+        
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170153201\fstmerge_base_7270538034855310231
+        final BufferedReader br = new BufferedReader(new InputStreamReader((new GZIPInputStream(new FileInputStream(
+                new File(new File(System.getProperty("user.dir")), "testdata/mobo1.txt.gz"))))));
+
+        final List<Instance> instances = Lists.newLinkedList();
+
+        int count = 0;
+        while (true) {
+            count++;
+            final String line = br.readLine();
+            if (line == null) {
+                break;
+            }
+            final JSONObject jo = (JSONObject) JSONValue.parse(line);
+            final Attributes a = new Attributes();
+            a.putAll((JSONObject) jo.get("attributes"));
+            instances.add(new Instance(a, (String) jo.get("output")));
+        }
+        
+=======
+        final BufferedReader br = new BufferedReader(new InputStreamReader((new GZIPInputStream(new FileInputStream(
+                new File(new File(System.getProperty("user.dir")), "testdata/mobo1.txt.gz"))))));
+
+        final List<Instance> instances = Lists.newLinkedList();
+
+        int count = 0;
+        while (true) {
+            count++;
+            final String line = br.readLine();
+            if (line == null) {
+                break;
+            }
+            final JSONObject jo = (JSONObject) JSONValue.parse(line);
+            final HashMapAttributes a = new HashMapAttributes();
+            a.putAll((JSONObject) jo.get("attributes"));
+            Instance instance = new Instance(a, (String) jo.get("output"));
+            instances.add(instance);
+        }
+
+
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170153201\fstmerge_var2_4164344485750416922
+        final List<Instance> train = instances.subList(0, instances.size() / 2);
+        final List<Instance> test = instances.subList(instances.size() / 2 + 1, instances.size() - 1);
+
+        System.out.println("Read " + instances.size() + " instances");
+
+        System.out.println("Testing scorers with single decision node");
+        for (final Scorer scorer : Sets.newHashSet(new Scorer1())) {
+            final TreeBuilder tb = new TreeBuilder(scorer);
+
+            final long startTime = System.currentTimeMillis();
+            final Node tree = tb.buildPredictiveModel(train).node;
+            System.out.println(scorer.getClass().getSimpleName() + " build time "
+                    + (System.currentTimeMillis() - startTime) + ", size: " + tree.size() + " mean depth: "
+                    + tree.meanDepth());
+
+            int correctlyClassified = 0;
+            for (Instance testInstance : test) {
+                String result = (String) tree.getLeaf(testInstance.getAttributes()).getBestClassification();
+                if (result.equals(testInstance.getClassification())) {
+                    correctlyClassified++;
+                }
+            }
+            System.out.println(", accuracy: " + (double) correctlyClassified / test.size());
+
+            System.out.println("Testing random forest");
+
+            for (int i = 2; i <= 20; i++) {
+                RandomForestBuilder rfBuilder = new RandomForestBuilder(new TreeBuilder());
+                RandomForest randomForest = rfBuilder.buildPredictiveModel(train);
+                correctlyClassified = 0;
+                for (Instance testInstance : test) {
+                    Serializable result = randomForest.getClassificationByMaxProb(testInstance.getAttributes());
+                    if (result.equals(testInstance.getClassification())) {
+                        correctlyClassified++;
+                    }
+                }
+                System.out.println("accuracy with " + i + " trees: " + (double) correctlyClassified / test.size());
+                //ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("baggedTree.ser")));
+                //out.writeObject(baggedTree);
+            }
+
+        }
+
+
+    }
+
+File path: C:\download\ssmerge\quickml\revisions\rev_07daf_1096e\rev_rev_left_07daf-rev_right_1096e\src\main\java\quickdt\Benchmarks.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_7d3a2_500e2\rev_7d3a2-500e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_3dfeb_57322\rev_3dfeb-57322.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_9e1f3_babd2\rev_9e1f3-babd2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_47173_c4b8e\rev_47173-c4b8e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_8785a_df445\rev_8785a-df445.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_618e3_b0d37\rev_618e3-b0d37.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_4917a_d5bf8\rev_4917a-d5bf8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_65a08_47e98\rev_65a08-47e98.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_47e98_8663e\rev_47e98-8663e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_60273_b3cdd\rev_60273-b3cdd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_b3cdd_8e6e9\rev_b3cdd-8e6e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_60f2e_c0755\rev_60f2e-c0755.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_c0755_69d79\rev_c0755-69d79.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_4b070_bde70\rev_4b070-bde70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_ee157_381f1\rev_ee157-381f1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_88d4c_35ccc\rev_88d4c-35ccc.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private static void testWithInstances(String dsName, final List<Instance> instances) {
+        CrossValidator crossValidator = new CrossValidator();
+
+        for (double minScore = 0.000001; minScore < 0.1; minScore *= 2.0) {
+            TreeBuilder forestTreeBuilder = new TreeBuilder(new MSEScorer(MSEScorer.CrossValidationCorrection.TRUE)).minimumScore(minScore).ignoreAttributeAtNodeProbability(0.5);
+            RandomForestBuilder randomForestBuilder = new RandomForestBuilder(forestTreeBuilder).numTrees(100).executorThreadCount(8);
+            System.out.println(minScore+", "+crossValidator.test(randomForestBuilder, instances));
+        }
+
+/*        for (final Scorer scorer : Lists.newArrayList(new SplitDiffScorer(), new MSEScorer(MSEScorer.CrossValidationCorrection.FALSE), new MSEScorer(MSEScorer.CrossValidationCorrection.TRUE))) {
+            final TreeBuilder singleTreeBuilder = new TreeBuilder(scorer);
+            System.out.println(dsName+", single-tree, "+scorer+", "+crossValidator.getCrossValidatedLoss(singleTreeBuilder, instances));
+
+            TreeBuilder forestTreeBuilder = new TreeBuilder(scorer).ignoreAttributeAtNodeProbability(0.5);
+            RandomForestBuilder randomForestBuilder = new RandomForestBuilder(forestTreeBuilder).numTrees(100).executorThreadCount(8);
+<<<<<<< C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170906565\fstmerge_var1_2755467767353507951
+            System.out.println(dsName+", random-forest, "+scorer+", "+crossValidator.test(randomForestBuilder, instances));
+        }*/
+||||||| C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170906565\fstmerge_base_1343678814621949369
+            System.out.println(dsName+", random-forest, "+scorer+", "+crossValidator.test(randomForestBuilder, instances));
+        }
+=======
+            System.out.println(dsName+", random-forest, "+scorer+", "+crossValidator.getCrossValidatedLoss(randomForestBuilder, instances));
+        }
+>>>>>>> C:\Users\Italo\Documents\paola\workspaces\workspace_tese\conflictsanalyzer\fstmerge_tmp1513170906565\fstmerge_var2_5221192669408947031
+    }
+
+File path: C:\download\ssmerge\quickml\revisions\rev_88d4c_35ccc\rev_rev_left_88d4c-rev_right_35ccc\src\test\java\quickdt\Benchmarks.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\quickml\revisions\rev_c9aac_4cf97\rev_c9aac-4cf97.revisions
+
+=========================================================

@@ -1,0 +1,265 @@
+=========================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_5ae84_3aff0\rev_5ae84-3aff0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_1aa28_42602\rev_1aa28-42602.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_12925_13e0f\rev_12925-13e0f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_56350_5fca7\rev_56350-5fca7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_78eee_84d34\rev_78eee-84d34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_a2ee0_d43d0\rev_a2ee0-d43d0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_77fea_76498\rev_77fea-76498.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_bf081_571d7\rev_bf081-571d7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_2faa2_ac360\rev_2faa2-ac360.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_6f7b3_d8ca1\rev_6f7b3-d8ca1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_42f2f_ecf86\rev_42f2f-ecf86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_672e5_e9231\rev_672e5-e9231.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_63ffd_c485c\rev_63ffd-c485c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_13c26_14c92\rev_13c26-14c92.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_ce983_d5ef9\rev_ce983-d5ef9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_fca9b_e0f74\rev_fca9b-e0f74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_ab735_7877b\rev_ab735-7877b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_ccc6d_48483\rev_ccc6d-48483.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_b40c0_8644e\rev_b40c0-8644e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_6e0af_7f215\rev_6e0af-7f215.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_ef097_ac268\rev_ef097-ac268.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_63fd6_d18cd\rev_63fd6-d18cd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_c750e_352ad\rev_c750e-352ad.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_83f4a_d448e\rev_83f4a-d448e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513225986904\fstmerge_var1_5502444230373285639
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])))
+          .asNode(tokenNames[i]);
+    }
+    return Parsers.or(ps);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513225986904\fstmerge_base_4984515343346749171
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])));
+    }
+    return Parsers.or(ps);
+=======
+public Parser<Token> token(String tokenName) {
+    return Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenName)));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513225986904\fstmerge_var2_7216714582098518717
+  }
+
+File path: C:\download\ssmerge\jparsec\revisions\rev_83f4a_d448e\rev_rev_left_83f4a-rev_right_d448e\jparsec\src\main\java\org\codehaus\jparsec\Lexicon.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_0ec7a_d79b4\rev_0ec7a-d79b4.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226051161\fstmerge_var1_7857625485092032905
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])))
+          .asNode(tokenNames[i]);
+    }
+    return Parsers.or(ps);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226051161\fstmerge_base_947052455152646529
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])));
+    }
+    return Parsers.or(ps);
+=======
+public Parser<Token> token(String tokenName) {
+    return Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenName)));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226051161\fstmerge_var2_4940548754660031189
+  }
+
+File path: C:\download\ssmerge\jparsec\revisions\rev_0ec7a_d79b4\rev_rev_left_0ec7a-rev_right_d79b4\jparsec\src\main\java\org\codehaus\jparsec\Lexicon.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_1cc17_210de\rev_1cc17-210de.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226093712\fstmerge_var1_6655952703173031511
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])))
+          .asNode(tokenNames[i]);
+    }
+    return Parsers.or(ps);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226093712\fstmerge_base_5907230016419950463
+public Parser<Token> token(String... tokenNames) {
+    if (tokenNames.length == 0) return Parsers.never();
+    @SuppressWarnings("unchecked")
+    Parser<Token>[] ps = new Parser[tokenNames.length];
+    for(int i = 0; i < tokenNames.length; i++) {
+      ps[i] = Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenNames[i])));
+    }
+    return Parsers.or(ps);
+=======
+public Parser<Token> token(String tokenName) {
+    return Parsers.token(InternalFunctors.tokenWithSameValue(word(tokenName)));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226093712\fstmerge_var2_5371702411637326856
+  }
+
+File path: C:\download\ssmerge\jparsec\revisions\rev_1cc17_210de\rev_rev_left_1cc17-rev_right_210de\jparsec\src\main\java\org\codehaus\jparsec\Lexicon.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_725a8_a8f5d\rev_725a8-a8f5d.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226138150\fstmerge_var1_1571722799769419582
+public final Parser<T> label(String name) {
+    return Parsers.plus(this, Parsers.<T>expect(name)).asNode(name);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226138150\fstmerge_base_2547339219184624780
+public final Parser<T> label(String name) {
+    return Parsers.plus(this, Parsers.<T>expect(name));
+=======
+public Parser<T> label(String name) {
+    return new LabeledParser<T>(this, name);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226138150\fstmerge_var2_6407194250896912492
+  }
+
+File path: C:\download\ssmerge\jparsec\revisions\rev_725a8_a8f5d\rev_rev_left_725a8-rev_right_a8f5d\jparsec\src\main\java\org\codehaus\jparsec\Parser.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_98bb1_f29bd\rev_98bb1-f29bd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_8fe7f_a8063\rev_8fe7f-a8063.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_339c6_96599\rev_339c6-96599.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+static Parser<TypeLiteral> elementTypeLiteral() {
+    Parser.Reference<TypeLiteral> ref = Parser.newReference();
+    Parser<TypeLiteral> lazy = ref.lazy();
+    Parser<TypeLiteral> arg = wildcard(lazy).or(lazy);
+    Parser<String> nativeTypeName = TerminalParser.oneOf(
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226354854\fstmerge_var1_4996808550840021664
+        "byte", "short", "int", "long", "boolean", "char", "float", "double", "void")
+        .map(Object::toString);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226354854\fstmerge_base_4236979288876441128
+        "byte", "short", "int", "long", "boolean", "char", "float", "double", "void")
+        .map(Maps.mapToString());
+=======
+        "byte", "short", "int", "long", "boolean", "char", "float", "double", "void").map(Maps.<Object>mapToString());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513226354854\fstmerge_var2_7273807438716796447
+    Parser<String> typeName = nativeTypeName.or(Terminals.Identifier.PARSER);
+    Parser<TypeLiteral> parser = Parsers.sequence(
+        typeName.sepBy1(term(".")), TypeLiteralParser.optionalTypeArgs(arg),
+        SimpleTypeLiteral::new);
+    ref.set(parser.postfix(ARRAY_OF));
+    return parser;
+  }
+
+File path: C:\download\ssmerge\jparsec\revisions\rev_339c6_96599\rev_rev_left_339c6-rev_right_96599\jparsec-examples\src\main\java\org\codehaus\jparsec\examples\java\parser\TypeLiteralParser.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_41222_c4023\rev_41222-c4023.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_1b0bf_d84f3\rev_1b0bf-d84f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_34e2e_2533b\rev_34e2e-2533b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_88ce9_9f878\rev_88ce9-9f878.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jparsec\revisions\rev_fef69_12569\rev_fef69-12569.revisions
+
+=========================================================

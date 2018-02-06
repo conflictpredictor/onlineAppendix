@@ -1,0 +1,83 @@
+#MS_XXX_MS#
+Merge scenario: rev_224ec-d7737
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed059-6dde8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f1e3d-9668b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_16498-d4c40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c6c47-d4c40
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d4c40-4c788
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e636-6ba3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63782-fcc09
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\stateless4j\revisions\rev_63782_fcc09\rev_rev_left_63782-rev_right_fcc09\src\main\java\com\github\oxo42\stateless4j\StateMachine.java
+Different Spacing: false
+Left editions: [287, 288, 289, 290, 291]
+Right editions: []
+Merged body: 
+// START generateDotFileInto(OutputStream-OutputStream)//public void generateDotFileInto(final OutputStream dotFile) throws IOException {
+        try (OutputStreamWriter w = new OutputStreamWriter(dotFile, "UTF-8")) {
+            PrintWriter writer = new PrintWriter(w);
+            writer.write("digraph G {\n");
+// LEFT //            OutVar<S> destination = new OutVar<>();
+// LEFT //            for (Entry<S, StateRepresentation<S, T>> entry : this.stateConfiguration.entrySet()) {
+// LEFT //                Map<T, List<TriggerBehaviour<S, T>>> behaviours = entry.getValue().getTriggerBehaviours();
+// LEFT //                for (Entry<T, List<TriggerBehaviour<S, T>>> behaviour : behaviours.entrySet()) {
+// LEFT //                    for (TriggerBehaviour<S, T> triggerBehaviour : behaviour.getValue()) {
+                        if (triggerBehaviour instanceof TransitioningTriggerBehaviour) {
+                            destination.set(null);
+                            triggerBehaviour.resultsInTransitionFrom(null, null, destination);
+                            writer.write(String.format("\t%s -> %s;\n", entry.getKey(), destination));
+                        }
+                    }
+                }
+            }
+            writer.write("}");
+        }
+// END generateDotFileInto(OutputStream-OutputStream)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7ab25-8a706
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55c2f-57554
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55c2f-baa71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_221df-00fd1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3ed38-3c092
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f5337-69939
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f5337-1bd8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f670c-51043
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5a167-bb3bf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ec3b3-68c24
+#MS_XXX_MS#

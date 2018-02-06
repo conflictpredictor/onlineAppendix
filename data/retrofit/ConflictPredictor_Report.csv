@@ -1,0 +1,2244 @@
+#MS_XXX_MS#
+Merge scenario: rev_4b39b-eea6c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab8e0-f5ec6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccd4c-56ca3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b4e9-baa9d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2efc1-06074
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac250-fadf9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd432-3f1c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60caa-2cb07
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2c7f-52cdf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_15697-6d8de
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be4c1-ae8e3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fba17-bfeae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_778c1-2242c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6800b-4b178
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3418a-4d508
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_3418a_4d508\rev_rev_left_3418a-rev_right_4d508\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: [150, 151, 152]
+Right editions: [154]
+Merged body: 
+// START create(Class<T>-Class<T>)//@SuppressWarnings("unchecked")
+  public <T> T create(Class<T> type) {
+// LEFT //    if (!type.isInterface()) {
+// LEFT //      throw new IllegalArgumentException("Only interface endpoint definitions are supported.");
+// LEFT //    }
+    return (T) Proxy.newProxyInstance(type.getClassLoader(), new Class<?>[] { type },
+// RIGHT //        new RestHandler());
+// END create(Class<T>-Class<T>)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f78b8-7ea39
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f78b8_7ea39\rev_rev_left_f78b8-rev_right_7ea39\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: []
+Right editions: [301]
+Merged body: 
+// START getRequestInfo(Server-Server-RestMethodInfo-RestMethodInfo-Request-Request)//private static Profiler.RequestInformation getRequestInfo(Server server,
+      RestMethodInfo methodDetails, Request request) {
+    long contentLength = 0;
+    String contentType = null;
+
+    TypedBytes body = request.getBody();
+    if (body != null) {
+      contentLength = body.length();
+// RIGHT //      contentType = body.mimeType();
+    }
+
+    return new Profiler.RequestInformation(methodDetails.restMethod.value(), server.apiUrl(),
+        methodDetails.path, contentLength, contentType);
+// END getRequestInfo(Server-Server-RestMethodInfo-RestMethodInfo-Request-Request)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_f78b8_7ea39\rev_rev_left_f78b8-rev_right_7ea39\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: [255, 256, 257, 264, 267]
+Right editions: []
+Merged body: 
+// START invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//private Object invokeRequest(RestMethodInfo methodDetails, Object[] args) {
+      methodDetails.init(); // Ensure all relevant method information has been loaded.
+
+      String url = server.apiUrl();
+      try {
+        Request request = new RequestBuilder(converter) //
+            .setApiUrl(server.apiUrl())
+            .setArgs(args)
+            .setHeaders(headersProvider.get())
+            .setMethodInfo(methodDetails)
+            .build();
+        url = request.getUrl();
+        LOGGER.fine("Sending " + request.getMethod() + " to " + url);
+
+        if (!methodDetails.isSynchronous) {
+          // If we are executing asynchronously then update the current thread with a useful name.
+          Thread.currentThread().setName(THREAD_PREFIX + url);
+        }
+
+        Object profilerObject = null;
+        if (profiler != null) {
+          profilerObject = profiler.beforeCall();
+        }
+
+        long start = System.nanoTime();
+        Response response = clientProvider.get().execute(request);
+        long elapsedTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+
+        int statusCode = response.getStatus();
+        if (profiler != null) {
+          RequestInformation requestInfo = getRequestInfo(server, methodDetails, request);
+          profiler.afterCall(requestInfo, elapsedTime, statusCode, profilerObject);
+        }
+
+        byte[] body = response.getBody();
+        if (LOGGER.isLoggable(Level.FINE)) {
+          logResponseBody(url, body, statusCode, elapsedTime);
+        }
+
+        List<Header> headers = response.getHeaders();
+        for (Header header : headers) {
+          if (HTTP.CONTENT_TYPE.equalsIgnoreCase(header.getName()) //
+              && !UTF_8.equalsIgnoreCase(Utils.parseCharset(header.getValue()))) {
+            throw new IOException("Only UTF-8 charset supported.");
+          }
+        }
+
+        Type type = methodDetails.type;
+        if (statusCode >= 200 && statusCode < 300) { // 2XX == successful request
+// LEFT //          if (type.equals(Response.class)) {
+// LEFT //            return response;
+// LEFT //          }
+          if (body == null) {
+            return null;
+          }
+          try {
+            return converter.fromBody(body, type);
+          } catch (ConversionException e) {
+// LEFT //            throw RetrofitError.conversionError(url, response, converter, type, e);
+          }
+        }
+// LEFT //        throw RetrofitError.httpError(url, response, converter, type);
+      } catch (RetrofitError e) {
+        throw e; // Pass through our own errors.
+      } catch (IOException e) {
+        throw RetrofitError.networkError(url, e);
+      } catch (Throwable t) {
+        throw RetrofitError.unexpectedError(url, t);
+      }
+// END invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_610a9-07762
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\main\java\retrofit\http\RequestBuilder.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START createParamList({FormalParametersInternal})//private List<Parameter> createParamList() {
+    List<Parameter> params = new ArrayList<Parameter>();
+
+    // Add arguments as parameters.
+    String[] pathNamedParams = methodInfo.namedParams;
+    int singleEntityArgumentIndex = methodInfo.singleEntityArgumentIndex;
+    for (int i = 0; i < pathNamedParams.length; i++) {
+      Object arg = args[i];
+      if (arg == null) continue;
+      if (i != singleEntityArgumentIndex) {
+        params.add(new Parameter(pathNamedParams[i], arg, arg.getClass()));
+      }
+    }
+
+    return params;
+// END createParamList({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\main\java\retrofit\http\RequestBuilder.java
+Different Spacing: false
+Left editions: [157, 158, 159, 160, 161]
+Right editions: [171, 180, 182, 195]
+Merged body: 
+// START build({FormalParametersInternal})//Request build() {
+    // Alter parameter list if path parameters are present.
+    Set<String> pathParams = new LinkedHashSet<String>(methodInfo.pathParams);
+    List<Parameter> paramList = createParamList();
+    String replacedPath = methodInfo.path;
+    for (String pathParam : pathParams) {
+      Parameter found = null;
+      for (Parameter param : paramList) {
+        if (param.getName().equals(pathParam)) {
+          found = param;
+          break;
+        }
+      }
+      if (found != null) {
+        String value;
+        try {
+          value = URLEncoder.encode(String.valueOf(found.getValue()), UTF_8);
+        } catch (UnsupportedEncodingException e) {
+          throw new AssertionError(e);
+        }
+        replacedPath = replacedPath.replace("{" + found.getName() + "}", value);
+        paramList.remove(found);
+      } else {
+        throw new IllegalArgumentException(
+            "URL param " + pathParam + " has no matching method @Name param.");
+      }
+    }
+
+    if (methodInfo.singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+      // We're passing a JSON object as the entity: paramList should only contain path param values.
+      if (!paramList.isEmpty()) {
+        throw new IllegalStateException(
+            "Found @Name param on single-entity request that was not used for path substitution.");
+      }
+    }
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We enforce relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+    url.append(replacedPath);
+
+// LEFT //    // Add query parameter(s), if specified.
+// LEFT //    for (QueryParam annotation : methodInfo.pathQueryParams) {
+// LEFT //      paramList.add(new Parameter(annotation.name(), annotation.value(), String.class));
+// LEFT //    }
+// LEFT //
+    TypedOutput body = null;
+    if (!methodInfo.restMethod.hasBody()) {
+      for (int i = 0, count = paramList.size(); i < count; i++) {
+        url.append((i == 0) ? '?' : '&');
+        Parameter nonPathParam = paramList.get(i);
+        url.append(nonPathParam.getName()).append("=").append(nonPathParam.getValue());
+      }
+    } else if (!paramList.isEmpty()) {
+      if (methodInfo.isMultipart) {
+// RIGHT //        MultipartTypedOutput multipartBody = new MultipartTypedOutput();
+        for (Parameter parameter : paramList) {
+          Object value = parameter.getValue();
+          TypedOutput typedOutput;
+          if (value instanceof TypedOutput) {
+            typedOutput = (TypedOutput) value;
+          } else {
+            typedOutput = new TypedString(value.toString());
+          }
+// RIGHT //          multipartBody.addPart(parameter.getName(), typedOutput);
+        }
+// RIGHT //        body = multipartBody;
+      } else {
+        body = converter.toBody(paramList);
+      }
+    } else if (methodInfo.singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+      Object singleEntity = args[methodInfo.singleEntityArgumentIndex];
+      if (singleEntity instanceof TypedOutput) {
+        body = (TypedOutput) singleEntity;
+      } else {
+        body = converter.toBody(singleEntity);
+      }
+    }
+
+// RIGHT //    return new Request(methodInfo.restMethod.value(), url.toString(), headers, body);
+// END build({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\main\java\retrofit\http\RequestBuilder.java
+Different Spacing: false
+Left editions: [157, 158, 159, 160, 161]
+Right editions: [171, 180, 182, 195]
+Merged body: 
+// START build({FormalParametersInternal})//Request build() {
+    // Alter parameter list if path parameters are present.
+    Set<String> pathParams = new LinkedHashSet<String>(methodInfo.pathParams);
+    List<Parameter> paramList = createParamList();
+    String replacedPath = methodInfo.path;
+    for (String pathParam : pathParams) {
+      Parameter found = null;
+      for (Parameter param : paramList) {
+        if (param.getName().equals(pathParam)) {
+          found = param;
+          break;
+        }
+      }
+      if (found != null) {
+        String value;
+        try {
+          value = URLEncoder.encode(String.valueOf(found.getValue()), UTF_8);
+        } catch (UnsupportedEncodingException e) {
+          throw new AssertionError(e);
+        }
+        replacedPath = replacedPath.replace("{" + found.getName() + "}", value);
+        paramList.remove(found);
+      } else {
+        throw new IllegalArgumentException(
+            "URL param " + pathParam + " has no matching method @Name param.");
+      }
+    }
+
+    if (methodInfo.singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+      // We're passing a JSON object as the entity: paramList should only contain path param values.
+      if (!paramList.isEmpty()) {
+        throw new IllegalStateException(
+            "Found @Name param on single-entity request that was not used for path substitution.");
+      }
+    }
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We enforce relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+    url.append(replacedPath);
+
+// LEFT //    // Add query parameter(s), if specified.
+// LEFT //    for (QueryParam annotation : methodInfo.pathQueryParams) {
+// LEFT //      paramList.add(new Parameter(annotation.name(), annotation.value(), String.class));
+// LEFT //    }
+// LEFT //
+    TypedOutput body = null;
+    if (!methodInfo.restMethod.hasBody()) {
+      for (int i = 0, count = paramList.size(); i < count; i++) {
+        url.append((i == 0) ? '?' : '&');
+        Parameter nonPathParam = paramList.get(i);
+        url.append(nonPathParam.getName()).append("=").append(nonPathParam.getValue());
+      }
+    } else if (!paramList.isEmpty()) {
+      if (methodInfo.isMultipart) {
+// RIGHT //        MultipartTypedOutput multipartBody = new MultipartTypedOutput();
+        for (Parameter parameter : paramList) {
+          Object value = parameter.getValue();
+          TypedOutput typedOutput;
+          if (value instanceof TypedOutput) {
+            typedOutput = (TypedOutput) value;
+          } else {
+            typedOutput = new TypedString(value.toString());
+          }
+// RIGHT //          multipartBody.addPart(parameter.getName(), typedOutput);
+        }
+// RIGHT //        body = multipartBody;
+      } else {
+        body = converter.toBody(paramList);
+      }
+    } else if (methodInfo.singleEntityArgumentIndex != NO_SINGLE_ENTITY) {
+      Object singleEntity = args[methodInfo.singleEntityArgumentIndex];
+      if (singleEntity instanceof TypedOutput) {
+        body = (TypedOutput) singleEntity;
+      } else {
+        body = converter.toBody(singleEntity);
+      }
+    }
+
+// RIGHT //    return new Request(methodInfo.restMethod.value(), url.toString(), headers, body);
+// END build({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWithQueryParam({FormalParametersInternal})//@Test public void getWithQueryParam() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .addQueryParam("ping", "pong") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/?ping=pong");
+    assertThat(request.getBody()).isNull();
+// END getWithQueryParam({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START normalGet({FormalParametersInternal})//@Test public void normalGet() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/");
+    assertThat(request.getBody()).isNull();
+// END normalGet({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START singleEntity({FormalParametersInternal})//@Test public void singleEntity() throws Exception {
+    Request request = new Helper() //
+        .setMethod("POST") //
+        .setHasBody() //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .addSingleEntityParam(Arrays.asList("quick", "brown", "fox")) //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("POST");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/");
+    assertTypedBytes(request.getBody(), "[\"quick\",\"brown\",\"fox\"]");
+// END singleEntity({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START normalPost({FormalParametersInternal})//@Test public void normalPost() throws Exception {
+    Request request = new Helper() //
+        .setMethod("POST") //
+        .setHasBody() //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("POST");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/");
+    assertThat(request.getBody()).isNull();
+// END normalPost({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWithPathParam({FormalParametersInternal})//@Test public void getWithPathParam() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/") //
+        .addNamedParam("ping", "pong") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/");
+    assertThat(request.getBody()).isNull();
+// END getWithPathParam({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START normalPostWithPathParam({FormalParametersInternal})//@Test public void normalPostWithPathParam() throws Exception {
+    Request request = new Helper() //
+        .setMethod("POST") //
+        .setHasBody() //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/") //
+        .addNamedParam("ping", "pong") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("POST");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/");
+    assertThat(request.getBody()).isNull();
+// END normalPostWithPathParam({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWithPathAndQueryParamAsync({FormalParametersInternal})//@Test public void getWithPathAndQueryParamAsync() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/") //
+        .addNamedParam("ping", "pong") //
+        .addNamedParam("kit", "kat") //
+        .setAsynchronous() //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/?kit=kat");
+    assertThat(request.getBody()).isNull();
+// END getWithPathAndQueryParamAsync({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START singleEntityWithPathParamsAsync({FormalParametersInternal})//@Test public void singleEntityWithPathParamsAsync() throws Exception {
+    Request request = new Helper() //
+        .setMethod("POST") //
+        .setHasBody() //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/{kit}/") //
+        .addNamedParam("ping", "pong") //
+        .addSingleEntityParam(Arrays.asList("quick", "brown", "fox")) //
+        .addNamedParam("kit", "kat") //
+        .setAsynchronous() //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("POST");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/kat/");
+    assertTypedBytes(request.getBody(), "[\"quick\",\"brown\",\"fox\"]");
+// END singleEntityWithPathParamsAsync({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START getWithPathAndQueryParam({FormalParametersInternal})//@Test public void getWithPathAndQueryParam() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/") //
+        .addNamedParam("ping", "pong") //
+        .addNamedParam("kit", "kat") //
+        .addNamedParam("riff", "raff") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/?kit=kat&riff=raff");
+    assertThat(request.getBody()).isNull();
+// END getWithPathAndQueryParam({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START singleEntityWithPathParams({FormalParametersInternal})//@Test public void singleEntityWithPathParams() throws Exception {
+    Request request = new Helper() //
+        .setMethod("POST") //
+        .setHasBody() //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/{ping}/{kit}/") //
+        .addNamedParam("ping", "pong") //
+        .addSingleEntityParam(Arrays.asList("quick", "brown", "fox")) //
+        .addNamedParam("kit", "kat") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("POST");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/pong/kat/");
+    assertTypedBytes(request.getBody(), "[\"quick\",\"brown\",\"fox\"]");
+// END singleEntityWithPathParams({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_610a9_07762\rev_rev_left_610a9-rev_right_07762\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START simpleHeaders({FormalParametersInternal})//@Test public void simpleHeaders() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .addHeader("ping", "pong") //
+        .addHeader("kit", "kat") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()) //
+        .containsExactly(new Header("ping", "pong"), new Header("kit", "kat"));
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/");
+    assertThat(request.getBody()).isNull();
+// END simpleHeaders({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3cc0-2bce3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf96d-e6c5d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bda9b-1690a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2220-fd9d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e7b5-737b8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68245-bdaf7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd205-4d574
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6ce88-c0ac3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ef7c-941ae
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: []
+Right editions: [341]
+Merged body: 
+// START logAndReplaceRequest(Request-Request)//private Request logAndReplaceRequest(Request request) throws IOException {
+    log.log(String.format("---> HTTP %s %s", request.getMethod(), request.getUrl()));
+
+// RIGHT //    for (HeaderPair header : request.getHeaders()) {
+      log.log(header.getName() + ": " + header.getValue());
+    }
+
+    TypedOutput body = request.getBody();
+    int bodySize = 0;
+    if (body != null) {
+      if (!request.getHeaders().isEmpty()) {
+        log.log("");
+      }
+
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      body.writeTo(baos);
+      byte[] bodyBytes = baos.toByteArray();
+      bodySize = bodyBytes.length;
+      String bodyMime = body.mimeType();
+      String bodyString = new String(bodyBytes, Utils.parseCharset(bodyMime));
+      for (int i = 0, len = bodyString.length(); i < len; i += LOG_CHUNK_SIZE) {
+        int end = Math.min(len, i + LOG_CHUNK_SIZE);
+        log.log(bodyString.substring(i, end));
+      }
+
+      body = new TypedByteArray(bodyMime, bodyBytes);
+    }
+
+    log.log(String.format("---> END HTTP (%s-byte body)", bodySize));
+
+    // Since we consumed the original request, return a new, identical one from its bytes.
+    return new Request(request.getMethod(), request.getUrl(), request.getHeaders(), body);
+// END logAndReplaceRequest(Request-Request)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: [252, 253, 254, 255, 287]
+Right editions: []
+Merged body: 
+// START invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//private Object invokeRequest(RestMethodInfo methodDetails, Object[] args) {
+      methodDetails.init(); // Ensure all relevant method information has been loaded.
+
+      String serverUrl = server.getUrl();
+      String url = serverUrl; // Keep some url in case RequestBuilder throws an exception.
+      try {
+        Request request = new RequestBuilder(converter) //
+// LEFT //            .apiUrl(serverUrl) //
+// LEFT //            .args(args) //
+// LEFT //            .headers(requestHeaders.get()) //
+// LEFT //            .methodInfo(methodDetails) //
+            .build();
+        url = request.getUrl();
+
+        if (!methodDetails.isSynchronous) {
+          // If we are executing asynchronously then update the current thread with a useful name.
+          Thread.currentThread().setName(THREAD_PREFIX + url.substring(serverUrl.length()));
+        }
+
+        if (debug) {
+          request = logAndReplaceRequest(request);
+        }
+
+        Object profilerObject = null;
+        if (profiler != null) {
+          profilerObject = profiler.beforeCall();
+        }
+
+        long start = System.nanoTime();
+        Response response = clientProvider.get().execute(request);
+        long elapsedTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+
+        int statusCode = response.getStatus();
+        if (profiler != null) {
+          RequestInformation requestInfo = getRequestInfo(serverUrl, methodDetails, request);
+          profiler.afterCall(requestInfo, elapsedTime, statusCode, profilerObject);
+        }
+
+        if (debug) {
+          response = logAndReplaceResponse(url, response, elapsedTime);
+        }
+
+// LEFT //        Type type = methodDetails.responseObjectType;
+
+        if (statusCode >= 200 && statusCode < 300) { // 2XX == successful request
+          // Caller requested the raw Response object directly.
+          if (type.equals(Response.class)) {
+            // Read the entire stream and replace with one backed by a byte[]
+            response = Utils.readBodyToBytesIfNecessary(response);
+
+            if (methodDetails.isSynchronous) {
+              return response;
+            }
+            return new ResponseWrapper(response, response);
+          }
+
+          TypedInput body = response.getBody();
+          if (body == null) {
+            return new ResponseWrapper(response, null);
+          }
+          try {
+            Object convert = converter.fromBody(body, type);
+            if (methodDetails.isSynchronous) {
+              return convert;
+            }
+            return new ResponseWrapper(response, convert);
+          } catch (ConversionException e) {
+            // The response body was partially read by the converter. Replace it with null.
+            response = Utils.replaceResponseBody(response, null);
+
+            throw RetrofitError.conversionError(url, response, converter, type, e);
+          }
+        }
+
+        response = Utils.readBodyToBytesIfNecessary(response);
+        throw RetrofitError.httpError(url, response, converter, type);
+      } catch (RetrofitError e) {
+        throw e; // Pass through our own errors.
+      } catch (IOException e) {
+        throw RetrofitError.networkError(url, e);
+      } catch (Throwable t) {
+        throw RetrofitError.unexpectedError(url, t);
+      } finally {
+        if (!methodDetails.isSynchronous) {
+          Thread.currentThread().setName(IDLE_THREAD_NAME);
+        }
+      }
+// END invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: []
+Right editions: [378]
+Merged body: 
+// START logAndReplaceResponse(String-String-Response-Response-long-long)//private Response logAndReplaceResponse(String url, Response response, long elapsedTime)
+      throws IOException {
+    log.log(String.format("<--- HTTP %s %s (%sms)", response.getStatus(), url, elapsedTime));
+
+// RIGHT //    for (HeaderPair header : response.getHeaders()) {
+      log.log(header.getName() + ": " + header.getValue());
+    }
+
+    TypedInput body = response.getBody();
+    int bodySize = 0;
+    if (body != null) {
+      if (!response.getHeaders().isEmpty()) {
+        log.log("");
+      }
+
+      if (!(body instanceof TypedByteArray)) {
+        // Read the entire response body to we can log it and replace the original response
+        response = Utils.readBodyToBytesIfNecessary(response);
+        body = response.getBody();
+      }
+
+      byte[] bodyBytes = ((TypedByteArray) body).getBytes();
+      bodySize = bodyBytes.length;
+      String bodyMime = body.mimeType();
+      String bodyCharset = Utils.parseCharset(bodyMime);
+      String bodyString = new String(bodyBytes, bodyCharset);
+      for (int i = 0, len = bodyString.length(); i < len; i += LOG_CHUNK_SIZE) {
+        int end = Math.min(len, i + LOG_CHUNK_SIZE);
+        log.log(bodyString.substring(i, end));
+      }
+    }
+
+    log.log(String.format("<--- END HTTP (%s-byte body)", bodySize));
+
+    return response;
+// END logAndReplaceResponse(String-String-Response-Response-long-long)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\main\java\retrofit\http\RestAdapter.java
+Different Spacing: false
+Left editions: [252, 253, 254, 255, 287]
+Right editions: []
+Merged body: 
+// START invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//private Object invokeRequest(RestMethodInfo methodDetails, Object[] args) {
+      methodDetails.init(); // Ensure all relevant method information has been loaded.
+
+      String serverUrl = server.getUrl();
+      String url = serverUrl; // Keep some url in case RequestBuilder throws an exception.
+      try {
+        Request request = new RequestBuilder(converter) //
+// LEFT //            .apiUrl(serverUrl) //
+// LEFT //            .args(args) //
+// LEFT //            .headers(requestHeaders.get()) //
+// LEFT //            .methodInfo(methodDetails) //
+            .build();
+        url = request.getUrl();
+
+        if (!methodDetails.isSynchronous) {
+          // If we are executing asynchronously then update the current thread with a useful name.
+          Thread.currentThread().setName(THREAD_PREFIX + url.substring(serverUrl.length()));
+        }
+
+        if (debug) {
+          request = logAndReplaceRequest(request);
+        }
+
+        Object profilerObject = null;
+        if (profiler != null) {
+          profilerObject = profiler.beforeCall();
+        }
+
+        long start = System.nanoTime();
+        Response response = clientProvider.get().execute(request);
+        long elapsedTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+
+        int statusCode = response.getStatus();
+        if (profiler != null) {
+          RequestInformation requestInfo = getRequestInfo(serverUrl, methodDetails, request);
+          profiler.afterCall(requestInfo, elapsedTime, statusCode, profilerObject);
+        }
+
+        if (debug) {
+          response = logAndReplaceResponse(url, response, elapsedTime);
+        }
+
+// LEFT //        Type type = methodDetails.responseObjectType;
+
+        if (statusCode >= 200 && statusCode < 300) { // 2XX == successful request
+          // Caller requested the raw Response object directly.
+          if (type.equals(Response.class)) {
+            // Read the entire stream and replace with one backed by a byte[]
+            response = Utils.readBodyToBytesIfNecessary(response);
+
+            if (methodDetails.isSynchronous) {
+              return response;
+            }
+            return new ResponseWrapper(response, response);
+          }
+
+          TypedInput body = response.getBody();
+          if (body == null) {
+            return new ResponseWrapper(response, null);
+          }
+          try {
+            Object convert = converter.fromBody(body, type);
+            if (methodDetails.isSynchronous) {
+              return convert;
+            }
+            return new ResponseWrapper(response, convert);
+          } catch (ConversionException e) {
+            // The response body was partially read by the converter. Replace it with null.
+            response = Utils.replaceResponseBody(response, null);
+
+            throw RetrofitError.conversionError(url, response, converter, type, e);
+          }
+        }
+
+        response = Utils.readBodyToBytesIfNecessary(response);
+        throw RetrofitError.httpError(url, response, converter, type);
+      } catch (RetrofitError e) {
+        throw e; // Pass through our own errors.
+      } catch (IOException e) {
+        throw RetrofitError.networkError(url, e);
+      } catch (Throwable t) {
+        throw RetrofitError.unexpectedError(url, t);
+      } finally {
+        if (!methodDetails.isSynchronous) {
+          Thread.currentThread().setName(IDLE_THREAD_NAME);
+        }
+      }
+// END invokeRequest(RestMethodInfo-RestMethodInfo-Object[]-Object[])//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START setPath(String-String)//Helper setPath(String path) {
+      this.path = path;
+      return this;
+// END setPath(String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_2ef7c_941ae\rev_rev_left_2ef7c-rev_right_941ae\retrofit\src\test\java\retrofit\http\RequestBuilderTest.java
+Different Spacing: false
+Left editions: []
+Right editions: [256]
+Merged body: 
+// START simpleHeaders({FormalParametersInternal})//@Test public void simpleHeaders() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+        .addHeader("ping", "pong") //
+        .addHeader("kit", "kat") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()) //
+// RIGHT //        .containsExactly(new HeaderPair("ping", "pong"), new HeaderPair("kit", "kat"));
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/");
+    assertThat(request.getBody()).isNull();
+// END simpleHeaders({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d665e-bf94f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5a67-931e2
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\main\java\retrofit\RequestBuilder.java
+Different Spacing: false
+Left editions: [121]
+Right editions: [128, 129, 130, 136]
+Merged body: 
+// START build({FormalParametersInternal})//Request build() throws UnsupportedEncodingException {
+    String apiUrl = this.apiUrl;
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We require relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+
+    // Append the method relative URL.
+    url.append(buildRelativeUrl());
+
+    // Append query parameters, if needed.
+    if (methodInfo.hasQueryParams) {
+      boolean first = true;
+      String requestQuery = methodInfo.requestQuery;
+      if (requestQuery != null) {
+// LEFT //        url.append('?').append(requestQuery);
+        first = false;
+      }
+      String[] requestQueryName = methodInfo.requestQueryName;
+      for (int i = 0; i < requestQueryName.length; i++) {
+        String query = requestQueryName[i];
+        if (query != null) {
+// RIGHT //          Object arg = args[i];
+// RIGHT //          if (arg != null) { // Null values are skipped.
+// RIGHT //            String value = URLEncoder.encode(String.valueOf(arg), "UTF-8");
+          url.append(first ? '?' : '&').append(query).append('=').append(value);
+          first = false;
+        }
+      }
+    }
+// RIGHT //    }
+
+    List<retrofit.client.Header> headers = new ArrayList<retrofit.client.Header>();
+    if (this.headers != null) {
+      headers.addAll(this.headers);
+    }
+    List<Header> methodHeaders = methodInfo.headers;
+    if (methodHeaders != null) {
+      headers.addAll(methodHeaders);
+    }
+    // RFC 2616: Header names are case-insensitive.
+    String[] requestParamHeader = methodInfo.requestParamHeader;
+    if (requestParamHeader != null) {
+      for (int i = 0; i < requestParamHeader.length; i++) {
+        String name = requestParamHeader[i];
+        if (name == null) continue;
+        Object arg = args[i];
+        if (arg != null) {
+          headers.add(new retrofit.client.Header(name, String.valueOf(arg)));
+        }
+      }
+    }
+
+    return new Request(methodInfo.requestMethod, url.toString(), headers, buildBody());
+// END build({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\test\java\retrofit\RequestBuilderTest.java
+Different Spacing: false
+Left editions: [136]
+Right editions: []
+Merged body: 
+// START getWithQueryUrlAndParam({FormalParametersInternal})//@Test public void getWithQueryUrlAndParam() throws Exception {
+    Request request = new Helper() //
+        .setMethod("GET") //
+        .setUrl("http://example.com") //
+        .setPath("/foo/bar/") //
+// LEFT //        .setQuery("hi=mom") //
+        .addQueryParam("ping", "pong") //
+        .build();
+    assertThat(request.getMethod()).isEqualTo("GET");
+    assertThat(request.getHeaders()).isEmpty();
+    assertThat(request.getUrl()).isEqualTo("http://example.com/foo/bar/?hi=mom&ping=pong");
+    assertThat(request.getBody()).isNull();
+// END getWithQueryUrlAndParam({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\main\java\retrofit\RequestBuilder.java
+Different Spacing: false
+Left editions: []
+Right editions: [170, 171, 172, 173, 174]
+Merged body: 
+// START buildRelativeUrl({FormalParametersInternal})//private String buildRelativeUrl() throws UnsupportedEncodingException {
+    String replacedPath = methodInfo.requestUrl;
+    String[] requestUrlParam = methodInfo.requestUrlParam;
+    for (int i = 0; i < requestUrlParam.length; i++) {
+      String param = requestUrlParam[i];
+      if (param != null) {
+// RIGHT //        Object arg = args[i];
+// RIGHT //        if (arg == null) {
+// RIGHT //          throw new IllegalArgumentException("Path parameters must not be null: " + param + ".");
+// RIGHT //        }
+// RIGHT //        String value = URLEncoder.encode(String.valueOf(arg), "UTF-8");
+        replacedPath = replacedPath.replace("{" + param + "}", value);
+      }
+    }
+    return replacedPath;
+// END buildRelativeUrl({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\main\java\retrofit\RequestBuilder.java
+Different Spacing: false
+Left editions: [121]
+Right editions: [128, 129, 130, 136]
+Merged body: 
+// START build({FormalParametersInternal})//Request build() throws UnsupportedEncodingException {
+    String apiUrl = this.apiUrl;
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We require relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+
+    // Append the method relative URL.
+    url.append(buildRelativeUrl());
+
+    // Append query parameters, if needed.
+    if (methodInfo.hasQueryParams) {
+      boolean first = true;
+      String requestQuery = methodInfo.requestQuery;
+      if (requestQuery != null) {
+// LEFT //        url.append('?').append(requestQuery);
+        first = false;
+      }
+      String[] requestQueryName = methodInfo.requestQueryName;
+      for (int i = 0; i < requestQueryName.length; i++) {
+        String query = requestQueryName[i];
+        if (query != null) {
+// RIGHT //          Object arg = args[i];
+// RIGHT //          if (arg != null) { // Null values are skipped.
+// RIGHT //            String value = URLEncoder.encode(String.valueOf(arg), "UTF-8");
+          url.append(first ? '?' : '&').append(query).append('=').append(value);
+          first = false;
+        }
+      }
+    }
+// RIGHT //    }
+
+    List<retrofit.client.Header> headers = new ArrayList<retrofit.client.Header>();
+    if (this.headers != null) {
+      headers.addAll(this.headers);
+    }
+    List<Header> methodHeaders = methodInfo.headers;
+    if (methodHeaders != null) {
+      headers.addAll(methodHeaders);
+    }
+    // RFC 2616: Header names are case-insensitive.
+    String[] requestParamHeader = methodInfo.requestParamHeader;
+    if (requestParamHeader != null) {
+      for (int i = 0; i < requestParamHeader.length; i++) {
+        String name = requestParamHeader[i];
+        if (name == null) continue;
+        Object arg = args[i];
+        if (arg != null) {
+          headers.add(new retrofit.client.Header(name, String.valueOf(arg)));
+        }
+      }
+    }
+
+    return new Request(methodInfo.requestMethod, url.toString(), headers, buildBody());
+// END build({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\main\java\retrofit\RequestBuilder.java
+Different Spacing: false
+Left editions: []
+Right editions: [191, 192, 193, 207, 208, 209, 210, 223, 224, 225]
+Merged body: 
+// START buildBody({FormalParametersInternal})//private TypedOutput buildBody() {
+    switch (methodInfo.requestType) {
+      case SIMPLE: {
+        int bodyIndex = methodInfo.bodyIndex;
+        if (bodyIndex == RestMethodInfo.NO_BODY) {
+          return null;
+        }
+        Object body = args[bodyIndex];
+// RIGHT //        if (body == null) {
+// RIGHT //          throw new IllegalArgumentException("Body must not be null.");
+// RIGHT //        }
+        if (body instanceof TypedOutput) {
+          return (TypedOutput) body;
+        } else {
+          return converter.toBody(body);
+        }
+      }
+
+      case FORM_URL_ENCODED: {
+        FormUrlEncodedTypedOutput body = new FormUrlEncodedTypedOutput();
+        String[] requestFormFields = methodInfo.requestFormFields;
+        for (int i = 0; i < requestFormFields.length; i++) {
+          String name = requestFormFields[i];
+          if (name != null) {
+// RIGHT //            Object value = args[i];
+// RIGHT //            if (value != null) { // Null values are skipped.
+// RIGHT //              body.addField(name, String.valueOf(value));
+// RIGHT //            }
+          }
+        }
+        return body;
+      }
+
+      case MULTIPART: {
+        MultipartTypedOutput body = new MultipartTypedOutput();
+        String[] requestMultipartPart = methodInfo.requestMultipartPart;
+        for (int i = 0; i < requestMultipartPart.length; i++) {
+          String name = requestMultipartPart[i];
+          if (name != null) {
+            Object value = args[i];
+// RIGHT //            if (value == null) {
+// RIGHT //              throw new IllegalArgumentException("Multipart part must not be null: " + name + ".");
+// RIGHT //            }
+            if (value instanceof TypedOutput) {
+              body.addPart(name, (TypedOutput) value);
+            } else {
+              body.addPart(name, converter.toBody(value));
+            }
+          }
+        }
+        return body;
+      }
+
+      default:
+        throw new IllegalArgumentException("Unknown request type " + methodInfo.requestType);
+    }
+// END buildBody({FormalParametersInternal})//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_e5a67_931e2\rev_rev_left_e5a67-rev_right_931e2\retrofit\src\main\java\retrofit\RequestBuilder.java
+Different Spacing: false
+Left editions: [121]
+Right editions: [128, 129, 130, 136]
+Merged body: 
+// START build({FormalParametersInternal})//Request build() throws UnsupportedEncodingException {
+    String apiUrl = this.apiUrl;
+
+    StringBuilder url = new StringBuilder(apiUrl);
+    if (apiUrl.endsWith("/")) {
+      // We require relative paths to start with '/'. Prevent a double-slash.
+      url.deleteCharAt(url.length() - 1);
+    }
+
+    // Append the method relative URL.
+    url.append(buildRelativeUrl());
+
+    // Append query parameters, if needed.
+    if (methodInfo.hasQueryParams) {
+      boolean first = true;
+      String requestQuery = methodInfo.requestQuery;
+      if (requestQuery != null) {
+// LEFT //        url.append('?').append(requestQuery);
+        first = false;
+      }
+      String[] requestQueryName = methodInfo.requestQueryName;
+      for (int i = 0; i < requestQueryName.length; i++) {
+        String query = requestQueryName[i];
+        if (query != null) {
+// RIGHT //          Object arg = args[i];
+// RIGHT //          if (arg != null) { // Null values are skipped.
+// RIGHT //            String value = URLEncoder.encode(String.valueOf(arg), "UTF-8");
+          url.append(first ? '?' : '&').append(query).append('=').append(value);
+          first = false;
+        }
+      }
+    }
+// RIGHT //    }
+
+    List<retrofit.client.Header> headers = new ArrayList<retrofit.client.Header>();
+    if (this.headers != null) {
+      headers.addAll(this.headers);
+    }
+    List<Header> methodHeaders = methodInfo.headers;
+    if (methodHeaders != null) {
+      headers.addAll(methodHeaders);
+    }
+    // RFC 2616: Header names are case-insensitive.
+    String[] requestParamHeader = methodInfo.requestParamHeader;
+    if (requestParamHeader != null) {
+      for (int i = 0; i < requestParamHeader.length; i++) {
+        String name = requestParamHeader[i];
+        if (name == null) continue;
+        Object arg = args[i];
+        if (arg != null) {
+          headers.add(new retrofit.client.Header(name, String.valueOf(arg)));
+        }
+      }
+    }
+
+    return new Request(methodInfo.requestMethod, url.toString(), headers, buildBody());
+// END build({FormalParametersInternal})//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71f62-0297f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dffda-5da95
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d4e4-8d5e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cb996-01e6a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ffdba-ebf8c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6f24a-f1485
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_50e26-46c85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_613e8-11af5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_989d6-c2a85
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5124-e704b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5fc1e-b50e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_784a3-e60fd
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_784a3_e60fd\rev_rev_left_784a3-rev_right_e60fd\retrofit\src\main\java\retrofit\RestAdapter.java
+Different Spacing: false
+Left editions: [482]
+Right editions: [453]
+Merged body: 
+// START logAndReplaceRequest(Request-Request)//private Request logAndReplaceRequest(Request request) throws IOException {
+    log.log(String.format("---> HTTP %s %s", request.getMethod(), request.getUrl()));
+
+    if (logLevel.ordinal() >= LogLevel.HEADERS.ordinal()) {
+      for (Header header : request.getHeaders()) {
+// RIGHT //        log.log(header.toString());
+      }
+
+      long bodySize = 0;
+      TypedOutput body = request.getBody();
+      if (body != null) {
+        bodySize = body.length();
+        String bodyMime = body.mimeType();
+
+        if (bodyMime != null) {
+          log.log("Content-Type: " + bodyMime);
+        }
+        if (bodySize != -1) {
+          log.log("Content-Length: " + bodySize);
+        }
+
+        if (logLevel.ordinal() >= LogLevel.FULL.ordinal()) {
+          if (!request.getHeaders().isEmpty()) {
+            log.log("");
+          }
+          if (!(body instanceof TypedByteArray)) {
+            // Read the entire response body to we can log it and replace the original response
+            request = Utils.readBodyToBytesIfNecessary(request);
+            body = request.getBody();
+          }
+
+          byte[] bodyBytes = ((TypedByteArray) body).getBytes();
+          bodySize = bodyBytes.length;
+          String bodyCharset = MimeUtil.parseCharset(bodyMime);
+// LEFT //          log.log(new String(bodyBytes, bodyCharset));
+        }
+      }
+
+      log.log(String.format("---> END HTTP (%s-byte body)", bodySize));
+    }
+
+    return request;
+// END logAndReplaceRequest(Request-Request)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_784a3_e60fd\rev_rev_left_784a3-rev_right_e60fd\retrofit\src\main\java\retrofit\RestAdapter.java
+Different Spacing: false
+Left editions: [523]
+Right editions: [500]
+Merged body: 
+// START logAndReplaceResponse(String-String-Response-Response-long-long)//private Response logAndReplaceResponse(String url, Response response, long elapsedTime)
+      throws IOException {
+    log.log(String.format("<--- HTTP %s %s (%sms)", response.getStatus(), url, elapsedTime));
+
+    if (logLevel.ordinal() >= LogLevel.HEADERS.ordinal()) {
+      for (Header header : response.getHeaders()) {
+// RIGHT //        log.log(header.toString());
+      }
+
+      long bodySize = 0;
+      TypedInput body = response.getBody();
+      if (body != null) {
+        bodySize = body.length();
+
+        if (logLevel.ordinal() >= LogLevel.FULL.ordinal()) {
+          if (!response.getHeaders().isEmpty()) {
+            log.log("");
+          }
+
+          if (!(body instanceof TypedByteArray)) {
+            // Read the entire response body so we can log it and replace the original response
+            response = Utils.readBodyToBytesIfNecessary(response);
+            body = response.getBody();
+          }
+
+          byte[] bodyBytes = ((TypedByteArray) body).getBytes();
+          bodySize = bodyBytes.length;
+          String bodyMime = body.mimeType();
+          String bodyCharset = MimeUtil.parseCharset(bodyMime);
+// LEFT //          log.log(new String(bodyBytes, bodyCharset));
+        }
+      }
+
+      log.log(String.format("<--- END HTTP (%s-byte body)", bodySize));
+    }
+
+    return response;
+// END logAndReplaceResponse(String-String-Response-Response-long-long)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5cbe9-46401
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a7bb-c83f0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_61ae4-5590c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_03358-be390
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e55f-94816
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11f44-1ef13
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_335f0-46a88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04cd7-2162e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33377-a4532
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9c81-042c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91445-c94ac
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7da1-9c056
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_414f2-47327
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4121-72258
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9a50-0ec74
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d9a50_0ec74\rev_rev_left_d9a50-rev_right_0ec74\retrofit\src\main\java\retrofit\RestAdapter.java
+Different Spacing: false
+Left editions: []
+Right editions: [435]
+Merged body: 
+// START invokeRequest(RequestInterceptor-RequestInterceptor-RestMethodInfo-RestMethodInfo-Object[]-Object[])//private Object invokeRequest(RequestInterceptor requestInterceptor,
+        RestMethodInfo methodInfo, Object[] args) {
+      methodInfo.init(); // Ensure all relevant method information has been loaded.
+
+      String serverUrl = server.getUrl();
+      String url = serverUrl; // Keep some url in case RequestBuilder throws an exception.
+      try {
+// RIGHT //        RequestBuilder requestBuilder = new RequestBuilder(serverUrl, methodInfo, converter);
+        requestBuilder.setArguments(args);
+
+        requestInterceptor.intercept(requestBuilder);
+
+        Request request = requestBuilder.build();
+        url = request.getUrl();
+
+        if (!methodInfo.isSynchronous) {
+          // If we are executing asynchronously then update the current thread with a useful name.
+          Thread.currentThread().setName(THREAD_PREFIX + url.substring(serverUrl.length()));
+        }
+
+        if (logLevel.log()) {
+          // Log the request data.
+          request = logAndReplaceRequest("HTTP", request);
+        }
+
+        Object profilerObject = null;
+        if (profiler != null) {
+          profilerObject = profiler.beforeCall();
+        }
+
+        long start = System.nanoTime();
+        Response response = clientProvider.get().execute(request);
+        long elapsedTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+
+        int statusCode = response.getStatus();
+        if (profiler != null) {
+          RequestInformation requestInfo = getRequestInfo(serverUrl, methodInfo, request);
+          //noinspection unchecked
+          profiler.afterCall(requestInfo, elapsedTime, statusCode, profilerObject);
+        }
+
+        if (logLevel.log()) {
+          // Log the response data.
+          response = logAndReplaceResponse(url, response, elapsedTime);
+        }
+
+        Type type = methodInfo.responseObjectType;
+
+        if (statusCode >= 200 && statusCode < 300) { // 2XX == successful request
+          // Caller requested the raw Response object directly.
+          if (type.equals(Response.class)) {
+            // Read the entire stream and replace with one backed by a byte[]
+            response = Utils.readBodyToBytesIfNecessary(response);
+
+            if (methodInfo.isSynchronous) {
+              return response;
+            }
+            return new ResponseWrapper(response, response);
+          }
+
+          TypedInput body = response.getBody();
+          if (body == null) {
+            return new ResponseWrapper(response, null);
+          }
+
+          ExceptionCatchingTypedInput wrapped = new ExceptionCatchingTypedInput(body);
+          try {
+            Object convert = converter.fromBody(wrapped, type);
+            if (methodInfo.isSynchronous) {
+              return convert;
+            }
+            return new ResponseWrapper(response, convert);
+          } catch (ConversionException e) {
+            // If the underlying input stream threw an exception, propagate that rather than
+            // indicating that it was a conversion exception.
+            if (wrapped.threwException()) {
+              throw wrapped.getThrownException();
+            }
+
+            // The response body was partially read by the converter. Replace it with null.
+            response = Utils.replaceResponseBody(response, null);
+
+            throw RetrofitError.conversionError(url, response, converter, type, e);
+          }
+        }
+
+        response = Utils.readBodyToBytesIfNecessary(response);
+        throw RetrofitError.httpError(url, response, converter, type);
+      } catch (RetrofitError e) {
+        throw e; // Pass through our own errors.
+      } catch (IOException e) {
+        if (logLevel.log()) {
+          logException(e, url);
+        }
+        throw RetrofitError.networkError(url, e);
+      } catch (Throwable t) {
+        if (logLevel.log()) {
+          logException(t, url);
+        }
+        throw RetrofitError.unexpectedError(url, t);
+      } finally {
+        if (!methodInfo.isSynchronous) {
+          Thread.currentThread().setName(IDLE_THREAD_NAME);
+        }
+      }
+// END invokeRequest(RequestInterceptor-RequestInterceptor-RestMethodInfo-RestMethodInfo-Object[]-Object[])//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d9a50_0ec74\rev_rev_left_d9a50-rev_right_0ec74\retrofit\src\main\java\retrofit\RestAdapter.java
+Different Spacing: false
+Left editions: [409]
+Right editions: []
+Merged body: 
+// START invoke(Object-Object-Method-Method-Object[]-Object[])//@SuppressWarnings("unchecked") //
+    @Override public Object invoke(Object proxy, Method method, final Object[] args)
+        throws Throwable {
+      // If the method is a method from Object then defer to normal invocation.
+      if (method.getDeclaringClass() == Object.class) {
+        return method.invoke(this, args);
+      }
+
+      // Load or create the details cache for the current method.
+      final RestMethodInfo methodInfo = getMethodInfo(methodDetailsCache, method);
+
+      if (methodInfo.isSynchronous) {
+        try {
+          return invokeRequest(requestInterceptor, methodInfo, args);
+        } catch (RetrofitError error) {
+          Throwable newError = errorHandler.handleError(error);
+          if (newError == null) {
+            throw new IllegalStateException("Error handler returned null for wrapped exception.",
+                error);
+          }
+          throw newError;
+        }
+      }
+
+      if (httpExecutor == null || callbackExecutor == null) {
+        throw new IllegalStateException("Asynchronous invocation requires calling setExecutors.");
+      }
+
+      // Apply the interceptor synchronously, recording the interception so we can replay it later.
+      // This way we still defer argument serialization to the background thread.
+      final RequestInterceptorTape interceptorTape = new RequestInterceptorTape();
+      requestInterceptor.intercept(interceptorTape);
+
+      if (methodInfo.isObservable) {
+        return rxSupport.createRequestObservable(new Callable<ResponseWrapper>() {
+          @Override public ResponseWrapper call() throws Exception {
+            return (ResponseWrapper) invokeRequest(interceptorTape, methodInfo, args);
+          }
+// LEFT //        });
+      }
+
+      Callback<?> callback = (Callback<?>) args[args.length - 1];
+      httpExecutor.execute(new CallbackRunnable(callback, callbackExecutor) {
+        @Override public ResponseWrapper obtainResponse() {
+          return (ResponseWrapper) invokeRequest(interceptorTape, methodInfo, args);
+        }
+      });
+      return null; // Asynchronous methods should have return type of void.
+// END invoke(Object-Object-Method-Method-Object[]-Object[])//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9074b-449cf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4275c-af51d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7b77-17bc6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a9c1f-54c8e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43b7e-c7656
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dbd03-7e324
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2894-63cd5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0504-28e06
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c14c-ff6fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94c3e-fb746
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adb88-9097b
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_adb88_9097b\rev_rev_left_adb88-rev_right_9097b\retrofit\src\main\java\retrofit\RestAdapter.java
+Different Spacing: false
+Left editions: [430, 431, 432, 433]
+Right editions: [443, 444, 445]
+Merged body: 
+// START invokeRequest(RequestInterceptor-RequestInterceptor-RestMethodInfo-RestMethodInfo-Object[]-Object[])//private Object invokeRequest(RequestInterceptor requestInterceptor, RestMethodInfo methodInfo,
+        Object[] args) {
+      String url = null;
+      try {
+        methodInfo.init(); // Ensure all relevant method information has been loaded.
+
+        String serverUrl = server.getUrl();
+        RequestBuilder requestBuilder = new RequestBuilder(serverUrl, methodInfo, converter);
+        requestBuilder.setArguments(args);
+
+        requestInterceptor.intercept(requestBuilder);
+
+        Request request = requestBuilder.build();
+        url = request.getUrl();
+
+        if (!methodInfo.isSynchronous) {
+          // If we are executing asynchronously then update the current thread with a useful name.
+          Thread.currentThread().setName(THREAD_PREFIX + url.substring(serverUrl.length()));
+        }
+
+        if (logLevel.log()) {
+          // Log the request data.
+          request = logAndReplaceRequest("HTTP", request);
+        }
+
+        Object profilerObject = null;
+        if (profiler != null) {
+          profilerObject = profiler.beforeCall();
+        }
+
+        long start = System.nanoTime();
+        Response response = clientProvider.get().execute(request);
+        long elapsedTime = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - start);
+
+        int statusCode = response.getStatus();
+        if (profiler != null) {
+          RequestInformation requestInfo = getRequestInfo(serverUrl, methodInfo, request);
+          //noinspection unchecked
+          profiler.afterCall(requestInfo, elapsedTime, statusCode, profilerObject);
+        }
+
+        if (logLevel.log()) {
+          // Log the response data.
+          response = logAndReplaceResponse(url, response, elapsedTime);
+        }
+
+        Type type = methodInfo.responseObjectType;
+
+        if (statusCode >= 200 && statusCode < 300) { // 2XX == successful request
+          // Caller requested the raw Response object directly.
+          if (type.equals(Response.class)) {
+// LEFT //            if (!methodInfo.isStreaming) {
+// LEFT //              // Read the entire stream and replace with one backed by a byte[].
+// LEFT //              response = Utils.readBodyToBytesIfNecessary(response);
+// LEFT //            }
+
+            if (methodInfo.isSynchronous) {
+              return response;
+            }
+            return new ResponseWrapper(response, response);
+          }
+
+          TypedInput body = response.getBody();
+          if (body == null) {
+// RIGHT //            if (methodInfo.isSynchronous) {
+// RIGHT //              return null;
+// RIGHT //            }
+            return new ResponseWrapper(response, null);
+          }
+
+          ExceptionCatchingTypedInput wrapped = new ExceptionCatchingTypedInput(body);
+          try {
+            Object convert = converter.fromBody(wrapped, type);
+            if (methodInfo.isSynchronous) {
+              return convert;
+            }
+            return new ResponseWrapper(response, convert);
+          } catch (ConversionException e) {
+            // If the underlying input stream threw an exception, propagate that rather than
+            // indicating that it was a conversion exception.
+            if (wrapped.threwException()) {
+              throw wrapped.getThrownException();
+            }
+
+            // The response body was partially read by the converter. Replace it with null.
+            response = Utils.replaceResponseBody(response, null);
+
+            throw RetrofitError.conversionError(url, response, converter, type, e);
+          }
+        }
+
+        response = Utils.readBodyToBytesIfNecessary(response);
+        throw RetrofitError.httpError(url, response, converter, type);
+      } catch (RetrofitError e) {
+        throw e; // Pass through our own errors.
+      } catch (IOException e) {
+        if (logLevel.log()) {
+          logException(e, url);
+        }
+        throw RetrofitError.networkError(url, e);
+      } catch (Throwable t) {
+        if (logLevel.log()) {
+          logException(t, url);
+        }
+        throw RetrofitError.unexpectedError(url, t);
+      } finally {
+        if (!methodInfo.isSynchronous) {
+          Thread.currentThread().setName(IDLE_THREAD_NAME);
+        }
+      }
+// END invokeRequest(RequestInterceptor-RequestInterceptor-RestMethodInfo-RestMethodInfo-Object[]-Object[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3ce55-a160a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51cda-269cc
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_51cda_269cc\rev_rev_left_51cda-rev_right_269cc\retrofit\src\main\java\retrofit\appengine\UrlFetchClient.java
+Different Spacing: false
+Left editions: [106, 107, 108, 109, 110]
+Right editions: []
+Merged body: 
+// START createRequest(Request-Request)//static HTTPRequest createRequest(Request request) throws IOException {
+    HTTPMethod httpMethod = getHttpMethod(request.getMethod());
+    URL url = new URL(request.getUrl());
+    HTTPRequest fetchRequest = new HTTPRequest(url, httpMethod);
+
+    for (Header header : request.getHeaders()) {
+      fetchRequest.addHeader(new HTTPHeader(header.getName(), header.getValue()));
+    }
+
+    TypedOutput body = request.getBody();
+    if (body != null) {
+// LEFT //      String mimeType = body.mimeType();
+// LEFT //      if (mimeType != null) {
+// LEFT //        fetchRequest.addHeader(new HTTPHeader("Content-Type", mimeType));
+// LEFT //      }
+// LEFT //
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      body.writeTo(baos);
+      fetchRequest.setPayload(baos.toByteArray());
+    }
+
+    return fetchRequest;
+// END createRequest(Request-Request)//  }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_51cda_269cc\rev_rev_left_51cda-rev_right_269cc\retrofit\src\main\java\retrofit\appengine\UrlFetchClient.java
+Different Spacing: false
+Left editions: []
+Right editions: [83]
+Merged body: 
+// START execute(Request-Request)//@Override public Response execute(Request request) throws IOException {
+    HTTPRequest fetchRequest = createRequest(request);
+    HTTPResponse fetchResponse = execute(urlFetchService, fetchRequest);
+// RIGHT //    return parseResponse(fetchResponse, fetchRequest);
+// END execute(Request-Request)//  }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70392-57959
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_39ccb-c9abf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5176d-46598
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_606ce-4fe65
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6a65f-47316
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80654-0bf0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47f42-468e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_add20-68f11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c3dd-fe022
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8b56a-40bfa
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cf58c-b01bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0316b-4b55a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79a2a-0bf0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8236f-fc179
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2fa0-d5cef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c769-c0ac0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d661a-674d0
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_d661a_674d0\rev_rev_left_d661a-rev_right_674d0\retrofit\src\main\java\retrofit\MethodInfo.java
+Different Spacing: false
+Left editions: [299, 301, 302]
+Right editions: [305, 306, 307]
+Merged body: 
+// START parseResponseType({FormalParametersInternal})//private void parseResponseType() {
+    Type returnType = method.getGenericReturnType();
+
+    // Check for invalid configurations.
+    if (returnType == void.class) {
+      throw methodError("Service methods cannot return void.");
+    }
+
+    //noinspection ForLoopReplaceableByForEach
+// LEFT //    CallAdapter adapter = adapterFactory.get(returnType);
+    if (adapter == null) {
+// LEFT //      throw methodError(
+// LEFT //          "Registered call adapter factory was unable to handle return type " + returnType);
+    }
+    Type responseType = adapter.responseType();
+// RIGHT //    if (Utils.hasTypeVariable(responseType)) {
+// RIGHT //      throw methodError("Method response type must not include a type variable.");
+// RIGHT //    }
+    if (converter == null && responseType != ResponseBody.class) {
+      throw methodError("Method response type is "
+          + responseType
+          + " but no converter registered. "
+          + "Either add a converter to the RestAdapter or use ResponseBody.");
+    }
+
+    this.adapter = adapter;
+// END parseResponseType({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac543-74d6a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c91b-251e4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00eaa-fec3b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c675-75077
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_06893-18899
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ad57-1f21b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e99f4-c5a46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_326a6-e5bc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fafb6-74d28
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_93bd5-c0cc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_993cb-c43f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_848f3-7bcdf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1ec41-e8431
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b969-a9c05
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_4b969_a9c05\rev_rev_left_4b969-rev_right_a9c05\retrofit\src\test\java\retrofit\RequestBuilderTest.java
+Different Spacing: false
+Left editions: [859]
+Right editions: [867]
+Merged body: 
+// START getWithPathAndQueryAmpersandParam({FormalParametersInternal})//@Test public void getWithPathAndQueryAmpersandParam() {
+    class Example {
+      @GET("/foo/bar/{ping}/") //
+// LEFT //      Call<ResponseBody> method(@Path("ping") String ping, @Query("kit") String kit) {
+        return null;
+      }
+    }
+
+    Request request = buildRequest(Example.class, "pong&", "kat&");
+    assertThat(request.method()).isEqualTo("GET");
+    assertThat(request.headers().size()).isZero();
+// RIGHT //    assertThat(request.urlString()).isEqualTo("http://example.com/foo/bar/pong&/?kit=kat%26");
+    assertThat(request.body()).isNull();
+// END getWithPathAndQueryAmpersandParam({FormalParametersInternal})//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7b65-8a70a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_677e1-fc152
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_588ad-8192a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a957c-22663
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_78f76-deb51
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_87af9-19bd4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d520-a1109
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e4be-1413e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3341d-f117d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30b5a-cada3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68aef-695c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0129a-73b88
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_555a0-4cd67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b68b-0dca9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f1c04-a39f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_068c3-fb4c5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_994f6-bd556
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64875-75705
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66084-ac506
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ccd17-f9144
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0a879-6fc11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2934b-6a84e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2442-cfcd9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_640ba-330e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_567c1-28ed8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_55f90-8c97b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_683b8-b001f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d80d6-473fd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_026a3-d6cd2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_24f18-9d0d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac92b-f5ec3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c7f7d-903e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5149d-dc869
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb8dd-ce002
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db2fc-2d8ed
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2b59c-5aad2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5febe-6a128
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0bef-f7a8b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83459-db061
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_54cca-eccfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a556e-504dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_31c82-c03b3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7c666-20747
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44110-bca92
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dec2f-8ceb2
+#CP_===_CP#
+Type: EditSameMC
+File: C:\Users\155 X-MX\Documents\dev\second_study\downloads\ssmerge\retrofit\revisions\rev_dec2f_8ceb2\rev_rev_left_dec2f-rev_right_8ceb2\retrofit-adapters\rxjava2\src\main\java\retrofit2\adapter\rxjava2\RxJava2CallAdapterFactory.java
+Different Spacing: false
+Left editions: [136, 137, 138]
+Right editions: [121, 122, 163]
+Merged body: 
+// START get(Type-Type-Annotation[]-Annotation[]-Retrofit-Retrofit)//@Override
+  public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    Class<?> rawType = getRawType(returnType);
+
+    if (rawType == Completable.class) {
+      // Completable is not parameterized (which is what the rest of this method deals with) so it
+      // can only be created with a single configuration.
+// RIGHT //      return new RxJava2CallAdapter(Void.class, scheduler, isAsync, false, true, false, false,
+// RIGHT //          false, true);
+    }
+
+    boolean isFlowable = rawType == Flowable.class;
+    boolean isSingle = rawType == Single.class;
+    boolean isMaybe = rawType == Maybe.class;
+    if (rawType != Observable.class && !isFlowable && !isSingle && !isMaybe) {
+      return null;
+    }
+
+    boolean isResult = false;
+    boolean isBody = false;
+    Type responseType;
+    if (!(returnType instanceof ParameterizedType)) {
+// LEFT //      String name = isFlowable ? "Flowable"
+// LEFT //          : isSingle ? "Single"
+// LEFT //          : isMaybe ? "Maybe" : "Observable";
+      throw new IllegalStateException(name + " return type must be parameterized"
+          + " as " + name + "<Foo> or " + name + "<? extends Foo>");
+    }
+
+    Type observableType = getParameterUpperBound(0, (ParameterizedType) returnType);
+    Class<?> rawObservableType = getRawType(observableType);
+    if (rawObservableType == Response.class) {
+      if (!(observableType instanceof ParameterizedType)) {
+        throw new IllegalStateException("Response must be parameterized"
+            + " as Response<Foo> or Response<? extends Foo>");
+      }
+      responseType = getParameterUpperBound(0, (ParameterizedType) observableType);
+    } else if (rawObservableType == Result.class) {
+      if (!(observableType instanceof ParameterizedType)) {
+        throw new IllegalStateException("Result must be parameterized"
+            + " as Result<Foo> or Result<? extends Foo>");
+      }
+      responseType = getParameterUpperBound(0, (ParameterizedType) observableType);
+      isResult = true;
+    } else {
+      responseType = observableType;
+      isBody = true;
+    }
+
+// RIGHT //    return new RxJava2CallAdapter(responseType, scheduler, isAsync, isResult, isBody, isFlowable,
+        isSingle, isMaybe, false);
+// END get(Type-Type-Annotation[]-Annotation[]-Retrofit-Retrofit)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe728-5c17e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_29a44-98d62
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a610-11925
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51939-e4acf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2aac8-aa7db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5357-bd625
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a63fa-38d97
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cc0df-e985d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_85593-c5ba7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f3591-308fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a888-c7467
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8306a-5f451
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2709-6eb7a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df307-2cd4a
+#MS_XXX_MS#

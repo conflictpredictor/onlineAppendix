@@ -1,0 +1,2410 @@
+#MS_XXX_MS#
+Merge scenario: rev_ae26e-a2b2e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a24c-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6684-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_86798-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e5265-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47bf7-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2cc3-56f7c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dd38b-92007
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88de7-92007
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34841-92007
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_92007-44fc3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a082a-fe414
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fe414-cfa65
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3f617-74ba7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_261d3-f8eea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09206-1cd43
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_70841-5d8a6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_65e57-aea01
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ecc39-7803c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7803c-03bfc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d78a5-23f60
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1edf3-3f68d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d17e6-3c4a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c4a7-5ec83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7f665-3c4a7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f385e-fd717
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd745-d581a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_752e8-99b38
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8c4fb-ec4a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e1e5a-07160
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3e730-5241f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ab466-3b528
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_61947-dda54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bf44-c78a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d712-c2c01
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df821-9b8af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9fd2d-1e6c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c9652-2c23b
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLMergeClause.java
+Different Spacing: false
+Left editions: [419, 436]
+Right editions: []
+Merged body: 
+// START createStatement(boolean-boolean)//private PreparedStatement createStatement(boolean withKeys) throws SQLException{
+// LEFT //        SQLSerializer serializer = createSerializer();
+        PreparedStatement stmt = null;
+        if (batches.isEmpty()) {
+            serializer.serializeMerge(metadata, entity, keys, columns, values, subQuery);
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+        } else {
+            serializer.serializeMerge(metadata, entity,
+                    batches.get(0).getKeys(), batches.get(0).getColumns(),
+                    batches.get(0).getValues(), batches.get(0).getSubQuery());
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+
+            // add first batch
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+                SQLMergeBatch batch = batches.get(i);
+// LEFT //                serializer = createSerializer();
+                serializer.serializeMerge(metadata, entity, batch.getKeys(), batch.getColumns(), batch.getValues(), batch.getSubQuery());
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement(boolean-boolean)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLMergeClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [478]
+Merged body: 
+// START executeNativeMerge({FormalParametersInternal})//private long executeNativeMerge() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = createStatement(false);
+            if (batches.isEmpty()) {
+                listeners.notifyMerge(entity, metadata, keys, columns, values, subQuery);
+                return stmt.executeUpdate();
+            } else {
+                listeners.notifyMerges(entity, metadata, batches);
+                return executeBatch(stmt);
+            }
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        } finally {
+            if (stmt != null) {
+                close(stmt);
+            }
+        }
+// END executeNativeMerge({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLMergeClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [340]
+Merged body: 
+// START executeWithKeys({FormalParametersInternal})//public ResultSet executeWithKeys() {
+        try {
+            if (configuration.getTemplates().isNativeMerge()) {
+                final PreparedStatement stmt = createStatement(true);
+                if (batches.isEmpty()) {
+                    listeners.notifyMerge(entity, metadata, keys, columns, values, subQuery);
+                    stmt.executeUpdate();
+                } else {
+                    listeners.notifyMerges(entity, metadata, batches);
+                    stmt.executeBatch();
+                }
+                ResultSet rs = stmt.getGeneratedKeys();
+                return new ResultSetAdapter(rs) {
+                    @Override
+                    public void close() throws SQLException {
+                        try {
+                            super.close();
+                        } finally {
+                            stmt.close();
+                        }
+                    }
+                };
+            } else {
+                List<?> ids = getIds();
+                if (!ids.isEmpty()) {
+                    // update
+                    SQLUpdateClause update = new SQLUpdateClause(connection, configuration.getTemplates(), entity);
+                    populate(update);
+                    update.where(ExpressionUtils.in((Expression)keys.get(0),ids));
+                    return EmptyResultSet.DEFAULT;
+                } else {
+                    // insert
+                    SQLInsertClause insert = new SQLInsertClause(connection, configuration.getTemplates(), entity);
+                    populate(insert);
+                    return insert.executeWithKeys();
+                }
+            }
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        }
+// END executeWithKeys({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLMergeClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [449]
+Merged body: 
+// START prepareStatementAndSetParameters(SQLSerializer-SQLSerializer-boolean-boolean)//private PreparedStatement prepareStatementAndSetParameters(SQLSerializer serializer,
+            boolean withKeys) throws SQLException {
+        queryString = serializer.toString();
+// RIGHT //        constants = serializer.getConstants();
+        logger.debug(queryString);
+        PreparedStatement stmt;
+        if (withKeys) {
+            String[] target = new String[keys.size()];
+            for (int i = 0; i < target.length; i++) {
+                target[i] = ColumnMetadata.getName(keys.get(i));
+            }
+            stmt = connection.prepareStatement(queryString, target);
+        } else {
+            stmt = connection.prepareStatement(queryString);
+        }
+        setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+        return stmt;
+// END prepareStatementAndSetParameters(SQLSerializer-SQLSerializer-boolean-boolean)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLMergeClause.java
+Different Spacing: false
+Left editions: [419, 436]
+Right editions: []
+Merged body: 
+// START createStatement(boolean-boolean)//private PreparedStatement createStatement(boolean withKeys) throws SQLException{
+// LEFT //        SQLSerializer serializer = createSerializer();
+        PreparedStatement stmt = null;
+        if (batches.isEmpty()) {
+            serializer.serializeMerge(metadata, entity, keys, columns, values, subQuery);
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+        } else {
+            serializer.serializeMerge(metadata, entity,
+                    batches.get(0).getKeys(), batches.get(0).getColumns(),
+                    batches.get(0).getValues(), batches.get(0).getSubQuery());
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+
+            // add first batch
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+                SQLMergeBatch batch = batches.get(i);
+// LEFT //                serializer = createSerializer();
+                serializer.serializeMerge(metadata, entity, batch.getKeys(), batch.getColumns(), batch.getValues(), batch.getSubQuery());
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\PostgresTemplates.java
+Different Spacing: false
+Left editions: []
+Right editions: [61, 115]
+Merged body: 
+// START PostgresTemplates(char-char-boolean-boolean)//public PostgresTemplates(char escape, boolean quote) {
+        super("\"", escape, quote);
+        setDummyTable(null);
+        setCountDistinctMultipleColumns(true);
+        setCountViaAnalytics(true);
+// RIGHT //        setDefaultValues("\ndefault values");
+
+        addClass2TypeMappings("numeric(3,0)", Byte.class);
+        addClass2TypeMappings("double precision", Double.class);
+
+        // String
+        add(Ops.MATCHES, "{0} ~ {1}");
+        add(Ops.INDEX_OF, "strpos({0},{1})-1");
+        add(Ops.INDEX_OF_2ARGS, "strpos({0},{1})-1"); //FIXME
+        add(Ops.StringOps.LOCATE,  "strpos({1},{0})");
+        add(Ops.StringOps.LOCATE2, "strpos(repeat('^',{2s}-1) || substr({1},{2s}),{0})");
+
+        // like without escape
+        if (escape == '\\') {
+            add(Ops.LIKE, "{0} like {1}");
+            add(Ops.ENDS_WITH, "{0} like {%1}");
+            add(Ops.ENDS_WITH_IC, "{0l} like {%%1}");
+            add(Ops.STARTS_WITH, "{0} like {1%}");
+            add(Ops.STARTS_WITH_IC, "{0l} like {1%%}");
+            add(Ops.STRING_CONTAINS, "{0} like {%1%}");
+            add(Ops.STRING_CONTAINS_IC, "{0l} like {%%1%%}");
+        }
+
+        // Number
+        add(Ops.MathOps.RANDOM, "random()");
+        add(Ops.MathOps.LN, "ln({0})");
+        add(Ops.MathOps.LOG, "log({1},{0})");
+        add(Ops.MathOps.COSH, "(exp({0}) + exp({0} * -1)) / 2");
+        add(Ops.MathOps.COTH, "(exp({0} * 2) + 1) / (exp({0} * 2) - 1)");
+        add(Ops.MathOps.SINH, "(exp({0}) - exp({0} * -1)) / 2");
+        add(Ops.MathOps.TANH, "(exp({0} * 2) - 1) / (exp({0} * 2) + 1)");
+
+        // Date / time
+        add(Ops.DateTimeOps.DAY_OF_WEEK, "extract(dow from {0}) + 1");
+        add(Ops.DateTimeOps.DAY_OF_YEAR, "extract(doy from {0})");
+        add(Ops.DateTimeOps.YEAR_WEEK, "(extract(isoyear from {0}) * 100 + extract(week from {0}))");
+
+        add(Ops.AggOps.BOOLEAN_ANY, "bool_or({0})", 0);
+        add(Ops.AggOps.BOOLEAN_ALL, "bool_and({0})", 0);
+
+        add(Ops.DateTimeOps.ADD_YEARS, "{0} + interval '{1s} years'");
+        add(Ops.DateTimeOps.ADD_MONTHS, "{0} + interval '{1s} months'");
+        add(Ops.DateTimeOps.ADD_WEEKS, "{0} + interval '{1s} weeks'");
+        add(Ops.DateTimeOps.ADD_DAYS, "{0} + interval '{1s} days'");
+        add(Ops.DateTimeOps.ADD_HOURS, "{0} + interval '{1s} hours'");
+        add(Ops.DateTimeOps.ADD_MINUTES, "{0} + interval '{1s} minutes'");
+        add(Ops.DateTimeOps.ADD_SECONDS, "{0} + interval '{1s} seconds'");
+
+        String yearsDiff = "date_part('year', age({1}, {0}))";
+        String monthsDiff = "(" + yearsDiff + " * 12 + date_part('month', age({1}, {0})))";
+        String weeksDiff =  "trunc((cast({1} as date) - cast({0} as date))/7)";
+        String daysDiff = "(cast({1} as date) - cast({0} as date))";
+        String hoursDiff = "("+ daysDiff + " * 24 + date_part('hour', age({1}, {0})))";
+        String minutesDiff = "(" + hoursDiff + " * 60 + date_part('minute', age({1}, {0})))";
+// RIGHT //        String secondsDiff =  "(" +  minutesDiff + " * 60 + date_part('second', age({1}, {0})))";
+
+        add(Ops.DateTimeOps.DIFF_YEARS,   yearsDiff);
+        add(Ops.DateTimeOps.DIFF_MONTHS,  monthsDiff);
+        add(Ops.DateTimeOps.DIFF_WEEKS,   weeksDiff);
+        add(Ops.DateTimeOps.DIFF_DAYS,    daysDiff);
+        add(Ops.DateTimeOps.DIFF_HOURS,   hoursDiff);
+        add(Ops.DateTimeOps.DIFF_MINUTES, minutesDiff);
+        add(Ops.DateTimeOps.DIFF_SECONDS, secondsDiff);
+// END PostgresTemplates(char-char-boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql-codegen\src\main\java\com\mysema\query\sql\ant\AntMetaDataExporter.java
+Different Spacing: false
+Left editions: [318]
+Right editions: [278, 315, 328, 329, 330, 331, 332, 333, 334, 346, 347, 348]
+Merged body: 
+// START execute({FormalParametersInternal})//@Override
+// RIGHT //    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public void execute() {
+        Connection dbConn = null;
+        File targetPackagePath = new File(targetSourceFolder);
+
+        try {
+            Class.forName(jdbcDriverClass).newInstance();
+
+            dbConn = DriverManager.getConnection(dbUrl, dbUserName, dbPassword);
+
+            NamingStrategy namingStrategy = new DefaultNamingStrategy();
+            MetaDataExporter exporter = new MetaDataExporter();
+            if (namePrefix != null) {
+                exporter.setNamePrefix(namePrefix);
+            }
+            if (nameSuffix != null) {
+                exporter.setNameSuffix(nameSuffix);
+            }
+            if (beanPrefix != null) {
+                exporter.setBeanPrefix(beanPrefix);
+            }
+            if (beanSuffix != null) {
+                exporter.setBeanSuffix(beanSuffix);
+            }
+            exporter.setPackageName(targetPackage);
+            exporter.setBeanPackageName(beanTargetPackage);
+            exporter.setTargetFolder(targetPackagePath);
+            exporter.setNamingStrategy(namingStrategy);
+            exporter.setInnerClassesForKeys(innerClassesForKeys);
+            exporter.setSchemaPattern(schemaPattern);
+            exporter.setTableNamePattern(tableNamePattern);
+            exporter.setColumnAnnotations(columnAnnotations);
+            exporter.setValidationAnnotations(validationAnnotations);
+            exporter.setSchemaToPackage(schemaToPackage);
+            exporter.setLowerCase(lowerCase);
+            exporter.setExportTables(exportTables);
+            exporter.setExportViews(exportViews);
+// RIGHT //            exporter.setExportAll(exportAll);
+            exporter.setExportPrimaryKeys(exportPrimaryKeys);
+            exporter.setExportForeignKeys(exportForeignKeys);
+// LEFT //            exporter.setSpatial(spatial);
+
+            if (imports != null && imports.length > 0) {
+                exporter.setImports(imports);
+            }
+
+            if (exportBeans) {
+                BeanSerializer serializer = new BeanSerializer();
+                if (beanInterfaces != null) {
+                    for (String iface : beanInterfaces) {
+// RIGHT //                        int sepIndex = iface.lastIndexOf('.');
+// RIGHT //                        if (sepIndex < 0) {
+// RIGHT //                            serializer.addInterface(new SimpleType(iface));
+// RIGHT //                        } else {
+// RIGHT //                            String packageName = iface.substring(0, sepIndex);
+// RIGHT //                            String simpleName = iface.substring(sepIndex + 1);
+// RIGHT //                            serializer.addInterface(new SimpleType(iface, packageName, simpleName));
+                        }
+                    }
+                }
+                serializer.setAddFullConstructor(beanAddFullConstructor);
+                serializer.setAddToString(beanAddToString);
+                serializer.setPrintSupertype(beanPrintSupertype);
+                exporter.setBeanSerializer(serializer);
+            }
+            if (sourceEncoding != null) {
+                exporter.setSourceEncoding(sourceEncoding);
+            }
+// RIGHT //            if (columnComparatorClass != null) {
+// RIGHT //                exporter.setColumnComparatorClass((Class) Class.forName(this.columnComparatorClass).asSubclass(Comparator.class));
+// RIGHT //            }
+
+            exporter.export(dbConn.getMetaData());
+
+        } catch (RuntimeException e) {
+            throw new BuildException(e);
+        } catch (InstantiationException e) {
+            throw new BuildException(e);
+        } catch (IllegalAccessException e) {
+            throw new BuildException(e);
+        } catch (ClassNotFoundException e) {
+            throw new BuildException(e);
+        } catch (SQLException e) {
+            throw new BuildException(e);
+        } finally {
+            if (dbConn != null) {
+                try {
+                    dbConn.close();
+                } catch (SQLException e2) {
+                    throw new BuildException(e2);
+                }
+            }
+        }
+// END execute({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLInsertClause.java
+Different Spacing: false
+Left editions: [322, 342]
+Right editions: []
+Merged body: 
+// START createStatement(boolean-boolean)//private PreparedStatement createStatement(boolean withKeys) throws SQLException {
+// LEFT //        SQLSerializer serializer = createSerializer();
+        if (subQueryBuilder != null) {
+            subQuery = subQueryBuilder.list(values.toArray(new Expression[values.size()]));
+            values.clear();
+        }
+        PreparedStatement stmt = null;
+        if (batches.isEmpty()) {
+            serializer.serializeInsert(metadata, entity, columns, values, subQuery);
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+        } else {
+            serializer.serializeInsert(metadata, entity, batches.get(0).getColumns(), batches
+                    .get(0).getValues(), batches.get(0).getSubQuery());
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+
+            // add first batch
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+                SQLInsertBatch batch = batches.get(i);
+// LEFT //                serializer = createSerializer();
+                serializer.serializeInsert(metadata, entity, batch.getColumns(),
+                        batch.getValues(), batch.getSubQuery());
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(),
+                        metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement(boolean-boolean)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLInsertClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [426]
+Merged body: 
+// START execute({FormalParametersInternal})//@Override
+    public long execute() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = createStatement(false);
+            if (batches.isEmpty()) {
+                listeners.notifyInsert(entity, metadata, columns, values, subQuery);
+                return stmt.executeUpdate();
+            } else {
+                listeners.notifyInserts(entity, metadata, batches);
+                return executeBatch(stmt);
+            }
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        } finally {
+            if (stmt != null) {
+                close(stmt);
+            }
+        }
+// END execute({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLInsertClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [408]
+Merged body: 
+// START executeWithKeys({FormalParametersInternal})//public ResultSet executeWithKeys() {
+        try {
+            final PreparedStatement stmt = createStatement(true);
+            if (batches.isEmpty()) {
+                listeners.notifyInsert(entity, metadata, columns, values, subQuery);
+                stmt.executeUpdate();
+            } else {
+                listeners.notifyInserts(entity, metadata, batches);
+                stmt.executeBatch();
+            }
+            ResultSet rs = stmt.getGeneratedKeys();
+            return new ResultSetAdapter(rs) {
+                @Override
+                public void close() throws SQLException {
+                    try {
+                        super.close();
+                    } finally {
+                        stmt.close();
+                    }
+                }
+            };
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        }
+// END executeWithKeys({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLInsertClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [357]
+Merged body: 
+// START prepareStatementAndSetParameters(SQLSerializer-SQLSerializer-boolean-boolean)//private PreparedStatement prepareStatementAndSetParameters(SQLSerializer serializer,
+            boolean withKeys) throws SQLException {
+        queryString = serializer.toString();
+// RIGHT //        constants = serializer.getConstants();
+        logger.debug(queryString);
+        PreparedStatement stmt;
+        if (withKeys) {
+            if (entity.getPrimaryKey() != null) {
+                String[] target = new String[entity.getPrimaryKey().getLocalColumns().size()];
+                for (int i = 0; i < target.length; i++) {
+                    Path<?> path = entity.getPrimaryKey().getLocalColumns().get(i);
+                    String column = ColumnMetadata.getName(path);
+                    target[i] = column;
+                }
+                stmt = connection.prepareStatement(queryString, target);
+            } else {
+                stmt = connection.prepareStatement(queryString, Statement.RETURN_GENERATED_KEYS);
+            }
+        } else {
+            stmt = connection.prepareStatement(queryString);
+        }
+        setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(),
+                metadata.getParams());
+        return stmt;
+// END prepareStatementAndSetParameters(SQLSerializer-SQLSerializer-boolean-boolean)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLInsertClause.java
+Different Spacing: false
+Left editions: [322, 342]
+Right editions: []
+Merged body: 
+// START createStatement(boolean-boolean)//private PreparedStatement createStatement(boolean withKeys) throws SQLException {
+// LEFT //        SQLSerializer serializer = createSerializer();
+        if (subQueryBuilder != null) {
+            subQuery = subQueryBuilder.list(values.toArray(new Expression[values.size()]));
+            values.clear();
+        }
+        PreparedStatement stmt = null;
+        if (batches.isEmpty()) {
+            serializer.serializeInsert(metadata, entity, columns, values, subQuery);
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+        } else {
+            serializer.serializeInsert(metadata, entity, batches.get(0).getColumns(), batches
+                    .get(0).getValues(), batches.get(0).getSubQuery());
+            stmt = prepareStatementAndSetParameters(serializer, withKeys);
+
+            // add first batch
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+                SQLInsertBatch batch = batches.get(i);
+// LEFT //                serializer = createSerializer();
+                serializer.serializeInsert(metadata, entity, batch.getColumns(),
+                        batch.getValues(), batch.getSubQuery());
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(),
+                        metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement(boolean-boolean)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLUpdateClause.java
+Different Spacing: false
+Left editions: [185, 193, 206]
+Right editions: [188, 196]
+Merged body: 
+// START createStatement({FormalParametersInternal})//private PreparedStatement createStatement() throws SQLException{
+        PreparedStatement stmt;
+        if (batches.isEmpty()) {
+// LEFT //            SQLSerializer serializer = createSerializer();
+            serializer.serializeUpdate(metadata, entity, updates);
+            queryString = serializer.toString();
+// RIGHT //            constants = serializer.getConstants();
+            logger.debug(queryString);
+            stmt = connection.prepareStatement(queryString);
+            setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+        } else {
+// LEFT //            SQLSerializer serializer = createSerializer();
+            serializer.serializeUpdate(batches.get(0).getMetadata(), entity, batches.get(0).getUpdates());
+            queryString = serializer.toString();
+// RIGHT //            constants = serializer.getConstants();
+            logger.debug(queryString);
+
+            // add first batch
+            stmt = connection.prepareStatement(queryString);
+            setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+// LEFT //                serializer = createSerializer();
+                serializer.serializeUpdate(batches.get(i).getMetadata(), entity, batches.get(i).getUpdates());
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLUpdateClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [229]
+Merged body: 
+// START execute({FormalParametersInternal})//@Override
+    public long execute() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = createStatement();
+            if (batches.isEmpty()) {
+                listeners.notifyUpdate(entity, metadata, updates);
+                return stmt.executeUpdate();
+            } else {
+                listeners.notifyUpdates(entity, batches);
+                return executeBatch(stmt);
+            }
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        } finally {
+            if (stmt != null) {
+                close(stmt);
+            }
+        }
+// END execute({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql-codegen\src\main\java\com\mysema\query\sql\codegen\MetaDataExporter.java
+Different Spacing: false
+Left editions: []
+Right editions: [314, 315, 323, 328, 338]
+Merged body: 
+// START export(DatabaseMetaData-DatabaseMetaData)//public void export(DatabaseMetaData md) throws SQLException {
+        if (beanPackageName == null) {
+            beanPackageName =  module.getPackageName();
+        }
+        module.bind(SQLCodegenModule.BEAN_PACKAGE_NAME, beanPackageName);
+
+        if (spatial) {
+            SpatialSupport.addSupport(module);
+        }
+
+        typeMappings = module.get(TypeMappings.class);
+        queryTypeFactory = module.get(QueryTypeFactory.class);
+        serializer = module.get(Serializer.class);
+        beanSerializer = module.get(Serializer.class, SQLCodegenModule.BEAN_SERIALIZER);
+        namingStrategy = module.get(NamingStrategy.class);
+        configuration = module.get(Configuration.class);
+
+        if (beanSerializer == null) {
+            keyDataFactory = new KeyDataFactory(namingStrategy,  module.getPackageName(),
+                    module.getPrefix(), module.getSuffix(), schemaToPackage);
+        } else {
+            keyDataFactory = new KeyDataFactory(namingStrategy, beanPackageName,
+                    module.getBeanPrefix(), module.getBeanSuffix(), schemaToPackage);
+        }
+
+// RIGHT //        String[] typesArray = null;
+// RIGHT //        if (!exportAll) {
+        List<String> types = new ArrayList<String>(2);
+        if (exportTables) {
+            types.add("TABLE");
+        }
+        if (exportViews) {
+            types.add("VIEW");
+        }
+// RIGHT //            typesArray = types.toArray(new String[types.size()]);
+        }
+
+        if (tableNamePattern != null && tableNamePattern.contains(",")) {
+            for (String table : tableNamePattern.split(",")) {
+// RIGHT //                ResultSet tables = md.getTables(null, schemaPattern, table.trim(), typesArray);
+                try{
+                    while (tables.next()) {
+                        handleTable(md, tables);
+                    }
+                }finally{
+                    tables.close();
+                }
+            }
+        } else {
+// RIGHT //            ResultSet tables = md.getTables(null, schemaPattern, tableNamePattern, typesArray);
+            try{
+                while (tables.next()) {
+                    handleTable(md, tables);
+                }
+            }finally{
+                tables.close();
+            }
+        }
+
+// END export(DatabaseMetaData-DatabaseMetaData)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql-codegen\src\main\java\com\mysema\query\sql\codegen\MetaDataExporter.java
+Different Spacing: false
+Left editions: [361, 369]
+Right editions: [364, 384]
+Merged body: 
+// START handleColumn(EntityType-EntityType-String-String-ResultSet-ResultSet)//private void handleColumn(EntityType classModel, String tableName, ResultSet columns) throws SQLException {
+        String columnName = normalize(columns.getString("COLUMN_NAME"));
+        String normalizedColumnName = namingStrategy.normalizeColumnName(columnName);
+        int columnType = columns.getInt("DATA_TYPE");
+// LEFT //        String typeName = columns.getString("TYPE_NAME");
+        Number columnSize = (Number) columns.getObject("COLUMN_SIZE");
+        Number columnDigits = (Number) columns.getObject("DECIMAL_DIGITS");
+// RIGHT //        int columnIndex = columns.getInt("ORDINAL_POSITION");
+        int nullable = columns.getInt("NULLABLE");
+
+        String propertyName = namingStrategy.getPropertyName(normalizedColumnName, classModel);
+        Class<?> clazz = configuration.getJavaType(columnType,
+// LEFT //                typeName,
+                columnSize != null ? columnSize.intValue() : 0,
+                columnDigits != null ? columnDigits.intValue() : 0,
+                tableName, columnName);
+        if (clazz == null) {
+            throw new IllegalStateException("Found no mapping for " + columnType + " (" + tableName + "." + columnName + ")");
+        }
+        TypeCategory fieldType = TypeCategory.get(clazz.getName());
+        if (Number.class.isAssignableFrom(clazz)) {
+            fieldType = TypeCategory.NUMERIC;
+        } else if (Enum.class.isAssignableFrom(clazz)) {
+            fieldType = TypeCategory.ENUM;
+        }
+        Type typeModel = new ClassType(fieldType, clazz);
+        Property property = createProperty(classModel, normalizedColumnName, propertyName, typeModel);
+// RIGHT //        ColumnMetadata column = ColumnMetadata.named(normalizedColumnName).ofType(columnType).withIndex(columnIndex);
+        if (nullable == DatabaseMetaData.columnNoNulls) {
+            column = column.notNull();
+        }
+        if (columnSize != null) {
+            column = column.withSize(columnSize.intValue());
+        }
+        if (columnDigits != null) {
+            column = column.withDigits(columnDigits.intValue());
+        }
+        property.getData().put("COLUMN", column);
+
+        if (columnAnnotations) {
+            property.addAnnotation(new ColumnImpl(normalizedColumnName));
+        }
+        if (validationAnnotations) {
+            if (nullable == DatabaseMetaData.columnNoNulls) {
+                property.addAnnotation(new NotNullImpl());
+            }
+            int size = columns.getInt("COLUMN_SIZE");
+            if (size > 0 && clazz.equals(String.class)) {
+                property.addAnnotation(new SizeImpl(0, size));
+            }
+        }
+        classModel.addProperty(property);
+// END handleColumn(EntityType-EntityType-String-String-ResultSet-ResultSet)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLDeleteClause.java
+Different Spacing: false
+Left editions: [176, 184, 197]
+Right editions: [179, 187]
+Merged body: 
+// START createStatement({FormalParametersInternal})//private PreparedStatement createStatement() throws SQLException{
+        PreparedStatement stmt;
+        if (batches.isEmpty()) {
+// LEFT //            SQLSerializer serializer = createSerializer();
+            serializer.serializeDelete(metadata, entity);
+            queryString = serializer.toString();
+// RIGHT //            constants = serializer.getConstants();
+            logger.debug(queryString);
+            stmt = connection.prepareStatement(queryString);
+            setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+        } else {
+// LEFT //            SQLSerializer serializer = createSerializer();
+            serializer.serializeDelete(batches.get(0), entity);
+            queryString = serializer.toString();
+// RIGHT //            constants = serializer.getConstants();
+            logger.debug(queryString);
+
+            // add first batch
+            stmt = connection.prepareStatement(queryString);
+            setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+            stmt.addBatch();
+
+            // add other batches
+            for (int i = 1; i < batches.size(); i++) {
+// LEFT //                serializer = createSerializer();
+                serializer.serializeDelete(batches.get(i), entity);
+                setParameters(stmt, serializer.getConstants(), serializer.getConstantPaths(), metadata.getParams());
+                stmt.addBatch();
+            }
+        }
+        return stmt;
+// END createStatement({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\dml\SQLDeleteClause.java
+Different Spacing: false
+Left editions: []
+Right editions: [220]
+Merged body: 
+// START execute({FormalParametersInternal})//@Override
+    public long execute() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = createStatement();
+            if (batches.isEmpty()) {
+                listeners.notifyDelete(entity, metadata);
+                return stmt.executeUpdate();
+            } else {
+                listeners.notifyDeletes(entity, batches);
+                return executeBatch(stmt);
+            }
+        } catch (SQLException e) {
+// RIGHT //            throw configuration.translate(queryString, constants, e);
+        } finally {
+            if (stmt != null) {
+                close(stmt);
+            }
+        }
+// END execute({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-sql\src\main\java\com\mysema\query\sql\SQLiteTemplates.java
+Different Spacing: false
+Left editions: [73]
+Right editions: [78]
+Merged body: 
+// START SQLiteTemplates(char-char-boolean-boolean)//public SQLiteTemplates(char escape, boolean quote) {
+        super("\"", escape, quote);
+        setDummyTable(null);
+// LEFT //        addCustomType(BigDecimalAsDoubleType.DEFAULT);
+        setUnionsWrapped(false);
+        setLimitRequired(true);
+        setNullsFirst(null);
+        setNullsLast(null);
+// RIGHT //        setDefaultValues("\ndefault values");
+        add(Ops.MOD, "{0} % {1}");
+
+        add(Ops.INDEX_OF, "charindex({1},{0},1)-1");
+        add(Ops.INDEX_OF_2ARGS, "charindex({1},{0},{2s}+1)-1");
+
+        add(Ops.StringOps.LOCATE, "charindex({0},{1})");
+        add(Ops.StringOps.LOCATE2, "charindex({0},{1},{2s})");
+
+        // TODO : optimize
+        add(Ops.DateTimeOps.YEAR, "cast(strftime('%Y',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.MONTH, "cast(strftime('%m',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.WEEK, "cast(strftime('%W',{0} / 1000, 'unixepoch', 'localtime') as integer) + 1");
+        add(Ops.DateTimeOps.DAY_OF_MONTH, "cast(strftime('%d',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.DAY_OF_WEEK, "cast(strftime('%w',{0} / 1000, 'unixepoch', 'localtime') as integer) + 1");
+        add(Ops.DateTimeOps.DAY_OF_YEAR, "cast(strftime('%j',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.HOUR, "cast(strftime('%H',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.MINUTE, "cast(strftime('%M',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.SECOND, "cast(strftime('%S',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+
+        add(Ops.DateTimeOps.YEAR_MONTH, "cast(strftime('%Y',{0} / 1000, 'unixepoch', 'localtime') * 100 + strftime('%m',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+        add(Ops.DateTimeOps.YEAR_WEEK, "cast(strftime('%Y%W',{0} / 1000, 'unixepoch', 'localtime') as integer)");
+
+        add(Ops.DateTimeOps.ADD_YEARS, "date({0}, '+{1s} year')");
+        add(Ops.DateTimeOps.ADD_MONTHS, "date({0}, '+{1s} month')");
+        add(Ops.DateTimeOps.ADD_WEEKS, "date({0}, '+{1s} week')");
+        add(Ops.DateTimeOps.ADD_DAYS, "date({0}, '+{1s} day')");
+        add(Ops.DateTimeOps.ADD_HOURS, "date({0}, '+{1s} hour')");
+        add(Ops.DateTimeOps.ADD_MINUTES, "date({0}, '+{1s} minute')");
+        add(Ops.DateTimeOps.ADD_SECONDS, "date({0}, '+{1s} second')");
+
+        add(Ops.MathOps.RANDOM, "random()");
+        add(Ops.MathOps.RANDOM2, "random({0})");
+        add(Ops.MathOps.LN, "log({0})");
+        add(Ops.MathOps.LOG, "(log({0}) / log({1}))");
+// END SQLiteTemplates(char-char-boolean-boolean)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c9652_2c23b\rev_rev_left_c9652-rev_right_2c23b\querydsl-maven-plugin\src\main\java\com\mysema\query\maven\AbstractMetaDataExportMojo.java
+Different Spacing: false
+Left editions: [421]
+Right editions: [418, 442, 443, 444, 445, 446, 447, 448, 449, 484, 485, 486, 487, 488, 489, 490, 491]
+Merged body: 
+// START execute({FormalParametersInternal})//@SuppressWarnings({ "unchecked", "rawtypes" })
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        if (isForTest()) {
+            project.addTestCompileSourceRoot(targetFolder);
+        } else {
+            project.addCompileSourceRoot(targetFolder);
+        }
+
+        try {
+            Configuration configuration = new Configuration(SQLTemplates.DEFAULT);
+            NamingStrategy namingStrategy;
+            if (namingStrategyClass != null) {
+                namingStrategy = (NamingStrategy) Class.forName(namingStrategyClass).newInstance();
+            } else {
+                namingStrategy = new DefaultNamingStrategy();
+            }
+
+            // defaults for Scala
+            if (createScalaSources) {
+                if (serializerClass == null) {
+                    serializerClass = "com.mysema.query.scala.sql.ScalaMetaDataSerializer";
+                }
+                if (exportBeans && beanSerializerClass == null) {
+                    beanSerializerClass = "com.mysema.query.scala.ScalaBeanSerializer";
+                }
+            }
+
+            MetaDataExporter exporter = new MetaDataExporter();
+            if (namePrefix != null) {
+                exporter.setNamePrefix(namePrefix);
+            }
+            if (nameSuffix != null) {
+                exporter.setNameSuffix(nameSuffix);
+            }
+            if (beanPrefix != null) {
+                exporter.setBeanPrefix(beanPrefix);
+            }
+            if (beanSuffix != null) {
+                exporter.setBeanSuffix(beanSuffix);
+            }
+            exporter.setCreateScalaSources(createScalaSources);
+            exporter.setPackageName(packageName);
+            exporter.setBeanPackageName(beanPackageName);
+            exporter.setInnerClassesForKeys(innerClassesForKeys);
+            exporter.setTargetFolder(new File(targetFolder));
+            exporter.setNamingStrategy(namingStrategy);
+            exporter.setSchemaPattern(schemaPattern);
+            exporter.setTableNamePattern(tableNamePattern);
+            exporter.setColumnAnnotations(columnAnnotations);
+            exporter.setValidationAnnotations(validationAnnotations);
+            exporter.setSchemaToPackage(schemaToPackage);
+            exporter.setLowerCase(lowerCase);
+            exporter.setExportTables(exportTables);
+            exporter.setExportViews(exportViews);
+// RIGHT //            exporter.setExportAll(exportAll);
+            exporter.setExportPrimaryKeys(exportPrimaryKeys);
+            exporter.setExportForeignKeys(exportForeignKeys);
+// LEFT //            exporter.setSpatial(spatial);
+
+            if (imports != null && imports.length > 0) {
+                exporter.setImports(imports);
+            }
+
+            if (serializerClass != null) {
+                try {
+                    exporter.setSerializerClass((Class)Class.forName(serializerClass));
+                } catch (ClassNotFoundException e) {
+                    getLog().error(e);
+                    throw new MojoExecutionException(e.getMessage(), e);
+                }
+            }
+            if (exportBeans) {
+                if (beanSerializerClass != null) {
+                    exporter.setBeanSerializerClass((Class)Class.forName(beanSerializerClass));
+                } else {
+                    BeanSerializer serializer = new BeanSerializer();
+                    if (beanInterfaces != null) {
+                        for (String iface : beanInterfaces) {
+// RIGHT //                            int sepIndex = iface.lastIndexOf('.');
+// RIGHT //                            if (sepIndex < 0) {
+// RIGHT //                                serializer.addInterface(new SimpleType(iface));
+// RIGHT //                            } else {
+// RIGHT //                                String packageName = iface.substring(0, sepIndex);
+// RIGHT //                                String simpleName = iface.substring(sepIndex + 1);
+// RIGHT //                                serializer.addInterface(new SimpleType(iface, packageName, simpleName));
+// RIGHT //                            }
+                        }
+                    }
+                    serializer.setAddFullConstructor(beanAddFullConstructor);
+                    serializer.setAddToString(beanAddToString);
+                    serializer.setPrintSupertype(beanPrintSupertype);
+                    exporter.setBeanSerializer(serializer);
+                }
+
+            }
+            String sourceEncoding = (String)project.getProperties().get("project.build.sourceEncoding");
+            if (sourceEncoding != null) {
+                exporter.setSourceEncoding(sourceEncoding);
+            }
+
+            if (customTypes != null) {
+                for (String cl : customTypes) {
+                    configuration.register((Type<?>) Class.forName(cl).newInstance());
+                }
+            }
+            if (typeMappings != null) {
+                for (TypeMapping mapping : typeMappings) {
+                    Class<?> typeClass = Class.forName(mapping.type);
+                    if (Type.class.isAssignableFrom(typeClass)) {
+                        configuration.register(mapping.table, mapping.column, (Type<?>)typeClass.newInstance());
+                    } else {
+                        configuration.register(mapping.table, mapping.column, typeClass);
+                    }
+                }
+            }
+            if (numericMappings != null) {
+                for (NumericMapping mapping : numericMappings) {
+                    configuration.registerNumeric(mapping.size, mapping.digits, Class.forName(mapping.javaType));
+                }
+            }
+// RIGHT //            if (columnComparatorClass != null) {
+// RIGHT //                try {
+// RIGHT //                    exporter.setColumnComparatorClass( (Class) Class.forName(this.columnComparatorClass).asSubclass(Comparator.class));
+// RIGHT //                } catch (ClassNotFoundException e) {
+// RIGHT //                    getLog().error(e);
+// RIGHT //                    throw new MojoExecutionException(e.getMessage(), e);
+// RIGHT //                }
+// RIGHT //            }
+
+            exporter.setConfiguration(configuration);
+
+            Class.forName(jdbcDriver);
+            Connection conn = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
+            try{
+                exporter.export(conn.getMetaData());
+            } finally {
+                if (conn != null) {
+                    conn.close();
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            throw new MojoExecutionException(e.getMessage(), e);
+        } catch (SQLException e) {
+            throw new MojoExecutionException(e.getMessage(), e);
+        } catch (InstantiationException e) {
+            throw new MojoExecutionException(e.getMessage(), e);
+        } catch (IllegalAccessException e) {
+            throw new MojoExecutionException(e.getMessage(), e);
+        }
+
+// END execute({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2c23b-07d87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_79c9d-a4df2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bd354-74b13
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_bd354_74b13\rev_rev_left_bd354-rev_right_74b13\querydsl-sql\src\main\java\com\mysema\query\sql\SQLSerializer.java
+Different Spacing: false
+Left editions: [833, 835, 838]
+Right editions: [846]
+Merged body: 
+// START visit(Path<?>-Path<?>-Void-Void)//@Override
+    public Void visit(Path<?> path, Void context) {
+        if (dml) {
+            if (path.equals(entity) && path instanceof RelationalPath<?>) {
+// LEFT //                SchemaAndTable schemaAndTable = getSchemaAndTable((RelationalPath<?>) path);
+                if (dmlWithSchema && templates.isPrintSchema()) {
+// LEFT //                    appendSchemaName(schemaAndTable.getSchema());
+                    append(".");
+                }
+// LEFT //                appendTableName(schemaAndTable.getTable());
+                return null;
+            } else if (entity.equals(path.getMetadata().getParent()) && skipParent) {
+                appendAsColumnName(path);
+                return null;
+            }
+        }
+        final PathMetadata<?> metadata = path.getMetadata();
+// RIGHT //        if (metadata.getParent() != null && (!skipParent || dml)) {
+            visit(metadata.getParent(), context);
+            append(".");
+        }
+        appendAsColumnName(path);
+        return null;
+// END visit(Path<?>-Path<?>-Void-Void)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_90ef9-74b13
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_90ef9_74b13\rev_rev_left_90ef9-rev_right_74b13\querydsl-apt\src\test\java\com\mysema\query\apt\GenericExporterTest.java
+Different Spacing: false
+Left editions: [109]
+Right editions: [119]
+Merged body: 
+// START Execute2({FormalParametersInternal})//@Test
+    public void Execute2() throws IOException {
+        // via APT
+        process(HibernateAnnotationProcessor.class, CLASSES, "HibernateAnnotationProcessor");
+
+        // via GenericExporter
+        GenericExporter exporter = new GenericExporter();
+        exporter.setKeywords(Keywords.JPA);
+        exporter.setEntityAnnotation(Entity.class);
+        exporter.setEmbeddableAnnotation(Embeddable.class);
+        exporter.setEmbeddedAnnotation(Embedded.class);
+        exporter.setSupertypeAnnotation(MappedSuperclass.class);
+        exporter.setSkipAnnotation(Transient.class);
+        exporter.setTargetFolder(new File("target/GenericExporterTest2"));
+        exporter.addStopClass(ForwardingSet.class);
+        exporter.export(AbstractEntityTest.class.getPackage());
+
+        List<String> expected = new ArrayList<String>();
+        // GenericExporter doesn't include field/method selection
+        expected.add("QFileAttachment.java");
+        expected.add("QJodaTest_BaseEntity.java");
+        expected.add("QEnum3Test_Entity1.java");
+        expected.add("QCustomCollection_MyCustomCollection.java");
+        expected.add("QCustomCollection_MyCustomCollection2.java");
+
+        expected.add("QTemporalTest_MyEntity.java");
+
+        expected.add("QTemporal2Test_Cheque.java");
+        expected.add("QQueryProjectionTest_DTOWithProjection.java");
+// LEFT //        expected.add("QQueryProjectionTest_EntityWithProjection.java");
+
+        // FIXME
+        expected.add("QGeneric4Test_HidaBez.java");
+        expected.add("QGeneric4Test_HidaBezGruppe.java");
+        expected.add("QInterfaceType2Test_UserImpl.java");
+        expected.add("QOrderTest_Order.java");
+        expected.add("QManagedEmailTest_ManagedEmails.java");
+        expected.add("QGeneric12Test_ChannelRole.java");
+        expected.add("QManyToManyTest_Person.java");
+// RIGHT //        expected.add("QOneToOneTest_Person.java");
+
+        execute(expected, "GenericExporterTest2", "HibernateAnnotationProcessor");
+// END Execute2({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74b13-9608e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6eee-d58c8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b5c13-b9b04
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a8b90-646e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4831e-6daa0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6824-466c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7b8ec-7bf52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_167c7-436ef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ac050-0aed6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3bcf-0800b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9360c-c8a1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_837cb-dbc84
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_41e55-84ec7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f09ea-6c193
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_13e5a-8c236
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fbcc1-f3e03
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_298c9-8bb81
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59544-b0b87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_feab1-6f2a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aa818-48a19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51c37-350a1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_75a8b-fd255
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57e4d-7f4b9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_151fd-b483d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7436-4a0e7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_560ce-f5502
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8932-37f54
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9a62b-f3560
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_682c0-63154
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ca4b1-ed1dd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30a8f-28f76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eba6e-5d18b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c8094-30d02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e2e39-ca4b1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2811b-f0c1c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f0c1c-5be3e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_397ed-6382e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f79e-751d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6daee-96154
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_594f7-26591
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e67b3-e2de2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e114-1dd5e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a35b3-1e01f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1270-ef7c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2616b-9df99
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2d48-0383a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f4afe-e790d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d2004-74af3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_970e1-b3398
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_91b1d-802a4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc0c2-968e5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2cd7-7efac
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c694-e2680
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dabdf-d8858
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cc71e-2c3c4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2c3c4-6a808
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef829-bc86c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e65c-094ab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afb19-094ab
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_afb19_094ab\rev_rev_left_afb19-rev_right_094ab\querydsl-apt\src\test\java\com\mysema\query\apt\GenericExporterTest.java
+Different Spacing: false
+Left editions: [109]
+Right editions: [120, 121]
+Merged body: 
+// START Execute2({FormalParametersInternal})//@Test
+    public void Execute2() throws IOException {
+        // via APT
+        process(HibernateAnnotationProcessor.class, CLASSES, "HibernateAnnotationProcessor");
+
+        // via GenericExporter
+        GenericExporter exporter = new GenericExporter();
+        exporter.setKeywords(Keywords.JPA);
+        exporter.setEntityAnnotation(Entity.class);
+        exporter.setEmbeddableAnnotation(Embeddable.class);
+        exporter.setEmbeddedAnnotation(Embedded.class);
+        exporter.setSupertypeAnnotation(MappedSuperclass.class);
+        exporter.setSkipAnnotation(Transient.class);
+        exporter.setTargetFolder(new File("target/GenericExporterTest2"));
+        exporter.addStopClass(ForwardingSet.class);
+        exporter.export(AbstractEntityTest.class.getPackage());
+
+        List<String> expected = new ArrayList<String>();
+        // GenericExporter doesn't include field/method selection
+        expected.add("QFileAttachment.java");
+        expected.add("QJodaTest_BaseEntity.java");
+        expected.add("QEnum3Test_Entity1.java");
+        expected.add("QCustomCollection_MyCustomCollection.java");
+        expected.add("QCustomCollection_MyCustomCollection2.java");
+
+        expected.add("QTemporalTest_MyEntity.java");
+
+        expected.add("QTemporal2Test_Cheque.java");
+        expected.add("QQueryProjectionTest_DTOWithProjection.java");
+// LEFT //        expected.add("QQueryProjectionTest_EntityWithProjection.java");
+
+        // FIXME
+        expected.add("QGeneric4Test_HidaBez.java");
+        expected.add("QGeneric4Test_HidaBezGruppe.java");
+        expected.add("QInterfaceType2Test_UserImpl.java");
+        expected.add("QOrderTest_Order.java");
+        expected.add("QManagedEmailTest_ManagedEmails.java");
+        expected.add("QGeneric12Test_ChannelRole.java");
+        expected.add("QManyToManyTest_Person.java");
+        expected.add("QOneToOneTest_Person.java");
+// RIGHT //        expected.add("QGeneric16Test_HidaBez.java");
+// RIGHT //        expected.add("QGeneric16Test_HidaBezGruppe.java");
+
+        execute(expected, "GenericExporterTest2", "HibernateAnnotationProcessor");
+// END Execute2({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_094ab-1dfb1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_353f8-ed267
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4489b-2175c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c1ca-4f5f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e8138-30b2c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_30b2c-1f049
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1eff1-3b7bc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43e51-b0f2b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68e5c-901af
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5586-871ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d9535-73ca6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ed248-6c054
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d2e3-af8fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2115-1ac0b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_63e20-e4d74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_572eb-46f3a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9b0f7-9c80c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d051-22ee4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f0bd-3a06e
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_8f0bd_3a06e\rev_rev_left_8f0bd-rev_right_3a06e\querydsl-sql\src\test\java\com\mysema\query\Connections.java
+Different Spacing: false
+Left editions: []
+Right editions: [232]
+Merged body: 
+// START dropTable(SQLTemplates-SQLTemplates-String-String)//public static void dropTable(SQLTemplates templates, String table) throws SQLException{
+// RIGHT //        new DropTableClause(connHolder.get(), new Configuration(templates), table).execute();
+// END dropTable(SQLTemplates-SQLTemplates-String-String)//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\querydsl\revisions\rev_8f0bd_3a06e\rev_rev_left_8f0bd-rev_right_3a06e\querydsl-sql\src\test\java\com\mysema\query\Connections.java
+Different Spacing: false
+Left editions: [567, 568, 569, 570]
+Right editions: []
+Merged body: 
+// START initH2({FormalParametersInternal})//public static void initH2() throws SQLException, ClassNotFoundException{
+        targetHolder.set(Target.H2);
+        SQLTemplates templates = new H2Templates();
+        Connection c = getH2();
+        connHolder.set(c);
+        Statement stmt = c.createStatement();
+        stmtHolder.set(stmt);
+
+        if (h2Inited) {
+            return;
+        }
+
+        stmt.execute("DROP ALIAS IF EXISTS InitGeoDB");
+        stmt.execute("CREATE ALIAS InitGeoDB for \"geodb.GeoDB.InitGeoDB\"");
+        stmt.execute("CALL InitGeoDB()");
+
+        // shapes
+        dropTable(templates, "SHAPES");
+        stmt.execute("create table SHAPES (ID int not null primary key, GEOMETRY blob)");
+        for (Map.Entry<Integer, String> entry : getSpatialData().entrySet()) {
+            stmt.execute("insert into SHAPES values(" + entry.getKey()
+                    +", ST_GeomFromText('" + entry.getValue() + "', 4326))");
+        }
+
+        // qtest
+        stmt.execute("drop table QTEST if exists");
+        stmt.execute("create table QTEST (ID int IDENTITY(1,1) NOT NULL,  C1 int NULL)");
+
+// LEFT //        // uuids
+// LEFT //        stmt.execute("drop table if exists UUIDS");
+// LEFT //        stmt.execute("create table UUIDS (FIELD uuid)");
+// LEFT //
+        // survey
+        stmt.execute("drop table SURVEY if exists");
+        stmt.execute(CREATE_TABLE_SURVEY);
+        stmt.execute("insert into SURVEY values (1, 'Hello World', 'Hello');");
+        stmt.execute("alter table SURVEY alter column id int auto_increment");
+
+        // test
+        stmt.execute("drop table TEST if exists");
+        stmt.execute(CREATE_TABLE_TEST);
+        PreparedStatement pstmt = c.prepareStatement(INSERT_INTO_TEST_VALUES);
+        try{
+            for (int i = 0; i < TEST_ROW_COUNT; i++) {
+                pstmt.setString(1, "name" + i);
+                pstmt.addBatch();
+            }
+            pstmt.executeBatch();
+        }finally{
+            pstmt.close();
+        }
+
+        // employee
+        stmt.execute("drop table EMPLOYEE if exists");
+        createEmployeeTable(templates);
+        stmt.execute("alter table EMPLOYEE alter column id int auto_increment");
+        addEmployees(INSERT_INTO_EMPLOYEE);
+
+
+        // date_test and time_test
+        stmt.execute("drop table TIME_TEST if exists");
+        stmt.execute("drop table DATE_TEST if exists");
+        stmt.execute(CREATE_TABLE_TIMETEST);
+        stmt.execute(CREATE_TABLE_DATETEST);
+        h2Inited = true;
+// END initH2({FormalParametersInternal})//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_8f0bd_3a06e\rev_rev_left_8f0bd-rev_right_3a06e\querydsl-sql\src\test\java\com\mysema\query\Connections.java
+Different Spacing: false
+Left editions: [848, 849, 850, 851]
+Right editions: [845]
+Merged body: 
+// START initPostgres({FormalParametersInternal})//public static void initPostgres() throws SQLException, ClassNotFoundException{
+        targetHolder.set(Target.POSTGRES);
+        SQLTemplates templates = new PostgresTemplates(true);
+        // NOTE : unquoted identifiers are converted to lower case in Postgres
+        Connection c = getPostgres();
+        connHolder.set(c);
+        Statement stmt = c.createStatement();
+        stmtHolder.set(stmt);
+
+        if (postgresInited) {
+            return;
+        }
+
+        // shapes
+        dropTable(templates, "SHAPES");
+//        stmt.execute("create table \"SHAPES\" (\"ID\" int not null primary key, \"GEOMETRY\" geography(POINT,4326))");
+        stmt.execute("create table \"SHAPES\" (\"ID\" int not null primary key)");
+        stmt.execute("select AddGeometryColumn('SHAPES', 'GEOMETRY', -1, 'GEOMETRY', 2)");
+        for (Map.Entry<Integer, String> entry : getSpatialData().entrySet()) {
+            stmt.execute("insert into \"SHAPES\" values(" + entry.getKey()
+                    +", '" + entry.getValue() + "')");
+        }
+
+        // types
+        dropType(stmt, "u_country");
+        stmt.execute("create type u_country as enum ('Brazil', 'England', 'Germany')");
+
+        dropType(stmt, "u_street_type");
+        stmt.execute("create type u_street_type as (street VARCHAR(100), number VARCHAR(30))");
+
+        // arrays
+        dropTable(templates, "ARRAYTEST");
+        stmt.execute("create table \"ARRAYTEST\" (\n" +
+                "\"ID\" bigint primary key,\n" +
+// RIGHT //                "\"INTEGERS\" integer[],\n" +
+                "\"MYARRAY\" varchar(8)[])");
+
+// LEFT //        // uuids
+// LEFT //        dropTable(templates, "UUIDS");
+// LEFT //        stmt.execute("create table \"UUIDS\" (\"FIELD\" uuid)");
+// LEFT //
+        // survey
+        dropTable(templates, "SURVEY");
+        try {
+            stmt.execute("drop sequence SURVEY_SEQ");
+        } catch(SQLException e) {
+            if (!e.getMessage().contains("does not exist")) {
+                throw e;
+            }
+        }
+        stmt.execute("create sequence SURVEY_SEQ");
+        stmt.execute("create table \"SURVEY\"(" +
+                "\"ID\" int DEFAULT NEXTVAL('SURVEY_SEQ'), " +
+                "\"NAME\" varchar(30), \"NAME2\" varchar(30))");
+        stmt.execute("insert into \"SURVEY\" values (1, 'Hello World', 'Hello')");
+
+        // test
+        dropTable(templates, "TEST");
+        stmt.execute(quote(CREATE_TABLE_TEST,"TEST","NAME"));
+        String sql = quote(INSERT_INTO_TEST_VALUES,"TEST");
+        PreparedStatement pstmt = c.prepareStatement(sql);
+        try{
+            for (int i = 0; i < TEST_ROW_COUNT; i++) {
+                pstmt.setString(1, "name" + i);
+                pstmt.addBatch();
+            }
+            pstmt.executeBatch();
+        }finally{
+            pstmt.close();
+        }
+
+        // employee
+        // stmt.execute("drop table employee if exists");
+        dropTable(templates, "EMPLOYEE");
+        createEmployeeTable(templates);
+        addEmployees("insert into \"EMPLOYEE\" " +
+                "(\"ID\", \"FIRSTNAME\", \"LASTNAME\", \"SALARY\", \"DATEFIELD\", \"TIMEFIELD\", \"SUPERIOR_ID\") " +
+                "values (?,?,?,?,?,?,?)");
+
+        // date_test and time_test
+        dropTable(templates, "TIME_TEST");
+        dropTable(templates, "DATE_TEST");
+        stmt.execute(quote(CREATE_TABLE_TIMETEST, "TIME_TEST"));
+        stmt.execute(quote(CREATE_TABLE_DATETEST, "DATE_TEST"));
+        postgresInited = true;
+// END initPostgres({FormalParametersInternal})//    }
+Edition adds call: 1
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_8f0bd_3a06e\rev_rev_left_8f0bd-rev_right_3a06e\querydsl-sql\src\test\java\com\mysema\query\Connections.java
+Different Spacing: false
+Left editions: [848, 849, 850, 851]
+Right editions: [845]
+Merged body: 
+// START initPostgres({FormalParametersInternal})//public static void initPostgres() throws SQLException, ClassNotFoundException{
+        targetHolder.set(Target.POSTGRES);
+        SQLTemplates templates = new PostgresTemplates(true);
+        // NOTE : unquoted identifiers are converted to lower case in Postgres
+        Connection c = getPostgres();
+        connHolder.set(c);
+        Statement stmt = c.createStatement();
+        stmtHolder.set(stmt);
+
+        if (postgresInited) {
+            return;
+        }
+
+        // shapes
+        dropTable(templates, "SHAPES");
+//        stmt.execute("create table \"SHAPES\" (\"ID\" int not null primary key, \"GEOMETRY\" geography(POINT,4326))");
+        stmt.execute("create table \"SHAPES\" (\"ID\" int not null primary key)");
+        stmt.execute("select AddGeometryColumn('SHAPES', 'GEOMETRY', -1, 'GEOMETRY', 2)");
+        for (Map.Entry<Integer, String> entry : getSpatialData().entrySet()) {
+            stmt.execute("insert into \"SHAPES\" values(" + entry.getKey()
+                    +", '" + entry.getValue() + "')");
+        }
+
+        // types
+        dropType(stmt, "u_country");
+        stmt.execute("create type u_country as enum ('Brazil', 'England', 'Germany')");
+
+        dropType(stmt, "u_street_type");
+        stmt.execute("create type u_street_type as (street VARCHAR(100), number VARCHAR(30))");
+
+        // arrays
+        dropTable(templates, "ARRAYTEST");
+        stmt.execute("create table \"ARRAYTEST\" (\n" +
+                "\"ID\" bigint primary key,\n" +
+// RIGHT //                "\"INTEGERS\" integer[],\n" +
+                "\"MYARRAY\" varchar(8)[])");
+
+// LEFT //        // uuids
+// LEFT //        dropTable(templates, "UUIDS");
+// LEFT //        stmt.execute("create table \"UUIDS\" (\"FIELD\" uuid)");
+// LEFT //
+        // survey
+        dropTable(templates, "SURVEY");
+        try {
+            stmt.execute("drop sequence SURVEY_SEQ");
+        } catch(SQLException e) {
+            if (!e.getMessage().contains("does not exist")) {
+                throw e;
+            }
+        }
+        stmt.execute("create sequence SURVEY_SEQ");
+        stmt.execute("create table \"SURVEY\"(" +
+                "\"ID\" int DEFAULT NEXTVAL('SURVEY_SEQ'), " +
+                "\"NAME\" varchar(30), \"NAME2\" varchar(30))");
+        stmt.execute("insert into \"SURVEY\" values (1, 'Hello World', 'Hello')");
+
+        // test
+        dropTable(templates, "TEST");
+        stmt.execute(quote(CREATE_TABLE_TEST,"TEST","NAME"));
+        String sql = quote(INSERT_INTO_TEST_VALUES,"TEST");
+        PreparedStatement pstmt = c.prepareStatement(sql);
+        try{
+            for (int i = 0; i < TEST_ROW_COUNT; i++) {
+                pstmt.setString(1, "name" + i);
+                pstmt.addBatch();
+            }
+            pstmt.executeBatch();
+        }finally{
+            pstmt.close();
+        }
+
+        // employee
+        // stmt.execute("drop table employee if exists");
+        dropTable(templates, "EMPLOYEE");
+        createEmployeeTable(templates);
+        addEmployees("insert into \"EMPLOYEE\" " +
+                "(\"ID\", \"FIRSTNAME\", \"LASTNAME\", \"SALARY\", \"DATEFIELD\", \"TIMEFIELD\", \"SUPERIOR_ID\") " +
+                "values (?,?,?,?,?,?,?)");
+
+        // date_test and time_test
+        dropTable(templates, "TIME_TEST");
+        dropTable(templates, "DATE_TEST");
+        stmt.execute(quote(CREATE_TABLE_TIMETEST, "TIME_TEST"));
+        stmt.execute(quote(CREATE_TABLE_DATETEST, "DATE_TEST"));
+        postgresInited = true;
+// END initPostgres({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_de17f-8f0bd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5b29a-cd01b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa1cf-be3b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d6150-f1b89
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f69f2-67c4f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_961e6-c851e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5fe75-77a5c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0cc26-2b360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cd494-c8fa5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9bc8e-6b3fb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_04271-af897
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_af897-1931b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e84c7-b3d42
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_38968-439df
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3d212-439df
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_439df-639f4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_813d9-b801f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_10326-e73c3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc404-e73c3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e73c3-9286f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7dc29-9be52
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1378-c2a19
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f98ad-b07c6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_83542-64eaf
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a1fe-8f120
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46d3a-daafb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2ff8c-da88f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ef1f9-da88f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d5663-61757
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7897-e99ba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e99ba-aa3c6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b23b-40206
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc9d1-6d2fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e403-1b23b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_635cb-e6180
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_23e68-c6971
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b1b3d-535fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0ddd9-0e03d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_99b02-42e03
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_11941-b5e1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09f70-a3fa5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5e48c-b1d3c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc1a7-e4070
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6b412-ee5d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_77701-907d9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_907d9-624d0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_44488-2a298
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_da26e-bd032
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_48b39-d4856
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c3937-ea660
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2810-64ebd
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a80f3-7c031
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b79e-2831a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e64b-2e3ae
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_8e64b_2e3ae\rev_rev_left_8e64b-rev_right_2e3ae\querydsl-sql\src\main\java\com\mysema\query\sql\SQLServerTemplates.java
+Different Spacing: false
+Left editions: [94, 95, 96, 97, 104, 105, 106, 107]
+Right editions: [77]
+Merged body: 
+// START SQLServerTemplates(char-char-boolean-boolean)//public SQLServerTemplates(char escape, boolean quote) {
+        super("\"", escape, quote);
+        setDummyTable("");
+        setNullsFirst(null);
+        setNullsLast(null);
+        setDefaultValues("\ndefault values");
+// RIGHT //        setArraysSupported(false);
+
+        // String
+        add(Ops.CONCAT, "{0} + {1}", 13);
+        add(Ops.CHAR_AT, "cast(substring({0},{1}+1,1) as char)");
+        add(Ops.INDEX_OF, "charindex({1},{0})-1");
+        add(Ops.INDEX_OF_2ARGS, "charindex({1},{0},{2})-1");
+        // NOTE : needs to be replaced with real regular expression
+        add(Ops.MATCHES, "{0} like {1}");
+        add(Ops.STRING_IS_EMPTY, "len({0}) = 0");
+        add(Ops.STRING_LENGTH, "len({0})");
+        add(Ops.SUBSTR_1ARG, "substring({0},{1}+1,255)");
+        add(Ops.SUBSTR_2ARGS, "substring({0},{1}+1,{2s}-{1s})", 1);
+        add(Ops.TRIM, "ltrim(rtrim({0}))");
+
+        add(Ops.StringOps.LOCATE, "charindex({0},{1})");
+        add(Ops.StringOps.LOCATE2, "charindex({0},{1},{2})");
+// LEFT //        add(Ops.StringOps.LPAD, "right(replicate(' ', {1}) + left({0}, {1}), {1})");
+// LEFT //        add(Ops.StringOps.LPAD2, "right(replicate({2}, {1}) + left({0}, {1}), {1})");
+// LEFT //        add(Ops.StringOps.RPAD, "left(left({0}, {1}) + replicate(' ', {1}), {1})");
+// LEFT //        add(Ops.StringOps.RPAD2, "left(left({0}, {1}) + replicate({2}, {1}), {1})");
+
+        add(SQLOps.NEXTVAL, "{0s}.nextval");
+
+        add(Ops.MOD, "{0} % {1}", 10);
+        add(Ops.MathOps.COSH, "(exp({0}) + exp({0} * -1)) / 2");
+        add(Ops.MathOps.COTH, "(exp({0} * 2) + 1) / (exp({0} * 2) - 1)");
+// LEFT //        add(Ops.MathOps.LN, "log({0})");
+// LEFT //        add(Ops.MathOps.LOG, "log({0}, {1})");
+// LEFT //        add(Ops.MathOps.POWER, "power({0}, {1})");
+// LEFT //        add(Ops.MathOps.ROUND, "round({0}, 0)");
+        add(Ops.MathOps.SINH, "(exp({0}) - exp({0} * -1)) / 2");
+        add(Ops.MathOps.TANH, "(exp({0} * 2) - 1) / (exp({0} * 2) + 1)");
+
+        // Date / time
+        add(Ops.DateTimeOps.YEAR, "datepart(year, {0})");
+        add(Ops.DateTimeOps.MONTH, "datepart(month, {0})");
+        add(Ops.DateTimeOps.WEEK, "datepart(week, {0})");
+        add(Ops.DateTimeOps.DAY_OF_MONTH, "datepart(day, {0})");
+        add(Ops.DateTimeOps.DAY_OF_WEEK, "datepart(weekday, {0})");
+        add(Ops.DateTimeOps.DAY_OF_YEAR, "datepart(dayofyear, {0})");
+        add(Ops.DateTimeOps.HOUR, "datepart(hour, {0})");
+        add(Ops.DateTimeOps.MINUTE, "datepart(minute, {0})");
+        add(Ops.DateTimeOps.SECOND, "datepart(second, {0})");
+        add(Ops.DateTimeOps.MILLISECOND, "datepart(millisecond, {0})");
+
+        add(Ops.DateTimeOps.YEAR_MONTH, "(datepart(year, {0}) * 100 + datepart(month, {0}))");
+        add(Ops.DateTimeOps.YEAR_WEEK, "(datepart(year, {0}) * 100 + datepart(isowk, {0}))");
+
+        add(Ops.DateTimeOps.ADD_YEARS, "dateadd(year, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_MONTHS, "dateadd(month, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_WEEKS, "dateadd(week, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_DAYS, "dateadd(day, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_HOURS, "dateadd(hour, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_MINUTES, "dateadd(minute, {1s}, {0})");
+        add(Ops.DateTimeOps.ADD_SECONDS, "dateadd(second, {1s}, {0})");
+
+        add(Ops.DateTimeOps.DIFF_YEARS, "datediff(year,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_MONTHS, "datediff(month,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_WEEKS, "datediff(week,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_DAYS, "datediff(day,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_HOURS, "datediff(hour,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_MINUTES, "datediff(minute,{0},{1})");
+        add(Ops.DateTimeOps.DIFF_SECONDS, "datediff(second,{0},{1})");
+
+        add(Ops.DateTimeOps.DATE, "cast({0} as date)");
+        add(Ops.DateTimeOps.CURRENT_DATE, "cast(getdate() as date)");
+
+        addTypeNameToCode("decimal", Types.DOUBLE, true);
+        addTypeNameToCode("tinyint identity", Types.TINYINT);
+        addTypeNameToCode("bigint identity", Types.BIGINT);
+        addTypeNameToCode("timestamp", Types.BINARY);
+        addTypeNameToCode("nchar", Types.CHAR);
+        addTypeNameToCode("uniqueidentifier", Types.CHAR);
+        addTypeNameToCode("numeric() identity", Types.NUMERIC);
+        addTypeNameToCode("money", Types.DECIMAL);
+        addTypeNameToCode("smallmoney", Types.DECIMAL);
+        addTypeNameToCode("decimal() identity", Types.DECIMAL);
+        addTypeNameToCode("int", Types.INTEGER);
+        addTypeNameToCode("int identity", Types.INTEGER);
+        addTypeNameToCode("smallint identity", Types.SMALLINT);
+        addTypeNameToCode("float", Types.DOUBLE);
+        addTypeNameToCode("nvarchar", Types.VARCHAR);
+        addTypeNameToCode("date", Types.VARCHAR);
+        addTypeNameToCode("time", Types.VARCHAR);
+        addTypeNameToCode("datetime2", Types.VARCHAR);
+        addTypeNameToCode("datetimeoffset", Types.VARCHAR);
+        addTypeNameToCode("sysname", Types.VARCHAR);
+        addTypeNameToCode("sql_variant", Types.VARCHAR);
+        addTypeNameToCode("datetime", Types.TIMESTAMP);
+        addTypeNameToCode("smalldatetime", Types.TIMESTAMP);
+        addTypeNameToCode("image", Types.BLOB);
+        addTypeNameToCode("ntext", Types.CLOB);
+        addTypeNameToCode("xml", Types.CLOB);
+        addTypeNameToCode("text", Types.CLOB);
+// END SQLServerTemplates(char-char-boolean-boolean)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5e08-10e7f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e7a9-51c4a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88684-60a86
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_593f8-d9e9c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fb182-962c1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_962c1-9bb4d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_355e3-fb9e9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d895d-b9bd3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a94af-ee536
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9ac2c-5d66d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_49a31-bfaa6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2c7b-b40ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8cb13-a6972
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f893c-7c235
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7c235-eadae
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_47e7a-3b90c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d1118-bd6c0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a2d5-d4f7a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d269c-5f057
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_958c6-9a850
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ee803-4a2d5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_ee803_4a2d5\rev_rev_left_ee803-rev_right_4a2d5\querydsl-apt\src\test\java\com\mysema\query\domain\JDOTest.java
+Different Spacing: false
+Left editions: [112, 117]
+Right editions: [119, 121, 122, 123, 124]
+Merged body: 
+// START test({FormalParametersInternal})//@Test
+    public void test() throws SecurityException, NoSuchFieldException {
+// LEFT //        start(QJDOTest_JDOEntity.class, QJDOTest_JDOEntity.jDOEntity);
+        match(StringPath.class, "prop");
+        assertMissing("skipped");
+        assertMissing("skippedEntity");
+
+// LEFT //        start(QJDOTest_JDOEntity2.class, QJDOTest_JDOEntity2.jDOEntity2);
+        match(StringPath.class, "stringField1");
+// RIGHT //        assertMissing("stringfield1");
+        match(StringPath.class, "stringField2");
+// RIGHT //
+// RIGHT //        cl = QJDOTest_JDOEntity3.class;
+// RIGHT //        match(NumberPath.class, "id");
+// RIGHT //        match(StringPath.class, "name");
+// END test({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_09234-fe220
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_51038-397ca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4c644-54e3f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fd572-10715
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3508d-c83d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_64d8d-d5225
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dccc4-23803
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a4146-29d87
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_81303-3a526
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c0ff2-b5d69
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_c0ff2_b5d69\rev_rev_left_c0ff2-rev_right_b5d69\querydsl-sql\src\main\java\com\mysema\query\sql\AbstractSQLQuery.java
+Different Spacing: false
+Left editions: []
+Right editions: [543, 544, 551, 552, 556, 589]
+Merged body: 
+// START unsafeCount({FormalParametersInternal})//private long unsafeCount() throws SQLException {
+        SQLListenerContextImpl context = startContext(conn, getMetadata());
+// RIGHT //        String queryString = null;
+// RIGHT //        List<Object> constants = ImmutableList.of();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        listeners.preRender(context);
+        SQLSerializer serializer = serialize(true);
+// RIGHT //            queryString = serializer.toString();
+// RIGHT //            logQuery(queryString, serializer.getConstants());
+        context.addSQL(queryString);
+        listeners.rendered(context);
+
+// RIGHT //            constants = serializer.getConstants();
+            listeners.prePrepare(context);
+
+            stmt = conn.prepareStatement(queryString);
+            setParameters(stmt, constants, serializer.getConstantPaths(), getMetadata().getParams());
+
+            context.addPreparedStatement(stmt);
+            listeners.prepared(context);
+
+            listeners.preExecute(context);
+            rs = stmt.executeQuery();
+            boolean hasResult = rs.next();
+            listeners.executed(context);
+
+            if (hasResult) {
+                return rs.getLong(1);
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            onException(context, e);
+            throw configuration.translate(queryString, constants, e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } finally {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            }
+            endContext(context);
+// RIGHT //            cleanupMDC();
+        }
+// END unsafeCount({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_845aa-f3944
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_17d91-40742
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40742-8edfb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_719eb-4c8c9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0640a-a5e9e
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\querydsl\revisions\rev_0640a_a5e9e\rev_rev_left_0640a-rev_right_a5e9e\querydsl-jpa\src\main\java\com\mysema\query\jpa\NativeSQLSerializer.java
+Different Spacing: false
+Left editions: [89, 93, 94, 95, 97]
+Right editions: [87]
+Merged body: 
+// START handleJoinTarget(JoinExpression-JoinExpression)//@Override
+    protected void handleJoinTarget(JoinExpression je) {
+        SQLTemplates templates = getTemplates();
+        Class<?> type = je.getTarget().getType();
+// RIGHT //        if (type.isAnnotationPresent(Table.class) && templates.isSupportsAlias()) {
+            Table table = type.getAnnotation(Table.class);
+// LEFT //            boolean precededByDot;
+            if (!table.schema().isEmpty() && templates.isPrintSchema()) {
+                appendSchemaName(table.schema());
+                append(".");
+// LEFT //                precededByDot = true;
+// LEFT //            } else {
+// LEFT //                precededByDot = false;
+            }
+// LEFT //            appendTableName(table.name(), precededByDot);
+            append(templates.getTableAlias());
+        }
+        super.handleJoinTarget(je);
+// END handleJoinTarget(JoinExpression-JoinExpression)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a5db4-84173
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1f8dc-d1668
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f2738-33512
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_33512-c5bce
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d0d86-568b0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_05b9e-13e55
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5d964-62edc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d7598-6683d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e3850-6bca4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_88fa8-acd71
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_acd71-e26b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5c377-26d30
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46874-12909
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c093-12909
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_352c1-12909
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_12909-4ecba
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_daad4-d635a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_58332-37e8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7d5e8-550b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fc232-81987
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b4c13-f7def
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e2df-69315
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5bc9d-5e328
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c5d75-1f806
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c669c-d505c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7987e-34d48
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_36488-469fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_469fc-0b052
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7c74d-eb076
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b84ca-af968
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4b20-54735
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_afd5d-f5518
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cfa11-4ed09
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dffad-51bea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df6b2-39099
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_35f89-77d02
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_be6e5-645e0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a2cb0-eaa57
+#MS_XXX_MS#

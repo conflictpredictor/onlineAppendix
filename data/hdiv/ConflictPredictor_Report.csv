@@ -1,0 +1,650 @@
+#MS_XXX_MS#
+Merge scenario: rev_50090-b57f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6de3-a4a7d
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\hdiv\revisions\rev_e6de3_a4a7d\rev_rev_left_e6de3-rev_right_a4a7d\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: [684, 689, 690, 691, 692, 693]
+Right editions: [686, 687, 705, 706, 707, 721, 722]
+Merged body: 
+// START restoreState(HttpServletRequest-HttpServletRequest-String-String)//protected ValidatorHelperResult restoreState(HttpServletRequest request, String target) {
+
+		// Hdiv parameter name
+		String hdivParameter = getHdivParameter(request);
+
+		// checks if the parameter HDIV parameter exists in the parameters of
+		// the request
+		String requestState = request.getParameter(hdivParameter);
+// LEFT //		
+		if (requestState == null) {
+// RIGHT //			ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_NOT_EXISTS, target, hdivParameter);
+// RIGHT //			return new ValidatorHelperResult(error);
+		}
+// LEFT //		
+// LEFT //		// In some browsers (eg: IE 6), fragment identifier is sent with the request, it has to be removed from the requestState 
+// LEFT //		if (requestState.contains("#")) {
+// LEFT //			requestState = requestState.split("#")[0]; 
+// LEFT //		}
+
+		try {
+
+			IState state = this.stateUtil.restoreState(requestState);
+
+			// Save current page id in request
+			HDIVUtil.setCurrentPageId(state.getPageId(), request);
+
+			if (this.stateUtil.isMemoryStrategy(requestState)) {
+
+				if (!this.validateHDIVSuffix(requestState, state)) {
+// RIGHT //					ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_INCORRECT_VALUE, target,
+// RIGHT //							hdivParameter, requestState);
+// RIGHT //					return new ValidatorHelperResult(error);
+				}
+			}
+
+			// return validation OK and resultant state
+			return new ValidatorHelperResult(true, state);
+
+		} catch (HDIVException e) {
+
+			if (!this.hdivConfig.getStrategy().equals(Strategy.MEMORY)) {
+				requestState = null;
+			}
+
+			// HDIVException message contains error code
+// RIGHT //			ValidatorError error = new ValidatorError(e.getMessage(), target, hdivParameter, requestState);
+// RIGHT //			return new ValidatorHelperResult(error);
+		}
+// END restoreState(HttpServletRequest-HttpServletRequest-String-String)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_e6de3_a4a7d\rev_rev_left_e6de3-rev_right_a4a7d\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: []
+Right editions: [286, 302]
+Merged body: 
+// START validate(HttpServletRequest-HttpServletRequest)//public ValidatorHelperResult validate(HttpServletRequest request) {
+
+		String target = this.getTarget(request);
+		target = this.getTargetWithoutContextPath(request, target);
+		target = decodeUrl(target);
+
+		// Hook before the validation
+		ValidatorHelperResult result = this.preValidate(request, target);
+		if (result != null) {
+			return result;
+		}
+
+		if (this.hdivConfig.hasExtensionToExclude(target)) {
+			if (log.isDebugEnabled()) {
+				log.debug("The target [" + target + "] has an extension to exclude from validation");
+			}
+			return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+		}
+
+		if (!this.hdivConfig.isValidationInUrlsWithoutParamsActivated()) {
+
+			boolean requestHasParameters = (request.getParameterNames() != null)
+					&& (request.getParameterNames().hasMoreElements());
+			if (!requestHasParameters) {
+				if (log.isDebugEnabled()) {
+					log.debug("The url [" + request.getRequestURI()
+							+ "] is not be validated because it has not got parameters");
+				}
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			}
+		}
+
+		if (this.isStartPage(request, target)) {
+			result = this.validateStartPageParameters(request, target);
+			if (result.isValid()) {
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			} else {
+				return result;
+			}
+		}
+
+		if (this.hdivConfig.isCookiesIntegrityActivated()) {
+			result = this.validateRequestCookies(request, target);
+			if (!result.isValid()) {
+				return result;
+			}
+		}
+
+		// Restore state from request or memory
+		result = this.restoreState(request, target);
+		if (!result.isValid()) {
+			return result;
+		}
+		// Get resultant object, the stored state
+		IState state = (IState) result.getValue();
+
+		result = this.isTheSameAction(request, target, state);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		result = this.allRequiredParametersReceived(request, state, target);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		// Hdiv parameter name
+		String hdivParameter = this.getHdivParameter(request);
+
+		// Extract url params from State
+		BasicUrlData urlData = this.urlProcessor.processUrl(request, "?" + state.getParams());
+		Map<String, String[]> stateParams = urlData.getUrlParams();
+
+// RIGHT //		List<ValidatorError> unauthorizedEditableParameters = new ArrayList<ValidatorError>();
+		Enumeration<?> parameters = request.getParameterNames();
+		while (parameters.hasMoreElements()) {
+
+			String parameter = (String) parameters.nextElement();
+
+			// Validate parameter
+			result = this.validateParameter(request, state.getParameter(parameter), stateParams.get(parameter),
+					unauthorizedEditableParameters, hdivParameter, target, parameter);
+			if (!result.isValid()) {
+				return result;
+			}
+
+		}
+
+		if (unauthorizedEditableParameters.size() > 0) {
+// RIGHT //			return new ValidatorHelperResult(unauthorizedEditableParameters);
+		}
+		return ValidatorHelperResult.VALID;
+// END validate(HttpServletRequest-HttpServletRequest)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9800a-8e4fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e4fe-0e167
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bc656-d44b5
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: [818, 819, 838, 839, 840, 854, 855]
+Right editions: [822, 823]
+Merged body: 
+// START restoreState(HttpServletRequest-HttpServletRequest-String-String)//protected ValidatorHelperResult restoreState(HttpServletRequest request, String target) {
+
+		// Hdiv parameter name
+		String hdivParameter = getHdivParameter(request);
+
+		// checks if the parameter HDIV parameter exists in the parameters of
+		// the request
+		String requestState = request.getParameter(hdivParameter);
+		
+		if (requestState == null) {
+// LEFT //			ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_NOT_EXISTS, target, hdivParameter);
+// LEFT //			return new ValidatorHelperResult(error);
+		}
+		
+// RIGHT //		// In some browsers (eg: IE 6), fragment identifier is sent with the request, it has to be removed from the
+// RIGHT //		// requestState
+		if (requestState.contains("#")) {
+			requestState = requestState.split("#")[0]; 
+		}
+
+		try {
+
+			IState state = this.stateUtil.restoreState(requestState);
+
+			// Save current page id in request
+			HDIVUtil.setCurrentPageId(state.getPageId(), request);
+
+			if (this.stateUtil.isMemoryStrategy(requestState)) {
+
+				if (!this.validateHDIVSuffix(requestState, state)) {
+// LEFT //					ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_INCORRECT_VALUE, target,
+// LEFT //							hdivParameter, requestState);
+// LEFT //					return new ValidatorHelperResult(error);
+				}
+			}
+
+			// return validation OK and resultant state
+			return new ValidatorHelperResult(true, state);
+
+		} catch (HDIVException e) {
+
+			if (!this.hdivConfig.getStrategy().equals(Strategy.MEMORY)) {
+				requestState = null;
+			}
+
+			// HDIVException message contains error code
+// LEFT //			ValidatorError error = new ValidatorError(e.getMessage(), target, hdivParameter, requestState);
+// LEFT //			return new ValidatorHelperResult(error);
+		}
+// END restoreState(HttpServletRequest-HttpServletRequest-String-String)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: [292, 308]
+Right editions: []
+Merged body: 
+// START validate(HttpServletRequest-HttpServletRequest)//public ValidatorHelperResult validate(HttpServletRequest request) {
+
+		String target = this.getTarget(request);
+		target = this.getTargetWithoutContextPath(request, target);
+		target = decodeUrl(target);
+
+		// Hook before the validation
+		ValidatorHelperResult result = this.preValidate(request, target);
+		if (result != null) {
+			return result;
+		}
+
+		if (this.hdivConfig.hasExtensionToExclude(target)) {
+			if (log.isDebugEnabled()) {
+				log.debug("The target [" + target + "] has an extension to exclude from validation");
+			}
+			return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+		}
+
+		if (!this.hdivConfig.isValidationInUrlsWithoutParamsActivated()) {
+
+			boolean requestHasParameters = (request.getParameterNames() != null)
+					&& (request.getParameterNames().hasMoreElements());
+			if (!requestHasParameters) {
+				if (log.isDebugEnabled()) {
+					log.debug("The url [" + request.getRequestURI()
+							+ "] is not be validated because it has not got parameters");
+				}
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			}
+		}
+
+		if (this.isStartPage(request, target)) {
+			result = this.validateStartPageParameters(request, target);
+			if (result.isValid()) {
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			} else {
+				return result;
+			}
+		}
+
+		if (this.hdivConfig.isCookiesIntegrityActivated()) {
+			result = this.validateRequestCookies(request, target);
+			if (!result.isValid()) {
+				return result;
+			}
+		}
+
+		// Restore state from request or memory
+		result = this.restoreState(request, target);
+		if (!result.isValid()) {
+			return result;
+		}
+		// Get resultant object, the stored state
+		IState state = (IState) result.getValue();
+
+		result = this.isTheSameAction(request, target, state);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		result = this.allRequiredParametersReceived(request, state, target);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		// Hdiv parameter name
+		String hdivParameter = this.getHdivParameter(request);
+
+		// Extract url params from State
+		BasicUrlData urlData = this.urlProcessor.processUrl(request, "?" + state.getParams());
+		Map<String, String[]> stateParams = urlData.getUrlParams();
+
+// LEFT //		List<ValidatorError> unauthorizedEditableParameters = new ArrayList<ValidatorError>();
+		Enumeration<?> parameters = request.getParameterNames();
+		while (parameters.hasMoreElements()) {
+
+			String parameter = (String) parameters.nextElement();
+
+			// Validate parameter
+			result = this.validateParameter(request, state.getParameter(parameter), stateParams.get(parameter),
+					unauthorizedEditableParameters, hdivParameter, target, parameter);
+			if (!result.isValid()) {
+				return result;
+			}
+
+		}
+
+		if (unauthorizedEditableParameters.size() > 0) {
+// LEFT //			return new ValidatorHelperResult(unauthorizedEditableParameters);
+		}
+		return ValidatorHelperResult.VALID;
+// END validate(HttpServletRequest-HttpServletRequest)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START validateReceivedValuesInState(HttpServletRequest-HttpServletRequest-String-String-IParameter-IParameter-String[]-String[]-String-String-String[]-String[])//protected ValidatorHelperResult validateReceivedValuesInState(HttpServletRequest request, String target,
+			IParameter stateParameter, String[] actionParamValues, String parameter, String[] values) {
+
+		int size = values.length;
+		String[] originalValues = new String[size];
+
+		for (int i = 0; i < size; i++) {
+
+			IValidationResult result = this.dataValidator.validate(values[i], target, parameter, stateParameter,
+					actionParamValues);
+
+			if (!result.getLegal()) {
+				ValidatorError error = new ValidatorError(HDIVErrorCodes.PARAMETER_VALUE_INCORRECT, target, parameter,
+						values[i]);
+				return new ValidatorHelperResult(error);
+			} else {
+				originalValues[i] = (String) result.getResult();
+			}
+		}
+
+		if (this.hdivConfig.getConfidentiality()) {
+			this.addParameterToRequest(request, parameter, originalValues);
+		}
+
+		return ValidatorHelperResult.VALID;
+// END validateReceivedValuesInState(HttpServletRequest-HttpServletRequest-String-String-IParameter-IParameter-String[]-String[]-String-String-String[]-String[])//	}
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: []
+Right editions: [1352, 1353, 1354, 1355, 1356]
+Merged body: 
+// START getHdivParameter(HttpServletRequest-HttpServletRequest)//protected String getHdivParameter(HttpServletRequest request) {
+
+// RIGHT //		String paramName = (String) request.getSession().getAttribute(Constants.HDIV_PARAMETER);
+// RIGHT //		if (paramName == null) {
+// RIGHT //			throw new HDIVException("HDIV parameter name missing in session. Deleted by the app?");
+// RIGHT //		}
+// RIGHT //		return paramName;
+// END getHdivParameter(HttpServletRequest-HttpServletRequest)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: [818, 819, 838, 839, 840, 854, 855]
+Right editions: [822, 823]
+Merged body: 
+// START restoreState(HttpServletRequest-HttpServletRequest-String-String)//protected ValidatorHelperResult restoreState(HttpServletRequest request, String target) {
+
+		// Hdiv parameter name
+		String hdivParameter = getHdivParameter(request);
+
+		// checks if the parameter HDIV parameter exists in the parameters of
+		// the request
+		String requestState = request.getParameter(hdivParameter);
+		
+		if (requestState == null) {
+// LEFT //			ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_NOT_EXISTS, target, hdivParameter);
+// LEFT //			return new ValidatorHelperResult(error);
+		}
+		
+// RIGHT //		// In some browsers (eg: IE 6), fragment identifier is sent with the request, it has to be removed from the
+// RIGHT //		// requestState
+		if (requestState.contains("#")) {
+			requestState = requestState.split("#")[0]; 
+		}
+
+		try {
+
+			IState state = this.stateUtil.restoreState(requestState);
+
+			// Save current page id in request
+			HDIVUtil.setCurrentPageId(state.getPageId(), request);
+
+			if (this.stateUtil.isMemoryStrategy(requestState)) {
+
+				if (!this.validateHDIVSuffix(requestState, state)) {
+// LEFT //					ValidatorError error = new ValidatorError(HDIVErrorCodes.HDIV_PARAMETER_INCORRECT_VALUE, target,
+// LEFT //							hdivParameter, requestState);
+// LEFT //					return new ValidatorHelperResult(error);
+				}
+			}
+
+			// return validation OK and resultant state
+			return new ValidatorHelperResult(true, state);
+
+		} catch (HDIVException e) {
+
+			if (!this.hdivConfig.getStrategy().equals(Strategy.MEMORY)) {
+				requestState = null;
+			}
+
+			// HDIVException message contains error code
+// LEFT //			ValidatorError error = new ValidatorError(e.getMessage(), target, hdivParameter, requestState);
+// LEFT //			return new ValidatorHelperResult(error);
+		}
+// END restoreState(HttpServletRequest-HttpServletRequest-String-String)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\filter\ValidatorHelperRequest.java
+Different Spacing: false
+Left editions: [292, 308]
+Right editions: []
+Merged body: 
+// START validate(HttpServletRequest-HttpServletRequest)//public ValidatorHelperResult validate(HttpServletRequest request) {
+
+		String target = this.getTarget(request);
+		target = this.getTargetWithoutContextPath(request, target);
+		target = decodeUrl(target);
+
+		// Hook before the validation
+		ValidatorHelperResult result = this.preValidate(request, target);
+		if (result != null) {
+			return result;
+		}
+
+		if (this.hdivConfig.hasExtensionToExclude(target)) {
+			if (log.isDebugEnabled()) {
+				log.debug("The target [" + target + "] has an extension to exclude from validation");
+			}
+			return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+		}
+
+		if (!this.hdivConfig.isValidationInUrlsWithoutParamsActivated()) {
+
+			boolean requestHasParameters = (request.getParameterNames() != null)
+					&& (request.getParameterNames().hasMoreElements());
+			if (!requestHasParameters) {
+				if (log.isDebugEnabled()) {
+					log.debug("The url [" + request.getRequestURI()
+							+ "] is not be validated because it has not got parameters");
+				}
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			}
+		}
+
+		if (this.isStartPage(request, target)) {
+			result = this.validateStartPageParameters(request, target);
+			if (result.isValid()) {
+				return ValidatorHelperResult.VALIDATION_NOT_REQUIRED;
+			} else {
+				return result;
+			}
+		}
+
+		if (this.hdivConfig.isCookiesIntegrityActivated()) {
+			result = this.validateRequestCookies(request, target);
+			if (!result.isValid()) {
+				return result;
+			}
+		}
+
+		// Restore state from request or memory
+		result = this.restoreState(request, target);
+		if (!result.isValid()) {
+			return result;
+		}
+		// Get resultant object, the stored state
+		IState state = (IState) result.getValue();
+
+		result = this.isTheSameAction(request, target, state);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		result = this.allRequiredParametersReceived(request, state, target);
+		if (!result.isValid()) {
+			return result;
+		}
+
+		// Hdiv parameter name
+		String hdivParameter = this.getHdivParameter(request);
+
+		// Extract url params from State
+		BasicUrlData urlData = this.urlProcessor.processUrl(request, "?" + state.getParams());
+		Map<String, String[]> stateParams = urlData.getUrlParams();
+
+// LEFT //		List<ValidatorError> unauthorizedEditableParameters = new ArrayList<ValidatorError>();
+		Enumeration<?> parameters = request.getParameterNames();
+		while (parameters.hasMoreElements()) {
+
+			String parameter = (String) parameters.nextElement();
+
+			// Validate parameter
+			result = this.validateParameter(request, state.getParameter(parameter), stateParams.get(parameter),
+					unauthorizedEditableParameters, hdivParameter, target, parameter);
+			if (!result.isValid()) {
+				return result;
+			}
+
+		}
+
+		if (unauthorizedEditableParameters.size() > 0) {
+// LEFT //			return new ValidatorHelperResult(unauthorizedEditableParameters);
+		}
+		return ValidatorHelperResult.VALID;
+// END validate(HttpServletRequest-HttpServletRequest)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\dataComposer\DataComposerFactory.java
+Different Spacing: false
+Left editions: []
+Right editions: [164, 165, 166]
+Merged body: 
+// START initDataComposer(IDataComposer-IDataComposer-HttpServletRequest-HttpServletRequest)//protected void initDataComposer(IDataComposer dataComposer, HttpServletRequest request) {
+
+		String hdivStateParamName = (String) request.getSession().getAttribute(Constants.HDIV_PARAMETER);
+		String hdivState = request.getParameter(hdivStateParamName);
+// RIGHT //
+// RIGHT //		String preState = this.getModifyStateParameterValue(dataComposer, request);
+// RIGHT //
+		if (preState != null && preState.length() > 0) {
+
+			// We are modifying an existing state, preload dataComposer with it
+			IState state = this.stateUtil.restoreState(preState);
+			if (state.getPageId() > 0) {
+				IPage page = this.session.getPage(state.getPageId());
+				if (page != null) {
+					dataComposer.startPage(page);
+				}
+			}
+			if (state != null) {
+				dataComposer.beginRequest(state);
+			}
+
+		} else if (this.reuseExistingPage(request)) {
+
+			if (hdivState != null && hdivState.length() > 0) {
+				IState state = this.stateUtil.restoreState(hdivState);
+				if (state.getPageId() > 0) {
+					IPage page = this.session.getPage(state.getPageId());
+					dataComposer.startPage(page);
+				} else {
+					dataComposer.startPage(hdivState);
+				}
+			} else {
+				dataComposer.startPage(hdivState);
+			}
+		} else {
+			dataComposer.startPage(hdivState);
+		}
+
+		// Detect if request url is configured as a long living page
+		String url = request.getRequestURI().substring(request.getContextPath().length());
+		String scope = this.config.isLongLivingPages(url);
+		if (scope != null) {
+			dataComposer.startScope(scope);
+		}
+// END initDataComposer(IDataComposer-IDataComposer-HttpServletRequest-HttpServletRequest)//	}
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditDiffMC
+File: C:\download\ssmerge\hdiv\revisions\rev_bc656_d44b5\rev_rev_left_bc656-rev_right_d44b5\hdiv-core\src\main\java\org\hdiv\dataComposer\DataComposerFactory.java
+Different Spacing: false
+Left editions: []
+Right editions: []
+Merged body: 
+// START newInstance(HttpServletRequest-HttpServletRequest)//public IDataComposer newInstance(HttpServletRequest request) {
+
+		IDataComposer dataComposer = null;
+
+		if (this.config.getStrategy().equals(Strategy.MEMORY)) {
+			DataComposerMemory composer = new DataComposerMemory();
+			composer.setHdivConfig(this.config);
+			composer.setSession(this.session);
+			composer.setUidGenerator(this.uidGenerator);
+			composer.setStateScopeManager(this.stateScopeManager);
+			composer.init();
+			dataComposer = composer;
+
+		} else {
+			String errorMessage = HDIVUtil.getMessage("strategy.error", this.config.getStrategy().toString());
+			throw new HDIVException(errorMessage);
+		}
+
+		this.initDataComposer(dataComposer, request);
+
+		return dataComposer;
+// END newInstance(HttpServletRequest-HttpServletRequest)//	}
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2e215-b0718
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_37926-d6391
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fa9e1-9878d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4acd8-4ee7a
+#MS_XXX_MS#

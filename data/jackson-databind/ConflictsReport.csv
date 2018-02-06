@@ -1,0 +1,2145 @@
+=========================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7d044_184ca\rev_7d044-184ca.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_72ce5_e6027\rev_72ce5-e6027.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cf315_9a3bf\rev_cf315-9a3bf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2ba4b_c4a14\rev_2ba4b-c4a14.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2fff9_81017\rev_2fff9-81017.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8d6fa_354f3\rev_8d6fa-354f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_31046_6b891\rev_31046-6b891.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a00cd_06d44\rev_a00cd-06d44.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_aec62_1b824\rev_aec62-1b824.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cf65e_18e21\rev_cf65e-18e21.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_09bf8_a8000\rev_09bf8-a8000.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_953ea_97d03\rev_953ea-97d03.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_49dd1_6c737\rev_49dd1-6c737.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9c802_0d3a3\rev_9c802-0d3a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0bdf6_30bb9\rev_0bdf6-30bb9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ae0d2_40f1c\rev_ae0d2-40f1c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d9336_50a8c\rev_d9336-50a8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4bc7a_de296\rev_4bc7a-de296.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f317a_779a2\rev_f317a-779a2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_1be37_c6c88\rev_1be37-c6c88.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_eefb6_1e610\rev_eefb6-1e610.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5fac3_b2199\rev_5fac3-b2199.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4309a_a818b\rev_4309a-a818b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_62425_fd0f1\rev_62425-fd0f1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e88a8_e5422\rev_e88a8-e5422.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d1f58_21df3\rev_d1f58-21df3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2dde6_52dc7\rev_2dde6-52dc7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9c2dc_25bec\rev_9c2dc-25bec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6cf65_4865f\rev_6cf65-4865f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4e935_295d9\rev_4e935-295d9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_10ba2_c598b\rev_10ba2-c598b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6a70b_27350\rev_6a70b-27350.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e217f_6fc19\rev_e217f-6fc19.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2bfcd_0f581\rev_2bfcd-0f581.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d9c92_11c45\rev_d9c92-11c45.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_32614_d9c92\rev_32614-d9c92.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public void testWrapperWithExplicitType() throws Exception
+    {
+        Dog dog = new Dog("Fluffy", 3);
+        ContainerWithGetter<Animal> c2 = new ContainerWithGetter<Animal>(dog);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486280100\fstmerge_var1_1038426874938432895
+        String json = MAPPER.writerWithType(MAPPER.getTypeFactory().constructParametrizedType(ContainerWithGetter.class, ContainerWithGetter.class, Animal.class)).writeValueAsString(c2);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486280100\fstmerge_base_1537065478487376949
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writerWithType(TypeFactory.defaultInstance().constructParametricType(ContainerWithGetter.class, Animal.class)).writeValueAsString(c2);
+=======
+        String json = MAPPER.writerWithType(MAPPER.getTypeFactory().constructParametricType(ContainerWithGetter.class, Animal.class)).writeValueAsString(c2);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486280100\fstmerge_var2_2446072833180273463
+        if (json.indexOf("\"object-type\":\"doggy\"") < 0) {
+            fail("polymorphic type not kept, result == "+json+"; should contain 'object-type':'...'");
+        }
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_32614_d9c92\rev_rev_left_32614-rev_right_d9c92\src\test\java\com\fasterxml\jackson\databind\jsontype\TestWithGenerics.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b11ea_46249\rev_b11ea-46249.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_17ab2_c271f\rev_17ab2-c271f.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486642152\fstmerge_var1_3142272891582952140
+@Deprecated
+    public final void addMixInAnnotations(Class<?> target, Class<?> mixinSource) {
+        addMixIn(target, mixinSource);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486642152\fstmerge_base_4725310031708871104
+@Deprecated
+    public final void addMixInAnnotations(Class<?> target, Class<?> mixinSource)
+    {
+        _mixInAnnotations.put(new ClassKey(target), mixinSource);
+=======
+public final void addMixInAnnotations(Class<?> target, Class<?> mixinSource)
+    {
+        _mixInAnnotations.put(new ClassKey(target), mixinSource);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512486642152\fstmerge_var2_8682341604830127237
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_17ab2_c271f\rev_rev_left_17ab2-rev_right_c271f\src\main\java\com\fasterxml\jackson\databind\ObjectMapper.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_abbcd_bfbb6\rev_abbcd-bfbb6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_07969_c28f7\rev_07969-c28f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ef5c5_ac2b2\rev_ef5c5-ac2b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d8be8_0ac3e\rev_d8be8-0ac3e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_76731_7c4b2\rev_76731-7c4b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4eebc_2fd20\rev_4eebc-2fd20.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8422f_74711\rev_8422f-74711.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f76a7_bcccd\rev_f76a7-bcccd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f6850_23328\rev_f6850-23328.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_655d2_edf86\rev_655d2-edf86.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0707a_690af\rev_0707a-690af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_16212_3cd2e\rev_16212-3cd2e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_57321_b3f6f\rev_57321-b3f6f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4c0de_7cf95\rev_4c0de-7cf95.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5614e_95267\rev_5614e-95267.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ab3e1_6b201\rev_ab3e1-6b201.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_785c4_fd4eb\rev_785c4-fd4eb.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+protected JsonSerializer<?> buildMapSerializer(SerializationConfig config,
+            MapType type, BeanDescription beanDesc,
+            boolean staticTyping, JsonSerializer<Object> keySerializer,
+            TypeSerializer elementTypeSerializer, JsonSerializer<Object> elementValueSerializer)
+        throws JsonMappingException
+    {
+        JsonSerializer<?> ser = null;
+        for (Serializers serializers : customSerializers()) {
+            ser = serializers.findMapSerializer(config, type, beanDesc,
+                    keySerializer, elementTypeSerializer, elementValueSerializer);
+            if (ser != null) { break; }
+        }
+        if (ser == null) {
+            // 08-Nov-2014, tatu: As per [databind#601], better just use default Map serializer
+            /*
+            if (EnumMap.class.isAssignableFrom(type.getRawClass())
+                    && ((keySerializer == null) || ClassUtil.isJacksonStdImpl(keySerializer))) {
+                JavaType keyType = type.getKeyType();
+                // Need to find key enum values...
+                EnumValues enums = null;
+                if (keyType.isEnumType()) { // non-enum if we got it as type erased class (from instance)
+                    @SuppressWarnings("unchecked")
+                    Class<Enum<?>> enumClass = (Class<Enum<?>>) keyType.getRawClass();
+                    enums = EnumValues.construct(config, enumClass);
+                }
+                ser = new EnumMapSerializer(type.getContentType(), staticTyping, enums,
+                    elementTypeSerializer, elementValueSerializer);
+            } else {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_var1_6946440462988963374
+                Object filterId = findFilterId(config, beanDesc);
+                MapSerializer mapSer = MapSerializer.construct(config.getAnnotationIntrospector().findPropertiesToIgnore(beanDesc.getClassInfo()),
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_base_3504262715627393840
+                Object filterId = findFilterId(config, beanDesc);
+                ser = MapSerializer.construct(config.getAnnotationIntrospector().findPropertiesToIgnore(beanDesc.getClassInfo()),
+=======
+            */
+            Object filterId = findFilterId(config, beanDesc);
+            ser = MapSerializer.construct(config.getAnnotationIntrospector().findPropertiesToIgnore(beanDesc.getClassInfo()),
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_var2_7987512257346490463
+                    type, staticTyping, elementTypeSerializer,
+                    keySerializer, elementValueSerializer, filterId);
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_var1_6946440462988963374
+                Object suppressableValue = findSuppressableContentValue(config,
+                        type.getContentType(), beanDesc);
+                if (suppressableValue != null) {
+                    mapSer = mapSer.withContentInclusion(suppressableValue);
+                }
+                ser = mapSer;
+            }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_base_3504262715627393840
+            }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512492475684\fstmerge_var2_7987512257346490463
+        }
+        // [Issue#120]: Allow post-processing
+        if (_factoryConfig.hasSerializerModifiers()) {
+            for (BeanSerializerModifier mod : _factoryConfig.serializerModifiers()) {
+                ser = mod.modifyMapSerializer(config, type, beanDesc, ser);
+            }
+        }
+        return ser;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_785c4_fd4eb\rev_rev_left_785c4-rev_right_fd4eb\src\main\java\com\fasterxml\jackson\databind\ser\BasicSerializerFactory.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2657f_afa71\rev_2657f-afa71.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2a2ae_d7a94\rev_2a2ae-d7a94.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e580e_f062a\rev_e580e-f062a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e580e_30000\rev_e580e-30000.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_1842f_f16c9\rev_1842f-f16c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cdb32_d672b\rev_cdb32-d672b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_68700_ae3f7\rev_68700-ae3f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cde54_ce8be\rev_cde54-ce8be.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2b642_62c08\rev_2b642-62c08.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_45bfc_6822f\rev_45bfc-6822f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3aea6_dc115\rev_3aea6-dc115.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3718b_35ec0\rev_3718b-35ec0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_64319_87e46\rev_64319-87e46.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062017\fstmerge_var1_8856725555405247224
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062017\fstmerge_base_5714944812369287797
+@Override
+    public boolean isCachable() { return true; }
+=======
+@Override
+    public boolean isCachable() {
+        return (_valueTypeDeserializer == null) && (_ignorableProperties == null);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062017\fstmerge_var2_748273595181306491
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_64319_87e46\rev_rev_left_64319-rev_right_87e46\src\main\java\com\fasterxml\jackson\databind\deser\std\MapDeserializer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 1, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062461\fstmerge_var1_7876323422380837552
+MapReferring(MapReferringAccumulator parent, UnresolvedForwardReference ref,
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062461\fstmerge_base_8590891840759260279
+private MapReferring(MapReferringAccumulator parent, UnresolvedForwardReference ref,
+=======
+protected MapReferring(MapReferringAccumulator parent, UnresolvedForwardReference ref,
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497062461\fstmerge_var2_6977025726354089413
+                Class<?> valueType, Object key)
+        {
+            super(ref, valueType);
+            _parent = parent;
+            this.key = key;
+        }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_64319_87e46\rev_rev_left_64319-rev_right_87e46\src\main\java\com\fasterxml\jackson\databind\deser\std\MapDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5dca5_04db8\rev_5dca5-04db8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_60399_7d420\rev_60399-7d420.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@SuppressWarnings("unchecked")
+    protected JsonDeserializer<Object> _findCustomDeser(DeserializationContext ctxt, JavaType type)
+        throws JsonMappingException
+    {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497674021\fstmerge_var1_715409805008314810
+        // Since we are calling from `resolve`, we should NOT try to contextualize yet;
+        // contextualization will only occur at a later point
+        JsonDeserializer<?> deser = ctxt.findNonContextualValueDeserializer(type);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497674021\fstmerge_base_6034017238541854620
+        // NOTE: since we don't yet have the referring property, this should be fine:
+        JsonDeserializer<?> deser = ctxt.findRootValueDeserializer(type);
+=======
+        JsonDeserializer<?> deser = ctxt.findRootValueDeserializer(type);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512497674021\fstmerge_var2_8996337096427482261
+        if (ClassUtil.isJacksonStdImpl(deser)) {
+            return null;
+        }
+        return (JsonDeserializer<Object>) deser;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_60399_7d420\rev_rev_left_60399-rev_right_7d420\src\main\java\com\fasterxml\jackson\databind\deser\std\UntypedObjectDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c7bbb_b07c1\rev_c7bbb-b07c1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ed66a_cb577\rev_ed66a-cb577.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ede7d_531fa\rev_ede7d-531fa.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f9c0b_f4cde\rev_f9c0b-f4cde.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7af42_7b90a\rev_7af42-7b90a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_df9b1_edad1\rev_df9b1-edad1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ab554_551f8\rev_ab554-551f8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_333f5_54c90\rev_333f5-54c90.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_966dd_7ec59\rev_966dd-7ec59.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c5b80_5a3c8\rev_c5b80-5a3c8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_560bd_ac041\rev_560bd-ac041.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_92360_d180b\rev_92360-d180b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8c36f_7fced\rev_8c36f-7fced.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8c36f_74c8f\rev_8c36f-74c8f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_38573_3e0d5\rev_38573-3e0d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4ad54_4dfcc\rev_4ad54-4dfcc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_10b5d_b15ab\rev_10b5d-b15ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_fbe9a_44df4\rev_fbe9a-44df4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9a223_ae101\rev_9a223-ae101.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_17102_00bb1\rev_17102-00bb1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5c006_7949d\rev_5c006-7949d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_00bb1_7949d\rev_00bb1-7949d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_54cc7_16c5d\rev_54cc7-16c5d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_658b5_ae3f0\rev_658b5-ae3f0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8f096_102ab\rev_8f096-102ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_102ab_d01f2\rev_102ab-d01f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_457ca_206bd\rev_457ca-206bd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e0312_4a991\rev_e0312-4a991.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_474c0_14d97\rev_474c0-14d97.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7e507_e4ece\rev_7e507-e4ece.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8c027_186b8\rev_8c027-186b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0ba4d_6290e\rev_0ba4d-6290e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_fc7bd_f2406\rev_fc7bd-f2406.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_605db_bff35\rev_605db-bff35.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7fee9_54e23\rev_7fee9-54e23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7cf96_195e9\rev_7cf96-195e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_195e9_cc054\rev_195e9-cc054.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_618e4_e57b7\rev_618e4-e57b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cc054_0b059\rev_cc054-0b059.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e57b7_36d9b\rev_e57b7-36d9b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ac63c_6262d\rev_ac63c-6262d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_43f2f_466f7\rev_43f2f-466f7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0d9ab_6e774\rev_0d9ab-6e774.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_37879_66e8a\rev_37879-66e8a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_935cc_612f6\rev_935cc-612f6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5064a_fe8c5\rev_5064a-fe8c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_66513_2b38b\rev_66513-2b38b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_dd955_66bfe\rev_dd955-66bfe.revisions
+Conflict type: ModifierList
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512507561562\fstmerge_var1_2316167999516179011
+static
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512507561562\fstmerge_base_4971960131417598611
+=======
+@SuppressWarnings("serial")
+    static
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512507561562\fstmerge_var2_6336972726860285943
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_dd955_66bfe\rev_rev_left_dd955-rev_right_66bfe\src\test\java\com\fasterxml\jackson\databind\ser\TestMapSerialization.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8df06_63e27\rev_8df06-63e27.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_19e5e_df716\rev_19e5e-df716.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f7574_436c3\rev_f7574-436c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_436c3_1d57c\rev_436c3-1d57c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_881cc_05db8\rev_881cc-05db8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_05db8_de564\rev_05db8-de564.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471491\fstmerge_var1_7292725549596722047
+public List<Integer> list1;
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471491\fstmerge_base_6785530854613204454
+@JsonDeserialize(contentUsing = CustomDeserializer735.class)
+        public List<Integer> list1;
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471491\fstmerge_var2_6047817582428292563
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_05db8_de564\rev_rev_left_05db8-rev_right_de564\src\test\java\com\fasterxml\jackson\databind\deser\TestCustomDeserializers.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471538\fstmerge_var1_1478054357337055680
+public void testCustomListValueDeser735() throws Exception {
+        String json = "{\"list1\":[1],\"list100\":[1]}";
+        TestListBean735 bean = MAPPER.readValue(json, TestListBean735.class);
+
+        assertEquals(1, bean.list1.get(0).intValue());
+        assertEquals(100, bean.list100.get(0).intValue());
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471538\fstmerge_base_9151278117941050067
+public void testCustomListValueDeser735() throws Exception {
+        String json = "{\"list1\":[1],\"list2\":[1]}";
+        TestListBean735 bean = MAPPER.readValue(json, TestListBean735.class);
+
+        assertEquals(100, bean.list1.get(0).intValue());
+        assertEquals(1, bean.list2.get(0).intValue());
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512509471538\fstmerge_var2_1126319588235718495
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_05db8_de564\rev_rev_left_05db8-rev_right_de564\src\test\java\com\fasterxml\jackson\databind\deser\TestCustomDeserializers.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2360f_60980\rev_2360f-60980.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_60980_7ff74\rev_60980-7ff74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7ed43_841a1\rev_7ed43-841a1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2efd3_c568f\rev_2efd3-c568f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4e34e_ec182\rev_4e34e-ec182.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6c582_7c720\rev_6c582-7c720.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0f7f5_61c22\rev_0f7f5-61c22.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b4c90_50ea0\rev_b4c90-50ea0.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+        public Object deserialize(JsonParser p, DeserializationContext ctxt) throws IOException
+        {
+            Object value;
+            if (_deser != null) {
+                value = _deser.deserialize(p, ctxt);
+            } else {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511614340\fstmerge_var1_354076422043655407
+                JsonToken curr = p.getCurrentToken();
+                if (curr == JsonToken.VALUE_STRING || curr == JsonToken.FIELD_NAME) {
+                    value = p.getText();
+                } else {
+                    value = p.getValueAsString();
+                }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511614340\fstmerge_base_1213772225428099521
+                value = jp.getValueAsString();
+=======
+                JsonToken curr = jp.getCurrentToken();
+                if (curr == JsonToken.VALUE_STRING || curr == JsonToken.FIELD_NAME) {
+                    value = jp.getText();
+                } else {
+                    value = jp.getValueAsString();
+                }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511614340\fstmerge_var2_3722907095674781702
+            }
+            try {
+                return _factory.invoke(_valueClass, value);
+            } catch (Exception e) {
+                Throwable t = ClassUtil.getRootCause(e);
+                if (t instanceof IOException) {
+                    throw (IOException) t;
+                }
+                throw ctxt.instantiationException(_valueClass, t);
+            }
+        }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_b4c90_50ea0\rev_rev_left_b4c90-rev_right_50ea0\src\main\java\com\fasterxml\jackson\databind\deser\std\EnumDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7785d_0ec81\rev_7785d-0ec81.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public Object deserializeSetAndReturn(JsonParser p,
+    		DeserializationContext ctxt, Object instance) throws IOException
+    {
+        // note: no null checks (unlike usually); deserializer should fail if one found
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511848233\fstmerge_var1_323830076419970602
+        Object id = _valueDeserializer.deserialize(p, ctxt);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511848233\fstmerge_base_1107221489919064411
+        Object id = _valueDeserializer.deserialize(jp, ctxt);
+=======
+        Object id = _valueDeserializer.deserialize(jp, ctxt);
+
+        /* 02-Apr-2015, tatu: Actually, as per [databind#742], let it be;
+         *  missing or null id is needed for some cases, such as cases where id
+         *  will be generated externally, at a later point, and is not available
+         *  quite yet. Typical use case is with DB inserts.
+         */
+        if (id == null) {
+            return null;
+        }
+        
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512511848233\fstmerge_var2_8302982581387278479
+        ReadableObjectId roid = ctxt.findObjectId(id, _objectIdReader.generator, _objectIdReader.resolver);
+        roid.bindItem(instance);
+        // also: may need to set a property value as well
+        SettableBeanProperty idProp = _objectIdReader.idProperty;
+        if (idProp != null) {
+            return idProp.setAndReturn(instance, id);
+        }
+        return instance;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_7785d_0ec81\rev_rev_left_7785d-rev_right_0ec81\src\main\java\com\fasterxml\jackson\databind\deser\impl\ObjectIdValueProperty.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_817a4_85282\rev_817a4-85282.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0cd97_fa1c2\rev_0cd97-fa1c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_1cc1f_119dd\rev_1cc1f-119dd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_690bb_8d486\rev_690bb-8d486.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_accef_4bbda\rev_accef-4bbda.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_db187_c94ec\rev_db187-c94ec.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_43a4a_ac21a\rev_43a4a-ac21a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2451b_e1159\rev_2451b-e1159.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2c9fa_34708\rev_2c9fa-34708.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_34708_309bb\rev_34708-309bb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3455c_cb734\rev_3455c-cb734.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cb734_7dc9c\rev_cb734-7dc9c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d3c2d_035b2\rev_d3c2d-035b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a52e6_035b2\rev_a52e6-035b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_091fa_46d70\rev_091fa-46d70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_95437_47d51\rev_95437-47d51.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_54b2a_7d5c5\rev_54b2a-7d5c5.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public void acceptJsonFormatVisitor(JsonFormatVisitorWrapper visitor, JavaType typeHint)
+        throws JsonMappingException
+    {
+        SerializerProvider serializers = visitor.getProvider();
+        if (_serializeAsIndex(serializers)) {
+            JsonIntegerFormatVisitor v2 = visitor.expectIntegerFormat(typeHint);
+            if (v2 != null) { // typically serialized as a small number (byte or int)
+                v2.numberType(JsonParser.NumberType.INT);
+            }
+            return;
+        }
+        JsonStringFormatVisitor stringVisitor = visitor.expectStringFormat(typeHint);
+        if (stringVisitor != null) {
+            Set<String> enums = new LinkedHashSet<String>();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516727303\fstmerge_var1_9129615637194484254
+
+            // Use toString()?
+            if ((serializers != null) && 
+                    serializers.isEnabled(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)) {
+                for (Enum<?> e : _values.enums()) {
+                    enums.add(e.toString());
+                }
+            } else {
+                // No, serialize using name() or explicit overrides
+                for (SerializableString value : _values.values()) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516727303\fstmerge_base_2054791216036664385
+            for (SerializableString value : _values.values()) {
+                if (usingToString) {
+                    enums.add(value.toString());
+                } else {
+=======
+            if (usingToString) {
+                for (Enum<?> en : _values.enums()) {
+                    enums.add(en.toString());
+                }
+            } else {
+                for (SerializableString value : _values.values()) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516727303\fstmerge_var2_2115789084196224544
+                    enums.add(value.getValue());
+                }
+            }
+            stringVisitor.enumTypes(enums);
+        }
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_54b2a_7d5c5\rev_rev_left_54b2a-rev_right_7d5c5\src\main\java\com\fasterxml\jackson\databind\ser\std\EnumSerializer.java
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: smallMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516764543\fstmerge_var1_5593016969178920492
+public List<Enum<?>> enums() {
+        return Arrays.asList(_values);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516764543\fstmerge_base_3843500282437122348
+=======
+@SuppressWarnings("unchecked")
+    public Collection<Enum<?>> enums() {
+        return (Collection<Enum<?>>) _values.keySet();
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512516764543\fstmerge_var2_367757204481285714
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_54b2a_7d5c5\rev_rev_left_54b2a-rev_right_7d5c5\src\main\java\com\fasterxml\jackson\databind\util\EnumValues.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e71fd_059d3\rev_e71fd-059d3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_30e8a_6dcb1\rev_30e8a-6dcb1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c3ccf_db612\rev_c3ccf-db612.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c1920_b02bf\rev_c1920-b02bf.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9ab9a_f3d39\rev_9ab9a-f3d39.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_08efe_b0649\rev_08efe-b0649.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_30b45_7e2c2\rev_30b45-7e2c2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b979b_33fc4\rev_b979b-33fc4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b02bf_c5a5f\rev_b02bf-c5a5f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_41f8c_bcda4\rev_41f8c-bcda4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a0d08_f4ef3\rev_a0d08-f4ef3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c5a5f_38588\rev_c5a5f-38588.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f4ef3_7db1f\rev_f4ef3-7db1f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_47683_34043\rev_47683-34043.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_282cf_ba20f\rev_282cf-ba20f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_0d62e_4b9e1\rev_0d62e-4b9e1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3da7c_a143c\rev_3da7c-a143c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cb6dd_f92a6\rev_cb6dd-f92a6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_1b9d1_e4129\rev_1b9d1-e4129.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_467a8_80421\rev_467a8-80421.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e4129_0e8d6\rev_e4129-0e8d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2abf5_5f093\rev_2abf5-5f093.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    @SuppressWarnings("resource")
+    protected Object _deserializeUsingPropertyBased(final JsonParser p, final DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        // 04-Jan-2010, tatu: May need to collect unknown properties for polymorphic cases
+        TokenBuffer unknown = null;
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524982570\fstmerge_var1_9219189689695157600
+                if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524982570\fstmerge_base_4009904511831233439
+                Object value = creatorProp.deserialize(p, ctxt);
+                if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+=======
+                Object value = deserializeWithErrorWrapping(creatorProp, p, ctxt, propName);
+                if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524982570\fstmerge_var2_3096022493453222896
+                    p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+                        wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+                        bean = null; // never gets here
+                    }
+                    if (bean == null) {
+                        throw ctxt.instantiationException(_beanType.getRawClass(), "JSON Creator returned null");
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+
+                    //  polymorphic?
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        return handlePolymorphic(p, ctxt, bean, unknown);
+                    }
+                    if (unknown != null) { // nope, just extra unknown stuff...
+                        bean = handleUnknownProperties(ctxt, bean, unknown);
+                    }
+                    // or just clean?
+                    return deserialize(p, ctxt, bean);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+                buffer.bufferProperty(prop, prop.deserialize(p, ctxt));
+                continue;
+            }
+            // As per [JACKSON-313], things marked as ignorable should not be
+            // passed to any setter
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            // "any property"?
+            if (_anySetter != null) {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+                continue;
+            }
+            // Ok then, let's collect the whole field; name and value
+            if (unknown == null) {
+                unknown = new TokenBuffer(p);
+            }
+            unknown.writeFieldName(propName);
+            unknown.copyCurrentStructure(p);
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            bean = null; // never gets here
+        }
+        if (unknown != null) {
+            // polymorphic?
+            if (bean.getClass() != _beanType.getRawClass()) {
+                return handlePolymorphic(null, ctxt, bean, unknown);
+            }
+            // no, just some extra unknown properties
+            return handleUnknownProperties(ctxt, bean, unknown);
+        }
+        return bean;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_2abf5_5f093\rev_rev_left_2abf5-rev_right_5f093\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@SuppressWarnings("resource")
+    protected Object deserializeUsingPropertyBasedWithUnwrapped(JsonParser p, DeserializationContext ctxt)
+        throws IOException
+    {
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        TokenBuffer tokens = new TokenBuffer(p);
+        tokens.writeStartObject();
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // Last creator property to set?
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983304\fstmerge_var1_8572127628402475930
+                if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983304\fstmerge_base_1543963768004242820
+                Object value = creatorProp.deserialize(p, ctxt);
+                if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+=======
+                Object value = deserializeWithErrorWrapping(creatorProp, p, ctxt, propName);
+                if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983304\fstmerge_var2_2412740361988374170
+                    t = p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                    Object bean;
+                    try {
+                        bean = creator.build(ctxt, buffer);
+                    } catch (Exception e) {
+                        wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+                        continue; // never gets here
+                    }
+                    // [databind#631]: Assign current value, to be accessible by custom serializers
+                    p.setCurrentValue(bean);
+                    // if so, need to copy all remaining tokens into buffer
+                    while (t == JsonToken.FIELD_NAME) {
+                        p.nextToken(); // to skip name
+                        tokens.copyCurrentStructure(p);
+                        t = p.nextToken();
+                    }
+                    tokens.writeEndObject();
+                    if (bean.getClass() != _beanType.getRawClass()) {
+                        // !!! 08-Jul-2011, tatu: Could probably support; but for now
+                        //   it's too complicated, so bail out
+                        tokens.close();
+                        throw ctxt.mappingException("Can not create polymorphic instances with unwrapped values");
+                    }
+                    return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+                buffer.bufferProperty(prop, prop.deserialize(p, ctxt));
+                continue;
+            }
+            /* As per [JACKSON-313], things marked as ignorable should not be
+             * passed to any setter
+             */
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            tokens.writeFieldName(propName);
+            tokens.copyCurrentStructure(p);
+            // "any property"?
+            if (_anySetter != null) {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+            }
+        }
+
+        // We hit END_OBJECT, so:
+        Object bean;
+        try {
+            bean =  creator.build(ctxt, buffer);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            return null; // never gets here
+        }
+        return _unwrappedPropertyHandler.processUnwrapped(p, ctxt, bean, tokens);
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_2abf5_5f093\rev_rev_left_2abf5-rev_right_5f093\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@SuppressWarnings("resource")
+    protected Object deserializeUsingPropertyBasedWithExternalTypeId(JsonParser p, DeserializationContext ctxt)
+        throws IOException
+    {
+        final ExternalTypeHandler ext = _externalTypeIdHandler.start();
+        final PropertyBasedCreator creator = _propertyBasedCreator;
+        PropertyValueBuffer buffer = creator.startBuilding(p, ctxt, _objectIdReader);
+
+        TokenBuffer tokens = new TokenBuffer(p);
+        tokens.writeStartObject();
+
+        JsonToken t = p.getCurrentToken();
+        for (; t == JsonToken.FIELD_NAME; t = p.nextToken()) {
+            String propName = p.getCurrentName();
+            p.nextToken(); // to point to value
+            // creator property?
+            SettableBeanProperty creatorProp = creator.findCreatorProperty(propName);
+            if (creatorProp != null) {
+                // first: let's check to see if this might be part of value with external type id:
+                if (ext.handlePropertyValue(p, ctxt, propName, buffer)) {
+                    ;
+                } else {
+                    // Last creator property to set?
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983367\fstmerge_var1_8386659193568285399
+                    if (buffer.assignParameter(creatorProp, _deserializeWithErrorWrapping(p, ctxt, creatorProp))) {
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983367\fstmerge_base_670736418671420561
+                    Object value = creatorProp.deserialize(p, ctxt);
+                    if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+=======
+                    Object value = deserializeWithErrorWrapping(creatorProp, p, ctxt, propName);
+                    if (buffer.assignParameter(creatorProp.getCreatorIndex(), value)) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512524983367\fstmerge_var2_2128561334816318790
+                        t = p.nextToken(); // to move to following FIELD_NAME/END_OBJECT
+                        Object bean;
+                        try {
+                            bean = creator.build(ctxt, buffer);
+                        } catch (Exception e) {
+                            wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+                            continue; // never gets here
+                        }
+                        // if so, need to copy all remaining tokens into buffer
+                        while (t == JsonToken.FIELD_NAME) {
+                            p.nextToken(); // to skip name
+                            tokens.copyCurrentStructure(p);
+                            t = p.nextToken();
+                        }
+                        if (bean.getClass() != _beanType.getRawClass()) {
+                            // !!! 08-Jul-2011, tatu: Could theoretically support; but for now
+                            //   it's too complicated, so bail out
+                            throw ctxt.mappingException("Can not create polymorphic instances with unwrapped values");
+                        }
+                        return ext.complete(p, ctxt, bean);
+                    }
+                }
+                continue;
+            }
+            // Object Id property?
+            if (buffer.readIdProperty(propName)) {
+                continue;
+            }
+            // regular property? needs buffering
+            SettableBeanProperty prop = _beanProperties.find(propName);
+            if (prop != null) {
+                buffer.bufferProperty(prop, prop.deserialize(p, ctxt));
+                continue;
+            }
+            // external type id (or property that depends on it)?
+            if (ext.handlePropertyValue(p, ctxt, propName, null)) {
+                continue;
+            }
+            /* As per [JACKSON-313], things marked as ignorable should not be
+             * passed to any setter
+             */
+            if (_ignorableProps != null && _ignorableProps.contains(propName)) {
+                handleIgnoredProperty(p, ctxt, handledType(), propName);
+                continue;
+            }
+            // "any property"?
+            if (_anySetter != null) {
+                buffer.bufferAnyProperty(_anySetter, propName, _anySetter.deserialize(p, ctxt));
+            }
+        }
+
+        // We hit END_OBJECT; resolve the pieces:
+        try {
+            return ext.complete(p, ctxt, buffer, creator);
+        } catch (Exception e) {
+            wrapInstantiationProblem(e, ctxt);
+            return null; // never gets here
+        }
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_2abf5_5f093\rev_rev_left_2abf5-rev_right_5f093\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_384e6_ea2c9\rev_384e6-ea2c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_72740_b9c83\rev_72740-b9c83.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_04413_d4923\rev_04413-d4923.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d4923_3cbb7\rev_d4923-3cbb7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d3146_e9fa0\rev_d3146-e9fa0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_07876_2cfcb\rev_07876-2cfcb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c4b69_aed34\rev_c4b69-aed34.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c3fdb_6f65b\rev_c3fdb-6f65b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_ad598_99fc2\rev_ad598-99fc2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c5f9d_b4547\rev_c5f9d-b4547.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_2b359_6511c\rev_2b359-6511c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_38f27_d5865\rev_38f27-d5865.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_53902_9317e\rev_53902-9317e.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+        public Object deserialize(JsonParser p, DeserializationContext ctxt) throws IOException
+        {
+            switch (p.getCurrentTokenId()) {
+            case JsonTokenId.ID_NUMBER_INT:
+                if (ctxt.hasSomeOfFeatures(F_MASK_INT_COERCIONS)) {
+                    return _coerceIntegral(p, ctxt);
+                }
+                return p.getNumberValue();
+
+            case JsonTokenId.ID_NUMBER_FLOAT:
+                if (ctxt.isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+                    return p.getDecimalValue();
+                }
+                return Double.valueOf(p.getDoubleValue());
+
+            case JsonTokenId.ID_STRING:
+                /* Textual values are more difficult... not parsing itself, but figuring
+                 * out 'minimal' type to use 
+                 */
+                String text = p.getText().trim();
+                if (text.length() == 0) {
+                    return getEmptyValue(ctxt);
+                }
+                if (_hasTextualNull(text)) {
+                    return getNullValue(ctxt);
+                }
+                if (_isPosInf(text)) {
+                    return Double.POSITIVE_INFINITY;
+                }
+                if (_isNegInf(text)) {
+                    return Double.NEGATIVE_INFINITY;
+                }
+                if (_isNaN(text)) {
+                    return Double.NaN;
+                }
+                try {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512528716387\fstmerge_var1_1029255927015280274
+                    if (text.indexOf('.') >= 0 || text.indexOf('E') >= 0) { // floating point
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512528716387\fstmerge_base_9114000722778709938
+                    if (text.indexOf('.') >= 0) { // floating point
+=======
+                    if (!_isIntNumber(text)) {
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512528716387\fstmerge_var2_7685967837505980281
+                        if (ctxt.isEnabled(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)) {
+                            return new BigDecimal(text);
+                        }
+                        return new Double(text);
+                    }
+                    if (ctxt.isEnabled(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS)) {
+                        return new BigInteger(text);
+                    }
+                    long value = Long.parseLong(text);
+                    if (!ctxt.isEnabled(DeserializationFeature.USE_LONG_FOR_INTS)) {
+                        if (value <= Integer.MAX_VALUE && value >= Integer.MIN_VALUE) {
+                            return Integer.valueOf((int) value);
+                        }
+                    }
+                    return Long.valueOf(value);
+                } catch (IllegalArgumentException iae) {
+                    throw ctxt.weirdStringException(text, _valueClass, "not a valid number");
+                }
+            case JsonTokenId.ID_START_ARRAY:
+                if (ctxt.isEnabled(DeserializationFeature.UNWRAP_SINGLE_VALUE_ARRAYS)) {
+                    p.nextToken();
+                    final Object value = deserialize(p, ctxt);
+                    if (p.nextToken() != JsonToken.END_ARRAY) {
+                        throw ctxt.wrongTokenException(p, JsonToken.END_ARRAY, 
+                                "Attempted to unwrap single value array for single '" + _valueClass.getName() + "' value but there was more than a single value in the array"
+                                );
+                    }
+                    return value;
+                }
+                break;
+            }
+            // Otherwise, no can do:
+            throw ctxt.mappingException(_valueClass, p.getCurrentToken());
+        }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_53902_9317e\rev_rev_left_53902-rev_right_9317e\src\main\java\com\fasterxml\jackson\databind\deser\std\NumberDeserializers.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_37811_55c5d\rev_37811-55c5d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_bb9d1_b43e2\rev_bb9d1-b43e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_72968_d542f\rev_72968-d542f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_6172d-726b6.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512529418340\fstmerge_var1_7165089769473181776
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512529418340\fstmerge_base_6750510692779538899
+protected Object deserializeWithErrorWrapping(SettableBeanProperty creatorProp, JsonParser p, DeserializationContext ctxt,
+                                                  String propName)
+            throws IOException {
+        try {
+            return creatorProp.deserialize(p, ctxt);
+        } catch (IOException e) {
+            wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+            // exception below will be throw only if someone overwrite default implementation of wrapAndThrow method
+            throw e;
+        }
+    }
+=======
+protected Object deserializeWithErrorWrapping(SettableBeanProperty prop,
+            JsonParser p, DeserializationContext ctxt, String propName) throws IOException
+    {
+        try {
+            return prop.deserialize(p, ctxt);
+        } catch (IOException e) {
+            wrapAndThrow(e, _beanType.getRawClass(), propName, ctxt);
+            // exception below will be throw only if someone overwrite default implementation of wrapAndThrow method
+            throw e;
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512529418340\fstmerge_var2_7924065520166794643
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_6172d_726b6\rev_rev_left_6172d-rev_right_726b6\src\main\java\com\fasterxml\jackson\databind\deser\BeanDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_08345_46a99\rev_08345-46a99.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_817d8_41be8\rev_817d8-41be8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_c52fb_6cf2b\rev_c52fb-6cf2b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_945c5_a23ff\rev_945c5-a23ff.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a8a40_1ef35\rev_a8a40-1ef35.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_fefcf_4312a\rev_fefcf-4312a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5d2b2_4d4dd\rev_5d2b2-4d4dd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e77e9_2e364\rev_e77e9-2e364.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_203fc_73f54\rev_203fc-73f54.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_12918_2ea6e\rev_12918-2ea6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_72e3e_1fb5e\rev_72e3e-1fb5e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_1d5c6_a7b26\rev_1d5c6-a7b26.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_06e37_f4a27\rev_06e37-f4a27.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_77f8e_b6a26\rev_77f8e-b6a26.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_df8b4_7d45f\rev_df8b4-7d45f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e5b8f_51839\rev_e5b8f-51839.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e9352_af224\rev_e9352-af224.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_62c80_32a52\rev_62c80-32a52.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_090da_f2f61\rev_090da-f2f61.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d7fa1_33ca8\rev_d7fa1-33ca8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_642af_344b7\rev_642af-344b7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e7b69_6aee8\rev_e7b69-6aee8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_32321_c73b0\rev_32321-c73b0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9741a_147dc\rev_9741a-147dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_49063_ca42a\rev_49063-ca42a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_15a86_e9ea5\rev_15a86-e9ea5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_76985_1eb49\rev_76985-1eb49.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6721d_e258e\rev_6721d-e258e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3975a_b0497\rev_3975a-b0497.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_98abe_8574e\rev_98abe-8574e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_56121_78621\rev_56121-78621.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_313a7_d2121\rev_313a7-d2121.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b51dc_812d6\rev_b51dc-812d6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_5aa2f_7d713\rev_5aa2f-7d713.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f4f71_2eafc\rev_f4f71-2eafc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8aa95_80131\rev_8aa95-80131.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_fbb25_e2736\rev_fbb25-e2736.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f6ae1_ed7d4\rev_f6ae1-ed7d4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_90da5_2a980\rev_90da5-2a980.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_90da5_41613\rev_90da5-41613.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cb8eb_30a3b\rev_cb8eb-30a3b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_6c1ba_795dd\rev_6c1ba-795dd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b1e06_9566e\rev_b1e06-9566e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9566e_bce67\rev_9566e-bce67.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_4bf5d_04cb0\rev_4bf5d-04cb0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_25a37_abd50\rev_25a37-abd50.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e2d1b_e1426\rev_e2d1b-e1426.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_bfd25_30b54\rev_bfd25-30b54.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_13b69_5ae6e\rev_13b69-5ae6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_bdf60_16aa3\rev_bdf60-16aa3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e592f_ca6c3\rev_e592f-ca6c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_bf4f1_c5b23\rev_bf4f1-c5b23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cfbf1_df087\rev_cfbf1-df087.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_d51c9_b8b7f\rev_d51c9-b8b7f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b2804_3bd5d\rev_b2804-3bd5d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_fec0b_fe25f\rev_fec0b-fe25f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_adec6_d5a25\rev_adec6-d5a25.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_32156_6aaa3\rev_32156-6aaa3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_cc8b4_1ed7f\rev_cc8b4-1ed7f.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+private void resolveCreators()
+    {
+        // Then see which constructors we have
+        List<AnnotatedConstructor> constructors = null;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_var1_5598893760524563553
+        ClassUtil.Ctor[] declaredCtors = ClassUtil.getConstructors(_class);
+        // Constructor also always members of this class, so
+        TypeResolutionContext typeContext = this;        
+        for (ClassUtil.Ctor ctor : declaredCtors) {
+            if (ctor.getParamCount() == 0) {
+                _defaultConstructor = _constructDefaultConstructor(ctor, typeContext);
+            } else {
+                if (constructors == null) {
+                    constructors = new ArrayList<AnnotatedConstructor>(Math.max(10, declaredCtors.length));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_base_3128984477466833528
+        Constructor<?>[] declaredCtors = _class.getDeclaredConstructors();
+        for (Constructor<?> ctor : declaredCtors) {
+            if (ctor.getParameterTypes().length == 0) {
+                _defaultConstructor = _constructConstructor(ctor, true);
+            } else {
+                if (constructors == null) {
+                    constructors = new ArrayList<AnnotatedConstructor>(Math.max(10, declaredCtors.length));
+=======
+        Constructor<?>[] declaredCtors = _class.getDeclaredConstructors();
+        for (Constructor<?> ctor : declaredCtors) {
+            if (_isIncludableConstructor(ctor)) {
+                if (ctor.getParameterTypes().length == 0) {
+                    _defaultConstructor = _constructConstructor(ctor, true);
+                } else {
+                    if (constructors == null) {
+                        constructors = new ArrayList<AnnotatedConstructor>(Math.max(10, declaredCtors.length));
+                    }
+                    constructors.add(_constructConstructor(ctor, false));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_var2_6825664358500198101
+                }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_var1_5598893760524563553
+                constructors.add(_constructNonDefaultConstructor(ctor, typeContext));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_base_3128984477466833528
+                constructors.add(_constructConstructor(ctor, false));
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512541557625\fstmerge_var2_6825664358500198101
+            }
+        }
+        if (constructors == null) {
+            _constructors = Collections.emptyList();
+        } else {
+            _constructors = constructors;
+        }
+        // and if need be, augment with mix-ins
+        if (_primaryMixIn != null) {
+            if (_defaultConstructor != null || !_constructors.isEmpty()) {
+                _addConstructorMixIns(_primaryMixIn);
+            }
+        }
+
+
+        /* And then... let's remove all constructors that are deemed
+         * ignorable after all annotations have been properly collapsed.
+         */
+        // AnnotationIntrospector is null if annotations not enabled; if so, can skip:
+        if (_annotationIntrospector != null) {
+            if (_defaultConstructor != null) {
+                if (_annotationIntrospector.hasIgnoreMarker(_defaultConstructor)) {
+                    _defaultConstructor = null;
+                }
+            }
+            if (_constructors != null) {
+                // count down to allow safe removal
+                for (int i = _constructors.size(); --i >= 0; ) {
+                    if (_annotationIntrospector.hasIgnoreMarker(_constructors.get(i))) {
+                        _constructors.remove(i);
+                    }
+                }
+            }
+        }
+        List<AnnotatedMethod> creatorMethods = null;
+        
+        // Then static methods which are potential factory methods
+        for (Method m : _findClassMethods(_class)) {
+            if (!Modifier.isStatic(m.getModifiers())) {
+                continue;
+            }
+            // all factory methods are fine:
+            //int argCount = m.getParameterTypes().length;
+            if (creatorMethods == null) {
+                creatorMethods = new ArrayList<AnnotatedMethod>(8);
+            }
+            creatorMethods.add(_constructCreatorMethod(m, typeContext));
+        }
+        if (creatorMethods == null) {
+            _creatorMethods = Collections.emptyList();
+        } else {
+            _creatorMethods = creatorMethods;
+            // mix-ins to mix in?
+            if (_primaryMixIn != null) {
+                _addFactoryMixIns(_primaryMixIn);
+            }
+            // anything to ignore at this point?
+            if (_annotationIntrospector != null) {
+                // count down to allow safe removal
+                for (int i = _creatorMethods.size(); --i >= 0; ) {
+                    if (_annotationIntrospector.hasIgnoreMarker(_creatorMethods.get(i))) {
+                        _creatorMethods.remove(i);
+                    }
+                }
+            }
+        }
+        _creatorsResolved = true;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_cc8b4_1ed7f\rev_rev_left_cc8b4-rev_right_1ed7f\src\main\java\com\fasterxml\jackson\databind\introspect\AnnotatedClass.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f75f2_660ec\rev_f75f2-660ec.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+    public PropertyName findNameForSerialization(Annotated a)
+    {
+        JsonGetter jg = _findAnnotation(a, JsonGetter.class);
+        if (jg != null) {
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512542174388\fstmerge_var1_1718909947888535823
+            return PropertyName.construct(jg.value());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512542174388\fstmerge_base_2071319209593170685
+            name = jg.value();
+        } else {
+            JsonProperty pann = _findAnnotation(a, JsonProperty.class);
+            if (pann != null) {
+                name = pann.value();
+            } else if (_hasAnnotation(a, JsonSerialize.class)
+                    || _hasAnnotation(a, JsonView.class)
+                    || _hasAnnotation(a, JsonRawValue.class)) {
+                name = "";
+            } else {
+                return null;
+            }
+=======
+            name = jg.value();
+        } else {
+            JsonProperty pann = _findAnnotation(a, JsonProperty.class);
+            if (pann != null) {
+                name = pann.value();
+                /* 22-Apr-2014, tatu: Should figure out a better way to do this, but
+                 *   it's actually bit tricky to do it more efficiently (meta-annotations
+                 *   add more lookups; AnnotationMap costs etc)
+                 */
+            } else if (_hasAnnotation(a, JsonSerialize.class)
+                    || _hasAnnotation(a, JsonView.class)
+                    || _hasAnnotation(a, JsonRawValue.class)
+                    || _hasAnnotation(a, JsonUnwrapped.class)
+                    || _hasAnnotation(a, JsonBackReference.class)
+                    || _hasAnnotation(a, JsonManagedReference.class)) {
+                name = "";
+            } else {
+                return null;
+            }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512542174388\fstmerge_var2_7725247980038196188
+        }
+        JsonProperty pann = _findAnnotation(a, JsonProperty.class);
+        if (pann != null) {
+            return PropertyName.construct(pann.value());
+        }
+        PropertyName ctorName = _findConstructorName(a);
+        if (ctorName != null) {
+            return ctorName;
+        }
+        if (_hasAnnotation(a, JsonSerialize.class)
+                || _hasAnnotation(a, JsonView.class)
+                || _hasAnnotation(a, JsonRawValue.class)) {
+            return PropertyName.USE_DEFAULT;
+        }
+        return null;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_f75f2_660ec\rev_rev_left_f75f2-rev_right_660ec\src\main\java\com\fasterxml\jackson\databind\introspect\JacksonAnnotationIntrospector.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_f4dd7_f5988\rev_f4dd7-f5988.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_be113_c966a\rev_be113-c966a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_bf2b2_e59a1\rev_bf2b2-e59a1.revisions
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: smallMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544061300\fstmerge_var1_5483974991794256090
+@JsonSerialize(as=Fooable.class)
+        public FooImplNoAnno getFoo() {
+            return new FooImplNoAnno();
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544061300\fstmerge_base_1948654992946834000
+=======
+@JsonSerialize(as=Fooable.class)
+        public Fooable getFoo() {
+            return new FooImplNoAnno();
+        }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544061300\fstmerge_var2_7646471871332819625
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_bf2b2_e59a1\rev_rev_left_bf2b2-rev_right_e59a1\src\test\java\com\fasterxml\jackson\databind\ser\TestJsonSerializeAs.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_7e5f0_91e41\rev_7e5f0-91e41.revisions
+Conflict type: EditSameFd
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544551649\fstmerge_var1_7209031267365678680
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544551649\fstmerge_base_6206927625306936195
+public static List<Object[]> NAME_TRANSLATIONS = Arrays.asList(new Object[][] {
+                {null, null},
+                {"", ""},
+                {"a", "a"},
+                {"abc", "abc"},
+                {"1", "1"},
+                {"123", "123"},
+                {"1a", "1a"},
+                {"a1", "a1"},
+                {"$", "$"},
+                {"$a", "$a"},
+                {"a$", "a$"},
+                {"$_a", "$_a"},
+                {"a_$", "a_$"},
+                {"a$a", "a$a"},
+                {"$A", "$_a"},
+                {"$_A", "$_a"},
+                {"_", "_"},
+                {"__", "_"},
+                {"___", "__"},
+                {"A", "a"},
+                {"A1", "a1"},
+                {"1A", "1_a"},
+                {"_a", "a"},
+                {"_A", "a"},
+                {"a_a", "a_a"},
+                {"a_A", "a_a"},
+                {"A_A", "a_a"},
+                {"A_a", "a_a"},
+                {"WWW", "www"},
+                {"someURI", "some_uri"},
+                {"someURIs", "some_uris"},
+                {"Results", "results"},
+                {"_Results", "results"},
+                {"_results", "results"},
+                {"__results", "_results"},
+                {"__Results", "_results"},
+                {"___results", "__results"},
+                {"___Results", "__results"},
+                {"userName", "user_name"},
+                {"user_name", "user_name"},
+                {"user__name", "user__name"},
+                {"UserName", "user_name"},
+                {"User_Name", "user_name"},
+                {"User__Name", "user__name"},
+                {"_user_name", "user_name"},
+                {"_UserName", "user_name"},
+                {"_User_Name", "user_name"},
+                {"UGLY_NAME", "ugly_name"},
+                {"_Bars", "bars" }
+    });
+=======
+public static List<Object[]> NAME_TRANSLATIONS = Arrays.asList(new Object[][] {
+                {null, null},
+                {"", ""},
+                {"a", "a"},
+                {"abc", "abc"},
+                {"1", "1"},
+                {"123", "123"},
+                {"1a", "1a"},
+                {"a1", "a1"},
+                {"$", "$"},
+                {"$a", "$a"},
+                {"a$", "a$"},
+                {"$_a", "$_a"},
+                {"a_$", "a_$"},
+                {"a$a", "a$a"},
+                {"$A", "$_a"},
+                {"$_A", "$_a"},
+                {"_", "_"},
+                {"__", "_"},
+                {"___", "__"},
+                {"A", "a"},
+                {"A1", "a1"},
+                {"1A", "1_a"},
+                {"_a", "a"},
+                {"_A", "a"},
+                {"a_a", "a_a"},
+                {"a_A", "a_a"},
+                {"A_A", "a_a"},
+                {"A_a", "a_a"},
+                {"WWW", "www"},
+                {"someURI", "some_uri"},
+                {"someURIs", "some_uris"},
+                {"Results", "results"},
+                {"_Results", "results"},
+                {"_results", "results"},
+                {"__results", "_results"},
+                {"__Results", "_results"},
+                {"___results", "__results"},
+                {"___Results", "__results"},
+                {"userName", "user_name"},
+                {"user_name", "user_name"},
+                {"user__name", "user__name"},
+                {"UserName", "user_name"},
+                {"User_Name", "user_name"},
+                {"User__Name", "user__name"},
+                {"_user_name", "user_name"},
+                {"_UserName", "user_name"},
+                {"_User_Name", "user_name"},
+                {"UGLY_NAME", "ugly_name"},
+                {"_Bars", "bars" },
+                // [databind#1026]
+                {"usId", "us_id" },
+                {"uId", "u_id" },
+    });
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544551649\fstmerge_var2_6554140417752665882
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_7e5f0_91e41\rev_rev_left_7e5f0-rev_right_91e41\src\test\java\com\fasterxml\jackson\databind\introspect\TestNamingStrategyStd.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_91b52_19e6d\rev_91b52-19e6d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_8caf2_ccf82\rev_8caf2-ccf82.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544954983\fstmerge_var1_5205815743754168934
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544954983\fstmerge_base_4784884586323128866
+private void resolveClassAnnotations()
+    {
+        _classAnnotations = new AnnotationMap();
+        // [JACKSON-659] Should skip processing if annotation processing disabled
+        if (_annotationIntrospector != null) {
+            // add mix-in annotations first (overrides)
+            if (_primaryMixIn != null) {
+                _addClassMixIns(_classAnnotations, _class, _primaryMixIn);
+            }
+            // first, annotations from the class itself:
+            _addAnnotationsIfNotPresent(_classAnnotations, _class.getDeclaredAnnotations());
+    
+            // and then from super types
+            for (Class<?> cls : _superTypes) {
+                // and mix mix-in annotations in-between
+                _addClassMixIns(_classAnnotations, cls);
+                _addAnnotationsIfNotPresent(_classAnnotations, cls.getDeclaredAnnotations());
+            }
+            /* and finally... any annotations there might be for plain
+             * old Object.class: separate because for all other purposes
+             * it is just ignored (not included in super types)
+             */
+            /* 12-Jul-2009, tatu: Should this be done for interfaces too?
+             *   For now, yes, seems useful for some cases, and not harmful for any?
+             */
+            _addClassMixIns(_classAnnotations, Object.class);
+        }
+    }
+=======
+private void resolveClassAnnotations()
+    {
+        AnnotationMap ca = new AnnotationMap();
+        // [JACKSON-659] Should skip processing if annotation processing disabled
+        if (_annotationIntrospector != null) {
+            // add mix-in annotations first (overrides)
+            if (_primaryMixIn != null) {
+                _addClassMixIns(ca, _class, _primaryMixIn);
+            }
+            // first, annotations from the class itself:
+            _addAnnotationsIfNotPresent(ca, _class.getDeclaredAnnotations());
+    
+            // and then from super types
+            for (Class<?> cls : _superTypes) {
+                // and mix mix-in annotations in-between
+                _addClassMixIns(ca, cls);
+                _addAnnotationsIfNotPresent(ca, cls.getDeclaredAnnotations());
+            }
+            /* and finally... any annotations there might be for plain
+             * old Object.class: separate because for all other purposes
+             * it is just ignored (not included in super types)
+             */
+            /* 12-Jul-2009, tatu: Should this be done for interfaces too?
+             *   For now, yes, seems useful for some cases, and not harmful for any?
+             */
+            _addClassMixIns(ca, Object.class);
+        }
+        _classAnnotations = ca;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512544954983\fstmerge_var2_5213615404582402903
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_8caf2_ccf82\rev_rev_left_8caf2-rev_right_ccf82\src\main\java\com\fasterxml\jackson\databind\introspect\AnnotatedClass.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_b7030_5aece\rev_b7030-5aece.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_261be_e43a7\rev_261be-e43a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e9b32_9dbee\rev_e9b32-9dbee.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e43a7_cecd4\rev_e43a7-cecd4.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 1, 0
+Conflict body: 
+@SuppressWarnings("resource")
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512547305881\fstmerge_var1_157282565099638706
+    protected Object _deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512547305881\fstmerge_base_5153280630870814602
+    private final Object _deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException
+=======
+    private final Object _deserialize(JsonParser p, DeserializationContext ctxt) throws IOException
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1512547305881\fstmerge_var2_4076068569814625006
+    {
+        // 02-Aug-2013, tatu: May need to use native type ids
+        if (p.canReadTypeId()) {
+            Object typeId = p.getTypeId();
+            if (typeId != null) {
+                return _deserializeWithNativeTypeId(p, ctxt, typeId);
+            }
+        }
+        // first, sanity checks
+        JsonToken t = p.getCurrentToken();
+        if (t == JsonToken.START_OBJECT) {
+            // should always get field name, but just in case...
+            if (p.nextToken() != JsonToken.FIELD_NAME) {
+                throw ctxt.wrongTokenException(p, JsonToken.FIELD_NAME,
+                        "need JSON String that contains type id (for subtype of "+baseTypeName()+")");
+            }
+        } else if (t != JsonToken.FIELD_NAME) {
+            throw ctxt.wrongTokenException(p, JsonToken.START_OBJECT,
+                    "need JSON Object to contain As.WRAPPER_OBJECT type information for class "+baseTypeName());
+        }
+        final String typeId = p.getText();
+        JsonDeserializer<Object> deser = _findDeserializer(ctxt, typeId);
+        p.nextToken();
+
+        // Minor complication: we may need to merge type id in?
+        if (_typeIdVisible && p.getCurrentToken() == JsonToken.START_OBJECT) {
+            // but what if there's nowhere to add it in? Error? Or skip? For now, skip.
+            TokenBuffer tb = new TokenBuffer(null, false);
+            tb.writeStartObject(); // recreate START_OBJECT
+            tb.writeFieldName(_typePropertyName);
+            tb.writeString(typeId);
+            p = JsonParserSequence.createFlattened(tb.asParser(p), p);
+            p.nextToken();
+        }
+        
+        Object value = deser.deserialize(p, ctxt);
+        // And then need the closing END_OBJECT
+        if (p.nextToken() != JsonToken.END_OBJECT) {
+            throw ctxt.wrongTokenException(p, JsonToken.END_OBJECT,
+                    "expected closing END_OBJECT after type information and deserialized value");
+        }
+        return value;
+    }
+
+File path: C:\download\ssmerge\jackson-databind\revisions\rev_e43a7_cecd4\rev_rev_left_e43a7-rev_right_cecd4\src\main\java\com\fasterxml\jackson\databind\jsontype\impl\AsWrapperTypeDeserializer.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_12e81_7ed2d\rev_12e81-7ed2d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_9fce3_c463f\rev_9fce3-c463f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_11c20_3aee5\rev_11c20-3aee5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a49ab_8497e\rev_a49ab-8497e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_3da93_d6b35\rev_3da93-d6b35.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_e87dd_c7168\rev_e87dd-c7168.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_86c36_87160\rev_86c36-87160.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_87160_70d96\rev_87160-70d96.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_290f9_386e9\rev_290f9-386e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\jackson-databind\revisions\rev_a2f43_034f3\rev_a2f43-034f3.revisions
+
+=========================================================

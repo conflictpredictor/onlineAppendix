@@ -1,0 +1,1764 @@
+#MS_XXX_MS#
+Merge scenario: rev_75230-05d63
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e4de6-bfa4a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddb18-fcea0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4e78b-46eef
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0c16c-68ee4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bcd40-dc054
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db765-e7bc4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_add27-6d9d7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3345-a6b76
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c2cf7-ac537
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b55b7-e062f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4003c-81c83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_167a7-81c83
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3c1d7-68113
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_cef85-a764a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_aca1b-7255a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c17a2-6485a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8f52d-69de8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_20d14-b2eb5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6106f-e7285
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6106f-e1f50
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a21d1-213d1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0d506-6af41
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_0d506_6af41\rev_rev_left_0d506-rev_right_6af41\src\main\java\redis\clients\jedis\Jedis.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START blpop(String-String)//public List<String> blpop(String arg) {
+        String[] args = new String[1];
+        args[0] = arg;
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+// END blpop(String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_0d506_6af41\rev_rev_left_0d506-rev_right_6af41\src\main\java\redis\clients\jedis\Jedis.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START brpop(String-String)//public List<String> brpop(String arg) {
+        String[] args = new String[1];
+        args[0] = arg;
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<String> multiBulkReply = client.getMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+// END brpop(String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_0d506_6af41\rev_rev_left_0d506-rev_right_6af41\src\main\java\redis\clients\jedis\BinaryJedis.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START blpop(byte[]-byte[])//public List<byte[]> blpop(byte[]... args) {
+        checkIsInMulti();
+        client.blpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+// END blpop(byte[]-byte[])//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_0d506_6af41\rev_rev_left_0d506-rev_right_6af41\src\main\java\redis\clients\jedis\BinaryJedis.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START brpop(byte[]-byte[])//public List<byte[]> brpop(byte[]... args) {
+        checkIsInMulti();
+        client.brpop(args);
+        client.setTimeoutInfinite();
+        final List<byte[]> multiBulkReply = client.getBinaryMultiBulkReply();
+        client.rollbackTimeout();
+        return multiBulkReply;
+// END brpop(byte[]-byte[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0cf2-942fc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1fba7-bbc90
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_667ee-7a8e8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_670e0-0a8aa
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_670e0_0a8aa\rev_rev_left_670e0-rev_right_0a8aa\src\main\java\redis\clients\jedis\JedisSentinelPool.java
+Different Spacing: false
+Left editions: [116, 117]
+Right editions: [118, 120]
+Merged body: 
+// START returnBrokenResource(Jedis-Jedis)//// LEFT //@Override
+// LEFT //    public void returnBrokenResource(final Jedis resource) {
+// RIGHT //	if (resource != null) {
+	returnBrokenResourceObject(resource);
+// END returnBrokenResource(Jedis-Jedis)//// RIGHT //    }    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_670e0_0a8aa\rev_rev_left_670e0-rev_right_0a8aa\src\main\java\redis\clients\jedis\JedisSentinelPool.java
+Different Spacing: false
+Left editions: [123, 124]
+Right editions: [125, 128]
+Merged body: 
+// START returnResource(Jedis-Jedis)//// LEFT //@Override
+// LEFT //    public void returnResource(final Jedis resource) {
+// RIGHT //	if (resource != null) {
+	resource.resetState();
+	returnResourceObject(resource);
+// END returnResource(Jedis-Jedis)//// RIGHT //    }    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c686-74b52
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_6c686_74b52\rev_rev_left_6c686-rev_right_74b52\src\main\java\redis\clients\jedis\JedisClusterConnectionHandler.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START discoverClusterNodesAndSlots(Jedis-Jedis)//private void discoverClusterNodesAndSlots(Jedis jedis) {
+	String localNodes = jedis.clusterNodes();
+	for (String nodeInfo : localNodes.split("\n")) {
+	    ClusterNodeInformation clusterNodeInfo = nodeInfoParser.parse(
+		    nodeInfo, new HostAndPort(jedis.getClient().getHost(),
+			    jedis.getClient().getPort()));
+
+	    HostAndPort targetNode = clusterNodeInfo.getNode();
+	    setNodeIfNotExist(targetNode);
+	    assignSlotsToNode(clusterNodeInfo.getAvailableSlots(), targetNode);
+	}
+// END discoverClusterNodesAndSlots(Jedis-Jedis)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_6c686_74b52\rev_rev_left_6c686-rev_right_74b52\src\main\java\redis\clients\jedis\JedisClusterConnectionHandler.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setNodeIfNotExist(HostAndPort-HostAndPort)//private void setNodeIfNotExist(HostAndPort node) {
+	String nodeKey = getNodeKey(node);
+	if (nodes.containsKey(nodeKey))
+	    return;
+	
+	JedisPool nodePool = new JedisPool(poolConfig, node.getHost(), node.getPort());
+	nodes.put(nodeKey, nodePool);
+// END setNodeIfNotExist(HostAndPort-HostAndPort)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_74b52-4b079
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_334d2-e05ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_fd23f-76df5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_73711-79d27
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5939d-76df5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5af95-03c0a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_360e2-03c0a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\BinaryJedis.java
+Different Spacing: false
+Left editions: [1921]
+Right editions: [1910, 1911, 1912, 1913, 1914, 1915, 1916]
+Merged body: 
+// START multi(TransactionBlock-TransactionBlock)//// RIGHT //@Deprecated
+// RIGHT //    /**
+// RIGHT //     * This method is deprecated due to its error prone
+// RIGHT //     * and will be removed on next major release
+// RIGHT //     * You can use multi() instead
+// RIGHT //     * @see https://github.com/xetorthio/jedis/pull/498
+// RIGHT //     */
+public List<Object> multi(final TransactionBlock jedisTransaction) {
+	List<Object> results = null;
+	jedisTransaction.setClient(client);
+	    client.multi();
+// LEFT //	    client.getOne();	// expected OK
+	    jedisTransaction.execute();
+	    results = jedisTransaction.exec();
+	return results;
+// END multi(TransactionBlock-TransactionBlock)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Transaction.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START exec({FormalParametersInternal})//public List<Object> exec() {
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+
+        List<Object> unformatted = client.getObjectMultiBulkReply();
+        if (unformatted == null) {
+            return null;
+        }
+        List<Object> formatted = new ArrayList<Object>();
+        for (Object o : unformatted) {
+            try {
+                formatted.add(generateResponse(o).get());
+            } catch (JedisDataException e) {
+                formatted.add(e);
+            }
+        }
+        return formatted;
+// END exec({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Transaction.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START execGetResponse({FormalParametersInternal})//public List<Response<?>> execGetResponse() {
+    	// Discard QUEUED or ERROR
+    	client.getMany(getPipelinedResponseLength());
+    	
+        client.exec();
+
+        List<Object> unformatted = client.getObjectMultiBulkReply();
+        if (unformatted == null) {
+            return null;
+        }
+        List<Response<?>> response = new ArrayList<Response<?>>();
+        for (Object o : unformatted) {
+            response.add(generateResponse(o));
+        }
+        return response;
+// END execGetResponse({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Transaction.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START discard({FormalParametersInternal})//public String discard() {
+    	client.getMany(getPipelinedResponseLength());
+        client.discard();
+        inTransaction = false;
+        clean();
+        return client.getStatusCodeReply();
+// END discard({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Pipeline.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START sync({FormalParametersInternal})//public void sync() {
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+    	
+    	for (Object resp : unformatted)
+    		generateResponse(resp);
+// END sync({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Pipeline.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START syncAndReturnAll({FormalParametersInternal})//public List<Object> syncAndReturnAll() {
+    	List<Object> unformatted = client.getMany(getPipelinedResponseLength());
+        List<Object> formatted = new ArrayList<Object>();
+        
+    	for (Object resp : unformatted)
+    		formatted.add(generateResponse(resp).get());
+        
+        return formatted;
+// END syncAndReturnAll({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Connection.java
+Different Spacing: false
+Left editions: []
+Right editions: [116, 120, 121, 122, 123, 124]
+Merged body: 
+// START sendCommand(Command-Command-byte[]-byte[])//protected Connection sendCommand(final Command cmd, final byte[]... args) {
+// RIGHT //	try {
+        connect();
+        Protocol.sendCommand(outputStream, cmd, args);
+        return this;
+// RIGHT //	} catch (JedisConnectionException ex) {
+// RIGHT //	    // Any other exceptions related to connection?
+// RIGHT //	    broken = true;
+// RIGHT //	    throw ex;
+// RIGHT //	}
+// END sendCommand(Command-Command-byte[]-byte[])//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Connection.java
+Different Spacing: false
+Left editions: []
+Right editions: [129, 133, 134, 135, 136, 137]
+Merged body: 
+// START sendCommand(Command-Command)//protected Connection sendCommand(final Command cmd) {
+// RIGHT //	try {
+        connect();
+        Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+        return this;
+// RIGHT //	} catch (JedisConnectionException ex) {
+// RIGHT //	    // Any other exceptions related to connection?
+// RIGHT //	    broken = true;
+// RIGHT //	    throw ex;
+// RIGHT //	}
+// END sendCommand(Command-Command)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditDiffMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Connection.java
+Different Spacing: false
+Left editions: []
+Right editions: [174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 188, 189, 190, 191, 192, 193, 194, 195, 196]
+Merged body: 
+// START connect({FormalParametersInternal})//public void connect() {
+// RIGHT //	if (!isConnected()) {
+// RIGHT //	    try {
+// RIGHT //		socket = new Socket();
+// RIGHT //		// ->@wjw_add
+// RIGHT //		socket.setReuseAddress(true);
+// RIGHT //		socket.setKeepAlive(true); // Will monitor the TCP connection is
+// RIGHT //					   // valid
+// RIGHT //		socket.setTcpNoDelay(true); // Socket buffer Whetherclosed, to
+// RIGHT //					    // ensure timely delivery of data
+// RIGHT //		socket.setSoLinger(true, 0); // Control calls close () method,
+// RIGHT //					     // the underlying socket is closed
+// RIGHT //					     // immediately
+// RIGHT //		// <-@wjw_add
+
+// RIGHT //		socket.connect(new InetSocketAddress(host, port), timeout);
+// RIGHT //		socket.setSoTimeout(timeout);
+// RIGHT //		outputStream = new RedisOutputStream(socket.getOutputStream());
+// RIGHT //		inputStream = new RedisInputStream(socket.getInputStream());
+// RIGHT //	    } catch (IOException ex) {
+// RIGHT //		broken = true;
+// RIGHT //		throw new JedisConnectionException(ex);
+// RIGHT //	    }
+// RIGHT //	}
+// END connect({FormalParametersInternal})//    }
+Has references on the following methods: 
+#HAS_***REFERENCE_#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\Connection.java
+Different Spacing: false
+Left editions: []
+Right editions: [129, 133, 134, 135, 136, 137]
+Merged body: 
+// START sendCommand(Command-Command)//protected Connection sendCommand(final Command cmd) {
+// RIGHT //	try {
+        connect();
+        Protocol.sendCommand(outputStream, cmd, new byte[0][]);
+        return this;
+// RIGHT //	} catch (JedisConnectionException ex) {
+// RIGHT //	    // Any other exceptions related to connection?
+// RIGHT //	    broken = true;
+// RIGHT //	    throw ex;
+// RIGHT //	}
+// END sendCommand(Command-Command)//    }
+Edition adds call: 0
+#HAS_***REFERENCE_#
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_360e2_03c0a\rev_rev_left_360e2-rev_right_03c0a\src\main\java\redis\clients\jedis\TransactionBlock.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setClient(Client-Client)//public void setClient(Client client) {
+	    super.setClient(client);
+// END setClient(Client-Client)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2d93f-18c4a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1e94a-fd23f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_26d1f-0aacd
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\SortedSetCommandsTest.java
+Different Spacing: false
+Left editions: [974, 975, 976, 977, 978, 979, 980, 981, 982]
+Right editions: [972]
+Merged body: 
+// START zscan({FormalParametersInternal})//@Test
+    public void zscan() {
+	jedis.zadd("foo", 1, "a");
+	jedis.zadd("foo", 2, "b");
+
+	ScanResult<Tuple> result = jedis.zscan("foo", SCAN_POINTER_START);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	jedis.zadd(bfoo, 1, ba);
+// LEFT //	jedis.zadd(bfoo, 1, bb);
+// LEFT //	
+// LEFT //	ScanResult<Tuple> bResult = jedis.zscan(bfoo, SCAN_POINTER_START_BINARY);
+// LEFT //
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END zscan({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\SortedSetCommandsTest.java
+Different Spacing: false
+Left editions: [998, 999, 1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010]
+Right editions: [996]
+Merged body: 
+// START zscanMatch({FormalParametersInternal})//@Test
+    public void zscanMatch() {
+	ScanParams params = new ScanParams();
+	params.match("a*");
+
+	jedis.zadd("foo", 2, "b");
+	jedis.zadd("foo", 1, "a");
+	jedis.zadd("foo", 11, "aa");
+	ScanResult<Tuple> result = jedis.zscan("foo", SCAN_POINTER_START, params);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	params = new ScanParams();
+// LEFT //	params.match(bbarstar);
+// LEFT //
+// LEFT //	jedis.zadd(bfoo, 2, bbar1);
+// LEFT //	jedis.zadd(bfoo, 1, bbar2);
+// LEFT //	jedis.zadd(bfoo, 11, bbar3);
+// LEFT //	ScanResult<Tuple> bResult = jedis.zscan(bfoo, SCAN_POINTER_START_BINARY, params);
+// LEFT //
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// LEFT //	
+// END zscanMatch({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\AllKindOfValuesCommandsTest.java
+Different Spacing: false
+Left editions: [608, 609, 610, 611, 612, 613]
+Right editions: [606]
+Merged body: 
+// START scan({FormalParametersInternal})//@Test
+    public void scan() {
+	jedis.set("b", "b");
+	jedis.set("a", "a");
+
+	ScanResult<String> result = jedis.scan(SCAN_POINTER_START);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	ScanResult<byte[]> bResult = jedis.scan(SCAN_POINTER_START_BINARY);
+// LEFT //	
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END scan({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\AllKindOfValuesCommandsTest.java
+Different Spacing: false
+Left editions: [629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641]
+Right editions: [627]
+Merged body: 
+// START scanMatch({FormalParametersInternal})//@Test
+    public void scanMatch() {
+	ScanParams params = new ScanParams();
+	params.match("a*");
+
+	jedis.set("b", "b");
+	jedis.set("a", "a");
+	jedis.set("aa", "aa");
+	ScanResult<String> result = jedis.scan(SCAN_POINTER_START, params);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	params = new ScanParams();
+// LEFT //	params.match(bfoostar);
+// LEFT //
+// LEFT //	jedis.set(bfoo1, bbar);
+// LEFT //	jedis.set(bfoo2, bbar);
+// LEFT //	jedis.set(bfoo3, bbar);
+// LEFT //	
+// LEFT //	ScanResult<byte[]> bResult = jedis.scan(SCAN_POINTER_START_BINARY, params);
+// LEFT //	
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END scanMatch({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\HashesCommandsTest.java
+Different Spacing: false
+Left editions: [349, 350, 351, 352, 353, 354, 355, 356]
+Right editions: [347]
+Merged body: 
+// START hscan({FormalParametersInternal})//@Test
+    public void hscan() {
+	jedis.hset("foo", "b", "b");
+	jedis.hset("foo", "a", "a");
+
+	ScanResult<Map.Entry<String, String>> result = jedis.hscan("foo", SCAN_POINTER_START);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	jedis.hset(bfoo, bbar, bcar);
+// LEFT //	
+// LEFT //	ScanResult<Map.Entry<byte[], byte[]>> bResult = jedis.hscan(bfoo, SCAN_POINTER_START_BINARY);
+// LEFT //	
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END hscan({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\HashesCommandsTest.java
+Different Spacing: false
+Left editions: [373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386]
+Right editions: [371]
+Merged body: 
+// START hscanMatch({FormalParametersInternal})//@Test
+    public void hscanMatch() {
+	ScanParams params = new ScanParams();
+	params.match("a*");
+
+	jedis.hset("foo", "b", "b");
+	jedis.hset("foo", "a", "a");
+	jedis.hset("foo", "aa", "aa");
+	ScanResult<Map.Entry<String, String>> result = jedis.hscan("foo", 
+		SCAN_POINTER_START, params);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	params = new ScanParams();
+// LEFT //	params.match(bbarstar);
+// LEFT //	
+// LEFT //	jedis.hset(bfoo, bbar, bcar);
+// LEFT //	jedis.hset(bfoo, bbar1, bcar);
+// LEFT //	jedis.hset(bfoo, bbar2, bcar);
+// LEFT //	jedis.hset(bfoo, bbar3, bcar);
+// LEFT //	
+// LEFT //	ScanResult<Map.Entry<byte[], byte[]>> bResult = jedis.hscan(bfoo, SCAN_POINTER_START_BINARY, params);
+// LEFT //	
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END hscanMatch({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\SetCommandsTest.java
+Different Spacing: false
+Left editions: [521, 522, 523, 524, 525, 526, 527, 528]
+Right editions: [519]
+Merged body: 
+// START sscan({FormalParametersInternal})//@Test
+    public void sscan() {
+	jedis.sadd("foo", "a", "b");
+
+	ScanResult<String> result = jedis.sscan("foo", SCAN_POINTER_START);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	jedis.sadd(bfoo, ba, bb);
+// LEFT //	
+// LEFT //	ScanResult<byte[]> bResult = jedis.sscan(bfoo, SCAN_POINTER_START_BINARY);
+// LEFT //
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END sscan({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_26d1f_0aacd\rev_rev_left_26d1f-rev_right_0aacd\src\test\java\redis\clients\jedis\tests\commands\SetCommandsTest.java
+Different Spacing: false
+Left editions: [542, 543, 544, 545, 546, 547, 548, 549, 550, 551]
+Right editions: [540]
+Merged body: 
+// START sscanMatch({FormalParametersInternal})//@Test
+    public void sscanMatch() {
+	ScanParams params = new ScanParams();
+	params.match("a*");
+
+	jedis.sadd("foo", "b", "a", "aa");
+	ScanResult<String> result = jedis.sscan("foo", SCAN_POINTER_START, params);
+
+// RIGHT //	assertEquals(SCAN_POINTER_START, result.getCursor());
+	assertFalse(result.getResult().isEmpty());
+// LEFT //	
+// LEFT //	// binary
+// LEFT //	params = new ScanParams();
+// LEFT //	params.match(bbarstar);
+// LEFT //
+// LEFT //	jedis.sadd(bfoo, bbar1, bbar2, bbar3);
+// LEFT //	ScanResult<byte[]> bResult = jedis.sscan(bfoo, SCAN_POINTER_START_BINARY, params);
+// LEFT //
+// LEFT //	assertArrayEquals(SCAN_POINTER_START_BINARY, bResult.getCursorAsBytes());
+// LEFT //	assertFalse(bResult.getResult().isEmpty());
+// END sscanMatch({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5bf4a-92f67
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6d08-5d360
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68a56-51414
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3a3b7-0a094
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_db6d8-ad541
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d3d5d-2eda9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_40974-36810
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8a5eb-4c444
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_36810-15ab9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a3eee-056e6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a4f97-f931a
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_a4f97_f931a\rev_rev_left_a4f97-rev_right_f931a\src\test\java\redis\clients\jedis\tests\JedisPoolTest.java
+Different Spacing: false
+Left editions: [244, 245, 246, 247, 248, 249, 250, 253, 254, 255, 256, 257, 258, 259]
+Right editions: [261]
+Merged body: 
+// START returnResourceShouldResetState({FormalParametersInternal})//@Test
+    public void returnResourceShouldResetState() {
+	GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+	config.setMaxTotal(1);
+	config.setBlockWhenExhausted(false);
+	JedisPool pool = new JedisPool(config, hnp.getHost(), hnp.getPort(),
+		2000, "foobared");
+
+	Jedis jedis = pool.getResource();
+// LEFT //	try {
+// LEFT //	    jedis.set("hello", "jedis");
+// LEFT //	    Transaction t = jedis.multi();
+// LEFT //	    t.set("hello", "world");
+// LEFT //	} finally {
+// LEFT //	    jedis.close();
+// LEFT //	}
+
+	Jedis jedis2 = pool.getResource();
+// LEFT //	try {
+// LEFT //	    assertTrue(jedis == jedis2);
+// LEFT //	    assertEquals("jedis", jedis2.get("hello"));
+// LEFT //	} finally {
+// LEFT //	    jedis2.close();
+// LEFT //	}
+// LEFT //
+	pool.destroy();
+// RIGHT //	assertTrue(pool.isClosed());
+// END returnResourceShouldResetState({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bb9bc-3d7b4
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4224e-bfcec
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_992ae-a3059
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84927-9b824
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53c93-ab2f4
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\test\java\redis\clients\jedis\tests\JedisSentinelPoolTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START setUp({FormalParametersInternal})//@Before
+    public void setUp() throws Exception {
+	sentinels.add(sentinel1.toString());
+	sentinels.add(sentinel2.toString());
+
+	sentinelJedis1 = new Jedis(sentinel1.getHost(), sentinel1.getPort());
+	sentinelJedis2 = new Jedis(sentinel2.getHost(), sentinel2.getPort());
+// END setUp({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\test\java\redis\clients\jedis\tests\JedisSentinelPoolTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START ensureSafeTwiceFailover({FormalParametersInternal})//@Test
+    public void ensureSafeTwiceFailover() throws InterruptedException {
+	JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
+		new GenericObjectPoolConfig(), 1000, "foobared", 2);
+
+	forceFailover(pool);
+	// after failover sentinel needs a bit of time to stabilize before a new failover
+	Thread.sleep(100);
+	forceFailover(pool);
+
+	// you can test failover as much as possible
+// END ensureSafeTwiceFailover({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\test\java\redis\clients\jedis\tests\JedisSentinelPoolTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START forceFailover(JedisSentinelPool-JedisSentinelPool)//private void forceFailover(JedisSentinelPool pool)
+	    throws InterruptedException {
+	HostAndPort oldMaster = pool.getCurrentHostMaster();
+
+	// jedis connection should be master
+	Jedis beforeFailoverJedis = pool.getResource();
+	assertEquals("PONG", beforeFailoverJedis.ping());
+
+	waitForFailover(pool, oldMaster);
+
+	Jedis afterFailoverJedis = pool.getResource();
+	assertEquals("PONG", afterFailoverJedis.ping());
+	assertEquals("foobared", afterFailoverJedis.configGet("requirepass").get(1));
+	assertEquals(2, afterFailoverJedis.getDB().intValue());
+	
+	// returning both connections to the pool should not throw
+	beforeFailoverJedis.close();
+	afterFailoverJedis.close();
+// END forceFailover(JedisSentinelPool-JedisSentinelPool)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\test\java\redis\clients\jedis\tests\JedisSentinelPoolTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START waitForFailover(JedisSentinelPool-JedisSentinelPool-HostAndPort-HostAndPort)//private void waitForFailover(JedisSentinelPool pool, HostAndPort oldMaster)
+	    throws InterruptedException {
+	HostAndPort newMaster = JedisSentinelTestUtil
+		.waitForNewPromotedMaster(MASTER_NAME, sentinelJedis1, sentinelJedis2);
+
+	waitForJedisSentinelPoolRecognizeNewMaster(pool, newMaster);
+// END waitForFailover(JedisSentinelPool-JedisSentinelPool-HostAndPort-HostAndPort)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\test\java\redis\clients\jedis\tests\JedisSentinelPoolTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START waitForJedisSentinelPoolRecognizeNewMaster(JedisSentinelPool-JedisSentinelPool-HostAndPort-HostAndPort)//private void waitForJedisSentinelPoolRecognizeNewMaster(
+	    JedisSentinelPool pool, HostAndPort newMaster)
+	    throws InterruptedException {
+
+	while (true) {
+	    HostAndPort currentHostMaster = pool.getCurrentHostMaster();
+
+	    if (newMaster.equals(currentHostMaster))
+		break;
+
+	    System.out
+		    .println("JedisSentinelPool's master is not yet changed, sleep...");
+
+	    Thread.sleep(100);
+	}
+// END waitForJedisSentinelPoolRecognizeNewMaster(JedisSentinelPool-JedisSentinelPool-HostAndPort-HostAndPort)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\main\java\redis\clients\jedis\JedisSentinelPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START JedisSentinelPool(String-String-Set<String>-Set<String>-GenericObjectPoolConfig-GenericObjectPoolConfig-int-int-String-String-int-int)//public JedisSentinelPool(String masterName, Set<String> sentinels,
+	    final GenericObjectPoolConfig poolConfig, int timeout,
+	    final String password, final int database) {
+	this.poolConfig = poolConfig;
+	this.timeout = timeout;
+	this.password = password;
+	this.database = database;
+
+	HostAndPort master = initSentinels(sentinels, masterName);
+	initPool(master);
+// END JedisSentinelPool(String-String-Set<String>-Set<String>-GenericObjectPoolConfig-GenericObjectPoolConfig-int-int-String-String-int-int)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53c93_ab2f4\rev_rev_left_53c93-rev_right_ab2f4\src\main\java\redis\clients\jedis\JedisSentinelPool.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START initPool(HostAndPort-HostAndPort)//private void initPool(HostAndPort master) {
+	if (!master.equals(currentHostMaster)) {
+	    currentHostMaster = master;
+	    if (factory == null) {
+	        factory = new JedisFactory(master.getHost(), master.getPort(),
+	                                   timeout, password, database);
+	        initPool(poolConfig, factory);
+	    } else {
+	        factory.setHostAndPort(currentHostMaster);
+	        // although we clear the pool, we still have to check the returned object
+	        // in getResource, this call only clears idle instances, not borrowed instances
+	        internalPool.clear();
+	    }
+
+	    log.info("Created JedisPool to master at " + master);
+	}
+// END initPool(HostAndPort-HostAndPort)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_19fc1-fc594
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_19fc1_fc594\rev_rev_left_19fc1-rev_right_fc594\src\main\java\redis\clients\jedis\JedisClusterConnectionHandler.java
+Different Spacing: false
+Left editions: [60]
+Right editions: [66, 72, 78]
+Merged body: 
+// START initializeSlotsCache(Set<HostAndPort>-Set<HostAndPort>)//private void initializeSlotsCache(Set<HostAndPort> startNodes) {
+	for (HostAndPort hostAndPort : startNodes) {
+// LEFT //	    JedisPool jp = new JedisPool(poolConfig, hostAndPort.getHost(),
+		    hostAndPort.getPort());
+
+	    Jedis jedis = null;
+	    try {
+		jedis = jp.getResource();
+// RIGHT //		cache.discoverClusterNodesAndSlots(jedis);
+		break;
+	    } catch (JedisConnectionException e) {
+		// try next nodes
+	    } finally {
+		if (jedis != null) {
+// RIGHT //		    jedis.close();
+		}
+	    }
+	}
+
+	for (HostAndPort node : startNodes) {
+// RIGHT //	    cache.setNodeIfNotExist(node);
+	}
+// END initializeSlotsCache(Set<HostAndPort>-Set<HostAndPort>)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2f18d-e4441
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3b31a-78365
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0f764-53e7d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8e5c3-cc3fe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_69ca4-61f8f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2a36b-2b1cb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e171-9a6d3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3697e-a405c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_67a1d-653d6
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e9cd3-5bed3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_321e5-d7105
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6d5cb-9c296
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7845d-745f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7845d-f7789
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_0601d-6afab
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_34954-3ebc2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a7150-6301f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f7995-a8891
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_f7995_a8891\rev_rev_left_f7995-rev_right_a8891\src\main\java\redis\clients\jedis\BinaryClient.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START pfcount(byte[]-byte[])//public void pfcount(final byte[]...keys) {
+   	sendCommand(PFCOUNT, keys);
+// END pfcount(byte[]-byte[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7eb78-c769a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a170b-8a33a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_f9fb8-076df
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_f9fb8_076df\rev_rev_left_f9fb8-rev_right_076df\src\main\java\redis\clients\jedis\BinaryClient.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START pfcount(byte[]-byte[])//public void pfcount(final byte[]...keys) {
+   	sendCommand(PFCOUNT, keys);
+// END pfcount(byte[]-byte[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_59a13-d6850
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_bba91-87a58
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53e7d-d33bd
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53e7d_d33bd\rev_rev_left_53e7d-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\JedisClusterTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testCloseable({FormalParametersInternal})//@Test
+    public void testCloseable() throws IOException {
+	Set<HostAndPort> jedisClusterNode = new HashSet<HostAndPort>();
+	jedisClusterNode.add(new HostAndPort(nodeInfo1.getHost(), nodeInfo1.getPort()));
+	
+	JedisCluster jc = null;
+	try {
+	    jc = new JedisCluster(jedisClusterNode);
+	    jc.set("51", "foo");
+	} finally {
+	    if (jc != null) {
+		jc.close();
+	    }
+	}
+
+	Iterator<JedisPool> poolIterator = jc.getClusterNodes().values().iterator();
+	while (poolIterator.hasNext()) {
+	    JedisPool pool = poolIterator.next();
+	    try {
+		pool.getResource();
+		fail("JedisCluster's internal pools should be already destroyed");
+	    } catch (JedisConnectionException e) {
+		// ok to go...
+	    }
+	}
+// END testCloseable({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53e7d_d33bd\rev_rev_left_53e7d-rev_right_d33bd\src\main\java\redis\clients\util\JedisClusterCRC16.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START getCRC16(byte[]-byte[])//public static int getCRC16(byte[] bytes) {
+	return getCRC16(bytes, 0, bytes.length);
+// END getCRC16(byte[]-byte[])//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53e7d_d33bd\rev_rev_left_53e7d-rev_right_d33bd\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START JedisCluster(Set<HostAndPort>-Set<HostAndPort>-GenericObjectPoolConfig-GenericObjectPoolConfig)//public JedisCluster(Set<HostAndPort> nodes,
+        final GenericObjectPoolConfig poolConfig) {
+    this(nodes, DEFAULT_TIMEOUT, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+// END JedisCluster(Set<HostAndPort>-Set<HostAndPort>-GenericObjectPoolConfig-GenericObjectPoolConfig)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_53e7d_d33bd\rev_rev_left_53e7d-rev_right_d33bd\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START JedisCluster(Set<HostAndPort>-Set<HostAndPort>-int-int-GenericObjectPoolConfig-GenericObjectPoolConfig)//public JedisCluster(Set<HostAndPort> nodes, int timeout,
+        final GenericObjectPoolConfig poolConfig) {
+    this(nodes, timeout, DEFAULT_MAX_REDIRECTIONS, poolConfig);
+// END JedisCluster(Set<HostAndPort>-Set<HostAndPort>-int-int-GenericObjectPoolConfig-GenericObjectPoolConfig)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_2510e-d33bd
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\PipeliningTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testEval({FormalParametersInternal})//@Test
+    public void testEval() {
+	String script = "return 'success!'";
+
+	Pipeline p = jedis.pipelined();
+	Response<Object> result = p.eval(script);
+	p.sync();
+
+	assertEquals("success!", result.get());
+// END testEval({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\PipeliningTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START testEvalsha({FormalParametersInternal})//@Test
+    public void testEvalsha() {
+	String script = "return 'success!'";
+	String sha1 = jedis.scriptLoad(script);
+
+	assertTrue(jedis.scriptExists(sha1));
+
+	Pipeline p = jedis.pipelined();
+	Response<Object> result = p.evalsha(sha1);
+	p.sync();
+
+	assertEquals("success!", result.get());
+// END testEvalsha({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\commands\ScriptingCommandsTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START evalMultiBulkWithBinaryJedis({FormalParametersInternal})//@SuppressWarnings("unchecked")
+    @Test
+    public void evalMultiBulkWithBinaryJedis() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2],ARGV[3]}";
+	List<byte[]> keys = new ArrayList<byte[]>();
+	keys.add("key1".getBytes());
+	keys.add("key2".getBytes());
+
+	List<byte[]> args = new ArrayList<byte[]>();
+	args.add("first".getBytes());
+	args.add("second".getBytes());
+	args.add("third".getBytes());
+
+	BinaryJedis binaryJedis = new BinaryJedis(hnp.getHost(), hnp.getPort(),
+		500);
+	binaryJedis.connect();
+	binaryJedis.auth("foobared");
+
+	List<byte[]> responses = (List<byte[]>) binaryJedis.eval(
+		script.getBytes(), keys, args);
+	assertEquals(5, responses.size());
+	assertEquals("key1", new String(responses.get(0)));
+	assertEquals("key2", new String(responses.get(1)));
+	assertEquals("first", new String(responses.get(2)));
+	assertEquals("second", new String(responses.get(3)));
+	assertEquals("third", new String(responses.get(4)));
+	
+	binaryJedis.close();
+// END evalMultiBulkWithBinaryJedis({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\commands\ScriptingCommandsTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START evalNestedLists({FormalParametersInternal})//@SuppressWarnings("unchecked")
+    @Test
+    public void evalNestedLists() {
+	String script = "return { {KEYS[1]} , {2} }";
+	List<?> results = (List<?>) jedis.eval(script, 1, "key1");
+
+	assertThat((List<String>) results.get(0), listWithItem("key1"));
+	assertThat((List<Long>) results.get(1), listWithItem(2L));
+// END evalNestedLists({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\commands\ScriptingCommandsTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START scriptLoadBinary({FormalParametersInternal})//@Test
+    public void scriptLoadBinary() {
+	jedis.scriptLoad(SafeEncoder.encode("return redis.call('get','foo')"));
+	byte[][] scripts = new byte[1][];
+	scripts[0] = SafeEncoder.encode("6b1bf486c81ceb7edf3c093f4c48582e38c0e791");
+	List<Long> exists = jedis.scriptExists(scripts);
+	assertEquals(new Long(1), exists.get(0));
+// END scriptLoadBinary({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\commands\ScriptingCommandsTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START scriptEvalReturnNullValues({FormalParametersInternal})//@Test
+    @SuppressWarnings("unchecked")
+    public void scriptEvalReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	
+	List<String> results = (List<String>) jedis.eval(script, 2, "key1", "key2", "1", "2");
+	assertEquals("key1", results.get(0));
+	assertEquals("key2", results.get(1));
+	assertEquals("1", results.get(2));
+	assertEquals("2", results.get(3));
+// END scriptEvalReturnNullValues({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\test\java\redis\clients\jedis\tests\commands\ScriptingCommandsTest.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START scriptEvalShaReturnNullValues({FormalParametersInternal})//@Test
+    @SuppressWarnings("unchecked")
+    public void scriptEvalShaReturnNullValues() {
+	String script = "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}";
+	String sha = jedis.scriptLoad(script);
+	List<String> results = (List<String>) jedis.evalsha(sha, 2, "key1", "key2", "1", "2");
+	assertEquals("key1", results.get(0));
+	assertEquals("key2", results.get(1));
+	assertEquals("1", results.get(2));
+	assertEquals("2", results.get(3));
+// END scriptEvalShaReturnNullValues({FormalParametersInternal})//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_2510e_d33bd\rev_rev_left_2510e-rev_right_d33bd\src\main\java\redis\clients\jedis\BinaryJedis.java
+Different Spacing: true
+Left editions: []
+Right editions: []
+Merged body: 
+// START scriptExists(byte[]-byte[])//public Long scriptExists(byte[] sha1) {
+	byte[][] a = new byte[1][];
+	a[0] = sha1;
+	return scriptExists(a).get(0);
+// END scriptExists(byte[]-byte[])//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_46a34-523cc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_66515-9388a
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_71f22-0e143
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_508d0-7fad9
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3032c-f6ff7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_364c6-7e24e
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_84320-63b9d
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_84320_63b9d\rev_rev_left_84320-rev_right_63b9d\src\main\java\redis\clients\jedis\BinaryJedis.java
+Different Spacing: false
+Left editions: [126]
+Right editions: [110, 111, 112, 113]
+Merged body: 
+// START initializeClientFromURI(URI-URI)//private void initializeClientFromURI(URI uri) {
+// RIGHT //    if(!JedisURIHelper.isValid(uri)) {
+// RIGHT //      throw new InvalidURIException(String.format("Cannot open Redis connection due invalid URI. %s", uri.toString()));
+// RIGHT //    }
+// RIGHT //    
+    client = new Client(uri.getHost(), uri.getPort());
+
+    String password = JedisURIHelper.getPassword(uri);
+    if (password != null) {
+      client.auth(password);
+      client.getStatusCodeReply();
+    }
+
+    int dbIndex = JedisURIHelper.getDBIndex(uri);
+    if (dbIndex > 0) {
+      client.select(dbIndex);
+      client.getStatusCodeReply();
+// LEFT //      client.setDb(dbIndex);
+    }
+// END initializeClientFromURI(URI-URI)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b09a1-ffbca
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53d8d-dcc46
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_43446-cf9a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_b6f06-f4bb2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dc9ba-c8c0c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_8d831-f80b5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_ddaa2-06660
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3937f-5efc8
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_3937f_5efc8\rev_rev_left_3937f-rev_right_5efc8\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1317]
+Right editions: [1310]
+Merged body: 
+// START blpop(String-String)//@Override
+// RIGHT //  @Deprecated
+  public List<String> blpop(final String arg) {
+    return new JedisClusterCommand<List<String>>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public List<String> execute(Jedis connection) {
+        return connection.blpop(arg);
+      }
+// LEFT //    }.run(arg);
+// END blpop(String-String)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_3937f_5efc8\rev_rev_left_3937f-rev_right_5efc8\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1329]
+Right editions: [1322]
+Merged body: 
+// START brpop(String-String)//@Override
+// RIGHT //  @Deprecated
+  public List<String> brpop(final String arg) {
+    return new JedisClusterCommand<List<String>>(connectionHandler, timeout, maxRedirections) {
+      @Override
+      public List<String> execute(Jedis connection) {
+        return connection.brpop(arg);
+      }
+// LEFT //    }.run(arg);
+// END brpop(String-String)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_00faa-b42a8
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d8618-6e6ea
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_c805f-84604
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6e270-7196d
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_d05ac-e8b79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1b8aa-1780b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_7e788-a27d2
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4b237-6db79
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1d328-b556f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_80d28-d1842
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_80d28_d1842\rev_rev_left_80d28-rev_right_d1842\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [1841, 1847]
+Merged body: 
+// START hscan(String-String-String-String)//@Override
+  public ScanResult<Entry<String, String>> hscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<Entry<String, String>>>(connectionHandler,
+        maxRedirections) {
+      @Override
+      public ScanResult<Entry<String, String>> execute(Jedis connection) {
+        return connection.hscan(key, cursor);
+      }
+// RIGHT //    }.run(key);
+// END hscan(String-String-String-String)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_80d28_d1842\rev_rev_left_80d28-rev_right_d1842\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [1853, 1858]
+Merged body: 
+// START sscan(String-String-String-String)//@Override
+  public ScanResult<String> sscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<String>>(connectionHandler, maxRedirections) {
+      @Override
+      public ScanResult<String> execute(Jedis connection) {
+        return connection.sscan(key, cursor);
+      }
+// RIGHT //    }.run(key);
+// END sscan(String-String-String-String)//  }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_80d28_d1842\rev_rev_left_80d28-rev_right_d1842\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: []
+Right editions: [1864, 1869]
+Merged body: 
+// START zscan(String-String-String-String)//@Override
+  public ScanResult<Tuple> zscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<Tuple>>(connectionHandler, maxRedirections) {
+      @Override
+      public ScanResult<Tuple> execute(Jedis connection) {
+        return connection.zscan(key, cursor);
+      }
+// RIGHT //    }.run(key);
+// END zscan(String-String-String-String)//  }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4a9b8-18308
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1314]
+Right editions: [1307, 1309]
+Merged body: 
+// START blpop(String-String)//@Override
+// RIGHT //  @Deprecated
+    public List<String> blpop(final String arg) {
+// RIGHT //    return new JedisClusterCommand<List<String>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.blpop(arg);
+	    }
+// LEFT //	}.run(arg);
+// END blpop(String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1326]
+Right editions: [1319, 1321]
+Merged body: 
+// START brpop(String-String)//@Override
+// RIGHT //  @Deprecated
+    public List<String> brpop(final String arg) {
+// RIGHT //    return new JedisClusterCommand<List<String>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+		return connection.brpop(arg);
+	    }
+// LEFT //	}.run(arg);
+// END brpop(String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1394]
+Right editions: [1387, 1388, 1389]
+Merged body: 
+// START hscan(String-String-String-String)//@Override
+// RIGHT //  public ScanResult<Entry<String, String>> hscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<Entry<String, String>>>(connectionHandler,
+// RIGHT //        maxRedirections) {
+	    @Override
+	    public ScanResult<Entry<String, String>> execute(Jedis connection) {
+		return connection.hscan(key, cursor);
+	    }
+// LEFT //	}.run(key);
+// END hscan(String-String-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1405]
+Right editions: [1400]
+Merged body: 
+// START sscan(String-String-String-String)//@Override
+    public ScanResult<String> sscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<String>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public ScanResult<String> execute(Jedis connection) {
+		return connection.sscan(key, cursor);
+	    }
+// LEFT //	}.run(key);
+// END sscan(String-String-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1416]
+Right editions: [1411]
+Merged body: 
+// START zscan(String-String-String-String)//@Override
+    public ScanResult<Tuple> zscan(final String key, final String cursor) {
+// RIGHT //    return new JedisClusterCommand<ScanResult<Tuple>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public ScanResult<Tuple> execute(Jedis connection) {
+		return connection.zscan(key, cursor);
+	    }
+// LEFT //	}.run(key);
+// END zscan(String-String-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1447, 1449]
+Right editions: [1444]
+Merged body: 
+// START blpop(int-int-String-String)//@Override
+    public List<String> blpop(final int timeout, final String key) {
+// RIGHT //    return new JedisClusterCommand<List<String>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+// LEFT //		return connection.blpop(timeout, key);
+	    }
+// LEFT //	}.run(key);
+// END blpop(int-int-String-String)//    }
+
+#CP_===_CP#
+#CP_===_CP#
+Type: EditSameMC
+File: C:\download\ssmerge\jedis\revisions\rev_4a9b8_18308\rev_rev_left_4a9b8-rev_right_18308\src\main\java\redis\clients\jedis\JedisCluster.java
+Different Spacing: false
+Left editions: [1458, 1460]
+Right editions: [1455]
+Merged body: 
+// START brpop(int-int-String-String)//@Override
+    public List<String> brpop(final int timeout, final String key) {
+// RIGHT //    return new JedisClusterCommand<List<String>>(connectionHandler, maxRedirections) {
+	    @Override
+	    public List<String> execute(Jedis connection) {
+// LEFT //		return connection.brpop(timeout, key);
+	    }
+// LEFT //	}.run(key);
+// END brpop(int-int-String-String)//    }
+
+#CP_===_CP#
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_42b1a-bfc96
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_85584-ca59f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_61d0a-67967
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_60c1b-8851c
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_94c78-e266b
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_999dd-001e1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_68b63-95a11
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6c0f1-338eb
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_eb1a5-ead39
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_df59a-98bfe
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e6a2c-17164
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_6366f-77921
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_4fad7-bc7a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e0108-655db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_adeec-454f7
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_e789f-eac04
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_129ed-f5444
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9e95c-b5407
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_3923a-adb1f
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_a6427-74258
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_1e5e1-48170
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_306c5-3facc
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_dcf38-3e595
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_5f177-556f5
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_53ee1-e88f1
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_08279-ac9a3
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_82d5a-fb9db
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_95dd9-bbce0
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_76b14-03b74
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_57653-9a201
+#MS_XXX_MS#
+#MS_XXX_MS#
+Merge scenario: rev_9c7de-02f75
+#MS_XXX_MS#

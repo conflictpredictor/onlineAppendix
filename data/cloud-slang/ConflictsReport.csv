@@ -1,0 +1,3013 @@
+=========================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_37165_473ab\rev_37165-473ab.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_bd6f2_7de85\rev_bd6f2-7de85.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_630b0_72a24\rev_630b0-72a24.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_0f820_1ec67\rev_0f820-1ec67.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ce574_4a3b2\rev_ce574-4a3b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a2276_63b7b\rev_a2276-63b7b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_c5151-9a788.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012487\fstmerge_var1_7497247287920096250
+protected Input transformSingleInput(Object rawInput) {
+		// - some_input
+		// this is our default behaviour that if the user specifies only a key, the key is also the ref we look for
+		if(rawInput instanceof String) {
+			String inputName = (String)rawInput;
+			return new Input(inputName, inputName);
+		} else if(rawInput instanceof Map) {
+			Map.Entry<String, ?> entry = ((Map<String, ?>)rawInput).entrySet().iterator().next();
+			if(entry.getValue() instanceof Map) {
+				// - some_inputs:
+				// property1: value1
+				// property2: value2
+				// this is the verbose way of defining inputs with all of the properties available
+				return createPropInput((Map.Entry<String, Map<String, Serializable>>)entry);
+			}
+			// - some_input: some_expression
+			// the value of the input is an expression we need to evaluate at runtime
+			return new Input(entry.getKey(), entry.getValue().toString());
+		}
+		throw new RuntimeException("Could not transform Input : " + rawInput);
+	}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012487\fstmerge_base_3571168645068791437
+protected Input transformSingleInput(Object rawInput){
+        //- some_input
+        //this is our default behavior that if the user specifies only a key, the key is also the ref we look for
+        if (rawInput instanceof String) {
+            return (createRefInput((String) rawInput));
+        } else if (rawInput instanceof Map) {
+            Map.Entry entry = (Map.Entry) ((Map) rawInput).entrySet().iterator().next();
+            // - some_inputs:
+            //      property1: value1
+            //      property2: value2
+            // this is the verbose way of defining inputs with all of the properties available
+            if (entry.getValue() instanceof Map) {
+                return (createPropInput(entry));
+            }
+            // - some_input: some_expression
+            // the value of the input is an expression we need to evaluate at runtime
+            else {
+                return (createInlineExpressionInput(entry));
+            }
+        }
+        throw new RuntimeException("Could not transform Input : "+ rawInput);
+    }
+=======
+protected Input transformSingleInput(Object rawInput) {
+        /*
+            this is our default behavior that if the user specifies only a key, the key is also the ref we look for
+            - some_input
+        */
+        if (rawInput instanceof String) {
+            return (createRefInput((String) rawInput));
+        } else if (rawInput instanceof Map) {
+            Map.Entry entry = (Map.Entry) ((Map) rawInput).entrySet().iterator().next();
+            /*
+                this is the verbose way of defining inputs with all of the properties available
+                - some_inputs:
+                     property1: value1
+                     property2: value2
+            */
+            if (entry.getValue() instanceof Map) {
+                return (createPropInput(entry));
+            }
+            /*
+                the value of the input is an expression we need to evaluate at runtime
+                - some_input: some_expression
+            */
+            else {
+                return (createInlineExpressionInput(entry));
+            }
+        }
+        throw new RuntimeException("Could not transform Input : " + rawInput);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012487\fstmerge_var2_6166457820941742446
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-lang-compiler\src\main\java\org\openscore\lang\compiler\transformers\AbstractInputsTransformer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012587\fstmerge_var1_3359266202651054832
+private static Input createPropInput(Map.Entry<String, Map<String, Serializable>> entry) {
+		Map<String, Serializable> props = entry.getValue();
+		boolean required = !props.containsKey(SlangTextualKeys.REQUIRED_KEY) || ((boolean)props.get(SlangTextualKeys.REQUIRED_KEY));// default is required=true
+		boolean encrypted = props.containsKey(SlangTextualKeys.ENCRYPTED_KEY) && ((boolean)props.get(SlangTextualKeys.ENCRYPTED_KEY));
+		boolean override = props.containsKey(SlangTextualKeys.OVERRIDE_KEY) && ((boolean)props.get(SlangTextualKeys.OVERRIDE_KEY));
+		String inputName = entry.getKey();
+		String expression = props.containsKey(SlangTextualKeys.DEFAULT_KEY) ? props.get(SlangTextualKeys.DEFAULT_KEY).toString() : inputName;
+		String variableName = (String)props.get(SlangTextualKeys.VARIABLE_KEY);
+		return new Input(inputName, expression, encrypted, required, override, variableName);
+	}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012587\fstmerge_base_5487246300335512017
+private Input createPropInput(Map.Entry<String, Map<String, Serializable>> entry) {
+        Map<String, Serializable> prop = entry.getValue();
+        boolean required = !prop.containsKey(SlangTextualKeys.REQUIRED_KEY) || ((boolean) prop.get(SlangTextualKeys.REQUIRED_KEY));//default is required=true
+        boolean encrypted = prop.containsKey(SlangTextualKeys.ENCRYPTED_KEY) && ((boolean) prop.get(SlangTextualKeys.ENCRYPTED_KEY));
+        boolean override = prop.containsKey(SlangTextualKeys.OVERRIDE_KEY) && ((boolean) prop.get(SlangTextualKeys.OVERRIDE_KEY));
+
+        String expressionProp = prop.containsKey(SlangTextualKeys.DEFAULT_KEY) ? (prop.get(SlangTextualKeys.DEFAULT_KEY).toString()) : null;
+
+        return createPropInput(entry.getKey(), required, encrypted, expressionProp, override);
+    }
+=======
+private Input createPropInput(Map.Entry<String, Map<String, Serializable>> entry) {
+        Map<String, Serializable> prop = entry.getValue();
+        boolean required = !prop.containsKey(REQUIRED_KEY) || ((boolean) prop.get(REQUIRED_KEY)); // default is required=true
+        boolean encrypted = prop.containsKey(ENCRYPTED_KEY) && ((boolean) prop.get(ENCRYPTED_KEY));
+        boolean override = prop.containsKey(OVERRIDE_KEY) && ((boolean) prop.get(OVERRIDE_KEY));
+
+        String expressionProp = prop.containsKey(DEFAULT_KEY) ? prop.get(DEFAULT_KEY).toString() : null;
+
+        List<String> knownKeys = Arrays.asList(REQUIRED_KEY, ENCRYPTED_KEY, OVERRIDE_KEY, DEFAULT_KEY);
+
+        for (String key : prop.keySet()){
+            if (!knownKeys.contains(key)) {
+                logger.warn("key: " + key + " in input: " + entry.getKey() + " is not a known property");
+            }
+        }
+
+        return createPropInput(entry.getKey(), required, encrypted, expressionProp, override);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012587\fstmerge_var2_5319415313343434543
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-lang-compiler\src\main\java\org\openscore\lang\compiler\transformers\AbstractInputsTransformer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 1
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012697\fstmerge_var1_8362763397166733551
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012697\fstmerge_base_5398950356484610934
+private Input createPropInput(String inputName, boolean required,boolean encrypted, String expression,
+                                  boolean override){
+        if(expression == null) {
+            expression = inputName ;
+        }
+        return new Input(inputName, expression, encrypted, required, override);
+    }
+=======
+private Input createPropInput(String inputName, boolean required, boolean encrypted, String expression,
+                                  boolean override
+    ) {
+        if (expression == null) {
+            expression = inputName;
+        }
+        return new Input(inputName, expression, encrypted, required, override);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178012697\fstmerge_var2_7447005818988367136
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-lang-compiler\src\main\java\org\openscore\lang\compiler\transformers\AbstractInputsTransformer.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+        Validate.notEmpty(executableRawData, "Executable data for: " + execName + " is empty");
+        Validate.notNull(parsedSlang, "Slang source for " + execName + " is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(SlangTextualKeys.INPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(SlangTextualKeys.OUTPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(SlangTextualKeys.RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178015394\fstmerge_var1_7364313878810803131
+        resolveVariables(inputs, imports);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178015394\fstmerge_base_2941620573599690592
+
+=======
+        Map<String, SlangFileType> dependencies;
+
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178015394\fstmerge_var2_5494718900937806211
+        switch (parsedSlang.getType()) {
+            case FLOW:
+                @SuppressWarnings("unchecked") LinkedHashMap<String, Map<String, Object>> workFlowRawData =
+                        (LinkedHashMap<String, Map<String, Object>>) executableRawData.get(SlangTextualKeys.WORKFLOW_KEY);
+                if (MapUtils.isEmpty(workFlowRawData)) {
+                    throw new RuntimeException("Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+                @SuppressWarnings("unchecked") LinkedHashMap<String, Map<String, Object>> onFailureData =
+                        (LinkedHashMap) workFlowRawData.remove(SlangTextualKeys.ON_FAILURE_KEY);
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+                //todo: add sys vars dependencies?
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATIONS:
+                @SuppressWarnings("unchecked") Map<String, Object> actionRawData = (Map<String, Object>) executableRawData.get(SlangTextualKeys.ACTION_KEY);
+                if (MapUtils.isEmpty(actionRawData)) {
+                    throw new RuntimeException("Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+                //todo: add sys vars dependencies?
+                dependencies = new HashMap<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+                throw new RuntimeException("Source: " + parsedSlang.getName() + " is not of flow type or operations");
+        }
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-lang-compiler\src\main\java\org\openscore\lang\compiler\utils\ExecutableBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+    public void testDataFlow() throws Exception {
+        URI resource = getClass().getResource("/yaml/system-flows/data_flow.yaml").toURI();
+        URI operations = getClass().getResource("/yaml/system-flows/data_flow_operations.yaml").toURI();
+
+        SlangSource dep = SlangSource.fromFile(operations);
+        Set<SlangSource> path = Sets.newHashSet(dep);
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+        userInputs.put("myMessage", "hello world");
+        userInputs.put("tryToChangeMessage", "changed");
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178056134\fstmerge_var1_4514634760326961545
+        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs, null);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178056134\fstmerge_base_630608678530886221
+        Map<String, StepData> tasks = triggerWithData(compilationArtifact, userInputs);
+=======
+        Map<String, StepData> steps = triggerWithData(compilationArtifact, userInputs);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513178056134\fstmerge_var2_9217473070181221428
+
+        Assert.assertEquals(ScoreLangConstants.SUCCESS_RESULT, steps.get(EXEC_START_PATH).getResult());
+        Assert.assertEquals(ScoreLangConstants.SUCCESS_RESULT, steps.get(FIRST_STEP_PATH).getResult());
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5151_9a788\rev_rev_left_c5151-rev_right_9a788\score-language-tests\src\test\java\org\openscore\lang\systemtests\flows\DataFlowTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d83ef_1dfa4\rev_d83ef-1dfa4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c8208_8c01a\rev_c8208-8c01a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1aa49_ef09d\rev_1aa49-ef09d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ef09d_14108\rev_ef09d-14108.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a3fa0_3a88d\rev_a3fa0-3a88d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f9568_792a5\rev_f9568-792a5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5b177_4c045\rev_5b177-4c045.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_3f4d4_3bac8\rev_3f4d4-3bac8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_abbb1_21cb9\rev_abbb1-21cb9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8d5d7_28886\rev_8d5d7-28886.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_68694_92151\rev_68694-92151.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d3924_37f70\rev_d3924-37f70.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e2a46_b4c6e\rev_e2a46-b4c6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_86bf2_f0597\rev_86bf2-f0597.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_df032_f0597\rev_df032-f0597.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f0597_cb515\rev_f0597-cb515.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_53439_4c625\rev_53439-4c625.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_8e9c5-13adf.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+public Type getType() {
+        if(flow != null) return Type.FLOW;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381499\fstmerge_var1_4474236758961450971
+        if(variables != null) return Type.VARIABLES;
+        if(operations != null) return Type.OPERATIONS;
+        throw new RuntimeException("Source " + name + " has no " + Type.FLOW.key() + "/" + Type.OPERATIONS.key() + "/" + Type.VARIABLES.key +" property");
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381499\fstmerge_base_676011589508759463
+        if(variables != null) return Type.VARIABLES;
+        return Type.OPERATIONS;
+=======
+        if(system_properties != null) return Type.SYSTEM_PROPERTIES;
+        return Type.OPERATIONS;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381499\fstmerge_var2_7612323152560131415
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_rev_left_8e9c5-rev_right_13adf\score-lang-compiler\src\main\java\org\openscore\lang\compiler\model\ParsedSlang.java
+Conflict type: EditSameEnumConst
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381591\fstmerge_var1_793706840746585537
+VARIABLES("variables")
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381591\fstmerge_base_2924395214100288696
+VARIABLES
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513179381591\fstmerge_var2_2279467352258188527
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8e9c5_13adf\rev_rev_left_8e9c5-rev_right_13adf\score-lang-compiler\src\main\java\org\openscore\lang\compiler\model\ParsedSlang.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b4b06_3d79c\rev_b4b06-3d79c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_db6af_3d79c\rev_db6af-3d79c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_3d79c_db6af\rev_3d79c-db6af.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_90d93_bd916\rev_90d93-bd916.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9b6fe_7bbb8\rev_9b6fe-7bbb8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9f4dd_1b0ea\rev_9f4dd-1b0ea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_67166_1b0ea\rev_67166-1b0ea.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f9876_ff13b\rev_f9876-ff13b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_3b70c_f2663\rev_3b70c-f2663.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7be4d_9340e\rev_7be4d-9340e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9340e_434fd\rev_9340e-434fd.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8cbf1_c9f44\rev_8cbf1-c9f44.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d8bb8_b886e\rev_d8bb8-b886e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b886e_58913\rev_b886e-58913.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_05ac1_ea2f3\rev_05ac1-ea2f3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ea2f3_9cfeb\rev_ea2f3-9cfeb.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7aab8_f82a8\rev_7aab8-f82a8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_3bf62_228c9\rev_3bf62-228c9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8be67_4bca3\rev_8be67-4bca3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_11e1a_0dd3e\rev_11e1a-0dd3e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_08c95_0dd3e\rev_08c95-0dd3e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a22e0_17f3c\rev_a22e0-17f3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_0dd3e_6133b\rev_0dd3e-6133b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_55f22_8f0b1\rev_55f22-8f0b1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_88bd7_8f0b1\rev_88bd7-8f0b1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f6ae3_8f0b1\rev_f6ae3-8f0b1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_38199_8f0b1\rev_38199-8f0b1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513180694048\fstmerge_var1_7125677490675537447
+@Override
+    public CompilationArtifact compile(SlangSource source, String operationName, Set<SlangSource> path) {
+
+        Executable executable = transformToExecutable(source, operationName);
+
+        Map<String, Executable> filteredDependencies = new HashMap<>();
+        //handle dependencies only if the file has imports
+        boolean hasDependencies = MapUtils.isNotEmpty(executable.getDependencies())
+                && executable.getType().equals(SlangTextualKeys.FLOW_TYPE);
+        if (hasDependencies) {
+            Validate.notEmpty(path, "Source " + source.getName() + " has dependencies but no path was given to the compiler");
+            Validate.noNullElements(path, "Source " + source.getName() + " has empty dependencies");
+
+            //also transform all of the files in the given path to model objects
+            Map<String, Executable> pathExecutables = transformDependencies(path);
+
+            //add the current executable since a dependency can require it
+            List<Executable> availableExecutables = new ArrayList<>(pathExecutables.values());
+            availableExecutables.add(executable);
+
+            //then we match the references to the actual dependencies
+            filteredDependencies = dependenciesHelper.matchReferences(executable, availableExecutables);
+        }
+
+        //next, create an execution plan for the required executable
+        ExecutionPlan executionPlan = compileToExecutionPlan(executable);
+
+        //and also create execution plans for all other dependencies
+        Map<String, ExecutionPlan> dependencies = convertMap(filteredDependencies, new Converter<Executable, ExecutionPlan>() {
+            @Override
+            public ExecutionPlan convert(Executable compiledExecutable) {
+                return compileToExecutionPlan(compiledExecutable);
+            }
+        });
+
+        return new CompilationArtifact(executionPlan, dependencies, executable.getInputs());
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513180694048\fstmerge_base_3354318171108097394
+@Override
+    public CompilationArtifact compile(SlangSource source, String operationName, Set<SlangSource> path) {
+
+        Executable executable = transformToExecutable(source, operationName);
+
+        Map<String, Executable> filteredDependencies = new HashMap<>();
+        //we handle dependencies only if the file has imports
+        boolean hasDependencies = MapUtils.isNotEmpty(executable.getDependencies())
+                && executable.getType().equals(SlangTextualKeys.FLOW_TYPE);
+        if (hasDependencies) {
+            Validate.notEmpty(path, "Source " + source.getName() + " has dependencies but no path was given to the compiler");
+            Validate.noNullElements(path, "Source " + source.getName() + " has empty dependencies");
+
+            //we transform also all of the files in the given path to model objects
+            Map<String, Executable> pathExecutables = transformDependencies(path);
+
+            //we add the current executable since a dependency can require it
+            List<Executable> availableExecutables = new ArrayList<>(pathExecutables.values());
+            availableExecutables.add(executable);
+
+            //than we match the references to the actual dependencies
+            filteredDependencies = dependenciesHelper.matchReferences(executable, availableExecutables);
+        }
+
+        //next we create an execution plan for the required executable
+        ExecutionPlan executionPlan = compileToExecutionPlan(executable);
+
+        //and also create execution plans for all other dependencies
+        Map<String, ExecutionPlan> dependencies = convertMap(filteredDependencies, new Converter<Executable, ExecutionPlan>() {
+            @Override
+            public ExecutionPlan convert(Executable compiledExecutable) {
+                return compileToExecutionPlan(compiledExecutable);
+            }
+        });
+
+        return new CompilationArtifact(executionPlan, dependencies, executable.getInputs());
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513180694048\fstmerge_var2_5920650864714494310
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_38199_8f0b1\rev_rev_left_38199-rev_right_8f0b1\score-lang-compiler\src\main\java\org\openscore\lang\compiler\SlangCompilerImpl.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f9c0c_f57e9\rev_f9c0c-f57e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b5951_f57e9\rev_b5951-f57e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c708a_f57e9\rev_c708a-f57e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d0ab1_f57e9\rev_d0ab1-f57e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f57e9_56bb2\rev_f57e9-56bb2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b9df5_5b45a\rev_b9df5-5b45a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_6ef6d-5b45a.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@PostConstruct
+    public void initScopedTransformersAndKeys() {
+        //executable transformers
+        preExecTransformers = filterTransformers(Scope.BEFORE_EXECUTABLE);
+        postExecTransformers = filterTransformers(Scope.AFTER_EXECUTABLE);
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181008664\fstmerge_var1_2667970335234677159
+        //action transformers
+        actionTransformers = filterTransformers(Scope.ACTION);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181008664\fstmerge_base_1658588107631983820
+        //action transformers and keys
+        actionTransformers = filterTransformers(Transformer.Scope.ACTION);
+=======
+        //action transformers and keys
+        actionTransformers = filterTransformers(Transformer.Scope.ACTION);
+        //action keys excluding each other
+        actionTransformerConstraintGroups = Arrays.asList(Arrays.asList(ScoreLangConstants.PYTHON_SCRIPT_KEY, SlangTextualKeys.JAVA_ACTION));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181008664\fstmerge_var2_8767215498908354773
+
+        //task transformers
+        preTaskTransformers = filterTransformers(Scope.BEFORE_TASK);
+        postTaskTransformers = filterTransformers(Scope.AFTER_TASK);
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181058976\fstmerge_var1_588554570322796514
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181058976\fstmerge_base_830481394136491401
+public void beginTask(@Param(TASK_INPUTS_KEY) List<Input> taskInputs,
+                          @Param(RUN_ENV) RunEnvironment runEnv,
+                          @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                          @Param(NODE_NAME_KEY) String nodeName,
+                          @Param(ExecutionParametersConsts.RUNNING_EXECUTION_PLAN_ID) Long RUNNING_EXECUTION_PLAN_ID,
+                          @Param(NEXT_STEP_ID_KEY) Long nextStepId,
+                          @Param(REF_ID) String refId) {
+
+        runEnv.getExecutionPath().forward();
+        runEnv.removeCallArguments();
+        runEnv.removeReturnValues();
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        Map<String, Serializable> operationArguments = inputsBinding.bindInputs(taskInputs, flowContext, runEnv.getSystemProperties());
+
+        //todo: hook
+
+        sendBindingInputsEvent(taskInputs, operationArguments, runEnv, executionRuntimeServices, "Task inputs resolved",
+                nodeName, LanguageEventData.levelName.TASK_NAME);
+
+        updateCallArgumentsAndPushContextToStack(runEnv, flowContext, operationArguments);
+
+        // request the score engine to switch to the execution plan of the given ref
+        requestSwitchToRefExecutableExecutionPlan(runEnv, executionRuntimeServices, RUNNING_EXECUTION_PLAN_ID, refId, nextStepId);
+
+        // We set the start step of the given ref as the next step to execute (in the new running execution plan that will be set)
+        runEnv.putNextStepPosition(executionRuntimeServices.getSubFlowBeginStep(refId));
+
+    }
+=======
+public void beginTask(@Param(TASK_INPUTS_KEY) List<Input> taskInputs,
+                          @Param(RUN_ENV) RunEnvironment runEnv,
+                          @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                          @Param(NODE_NAME_KEY) String nodeName,
+                          @Param(ExecutionParametersConsts.RUNNING_EXECUTION_PLAN_ID) Long RUNNING_EXECUTION_PLAN_ID,
+                          @Param(NEXT_STEP_ID_KEY) Long nextStepId,
+                          @Param(REF_ID) String refId) {
+
+        runEnv.getExecutionPath().forward();
+        runEnv.removeCallArguments();
+        runEnv.removeReturnValues();
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        Map<String, Serializable> operationArguments = inputsBinding.bindInputs(taskInputs, flowContext, runEnv.getSystemProperties());
+
+        //todo: hook
+
+        sendBindingInputsEvent(taskInputs, operationArguments, runEnv, executionRuntimeServices, "Task inputs resolved",
+                nodeName, LanguageEventData.levelName.TASK_NAME);
+
+        updateCallArgumentsAndPushContextToStack(runEnv, flowContext, operationArguments);
+
+        // request the score engine to switch to the execution plan of the given ref
+        requestSwitchToRefExecutableExecutionPlan(runEnv, executionRuntimeServices, RUNNING_EXECUTION_PLAN_ID, refId, nextStepId);
+
+        // set the start step of the given ref as the next step to execute (in the new running execution plan that will be set)
+        runEnv.putNextStepPosition(executionRuntimeServices.getSubFlowBeginStep(refId));
+
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181058976\fstmerge_var2_2755539231436943313
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\TaskSteps.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181059071\fstmerge_var1_6183013457488179988
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181059071\fstmerge_base_6335640794442269494
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        ReturnValues executableReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        Map<String, String> publishValues = outputsBinding.bindOutputs(null, executableReturnValues.getOutputs(), taskPublishValues);
+
+        flowContext.putAll(publishValues);
+
+        //todo: hook
+
+		// set the position of the next step - for the use of the navigation
+		// Find in the navigation values the correct next step position, according to the operation result, and set it
+		ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+		if(navigation == null) {
+            // We should always have the executable response mapped to a navigation by the task. If not, this is an error
+            throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+        }
+
+        Long nextPosition = navigation.getNextStepId();
+        String presetResult = navigation.getPresetResult();
+		runEnv.putNextStepPosition(nextPosition);
+
+		HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+		for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+			outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+		}
+
+		ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+		runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        runEnv.getStack().pushContext(flowContext);
+    }
+=======
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        ReturnValues executableReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        Map<String, String> publishValues = outputsBinding.bindOutputs(null, executableReturnValues.getOutputs(), taskPublishValues);
+
+        flowContext.putAll(publishValues);
+
+        //todo: hook
+
+		// set the position of the next step - for the use of the navigation
+		// find in the navigation values the correct next step position, according to the operation result, and set it
+		ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+		if(navigation == null) {
+            // should always have the executable response mapped to a navigation by the task, if not, it is an error
+            throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+        }
+
+        Long nextPosition = navigation.getNextStepId();
+        String presetResult = navigation.getPresetResult();
+		runEnv.putNextStepPosition(nextPosition);
+
+		HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+		for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+			outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+		}
+
+		ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+		runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        runEnv.getStack().pushContext(flowContext);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181059071\fstmerge_var2_7646602468595419661
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_6ef6d_5b45a\rev_rev_left_6ef6d-rev_right_5b45a\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\TaskSteps.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_3da93_5b45a\rev_3da93-5b45a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_bfa15_1e472\rev_bfa15-1e472.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_fe4a0_1e472\rev_fe4a0-1e472.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_56b60_1e472\rev_56b60-1e472.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_0a4bf_2b3e7\rev_0a4bf-2b3e7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5b5a2_2b3e7\rev_5b5a2-2b3e7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c8666_1c865\rev_c8666-1c865.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181461605\fstmerge_var1_3333168856235497749
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181461605\fstmerge_base_2856003838541806027
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        ReturnValues executableReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        Map<String, String> publishValues = outputsBinding.bindOutputs(null, executableReturnValues.getOutputs(), taskPublishValues);
+
+        flowContext.putAll(publishValues);
+
+        //todo: hook
+
+		// set the position of the next step - for the use of the navigation
+		// find in the navigation values the correct next step position, according to the operation result, and set it
+		ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+		if(navigation == null) {
+            // should always have the executable response mapped to a navigation by the task, if not, it is an error
+            throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+        }
+
+        Long nextPosition = navigation.getNextStepId();
+        String presetResult = navigation.getPresetResult();
+		runEnv.putNextStepPosition(nextPosition);
+
+		HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+		for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+			outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+		}
+
+		ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+		runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        runEnv.getStack().pushContext(flowContext);
+    }
+=======
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        ReturnValues executableReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        Map<String, String> publishValues = outputsBinding.bindOutputs(flowContext, executableReturnValues.getOutputs(), taskPublishValues);
+
+        flowContext.putAll(publishValues);
+
+        //todo: hook
+
+		// set the position of the next step - for the use of the navigation
+		// find in the navigation values the correct next step position, according to the operation result, and set it
+		ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+		if(navigation == null) {
+            // should always have the executable response mapped to a navigation by the task, if not, it is an error
+            throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+        }
+
+        Long nextPosition = navigation.getNextStepId();
+        String presetResult = navigation.getPresetResult();
+		runEnv.putNextStepPosition(nextPosition);
+
+		HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+		for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+			outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+		}
+
+		ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+		runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        runEnv.getStack().pushContext(flowContext);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181461605\fstmerge_var2_6561237528860304430
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c8666_1c865\rev_rev_left_c8666-rev_right_1c865\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\TaskSteps.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1515d_8b7f2\rev_1515d-8b7f2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c5e2d_86945\rev_c5e2d-86945.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181504327\fstmerge_var1_4869767231801016909
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181504327\fstmerge_base_5210393885490814603
+public CompilationArtifact compile(String filePath, String opName, List<String> dependencies) throws IOException {
+        Validate.notNull(filePath, "filePath can not be null");
+
+        Set<SlangSource> depsSources = new HashSet<>();
+        File file = new File(filePath);
+        Validate.isTrue(file.isFile(), "filePath must lead to a file");
+
+        if (dependencies == null || dependencies.isEmpty()) {
+            dependencies = Lists.newArrayList(file.getParent()); //default behavior is taking the parent dir
+        }
+
+        for (String dependency:dependencies) {
+            Collection<File> dependenciesFiles = FileUtils.listFiles(new File(dependency), SLANG_FILE_EXTENSIONS, true);
+            depsSources.addAll(convert(dependenciesFiles, new Converter<File, SlangSource>() {
+                @Override
+                public SlangSource convert(File from) {
+                    return fromFile(from);
+                }
+            }));
+        }
+
+        try {
+            //todo - support compile of op too?
+            return slang.compile(fromFile(file), depsSources);
+        } catch (Exception e) {
+            logger.error("Failed compilation for file : "+file.getName() + " ,Exception is : " + e.getMessage());
+            throw e;
+        }
+    }
+=======
+public CompilationArtifact compile(String filePath, String opName, List<String> dependencies) throws IOException {
+        Validate.notNull(filePath, "File path can not be null");
+
+        Set<SlangSource> depsSources = new HashSet<>();
+        File file = new File(filePath);
+        Validate.isTrue(file.isFile(), "File: " + file.getName() + " was not found");
+
+        if (dependencies == null || dependencies.isEmpty()) {
+            dependencies = Lists.newArrayList(file.getParent()); //default behavior is taking the parent dir
+        }
+
+        for (String dependency:dependencies) {
+            Collection<File> dependenciesFiles = FileUtils.listFiles(new File(dependency), SLANG_FILE_EXTENSIONS, true);
+            depsSources.addAll(convert(dependenciesFiles, new Converter<File, SlangSource>() {
+                @Override
+                public SlangSource convert(File from) {
+                    return fromFile(from);
+                }
+            }));
+        }
+
+        try {
+            //todo - support compile of op too?
+            return slang.compile(fromFile(file), depsSources);
+        } catch (Exception e) {
+            logger.error("Failed compilation for file : "+file.getName() + " ,Exception is : " + e.getMessage());
+            throw e;
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181504327\fstmerge_var2_8290895937058880237
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c5e2d_86945\rev_rev_left_c5e2d-rev_right_86945\score-lang-cli\src\main\java\org\openscore\lang\cli\utils\CompilerHelperImpl.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8caa3_eaa9d\rev_8caa3-eaa9d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_289a0_37834\rev_289a0-37834.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_75bc5_70f37\rev_75bc5-70f37.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181770753\fstmerge_var1_4934556900045563508
+@SafeVarargs
+	private final void compileAndRunSimpleFlow(Map.Entry<String, ? extends Serializable>... inputs) throws Exception {
+		URI flow = getClass().getResource("/yaml/simple_flow.yaml").toURI();
+		URI operations1 = getClass().getResource("/yaml/get_time_zone.sl").toURI();
+		URI operations2 = getClass().getResource("/yaml/comopute_daylight_time_zone.sl").toURI();
+		Set<SlangSource> path = Sets.newHashSet(SlangSource.fromFile(operations1), SlangSource.fromFile(operations2));
+		CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(flow), path);
+        Assert.assertEquals("the system properties size is not as expected", 3, compilationArtifact.getSystemProperties().size());
+		HashMap<String, Serializable> userInputs = new HashMap<>();
+		for(Entry<String, ? extends Serializable> input : inputs) {
+			userInputs.put(input.getKey(), input.getValue());
+		}
+		Map<String, Serializable> systemProperties = new HashMap<>();
+		systemProperties.put("user.sys.props.host", "localhost");
+		systemProperties.put("user.sys.props.port", 22);
+		systemProperties.put("user.sys.props.alla", "balla");
+		ScoreEvent event = trigger(compilationArtifact, userInputs, systemProperties);
+		Assert.assertEquals(ScoreLangConstants.EVENT_EXECUTION_FINISHED, event.getEventType());
+	}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181770753\fstmerge_base_1803218538709092475
+@SafeVarargs
+	private final void compileAndRunSimpleFlow(Map.Entry<String, ? extends Serializable>... inputs) throws Exception {
+		URI flow = getClass().getResource("/yaml/simple_flow.yaml").toURI();
+		URI operations1 = getClass().getResource("/yaml/get_time_zone.sl").toURI();
+        URI operations2 = getClass().getResource("/yaml/comopute_daylight_time_zone.sl").toURI();
+		URI systemProperties = getClass().getResource("/yaml/system_properties.yaml").toURI();
+		SlangSource systemPropertiesSource = SlangSource.fromFile(systemProperties);
+        Set<SlangSource> path = Sets.newHashSet(SlangSource.fromFile(operations1), SlangSource.fromFile(operations2));
+		CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(flow), path);
+		HashMap<String, Serializable> userInputs = new HashMap<>();
+        for (Entry<String, ? extends Serializable> input : inputs) {
+            userInputs.put(input.getKey(), input.getValue());
+        }
+		ScoreEvent event = trigger(compilationArtifact, userInputs, slang.loadSystemProperties(systemPropertiesSource));
+		Assert.assertEquals(ScoreLangConstants.EVENT_EXECUTION_FINISHED, event.getEventType());
+	}
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181770753\fstmerge_var2_8237640544495362774
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_75bc5_70f37\rev_rev_left_75bc5-rev_right_70f37\score-language-tests\src\test\java\org\openscore\lang\systemtests\SimpleFlowTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_70f37_f2424\rev_70f37-f2424.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_25f02_b272b\rev_25f02-b272b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_e0874-7679c.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+private Task compileTask(String taskName, Map<String, Object> taskRawData, String defaultSuccess,
+                                     Map<String, String> imports, String defaultFailure) {
+
+        if (MapUtils.isEmpty(taskRawData)) {
+            throw new RuntimeException("Task: " + taskName + " has no data");
+        }
+
+        Map<String, Serializable> preTaskData = new HashMap<>();
+        Map<String, Serializable> postTaskData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(taskName, taskRawData, ListUtils.union(preTaskTransformers, postTaskTransformers), TaskAdditionalKeyWords, null);
+
+        try {
+            preTaskData.putAll(transformersHandler.runTransformers(taskRawData, preTaskTransformers));
+            postTaskData.putAll(transformersHandler.runTransformers(taskRawData, postTaskTransformers));
+        } catch (Exception ex){
+            throw new RuntimeException("For task: " + taskName + " syntax is illegal.\n" + ex.getMessage(), ex);
+        }
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181948949\fstmerge_var1_1521190291656185186
+        List<Input> inputs = (List<Input>)preTaskData.get(DO_KEY);
+        resolveSystemProperties(inputs, imports);
+        @SuppressWarnings("unchecked") Map<String, Object> doRawData = (Map<String, Object>) taskRawData.get(DO_KEY);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181948949\fstmerge_base_6937467360259687521
+        List<Input> inputs = (List<Input>)preTaskData.get(SlangTextualKeys.DO_KEY);
+        resolveSystemProperties(inputs, imports);
+        @SuppressWarnings("unchecked") Map<String, Object> doRawData = (Map<String, Object>) taskRawData.get(SlangTextualKeys.DO_KEY);
+=======
+        List<Input> inputs = (List<Input>)preTaskData.remove(SlangTextualKeys.DO_KEY);
+        @SuppressWarnings("unchecked") Map<String, Object> doRawData = (Map<String, Object>) taskRawData.get(SlangTextualKeys.DO_KEY);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181948949\fstmerge_var2_3393347664820479912
+        if (MapUtils.isEmpty(doRawData)) {
+            throw new RuntimeException("Task: \'" + taskName + "\' has no reference information");
+        }
+        String refString = doRawData.keySet().iterator().next();
+        String refId = resolveRefId(refString, imports);
+
+        @SuppressWarnings("unchecked") Map<String, String> navigationStrings = (Map<String, String>) postTaskData.get(NAVIGATION_KEY);
+
+        //default navigation
+        if (MapUtils.isEmpty(navigationStrings)) {
+            navigationStrings = new HashMap<>();
+            navigationStrings.put(SUCCESS_RESULT, defaultSuccess);
+            navigationStrings.put(FAILURE_RESULT, defaultFailure);
+        }
+
+        return new Task(taskName, preTaskData, postTaskData, inputs, navigationStrings, refId);
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181956004\fstmerge_var1_2309442742961110532
+public ExecutionStep createBeginTaskStep(Long index, Map<String, Serializable> preTaskData, String refId, String taskName) {
+        Validate.notNull(preTaskData, "preTaskData is null");
+        Map<String, Serializable> actionData = new HashMap<>();
+        actionData.put(ScoreLangConstants.TASK_INPUTS_KEY, preTaskData.get(SlangTextualKeys.DO_KEY));
+        actionData.put(ScoreLangConstants.LOOP_KEY, preTaskData.get(SlangTextualKeys.FOR_KEY));
+        actionData.put(ScoreLangConstants.HOOKS, "TBD"); //todo add implementation for user custom hooks
+        actionData.put(ScoreLangConstants.NODE_NAME_KEY, taskName);
+        actionData.put(ScoreLangConstants.REF_ID, refId);
+        actionData.put(ScoreLangConstants.NEXT_STEP_ID_KEY, index + 1);
+        return createGeneralStep(index, TASK_STEPS_CLASS, "beginTask", actionData);
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181956004\fstmerge_base_7602973477534234351
+public ExecutionStep createBeginTaskStep(Long index, Map<String, Serializable> preTaskData, String refId, String taskName) {
+        Validate.notNull(preTaskData, "preTaskData is null");
+        Map<String, Serializable> actionData = new HashMap<>();
+        actionData.put(ScoreLangConstants.TASK_INPUTS_KEY, preTaskData.get(SlangTextualKeys.DO_KEY));
+        actionData.put(ScoreLangConstants.HOOKS, "TBD"); //todo add implementation for user custom hooks
+        actionData.put(ScoreLangConstants.NODE_NAME_KEY, taskName);
+        actionData.put(ScoreLangConstants.REF_ID, refId);
+        actionData.put(ScoreLangConstants.NEXT_STEP_ID_KEY, index + 1);
+        return createGeneralStep(index, TASK_STEPS_CLASS, "beginTask", actionData);
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181956004\fstmerge_var2_8176343939243193546
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-compiler\src\main\java\org\openscore\lang\compiler\scorecompiler\ExecutionStepFactory.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978157\fstmerge_var1_3326354701152405810
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978157\fstmerge_base_1978348426095909503
+public void beginTask(@Param(TASK_INPUTS_KEY) List<Input> taskInputs,
+                          @Param(RUN_ENV) RunEnvironment runEnv,
+                          @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                          @Param(NODE_NAME_KEY) String nodeName,
+                          @Param(ExecutionParametersConsts.RUNNING_EXECUTION_PLAN_ID) Long RUNNING_EXECUTION_PLAN_ID,
+                          @Param(NEXT_STEP_ID_KEY) Long nextStepId,
+                          @Param(REF_ID) String refId) {
+
+        runEnv.getExecutionPath().forward();
+        runEnv.removeCallArguments();
+        runEnv.removeReturnValues();
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        Map<String, Serializable> operationArguments = inputsBinding.bindInputs(taskInputs, flowContext, runEnv.getSystemProperties());
+
+        //todo: hook
+
+        sendBindingInputsEvent(taskInputs, operationArguments, runEnv, executionRuntimeServices, "Task inputs resolved",
+                nodeName, LanguageEventData.levelName.TASK_NAME);
+
+        updateCallArgumentsAndPushContextToStack(runEnv, flowContext, operationArguments);
+
+        // request the score engine to switch to the execution plan of the given ref
+        requestSwitchToRefExecutableExecutionPlan(runEnv, executionRuntimeServices, RUNNING_EXECUTION_PLAN_ID, refId, nextStepId);
+
+        // set the start step of the given ref as the next step to execute (in the new running execution plan that will be set)
+        runEnv.putNextStepPosition(executionRuntimeServices.getSubFlowBeginStep(refId));
+
+    }
+=======
+public void beginTask(@Param(TASK_INPUTS_KEY) List<Input> taskInputs,
+                          @Param(RUN_ENV) RunEnvironment runEnv,
+                          @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                          @Param(NODE_NAME_KEY) String nodeName,
+                          @Param(ExecutionParametersConsts.RUNNING_EXECUTION_PLAN_ID) Long RUNNING_EXECUTION_PLAN_ID,
+                          @Param(NEXT_STEP_ID_KEY) Long nextStepId,
+                          @Param(REF_ID) String refId) {
+        try{
+            runEnv.getExecutionPath().forward();
+            runEnv.removeCallArguments();
+            runEnv.removeReturnValues();
+
+            Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+            Map<String, Serializable> operationArguments = inputsBinding.bindInputs(taskInputs, flowContext, runEnv.getSystemProperties());
+
+            //todo: hook
+
+            sendBindingInputsEvent(taskInputs, operationArguments, runEnv, executionRuntimeServices, "Task inputs resolved",
+                    nodeName, LanguageEventData.levelName.TASK_NAME);
+
+            updateCallArgumentsAndPushContextToStack(runEnv, flowContext, operationArguments);
+
+            // request the score engine to switch to the execution plan of the given ref
+            requestSwitchToRefExecutableExecutionPlan(runEnv, executionRuntimeServices, RUNNING_EXECUTION_PLAN_ID, refId, nextStepId);
+
+            // set the start step of the given ref as the next step to execute (in the new running execution plan that will be set)
+            runEnv.putNextStepPosition(executionRuntimeServices.getSubFlowBeginStep(refId));
+        } catch (RuntimeException e){
+            logger.error("There was an error running the begin task execution step of: \'" + nodeName + "\'. Error is: " + e.getMessage());
+            throw new RuntimeException("Error running: " + nodeName + ": " + e.getMessage(), e);
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978157\fstmerge_var2_1906967671229559832
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\TaskSteps.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978241\fstmerge_var1_3685178510905802113
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978241\fstmerge_base_2355046680393856231
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+        ReturnValues executableReturnValues = runEnv.removeReturnValues();
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        Map<String, String> publishValues = outputsBinding.bindOutputs(flowContext, executableReturnValues.getOutputs(), taskPublishValues);
+
+        flowContext.putAll(publishValues);
+
+        //todo: hook
+
+		// set the position of the next step - for the use of the navigation
+		// find in the navigation values the correct next step position, according to the operation result, and set it
+		ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+		if(navigation == null) {
+            // should always have the executable response mapped to a navigation by the task, if not, it is an error
+            throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+        }
+
+        Long nextPosition = navigation.getNextStepId();
+        String presetResult = navigation.getPresetResult();
+		runEnv.putNextStepPosition(nextPosition);
+
+		HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+		for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+			outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+		}
+
+		ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+		runEnv.putReturnValues(returnValues);
+        fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+        runEnv.getStack().pushContext(flowContext);
+    }
+=======
+public void endTask(@Param(RUN_ENV) RunEnvironment runEnv,
+                        @Param(TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(NODE_NAME_KEY) String nodeName) {
+
+        try{
+            Map<String, Serializable> flowContext = runEnv.getStack().popContext();
+
+            ReturnValues executableReturnValues = runEnv.removeReturnValues();
+            fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_START, "Output binding started",
+                    Pair.of(TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                    Pair.of(TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                    Pair.of("operationReturnValues", executableReturnValues),Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+            Map<String, String> publishValues = outputsBinding.bindOutputs(flowContext, executableReturnValues.getOutputs(), taskPublishValues);
+
+            flowContext.putAll(publishValues);
+
+            //todo: hook
+
+            // set the position of the next step - for the use of the navigation
+            // find in the navigation values the correct next step position, according to the operation result, and set it
+            ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+            if(navigation == null) {
+                // should always have the executable response mapped to a navigation by the task, if not, it is an error
+                throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult() );
+            }
+
+            Long nextPosition = navigation.getNextStepId();
+            String presetResult = navigation.getPresetResult();
+            runEnv.putNextStepPosition(nextPosition);
+
+            HashMap<String, String> outputs = new HashMap<>();// todo - is this the right solution?
+            for(Map.Entry<String, Serializable> entry : flowContext.entrySet()) {
+                outputs.put(entry.getKey(), String.valueOf(entry.getValue()));
+            }
+
+            ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+            runEnv.putReturnValues(returnValues);
+            fireEvent(executionRuntimeServices, runEnv, EVENT_OUTPUT_END, "Output binding finished",
+                    Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                    Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                    Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                    Pair.of(LanguageEventData.levelName.TASK_NAME.name(),nodeName));
+
+            runEnv.getStack().pushContext(flowContext);
+        } catch (RuntimeException e){
+            logger.error("There was an error running the end task execution step of: \'" + nodeName + "\'. Error is: " + e.getMessage());
+            throw new RuntimeException("Error running: \'" + nodeName + "\': " + e.getMessage(), e);
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513181978241\fstmerge_var2_4141722519276021870
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_e0874_7679c\rev_rev_left_e0874-rev_right_7679c\score-lang-runtime\src\main\java\org\openscore\lang\runtime\steps\TaskSteps.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_6dadf_4c8e9\rev_6dadf-4c8e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ecdc8_4c8e9\rev_ecdc8-4c8e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c4348_7cb44\rev_c4348-7cb44.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ca9ac_4c8e9\rev_ca9ac-4c8e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1d3d8_7cb44\rev_1d3d8-7cb44.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7cb44_cf46e\rev_7cb44-cf46e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_200fc_cf205\rev_200fc-cf205.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_118ff_cf205\rev_118ff-cf205.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+public Executable transformToExecutable(ParsedSlang parsedSlang, String execName, Map<String, Object> executableRawData) {
+
+        Validate.notEmpty(executableRawData, "Error compiling " + parsedSlang.getName() + ". Executable data for: \'" + execName + "\' is empty");
+        Validate.notNull(parsedSlang, "Slang source for: \'" + execName + "\' is null");
+
+        Map<String, Serializable> preExecutableActionData = new HashMap<>();
+        Map<String, Serializable> postExecutableActionData = new HashMap<>();
+
+        transformersHandler.validateKeyWords(execName, executableRawData,
+                ListUtils.union(preExecTransformers, postExecTransformers), execAdditionalKeywords, null);
+
+        preExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, preExecTransformers));
+        postExecutableActionData.putAll(transformersHandler.runTransformers(executableRawData, postExecTransformers));
+
+        @SuppressWarnings("unchecked") List<Input> inputs = (List<Input>) preExecutableActionData.remove(INPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Output> outputs = (List<Output>) postExecutableActionData.remove(OUTPUTS_KEY);
+        @SuppressWarnings("unchecked") List<Result> results = (List<Result>) postExecutableActionData.remove(RESULTS_KEY);
+
+        String namespace = parsedSlang.getNamespace();
+        Map<String, String> imports = parsedSlang.getImports();
+        Set<String> dependencies;
+        switch (parsedSlang.getType()) {
+            case FLOW:
+
+                if(!executableRawData.containsKey(WORKFLOW_KEY)){
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow property");
+                }
+                List<Map<String, Map<String, Object>>> workFlowRawData;
+                try{
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_var1_6474496996959920920
+                    workFlowRawData = (List) executableRawData.get(SlangTextualKeys.WORKFLOW_KEY);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_base_6545183255022284146
+                    workFlowRawData = (LinkedHashMap) executableRawData.get(SlangTextualKeys.WORKFLOW_KEY);
+=======
+                    workFlowRawData = (LinkedHashMap) executableRawData.get(WORKFLOW_KEY);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_var2_6083950843520558384
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'workflow' property there should be a list of tasks and not a map");
+                }
+                if (CollectionUtils.isEmpty(workFlowRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Flow: " + execName + " has no workflow data");
+                }
+
+                Workflow onFailureWorkFlow = null;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_var1_6474496996959920920
+                List<Map<String, Map<String, Object>>> onFailureData;
+                Iterator<Map<String, Map<String, Object>>> tasksIterator = workFlowRawData.iterator();
+                while(tasksIterator.hasNext()){
+                    Map<String, Map<String, Object>> taskData = tasksIterator.next();
+                    String taskName = taskData.keySet().iterator().next();
+                    if(taskName.equals(SlangTextualKeys.ON_FAILURE_KEY)){
+                        try{
+                            onFailureData = (List<Map<String, Map<String, Object>>>)taskData.values().iterator().next();
+                        } catch (ClassCastException ex){
+                            throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a list of tasks and not a map");
+                        }
+                        if (CollectionUtils.isNotEmpty(onFailureData)) {
+                            onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+                        }
+                        tasksIterator.remove();
+                        break;
+                    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_base_6545183255022284146
+                LinkedHashMap<String, Map<String, Object>> onFailureData;
+                try{
+                    onFailureData = (LinkedHashMap) workFlowRawData.remove(SlangTextualKeys.ON_FAILURE_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+=======
+                LinkedHashMap<String, Map<String, Object>> onFailureData;
+                try{
+                    onFailureData = (LinkedHashMap) workFlowRawData.remove(ON_FAILURE_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Flow: '" + execName + "' syntax is illegal.\nBelow 'on_failure' property there should be a map of tasks and not a list");
+                }
+                if (MapUtils.isNotEmpty(onFailureData)) {
+                    onFailureWorkFlow = compileWorkFlow(onFailureData, imports, null, true);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299797\fstmerge_var2_6083950843520558384
+                }
+
+                Workflow workflow = compileWorkFlow(workFlowRawData, imports, onFailureWorkFlow, false);
+                dependencies = fetchDirectTasksDependencies(workflow);
+                return new Flow(preExecutableActionData, postExecutableActionData, workflow, namespace, execName, inputs, outputs, results, dependencies);
+
+            case OPERATION:
+                Map<String, Object> actionRawData;
+                try{
+                   actionRawData = (Map<String, Object>) executableRawData.get(ACTION_KEY);
+                } catch (ClassCastException ex){
+                    throw new RuntimeException("Operation: '" + execName + "' syntax is illegal.\nBelow 'action' property there should be a map of values such as: 'python_script:' or 'java_action:'");
+                }
+
+                if (MapUtils.isEmpty(actionRawData)) {
+                    throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". Operation: " + execName + " has no action data");
+                }
+                Action action = compileAction(actionRawData);
+                dependencies = new HashSet<>();
+                return new Operation(preExecutableActionData, postExecutableActionData, action, namespace, execName, inputs, outputs, results, dependencies);
+            default:
+                throw new RuntimeException("Error compiling " + parsedSlang.getName() + ". It is not of flow or operations type");
+        }
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_118ff_cf205\rev_rev_left_118ff-rev_right_cf205\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299898\fstmerge_var1_1950948170106473945
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299898\fstmerge_base_3360676047055026836
+private Workflow compileWorkFlow(LinkedHashMap<String, Map<String, Object>> workFlowRawData,
+                                             Map<String, String> imports,
+                                             Workflow onFailureWorkFlow,
+                                             boolean onFailureSection) {
+
+        Deque<Task> tasks = new LinkedList<>();
+
+        Validate.notEmpty(workFlowRawData, "Flow must have tasks in its workflow");
+
+        PeekingIterator<Map.Entry<String, Map<String, Object>>> iterator =
+                new PeekingIterator<>(workFlowRawData.entrySet().iterator());
+
+        boolean isOnFailureDefined = onFailureWorkFlow != null;
+
+        String defaultFailure = isOnFailureDefined ?
+                onFailureWorkFlow.getTasks().getFirst().getName() : ScoreLangConstants.FAILURE_RESULT;
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Map<String, Object>> taskRawData = iterator.next();
+            Map.Entry<String, Map<String, Object>> nextTaskData = iterator.peek();
+            String taskName = taskRawData.getKey();
+            Map<String, Object> taskRawDataValue;
+            try {
+                taskRawDataValue = taskRawData.getValue();
+            } catch (ClassCastException ex){
+                throw new RuntimeException("Task: " + taskName + " syntax is illegal.\nBelow task name, there should be a map of values in the format:\ndo:\n\top_name:");
+            }
+
+           String defaultSuccess;
+            if (nextTaskData != null) {
+                defaultSuccess = nextTaskData.getKey();
+            } else {
+                defaultSuccess = onFailureSection ? ScoreLangConstants.FAILURE_RESULT : ScoreLangConstants.SUCCESS_RESULT;
+            }
+            Task task = compileTask(taskName, taskRawDataValue, defaultSuccess, imports, defaultFailure);
+            tasks.add(task);
+        }
+
+        if (isOnFailureDefined) {
+            tasks.addAll(onFailureWorkFlow.getTasks());
+        }
+
+        return new Workflow(tasks);
+    }
+=======
+private Workflow compileWorkFlow(LinkedHashMap<String, Map<String, Object>> workFlowRawData,
+                                             Map<String, String> imports,
+                                             Workflow onFailureWorkFlow,
+                                             boolean onFailureSection) {
+
+        Deque<Task> tasks = new LinkedList<>();
+
+        Validate.notEmpty(workFlowRawData, "Flow must have tasks in its workflow");
+
+        PeekingIterator<Map.Entry<String, Map<String, Object>>> iterator =
+                new PeekingIterator<>(workFlowRawData.entrySet().iterator());
+
+        boolean isOnFailureDefined = onFailureWorkFlow != null;
+
+        String defaultFailure = isOnFailureDefined ?
+                onFailureWorkFlow.getTasks().getFirst().getName() : FAILURE_RESULT;
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Map<String, Object>> taskRawData = iterator.next();
+            Map.Entry<String, Map<String, Object>> nextTaskData = iterator.peek();
+            String taskName = taskRawData.getKey();
+            Map<String, Object> taskRawDataValue;
+            String message = "Task: " + taskName + " syntax is illegal.\nBelow task name, there should be a map of values in the format:\ndo:\n\top_name:";
+            try {
+                taskRawDataValue = taskRawData.getValue();
+                if (MapUtils.isNotEmpty(taskRawDataValue) && taskRawDataValue.containsKey(LOOP_KEY)) {
+                    message = "Task: " + taskName + " syntax is illegal.\nBelow the 'loop' keyword, there should be a map of values in the format:\nfor:\ndo:\n\top_name:";
+                    taskRawDataValue.putAll((Map<String, Object>) taskRawDataValue.remove(LOOP_KEY));
+                }
+            } catch (ClassCastException ex){
+                throw new RuntimeException(message);
+            }
+
+            String defaultSuccess;
+            if (nextTaskData != null) {
+                defaultSuccess = nextTaskData.getKey();
+            } else {
+                defaultSuccess = onFailureSection ? FAILURE_RESULT : SUCCESS_RESULT;
+            }
+            Task task = compileTask(taskName, taskRawDataValue, defaultSuccess, imports, defaultFailure);
+            tasks.add(task);
+        }
+
+        if (isOnFailureDefined) {
+            tasks.addAll(onFailureWorkFlow.getTasks());
+        }
+
+        return new Workflow(tasks);
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182299898\fstmerge_var2_3511728349711814047
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_118ff_cf205\rev_rev_left_118ff-rev_right_cf205\score-lang-compiler\src\main\java\org\openscore\lang\compiler\modeller\ExecutableBuilder.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e017d_cf205\rev_e017d-cf205.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_10561_e6da2\rev_10561-e6da2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_00b20_e6da2\rev_00b20-e6da2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e6da2_d70d2\rev_e6da2-d70d2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_2b6f5_1907a\rev_2b6f5-1907a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_21f0d_69a72\rev_21f0d-69a72.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_748f0_d6105\rev_748f0-d6105.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_0c7a2_d6105\rev_0c7a2-d6105.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_079d1_a7204\rev_079d1-a7204.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e1996_1a691\rev_e1996-1a691.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_975b0_13d23\rev_975b0-13d23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c9255_13d23\rev_c9255-13d23.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182825392\fstmerge_var1_6377037016732000129
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182825392\fstmerge_base_5366303873619857266
+@CliCommand(value = "run", help = "triggers a slang flow")
+    public String run(
+            @CliOption(key = {"", "f", "file"}, mandatory = true, help = "Path to filename. e.g. slang run --f C:\\Slang\\flow.yaml") final File file,
+            @CliOption(key = {"cp", "classpath"}, mandatory = false, help = "Classpath , a directory comma separated list to flow dependencies, by default it will take flow file dir") final List<String> classPath,
+            @CliOption(key = {"i", "inputs"}, mandatory = false, help = "inputs in a key=value comma separated list") final Map<String, Serializable> inputs,
+            @CliOption(key = {"spf", "system-property-file"}, mandatory = false, help = "comma separated list of system property file locations") final List<String> systemPropertyFiles) throws IOException {
+
+        CompilationArtifact compilationArtifact = compilerHelper.compile(file.getAbsolutePath(), null, classPath);
+        Map<String, ? extends Serializable> systemProperties = compilerHelper.loadSystemProperties(systemPropertyFiles);
+        Long id;
+        if (!triggerAsync) {
+            StopWatch stopWatch = new StopWatch();
+            stopWatch.start();
+            id = scoreServices.triggerSync(compilationArtifact, inputs, systemProperties);
+            stopWatch.stop();
+            return triggerSyncMsg(id, stopWatch.toString());
+        }
+        id = scoreServices.trigger(compilationArtifact, inputs, systemProperties);
+        return triggerAsyncMsg(id, compilationArtifact.getExecutionPlan().getName());
+    }
+=======
+@CliCommand(value = "run", help = "triggers a slang flow")
+    public String run(
+            @CliOption(key = {"", "f", "file"}, mandatory = true, help = "Path to filename. e.g. slang run --f C:\\Slang\\flow.yaml") final File file,
+            @CliOption(key = {"cp", "classpath"}, mandatory = false, help = "Classpath , a directory comma separated list to flow dependencies, by default it will take flow file dir") final List<String> classPath,
+            @CliOption(key = {"i", "inputs"}, mandatory = false, help = "inputs in a key=value comma separated list") final Map<String, Serializable> inputs,
+            @CliOption(key = {"spf", "system-property-file"}, mandatory = false, help = "comma separated list of system property file locations") final List<String> systemPropertyFiles) throws IOException {
+
+        CompilationArtifact compilationArtifact = compilerHelper.compile(file.getAbsolutePath(), classPath);
+        Map<String, ? extends Serializable> systemProperties = compilerHelper.loadSystemProperties(systemPropertyFiles);
+        Long id;
+        if (!triggerAsync) {
+            StopWatch stopWatch = new StopWatch();
+            stopWatch.start();
+            id = scoreServices.triggerSync(compilationArtifact, inputs, systemProperties);
+            stopWatch.stop();
+            return triggerSyncMsg(id, stopWatch.toString());
+        }
+        id = scoreServices.trigger(compilationArtifact, inputs, systemProperties);
+        return triggerAsyncMsg(id, compilationArtifact.getExecutionPlan().getName());
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182825392\fstmerge_var2_6371064930993654207
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c9255_13d23\rev_rev_left_c9255-rev_right_13d23\score-lang-cli\src\main\java\org\openscore\lang\cli\SlangCLI.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Override
+	public Map<String, ? extends Serializable> loadSystemProperties(List<String> systemPropertyFiles) throws IOException {
+		if(CollectionUtils.isEmpty(systemPropertyFiles)) {
+			Collection<File> spFiles = FileUtils.listFiles(new File("."), SP_EXT, true);
+			spFiles = select(spFiles, having(on(File.class).getPath(), containsString(SP_DIR)));
+			systemPropertyFiles = convert(spFiles, new Converter<File, String>() {
+				@Override
+				public String convert(File from) {
+					return from.getPath();
+				}
+			});
+		}
+		if(CollectionUtils.isEmpty(systemPropertyFiles)) return null;
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182829215\fstmerge_var1_866496608773068280
+		SlangSource[] sources  = loadSources(systemPropertyFiles);
+		return slang.loadSystemProperties(sources);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182829215\fstmerge_base_7713567406504508934
+		SlangSource[] sources = new SlangSource[systemPropertyFiles.size()];
+		for(int i = 0; i < systemPropertyFiles.size(); i++) {
+			sources[i] = SlangSource.fromFile(new File(systemPropertyFiles.get(i)));
+		}
+		return slang.loadSystemProperties(sources);
+=======
+		Map<String, Serializable> result = new HashMap<>();
+		for(String spFile : systemPropertyFiles) {
+			logger.info("Loading " + spFile);
+			result.putAll((Map<String, ? extends Serializable>)yaml.load(FileUtils.readFileToString(new File(spFile))));
+		}
+		return result;
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513182829215\fstmerge_var2_4551718311153676605
+	}
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_c9255_13d23\rev_rev_left_c9255-rev_right_13d23\score-lang-cli\src\main\java\org\openscore\lang\cli\utils\CompilerHelperImpl.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9d56c_13d23\rev_9d56c-13d23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_77d48_13d23\rev_77d48-13d23.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_13d23_ba182\rev_13d23-ba182.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_11d75_85bc1\rev_11d75-85bc1.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a3e14_a9ecc\rev_a3e14-a9ecc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_56446_31d40\rev_56446-31d40.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1c4c5_31d40\rev_1c4c5-31d40.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_165b4_651b2\rev_165b4-651b2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_886a8_e3cfe\rev_886a8-e3cfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f738e_e3cfe\rev_f738e-e3cfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_ba5cf-e3cfe.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183692493\fstmerge_var1_2842796484787816501
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183692493\fstmerge_base_1036585776699106812
+@Override
+	public Long triggerSync(CompilationArtifact compilationArtifact, Map<String, ? extends Serializable> inputs, Map<String, ? extends Serializable> systemProperties){
+        //add start event
+        Set<String> handlerTypes = new HashSet<>();
+        handlerTypes.add(EventConstants.SCORE_FINISHED_EVENT);
+        handlerTypes.add(EventConstants.SCORE_ERROR_EVENT);
+        handlerTypes.add(EventConstants.SCORE_FAILURE_EVENT);
+        handlerTypes.add(SLANG_EXECUTION_EXCEPTION);
+        handlerTypes.add(EVENT_EXECUTION_FINISHED);
+        handlerTypes.add(EVENT_INPUT_END);
+
+        SyncTriggerEventListener scoreEventListener = new SyncTriggerEventListener();
+        slang.subscribeOnEvents(scoreEventListener, handlerTypes);
+
+        Long executionId = trigger(compilationArtifact, inputs, systemProperties);
+
+        while(!scoreEventListener.isFlowFinished()){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ignore) {}
+        }
+        slang.unSubscribeOnEvents(scoreEventListener);
+        return executionId;
+    }
+=======
+@Override
+	public Long triggerSync(CompilationArtifact compilationArtifact, Map<String, ? extends Serializable> inputs, Map<String, ? extends Serializable> systemProperties){
+        //add start event
+        Set<String> handlerTypes = new HashSet<>();
+        handlerTypes.add(EventConstants.SCORE_FINISHED_EVENT);
+        handlerTypes.add(EventConstants.SCORE_ERROR_EVENT);
+        handlerTypes.add(EventConstants.SCORE_FAILURE_EVENT);
+        handlerTypes.add(SLANG_EXECUTION_EXCEPTION);
+        handlerTypes.add(EVENT_EXECUTION_FINISHED);
+        handlerTypes.add(EVENT_INPUT_END);
+
+        SyncTriggerEventListener scoreEventListener = new SyncTriggerEventListener();
+        slang.subscribeOnEvents(scoreEventListener, handlerTypes);
+
+        Long executionId = trigger(compilationArtifact, inputs, systemProperties);
+
+        while(!scoreEventListener.isFlowFinished()){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ignore) {}
+        }
+        slang.unSubscribeOnEvents(scoreEventListener);
+
+        String errorMessageFlowExecution = scoreEventListener.getErrorMessage();
+        if (StringUtils.isNotEmpty(errorMessageFlowExecution)) {
+            // exception occurred during flow execution
+            throw new RuntimeException(errorMessageFlowExecution);
+        }
+
+        return executionId;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183692493\fstmerge_var2_3303558989723604524
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Test(timeout = DEFAULT_TIMEOUT)
+    public void testRunValidFilePathSync() throws Exception {
+        long executionID = 1;
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_var1_1236341131716892164
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false))).thenReturn(executionID);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_base_5692488272877891536
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+=======
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(emptyCompilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_var2_7275265459504862869
+
+        CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT);
+
+        // path may be processed as local in some environments
+        // in this case the local directory path is prepended to the actual path
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_var1_1236341131716892164
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_base_5692488272877891536
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+=======
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183698977\fstmerge_var2_7275265459504862869
+
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Test(timeout = DEFAULT_TIMEOUT)
+    public void testRunValidWithOtherPathForDependencies() throws Exception {
+        long executionID = 1;
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_var1_794366646419169612
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), anyListOf(String.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false))).thenReturn(executionID);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_base_8044899417058378279
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), anyListOf(String.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+=======
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), anyListOf(String.class))).thenReturn(emptyCompilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_var2_6102622977536421581
+
+        CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT + " --cp " + DEPENDENCIES_PATH_BACKSLASH);
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_var1_794366646419169612
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), anyListOf(String.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_base_8044899417058378279
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), anyListOf(String.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+=======
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), anyListOf(String.class));
+        verify(ScoreServicesMock).triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699511\fstmerge_var2_6102622977536421581
+
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 2
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Test(timeout = DEFAULT_TIMEOUT)
+    public void testRunSyncWithInputs() throws Exception {
+        long executionID = 1;
+        String inputsString = "--i input1=value1,input2=value2";
+        Map<String, Serializable> inputsMap = new HashMap<>();
+        inputsMap.put("input1", "value1");
+        inputsMap.put("input2", "value2");
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_var1_4724429480905421
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class), eq(false))).thenReturn(executionID);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_base_5805917908731995490
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(compilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+=======
+        when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(emptyCompilationArtifact);
+        when(ScoreServicesMock.triggerSync(eq(emptyCompilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_var2_8988696338887741893
+
+        CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT + " " + inputsString);
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_var1_4724429480905421
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class), eq(false));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_base_5805917908731995490
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class));
+=======
+        verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+        verify(ScoreServicesMock).triggerSync(eq(emptyCompilationArtifact), eq(inputsMap), anyMapOf(String.class, Serializable.class));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183699591\fstmerge_var2_8988696338887741893
+
+        Assert.assertEquals("method threw exception", null, cr.getException());
+        Assert.assertEquals("success should be true", true, cr.isSuccess());
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+Conflict type: EditSameMC
+Number of Conflicts: 2
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 2, 0, 0
+Conflict body: 
+@Test(timeout = DEFAULT_TIMEOUT)
+	public void testRunSyncWithSystemProperties() throws Exception {
+		long executionID = 1;
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_var1_413741350994307323
+		when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+		when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false))).thenReturn(executionID);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_base_7232604466892209753
+		when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(String.class), isNull(List.class))).thenReturn(compilationArtifact);
+		when(ScoreServicesMock.triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+=======
+		when(compilerHelperMock.compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class))).thenReturn(emptyCompilationArtifact);
+		when(ScoreServicesMock.triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class))).thenReturn(executionID);
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_var2_5034689067371605325
+
+		CommandResult cr = shell.executeCommand("run --f " + FLOW_PATH_BACKSLASH_INPUT + " --spf " + FLOW_PATH_BACKSLASH_INPUT);
+
+		verify(compilerHelperMock).compile(contains(FLOW_PATH_BACKSLASH), isNull(List.class));
+		verify(compilerHelperMock).loadSystemProperties(Arrays.asList(FLOW_PATH_BACKSLASH));
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_var1_413741350994307323
+		verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class), eq(false));
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_base_7232604466892209753
+		verify(ScoreServicesMock).triggerSync(eq(compilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+=======
+		verify(ScoreServicesMock).triggerSync(eq(emptyCompilationArtifact), anyMapOf(String.class, Serializable.class), anyMapOf(String.class, Serializable.class));
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513183700167\fstmerge_var2_5034689067371605325
+
+		Assert.assertEquals("method threw exception", null, cr.getException());
+		Assert.assertEquals("success should be true", true, cr.isSuccess());
+	}
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_ba5cf_e3cfe\rev_rev_left_ba5cf-rev_right_e3cfe\score-lang-cli\src\test\java\org\openscore\lang\cli\SlangCLITest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8150b_e3cfe\rev_8150b-e3cfe.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007538\fstmerge_var1_8720694240444154194
+public Map<String, String> bindOutputs(Map<String, Serializable> inputs,
+                                           Map<String, String> actionReturnValues,
+                                           List<Output> possibleOutputs) {
+
+        Map<String, String> outputs = new LinkedHashMap<>();
+        if (possibleOutputs != null) {
+            for (Output output : possibleOutputs) {
+                String outputKey = output.getName();
+                String outputExpr = output.getExpression();
+                if (outputExpr != null) {
+                    //construct script context
+                    Map<String, Serializable> scriptContext = new HashMap<>();
+                    //put action outputs
+                    scriptContext.putAll(actionReturnValues);
+                    //put operation inputs as a map
+                    if(MapUtils.isNotEmpty(inputs)) {
+                        scriptContext.put(BIND_OUTPUT_FROM_INPUTS_KEY, (Serializable) inputs);
+                    }
+
+                    Serializable scriptResult;
+                    try {
+                        scriptResult = scriptEvaluator.evalExpr(outputExpr, scriptContext);
+                    } catch (Throwable t) {
+                        throw new RuntimeException("Error binding output: '" + output.getName() + "', error is: \n" + t.getMessage(), t);
+                    }
+                    //evaluate expression
+
+                    if (scriptResult != null) {
+                        try {
+                            outputs.put(outputKey, (String) scriptResult);
+                        } catch (ClassCastException ex) {
+                            throw new RuntimeException("The output expression " + outputExpr + " does not return String value", ex);
+                        }
+                    }
+                } else {
+                    throw new RuntimeException("Output: " + outputKey + " has no expression");
+                }
+            }
+        }
+        return outputs;
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007538\fstmerge_base_831250099782272447
+public Map<String, String> bindOutputs(Map<String, Serializable> inputs,
+                                           Map<String, String> actionReturnValues,
+                                           List<Output> possibleOutputs) {
+
+        Map<String, String> outputs = new LinkedHashMap<>();
+        if (possibleOutputs != null) {
+            for (Output output : possibleOutputs) {
+                String outputKey = output.getName();
+                String outputExpr = output.getExpression();
+                if (outputExpr != null) {
+                    //construct script context
+                    Map<String, Serializable> scriptContext = new HashMap<>();
+                    //put action outputs
+                    scriptContext.putAll(actionReturnValues);
+                    //put operation inputs as a map
+                    if(MapUtils.isNotEmpty(inputs)) {
+                        scriptContext.put(BIND_OUTPUT_FROM_INPUTS_KEY, (Serializable) inputs);
+                    }
+
+                    //evaluate expression
+                    Serializable scriptResult = scriptEvaluator.evalExpr(outputExpr, scriptContext);
+
+                    if (scriptResult != null) {
+                        try {
+                            outputs.put(outputKey, (String) scriptResult);
+                        } catch (ClassCastException ex) {
+                            throw new RuntimeException("The output expression " + outputExpr + " does not return String value", ex);
+                        }
+                    }
+                } else {
+                    throw new RuntimeException("Output: " + outputKey + " has no expression");
+                }
+            }
+        }
+        return outputs;
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007538\fstmerge_var2_3703192919898060914
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8150b_e3cfe\rev_rev_left_8150b-rev_right_e3cfe\score-lang-runtime\src\main\java\org\openscore\lang\runtime\bindings\OutputsBinding.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007870\fstmerge_var1_2196914561389881146
+public String resolveResult(Map<String, Serializable> inputs,
+                                Map<String, String> context,
+                                List<Result> possibleResults,
+                                String presetResult) {
+
+        // We must have possible results
+        if (CollectionUtils.isEmpty(possibleResults)) {
+            throw new RuntimeException("No results were found");
+        }
+
+        // In case of calculating the result of a flow, we already have a preset result from the last task of the flow,
+        // we look for it in the possible results of the flow.
+        // If the flow has it as a possible result, we return it as the resolved result.
+        // If not, we throw an exception
+        if (presetResult != null){
+            for (Result possibleResult : possibleResults){
+                if(presetResult.equals(possibleResult.getName())){
+                    return presetResult;
+                }
+            }
+            throw new RuntimeException("Result: " + presetResult + " that was calculated in the last task is not a possible result of the flow.");
+        }
+
+        // In the case of operation, we resolve the result by searching for the first result with a true expression
+        // An empty expression passes as true
+        for(Result result : possibleResults){
+            String expression = result.getExpression();
+            // If the answer has no expression, we treat it as a true expression, and choose it
+            if(StringUtils.isEmpty(expression)) {
+                return result.getName();
+            }
+            //construct script context
+            Map<String, Serializable> scriptContext = new HashMap<>();
+            //put action outputs
+            scriptContext.putAll(context);
+            //put executable inputs as a map
+            if(MapUtils.isNotEmpty(inputs)) {
+                scriptContext.put(BIND_OUTPUT_FROM_INPUTS_KEY, (Serializable) inputs);
+            }
+
+            try {
+                Boolean evaluatedResult = (Boolean) scriptEvaluator.evalExpr(expression, scriptContext);
+                if(evaluatedResult == null){
+                    throw new RuntimeException("Expression of the operation result: " + expression + " cannot be evaluated correctly to true or false value");
+                }
+                if(evaluatedResult) {
+                    return result.getName();
+                }
+            } catch (ClassCastException ex){
+                throw new RuntimeException("Error resolving the result. The expression " + expression + " does not return boolean value", ex);
+            } catch (Throwable t) {
+                throw new RuntimeException("Error evaluating result: '" + result.getName()+ "', error is: \n" + t.getMessage(), t);
+            }
+        }
+        throw new RuntimeException("No possible result was resolved");
+    }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007870\fstmerge_base_6339604899978586915
+public String resolveResult(Map<String, Serializable> inputs,
+                                Map<String, String> context,
+                                List<Result> possibleResults,
+                                String presetResult) {
+
+        // We must have possible results
+        if (CollectionUtils.isEmpty(possibleResults)) {
+            throw new RuntimeException("No results were found");
+        }
+
+        // In case of calculating the result of a flow, we already have a preset result from the last task of the flow,
+        // we look for it in the possible results of the flow.
+        // If the flow has it as a possible result, we return it as the resolved result.
+        // If not, we throw an exception
+        if (presetResult != null){
+            for (Result possibleResult : possibleResults){
+                if(presetResult.equals(possibleResult.getName())){
+                    return presetResult;
+                }
+            }
+            throw new RuntimeException("Result: " + presetResult + " that was calculated in the last task is not a possible result of the flow.");
+        }
+
+        // In the case of operation, we resolve the result by searching for the first result with a true expression
+        // An empty expression passes as true
+        for(Result result : possibleResults){
+            String expression = result.getExpression();
+            // If the answer has no expression, we treat it as a true expression, and choose it
+            if(StringUtils.isEmpty(expression)) {
+                return result.getName();
+            }
+            //construct script context
+            Map<String, Serializable> scriptContext = new HashMap<>();
+            //put action outputs
+            scriptContext.putAll(context);
+            //put executable inputs as a map
+            if(MapUtils.isNotEmpty(inputs)) {
+                scriptContext.put(BIND_OUTPUT_FROM_INPUTS_KEY, (Serializable) inputs);
+            }
+
+            try {
+                Boolean evaluatedResult = (Boolean) scriptEvaluator.evalExpr(expression, scriptContext);
+                if(evaluatedResult == null){
+                    throw new RuntimeException("Expression of the operation result: " + expression + " cannot be evaluated correctly to true or false value");
+                }
+                if(evaluatedResult) {
+                    return result.getName();
+                }
+            } catch (ClassCastException ex){
+                throw new RuntimeException("Error resolving the result. The expression " + expression + " does not return boolean value", ex);
+            }
+        }
+        throw new RuntimeException("No possible result was resolved");
+    }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184007870\fstmerge_var2_6617360329465897968
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8150b_e3cfe\rev_rev_left_8150b-rev_right_e3cfe\score-lang-runtime\src\main\java\org\openscore\lang\runtime\bindings\ResultsBinding.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test(expected = RuntimeException.class, timeout = DEFAULT_TIMEOUT)
+    public void testOperationOutputsIllegalEvaluatedExpression() throws Exception {
+        Map<String, Serializable> operationContext = prepareOperationContext();
+        Map<String, Serializable> actionReturnValues = new HashMap<>();
+        List<Output> outputs = Arrays.asList(createNoExpressionOutput("actionOutputKey1"));
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184017095\fstmerge_var1_3541308376937460164
+        outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184017095\fstmerge_base_705291645786608081
+        Map<String, String> result = outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+        Assert.assertEquals("Binding results are not as expected", 0, result.size());
+=======
+        Map<String, Serializable> result = outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+        Assert.assertEquals("Binding results are not as expected", 0, result.size());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184017095\fstmerge_var2_6911085887108257375
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8150b_e3cfe\rev_rev_left_8150b-rev_right_e3cfe\score-lang-runtime\src\test\java\org\openscore\lang\runtime\bindings\OutputsBindingTest.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test(expected = RuntimeException.class, timeout = DEFAULT_TIMEOUT)
+    public void testOperationOutputsInvalidExpression() throws Exception {
+        Map<String, Serializable> operationContext = prepareOperationContext();
+        Map<String, Serializable> actionReturnValues = prepareActionReturnValues();
+        List<Output> outputs = Arrays.asList(createExpressionOutput("hostFromExpression", "'http://' + hostExpr + ':' + str(fromInputs[SHOULD_BE_STRING])"));
+
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184018005\fstmerge_var1_7241062880347306494
+        outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184018005\fstmerge_base_5918427599632041949
+        Map<String, String> result = outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+        Assert.assertEquals("Binding results are not as expected", 0, result.size());
+=======
+        Map<String, Serializable> result = outputsBinding.bindOutputs(operationContext, actionReturnValues, outputs);
+        Assert.assertEquals("Binding results are not as expected", 0, result.size());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184018005\fstmerge_var2_2032467625753932258
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_8150b_e3cfe\rev_rev_left_8150b-rev_right_e3cfe\score-lang-runtime\src\test\java\org\openscore\lang\runtime\bindings\OutputsBindingTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7ef1a_e3cfe\rev_7ef1a-e3cfe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8ad25_e2a91\rev_8ad25-e2a91.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_fd603_e2a91\rev_fd603-e2a91.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e2a91_372ac\rev_e2a91-372ac.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d40e1_05e0f\rev_d40e1-05e0f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b239f_ef252\rev_b239f-ef252.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_6478a_05e0f\rev_6478a-05e0f.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184340597\fstmerge_var1_6497469309567621072
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184340597\fstmerge_base_7160828892324890797
+private LoopCondition createForLoopCondition(String collectionExpression, Context flowContext, String nodeName) {
+        Map<String, Serializable> variables = flowContext.getImmutableViewOfVariables();
+        Serializable evalResult = scriptEvaluator.evalExpr(collectionExpression, variables);
+        ForLoopCondition forLoopCondition = createForLoopCondition(evalResult);
+        if (forLoopCondition == null) {
+            throw new RuntimeException("collection expression: '" + collectionExpression + "' in the 'for' loop " +
+                    "in task: '" + nodeName + "' " +
+                    "doesn't return an iterable, other types are not supported");
+        }
+        return forLoopCondition;
+    }
+=======
+private LoopCondition createForLoopCondition(String collectionExpression, Context flowContext, String nodeName) {
+        Map<String, Serializable> variables = flowContext.getImmutableViewOfVariables();
+        Serializable evalResult;
+        try {
+            evalResult = scriptEvaluator.evalExpr(collectionExpression, variables);
+        } catch (Throwable t) {
+            throw new RuntimeException("Error evaluating for loop expression in task '" + nodeName + "', error is: \n" + t.getMessage(), t);
+        }
+        ForLoopCondition forLoopCondition = createForLoopCondition(evalResult);
+        if (forLoopCondition == null) {
+            throw new RuntimeException("collection expression: '" + collectionExpression + "' in the 'for' loop " +
+                    "in task: '" + nodeName + "' " +
+                    "doesn't return an iterable, other types are not supported");
+        }
+        return forLoopCondition;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184340597\fstmerge_var2_396264398197634279
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_6478a_05e0f\rev_rev_left_6478a-rev_right_05e0f\score-lang-runtime\src\main\java\org\openscore\lang\runtime\bindings\LoopsBinding.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c58c1_5220e\rev_c58c1-5220e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_de1a2_5220e\rev_de1a2-5220e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a71f3_5220e\rev_a71f3-5220e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e4d85_dcb31\rev_e4d85-dcb31.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_79ff5_e0d42\rev_79ff5-e0d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5716c_e0d42\rev_5716c-e0d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_cdcde_e0d42\rev_cdcde-e0d42.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894240\fstmerge_var1_3827491504859121138
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894240\fstmerge_base_1387595674559949795
+@Override
+	public Long triggerSync(CompilationArtifact compilationArtifact, Map<String, ? extends Serializable> inputs, Map<String, ? extends Serializable> systemProperties){
+        //add start event
+        Set<String> handlerTypes = new HashSet<>();
+        handlerTypes.add(EventConstants.SCORE_FINISHED_EVENT);
+        handlerTypes.add(EventConstants.SCORE_ERROR_EVENT);
+        handlerTypes.add(EventConstants.SCORE_FAILURE_EVENT);
+        handlerTypes.add(SLANG_EXECUTION_EXCEPTION);
+        handlerTypes.add(EVENT_EXECUTION_FINISHED);
+        handlerTypes.add(EVENT_INPUT_END);
+
+        SyncTriggerEventListener scoreEventListener = new SyncTriggerEventListener();
+        slang.subscribeOnEvents(scoreEventListener, handlerTypes);
+
+        Long executionId = trigger(compilationArtifact, inputs, systemProperties);
+
+        while(!scoreEventListener.isFlowFinished()){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ignore) {}
+        }
+        slang.unSubscribeOnEvents(scoreEventListener);
+
+        String errorMessageFlowExecution = scoreEventListener.getErrorMessage();
+        if (StringUtils.isNotEmpty(errorMessageFlowExecution)) {
+            // exception occurred during flow execution
+            throw new RuntimeException(errorMessageFlowExecution);
+        }
+
+        return executionId;
+    }
+=======
+@Override
+	public Long triggerSync(CompilationArtifact compilationArtifact, Map<String, ? extends Serializable> inputs, Map<String, ? extends Serializable> systemProperties){
+        //add start event
+        Set<String> handlerTypes = new HashSet<>();
+        handlerTypes.add(EventConstants.SCORE_FINISHED_EVENT);
+        handlerTypes.add(EventConstants.SCORE_ERROR_EVENT);
+        handlerTypes.add(EventConstants.SCORE_FAILURE_EVENT);
+        handlerTypes.add(SLANG_EXECUTION_EXCEPTION);
+        handlerTypes.add(EVENT_EXECUTION_FINISHED);
+        handlerTypes.add(EVENT_INPUT_END);
+        handlerTypes.add(EVENT_OUTPUT_END);
+        
+        SyncTriggerEventListener scoreEventListener = new SyncTriggerEventListener();
+        slang.subscribeOnEvents(scoreEventListener, handlerTypes);
+
+        Long executionId = trigger(compilationArtifact, inputs, systemProperties);
+
+        while(!scoreEventListener.isFlowFinished()){
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ignore) {}
+        }
+        slang.unSubscribeOnEvents(scoreEventListener);
+
+        String errorMessageFlowExecution = scoreEventListener.getErrorMessage();
+        if (StringUtils.isNotEmpty(errorMessageFlowExecution)) {
+            // exception occurred during flow execution
+            throw new RuntimeException(errorMessageFlowExecution);
+        }
+
+        return executionId;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894240\fstmerge_var2_4390652429911647527
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_cdcde_e0d42\rev_rev_left_cdcde-rev_right_e0d42\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894324\fstmerge_var1_4573117674469008565
+@Override
+        public synchronized void onEvent(ScoreEvent scoreEvent) throws InterruptedException {
+            @SuppressWarnings("unchecked") Map<String, Serializable> data = (Map<String, Serializable>) scoreEvent.getData();
+            switch (scoreEvent.getEventType()) {
+                case EventConstants.SCORE_FINISHED_EVENT:
+                    flowFinished.set(true);
+                    break;
+                case EventConstants.SCORE_ERROR_EVENT :
+                    errorMessage.set(SCORE_ERROR_EVENT_MSG + data.get(EventConstants.SCORE_ERROR_LOG_MSG) + " , " +
+                            data.get(EventConstants.SCORE_ERROR_MSG));
+                    break;
+                case EventConstants.SCORE_FAILURE_EVENT:
+                    printWithColor(Ansi.Color.RED, FLOW_FINISHED_WITH_FAILURE_MSG);
+                    flowFinished.set(true);
+                    break;
+                case ScoreLangConstants.SLANG_EXECUTION_EXCEPTION:
+                    errorMessage.set(SLANG_STEP_ERROR_MSG + data.get(EXCEPTION));
+                    break;
+                case ScoreLangConstants.EVENT_INPUT_END:
+                    String taskName = (String)data.get(LanguageEventData.levelName.TASK_NAME.name());
+                    if(StringUtils.isNotEmpty(taskName)){
+                        String path = (String) data.get(LanguageEventData.PATH);
+                        int matches = StringUtils.countMatches(path, ExecutionPath.PATH_SEPARATOR);
+                        String prefix = StringUtils.repeat(TASK_PATH_PREFIX, matches);
+                        printWithColor(Ansi.Color.YELLOW, prefix + taskName);
+                    }
+                    break;
+
+                case EVENT_EXECUTION_FINISHED:
+                    if (!flowFinished.get()) {
+                        flowFinished.set(true);
+                    }
+                    printFinishEvent(data);
+                    break;
+            }
+        }
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894324\fstmerge_base_1327437400683595015
+@Override
+        public synchronized void onEvent(ScoreEvent scoreEvent) throws InterruptedException {
+            @SuppressWarnings("unchecked") Map<String,Serializable> data = (Map<String,Serializable>)scoreEvent.getData();
+            switch (scoreEvent.getEventType()){
+                case EventConstants.SCORE_FINISHED_EVENT :
+                    flowFinished.set(true);
+                    break;
+                case EventConstants.SCORE_ERROR_EVENT :
+                    errorMessage.set(SCORE_ERROR_EVENT_MSG + data.get(EventConstants.SCORE_ERROR_LOG_MSG) + " , " +
+                            data.get(EventConstants.SCORE_ERROR_MSG));
+                    break;
+                case EventConstants.SCORE_FAILURE_EVENT :
+                    printWithColor(Ansi.Color.RED,FLOW_FINISHED_WITH_FAILURE_MSG);
+                    flowFinished.set(true);
+                    break;
+                case ScoreLangConstants.SLANG_EXECUTION_EXCEPTION:
+                    errorMessage.set(SLANG_STEP_ERROR_MSG + data.get(EXCEPTION));
+                    break;
+                case ScoreLangConstants.EVENT_INPUT_END:
+                    String taskName = (String)data.get(LanguageEventData.levelName.TASK_NAME.name());
+                    if(StringUtils.isNotEmpty(taskName)){
+                        String path = (String) data.get(LanguageEventData.PATH);
+                        int matches = StringUtils.countMatches(path, ExecutionPath.PATH_SEPARATOR);
+                        String prefix = StringUtils.repeat(TASK_PATH_PREFIX, matches);
+                        printWithColor(Ansi.Color.YELLOW, prefix + taskName);
+                    }
+                    break;
+                case EVENT_EXECUTION_FINISHED :
+                    printFinishEvent(data);
+                    break;
+            }
+        }
+=======
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513184894324\fstmerge_var2_1464944536398752139
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_cdcde_e0d42\rev_rev_left_cdcde-rev_right_e0d42\score-lang-cli\src\main\java\org\openscore\lang\cli\services\ScoreServicesImpl.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_476f4_e0d42\rev_476f4-e0d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c3eb1_e0d42\rev_c3eb1-e0d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_67756_e0d42\rev_67756-e0d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a4e4e_5542b\rev_a4e4e-5542b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e0d42_250bc\rev_e0d42-250bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_959d1_dfe37\rev_959d1-dfe37.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_be7b8_f08a7\rev_be7b8-f08a7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a83ff_26afc\rev_a83ff-26afc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_700d3_53816\rev_700d3-53816.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_53816_1f056\rev_53816-1f056.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_dcbb7_2ca17\rev_dcbb7-2ca17.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_70413_2ea72\rev_70413-2ea72.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_19229_2ea72\rev_19229-2ea72.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_0fab9_2ea72\rev_0fab9-2ea72.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e9be1_c0ce6\rev_e9be1-c0ce6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_51443_9a7bc\rev_51443-9a7bc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a300d_26e71\rev_a300d-26e71.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_14c24_7f18b\rev_14c24-7f18b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_baede_53b7d\rev_baede-53b7d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5e31b_2fe83\rev_5e31b-2fe83.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d33c9_2fe83\rev_d33c9-2fe83.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e9f24_124e0\rev_e9f24-124e0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_124e0_3d998\rev_124e0-3d998.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9fe38_98572\rev_9fe38-98572.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b9496_a83b8\rev_b9496-a83b8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_a83b8_0b561\rev_a83b8-0b561.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_75ab9_d84a3\rev_75ab9-d84a3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_69d11_22df8\rev_69d11-22df8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_eaf91_d724a\rev_eaf91-d724a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9d6fc_c6579\rev_9d6fc-c6579.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_79325_430c4\rev_79325-430c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_15595_430c4\rev_15595-430c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7fc58_00560\rev_7fc58-00560.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e0f24_e8f0b\rev_e0f24-e8f0b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c61ac_1ca8c\rev_c61ac-1ca8c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1bcd8_3c6a9\rev_1bcd8-3c6a9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7d5d4_cedd4\rev_7d5d4-cedd4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c8c93_cedd4\rev_c8c93-cedd4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_cedd4_d8ee0\rev_cedd4-d8ee0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ef8bc_7b86c\rev_ef8bc-7b86c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_feb9d_6a0dc\rev_feb9d-6a0dc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7902a_0f01b\rev_7902a-0f01b.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_6a0dc_b005d\rev_6a0dc-b005d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e5ec4_858c5\rev_e5ec4-858c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_55110_8b808\rev_55110-8b808.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7d2e0_b46e9\rev_7d2e0-b46e9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_00b60_0a4b9\rev_00b60-0a4b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b8c15_63115\rev_b8c15-63115.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_1c380-d2ed5.revisions
+Conflict type: SameSignatureCM
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: smallMethod
+Possible renaming: 0
+EditSameMCType: 0, 0, 0
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186300013\fstmerge_var1_925492326207554780
+protected ForLoopStatement() {}
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186300013\fstmerge_base_7822326836334176068
+=======
+protected ForLoopStatement() {
+        collectionExpression = null;
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186300013\fstmerge_var2_4267625664432347096
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_rev_left_1c380-rev_right_d2ed5\cloudslang-entities\src\main\java\io\cloudslang\lang\entities\ForLoopStatement.java
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 0
+Intersection: 0
+Cause same signature: 
+Possible renaming: 1
+EditSameMCType: 0, 0, 1
+Conflict body: 
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186315917\fstmerge_var1_7399063146342439480
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186315917\fstmerge_base_3501850467448975428
+public void endTask(@Param(ScoreLangConstants.RUN_ENV) RunEnvironment runEnv,
+                        @Param(ScoreLangConstants.TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(ScoreLangConstants.TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(ScoreLangConstants.PREVIOUS_STEP_ID_KEY) Long previousStepId,
+                        @Param(ScoreLangConstants.BREAK_LOOP_KEY) List<String> breakOn,
+                        @Param(ScoreLangConstants.NODE_NAME_KEY) String nodeName) {
+
+        try {
+			if(runEnv.getExecutionPath().getDepth() > 0) runEnv.getExecutionPath().up();
+            Context flowContext = runEnv.getStack().popContext();
+            Map<String, Serializable> flowVariables = flowContext.getImmutableViewOfVariables();
+
+            ReturnValues executableReturnValues = runEnv.removeReturnValues();
+            fireEvent(executionRuntimeServices, runEnv, ScoreLangConstants.EVENT_OUTPUT_START, "Output binding started",
+                    Pair.of(ScoreLangConstants.TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                    Pair.of(ScoreLangConstants.TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                    Pair.of("operationReturnValues", executableReturnValues), Pair.of(LanguageEventData.levelName.TASK_NAME.name(), nodeName));
+
+            Map<String, Serializable> publishValues = outputsBinding.bindOutputs(flowVariables, executableReturnValues.getOutputs(), taskPublishValues);
+
+            flowContext.putVariables(publishValues);
+
+            //loops
+            Map<String, Serializable> langVariables = flowContext.getLangVariables();
+            if (langVariables.containsKey(LoopCondition.LOOP_CONDITION_KEY)) {
+                LoopCondition loopCondition = (LoopCondition) langVariables.get(LoopCondition.LOOP_CONDITION_KEY);
+                if (!shouldBreakLoop(breakOn, executableReturnValues) && loopCondition.hasMore()) {
+                    runEnv.putNextStepPosition(previousStepId);
+                    runEnv.getStack().pushContext(flowContext);
+                    return;
+                } else {
+                    flowContext.getLangVariables().remove(LoopCondition.LOOP_CONDITION_KEY);
+                }
+            }
+
+            //todo: hook
+
+            // set the position of the next step - for the use of the navigation
+            // find in the navigation values the correct next step position, according to the operation result, and set it
+            ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+            if (navigation == null) {
+                // should always have the executable response mapped to a navigation by the task, if not, it is an error
+                throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult());
+            }
+
+            Long nextPosition = navigation.getNextStepId();
+            String presetResult = navigation.getPresetResult();
+            runEnv.putNextStepPosition(nextPosition);
+
+            HashMap<String, Serializable> outputs = new HashMap<>(flowVariables);
+
+            ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+            runEnv.putReturnValues(returnValues);
+            fireEvent(executionRuntimeServices, runEnv, ScoreLangConstants.EVENT_OUTPUT_END, "Output binding finished",
+                    Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                    Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                    Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                    Pair.of(LanguageEventData.levelName.TASK_NAME.name(), nodeName));
+
+            runEnv.getStack().pushContext(flowContext);
+        } catch (RuntimeException e){
+            logger.error("There was an error running the end task execution step of: \'" + nodeName + "\'. Error is: " + e.getMessage());
+            throw new RuntimeException("Error running: \'" + nodeName + "\': " + e.getMessage(), e);
+        }
+    }
+=======
+public void endTask(@Param(ScoreLangConstants.RUN_ENV) RunEnvironment runEnv,
+                        @Param(ScoreLangConstants.TASK_PUBLISH_KEY) List<Output> taskPublishValues,
+                        @Param(ScoreLangConstants.TASK_NAVIGATION_KEY) Map<String, ResultNavigation> taskNavigationValues,
+                        @Param(EXECUTION_RUNTIME_SERVICES) ExecutionRuntimeServices executionRuntimeServices,
+                        @Param(ScoreLangConstants.PREVIOUS_STEP_ID_KEY) Long previousStepId,
+                        @Param(ScoreLangConstants.BREAK_LOOP_KEY) List<String> breakOn,
+                        @Param(ScoreLangConstants.NODE_NAME_KEY) String nodeName) {
+
+        try {
+			if(runEnv.getExecutionPath().getDepth() > 0) runEnv.getExecutionPath().up();
+            Context flowContext = runEnv.getStack().popContext();
+            Map<String, Serializable> flowVariables = flowContext.getImmutableViewOfVariables();
+
+            ReturnValues executableReturnValues = runEnv.removeReturnValues();
+            fireEvent(executionRuntimeServices, runEnv, ScoreLangConstants.EVENT_OUTPUT_START, "Output binding started",
+                    Pair.of(ScoreLangConstants.TASK_PUBLISH_KEY, (Serializable) taskPublishValues),
+                    Pair.of(ScoreLangConstants.TASK_NAVIGATION_KEY, (Serializable) taskNavigationValues),
+                    Pair.of("operationReturnValues", executableReturnValues), Pair.of(LanguageEventData.levelName.TASK_NAME.name(), nodeName));
+
+            Map<String, Serializable> publishValues = outputsBinding.bindOutputs(flowVariables, executableReturnValues.getOutputs(), taskPublishValues);
+
+            flowContext.putVariables(publishValues);
+
+            //loops
+            Map<String, Serializable> langVariables = flowContext.getLangVariables();
+            if (langVariables.containsKey(LoopCondition.LOOP_CONDITION_KEY)) {
+                LoopCondition loopCondition = (LoopCondition) langVariables.get(LoopCondition.LOOP_CONDITION_KEY);
+                if (!shouldBreakLoop(breakOn, executableReturnValues) && loopCondition.hasMore()) {
+                    runEnv.putNextStepPosition(previousStepId);
+                    runEnv.getStack().pushContext(flowContext);
+                    return;
+                } else {
+                    flowContext.getLangVariables().remove(LoopCondition.LOOP_CONDITION_KEY);
+                }
+            }
+
+            //todo: hook
+
+            // set the position of the next step - for the use of the navigation
+            // find in the navigation values the correct next step position, according to the operation result, and set it
+            ResultNavigation navigation = taskNavigationValues.get(executableReturnValues.getResult());
+            if (navigation == null) {
+                // should always have the executable response mapped to a navigation by the task, if not, it is an error
+                throw new RuntimeException("Task: " + nodeName + " has no matching navigation for the executable result: " + executableReturnValues.getResult());
+            }
+
+            Long nextPosition = navigation.getNextStepId();
+            String presetResult = navigation.getPresetResult();
+            runEnv.putNextStepPosition(nextPosition);
+
+            HashMap<String, Serializable> outputs = new HashMap<>(flowVariables);
+
+            ReturnValues returnValues = new ReturnValues(outputs, presetResult != null ? presetResult : executableReturnValues.getResult());
+            runEnv.putReturnValues(returnValues);
+            fireEvent(executionRuntimeServices, runEnv, ScoreLangConstants.EVENT_OUTPUT_END, "Output binding finished",
+                    Pair.of(LanguageEventData.OUTPUTS, (Serializable) publishValues),
+                    Pair.of(LanguageEventData.RESULT, returnValues.getResult()),
+                    Pair.of(LanguageEventData.NEXT_STEP_POSITION, nextPosition),
+                    Pair.of(LanguageEventData.levelName.TASK_NAME.name(), nodeName));
+
+            runEnv.getStack().pushContext(flowContext);
+        } catch (RuntimeException e){
+            logger.error("There was an error running the end task execution step of: \'" + nodeName + "\'.\n\tError is: " + e.getMessage());
+            throw new RuntimeException("Error running: \'" + nodeName + "\'\n\t" + e.getMessage(), e);
+        }
+    }
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186315917\fstmerge_var2_4296029390706929837
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_1c380_d2ed5\rev_rev_left_1c380-rev_right_d2ed5\cloudslang-runtime\src\main\java\io\cloudslang\lang\runtime\steps\TaskSteps.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_7783c_56f3c\rev_7783c-56f3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_83876_7f320\rev_83876-7f320.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c2d18_71372\rev_c2d18-71372.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f9aef_c898d\rev_f9aef-c898d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5a709_840d5\rev_5a709-840d5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f8798_072c1\rev_f8798-072c1.revisions
+Conflict type: EditSameMC
+Number of Conflicts: 1
+Different Spacing: 0
+Consecutive Lines: 1
+Intersection: 0
+Cause same signature: 
+Possible renaming: 0
+EditSameMCType: 1, 0, 0
+Conflict body: 
+@Test
+    public void testFlowWithMapLoopsWithCustomNavigation() throws Exception {
+        URI resource = getClass().getResource("/yaml/loops/loop_with_custom_navigation_with_map.sl").toURI();
+        URI operation1 = getClass().getResource("/yaml/loops/print.sl").toURI();
+
+        Set<SlangSource> path = Sets.newHashSet(SlangSource.fromFile(operation1));
+        CompilationArtifact compilationArtifact = slang.compile(SlangSource.fromFile(resource), path);
+
+        Map<String, Serializable> userInputs = new HashMap<>();
+<<<<<<< C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186585761\fstmerge_var1_2662313434830770292
+        Map<String, StepData> stepsData = triggerWithData(compilationArtifact, userInputs, null).getTasks();
+        StepData thirdTask = stepsData.get(FOURTH_STEP_KEY);
+        Assert.assertEquals("print_other_values", thirdTask.getName());
+||||||| C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186585761\fstmerge_base_1596575563788598985
+        Map<String, StepData> stepsData = triggerWithData(compilationArtifact, userInputs, null);
+        StepData thirdTask = stepsData.get(FOURTH_STEP_KEY);
+        Assert.assertEquals("print_other_values", thirdTask.getName());
+=======
+        Map<String, StepData> stepsData = triggerWithData(compilationArtifact, userInputs, null);
+        StepData fourthTask = stepsData.get(FOURTH_STEP_KEY);
+        Assert.assertEquals("print_other_values", fourthTask.getName());
+>>>>>>> C:\Users\155 X-MX\Documents\dev\second_study\conflictsAnalyzer\fstmerge_tmp1513186585761\fstmerge_var2_6562041037716904074
+    }
+
+File path: C:\download\ssmerge\cloud-slang\revisions\rev_f8798_072c1\rev_rev_left_f8798-rev_right_072c1\cloudslang-tests\src\test\java\io\cloudslang\lang\systemtests\LoopFlowsTest.java
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ac007_898e7\rev_ac007-898e7.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_6d6c4_c6c74\rev_6d6c4-c6c74.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1c413_27363\rev_1c413-27363.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_5e273_4804c\rev_5e273-4804c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_788e3_a1d42\rev_788e3-a1d42.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_ec0f9_626b6\rev_ec0f9-626b6.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d5f8a_cd6e2\rev_d5f8a-cd6e2.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_caa2e_c1897\rev_caa2e-c1897.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_bf465_a801f\rev_bf465-a801f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_fde0f_9b0b9\rev_fde0f-9b0b9.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_71bbc_be010\rev_71bbc-be010.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_be010_ffdbe\rev_be010-ffdbe.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_71bbc_fe7c5\rev_71bbc-fe7c5.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_1a23f_0b134\rev_1a23f-0b134.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_bbdf3_0b134\rev_bbdf3-0b134.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e4b2d_61ef8\rev_e4b2d-61ef8.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_8c964_4fe2f\rev_8c964-4fe2f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_4c914_4fe2f\rev_4c914-4fe2f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_34558_b01d4\rev_34558-b01d4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b01d4_34558\rev_b01d4-34558.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_18f51_3bbbc\rev_18f51-3bbbc.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_d20a9_d41c4\rev_d20a9-d41c4.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_71914_93486\rev_71914-93486.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_9e8e6_a2b3c\rev_9e8e6-a2b3c.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e586f_9df0e\rev_e586f-9df0e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_f0288_b1109\rev_f0288-b1109.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_c23db_3aa6e\rev_c23db-3aa6e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_09983_9550f\rev_09983-9550f.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_2f052_dfff0\rev_2f052-dfff0.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_4466e_f6f6a\rev_4466e-f6f6a.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_b8ba3_e659e\rev_b8ba3-e659e.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_e552f_a8d4d\rev_e552f-a8d4d.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_2a0c7_c5fce\rev_2a0c7-c5fce.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_22848_2a4c3\rev_22848-2a4c3.revisions
+
+==================================================================================================================
+Revision: C:\download\ssmerge\cloud-slang\revisions\rev_20ec8_07280\rev_20ec8-07280.revisions
+
+=========================================================

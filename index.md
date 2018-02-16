@@ -6,6 +6,7 @@ In collaborative development environments integration conflicts occur frequently
 ## Preprint
 
 ## Projects Sample Description
+- The size of the projects described described below was collected from openhub on February 16, 2018
 
 | Git Repository Name | Domain | Analyzed Merge Commits | Size (KLOCs) |
 | :-------------: | :-------------: | :-------------: | :-------------: |
@@ -44,16 +45,16 @@ In collaborative development environments integration conflicts occur frequently
 | scribejava/scribejava | OAuth library for Java | 87 | N/A |
 | HubSpot/Singularity | API and web application for running and scheduling Apache Mesos tasks | 280 | 70 |
 | perwendel/spark | Web framework for java | 226 | 11 |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
+| codecentric/spring-boot-admin | Admin UI of spring boot applications | 50 | N/A |
+| oxo42/stateless4j | Lightweight Java State Machine | 18 | 1 |
+| swagger-api/swagger-core | Examples and server integrations for generating the Swagger API Specification | 351 | N/A |
+| tananaev/traccar | GPS Tracking System | 105 | 51 |
+| google/truth | Java Testing Framework | 20 | 29 |
+| vavr-io/vavr | Object-functional library | 7 |  |
+| code4craft/webmagic |  Web crawler framework for Java | 105 | 16 |
+| l0rdn1kk0n/wicket-bootstrap | Apache Wicket components for Twitter Bootstrap | 17 | 208 |
+| square/wire | Protocol buffers for Android and Java | 125 | 38 |
+| timmolter/XChange | Java API for interacting with 60+ Bitcoin and other crypto currency exchanges | 339 | 139 |
 
 
 ## Data

@@ -10,9 +10,24 @@ In collaborative development environments integration conflicts occur frequently
 | Git Repository Name | Domain | Analyzed Merge Commits | Size (KLOCs) |
 | :-------------: | :-------------: | :-------------: | :-------------: |
 | Adobe-Consulting-Services/acs-aem-commons  |  AEM development toolkit | 117 | N/A |
-| tinkerpop/blueprints  | Graph Data Models | 108 | 203 |
-| dianping/cat  | Application Monitoring Platform | 101 | N/A |
-| CloudSlang/cloud-slang  | Programming Language to Orchestrate CI Workflows | 213 | N/A |
+| tinkerpop/blueprints  | Graph Data Models | 109 | 203 |
+| dianping/cat  | Application Monitoring Platform | 102 | N/A |
+| CloudSlang/cloud-slang  | Programming Language to Orchestrate CI Workflows | 214 | N/A |
+| CloudifySource/cloudify | Cloud Platform | 212 | N/A |
+| CorfuDB/CorfuDB  | Cluster Consistency Platform | 272 | N/A |
+| gchq/Gaffer  | Relational Database | 8 | N/A |
+| hdiv/hdiv  | Java Web Application Security Framework | 10 | 57 |
+| brettwooldridge/HikariCP | JDBC connection pool | 130 | 8 |
+| FasterXML/jackson-core  | Streaming API used by Jackson Data Processor | 122 | 43 |
+| FasterXML/jackson-databind  | Data-binding functionality used by Jackson Data Processor | 273 | 110 |
+| datastax/java-driver  |  Java client library for Apache Cassandra | 110 | 37 |
+| javaparser/javaparser | Programming Language to Orchestrate CI Workflows | 192 | 145 |
+| square/javapoet | Java API for generating java source files | 250 | N/A |
+| xetorthio/jedis  | Redis Java client | 137 | 28 |
+| jwtk/jjwt | Java JWT: JSON Web Token for Java and Android | 65 | 8 |
+| jparsec/jparsec | Parser combinator library for Java | 35 | 12 |
+| square/moshi | JSON library for Android and Java | 132 | N/A |
+
 
 ## Data
 [Link to raw data](https://github.com/conflictpredictor/onlineAppendix/tree/master/data)

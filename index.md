@@ -7,6 +7,13 @@ In collaborative development environments integration conflicts occur frequently
 
 ## Projects Sample Description
 
+| Git Repository Name | Domain | Analyzed Merge Commits | Size (KLOCs) |
+| :-------------: | :-------------: | :-------------: | :-------------: |
+| Adobe-Consulting-Services/acs-aem-commons  |  AEM development toolkit | 117 | N/A |
+| tinkerpop/blueprints  | Graph Data Models | 108 | 203 |
+| dianping/cat  | Application Monitoring Platform | 101 | N/A |
+| CloudSlang/cloud-slang  | Programming Language to Orchestrate CI Workflows | 213 | N/A |
+
 ## Data
 [Link to raw data](https://github.com/conflictpredictor/onlineAppendix/tree/master/data)
 

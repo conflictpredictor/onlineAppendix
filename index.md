@@ -34,16 +34,16 @@ In collaborative development environments integration conflicts occur frequently
 | square/okio | I/O API for Java | 140 | N/A |
 | ontop/ontop | Platform to query relational databases | 7 | 1100 |
 | oracle/OpenGrok | Source code search and cross reference engine | 108 | 100 |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
-| |  |  |  |
+| pac4j/pac4j | Security engine for Java | 118 | N/A |
+| protostuff/protostuff | Java serialization library | 36 | N/A |
+| querydsl/querydsl | Java query API | 248 | 122 |
+| sanity/quickml | Decision tree learner in java | 22 | N/A  |
+| SoftInstigate/restheart | REST API Server for MongoDB | 41 | N/A |
+| square/retrofit | Type-safe HTTP client for Android and Java | 158 | 21 |
+| yegor256/s3auth | Amazon S3 HTTP Basic Authorization Gateway | 21 | 10 |
+| scribejava/scribejava | OAuth library for Java | 87 | N/A |
+| HubSpot/Singularity | API and web application for running and scheduling Apache Mesos tasks | 280 | 70 |
+| perwendel/spark | Web framework for java | 226 | 11 |
 | |  |  |  |
 | |  |  |  |
 | |  |  |  |

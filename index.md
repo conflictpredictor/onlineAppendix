@@ -6,7 +6,7 @@ In collaborative development environments integration conflicts occur frequently
 ## Preprint
 
 ## Projects Sample Description
-- The size of the projects described described below was collected from openhub on February 16, 2018
+- The size of the projects described below was collected from openhub on February 16, 2018
 
 | Git Repository Name | Domain | Analyzed Merge Commits | Size (KLOCs) |
 | :-------------: | :-------------: | :-------------: | :-------------: |

@@ -27,6 +27,33 @@ In collaborative development environments integration conflicts occur frequently
 | jwtk/jjwt | Java JWT: JSON Web Token for Java and Android | 65 | 8 |
 | jparsec/jparsec | Parser combinator library for Java | 35 | 12 |
 | square/moshi | JSON library for Android and Java | 132 | N/A |
+| graphaware/neo4j-framework | GraphAware Neo4j Framework | 80 | N/A |
+| graphaware/neo4j-reco | Neo4j-based recommendation engine | 14 | N/A |
+| spotify/netty-zmtp | Netty implementation of ZMTP, the ZeroMQ Message Transport Protocol | 12 | 4 |
+| square/okhttp | HTTP+HTTP/2 client for Android and Java | 421 | 57 |
+| square/okio | I/O API for Java | 140 | N/A |
+| ontop/ontop | Platform to query relational databases | 7 | 1100 |
+| oracle/OpenGrok | Source code search and cross reference engine | 108 | 100 |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
+| |  |  |  |
 
 
 ## Data

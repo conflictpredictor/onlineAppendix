@@ -44,7 +44,7 @@ In collaborative development environments integration conflicts occur frequently
 | SoftInstigate/restheart | REST API Server for MongoDB | 41 | 48 |
 | square/retrofit | Type-safe HTTP client for Android and Java | 158 | 21 |
 | yegor256/s3auth | Amazon S3 HTTP Basic Authorization Gateway | 21 | 10 |
-| scribejava/scribejava | OAuth library for Java | 87 | N/A |
+| scribejava/scribejava | OAuth library for Java | 87 | 14 |
 | HubSpot/Singularity | API and web application for running and scheduling Apache Mesos tasks | 280 | 70 |
 | perwendel/spark | Web framework for java | 226 | 11 |
 | codecentric/spring-boot-admin | Admin UI of spring boot applications | 50 | 55 |

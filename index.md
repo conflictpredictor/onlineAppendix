@@ -60,7 +60,9 @@ In collaborative development environments integration conflicts occur frequently
 
 
 ## Data
-[Link to raw data](https://github.com/conflictpredictor/onlineAppendix/tree/master/data)
+[Phase 1](https://github.com/conflictpredictor/onlineAppendix/tree/master/phase1)
+[Phase 2](https://github.com/conflictpredictor/onlineAppendix/tree/master/data)
+Phase 3
 
 ## Scripts and Tools
 

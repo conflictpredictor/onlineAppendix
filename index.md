@@ -6,7 +6,7 @@ In collaborative development environments integration conflicts occur frequently
 ## Preprint
 
 ## Projects Sample Description
-- The size of the projects described below was collected from openhub on February 16, 2018
+- The size of the projects described below was collected from [openhub](https://www.openhub.net) on February 16, 2018
 - When the project was not registered on openhub, we used a [command](https://gist.github.com/mandiwise/dc53cb9da00856d7cdbb) from Git that counts the number of lines.
 
 

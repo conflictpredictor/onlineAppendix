@@ -65,5 +65,7 @@ In collaborative development environments integration conflicts occur frequently
 [Phase 3](https://github.com/conflictpredictor/onlineAppendix/tree/master/data/falsepositiveanalysis)
 
 ## Scripts and Tools
+[Phase 1](https://github.com/conflictpredictor/TravisAnalysis)
+[Phase 2](https://github.com/conflictpredictor/conflictPredictor)
 
 
